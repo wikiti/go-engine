@@ -1,0 +1,264 @@
+#include "components/_component_transform.h"
+#include "_systems.h"
+
+BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Transform);
+
+CComponent_Transform::CComponent_Transform(CGameObject* gameObject): CComponent(gameObject)
+{
+  //id = ccomponents::transform;
+
+  position.x = position.y = position.z = 0;
+  angle.x = angle.y = angle.z = 0;
+  scale.x = scale.y = scale.z = 1.f;
+}
+
+CComponent_Transform::~CComponent_Transform()
+{
+
+}
+
+void CComponent_Transform::Set(input_t d)
+{
+  (*this) = *(CComponent_Transform*)d;
+}
+
+output_t CComponent_Transform::Get()
+{
+  return (void*)this; // ?
+}
+
+void CComponent_Transform::OnRender()
+{
+  if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
+  {
+    GLboolean depth_state;
+    glGetBooleanv(GL_DEPTH_TEST, &depth_state);
+
+    if(depth_state) glDisable(GL_DEPTH_TEST);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    glBegin(GL_LINES);
+      // X - Rojo
+      glColor3f(1.f, 0.f, 0.f);
+      glVertex3f(0.f, 0.f, 0.f);
+      glVertex3f(0.5f, 0.f, 0.f);
+
+      // Y - Verde
+      glColor3f(0.f, 1.f, 0.f);
+      glVertex3f(0.f, 0.f, 0.f);
+      glVertex3f(0.f, 0.5f, 0.f);
+
+      // Z - Azul
+      glColor3f(0.f, 0.f, 1.f);
+      glVertex3f(0.f, 0.f, 0.f);
+      glVertex3f(0.f, 0.f, 0.5f);
+    glEnd();
+
+    if(depth_state) glEnable(GL_DEPTH_TEST);
+  }
+}
+
+void CComponent_Transform::Translate(vector3f v)
+{
+  Translate(v.x, v.y, v.z);
+}
+
+void CComponent_Transform::Translate(GLfloat x, GLfloat y, GLfloat z)
+{
+  position.x += x;
+  position.y += y;
+  position.z += z;
+
+  /*int num = gameObject->GetNumChildren();
+  for(int i = 0; i < num && num != 0; i++)
+    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Translate(x, y, z);*/
+
+}
+
+void CComponent_Transform::SetPosition(vector3f v)
+{
+  SetPosition(v.x, v.y, v.z);
+}
+
+void CComponent_Transform::SetPosition(GLfloat x, GLfloat y, GLfloat z)
+{
+   /*vector3f input(x, y, z);
+
+   input.x -= position.x;
+   input.y -= position.y;
+   input.z -= position.z;
+
+   int num = gameObject->GetNumChildren();
+   for(int i = 0; i < num && num != 0; i++)
+     gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Translate(input);*/
+
+   position.x = x;
+   position.y = y;
+   position.z = z;
+}
+
+void CComponent_Transform::Rotate(vector3f v)
+{
+  Rotate(v.x, v.y, v.z);
+}
+
+void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
+{
+  // Comprobar que no se pasen de 360
+  angle.x += x;
+  angle.y += y;
+  angle.z += z;
+
+  /*int num = gameObject->GetNumChildren();
+  for(int i = 0; i < num && num != 0; i++)
+    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Rotate(x, y, z);*/
+
+  NormalizeAngles();
+}
+
+void CComponent_Transform::SetAngle(vector3f v)
+{
+  SetAngle(v.x, v.y, v.z);
+}
+
+void CComponent_Transform::SetAngle(GLfloat x, GLfloat y, GLfloat z)
+{
+  angle.x = x;
+  angle.y = y;
+  angle.z = z;
+
+  NormalizeAngles();
+  /*vector3f input(x, y, z);
+
+  input.x -= angle.x;
+  input.y -= angle.y;
+  input.z -= angle.z;
+
+  int num = gameObject->GetNumChildren();
+  for(int i = 0; i < num && num != 0; i++)
+    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Rotate(input);
+
+  angle.x = x;
+  angle.y = y;
+  angle.z = z;
+
+  NormalizeAngles();*/
+}
+
+void CComponent_Transform::Scale(vector3f v)
+{
+  Scale(v.x, v.y, v.z);
+}
+
+void CComponent_Transform::Scale(GLfloat x, GLfloat y, GLfloat z)
+{
+  // Multiplicar en vez de sumar
+  scale.x *= x;
+  scale.y *= y;
+  scale.z *= z;
+
+  /*
+  if(scale.x < 0) scale.x = -scale.x;
+  if(scale.y < 0) scale.y = -scale.y;
+  if(scale.z < 0) scale.z = -scale.z;*/
+
+  /*int num = gameObject->GetNumChildren();
+  for(int i = 0; i < num && num != 0; i++)
+    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Scale(x, y, z);*/
+}
+
+void CComponent_Transform::SetScale(vector3f v)
+{
+  SetScale(v.x, v.y, v.z);
+}
+
+void CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)
+{
+  /*vector3f input(x, y, z);
+
+  input.x -= scale.x;
+  input.y -= scale.y;
+  input.z -= scale.z;
+
+  int num = gameObject->GetNumChildren();
+  for(int i = 0; i < num && num != 0; i++)
+    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Scale(input);*/
+
+  scale.x = x;
+  scale.y = y;
+  scale.z = z;
+}
+
+void CComponent_Transform::ApplyTransform()
+{
+  if(gameObject->GetParent())
+    ApplyParentTransform(gameObject->GetParent());
+
+  glTranslatef(position.x, position.y, position.z);
+
+  glRotatef(angle.y, 0.f, 1.f, 0.f);
+  glRotatef(angle.z, 0.f, 0.f, 1.f);
+  glRotatef(angle.x, 1.f, 0.f, 0.f);
+
+  glScalef(scale.x, scale.y, scale.z);
+}
+
+void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
+{
+  // Se puede usar en una pila sin problemas y sin llamadas recursivas
+  // se evita el parámetro "parent"
+  /*if(parent == NULL)
+    return;
+
+  ApplyParentTransform(parent->GetParent());
+
+  glTranslatef(position.x, position.y, position.z);
+
+  glRotatef(angle.x, 1.f, 0.f, 0.f);
+  glRotatef(angle.y, 0.f, 1.f, 0.f);
+  glRotatef(angle.z, 0.f, 0.f, 1.f);
+
+  glScalef(scale.x, scale.y, scale.z);*/
+
+  std::stack<CGameObject*> parent_stack;
+  CGameObject* p = gameObject->GetParent();
+  while(p)
+  {
+    parent_stack.push(p);
+    p = p->GetParent();
+  }
+
+  while(!parent_stack.empty())
+  {
+    p = parent_stack.top();
+    parent_stack.pop();
+
+    glTranslatef(p->transform()->position.x, p->transform()->position.y, p->transform()->position.z);
+
+    glRotatef(p->transform()->angle.x, 1.f, 0.f, 0.f);
+    glRotatef(p->transform()->angle.y, 0.f, 1.f, 0.f);
+    glRotatef(p->transform()->angle.z, 0.f, 0.f, 1.f);
+
+    glScalef(p->transform()->scale.x, p->transform()->scale.y, p->transform()->scale.z);
+  }
+}
+
+/*void CComponent_Transform::ApplyParentTransform()
+{
+  CGameObject* parent = gameObject->GetParent();
+
+  // ¿de abajo a arriba o de arriba a abajo?
+  while(parent != NULL)
+  {
+    glTranslatef(parent->transform()->position.x, parent->transform()->position.y, parent->transform()->
+        position.z);
+
+    glRotatef(parent->transform()->angle.x, 1.f, 0.f, 0.f);
+    glRotatef(parent->transform()->angle.y, 0.f, 1.f, 0.f);
+    glRotatef(parent->transform()->angle.z, 0.f, 0.f, 1.f);
+
+    glScalef(parent->transform()->scale.x, parent->transform()->scale.y, parent->transform()->scale.z);
+
+    parent = parent->GetParent();
+  }
+}*/

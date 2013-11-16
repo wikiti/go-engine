@@ -1,0 +1,7 @@
+.settings/
+bin/
+Debug/
+.cproject
+.project
+log.txt
+user.cfg

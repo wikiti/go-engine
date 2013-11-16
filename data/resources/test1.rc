@@ -1,0 +1,12 @@
+# Comentario
+
+# Linea superior en blanco
+# Formato de resource:
+# tipo: nombre_rc ruta_al_fichero: [argumentos]
+
+texture: textura1 data/resources/textures/textura1.tga: mipmap
+texture: textura2 data/resources/textures/textura2.tga: mipmap
+mesh: mdl_hada1 data/resources/models/faerie.md2:
+texture: texture_mdl_hada1 data/resources/textures/faerie2.bmp: mipmap
+
+# Fin de fichero
