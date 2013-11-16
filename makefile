@@ -5,7 +5,7 @@ SOURCES=engine\src\_globals.cpp engine\src\_object.cpp engine\src\_systems.cpp e
 
 OBJECTS=$(SOURCES:.cpp=.o)
 OUT_OBJECTS := $(foreach object,$(OBJECTS),bin\src\$(object))
-EXECUTABLE=bin\GoEngine++
+EXECUTABLE=bin\GoEngine
 OBJDIR=bin\src
 
 all: $(SOURCES) $(EXECUTABLE)

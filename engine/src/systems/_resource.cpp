@@ -17,6 +17,7 @@ CResource::~CResource()
 
 bool CResource_Mesh::LoadFile(string file, string arguments)
 {
+  // http://nickthecoder.wordpress.com/2013/01/20/mesh-loading-with-assimp/
   Assimp::Importer importer;
   //aiProcessPreset_TargetRealtime_Fast has the configs you'll need
   const aiScene *scene = importer.ReadFile(file.c_str() ,aiProcessPreset_TargetRealtime_Fast);
@@ -128,6 +129,7 @@ void CResource_Mesh::Clear()
 
 void CResource_Mesh::Render()
 {
+  //http://nickthecoder.wordpress.com/2013/01/20/mesh-loading-with-assimp/
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_NORMAL_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);

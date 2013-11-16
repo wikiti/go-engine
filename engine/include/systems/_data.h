@@ -4,7 +4,7 @@
 #define __CSYSTEM_DATA_STORAGE_SAVEFILE "vars.dat"
 #define __CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE "user.cfg"
 
-#define __CSYSTEM_DATA_STORAGE_NOSTRING "\0"
+#define __CSYSTEM_DATA_STORAGE_NOSTRING ""
 #define __CSYSTEM_DATA_STORAGE_NOINT INT_MAX
 #define __CSYSTEM_DATA_STORAGE_NOFLOAT FLT_MAX
 
@@ -62,6 +62,10 @@ class CSystem_Data_Storage: public CSystem
     bool RemoveString(string name_id);
     bool RemoveInt(string name_id);
     bool RemoveFloat(string name_id);
+
+    bool ExistsInt(string name_id);
+    bool ExistsFloat(string name_id);
+    bool ExistsString(string name_id);
 
     void RemoveAll();
     void RemoveUserVars();

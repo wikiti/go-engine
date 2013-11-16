@@ -72,6 +72,9 @@ class CSystem_Debug: public CSystem
     GLuint base;
     void print(GLint x, GLint y, int set, const char* fmt, ...);
 
+    // Puntero de consola
+    uint console_pointer_pos;
+
   public:
     CSystem_Debug(): opened(false), file(NULL){}
     bool IsOpened(){return opened;}

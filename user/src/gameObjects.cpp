@@ -35,6 +35,8 @@ bool SetGameObjects_Instance1()
   camara_main->SetKeyEventBehaviourFunction(&Camara_main_movimiento);
   camara_second->SetEventBehaviourFunction(&Camara_second_movimiento);
   cubo_second->SetKeyEventBehaviourFunction(&Cubo_second_movimiento);
+  hada->SetBehaviourFunction(&Hada_movimiento);
+  DefineTramsformByVar("GO_HADA");
 
   gRender.AddCamera(camara_main);
   gSystem_Render.AddCamera(camara_second);
@@ -205,3 +207,7 @@ void Camara_second_movimiento(CGameObject* gameObject)
   }
 }
 
+void Hada_movimiento(CGameObject* gameObject)
+{
+  SetTransformByVar(gameObject, "GO_HADA");
+}

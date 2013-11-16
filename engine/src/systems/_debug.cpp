@@ -37,8 +37,9 @@ bool CSystem_Debug::Init()
     return false;
 
   console_msg("Use \"help\" or \"?\" to list all comands.");
-  current_line_buffered = current_last_command = 0;
+  current_line_buffered = current_last_command = console_pointer_pos = 0;
   console = false;
+
 
   input = "";
 
@@ -219,6 +220,7 @@ void CSystem_Debug::OnEvent()
       }
       if(event.key.keysym.sym == SDLK_ESCAPE)
       {
+        console_pointer_pos = 0;
         if(input == "")
         {
           console = false;
@@ -233,10 +235,24 @@ void CSystem_Debug::OnEvent()
         current_last_command = command_buffer.size();
         ParseInput();
         input = "";
+        console_pointer_pos = 0;
+      }
+      else if(event.key.keysym.sym == SDLK_DELETE && input.length())
+      {
+        if(console_pointer_pos < input.length())
+        {
+           input.erase(console_pointer_pos, 1);
+           //if(console_pointer_pos == input.length() && console_pointer_pos > 0)
+             //console_pointer_pos--;
+        }
       }
       else if(event.key.keysym.sym == SDLK_BACKSPACE && input.length())
       {
-        input.erase(input.length()-1);
+        if(console_pointer_pos > 0)
+        {
+          input.erase(console_pointer_pos-1, 1);
+          console_pointer_pos--;
+        }
       }
       else if(event.key.keysym.sym == SDLK_UP)
       {
@@ -253,6 +269,16 @@ void CSystem_Debug::OnEvent()
           current_last_command++;
           input = command_buffer[current_last_command];
         }
+      }
+      else if(event.key.keysym.sym == SDLK_LEFT)
+      {
+        if(console_pointer_pos > 0)
+          console_pointer_pos--;
+      }
+      else if(event.key.keysym.sym == SDLK_RIGHT)
+      {
+          if(console_pointer_pos < input.length())
+            console_pointer_pos++;
       }
       else if(event.key.keysym.sym == SDLK_PAGEUP)
       {
@@ -273,12 +299,15 @@ void CSystem_Debug::OnEvent()
     {
       if( event.button.button == SDL_BUTTON_RIGHT )
       {
-        input += SDL_GetClipboardText();
+        //input += SDL_GetClipboardText();
+        input.insert(console_pointer_pos, SDL_GetClipboardText());
+        console_pointer_pos += strlen(SDL_GetClipboardText());
       }
     }
     else if(event.type == SDL_TEXTINPUT)
     {
-      input += event.text.text;
+      input.insert(console_pointer_pos, event.text.text);
+      console_pointer_pos++;
     }
   }
   else
@@ -319,6 +348,10 @@ void CSystem_Debug::OnRender()
     glColor4f(s.line_color.r, s.line_color.g, s.line_color.b, s.line_color.a);
     print(__CSYSTEM_DEBUG_CONSOLE_X_OFFSET, line*__CSYSTEM_DEBUG_CONSOLE_LINESPACE + __CSYSTEM_DEBUG_CONSOLE_Y_OFFSET, 0, s.str.c_str());
   }
+
+  // Dibujar puntero de la consola
+  glColor4f(0.75f, 0.75f, 0.75f, 1.f);
+  print(__CSYSTEM_DEBUG_CONSOLE_X_OFFSET*3 + console_pointer_pos*10, 6, 0, "_");
 
   glDisable(GL_BLEND);
 }
@@ -684,7 +717,7 @@ void CSystem_Debug::Console_command__EXIT(string arguments)
 
 void CSystem_Debug::Console_command__QUIT(string arguments)
 {
-  gSystem_Debug.log("Exit: \"%s\"", arguments.c_str());
+  gSystem_Debug.log("Quit: \"%s\"", arguments.c_str());
   gEngine.Quit();
 }
 

@@ -234,6 +234,30 @@ float CSystem_Data_Storage::GetFloat(string name_id)
     return __CSYSTEM_DATA_STORAGE_NOFLOAT;
 }
 
+bool CSystem_Data_Storage::ExistsInt(string name_id)
+{
+  if(GetInt(name_id) != __CSYSTEM_DATA_STORAGE_NOINT)
+    return true;
+  else
+    return false;
+}
+
+bool CSystem_Data_Storage::ExistsFloat(string name_id)
+{
+  if(GetFloat(name_id) != __CSYSTEM_DATA_STORAGE_NOFLOAT)
+    return true;
+  else
+    return false;
+}
+
+bool CSystem_Data_Storage::ExistsString(string name_id)
+{
+  if(GetString(name_id) != __CSYSTEM_DATA_STORAGE_NOSTRING)
+    return true;
+  else
+    return false;
+}
+
 
 bool CSystem_Data_Storage::RemoveString(string name_id)
 {
