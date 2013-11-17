@@ -53,6 +53,20 @@ class CComponent_Transform: public CComponent
     // ¿qué tal un booleano para saber cuando se ha renderizado un hijo? Así, las transformaciones se realizan en cascada de arriba a abajo, pasando por todos los hijos
     //    -> Problematico? Y si no usamos DEPTH_TEST? Mejor dejarlo así
 
+    // Transformaciones locales ¿?
+    void LTranslate(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
+    void LRotate(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0); // <- ANGULOS DE EULER Y CUATERNIONES!!!
+    //void LScale(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
+
+    // Problemática: Rotaciones locales y globales: las rotaciones "globales" funcionan como pseudolocales
+    //  -> Usar cuaterniones, ya que la rotación de un eje altera el resto de ejes.
+    // Problemática: Gimbal Lock
+    //  -> Usar cuaterniones en vez de ángulos de eulers, y mostrar al usuario los ángulos como ángulos de euler
+    //  -> Set: Euler a Cuaterniones
+    //  -> Get: Cuaterniones a Euler
+    //  -> Se trabaja internamente con cuaterniones. No se podrá modificar los ángulos de euler a mano (angle.x ...), ya que internamente no existen. Se usará el set y el get exclusivamente.
+    //  -> http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-17-quaternions/
+    //     -> Nota: se puede usar glRotatef con un cuaternion?
     void Translate(vector3f v);
     void Translate(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
     void SetPosition(vector3f v);
@@ -78,6 +92,15 @@ class CComponent_Transform: public CComponent
       if(angle.y >= 360 ) angle.y = angle.y - 360;
       if(angle.z >= 360 ) angle.z = angle.z - 360;
     }
+
+//    Por hacer: Posiciones globales y locales
+//    vector3f_t Position();
+//    vector3f_t Angle();
+//    vector3f_t Scale();
+//
+//    vector3f_t LPosition();
+//    vector3f_t LAngle();
+//    vector3f_t LScale();
 };
 
 BOOST_CLASS_EXPORT_KEY( CComponent_Transform );

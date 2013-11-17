@@ -58,6 +58,101 @@ void CComponent_Transform::OnRender()
   }
 }
 
+void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
+{
+  // Mover basandose en la rotación (cosa extraña)
+  // Translate X
+  glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+  glLoadIdentity();
+
+  glRotatef(angle.y, 0.f, 1.f, 0.f);
+  glRotatef(angle.x, 1.f, 0.f, 0.f);
+  glRotatef(angle.z, 0.f, 0.f, 1.f);
+
+  glTranslatef(x, y, z);
+
+  GLdouble matrix[16];
+  glGetDoublev(GL_MODELVIEW_MATRIX, matrix);
+
+  position.x += matrix[12];
+  position.y += matrix[13];
+  position.z += matrix[14];
+
+  /*cout << "Matrix: " << endl;
+  for(uint i = 0; i < 4; i++)
+  {
+    for(uint j = 0; j < 4; j++)
+      cout << setw(10) << setprecision(3) << matrix[4*j + i] << " ";
+
+    cout << endl;
+  }*/
+
+  glPopMatrix();
+}
+
+void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
+{
+  // Mover basandose en la rotación (cosa extraña)
+  // Translate X
+  glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+  glLoadIdentity();
+
+  glRotatef(angle.x, 1.f, 0.f, 0.f);
+  glRotatef(angle.y, 0.f, 1.f, 0.f);
+  glRotatef(angle.z, 0.f, 0.f, 1.f);
+
+  glRotatef(x, 1.f, 0.f, 0.f);
+  glRotatef(y, 0.f, 1.f, 0.f);
+  glRotatef(z, 0.f, 0.f, 1.f);
+
+  GLdouble mat[16];
+  glGetDoublev(GL_MODELVIEW_MATRIX, mat);
+
+#define RADIANS M_PI/180
+
+  float C, D, _trx, _try;
+  angle.y = D = -asin( mat[2]);        /* Calculate Y-axis angle */
+  C           =  cos( angle.y );
+  angle.y    *= RADIANS;
+
+  if ( fabs( C ) > 0.005 )              /* Gimball lock? */
+  {
+    _trx      =  mat[10] / C;           /* No, so get X-axis angle */
+    _try      = -mat[6]  / C;
+
+    angle.x  = atan2( _try, _trx ) * RADIANS;
+
+    _trx      =  mat[0] / C;            /* Get Z-axis angle */
+    _try      = -mat[1] / C;
+
+    angle.z  = atan2( _try, _trx ) * RADIANS;
+  }
+  else                                  /* Gimball lock has occurred */
+  {
+    angle.x  = 0;                       /* Set X-axis angle to zero */
+
+    _trx      = mat[5];                 /* And calculate Z-axis angle */
+    _try      = mat[4];
+
+    angle.z  = atan2( _try, _trx ) * RADIANS;
+  }
+
+  NormalizeAngles();
+
+  /*cout << "Matrix: " << endl;
+  for(uint i = 0; i < 4; i++)
+  {
+    for(uint j = 0; j < 4; j++)
+      cout << setw(10) << setprecision(3) << mat[4*j + i] << " ";
+
+    cout << endl;
+  }*/
+
+  glPopMatrix();
+}
+
 void CComponent_Transform::Translate(vector3f v)
 {
   Translate(v.x, v.y, v.z);
@@ -114,6 +209,7 @@ void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
     gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Rotate(x, y, z);*/
 
   NormalizeAngles();
+  //cout << "Current angles: " << angle << endl;
 }
 
 void CComponent_Transform::SetAngle(vector3f v)
@@ -191,14 +287,35 @@ void CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)
 
 void CComponent_Transform::ApplyTransform()
 {
+  glLoadIdentity();
   if(gameObject->GetParent())
     ApplyParentTransform(gameObject->GetParent());
 
+
   glTranslatef(position.x, position.y, position.z);
+
+//  glRotatef(angle.y, 0.f, 1.f, 0.f);
+//  glRotatef(angle.z, 0.f, 0.f, 1.f);
+//  glRotatef(angle.x, 1.f, 0.f, 0.f);
+
+//  glRotatef(angle.z, 0.f, 0.f, 1.f);
+//  glRotatef(angle.y, 0.f, 1.f, 0.f);
+//  glRotatef(angle.x, 1.f, 0.f, 0.f);
+
+  //glRotatef(angle.y, 0.f, 1.f, 0.f);
+  //glRotatef(angle.x, cos(angle.y * M_PI/180), 0, sin(angle.y*M_PI/180)); // <- CASI!
+  //glRotatef(angle.z, cos(angle.y * M_PI/180), 0.f, sin(angle.y*M_PI/180));
+//  glRotatef(angle.x, cos(angle.y * M_PI/180), 0, sin(angle.y*M_PI/180));
+//  glRotatef(angle.z, cos(angle.y * M_PI/180), cos(angle.x * M_PI/180), sin(angle.y*M_PI/180));
+
+//  glRotatef(angle.z, 0.f, 0.f, 1.f);
+//  glRotatef(angle.y, 0.f, 1.f, 0.f);
+//  glRotatef(angle.x, 1.f, 0.f, 0.f);
 
   glRotatef(angle.y, 0.f, 1.f, 0.f);
   glRotatef(angle.z, 0.f, 0.f, 1.f);
   glRotatef(angle.x, 1.f, 0.f, 0.f);
+
 
   glScalef(scale.x, scale.y, scale.z);
 }
@@ -207,20 +324,20 @@ void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
 {
   // Se puede usar en una pila sin problemas y sin llamadas recursivas
   // se evita el parámetro "parent"
-  /*if(parent == NULL)
+  if(parent == NULL)
     return;
 
   ApplyParentTransform(parent->GetParent());
 
-  glTranslatef(position.x, position.y, position.z);
+  glTranslatef(parent->transform()->position.x, parent->transform()->position.y, parent->transform()->position.z);
 
-  glRotatef(angle.x, 1.f, 0.f, 0.f);
-  glRotatef(angle.y, 0.f, 1.f, 0.f);
-  glRotatef(angle.z, 0.f, 0.f, 1.f);
+  glRotatef(parent->transform()->angle.y, 0.f, 1.f, 0.f);
+  glRotatef(parent->transform()->angle.z, 0.f, 0.f, 1.f);
+  glRotatef(parent->transform()->angle.x, 1.f, 0.f, 0.f);
 
-  glScalef(scale.x, scale.y, scale.z);*/
+  glScalef(parent->transform()->scale.x, parent->transform()->scale.y, parent->transform()->scale.z);
 
-  std::stack<CGameObject*> parent_stack;
+  /*std::stack<CGameObject*> parent_stack;
   CGameObject* p = gameObject->GetParent();
   while(p)
   {
@@ -240,7 +357,7 @@ void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
     glRotatef(p->transform()->angle.z, 0.f, 0.f, 1.f);
 
     glScalef(p->transform()->scale.x, p->transform()->scale.y, p->transform()->scale.z);
-  }
+  }*/
 }
 
 /*void CComponent_Transform::ApplyParentTransform()

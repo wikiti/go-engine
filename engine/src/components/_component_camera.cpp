@@ -103,6 +103,7 @@ void CComponent_Camera::SetUp()
   if(!target)
   {
     // http://mathworld.wolfram.com/SphericalCoordinates.html
+    // Arreglar esto con rotaciones locales!
     tp.z = p->z + cos((r->y)*M_PI/180) * sin((r->x+90)*M_PI/180);
     tp.x = p->x + sin((r->y)*M_PI/180) * sin((r->x+90)*M_PI/180);
     tp.y = p->y + cos((r->x+90)*M_PI/180);

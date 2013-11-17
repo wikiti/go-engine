@@ -349,7 +349,7 @@ void CSystem_Debug::OnRender()
     print(__CSYSTEM_DEBUG_CONSOLE_X_OFFSET, line*__CSYSTEM_DEBUG_CONSOLE_LINESPACE + __CSYSTEM_DEBUG_CONSOLE_Y_OFFSET, 0, s.str.c_str());
   }
 
-  // Dibujar puntero de la consola
+  // Draw console pointer
   glColor4f(0.75f, 0.75f, 0.75f, 1.f);
   print(__CSYSTEM_DEBUG_CONSOLE_X_OFFSET*3 + console_pointer_pos*10, 6, 0, "_");
 
