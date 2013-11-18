@@ -66,12 +66,14 @@ extern const Uint8 *gKeyboardState;
 
 /**________OpenGL________**/
 
-
 #include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
 #include <GL/glext.h>
 #include <GL/SOIL.h>
 #include <GL/glu.h>
+
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtx/quaternion.hpp>
 
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
