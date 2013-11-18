@@ -107,6 +107,11 @@ void CComponent_Camera::SetUp()
     tp.z = p->z + cos((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
     tp.x = p->x + sin((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
     tp.y = p->y + cos((r.x+90)*M_PI/180);
+    //glm::quat rot1 = RotationBetweenVectors(vec3(0.0f, 0.0f, 1.0f), direction);
+
+    //tp.x = gameObject->transform()->angle.x;
+    //tp.y = gameObject->transform()->angle.y;
+    //tp.z = gameObject->transform()->angle.z;
   }
   else
   {

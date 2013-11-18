@@ -77,6 +77,7 @@ extern const Uint8 *gKeyboardState;
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <glm/glm.hpp>
 
 #include <assimp/Importer.hpp>      // C++ importer interface
