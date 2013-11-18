@@ -100,6 +100,8 @@ void CComponent_Camera::SetUp()
 
   static bool failure = true;
 
+  // Posible solución al problema de los cuaterniones -> No usar gluLookAt, sino transformar la matriz MODELVIEW y usar glPop y glPush para trabajar con cada objeto sin alterar la posición de la cámara.
+  //  -> Ahora bien, ¿cómo hacemos que apunte a un "target"? Ni puñetera idea.
   if(!target)
   {
     // http://mathworld.wolfram.com/SphericalCoordinates.html
