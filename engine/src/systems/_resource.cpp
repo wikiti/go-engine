@@ -130,6 +130,7 @@ void CResource_Mesh::Clear()
 void CResource_Mesh::Render()
 {
   //http://nickthecoder.wordpress.com/2013/01/20/mesh-loading-with-assimp/
+  // Tal vez es conveniente no llamar a todas estas de golpe
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_NORMAL_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);

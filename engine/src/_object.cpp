@@ -186,6 +186,9 @@ bool CGameObject::RemoveFromSystem()
   return false;
 }
 
+// En vez de iterar por todos los componentes, se debería iterar por los principales que se sabe que van a funcionar (o algo)
+// Por ejemplo, CComponent_Mesh_Render NO debería tener keyevent, ni event, ni behaviour
+
 void CGameObject::OnEvent()
 {
   if(event_behaviour) event_behaviour(this);
@@ -213,37 +216,27 @@ void CGameObject::OnLoop()
 void CGameObject::OnRender()
 {
   //if(flags & gof_render)
-  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
-    it->second->OnRender();
+  //for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
+    //it->second->OnRender();
+  if(GetComponent<CComponent_Mesh_Render>())
+    GetComponent<CComponent_Mesh_Render>()->OnRender();
 
-  /*if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
-  {
-    RenderTransform();
-  }*/
+  // Dummys
+  if(GetComponent<CComponent_Dummy1>())
+    GetComponent<CComponent_Dummy1>()->OnRender();
+
+  if(GetComponent<CComponent_Dummy2>())
+    GetComponent<CComponent_Dummy2>()->OnRender();
 }
 
-
-void CGameObject::RenderTransform()
+// ¿?¿?
+/*void CGameObject::OnRenderDebug()
 {
-  glBindTexture(GL_TEXTURE_2D, 0);
+  if(GetComponent<CComponent_Transform>())
+    GetComponent<CComponent_Transform>()->OnRender();
 
-  glBegin(GL_LINES);
-    // X - Rojo
-    glColor3f(1.f, 0.f, 0.f);
-    glVertex3f(0.f, 0.f, 0.f);
-    glVertex3f(0.5f, 0.f, 0.f);
-
-    // Y - Verde
-    glColor3f(0.f, 1.f, 0.f);
-    glVertex3f(0.f, 0.f, 0.f);
-    glVertex3f(0.f, 0.5f, 0.f);
-
-    // Z - Azul
-    glColor3f(0.f, 0.f, 1.f);
-    glVertex3f(0.f, 0.f, 0.f);
-    glVertex3f(0.f, 0.f, 0.5f);
-  glEnd();
-}
+  // ---
+}*/
 
 /*void CGameObject::SetAuxStrings()
 {

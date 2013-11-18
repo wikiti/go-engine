@@ -231,11 +231,14 @@ void CSystem_Debug::OnEvent()
       }
       else if(event.key.keysym.sym == SDLK_RETURN)
       {
-        command_buffer.push_back(input);
-        current_last_command = command_buffer.size();
-        ParseInput();
-        input = "";
-        console_pointer_pos = 0;
+        if(input != "")
+        {
+          command_buffer.push_back(input);
+          current_last_command = command_buffer.size();
+          ParseInput();
+          input = "";
+          console_pointer_pos = 0;
+        }
       }
       else if(event.key.keysym.sym == SDLK_DELETE && input.length())
       {
@@ -260,6 +263,7 @@ void CSystem_Debug::OnEvent()
         {
           current_last_command--;
           input = command_buffer[current_last_command];
+          console_pointer_pos = input.size();
         }
       }
       else if(event.key.keysym.sym == SDLK_DOWN)
@@ -268,6 +272,7 @@ void CSystem_Debug::OnEvent()
         {
           current_last_command++;
           input = command_buffer[current_last_command];
+          console_pointer_pos = input.size();
         }
       }
       else if(event.key.keysym.sym == SDLK_LEFT)
@@ -706,6 +711,7 @@ void CSystem_Debug::Console_command__REMOVE_USER_VARS(string arguments)
 
 void CSystem_Debug::Console_command__CLEAR(string arguments)
 {
+  // No se limpia el buffer de comandos (por comodidad, básicamente); solo el de resultados.
   console_buffer.clear();
   current_line_buffered = 0;
 }

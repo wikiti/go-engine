@@ -34,12 +34,12 @@ output_t CComponent_Transform::Get()
 
 void CComponent_Transform::OnRender()
 {
-  if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
-  {
-    GLboolean depth_state;
-    glGetBooleanv(GL_DEPTH_TEST, &depth_state);
+  //if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
+  //{
+    //GLboolean depth_state;
+    //glGetBooleanv(GL_DEPTH_TEST, &depth_state);
 
-    if(depth_state) glDisable(GL_DEPTH_TEST);
+    //if(depth_state) glDisable(GL_DEPTH_TEST);
     glBindTexture(GL_TEXTURE_2D, 0);
 
     glBegin(GL_LINES);
@@ -59,8 +59,8 @@ void CComponent_Transform::OnRender()
       glVertex3f(0.f, 0.f, 0.5f);
     glEnd();
 
-    if(depth_state) glEnable(GL_DEPTH_TEST);
-  }
+    //if(depth_state) glEnable(GL_DEPTH_TEST);
+  //}
 }
 
 vector3f CComponent_Transform::EulerAngles()
@@ -87,7 +87,6 @@ void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
   glPushMatrix();
   glLoadIdentity();
 
-
   // Orientación
   glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(angle)));
   glTranslatef(x, y, z);
@@ -99,15 +98,6 @@ void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
   position.y += matrix[13];
   position.z += matrix[14];
 
-  /*cout << "Matrix: " << endl;
-  for(uint i = 0; i < 4; i++)
-  {
-    for(uint j = 0; j < 4; j++)
-      cout << setw(10) << setprecision(3) << matrix[4*j + i] << " ";
-
-    cout << endl;
-  }*/
-
   glPopMatrix();
 }
 
@@ -118,7 +108,6 @@ void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = angle * glm::quat(EulerAngles);
-
 
   /* Basura
   glMatrixMode(GL_MODELVIEW); // <- ?
@@ -172,8 +161,6 @@ void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
   }
 
   NormalizeAngles();*/
-
-  glPopMatrix();
 }
 
 void CComponent_Transform::Translate(vector3f v)

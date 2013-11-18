@@ -178,7 +178,7 @@ void CSystem_Render::OnLoop()
   if(error != GL_NO_ERROR)
   {
     //gSystem_Debug.msg_box(debug::error, ERROR_RENDER, "From CSystem_Render: OpenGL error: %s", gluErrorString(error) );
-    gSystem_Debug.console_error_msg(ERROR_RENDER, "From CSystem_Render: OpenGL error: %s", gluErrorString(error));
+    gSystem_Debug.console_error_msg("From CSystem_Render: OpenGL error: %s", gluErrorString(error));
   }
 }
 
@@ -202,14 +202,41 @@ void CSystem_Render::OnRender()
     if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID") )
       RenderGrid(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS"), gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS"));
 
+    glLoadIdentity();
+
 	  for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	  {
-      glLoadIdentity();
+	    //glLoadIdentity();
+	    glPushMatrix();
+
       glColor3f(1.f, 1.f, 1.f);
       glBindTexture(GL_TEXTURE_2D, 0);
 
       it2->second->transform()->ApplyTransform();
 	    it2->second->OnRender();
+
+	    glPopMatrix();
+	  }
+
+	  // Other renders
+	  if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
+	  {
+	    GLboolean depth_state;
+	    glGetBooleanv(GL_DEPTH_TEST, &depth_state);
+
+	    if(depth_state) glDisable(GL_DEPTH_TEST);
+
+	    for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
+	    {
+	       glPushMatrix();
+
+	       it2->second->transform()->ApplyTransform();
+	       it2->second->transform()->OnRender();
+
+	       glPopMatrix();
+	    }
+
+	    if(depth_state) glEnable(GL_DEPTH_TEST);
 	  }
 
     cam->AfterRender();

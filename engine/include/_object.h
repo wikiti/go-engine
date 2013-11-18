@@ -142,7 +142,7 @@ class CGameObject
     void OnKeyEvent();
     void OnLoop();
     void OnRender();
-      void RenderTransform();
+    //void OnRenderDebug();
 
   protected:
     void Register(uint ID)
@@ -243,7 +243,7 @@ Type* CGameObject::GetComponent()
   {
     return (Type*)components[Type::GetID()];
   }
-  gSystem_Debug.console_error_msg("From CGameObject \"%s\": Could not find component \"%s\"", name.c_str(), components::component_to_string((components::components)Type::GetID()));
+  //gSystem_Debug.console_error_msg("From CGameObject \"%s\": Could not find component \"%s\"", name.c_str(), components::component_to_string((components::components)Type::GetID()));
   return NULL;
 }
 
