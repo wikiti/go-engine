@@ -67,49 +67,35 @@ void Camara_second_after_render(CGameObject* gameObject)
 
 void Cubo_main_movimiento(CGameObject* gameObject)
 {
-  static GLfloat x = 0, y = 0, z = 0;
   if(gKeyboardState[SDL_SCANCODE_LCTRL])
   {
     if(gKeyboardState[SDL_SCANCODE_W])
     {
       gameObject->transform()->Rotate(20.f * gTime.deltaTime_s());
-      //gameObject->transform()->SetAngle(0, 45, 0);
-      x += 20.f * gTime.deltaTime_s();
     }
     if(gKeyboardState[SDL_SCANCODE_S])
     {
       gameObject->transform()->Rotate(-20.f * gTime.deltaTime_s());
-      //gameObject->transform()->SetAngle(0, -45, 0);
-      x -= 20.f * gTime.deltaTime_s();
     }
     if(gKeyboardState[SDL_SCANCODE_D])
     {
       gameObject->transform()->Rotate(0.f, 20.f * gTime.deltaTime_s());
-      //gameObject->transform()->SetAngle(-45, 0, 0);
-      y -= 20.f * gTime.deltaTime_s();
     }
     if(gKeyboardState[SDL_SCANCODE_A])
     {
       gameObject->transform()->Rotate(0.f, -20.f * gTime.deltaTime_s());
-      //gameObject->transform()->SetAngle(45, 0, 0);
-      y += 20.f * gTime.deltaTime_s();
     }
     if(gKeyboardState[SDL_SCANCODE_Q])
     {
-      //gameObject->transform()->SetAngle(0, 0, 45);
       gameObject->transform()->Rotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
-      //z -= 20.f * gTime.deltaTime_s();
     }
     if(gKeyboardState[SDL_SCANCODE_E])
     {
-      //gameObject->transform()->SetAngle(0, 0, -45);
       gameObject->transform()->Rotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
-      //z += 20.f * gTime.deltaTime_s();
     }
     if(gKeyboardState[SDL_SCANCODE_R])
     {
       gameObject->transform()->SetAngle(0, 0, 0);
-      //x = y = z = 0;
     }
     if(gKeyboardState[SDL_SCANCODE_1])
     {
@@ -123,8 +109,33 @@ void Cubo_main_movimiento(CGameObject* gameObject)
     {
       gameObject->transform()->SetAngle(0, 0, 45);
     }
-    //gameObject->transform()->SetAngle(x, y, z);
-    //cout << "ANGLE: " << gameObject->transform()->EulerAngles() << endl;
+  }
+  else if(gKeyboardState[SDL_SCANCODE_LALT])
+  {
+    if(gKeyboardState[SDL_SCANCODE_W])
+    {
+      gameObject->transform()->LRotate(20.f * gTime.deltaTime_s());
+    }
+    if(gKeyboardState[SDL_SCANCODE_S])
+    {
+      gameObject->transform()->LRotate(-20.f * gTime.deltaTime_s());
+    }
+    if(gKeyboardState[SDL_SCANCODE_D])
+    {
+      gameObject->transform()->LRotate(0.f, 20.f * gTime.deltaTime_s());
+    }
+    if(gKeyboardState[SDL_SCANCODE_A])
+    {
+      gameObject->transform()->LRotate(0.f, -20.f * gTime.deltaTime_s());
+    }
+    if(gKeyboardState[SDL_SCANCODE_Q])
+    {
+      gameObject->transform()->LRotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
+    }
+    if(gKeyboardState[SDL_SCANCODE_E])
+    {
+      gameObject->transform()->LRotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
+    }
   }
   else if(gKeyboardState[SDL_SCANCODE_LSHIFT])
   {
@@ -189,29 +200,28 @@ void Camara_main_movimiento(CGameObject* gameObject)
   {
     if(gKeyboardState[SDL_SCANCODE_UP])
     {
-      gameObject->transform()->Rotate(-20.f * gTime.deltaTime_s(), 0, 0);
+      gameObject->transform()->LRotate(-20.f * gTime.deltaTime_s(), 0, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_DOWN])
     {
-      gameObject->transform()->Rotate(20.f * gTime.deltaTime_s(), 0, 0);
+      gameObject->transform()->LRotate(20.f * gTime.deltaTime_s(), 0, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_LEFT])
     {
-      gameObject->transform()->Rotate(0, +20.f * gTime.deltaTime_s(), 0);
+      gameObject->transform()->LRotate(0, +20.f * gTime.deltaTime_s(), 0);
     }
     if(gKeyboardState[SDL_SCANCODE_RIGHT])
     {
-      gameObject->transform()->Rotate(0, -20.f * gTime.deltaTime_s(), 0);
+      gameObject->transform()->LRotate(0, -20.f * gTime.deltaTime_s(), 0);
     }
     if(gKeyboardState[SDL_SCANCODE_PAGEDOWN])
     {
-      gameObject->transform()->Rotate(0, 0, 20.f * gTime.deltaTime_s());
+      gameObject->transform()->LRotate(0, 0, 20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_PAGEUP])
     {
-      gameObject->transform()->Rotate(0, 0, -20.f * gTime.deltaTime_s());
+      gameObject->transform()->LRotate(0, 0, -20.f * gTime.deltaTime_s());
     }
-    cout << "ANGLE: " << gameObject->transform()->EulerAngles() << endl;
   }
   else
   {

@@ -113,12 +113,24 @@ void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
 
 void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
 {
-  // Mover basandose en la rotación (cosa extraña)
-  // Translate X
-  glMatrixMode(GL_MODELVIEW);
-  glPushMatrix();
-  glLoadIdentity();
+  // Como Rotate(), sólo que primero se aplica la rotación, y luego la orientación (mientras que en Rotate se aplica primero la orientación y luego la rotación).
+  NormalizeAngles(x, y, z);
 
+  glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
+  angle = angle * glm::quat(EulerAngles);
+
+
+  /* Basura
+  glMatrixMode(GL_MODELVIEW); // <- ?
+  glPushMatrix();
+  glLoadIdentity(); // <- ?
+  glm::quat QuatAroundX = glm::normalize(glm::quat( glm::vec3(_DEG_TO_RAD(x), 0.f, 0.f) ));
+  glm::quat QuatAroundY = glm::normalize(glm::quat( glm::vec3(0.f, _DEG_TO_RAD(y), 0.f) ));
+  glm::quat QuatAroundZ = glm::normalize(glm::quat( glm::vec3(0.f, 0.f, _DEG_TO_RAD(z)) ));
+
+  angle = glm::normalize(QuatAroundZ * QuatAroundY * QuatAroundX * angle);
+
+  Basura
   glRotatef(angle.x, 1.f, 0.f, 0.f);
   glRotatef(angle.y, 0.f, 1.f, 0.f);
   glRotatef(angle.z, 0.f, 0.f, 1.f);
@@ -133,42 +145,33 @@ void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
 #define RADIANS M_PI/180
 
   float C, D, _trx, _try;
-  angle.y = D = -asin( mat[2]);        /* Calculate Y-axis angle */
+  angle.y = D = -asin( mat[2]);
   C           =  cos( angle.y );
   angle.y    *= RADIANS;
 
-  if ( fabs( C ) > 0.005 )              /* Gimball lock? */
+  if ( fabs( C ) > 0.005 )
   {
-    _trx      =  mat[10] / C;           /* No, so get X-axis angle */
+    _trx      =  mat[10] / C;
     _try      = -mat[6]  / C;
 
     angle.x  = atan2( _try, _trx ) * RADIANS;
 
-    _trx      =  mat[0] / C;            /* Get Z-axis angle */
+    _trx      =  mat[0] / C;
     _try      = -mat[1] / C;
 
     angle.z  = atan2( _try, _trx ) * RADIANS;
   }
-  else                                  /* Gimball lock has occurred */
+  else
   {
-    angle.x  = 0;                       /* Set X-axis angle to zero */
+    angle.x  = 0;
 
-    _trx      = mat[5];                 /* And calculate Z-axis angle */
+    _trx      = mat[5];
     _try      = mat[4];
 
     angle.z  = atan2( _try, _trx ) * RADIANS;
   }
 
-  NormalizeAngles();
-
-  /*cout << "Matrix: " << endl;
-  for(uint i = 0; i < 4; i++)
-  {
-    for(uint j = 0; j < 4; j++)
-      cout << setw(10) << setprecision(3) << mat[4*j + i] << " ";
-
-    cout << endl;
-  }*/
+  NormalizeAngles();*/
 
   glPopMatrix();
 }
@@ -224,13 +227,25 @@ void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = glm::quat(EulerAngles) * angle;
 
-  /*glm::quat QuatAroundX = glm::quat( 1.f, 0.f, 0.f, _DEG_TO_RAD(x) );
+  // Equivalente a
+
+  /*glm::quat QuatAroundX = glm::quat( glm::vec3(_DEG_TO_RAD(x), 0.f, 0.f) );
+  glm::quat QuatAroundY = glm::quat( glm::vec3(0.f, _DEG_TO_RAD(y), 0.f) );
+  glm::quat QuatAroundZ = glm::quat( glm::vec3(0.f, 0.f, _DEG_TO_RAD(z)) );
+
+  angle = glm::normalize(QuatAroundZ * QuatAroundY * QuatAroundX * angle);*/
+
+  /*  BASURA!glm::quat QuatAroundX = glm::quat( glm::vec3(_DEG_TO_RAD(x), 0.f, 0.f) );
+  glm::quat QuatAroundY = glm::quat( glm::vec3(0.f, _DEG_TO_RAD(y), 0.f) );
+  glm::quat QuatAroundZ = glm::quat( glm::vec3(0.f, 0.f, _DEG_TO_RAD(z)) );
+
+  angle = glm::normalize(QuatAroundZ * QuatAroundY * QuatAroundX * angle);
+
+  glm::quat QuatAroundX = glm::quat( 1.f, 0.f, 0.f, _DEG_TO_RAD(x) );
   glm::quat QuatAroundY = glm::quat( 0.f, 1.f, 0.f, _DEG_TO_RAD(y) );
   glm::quat QuatAroundZ = glm::quat( 0.f, 0.f, 1.f, _DEG_TO_RAD(z) );
   angle = angle * QuatAroundZ * QuatAroundY * QuatAroundX;
 
-
-  BASURA!
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   glm::quat rotacion = glm::quat(EulerAngles);
 
@@ -372,7 +387,7 @@ void CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)
 
 void CComponent_Transform::ApplyTransform()
 {
-  glLoadIdentity();
+  //glLoadIdentity();
   if(gameObject->GetParent())
     ApplyParentTransform(gameObject->GetParent());
 
@@ -404,7 +419,8 @@ void CComponent_Transform::ApplyTransform()
   // Posición
   glTranslatef(position.x, position.y, position.z);
   // Orientación
-  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(angle)));
+  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(angle)));                  // <- GLOBAL
+  //glMultMatrixf((const float*)glm::value_ptr(glm::inverse(glm::toMat4(angle))));  // <- LOCAL
   // Escala
   glScalef(scale.x, scale.y, scale.z);
 }
@@ -421,7 +437,8 @@ void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
   // Posición
   glTranslatef(parent->transform()->position.x, parent->transform()->position.y, parent->transform()->position.z);
   // Orientación
-  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(parent->transform()->angle)));
+  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(parent->transform()->angle)));                  // <- GLOBAL
+  //glMultMatrixf((const float*)glm::value_ptr(glm::inverse(glm::toMat4(parent->transform()->angle))));  // <- LOCAL
   // Escala
   glScalef(parent->transform()->scale.x, parent->transform()->scale.y, parent->transform()->scale.z);
 
