@@ -74,6 +74,7 @@ extern const Uint8 *gKeyboardState;
 #include <GL/SOIL.h>
 #include <GL/glu.h>
 
+#define GLM_FORCE_RADIANS
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/glm.hpp>

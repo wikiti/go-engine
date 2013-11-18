@@ -63,9 +63,18 @@ void CComponent_Transform::OnRender()
 
 vector3f CComponent_Transform::EulerAngles()
 {
-  glm::vec3 ea = glm::eulerAngles(angle);
+  /*glm::vec3 ea = glm::eulerAngles(angle);
   // Pasar a grados
-  return vector3f(ea.x, ea.y, ea.z);
+  return vector3f(_RAD_TO_DEG(ea.x), _RAD_TO_DEG(ea.y), _RAD_TO_DEG(ea.z));*/
+  glm::vec3 ea = glm::eulerAngles(angle);
+
+  GLfloat nx = _RAD_TO_DEG(ea.x);
+  GLfloat ny = _RAD_TO_DEG(ea.y);
+  GLfloat nz = _RAD_TO_DEG(ea.z);
+
+  NormalizeAngles(nx, ny, nz);
+  return vector3f(nx, ny, nz);
+  // Necesario?
 }
 
 void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
@@ -215,7 +224,14 @@ void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
 
   //glm::vec3 ea(EulerAngles().x + x, EulerAngles().y + y, EulerAngles().z + z);
   //cout << "EULER: " << EulerAngles().x << " " << EulerAngles().y << " " << EulerAngles().z << " " << endl;
-  SetAngle(EulerAngles().x + x, EulerAngles().y + y, EulerAngles().z + z);
+  /*GLfloat rx = EulerAngles().x + x;
+  GLfloat ry = EulerAngles().y + y;
+  GLfloat rz = EulerAngles().z + z;
+
+  NormalizeAngles(rx, ry, rz);
+  SetAngle(rx, ry, rz);*/
+  //SetAngle(EulerAngles().x + x, EulerAngles().y + y, EulerAngles().z + z);
+
   //angle = glm::quat(ea);
 
   /*glm::quat QuatAroundX = glm::quat( 1.0, 0.f, 0.f, _DEG_TO_RAD(x) );
@@ -229,6 +245,10 @@ void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
 
   //glm::vec3 ea(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   //angle = glm::quat(ea) * angle;
+
+  glm::vec3 ea(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
+  glm::quat rotacion = glm::quat(ea);
+  angle = rotacion * angle;
 
   //Quaternion finalOrientation = QuatAroundX * QuatAroundY * QuatAroundZ;
   //angle = rotacion * angle;
@@ -255,8 +275,10 @@ void CComponent_Transform::SetAngle(GLfloat x, GLfloat y, GLfloat z)
   /*glm::quat QuatAroundX = glm::quat( 1.0, 0.f, 0.f, _DEG_TO_RAD(x) );
   glm::quat QuatAroundY = glm::quat( 0.f, 1.f, 0.f, _DEG_TO_RAD(y) );
   glm::quat QuatAroundZ = glm::quat( 0.f, 0.f, 1.f, _DEG_TO_RAD(z) );
-
   angle = QuatAroundX * QuatAroundY * QuatAroundZ;*/
+
+  NormalizeAngles(x, y, z);
+
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = glm::quat(EulerAngles);
 

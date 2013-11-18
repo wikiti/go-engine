@@ -96,6 +96,19 @@ class CComponent_Transform: public CComponent
       if(angle.z >= 360 ) angle.z = angle.z - 360;
     }
 
+    // Esto debería ir en CSystem_Math
+    inline void NormalizeAngles(GLfloat &x, GLfloat &y, GLfloat &z)
+    {
+      if(x < 0 ) x = 360 + x;
+      if(y < 0 ) y = 360 + y;
+      if(z < 0 ) z = 360 + z;
+
+      if(x >= 360 ) x = x - 360;
+      if(y >= 360 ) y = y - 360;
+      if(z >= 360 ) z = z - 360;
+    }
+
+
 //    Por hacer: Posiciones globales y locales
 //    vector3f_t Position();
 //    vector3f_t Angle();
