@@ -72,27 +72,50 @@ void Cubo_main_movimiento(CGameObject* gameObject)
     if(gKeyboardState[SDL_SCANCODE_W])
     {
       gameObject->transform()->Rotate(20.f * gTime.deltaTime_s());
+      //gameObject->transform()->SetAngle(0, 45, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_S])
     {
-       gameObject->transform()->Rotate(-20.f * gTime.deltaTime_s());
+      gameObject->transform()->Rotate(-20.f * gTime.deltaTime_s());
+      //gameObject->transform()->SetAngle(0, -45, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_D])
     {
       gameObject->transform()->Rotate(0.f, 20.f * gTime.deltaTime_s());
+      //gameObject->transform()->SetAngle(-45, 0, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_A])
     {
-       gameObject->transform()->Rotate(0.f, -20.f * gTime.deltaTime_s());
+      gameObject->transform()->Rotate(0.f, -20.f * gTime.deltaTime_s());
+      //gameObject->transform()->SetAngle(45, 0, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_Q])
     {
-       gameObject->transform()->Rotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
+      //gameObject->transform()->SetAngle(0, 0, 45);
+      gameObject->transform()->Rotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_E])
     {
-       gameObject->transform()->Rotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
+      //gameObject->transform()->SetAngle(0, 0, -45);
+      gameObject->transform()->Rotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
     }
+    if(gKeyboardState[SDL_SCANCODE_R])
+    {
+      gameObject->transform()->SetAngle(0, 0, 0);
+    }
+    if(gKeyboardState[SDL_SCANCODE_1])
+    {
+      gameObject->transform()->SetAngle(45, 0, 0);
+    }
+    if(gKeyboardState[SDL_SCANCODE_2])
+    {
+      gameObject->transform()->SetAngle(0, 45, 0);
+    }
+    if(gKeyboardState[SDL_SCANCODE_3])
+    {
+      gameObject->transform()->SetAngle(0, 0, 45);
+    }
+    cout << "ANGLE: " << gameObject->transform()->EulerAngles() << endl;
   }
   else if(gKeyboardState[SDL_SCANCODE_LSHIFT])
   {

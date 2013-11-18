@@ -94,7 +94,7 @@ void CComponent_Camera::SetUp()
   glLoadMatrixd(projMatrix);
 
   vector3f* p = &gameObject->transform()->position;   // Camera position
-  vector3f* r = &gameObject->transform()->angle;      // Camera angle
+  vector3f r = gameObject->transform()->EulerAngles();      // Camera angle
   vector3f up(0, 1, 0);                               // Up vector (for "screen rotation")
   vector3f tp(0, 0, 1);                               // Target point
 
@@ -104,9 +104,9 @@ void CComponent_Camera::SetUp()
   {
     // http://mathworld.wolfram.com/SphericalCoordinates.html
     // Arreglar esto con rotaciones locales!
-    tp.z = p->z + cos((r->y)*M_PI/180) * sin((r->x+90)*M_PI/180);
-    tp.x = p->x + sin((r->y)*M_PI/180) * sin((r->x+90)*M_PI/180);
-    tp.y = p->y + cos((r->x+90)*M_PI/180);
+    tp.z = p->z + cos((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
+    tp.x = p->x + sin((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
+    tp.y = p->y + cos((r.x+90)*M_PI/180);
   }
   else
   {

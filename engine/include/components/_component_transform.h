@@ -7,7 +7,8 @@
 class CComponent_Transform: public CComponent
 {
   public:
-    vector3f position, angle, scale;
+    vector3f position, scale;
+    glm::quat angle;
 
   public:
     friend class CGameObject;
@@ -21,8 +22,8 @@ class CComponent_Transform: public CComponent
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
-      ar & boost::serialization::base_object<CComponent>(*this);
-      ar & position &  angle & scale;
+      //ar & boost::serialization::base_object<CComponent>(*this);
+      //ar & position &  angle & scale;
     }
 
   protected:
@@ -57,6 +58,8 @@ class CComponent_Transform: public CComponent
     void LTranslate(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
     void LRotate(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0); // <- ANGULOS DE EULER Y CUATERNIONES!!!
     //void LScale(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
+
+    vector3f EulerAngles();
 
     // Problemática: Rotaciones locales y globales: las rotaciones "globales" funcionan como pseudolocales
     //  -> Usar cuaterniones, ya que la rotación de un eje altera el resto de ejes.

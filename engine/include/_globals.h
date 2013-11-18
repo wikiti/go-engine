@@ -37,6 +37,8 @@ class general_exception: public std::exception
 };
 
 #define _USE_MATH_DEFINES
+#define _RAD_TO_DEG(x) x * ( 180  / M_PI )
+#define _DEG_TO_RAD(x) x * ( M_PI / 180  )
 
 /**_________BOOST________**/
 
@@ -74,6 +76,7 @@ extern const Uint8 *gKeyboardState;
 
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
+#include <glm/glm.hpp>
 
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
