@@ -114,6 +114,8 @@ void CComponent_Camera::SetUp()
     //tp.x = gameObject->transform()->angle.x;
     //tp.y = gameObject->transform()->angle.y;
     //tp.z = gameObject->transform()->angle.z;
+
+
   }
   else
   {
@@ -131,6 +133,10 @@ void CComponent_Camera::SetUp()
       }
     }
 
+    gluLookAt(p->x, p->y, p->z,     // Camera position
+              tp.x, tp.y, tp.z,     // Target point
+              up.x, up.y, up.z);    // Up vector
+
   }
 
   /*up = tp.normalize().cross_product(tp.normalize().cross_product(vector3f(0, 1, 0)));
@@ -139,8 +145,7 @@ void CComponent_Camera::SetUp()
   up.z = cos((90 + r->x )*M_PI/180);*/
   // Recalcular vector UP
 
-  gluLookAt(p->x, p->y, p->z,     // Camera position
+  /*gluLookAt(p->x, p->y, p->z,     // Camera position
             tp.x, tp.y, tp.z,     // Target point
-            up.x, up.y, up.z);    // Up vector
-
+            up.x, up.y, up.z);    // Up vector*/
 }
