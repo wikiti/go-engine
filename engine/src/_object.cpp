@@ -196,6 +196,9 @@ bool CGameObject::RemoveFromSystem()
 
 void CGameObject::OnEvent()
 {
+  if(!enabled)
+    return;
+
   if(event_behaviour) event_behaviour(this);
   //if(flags & gof_event)
     for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
@@ -204,6 +207,9 @@ void CGameObject::OnEvent()
 
 void CGameObject::OnKeyEvent()
 {
+  if(!enabled)
+    return;
+
   //if(flags & gof_kevent)
   if(keyevent_behaviour) keyevent_behaviour(this);
     for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
@@ -212,6 +218,9 @@ void CGameObject::OnKeyEvent()
 
 void CGameObject::OnLoop()
 {
+  if(!enabled)
+    return;
+
   //if(flags & gof_loop)
   if(behaviour) behaviour(this);
     for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
@@ -220,6 +229,9 @@ void CGameObject::OnLoop()
 
 void CGameObject::OnRender()
 {
+  if(!enabled)
+    return;
+
   //if(flags & gof_render)
   //for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
     //it->second->OnRender();

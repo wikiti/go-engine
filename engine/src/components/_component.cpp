@@ -2,17 +2,27 @@
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent);
 
+const char* components::components_s[] = {"base", "camera", "mesh_render", "dummy1", "dummy2", "transform", "not_defined"};
+
 const char* components::component_to_string(components c)
 {
-  switch(c)
-  {
-    case base: return "Base"; break;
-    case camera: return "Camera"; break;
-    case dummy1: return "Dummy1"; break;
-    case transform: return "Transform"; break;
-    default: return "Not defined"; break;
-  }
-  return NULL;
+  if(c < base or c >= __not_defined)
+    c = __not_defined;
+
+  return components_s[c];
+}
+
+int components::string_to_component(string c)
+{
+       if(c == "base")             return base;
+  else if(c == "camera")           return camera;
+  else if(c == "dummy1")           return dummy1;
+  else if(c == "dummy2")           return dummy2;
+  else if(c == "transform")        return transform;
+  else if(c == "mesh_render")      return mesh_render;
+
+
+  return __not_defined;
 }
 
 CComponent::CComponent(CGameObject* go)

@@ -138,6 +138,12 @@ class CSystem_Debug: public CSystem
     void Console_command__SAVE_STATE(string arguments);
     void Console_command__LOAD_STATE(string arguments);
 
+    // Game Objects
+    void Console_command__ENABLE_GAME_OBJECT(string arguments);
+    void Console_command__ENABLE_GAME_OBJECT_COMPONENT(string arguments);
+    //void Console_command__ENABLE_SYSTEM(string arguments);
+    //
+
     // Render
     void Console_command__R_UPDATE_WINDOW(string arguments);
     void Console_command__R_RESIZE_WINDOW(string arguments);

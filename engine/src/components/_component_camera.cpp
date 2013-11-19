@@ -19,11 +19,11 @@ CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameOb
   before_render = after_render = NULL;
 
   // Invisible de cara al sistema
-  pivote = new CGameObject;
-  pivote->Init();
-  pivote->transform()->position.z = 1;
+  pivot = new CGameObject("__camera_pivot");
+  pivot->Init();
+  pivot->transform()->position.z = 1;
 
-  gameObject->AddChild(pivote);
+  gameObject->AddChild(pivot);
 }
 
 /*CComponent_Camera::CComponent_Camera(CGameObject* gameObject, bool mc, viewmode::viewmode_t vm, viewport_t vp, GLfloat fov, GLfloat nc, GLfloat fc, color_t bc ): CComponent(gameObject),
@@ -36,7 +36,8 @@ CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameOb
 
 CComponent_Camera::~CComponent_Camera()
 {
-  delete pivote;
+  gameObject->RemoveChild("__camera_pivot");
+  delete pivot;
 }
 
 void CComponent_Camera::Set(input_t data)
@@ -51,6 +52,8 @@ output_t CComponent_Camera::Get()
 
 void CComponent_Camera::ApplyChanges()
 {
+  if(!enabled) return;
+
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
 
@@ -96,6 +99,8 @@ void CComponent_Camera::Clear()
 
 void CComponent_Camera::SetUp()
 {
+  if(!enabled) return; // ¿?
+
   glMatrixMode(GL_PROJECTION);
   glLoadMatrixd(projMatrix);
 
@@ -118,7 +123,7 @@ void CComponent_Camera::SetUp()
   // Por cierto, falta recalcular el vector UP, que dependerá del ángulo de la cámara (Eje local Z).
 
   if(!target) // Añadir pivote y calcular su posición global:
-    tp = pivote->transform()->Position();
+    tp = pivot->transform()->Position();
   else        // O coger la posición global del objeto.
     tp = target->transform()->Position();
 

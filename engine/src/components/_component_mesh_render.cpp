@@ -17,6 +17,8 @@ CComponent_Mesh_Render::~CComponent_Mesh_Render()
 
 void CComponent_Mesh_Render::OnRender()
 {
+  if(!enabled) return;
+
   glColor3f(color.r, color.g, color.b);
   if(material_name != "") glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(material_name)->GetID());
 

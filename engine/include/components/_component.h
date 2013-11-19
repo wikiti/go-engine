@@ -7,12 +7,17 @@ namespace components
 {
   //   enum components { base = 0, camera = 0x01, dummy1 = 0x02, transform = 0x04};
   // ¿Usar esto como flags para pasarle a CGameObject?
-  enum components { base = 0, camera, mesh_render, dummy1, dummy2, transform};
+  enum components { base = 0, camera, mesh_render, dummy1, dummy2, transform, __not_defined};
+
+  extern const char* components_s[];
   // Añadir componente "script" al final, para tener script+1, script+2, script+3... Y diferenciarlos por sus nombres, o por su orden de añadido
   // Añadiendo pues una variable tipo "num_scripts" dentro del gameObject
 
   const char* component_to_string(components c);
+  int string_to_component(string c);
 }
+
+
 
 
 class CGameObject;
@@ -63,6 +68,16 @@ class CComponent
     inline void SetState(bool state = true)
     {
       enabled = state;
+    }
+
+    inline void Enable()
+    {
+      enabled = true;
+    }
+
+    inline void Disable()
+    {
+      enabled = false;
     }
 
     inline CGameObject* GetGameObject()

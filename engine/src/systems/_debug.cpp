@@ -110,6 +110,10 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("save_state", &CSystem_Debug::Console_command__SAVE_STATE));
   console_commands.insert(pair<string, command_p>("load_state", &CSystem_Debug::Console_command__LOAD_STATE));
 
+    // Game objects
+  console_commands.insert(pair<string, command_p>("enable_game_object", &CSystem_Debug::Console_command__ENABLE_GAME_OBJECT));
+  console_commands.insert(pair<string, command_p>("enable_game_object_component", &CSystem_Debug::Console_command__ENABLE_GAME_OBJECT_COMPONENT));
+
     // Render
   console_commands.insert(pair<string, command_p>("r_update_window", &CSystem_Debug::Console_command__R_UPDATE_WINDOW));
   console_commands.insert(pair<string, command_p>("r_resize_window", &CSystem_Debug::Console_command__R_RESIZE_WINDOW));
@@ -746,6 +750,107 @@ void CSystem_Debug::Console_command__SECRET_PLZ(string arguments)
   console_custom_msg(0.7f, 0.9f, 0.1f, 1.f, "     \\______  /\\____/          /_______  /___|  /\\___  /|__|___|  /\\___  >");
   console_custom_msg(0.7f, 0.9f, 0.1f, 1.f, "            \\/                         \\/     \\//_____/         \\/     \\/");
 }
+
+// Game Objects
+void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT(string arguments)
+{
+  stringstream ss(arguments);
+  string obj_name;
+  ss >> obj_name;
+
+  if(obj_name == "")
+  {
+    console_warning_msg("Format is: enable_game_object <game_object_name> < 1 | enable | 0 | disable>");
+    return;
+  }
+
+  if(!gSystem_GameObject_Manager[obj_name])
+  {
+    console_error_msg("Could not find game object named \"%s\"", obj_name.c_str());
+    return;
+  }
+
+  string value;
+  ss >> value;
+  if(value == "1" or value == "enable")
+  {
+    gSystem_GameObject_Manager[obj_name]->Enable();
+    console_msg("\"%s\" enabled", obj_name.c_str());
+  }
+  else if(value == "0" or value == "disable")
+  {
+     gSystem_GameObject_Manager[obj_name]->Disable();
+    console_msg("\"%s\" disabled", obj_name.c_str());
+  }
+  else
+  {
+    console_warning_msg("Format is: enable_game_object <game_object_name> <1 | enable | 0 | disable>");
+  }
+}
+
+void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT_COMPONENT(string arguments)
+{
+  stringstream ss(arguments);
+  string obj_name;
+  ss >> obj_name;
+
+  if(obj_name == "")
+  {
+    console_warning_msg("Format is: enable_game_object <game_object_name> <1 | enable | 0 | disable>");
+    return;
+  }
+
+  CGameObject* go = gSystem_GameObject_Manager[obj_name];
+
+  if(!go)
+  {
+    console_error_msg("Could not find game object named \"%s\"", obj_name.c_str());
+    return;
+  }
+
+  string component;
+  ss >> component;
+
+  if(component == "")
+  {
+    console_warning_msg("Format is: enable_game_object <game_object_name> <1 | enable | 0 | disable>");
+    return;
+  }
+
+  int component_i = components::string_to_component(component);
+  if(component_i == components::__not_defined)
+  {
+    console_error_msg("Component type \"%s\" does not exists", component.c_str());
+    return;
+  }
+
+  CComponent* c_go = go->GetComponent((components::components)component_i);
+
+  if(!c_go)
+  {
+    console_error_msg("Game object \"%s\" does not have the component \"%s\"", obj_name.c_str(), component.c_str());
+    return;
+  }
+
+  string value;
+  ss >> value;
+  if(value == "1" or value == "enable")
+  {
+    c_go->Enable();
+    console_msg("\"%s -> %s\" enabled", obj_name.c_str(), component.c_str());
+  }
+  else if(value == "0" or value == "disable")
+  {
+    c_go->Disable();
+    console_msg("\"%s -> %s\" disabled", obj_name.c_str(), component.c_str());
+  }
+  else
+  {
+    console_warning_msg("Format is: enable_game_object_component <game_object_name> <component_name> <1 | enable | 0 | disable>");
+  }
+}
+
+// Render
 
 void CSystem_Debug::Console_command__R_UPDATE_WINDOW(string arguments)
 {

@@ -31,7 +31,7 @@ class CComponent_Camera: public CComponent
     // Fallo: no apunta correctamente a hijos de padres
     // ¿solución? calcular la nueva posición o quitar esta opción
     CGameObject* target;  // Si hay target, se usará la posición del objetivo como pivote.
-    CGameObject *pivote;  // Si no, se usará un pivote en la posición local (0, 0, -1)
+    CGameObject* pivot;  // Si no, se usará un pivote en la posición local (0, 0, -1)
     //string target_texture;
 
     function_t before_render, after_render;

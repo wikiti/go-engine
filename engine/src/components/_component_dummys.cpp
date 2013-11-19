@@ -11,6 +11,8 @@ CComponent_Dummy1::CComponent_Dummy1(CGameObject* go): CComponent(go)
 
 void CComponent_Dummy1::OnRender()
 {
+  if(!enabled) return;
+
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture("textura1")->GetID());
   glColor3f(1.f, 1.f, 1.f);
 
@@ -56,6 +58,8 @@ void CComponent_Dummy1::OnRender()
 
 void CComponent_Dummy2::OnRender()
 {
+  if(!enabled) return;
+
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture("mesh1_texture")->GetID());
   glColor3f(1.f, 1.f, 1.f);
 

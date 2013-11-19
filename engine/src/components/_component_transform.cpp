@@ -34,33 +34,26 @@ output_t CComponent_Transform::Get()
 
 void CComponent_Transform::OnRender()
 {
-  //if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
-  //{
-    //GLboolean depth_state;
-    //glGetBooleanv(GL_DEPTH_TEST, &depth_state);
+  if(!enabled) return;
 
-    //if(depth_state) glDisable(GL_DEPTH_TEST);
-    glBindTexture(GL_TEXTURE_2D, 0);
+  glBindTexture(GL_TEXTURE_2D, 0);
 
-    glBegin(GL_LINES);
-      // X - Rojo
-      glColor3f(1.f, 0.f, 0.f);
-      glVertex3f(0.f, 0.f, 0.f);
-      glVertex3f(0.5f, 0.f, 0.f);
+  glBegin(GL_LINES);
+    // X - Rojo
+    glColor3f(1.f, 0.f, 0.f);
+    glVertex3f(0.f, 0.f, 0.f);
+    glVertex3f(0.5f, 0.f, 0.f);
 
-      // Y - Verde
-      glColor3f(0.f, 1.f, 0.f);
-      glVertex3f(0.f, 0.f, 0.f);
-      glVertex3f(0.f, 0.5f, 0.f);
+    // Y - Verde
+    glColor3f(0.f, 1.f, 0.f);
+    glVertex3f(0.f, 0.f, 0.f);
+    glVertex3f(0.f, 0.5f, 0.f);
 
-      // Z - Azul
-      glColor3f(0.f, 0.f, 1.f);
-      glVertex3f(0.f, 0.f, 0.f);
-      glVertex3f(0.f, 0.f, 0.5f);
-    glEnd();
-
-    //if(depth_state) glEnable(GL_DEPTH_TEST);
-  //}
+    // Z - Azul
+    glColor3f(0.f, 0.f, 1.f);
+    glVertex3f(0.f, 0.f, 0.f);
+    glVertex3f(0.f, 0.f, 0.5f);
+  glEnd();
 }
 
 vector3f CComponent_Transform::EulerAngles()
@@ -81,6 +74,8 @@ vector3f CComponent_Transform::EulerAngles()
 
 void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
 {
+  if(!enabled) return;
+
   // Mover basandose en la rotación (cosa extraña)
   // Translate X
   glMatrixMode(GL_MODELVIEW);
@@ -103,6 +98,8 @@ void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
 
 void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
 {
+  if(!enabled) return;
+
   // Como Rotate(), sólo que primero se aplica la rotación, y luego la orientación (mientras que en Rotate se aplica primero la orientación y luego la rotación).
   NormalizeAngles(x, y, z);
 
@@ -170,6 +167,8 @@ void CComponent_Transform::Translate(vector3f v)
 
 void CComponent_Transform::Translate(GLfloat x, GLfloat y, GLfloat z)
 {
+  if(!enabled) return;
+
   position.x += x;
   position.y += y;
   position.z += z;
@@ -187,6 +186,8 @@ void CComponent_Transform::SetPosition(vector3f v)
 
 void CComponent_Transform::SetPosition(GLfloat x, GLfloat y, GLfloat z)
 {
+  if(!enabled) return;
+
    /*vector3f input(x, y, z);
 
    input.x -= position.x;
@@ -209,6 +210,8 @@ void CComponent_Transform::Rotate(vector3f v)
 
 void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
 {
+  if(!enabled) return;
+
   NormalizeAngles(x, y, z);
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
@@ -288,6 +291,8 @@ void CComponent_Transform::SetAngle(vector3f v)
 
 void CComponent_Transform::SetAngle(GLfloat x, GLfloat y, GLfloat z)
 {
+  if(!enabled) return;
+
   NormalizeAngles(x, y, z);
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
@@ -335,6 +340,8 @@ void CComponent_Transform::Scale(vector3f v)
 
 void CComponent_Transform::Scale(GLfloat x, GLfloat y, GLfloat z)
 {
+  if(!enabled) return;
+
   // Multiplicar en vez de sumar
   scale.x *= x;
   scale.y *= y;
@@ -357,6 +364,8 @@ void CComponent_Transform::SetScale(vector3f v)
 
 void CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)
 {
+  if(!enabled) return;
+
   /*vector3f input(x, y, z);
 
   input.x -= scale.x;
@@ -374,6 +383,7 @@ void CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)
 
 void CComponent_Transform::ApplyTransform()
 {
+  //   if(!enabled) return;
   //glLoadIdentity();
   if(gameObject->GetParent())
     ApplyParentTransform(gameObject->GetParent());
@@ -414,6 +424,7 @@ void CComponent_Transform::ApplyTransform()
 
 void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
 {
+  //   if(!parent->transform()->enabled) return;
   // Se puede usar en una pila sin problemas y sin llamadas recursivas
   // se evita el parámetro "parent"
   if(parent == NULL)

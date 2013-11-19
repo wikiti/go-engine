@@ -293,8 +293,8 @@ CGameObject* CSystem_GameObject_Manager::GetGameObject(string nombre)
   map<string, CGameObject*>::iterator it = gameObjects.find(nombre);
   if(it != gameObjects.end())
     return it->second;
-  else
-    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::GetGameObject: Could not find objet \"%s\"", nombre.c_str());
+//  else
+//    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::GetGameObject: Could not find objet \"%s\"", nombre.c_str());
 
   return NULL;
 }
@@ -304,8 +304,8 @@ CGameObject* CSystem_GameObject_Manager::operator[](string nombre)
   map<string, CGameObject*>::iterator it = gameObjects.find(nombre);
   if(it != gameObjects.end())
     return it->second;
-  else
-    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::operator[]: Could not find objet \"%s\"", nombre.c_str());
+//  else
+//    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::operator[]: Could not find objet \"%s\"", nombre.c_str());
 
   return NULL;
 }
@@ -315,8 +315,8 @@ void CSystem_GameObject_Manager::DisableGameObject(string name)
   map<string, CGameObject*>::iterator it = gameObjects.find(name);
   if(it != gameObjects.end())
     it->second->Disable();
-  else
-    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::DisableGameObject: Could not find objet \"%s\"", name.c_str());
+//  else
+//    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::DisableGameObject: Could not find objet \"%s\"", name.c_str());
 }
 
 void CSystem_GameObject_Manager::EnableGameObject(string name)
