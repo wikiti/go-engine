@@ -93,10 +93,10 @@ void CComponent_Camera::SetUp()
   glMatrixMode(GL_PROJECTION);
   glLoadMatrixd(projMatrix);
 
-  vector3f* p = &gameObject->transform()->position;   // Camera position
-  vector3f r = gameObject->transform()->EulerAngles();      // Camera angle
-  vector3f up(0, 1, 0);                               // Up vector (for "screen rotation")
-  vector3f tp(0, 0, 1);                               // Target point
+  vector3f* p = &gameObject->transform()->position;       // Camera position
+  vector3f r = gameObject->transform()->EulerAngles();    // Camera angle
+  vector3f up(0, 1, 0);                                   // Up vector (for "screen rotation")
+  vector3f tp(0, 0, 1);                                   // Target point
 
   static bool failure = true;
 

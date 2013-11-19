@@ -1,4 +1,4 @@
-- Posicion del viewport en función del tamaño de pantalla (por ejemplo, 0-100 en vez de 0-__RESOLUTION_WIDTH para el ancho).
+﻿- Posicion del viewport en función del tamaño de pantalla (por ejemplo, 0-100 en vez de 0-__RESOLUTION_WIDTH para el ancho).
 - Billboards para sistema de particulas:
 void makebillboard_mat4x4(double *BM, double const * const MV)
 {
@@ -43,4 +43,7 @@ mat4 billboard(vec3 position, vec3 cameraPos, vec3 cameraUp) {
     return transform;
 }
 ------------------------------------------------------------
-- Añadir sistema para cargar datos de objetos desde un fichero, y no desde 
+- Añadir sistema para cargar datos de objetos desde un fichero, y no desde la instancia
+- Contrucción de ASSIMP: 
+> cmake -G "MSYS Makefiles" -DENABLE_BOOST_WORKAROUND=1  -DBUILD_ASSIMP_TOOLS=OFF
+> make
