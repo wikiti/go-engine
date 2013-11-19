@@ -102,13 +102,26 @@ void CComponent_Camera::SetUp()
 
   // Posible solución al problema de los cuaterniones -> No usar gluLookAt, sino transformar la matriz MODELVIEW y usar glPop y glPush para trabajar con cada objeto sin alterar la posición de la cámara.
   //  -> Ahora bien, ¿cómo hacemos que apunte a un "target"? Ni puñetera idea.
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+
   if(!target)
   {
     // http://mathworld.wolfram.com/SphericalCoordinates.html
+
+    glm::quat rotation;
+    rotation = glm::normalize(rotation * gameObject->transform()->angle);
+
+    glTranslatef(p->x, p->y, p->z);
+    //glMultMatrixf( (const float*)glm::value_ptr( glm::toMat4( glm::inverse( gameObject->transform()->angle ) ) ) );
+    //glMultMatrixf( (const float*)glm::value_ptr( glm::inverse(glm::toMat4( gameObject->transform()->angle ) ) ) );
+    glMultMatrixf( (const float*)glm::value_ptr( glm::toMat4( rotation ) ) );
+    //glRotatef(_RAD_TO_DEG(gameObject->transform()->angle.w), gameObject->transform()->angle.x, gameObject->transform()->angle.y, gameObject->transform()->angle.z);
+
     // Arreglar esto con rotaciones locales!
-    tp.z = p->z + cos((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
-    tp.x = p->x + sin((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
-    tp.y = p->y + cos((r.x+90)*M_PI/180);
+    //tp.z = p->z + cos((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
+    //tp.x = p->x + sin((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
+    //tp.y = p->y + cos((r.x+90)*M_PI/180);
     //glm::quat rot1 = RotationBetweenVectors(vec3(0.0f, 0.0f, 1.0f), direction);
 
     //tp.x = gameObject->transform()->angle.x;
@@ -133,6 +146,7 @@ void CComponent_Camera::SetUp()
       }
     }
 
+    // Usar posición global y NO local
     gluLookAt(p->x, p->y, p->z,     // Camera position
               tp.x, tp.y, tp.z,     // Target point
               up.x, up.y, up.z);    // Up vector

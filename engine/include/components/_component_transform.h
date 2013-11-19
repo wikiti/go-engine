@@ -110,11 +110,14 @@ class CComponent_Transform: public CComponent
 
 
 //    Por hacer: Posiciones globales y locales
-//    vector3f_t Position();
+    vector3f_t Position();
 //    vector3f_t Angle();
 //    vector3f_t Scale();
 //
-//    vector3f_t LPosition();
+    vector3f_t LPosition()
+    {
+      return position;
+    }
 //    vector3f_t LAngle();
 //    vector3f_t LScale();
 };

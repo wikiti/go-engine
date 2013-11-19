@@ -452,6 +452,30 @@ void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
   }*/
 }
 
+vector3f_t CComponent_Transform::Position()
+{
+  glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+  glLoadIdentity();
+
+  if(gameObject->GetParent())
+    ApplyParentTransform(gameObject->GetParent());
+
+  // Posición
+  glTranslatef(position.x, position.y, position.z);
+  // Orientación
+  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(angle)));
+  // Escala
+  glScalef(scale.x, scale.y, scale.z); // ¿?
+
+  GLdouble matrix[16];
+  glGetDoublev(GL_MODELVIEW_MATRIX, matrix);
+
+  glPopMatrix();
+
+  return vector3f(matrix[12], matrix[13], matrix[14]);
+}
+
 /*void CComponent_Transform::ApplyParentTransform()
 {
   CGameObject* parent = gameObject->GetParent();
