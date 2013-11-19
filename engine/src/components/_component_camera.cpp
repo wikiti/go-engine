@@ -119,7 +119,6 @@ void CComponent_Camera::SetUp()
   //   puede resultar pesado si la cámara está anidada a otros objetos. Sería conveniente declarar un
   //   previous_pos y un pos para evitar recalcular si son iguales (ganamos GPU y CPU a cambio de 48 bytes).
 
-
   // Por cierto, falta recalcular el vector UP, que dependerá del ángulo de la cámara (Eje local Z).
 
   if(!target) // Añadir pivote y calcular su posición global:
