@@ -104,7 +104,7 @@ void CComponent_Camera::SetUp()
   glMatrixMode(GL_PROJECTION);
   glLoadMatrixd(projMatrix);
 
-  vector3f* p = &gameObject->transform()->position;       // Camera position
+  vector3f p = gameObject->transform()->Position();       // Camera position
   vector3f up(0, 1, 0);                                   // Up vector (for "screen rotation")
   vector3f tp(0, 0, 1);                                   // Target point
 
@@ -122,11 +122,11 @@ void CComponent_Camera::SetUp()
   // Por cierto, falta recalcular el vector UP, que dependerá del ángulo de la cámara (Eje local Z).
 
   if(!target) // Añadir pivote y calcular su posición global:
-    tp = pivot->transform()->Position();
+    tp = pivot->transform()->Position(); // Inservible...
   else        // O coger la posición global del objeto.
     tp = target->transform()->Position();
 
-  gluLookAt(p->x, p->y, p->z,     // Camera position
+  gluLookAt(p.x, p.y, p.z,     // Camera position
             tp.x, tp.y, tp.z,     // Target point
             up.x, up.y, up.z);    // Up vector
 }

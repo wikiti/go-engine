@@ -33,6 +33,7 @@ bool SetGameObjects_Instance1()
 
   cubo_main->SetKeyEventBehaviourFunction(&Cubo_main_movimiento);
   camara_main->SetKeyEventBehaviourFunction(&Camara_main_movimiento);
+  camara_main->SetBehaviourFunction(&Camara_main_behaviour);
   camara_second->SetEventBehaviourFunction(&Camara_second_movimiento);
   cubo_second->SetKeyEventBehaviourFunction(&Cubo_second_movimiento);
   hada->SetBehaviourFunction(&Hada_movimiento);
@@ -191,6 +192,11 @@ void Cubo_main_movimiento(CGameObject* gameObject)
       gameObject->transform()->Translate(0.f, -5.f * gTime.deltaTime_s(), 0.f);
     }
   }
+}
+
+void Camara_main_behaviour(CGameObject* gameObject)
+{
+  //gameObject->transform()->LRotate(0.f, 20.f * gTime.deltaTime_s());
 }
 
 void Camara_main_movimiento(CGameObject* gameObject)

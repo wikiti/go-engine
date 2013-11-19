@@ -465,12 +465,14 @@ void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
 
 vector3f_t CComponent_Transform::Position()
 {
+  if(!gameObject->GetParent())
+    return position;
+
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
   glLoadIdentity();
 
-  if(gameObject->GetParent())
-    ApplyParentTransform(gameObject->GetParent());
+  ApplyParentTransform(gameObject->GetParent());
 
   // Posición
   glTranslatef(position.x, position.y, position.z);
