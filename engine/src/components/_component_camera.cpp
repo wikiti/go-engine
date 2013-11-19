@@ -17,6 +17,13 @@ CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameOb
   background_color.a = 1.f;
 
   before_render = after_render = NULL;
+
+  // Invisible de cara al sistema
+  pivote = new CGameObject;
+  pivote->Init();
+  pivote->transform()->position.z = 1;
+
+  gameObject->AddChild(pivote);
 }
 
 /*CComponent_Camera::CComponent_Camera(CGameObject* gameObject, bool mc, viewmode::viewmode_t vm, viewport_t vp, GLfloat fov, GLfloat nc, GLfloat fc, color_t bc ): CComponent(gameObject),
@@ -29,7 +36,7 @@ CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameOb
 
 CComponent_Camera::~CComponent_Camera()
 {
-
+  delete pivote;
 }
 
 void CComponent_Camera::Set(input_t data)
@@ -53,7 +60,6 @@ void CComponent_Camera::ApplyChanges()
   }
   else if(viewmode == viewmode::perspective)
   {
-    // ¿Wait wut?
     //gluPerspective(field_of_view, (GLfloat)viewport.width/(GLfloat)viewport.height, near_clip, far_clip);
     gluPerspective(field_of_view,
         (viewport.width*gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH")) / (viewport.height*gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT")),
@@ -68,14 +74,14 @@ void CComponent_Camera::SetViewport()
   //glMatrixMode(GL_PROJECTION);
   //glLoadIdentity();
 
+  //glViewport(viewport.x, viewport.y, viewport.width, viewport.height);
+  //glScissor(viewport.x, viewport.y, viewport.width, viewport.height);
+
   int w = gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH");
   int h = gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT");
 
   glViewport(viewport.x*w, viewport.y*h, viewport.width*w, viewport.height*h);
   glScissor(viewport.x*w, viewport.y*h, viewport.width*w, viewport.height*h);
-
-  //glViewport(viewport.x, viewport.y, viewport.width, viewport.height);
-  //glScissor(viewport.x, viewport.y, viewport.width, viewport.height);
 }
 
 void CComponent_Camera::Clear()
@@ -94,72 +100,29 @@ void CComponent_Camera::SetUp()
   glLoadMatrixd(projMatrix);
 
   vector3f* p = &gameObject->transform()->position;       // Camera position
-  vector3f r = gameObject->transform()->EulerAngles();    // Camera angle
   vector3f up(0, 1, 0);                                   // Up vector (for "screen rotation")
   vector3f tp(0, 0, 1);                                   // Target point
 
-  static bool failure = true;
-
-  // Posible solución al problema de los cuaterniones -> No usar gluLookAt, sino transformar la matriz MODELVIEW y usar glPop y glPush para trabajar con cada objeto sin alterar la posición de la cámara.
-  //  -> Ahora bien, ¿cómo hacemos que apunte a un "target"? Ni puñetera idea.
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  if(!target)
-  {
-    // http://mathworld.wolfram.com/SphericalCoordinates.html
-
-    glm::quat rotation;
-    rotation = glm::normalize(rotation * gameObject->transform()->angle);
-
-    glTranslatef(p->x, p->y, p->z);
-    //glMultMatrixf( (const float*)glm::value_ptr( glm::toMat4( glm::inverse( gameObject->transform()->angle ) ) ) );
-    //glMultMatrixf( (const float*)glm::value_ptr( glm::inverse(glm::toMat4( gameObject->transform()->angle ) ) ) );
-    glMultMatrixf( (const float*)glm::value_ptr( glm::toMat4( rotation ) ) );
-    //glRotatef(_RAD_TO_DEG(gameObject->transform()->angle.w), gameObject->transform()->angle.x, gameObject->transform()->angle.y, gameObject->transform()->angle.z);
-
-    // Arreglar esto con rotaciones locales!
-    //tp.z = p->z + cos((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
-    //tp.x = p->x + sin((r.y)*M_PI/180) * sin((r.x+90)*M_PI/180);
-    //tp.y = p->y + cos((r.x+90)*M_PI/180);
-    //glm::quat rot1 = RotationBetweenVectors(vec3(0.0f, 0.0f, 1.0f), direction);
-
-    //tp.x = gameObject->transform()->angle.x;
-    //tp.y = gameObject->transform()->angle.y;
-    //tp.z = gameObject->transform()->angle.z;
+  // Solución temporal: usar un pivote anclado al objeto que manipule la cámara como un hijo.
+  // Mientras la cámara rote, se aplicarán las rotaciones al pivote, lo que permitirá a la cámara mirar libremente.
+  //  -> La solución es un poco burda, pero sencilla. Al menos, no complicamos las cosas con procesos matemáticos innecesarios.
+  //
+  // Nota: Recalcular la posición global del pivote o del objetivo en cada iteración, para cada cámara,
+  //   puede resultar pesado si la cámara está anidada a otros objetos. Sería conveniente declarar un
+  //   previous_pos y un pos para evitar recalcular si son iguales (ganamos GPU y CPU a cambio de 48 bytes).
 
 
-  }
-  else
-  {
-    // Esto no vasta, hay que calcular la posición del objeto por si es hijo, teniendo en cuenta las rotaciones
-    // posible restricción: Sólo se puede apuntar a objetos SIN padre.
-    if(!target->GetParent())
-      tp = target->transform()->position;
-    else
-    {
-      if(failure)
-      {
-        failure = false;
-        gSystem_Debug.console_error_msg("Error from Camera Component of \"%s\" aiming \"%s\":", gameObject->GetName().c_str(), target->GetName().c_str());
-        gSystem_Debug.console_error_msg("Cannot aim to another GameObject which have a parent (It must be a root or base GameObject)");
-      }
-    }
+  // Por cierto, falta recalcular el vector UP, que dependerá del ángulo de la cámara (Eje local Z).
 
-    // Usar posición global y NO local
-    gluLookAt(p->x, p->y, p->z,     // Camera position
-              tp.x, tp.y, tp.z,     // Target point
-              up.x, up.y, up.z);    // Up vector
+  if(!target) // Añadir pivote y calcular su posición global:
+    tp = pivote->transform()->Position();
+  else        // O coger la posición global del objeto.
+    tp = target->transform()->Position();
 
-  }
-
-  /*up = tp.normalize().cross_product(tp.normalize().cross_product(vector3f(0, 1, 0)));
-  up.x = cos((90 + r->y)*M_PI/180);
-  up.y = sin((90 + r->x)*M_PI/180);
-  up.z = cos((90 + r->x )*M_PI/180);*/
-  // Recalcular vector UP
-
-  /*gluLookAt(p->x, p->y, p->z,     // Camera position
+  gluLookAt(p->x, p->y, p->z,     // Camera position
             tp.x, tp.y, tp.z,     // Target point
-            up.x, up.y, up.z);    // Up vector*/
+            up.x, up.y, up.z);    // Up vector
 }

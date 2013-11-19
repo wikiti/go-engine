@@ -13,6 +13,11 @@ CGameObject::CGameObject(string str)
   start = behaviour = event_behaviour = keyevent_behaviour = NULL;
 }
 
+CGameObject::CGameObject(): CGameObject("")
+{
+
+}
+
 void CGameObject::Init()
 {
   if(inited)

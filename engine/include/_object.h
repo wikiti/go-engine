@@ -57,8 +57,9 @@ class CGameObject
     }
 
   public:
-    CGameObject(){};
     CGameObject(string name);
+    CGameObject();
+
     virtual ~CGameObject(){}
 
     void Init();

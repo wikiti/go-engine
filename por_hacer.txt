@@ -1,4 +1,5 @@
-﻿- Posicion del viewport en función del tamaño de pantalla (por ejemplo, 0-100 en vez de 0-__RESOLUTION_WIDTH para el ancho).
+﻿- Definir correctamente el estado "enabled" o "disabled" para los objetos, los componentes y los sistemas.
+x- Posicion del viewport en función del tamaño de pantalla (por ejemplo, 0-100 en vez de 0-__RESOLUTION_WIDTH para el ancho).
 - Billboards para sistema de particulas:
 void makebillboard_mat4x4(double *BM, double const * const MV)
 {

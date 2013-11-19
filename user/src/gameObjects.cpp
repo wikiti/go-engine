@@ -27,14 +27,14 @@ bool SetGameObjects_Instance1()
   hada->transform()->Rotate(0.f, 90.f, 0.f);
 
 
-  camara_second->camera()->SetTarget(cubo_main);
+  camara_second->camera()->SetTarget(cubo_third);
   camara_second->camera()->viewport.height = camara_second->camera()->viewport.width = 0.3f;
   camara_second->camera()->background_color(0, 0.5f, 0.75f, 1.f);
 
   cubo_main->SetKeyEventBehaviourFunction(&Cubo_main_movimiento);
   camara_main->SetKeyEventBehaviourFunction(&Camara_main_movimiento);
   camara_second->SetEventBehaviourFunction(&Camara_second_movimiento);
-  cubo_second->SetKeyEventBehaviourFunction(&Cubo_second_cout);
+  cubo_second->SetKeyEventBehaviourFunction(&Cubo_second_movimiento);
   hada->SetBehaviourFunction(&Hada_movimiento);
   DefineTramsformByVar("GO_HADA");
 
