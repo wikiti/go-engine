@@ -27,3 +27,6 @@ void CSystem_Time::OnLoop()
     lastT = now;
   }
 }
+
+CSystem_Math gSystem_Math;
+CSystem_Math& gMath = gSystem_Math;

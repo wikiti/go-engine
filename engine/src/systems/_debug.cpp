@@ -2,6 +2,8 @@
 #include "systems/_resource.h"
 #include "systems/_render.h"
 #include "systems/_data.h"
+#include "systems/_other.h"
+
 #include "engine/_engine.h"
 
 CSystem_Debug gSystem_Debug;
@@ -13,7 +15,7 @@ void CSystem_Debug::ParseInput()
   string comando, arguments;
   ss >> comando;
   getline(ss, arguments);
-  if(arguments.size() > 2) arguments = arguments.substr(1);
+  if(arguments.size() > 1) arguments = arguments.substr(1);
 
   map<string, command_p>::iterator it = console_commands.find(comando);
   console_msg("> %s %s", comando.c_str(), arguments.c_str());
@@ -36,7 +38,7 @@ bool CSystem_Debug::Init()
   if(!InitCommandMap())
     return false;
 
-  console_msg("Use \"help\" or \"?\" to list all comands.");
+  console_msg("Use \"help\" or \"?\" to list all commands.");
   current_line_buffered = current_last_command = console_pointer_pos = 0;
   console = false;
 
@@ -479,22 +481,76 @@ void CSystem_Debug::Console_command__UNKNOWN_COMMAND(string arguments)
 
 void CSystem_Debug::Console_command__HELP(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: help <category>");
+    return;
+  }
+
+  /*// Game Objects
+  void Console_command__GAME_OBJECT_SHOW_TREE(string arguments);
+    void Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level = 1);
+  void Console_command__GAME_OBJECT_ENABLE(string arguments);
+  void Console_command__GAME_OBJECT_COMPONENT_ENABLE(string arguments);
+  //void Console_command__ENABLE_SYSTEM(string arguments);
+  //
+
+  // Render
+  void Console_command__R_UPDATE_WINDOW(string arguments);
+  void Console_command__R_RESIZE_WINDOW(string arguments);
+  void Console_command__R_DRAW_TRANSFORM(string arguments);
+  void Console_command__R_DRAW_GRID(string arguments);
+  void Console_command__R_FPS(string arguments);*/
+
   if(arguments == "")
   {
     console_msg("Use \"help <category>\". Categories are:");
-    console_warning_msg("general, render");
+    console_warning_msg("general, game_objects, render");
+    console_warning_msg("Also, you can user <command> ?");
   }
   else if(arguments == "general")
   {
     console_msg("General commands:");
-    console_msg("  bla1");
-    console_msg("  bla2");
+    console_msg("-----------------------------------------------------------------------");
+    console_msg("help:                           Display help.");
+    console_msg("logs:                           Saves console content to log.txt file.");
+
+    console_msg("set_int:                        Sets a variable to a int.");
+    console_msg("set_float:                      Sets a variable to a float.");
+    console_msg("set_string:                     Sets a variable to a string.");
+
+    console_msg("get_int:                        Gets a variable of a int.");
+    console_msg("get_float:                      Gets a variable of a float.");
+    console_msg("get_string:                     Gets a variable of a string.");
+
+    console_msg("remove_int:                     Remove a int variable.");
+    console_msg("remove_float:                   Remove a float variable.");
+    console_msg("remove_string:                  Remove a string variable.");
+    console_msg("remove_user_vars:               Remove all user vars.");
+
+    console_msg("quit:                           Quits the program and save current opened files.");
+    console_msg("exit:                           Aborts the program and exists.");
+    console_msg("clear:                          Clears the console content.");
+  }
+  else if(arguments == "game_objects")
+  {
+    console_msg("Game Objects commands:");
+    console_msg("-----------------------------------------------------------------------");
+    console_msg("game_object_show_tree:          Displays current game object's tree stored in the manager.");
+    console_msg("game_object_enable:             Enables or disables a game object and/or its children.");
+    console_msg("game_object_component_enable:   Enables or disables a game object's component.");
+
   }
   else if(arguments == "render")
   {
     console_msg("Render commands:");
-    console_msg("  bla1");
-    console_msg("  bla2");
+    console_msg("-----------------------------------------------------------------------");
+
+    console_msg("r_update_window:                Updates window's modified properties and applys them to the window.");
+    console_msg("r_update_window:                Resizes the window.");
+    console_msg("r_draw_transform:               Draws transform component for each game object (X, Y, Z Local axis).");
+    console_msg("r_draw_grid:                    Draws a world grid.");
+    console_msg("r_fps:                          Gets current frames per second.");
   }
   // ...
   else
@@ -505,6 +561,12 @@ void CSystem_Debug::Console_command__HELP(string arguments)
 
 void CSystem_Debug::Console_command__LOG(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: log");
+    return;
+  }
+
   if(!console_buffer.size())
     return;
 
@@ -524,6 +586,11 @@ void CSystem_Debug::Console_command__LOG(string arguments)
 void CSystem_Debug::Console_command__SET_INT(string arguments)
 {
   // ¿Restricciones de variables del sistema? hmmm
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: set_int <identifier> [value]");
+    return;
+  }
 
   stringstream ss(arguments);
   string val_name, val;
@@ -542,6 +609,13 @@ void CSystem_Debug::Console_command__SET_INT(string arguments)
 
 void CSystem_Debug::Console_command__SET_FLOAT(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: set_float <identifier> [value]");
+    return;
+  }
+
+
   stringstream ss(arguments);
   string val_name, val;
   ss >> val_name >> val;
@@ -559,6 +633,12 @@ void CSystem_Debug::Console_command__SET_FLOAT(string arguments)
 
 void CSystem_Debug::Console_command__SET_STRING(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: set_string <identifier> [value]");
+    return;
+  }
+
   stringstream ss(arguments);
   string val_name, val;
   ss >> val_name;
@@ -577,6 +657,12 @@ void CSystem_Debug::Console_command__SET_STRING(string arguments)
 
 void CSystem_Debug::Console_command__GET_INT(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: get_int [identifier]");
+    return;
+  }
+
   stringstream ss(arguments);
   string val_name;
   ss >> val_name;
@@ -600,6 +686,12 @@ void CSystem_Debug::Console_command__GET_INT(string arguments)
 
 void CSystem_Debug::Console_command__GET_FLOAT(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: get_float [identifier]");
+    return;
+  }
+
   stringstream ss(arguments);
   string val_name;
   ss >> val_name;
@@ -623,6 +715,12 @@ void CSystem_Debug::Console_command__GET_FLOAT(string arguments)
 
 void CSystem_Debug::Console_command__GET_STRING(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: get_string [identifier]");
+    return;
+  }
+
   stringstream ss(arguments);
   string val_name;
   ss >> val_name;
@@ -646,6 +744,12 @@ void CSystem_Debug::Console_command__GET_STRING(string arguments)
 
 void CSystem_Debug::Console_command__REMOVE_INT(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: remove_int <identifier>");
+    return;
+  }
+
   stringstream ss(arguments);
   string val_name;
   ss >> val_name;
@@ -671,6 +775,12 @@ void CSystem_Debug::Console_command__REMOVE_INT(string arguments)
 
 void CSystem_Debug::Console_command__REMOVE_FLOAT(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: remove_float <identifier>");
+    return;
+  }
+
   stringstream ss(arguments);
   string val_name;
   ss >> val_name;
@@ -696,6 +806,12 @@ void CSystem_Debug::Console_command__REMOVE_FLOAT(string arguments)
 
 void CSystem_Debug::Console_command__REMOVE_STRING(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: remove_string <identifier>");
+    return;
+  }
+
   stringstream ss(arguments);
   string val_name;
   ss >> val_name;
@@ -721,12 +837,24 @@ void CSystem_Debug::Console_command__REMOVE_STRING(string arguments)
 
 void CSystem_Debug::Console_command__REMOVE_USER_VARS(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: remove_user_vars");
+    return;
+  }
+
   console_warning_msg("Deleted all user variables");
   gSystem_Data_Storage.RemoveUserVars();
 }
 
 void CSystem_Debug::Console_command__CLEAR(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: clear");
+    return;
+  }
+
   // No se limpia el buffer de comandos (por comodidad, básicamente); solo el de resultados.
   console_buffer.clear();
   current_line_buffered = 0;
@@ -734,11 +862,23 @@ void CSystem_Debug::Console_command__CLEAR(string arguments)
 
 void CSystem_Debug::Console_command__EXIT(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: exit");
+    return;
+  }
+
   gEngine.Exit();
 }
 
 void CSystem_Debug::Console_command__QUIT(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: quit [reason message]");
+    return;
+  }
+
   gSystem_Debug.log("Quit: \"%s\"", arguments.c_str());
   gEngine.Quit();
 }
@@ -755,12 +895,20 @@ void CSystem_Debug::Console_command__LOAD_STATE(string arguments)
 
 void CSystem_Debug::Console_command__SECRET_PLZ(string arguments)
 {
-  console_custom_msg(0.7f, 0.9f, 0.1f, 1.f, "      ________                 ___________              .__");
-  console_custom_msg(0.7f, 0.9f, 0.1f, 1.f, "     /  _____/  ____           \\_   _____/ ____    ____ |__| ____   ____");
-  console_custom_msg(0.7f, 0.9f, 0.1f, 1.f, "    /   \\  ___ /  _ \\   ______  |    __)_ /    \\  / ___\\|  |/    \\_/ __ \\");
-  console_custom_msg(0.7f, 0.9f, 0.1f, 1.f, "    \\    \\_\\  (  <_> ) /_____/  |        \\   |  \\/ /_/  >  |   |  \\  ___/");
-  console_custom_msg(0.7f, 0.9f, 0.1f, 1.f, "     \\______  /\\____/          /_______  /___|  /\\___  /|__|___|  /\\___  >");
-  console_custom_msg(0.7f, 0.9f, 0.1f, 1.f, "            \\/                         \\/     \\//_____/         \\/     \\/");
+  static colorf_t color = {0.7f, 0.9f, 0.1f, 1.f};
+  if(arguments == "?")
+  {
+    color.r = gSystem_Math.random();
+    color.g = gSystem_Math.random();
+    color.b = gSystem_Math.random();
+  }
+
+  console_custom_msg(color.r, color.g, color.b, color.a, "      ________                 ___________              .__");
+  console_custom_msg(color.r, color.g, color.b, color.a, "     /  _____/  ____           \\_   _____/ ____    ____ |__| ____   ____");
+  console_custom_msg(color.r, color.g, color.b, color.a, "    /   \\  ___ /  _ \\   ______  |    __)_ /    \\  / ___\\|  |/    \\_/ __ \\");
+  console_custom_msg(color.r, color.g, color.b, color.a, "    \\    \\_\\  (  <_> ) /_____/  |        \\   |  \\/ /_/  >  |   |  \\  ___/");
+  console_custom_msg(color.r, color.g, color.b, color.a, "     \\______  /\\____/          /_______  /___|  /\\___  /|__|___|  /\\___  >");
+  console_custom_msg(color.r, color.g, color.b, color.a, "            \\/                         \\/     \\//_____/         \\/     \\/");
 }
 
 // Game Objects
@@ -790,24 +938,52 @@ void CSystem_Debug::Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CG
 
 void CSystem_Debug::Console_command__GAME_OBJECT_SHOW_TREE(string arguments)
 {
-  map<string, void*> game_objects;
-  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "List of current game objects:");
-  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "-----------------------------");
-
-  for(map<string, CGameObject*>::iterator it = gSystem_GameObject_Manager.gameObjects.begin(); it != gSystem_GameObject_Manager.gameObjects.end(); it++)
+  if(arguments == "?")
   {
-    if(game_objects.find(it->first) == game_objects.end() && it->second->GetParent() == NULL)
+    console_warning_msg("Format is: game_object_show_tree [game object]");
+    return;
+  }
+
+  stringstream ss(arguments);
+  string go_name;
+  ss >> go_name;
+
+  map<string, void*> game_objects;
+
+  if(go_name == "")
+  {
+    gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "Hierarchy of current game objects:");
+    gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "-----------------------------");
+
+    for(map<string, CGameObject*>::iterator it = gSystem_GameObject_Manager.gameObjects.begin(); it != gSystem_GameObject_Manager.gameObjects.end(); it++)
+      if(game_objects.find(it->first) == game_objects.end() && it->second->GetParent() == NULL)
+        Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(it->second, game_objects);
+  }
+  else
+  {
+    CGameObject* go = gSystem_GameObject_Manager[go_name];
+
+    if(!go)
     {
-      //game_objects.insert(pair<string, void*>(it->first, NULL));
-      Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(it->second, game_objects);
-      // Insertar y dibujar
+      console_error_msg("Could not find game object named \"%s\"", go_name.c_str());
+      return;
     }
+
+    gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "Hierarchy of \"%s\":", go_name.c_str());
+    gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "-----------------------------");
+    Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(go, game_objects);
   }
 }
 
 
 void CSystem_Debug::Console_command__GAME_OBJECT_ENABLE(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: enable_game_object <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
+    return;
+  }
+
   stringstream ss(arguments);
   string obj_name;
   ss >> obj_name;
@@ -856,6 +1032,12 @@ void CSystem_Debug::Console_command__GAME_OBJECT_ENABLE(string arguments)
 
 void CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: game_object_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
+    return;
+  }
+
   stringstream ss(arguments);
   string obj_name;
   ss >> obj_name;
@@ -920,6 +1102,12 @@ void CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE(string argumen
 
 void CSystem_Debug::Console_command__R_UPDATE_WINDOW(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: update_window");
+    return;
+  }
+
   if(gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH") <= 0 or gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT") <= 0 )
     console_error_msg("Invalid values of __RESOLUTION_WIDTH (%i) or __RESOLUTION_HEIGHT (%i)", gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
   else
@@ -931,6 +1119,12 @@ void CSystem_Debug::Console_command__R_UPDATE_WINDOW(string arguments)
 
 void CSystem_Debug::Console_command__R_RESIZE_WINDOW(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: r_resize_window <width> <height>");
+    return;
+  }
+
   stringstream ss(arguments);
   int w = 0,
       h = 0;
@@ -951,6 +1145,13 @@ void CSystem_Debug::Console_command__R_RESIZE_WINDOW(string arguments)
 
 void CSystem_Debug::Console_command__R_DRAW_TRANSFORM(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: r_draw_transform <0 | 1>");
+    return;
+  }
+
+
   stringstream ss(arguments);
   int val = -1;
   ss >> val;
@@ -965,6 +1166,12 @@ void CSystem_Debug::Console_command__R_DRAW_TRANSFORM(string arguments)
 
 void CSystem_Debug::Console_command__R_DRAW_GRID(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: r_draw_transform_grid <0 | 1>");
+    return;
+  }
+
   stringstream ss(arguments);
   int val = -1;
   ss >> val;
@@ -979,5 +1186,11 @@ void CSystem_Debug::Console_command__R_DRAW_GRID(string arguments)
 
 void CSystem_Debug::Console_command__R_FPS(string arguments)
 {
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: r_fps");
+    return;
+  }
+
   console_msg("FPS: %f", gEngine.fps());
 }

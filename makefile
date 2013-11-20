@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Iengine\include -Iuser\include -std=c++11
 LDFLAGS=-Wall -lboost_serialization-mgw48-1_54 -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lglu32 -lSOIL -lglew32 -lopengl32 -lassimp
-SOURCES=engine\src\_globals.cpp engine\src\_object.cpp engine\src\_systems.cpp engine\src\components\_component.cpp engine\src\components\_component_camera.cpp engine\src\components\_component_dummys.cpp engine\src\components\_component_transform.cpp  engine\src\components\_component_mesh_render.cpp engine\src\engine\_engine.cpp engine\src\engine\_instance.cpp engine\src\systems\_data.cpp engine\src\systems\_debug.cpp engine\src\systems\_manager.cpp engine\src\systems\_other.cpp engine\src\systems\_render.cpp engine\src\systems\_resource.cpp engine\src\_main.cpp user\src\gameObjects.cpp user\src\instances.cpp user\src\predefined_functions.cpp
+SOURCES=engine\src\_globals.cpp engine\src\_object.cpp engine\src\_systems.cpp engine\src\components\_component.cpp engine\src\components\_component_camera.cpp engine\src\components\_component_dummys.cpp engine\src\components\_component_transform.cpp  engine\src\components\_component_mesh_render.cpp engine\src\engine\_engine.cpp engine\src\engine\_instance.cpp engine\src\systems\_data.cpp engine\src\systems\_debug.cpp engine\src\systems\_math.cpp engine\src\systems\_manager.cpp engine\src\systems\_other.cpp engine\src\systems\_render.cpp engine\src\systems\_resource.cpp engine\src\_main.cpp user\src\gameObjects.cpp user\src\instances.cpp user\src\predefined_functions.cpp
 
 OBJECTS=$(SOURCES:.cpp=.o)
 OUT_OBJECTS := $(foreach object,$(OBJECTS),Debug\$(object))

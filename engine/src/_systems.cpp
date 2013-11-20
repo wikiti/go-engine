@@ -41,6 +41,12 @@ bool Systems_Init()
     return false;
   }
 
+  if(!gSystem_Math.Init())
+  {
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Error cargando sistema Time");
+    return false;
+  }
+
   return true;
 }
 
@@ -52,6 +58,7 @@ void Systems_Close()
   gSystem_Debug.Close();
   gSystem_Resources.Close();
   gSystem_Time.Close();
+  gSystem_Math.Close();
 }
 
 void Systems_OnEvent()

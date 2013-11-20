@@ -61,50 +61,54 @@ class CSystem_Time: public CSystem
 extern CSystem_Time gSystem_Time;
 extern CSystem_Time& gTime;
 
-/** Poner la consola en debug?
-class CSystem_Console: public CSystem
+class CSystem_Math: public CSystem
 {
-  private:
-    Uint32 deltaT;
-    Uint32 lastT;
-
-    GLfloat Tscale;
+  public:
+    const float PI = M_PI;
 
   public:
-    CSystem_Console() {};
+    CSystem_Math(): CSystem(){}
+    virtual ~CSystem_Math(){};
 
-    bool Init();
-    void Close();
-
-    void OnLoop();
-
-    void SetTimeScale(GLfloat tscale)
+    bool Init()
     {
-      if(tscale < 0.f)
-        tscale = -tscale;
-      Tscale = tscale;
+      srand(time(NULL));
+
+      return true;
     }
 
-    GLfloat timeScale()
+    void Close() {}
+
+    float rad_to_deg(float rad)
     {
-      return Tscale;
+      return _RAD_TO_DEG(rad);
     }
 
-    Uint32 deltaTime()
+    float deg_to_rad(float deg)
     {
-      return deltaT * Tscale;
+      return _DEG_TO_RAD(deg);
     }
 
-    GLfloat deltaTime_s()
+    float cos(float degrees)
     {
-      return deltaT/1000.f * Tscale;
+      return cos(_RAD_TO_DEG(degrees));
     }
 
-    void Pause() { Tscale = 0.f; }
-    void Resume() { Tscale = 1.f; }
+    float sin(float degrees)
+    {
+      return sin(_RAD_TO_DEG(degrees));
+    }
+
+    // ...
+
+    float random()
+    {
+      return (float)rand()/RAND_MAX;
+    }
 };
 
-extern CSystem_Time gSystem_Time;
-extern CSystem_Time& gTime; **/
+extern CSystem_Math gSystem_Math;
+extern CSystem_Math& gMath;
+
 
 #endif /* __CSYSTEM_OTHER_H_ */
