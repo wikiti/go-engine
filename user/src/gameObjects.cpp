@@ -213,11 +213,11 @@ void Camara_main_movimiento(CGameObject* gameObject)
     }
     if(gKeyboardState[SDL_SCANCODE_LEFT])
     {
-      gameObject->transform()->LRotate(0, +20.f * gTime.deltaTime_s(), 0);
+      gameObject->transform()->Rotate(0, +20.f * gTime.deltaTime_s(), 0);
     }
     if(gKeyboardState[SDL_SCANCODE_RIGHT])
     {
-      gameObject->transform()->LRotate(0, -20.f * gTime.deltaTime_s(), 0);
+      gameObject->transform()->Rotate(0, -20.f * gTime.deltaTime_s(), 0);
     }
     if(gKeyboardState[SDL_SCANCODE_PAGEDOWN])
     {

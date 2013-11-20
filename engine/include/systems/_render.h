@@ -15,6 +15,8 @@ class CSystem_Render: public CSystem
     SDL_GLContext GLcontext;
     vector<CGameObject*> camera_list;
 
+    //CComponent_Camera* GUI_Camera;
+
     inline void ResizeWindow(int w, int h)
     {
       SDL_SetWindowSize(window, w, h);

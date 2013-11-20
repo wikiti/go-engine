@@ -36,6 +36,8 @@ class CComponent_Camera: public CComponent
 
     function_t before_render, after_render;
 
+    // Añadir fog, niebla, hdr, cosas por el estilo aquí
+
     inline void BeforeRender()
     {
       if(before_render) before_render(gameObject);
