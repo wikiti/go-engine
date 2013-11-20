@@ -83,6 +83,12 @@ class CComponent_Transform: public CComponent
     void SetScale(vector3f v);
     void SetScale(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
 
+    inline void LookAt(vector3f target)
+    {
+      LookAt(target.x, target.y, target.z);
+    }
+    void LookAt(GLfloat x, GLfloat y, GLfloat z);
+
     void ApplyTransform();
 
     inline void NormalizeAngles()

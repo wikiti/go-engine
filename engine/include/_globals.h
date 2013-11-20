@@ -79,6 +79,7 @@ extern const Uint8 *gKeyboardState;
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/glm.hpp>
+#include <glm/gtx/norm.hpp>
 
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
@@ -174,13 +175,15 @@ typedef struct viewportf_t
 
 } viewportf_t;
 
-
+// Esto debería ir en Math...
 typedef struct vector3f_t
 {
   GLfloat x, y, z;
 
   vector3f_t(): x(0), y(0), z(0) { };
   vector3f_t(float a, float b, float c): x(a), y(b), z(c) { };
+  vector3f_t(const vector3f_t& v): x(v.x), y(v.y), z(v.z) { };
+  vector3f_t(glm::vec3& v): x(v.x), y(v.y), z(v.z) { };
 
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version)
@@ -188,6 +191,11 @@ typedef struct vector3f_t
     ar & x;
     ar & y;
     ar & z;
+  }
+
+  inline glm::vec3 to_glm()
+  {
+    return glm::vec3(x, y, z);
   }
 
   vector3f_t operator+(vector3f_t v)
@@ -281,12 +289,17 @@ typedef struct vector3f_t
     return 0;
   }
 
+  GLfloat dot_product(vector3f_t v)
+  {
+    return x*v.x + y*v.y + z*v.z;
+  }
+
   vector3f_t cross_product(vector3f_t v)
   {
     vector3f_t out;
 
     out.x = y*v.z - z*v.y;
-    out.y = x*v.z - z*v.x;
+    out.y = z*v.x - x*v.z;
     out.z = x*v.y - y*v.x;
 
     return out;

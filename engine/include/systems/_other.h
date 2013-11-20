@@ -79,6 +79,8 @@ class CSystem_Math: public CSystem
 
     void Close() {}
 
+    // trigonometría
+
     float rad_to_deg(float rad)
     {
       return _RAD_TO_DEG(rad);
@@ -104,6 +106,67 @@ class CSystem_Math: public CSystem
     float random()
     {
       return (float)rand()/RAND_MAX;
+    }
+
+    // vector
+
+  public:
+    const vector3f X_AXIS = vector3f(1.f, 0.f, 0.f);
+    const vector3f Y_AXIS = vector3f(0.f, 1.f, 0.f);
+    const vector3f Z_AXIS = vector3f(0.f, 0.f, 1.f);
+
+    void normalize(vector3f& v)
+    {
+      float len = v.length();
+      v.x /= len;
+      v.y /= len;
+      v.z /= len;
+    }
+
+    vector3f_t cross_product(vector3f v1, vector3f_t v2)
+    {
+      vector3f_t out;
+
+      out.x = v1.y*v2.z - v1.z*v2.y;
+      out.y = v1.x*v2.z - v1.z*v2.x;
+      out.z = v1.x*v2.y - v1.y*v2.x;
+
+      return out;
+    }
+
+    typedef glm::quat quat;
+
+    quat RotationBetweenVectors(vector3f start, vector3f dest)
+    {
+      normalize(start);
+      normalize(dest);
+
+      float cosTheta = start.dot_product(dest);
+      vector3f rotationAxis;
+
+      if (cosTheta < -1 + 0.001f){
+            // special case when vectors in opposite directions:
+            // there is no "ideal" rotation axis
+            // So guess one; any will do as long as it's perpendicular to start
+        rotationAxis = cross_product(Z_AXIS, start);
+        if (glm::length2(rotationAxis.to_glm()) < 0.01 ) // bad luck, they were parallel, try again!
+            rotationAxis = cross_product(X_AXIS, start);
+
+        normalize(rotationAxis);
+        return glm::angleAxis(180.0f, rotationAxis.to_glm());
+      }
+
+      rotationAxis = cross_product(start, dest);
+
+      float s = sqrt( (1+cosTheta)*2 );
+      float invs = 1 / s;
+
+      return quat(
+        s * 0.5f,
+        rotationAxis.x * invs,
+        rotationAxis.y * invs,
+        rotationAxis.z * invs
+      );
     }
 };
 

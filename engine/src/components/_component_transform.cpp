@@ -489,6 +489,29 @@ vector3f_t CComponent_Transform::Position()
   return vector3f(matrix[12], matrix[13], matrix[14]);
 }
 
+void CComponent_Transform::LookAt(GLfloat x, GLfloat y, GLfloat z)
+{
+  // No funciona ni a tiros
+  vector3f pos = Position();
+  vector3f direction(x - pos.x, y - pos.y, z - pos.z);
+
+  // Find the rotation between the front of the object (that we assume towards +Z,
+  // but this depends on your model) and the desired direction
+  CSystem_Math::quat rot1 = gMath.RotationBetweenVectors(gMath.Z_AXIS, direction);
+
+  vector3f desiredUp(gMath.Y_AXIS);
+  vector3f right = gMath.cross_product(direction, desiredUp);
+  desiredUp = gMath.cross_product(right, direction);
+
+  // Because of the 1rst rotation, the up is probably completely screwed up.
+  // Find the rotation between the "up" of the rotated object, and the desired up
+  glm::vec3 newUp = rot1 * glm::vec3(0.f, 1.f, 0.f);
+  CSystem_Math::quat rot2 = gMath.RotationBetweenVectors(vector3f(newUp), desiredUp);
+
+  //CSystem_Math::quat targetOrientation = rot2 * rot1; // remember, in reverse order.
+  angle = glm::normalize(rot2 * rot1);
+}
+
 /*void CComponent_Transform::ApplyParentTransform()
 {
   CGameObject* parent = gameObject->GetParent();

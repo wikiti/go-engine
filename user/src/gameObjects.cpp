@@ -56,7 +56,7 @@ bool SetGameObjects_Instance1()
   cubo_main->SetKeyEventBehaviourFunction(&Cubo_main_movimiento);
   camara_main->SetKeyEventBehaviourFunction(&Camara_main_movimiento);
   camara_main->SetBehaviourFunction(&Camara_main_behaviour);
-  camara_second->SetEventBehaviourFunction(&Camara_second_movimiento);
+  //camara_second->SetEventBehaviourFunction(&Camara_second_movimiento);
   cubo_second->SetKeyEventBehaviourFunction(&Cubo_second_movimiento);
   hada->SetBehaviourFunction(&Hada_movimiento);
   DefineTramsformByVar("GO_HADA");
@@ -285,6 +285,12 @@ void Camara_main_movimiento(CGameObject* gameObject)
       gameObject->transform()->LTranslate(0.f, 3.f * gTime.deltaTime_s(), 0.f);
       //gameObject->transform()->position.y += 1.f * gTime.deltaTime_s();
     }
+  }
+
+  if(gKeyboardState[SDL_SCANCODE_SPACE])
+  {
+    gameObject->transform()->LookAt(gGameObjects["cubo"]->transform()->Position());
+    //gameObject->transform()->position.y += 1.f * gTime.deltaTime_s();
   }
 
   // Viewport
