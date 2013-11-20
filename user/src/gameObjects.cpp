@@ -30,6 +30,8 @@ bool SetGameObjects_Instance1()
   h2->AddChild(h21);
   h21->AddChild(h212);
 
+  //h1->RemoveChildren();
+
   //gGameObjects.DeleteGameObject("hijo1", true);
   //gGameObjects.DeleteGameObject("hijo2", false);
 

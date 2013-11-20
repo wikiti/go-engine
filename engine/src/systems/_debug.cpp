@@ -318,6 +318,13 @@ void CSystem_Debug::OnEvent()
         if(input != "") SDL_SetClipboardText(input.c_str());
       }
     }
+    else if(event.type == SDL_MOUSEWHEEL)
+    {
+      if(event.wheel.y > 0 && console_buffer.size() && current_line_buffered < console_buffer.size()-1)
+        current_line_buffered++;
+      else if(event.wheel.y < 0 && console_buffer.size() && current_line_buffered > 0)
+        current_line_buffered--;
+    }
     else if(event.type == SDL_TEXTINPUT)
     {
       input.insert(console_pointer_pos, event.text.text);
