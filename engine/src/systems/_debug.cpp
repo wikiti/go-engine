@@ -111,8 +111,9 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("load_state", &CSystem_Debug::Console_command__LOAD_STATE));
 
     // Game objects
-  console_commands.insert(pair<string, command_p>("enable_game_object", &CSystem_Debug::Console_command__ENABLE_GAME_OBJECT));
-  console_commands.insert(pair<string, command_p>("enable_game_object_component", &CSystem_Debug::Console_command__ENABLE_GAME_OBJECT_COMPONENT));
+  console_commands.insert(pair<string, command_p>("game_object_show_tree", &CSystem_Debug::Console_command__GAME_OBJECT_SHOW_TREE));
+  console_commands.insert(pair<string, command_p>("game_object_enable", &CSystem_Debug::Console_command__GAME_OBJECT_ENABLE));
+  console_commands.insert(pair<string, command_p>("game_object_component_enable", &CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE));
 
     // Render
   console_commands.insert(pair<string, command_p>("r_update_window", &CSystem_Debug::Console_command__R_UPDATE_WINDOW));
@@ -752,7 +753,47 @@ void CSystem_Debug::Console_command__SECRET_PLZ(string arguments)
 }
 
 // Game Objects
-void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT(string arguments)
+void CSystem_Debug::Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level)
+{
+  if(list.find(go->GetName()) != list.end()) // Ya dibujado :(
+    return;
+
+  string c = "";
+  c.resize(level*2, ' ');
+
+  if(go->IsEnabled() && go->GetName()[0] != '_' && go->GetName()[1] != '_')
+    gSystem_Debug.console_msg("%s- %s", c.c_str(), go->GetName().c_str());
+  else if(go->GetName()[0] != '_' && go->GetName()[1] != '_')
+    gSystem_Debug.console_custom_msg(0.5f, 0.5f, 0.5f, 1.f, "%s- %s", c.c_str(), go->GetName().c_str());
+
+  list.insert(pair<string, void*>(go->GetName(), NULL));
+
+  /*uint num_child = go->GetNumChildren();
+  for(uint i = 0; i < num_child && num_child != 0; i++)
+    print_element(go->GetChild(i), list, level+1);*/
+  for(map<string, CGameObject*>::iterator it = go->children.begin(); it != go->children.end(); it++)
+    Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(it->second, list, level+1);
+}
+
+void CSystem_Debug::Console_command__GAME_OBJECT_SHOW_TREE(string arguments)
+{
+  map<string, void*> game_objects;
+  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "List of current game objects:");
+  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "-----------------------------");
+
+  for(map<string, CGameObject*>::iterator it = gSystem_GameObject_Manager.gameObjects.begin(); it != gSystem_GameObject_Manager.gameObjects.end(); it++)
+  {
+    if(game_objects.find(it->first) == game_objects.end() && it->second->GetParent() == NULL)
+    {
+      //game_objects.insert(pair<string, void*>(it->first, NULL));
+      Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(it->second, game_objects);
+      // Insertar y dibujar
+    }
+  }
+}
+
+
+void CSystem_Debug::Console_command__GAME_OBJECT_ENABLE(string arguments)
 {
   stringstream ss(arguments);
   string obj_name;
@@ -760,7 +801,7 @@ void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT(string arguments)
 
   if(obj_name == "")
   {
-    console_warning_msg("Format is: enable_game_object <game_object_name> < 1 | enable | 0 | disable>");
+    console_warning_msg("Format is: enable_game_object <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
     return;
   }
 
@@ -770,25 +811,37 @@ void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT(string arguments)
     return;
   }
 
-  string value;
-  ss >> value;
+  string value, recursive, recursive_str = "";
+  bool recursive_b = false;
+  ss >> value >> recursive;
+
+  if(recursive == "r" || recursive == "recursive")
+  {
+    recursive_str = " and all its children";
+    recursive_b = true;
+  }
+  else if(recursive == "")
+    recursive_b = false;
+  else
+    console_warning_msg("Format is: game_object_enable <game_object_name> < 1 | enable | 0 | disable> [r[recursive]]");
+
   if(value == "1" or value == "enable")
   {
-    gSystem_GameObject_Manager[obj_name]->Enable();
-    console_msg("\"%s\" enabled", obj_name.c_str());
+    gSystem_GameObject_Manager[obj_name]->Enable(recursive_b);
+    console_msg("\"%s\"%s enabled", obj_name.c_str(), recursive_str.c_str());
   }
   else if(value == "0" or value == "disable")
   {
-     gSystem_GameObject_Manager[obj_name]->Disable();
-    console_msg("\"%s\" disabled", obj_name.c_str());
+    gSystem_GameObject_Manager[obj_name]->Disable(recursive_b);
+    console_msg("\"%s\"%s disabled", obj_name.c_str(), recursive_str.c_str());
   }
   else
   {
-    console_warning_msg("Format is: enable_game_object <game_object_name> <1 | enable | 0 | disable>");
+    console_warning_msg("Format is: game_object_enable <game_object_name> < 1 | enable | 0 | disable> [r[recursive]]");
   }
 }
 
-void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT_COMPONENT(string arguments)
+void CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE(string arguments)
 {
   stringstream ss(arguments);
   string obj_name;
@@ -796,7 +849,7 @@ void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT_COMPONENT(string argumen
 
   if(obj_name == "")
   {
-    console_warning_msg("Format is: enable_game_object <game_object_name> <1 | enable | 0 | disable>");
+    console_warning_msg("Format is: game_object_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
     return;
   }
 
@@ -813,7 +866,7 @@ void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT_COMPONENT(string argumen
 
   if(component == "")
   {
-    console_warning_msg("Format is: enable_game_object <game_object_name> <1 | enable | 0 | disable>");
+    console_warning_msg("Format is: game_object_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
     return;
   }
 
@@ -846,7 +899,7 @@ void CSystem_Debug::Console_command__ENABLE_GAME_OBJECT_COMPONENT(string argumen
   }
   else
   {
-    console_warning_msg("Format is: enable_game_object_component <game_object_name> <component_name> <1 | enable | 0 | disable>");
+    console_warning_msg("Format is: game_object_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
   }
 }
 

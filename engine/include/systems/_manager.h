@@ -12,6 +12,7 @@ class CSystem_GameObject_Manager: public CSystem
 {
   protected:
     friend class CSystem_Render;
+    friend class CSystem_Debug;
 
     map<string, CGameObject*> gameObjects;
     //map<string, function_t> gameObjects_functions;
@@ -38,6 +39,9 @@ class CSystem_GameObject_Manager: public CSystem
     bool RemoveGameObject(string name);
     bool RemoveGameObject(CGameObject* go);
       bool RebuildIndex(); // <- Mecanismo insano, pero puesto por si acaso (quien coño llega a 4 mil millones de objetos?)
+
+    bool RenameGameObject(string name, string new_name);
+    bool RenameGameObject(CGameObject* go, string new_name);
 
     CGameObject* GetGameObject(string name);
     CGameObject* operator[](string name);

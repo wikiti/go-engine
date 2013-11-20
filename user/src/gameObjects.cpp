@@ -53,6 +53,9 @@ bool SetGameObjects_Instance1()
   camara_second->camera()->before_render = &Camara_second_before_render;
   camara_second->camera()->after_render = &Camara_second_after_render;
 
+  gGameObjects.RenameGameObject("cubo_main", "cubo_second");
+  gGameObjects.RenameGameObject("cubo_main", "cubo");
+
   return true;
 }
 

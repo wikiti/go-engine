@@ -18,6 +18,7 @@ class CGameObject
     friend class CComponent;
     friend class CComponent_Transform;
     friend class CSystem_GameObject_Manager;
+    friend class CSystem_Debug;
     friend class boost::serialization::access;
 
   protected:
@@ -38,6 +39,7 @@ class CGameObject
     function_t behaviour;
     function_t event_behaviour;
     function_t keyevent_behaviour;
+    function_t render;
 
   private:
     template<class Archive>
@@ -74,65 +76,75 @@ class CGameObject
     void RemoveChildren();
     CGameObject* GetChild(string name);
     CGameObject* GetChild(uint index);
-    uint GetNumChildren(){return children.size();}
+    inline uint GetNumChildren(){return children.size();}
 
-    CGameObject* GetParent()
+    inline CGameObject* GetParent()
     {
       return Parent;
     }
-    void SetParent(CGameObject* parent)
+    inline void SetParent(CGameObject* parent)
     {
       if(parent != NULL)
         Parent = parent;
     }
-    void RemoveParent()
+    inline void RemoveParent()
     {
       Parent->RemoveChild(name);
     }
-    void UnParent() // no usar nunca desde fuera
+    inline void UnParent() // no usar nunca desde fuera
     {
       //Parent->RemoveChild(name);
       Parent = NULL;
     }
 
-    void SetStartFunction(function_t f)
+    inline void SetStartFunction(function_t f)
     {
       start = f;
     }
 
-    void SetBehaviourFunction(function_t f)
+    inline void SetBehaviourFunction(function_t f)
     {
       behaviour = f;
     }
 
-    void SetEventBehaviourFunction(function_t f)
+    inline void SetEventBehaviourFunction(function_t f)
     {
       event_behaviour = f;
     }
 
-    void SetKeyEventBehaviourFunction(function_t f)
+    inline void SetKeyEventBehaviourFunction(function_t f)
     {
       keyevent_behaviour = f;
     }
 
-    void CallStartFunction()
+    inline void SetRenderFunction(function_t f)
+    {
+      render = f;
+    }
+
+    inline void CallStartFunction()
     {
       if(start) start(this);
     }
 
-    void CallBehaviourFunction()
+    inline void CallBehaviourFunction()
     {
       if(behaviour) behaviour(this);
     }
 
-    void CallEventBehaviourFunction()
+    inline void CallEventBehaviourFunction()
     {
       if(event_behaviour) event_behaviour(this);
     }
 
-    void CallKeyEventBehaviourFunction()
+    inline void CallKeyEventBehaviourFunction()
     {
       if(keyevent_behaviour) keyevent_behaviour(this);
+    }
+
+    inline void CallRenderFunction()
+    {
+      if(render) render(this);
     }
 
   public:
@@ -162,18 +174,9 @@ class CGameObject
       return id;
     }
 
-    inline void Enable()
-    {
-      enabled = true;
-    }
-    inline void Disable()
-    {
-      enabled = false;
-    }
-    inline void SetState(bool state)
-    {
-      enabled = state;
-    }
+    void Enable(bool recursive = false);
+    void Disable(bool recursive = false);
+    void SetState(bool state, bool recursive = false);
 
     inline bool IsEnabled()
     {

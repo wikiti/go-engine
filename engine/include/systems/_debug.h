@@ -17,6 +17,7 @@
 #include <time.h>
 
 #include "_globals.h"
+#include "_object.h"
 #include "systems/_system.h"
 
 typedef struct string_console_t
@@ -139,8 +140,10 @@ class CSystem_Debug: public CSystem
     void Console_command__LOAD_STATE(string arguments);
 
     // Game Objects
-    void Console_command__ENABLE_GAME_OBJECT(string arguments);
-    void Console_command__ENABLE_GAME_OBJECT_COMPONENT(string arguments);
+    void Console_command__GAME_OBJECT_SHOW_TREE(string arguments);
+      void Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level = 1);
+    void Console_command__GAME_OBJECT_ENABLE(string arguments);
+    void Console_command__GAME_OBJECT_COMPONENT_ENABLE(string arguments);
     //void Console_command__ENABLE_SYSTEM(string arguments);
     //
 

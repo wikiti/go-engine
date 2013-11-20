@@ -10,7 +10,7 @@ CGameObject::CGameObject(string str)
   id = -1;
 
   Parent = NULL;
-  start = behaviour = event_behaviour = keyevent_behaviour = NULL;
+  start = behaviour = event_behaviour = keyevent_behaviour = render = NULL;
 }
 
 CGameObject::CGameObject(): CGameObject("")
@@ -27,7 +27,7 @@ void CGameObject::Init()
   flags = gof_none;
   //id = -1;
 
-  if(start) start(this);
+  CallStartFunction();
 
   AddComponent<CComponent_Transform>();
 
@@ -199,10 +199,10 @@ void CGameObject::OnEvent()
   if(!enabled)
     return;
 
-  if(event_behaviour) event_behaviour(this);
-  //if(flags & gof_event)
-    for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
-      it->second->OnEvent();
+  CallEventBehaviourFunction();
+
+  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
+    it->second->OnEvent();
 }
 
 void CGameObject::OnKeyEvent()
@@ -210,10 +210,10 @@ void CGameObject::OnKeyEvent()
   if(!enabled)
     return;
 
-  //if(flags & gof_kevent)
-  if(keyevent_behaviour) keyevent_behaviour(this);
-    for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
-      it->second->OnKeyEvent();
+  CallKeyEventBehaviourFunction();
+
+  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
+    it->second->OnKeyEvent();
 }
 
 void CGameObject::OnLoop()
@@ -221,10 +221,10 @@ void CGameObject::OnLoop()
   if(!enabled)
     return;
 
-  //if(flags & gof_loop)
-  if(behaviour) behaviour(this);
-    for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
-      it->second->OnLoop();
+  CallBehaviourFunction();
+
+  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
+    it->second->OnLoop();
 }
 
 void CGameObject::OnRender()
@@ -244,6 +244,35 @@ void CGameObject::OnRender()
 
   if(GetComponent<CComponent_Dummy2>())
     GetComponent<CComponent_Dummy2>()->OnRender();
+
+  CallRenderFunction();
+}
+
+void CGameObject::Enable(bool recursive)
+{
+  enabled = true;
+
+  if(recursive)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+      it->second->Enable(true);
+}
+
+void CGameObject::Disable(bool recursive)
+{
+  enabled = false;
+
+  if(recursive)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+      it->second->Disable(true);
+}
+
+void CGameObject::SetState(bool state, bool recursive)
+{
+  enabled = state;
+
+  if(recursive)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+      it->second->SetState(state, true);
 }
 
 // ¿?¿?

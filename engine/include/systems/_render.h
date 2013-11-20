@@ -15,6 +15,32 @@ class CSystem_Render: public CSystem
     SDL_GLContext GLcontext;
     vector<CGameObject*> camera_list;
 
+    /*
+    struct gameObject_Render_count_t
+    {
+      CGameObject* go;
+      uint count;
+    }
+    map<string, gameObject_Render_count_t> r_gameObjects; // <- ¡¡ESTO!!
+
+    bool AddToRender(CGameObject* go)
+    {
+      if(!go) return false;
+
+      map<string, gameObject_Render_count_t>::iterator it = r_gameObjects.find(go->GetName());
+      if(it != r_gameObjects.end()) // Ya existe, no se añade
+        return false;
+      else
+      {
+        string go_name = go->GetName();
+        r_gameObjects.insert(pair<string, gameObject_Render_count_t>(go_name, new gameObject_Render_count_t);
+        r_gameObjects[go_name]->go = go;
+      }
+
+    }
+
+    */
+
     //CComponent_Camera* GUI_Camera;
 
     inline void ResizeWindow(int w, int h)

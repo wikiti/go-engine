@@ -277,6 +277,72 @@ bool CSystem_GameObject_Manager::RebuildIndex()
   return true;
 }
 
+bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
+{
+  map<string, CGameObject*>::iterator it1 = gameObjects.find(name);
+  map<string, CGameObject*>::iterator it2 = gameObjects.find(new_name);
+
+  if(it1 == gameObjects.end()) // No existe el nombre del objeto
+  {
+    gSystem_Debug.console_error_msg("From CSystem_GameObject_Manager::RenameGameObject: Object \"%s\" does not exists", name.c_str());
+    return false;
+  }
+  if(it2 != gameObjects.end()) // Ya existe el futuro objeto
+  {
+    gSystem_Debug.console_error_msg("From CSystem_GameObject_Manager::RenameGameObject: Object \"%s\" already exists", new_name.c_str());
+    return false;
+  }
+
+  CGameObject* current_go = it1->second;
+  gameObjects.erase(it1);
+  gameObjects.insert(pair<string, CGameObject*>(new_name, current_go));
+
+  it1 = gameObjects.find(new_name);
+  it1->second->name = new_name;
+
+  // Renombrar hijo en la lista de hijos del padre.
+  if(it1->second->GetParent())
+  {
+    it1->second->GetParent()->children.erase(new_name);
+    it1->second->GetParent()->children.insert(pair<string, CGameObject*>(new_name, current_go));
+  }
+
+  return true;
+}
+
+bool CSystem_GameObject_Manager::RenameGameObject(CGameObject* go, string new_name)
+{
+  if(!go) return false;
+
+  map<string, CGameObject*>::iterator it1 = gameObjects.find(go->GetName());
+  map<string, CGameObject*>::iterator it2 = gameObjects.find(new_name);
+
+  if(it1 == gameObjects.end())
+  {
+    gSystem_Debug.console_error_msg("From CSystem_GameObject_Manager::RenameGameObject: Object \"%s\" does not exists", go->GetName().c_str());
+    return false;
+  }
+  if(it2 != gameObjects.end())
+  {
+    gSystem_Debug.console_error_msg("From CSystem_GameObject_Manager::RenameGameObject: Object \"%s\" already exists", new_name.c_str());
+    return false;
+  }
+
+  gameObjects.erase(it1);
+  gameObjects.insert(pair<string, CGameObject*>(new_name, go));
+
+  it1 = gameObjects.find(new_name);
+  it1->second->name = new_name;
+
+  // Renombrar hijo en la lista de hijos del padre.
+  if(it1->second->GetParent())
+  {
+    it1->second->GetParent()->children.erase(new_name);
+    it1->second->GetParent()->children.insert(pair<string, CGameObject*>(new_name, go));
+  }
+  return true;
+}
+
 void CSystem_GameObject_Manager::DeleteGameObjects()
 {
   for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
