@@ -11,6 +11,8 @@ enum gameObject_type {gameObject_empty = 0};
 
 typedef void (*function_t)(CGameObject* self);
 
+// Nota: añadir "CGameObject_NULL" que no haga nada en sus operaciones. Así, si el manager devuelve un NULL, y se trata de acceder a un método de ese NULL, no se hará nada
+// -> Ya que devolverá CGameObject_NULL, y no NULL
 class CGameObject
 {
   public:

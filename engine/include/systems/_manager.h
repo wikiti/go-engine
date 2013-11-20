@@ -34,10 +34,8 @@ class CSystem_GameObject_Manager: public CSystem
     CGameObject* AddGameObject(string name, gameObject_type type = gameObject_empty, bool init = true); // cambiar con un enum
     CGameObject* AddGameObject(CGameObject* go, bool init = true);
     bool DeleteGameObject(string name, bool remove_children = true);
-    bool DeleteGameObject(CGameObject* go, bool remove_children = true);
     void DeleteGameObjects();
     bool RemoveGameObject(string name);
-    bool RemoveGameObject(CGameObject* go);
       bool RebuildIndex(); // <- Mecanismo insano, pero puesto por si acaso (quien coño llega a 4 mil millones de objetos?)
 
     bool RenameGameObject(string name, string new_name);

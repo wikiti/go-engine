@@ -177,10 +177,13 @@ bool CSystem_GameObject_Manager::DeleteGameObject(string nombre, bool remove_chi
     int num_hijos = it->second->GetNumChildren();
     if(remove_children)
       for(int i = 0; i < num_hijos && num_hijos != 0; i++)
-        DeleteGameObject(it->second->GetChild(num_hijos-1-i));
+        DeleteGameObject(it->second->GetChild(0)->GetName(), true);
+    // num_hijos-1-i
     else
       for(int i = 0; i < num_hijos && num_hijos != 0; i++)
-        it->second->GetChild(num_hijos-1-i)->UnParent();
+        it->second->GetChild(i)->UnParent();
+
+    if(it->second->GetParent()) it->second->GetParent()->RemoveChild(nombre);
 
     delete it->second;
     gameObjects.erase(it);
@@ -189,32 +192,6 @@ bool CSystem_GameObject_Manager::DeleteGameObject(string nombre, bool remove_chi
   }
 
   gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::DeleteGameObject: Could not find objet \"%s\"", nombre.c_str());
-
-  return false;
-}
-
-bool CSystem_GameObject_Manager::DeleteGameObject(CGameObject* go, bool remove_children)
-{
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
-  {
-    if(it->second == go)
-    {
-      int num_hijos = it->second->GetNumChildren();
-      if(remove_children)
-        for(int i = 0; i < num_hijos && num_hijos != 0; i++)
-          DeleteGameObject(it->second->GetChild(num_hijos-1-i), true);
-      else
-        for(int i = 0; i < num_hijos && num_hijos != 0; i++)
-          it->second->GetChild(num_hijos-1-i)->UnParent();
-
-      delete it->second;
-      gameObjects.erase(it);
-
-      return true;
-    }
-  }
-
-  gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::DeleteGameObject: Could not find objet \"%i\"", go);
 
   return false;
 }
@@ -238,27 +215,6 @@ bool CSystem_GameObject_Manager::RemoveGameObject(string str)
 
   gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::RemoveGameObject: Could not find objet \"%s\"", str.c_str());
 
-  return false;
-}
-
-bool CSystem_GameObject_Manager::RemoveGameObject(CGameObject* go)
-{
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
-  {
-    if(it->second == go)
-    {
-      //¿Borrarlos? naa, muy hardcore
-      int num_hijos = it->second->GetNumChildren();
-      for(int i = 0; i < num_hijos && num_hijos != 0; i++)
-        it->second->RemoveChild(it->second->GetChild(0)->GetName()); // Como se borran, accedemos siempre al primero hasta quedarnos sin ninguno
-
-      it->second->Register(-1);
-      it->second->UnParent();
-      gameObjects.erase(it);
-      return true;
-    }
-  }
-  gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::RemoveGameObject: Could not find objet \"%i\"", go);
   return false;
 }
 

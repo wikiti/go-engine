@@ -313,6 +313,10 @@ void CSystem_Debug::OnEvent()
         input.insert(console_pointer_pos, SDL_GetClipboardText());
         console_pointer_pos += strlen(SDL_GetClipboardText());
       }
+      if( event.button.button == SDL_BUTTON_MIDDLE )
+      {
+        if(input != "") SDL_SetClipboardText(input.c_str());
+      }
     }
     else if(event.type == SDL_TEXTINPUT)
     {
@@ -760,6 +764,8 @@ void CSystem_Debug::Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CG
 
   string c = "";
   c.resize(level*2, ' ');
+
+  // Se mostrarán hijos que no pertenezcan al manager de padres que sí pertenezca, recursivamente.
 
   if(go->IsEnabled() && go->GetName()[0] != '_' && go->GetName()[1] != '_')
     gSystem_Debug.console_msg("%s- %s", c.c_str(), go->GetName().c_str());

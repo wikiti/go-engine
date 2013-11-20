@@ -13,6 +13,26 @@ bool SetGameObjects_Instance1()
   CGameObject* cubo_third = gGameObjects.AddGameObject("cubo_third");
   CGameObject* hada = gGameObjects.AddGameObject("hada");
 
+  CGameObject* p1 = gGameObjects.AddGameObject("padre1");
+  CGameObject* h1 = gGameObjects.AddGameObject("hijo1");
+  CGameObject* h11 = gGameObjects.AddGameObject("hijo11");
+  CGameObject* h12 = gGameObjects.AddGameObject("hijo12");
+  CGameObject* h2 = gGameObjects.AddGameObject("hijo2");
+  CGameObject* h21 = gGameObjects.AddGameObject("hijo21");
+  CGameObject* h212 = gGameObjects.AddGameObject("hijo212");
+
+  p1->AddChild(h1);
+  p1->AddChild(h2);
+
+  h1->AddChild(h11);
+  h1->AddChild(h12);
+
+  h2->AddChild(h21);
+  h21->AddChild(h212);
+
+  //gGameObjects.DeleteGameObject("hijo1", true);
+  //gGameObjects.DeleteGameObject("hijo2", false);
+
   cubo_main->AddChild(cubo_second);
   cubo_second->AddChild(cubo_third);
 
