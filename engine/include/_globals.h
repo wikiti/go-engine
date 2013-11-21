@@ -267,6 +267,7 @@ typedef struct vector3f_t
     out.z = z / value;
     return out;
   }
+
   vector3f_t& operator/=(double value)
   {
     x /= value;
@@ -275,6 +276,12 @@ typedef struct vector3f_t
 
     return *this;
   }
+
+  vector3f_t operator%(vector3f_t& v)
+  {
+    return cross_product(v);
+  }
+
 
 
   float operator[](int pos)
@@ -289,12 +296,12 @@ typedef struct vector3f_t
     return 0;
   }
 
-  GLfloat dot_product(vector3f_t v)
+  inline GLfloat dot_product(vector3f_t v)
   {
     return x*v.x + y*v.y + z*v.z;
   }
 
-  vector3f_t cross_product(vector3f_t v)
+  inline vector3f_t cross_product(vector3f_t v)
   {
     vector3f_t out;
 

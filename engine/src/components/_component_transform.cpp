@@ -489,8 +489,62 @@ vector3f_t CComponent_Transform::Position()
   return vector3f(matrix[12], matrix[13], matrix[14]);
 }
 
-void CComponent_Transform::LookAt(GLfloat x, GLfloat y, GLfloat z)
+
+
+void CComponent_Transform::LookAt(vector3f target, vector3f up)
 {
+  // http://gamedev.stackexchange.com/questions/53129/quaternion-look-at-with-up-vector
+  vector3f forward_l = (target - Position()).normalize();
+  vector3f forward_w(1, 0, 0);
+  vector3f axis  = forward_l % forward_w;
+  float angle1 = acos(forward_l * forward_w);
+
+  vector3f third = axis % forward_w;
+  if (third * forward_l < 0)
+  {
+    angle = - angle;
+  }
+
+  //glm::quat q1 = glm::gtx::axis_angle_to_quaternion(angle, axis);
+  glm::quat q1 = glm::angleAxis(angle1, axis.to_glm());
+
+  //vector3f up_l  = mx::transform(q1, up.normalize());
+  vector3f up_l  = gMath.transform(q1, up.normalize());
+  vector3f right = (forward_l % up).normalize();
+  vector3f up_w  = (right % forward_l).normalize();
+
+  vector3f     axis2  = up_l % up_w;
+  float        angle2 = acos(up_l * up_w);
+
+  /*mx::Vector3f third2 = axis2 % up_w;
+  if (third2 * up_l < 0)
+  {
+    angle2 = - angle2;
+  }*/
+  //glm::quat q2 = mx::axis_angle_to_quaternion(angle2, axis2);
+  glm::quat q2 = glm::angleAxis(angle2, axis2.to_glm());
+
+  this->angle = (q2 * q1);
+
+  /*vector3f current_pos = Position();
+  vector3f direction(x - current_pos.x, y - current_pos.y, z - current_pos.z);
+  GLfloat  direction_length = direction.length();
+
+  vector3f diagonal_XZ = vector3f(x - current_pos.x, 0, z - current_pos.z);
+  GLfloat diagonal_XZ_length = diagonal_XZ.length();
+
+  cout << "Lenght of direction(" << direction << ") is " << direction_length << endl;
+  cout << "Lenght of diagonal_XZ(" << diagonal_XZ << ") is " << diagonal_XZ_length << endl;
+  cout << "Alpha = asin(direction.z/diagonal_XZ) = asin(" << direction.z << "/" << diagonal_XZ_length << ") = " << 90 - gMath.asin(direction.z/diagonal_XZ_length) << endl;
+  cout << "Beta  = asin(direction.y/direction_length) = asin(" << direction.y << "/" << direction_length << ") = " << gMath.asin(direction.y/direction_length) << endl;
+  //float delta_x = x - current_pos.x;
+  //float delta_y = y - current_pos.y;
+
+  //float angle = atan2(delta_x, delta_y);
+
+  SetAngle(0.f, 90 - gMath.asin(direction.z/diagonal_XZ_length), 0.f);
+  LRotate(0.f, 0.f, gMath.asin(direction.y/direction_length));
+
   // No funciona ni a tiros
   vector3f pos = Position();
   vector3f direction(x - pos.x, y - pos.y, z - pos.z);
@@ -509,7 +563,7 @@ void CComponent_Transform::LookAt(GLfloat x, GLfloat y, GLfloat z)
   CSystem_Math::quat rot2 = gMath.RotationBetweenVectors(vector3f(newUp), desiredUp);
 
   //CSystem_Math::quat targetOrientation = rot2 * rot1; // remember, in reverse order.
-  angle = glm::normalize(rot2 * rot1);
+  angle = glm::normalize(rot2 * rot1);*/
 }
 
 /*void CComponent_Transform::ApplyParentTransform()

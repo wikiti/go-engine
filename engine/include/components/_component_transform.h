@@ -79,14 +79,15 @@ class CComponent_Transform: public CComponent
     void SetAngle(vector3f v);
     void SetAngle(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
     void Scale(vector3f v);
-    void Scale(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
+    void Scale(GLfloat x = 1.f, GLfloat y = 1.f, GLfloat z = 1.f);
     void SetScale(vector3f v);
-    void SetScale(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
+    void SetScale(GLfloat x = 1.f, GLfloat y = 1.f, GLfloat z = 1.f);
 
-    inline void LookAt(vector3f target)
+    /*inline void LookAt(vector3f target)
     {
       LookAt(target.x, target.y, target.z);
-    }
+    }*/
+    void LookAt(vector3f target, vector3f up_vector = vector3f(0.f, 1.f, 0.f));
     void LookAt(GLfloat x, GLfloat y, GLfloat z);
 
     void ApplyTransform();

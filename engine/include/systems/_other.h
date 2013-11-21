@@ -93,12 +93,32 @@ class CSystem_Math: public CSystem
 
     float cos(float degrees)
     {
-      return cos(_RAD_TO_DEG(degrees));
+      return std::cos(_RAD_TO_DEG(degrees));
     }
 
     float sin(float degrees)
     {
-      return sin(_RAD_TO_DEG(degrees));
+      return std::sin(_RAD_TO_DEG(degrees));
+    }
+
+    float tan(float degrees)
+    {
+      return std::tan(_RAD_TO_DEG(degrees));
+    }
+
+    float acos(float radians)
+    {
+      return _RAD_TO_DEG(std::acos(radians));
+    }
+
+    float asin(float radians)
+    {
+      return _RAD_TO_DEG(std::asin(radians));
+    }
+
+    float atan(float radians)
+    {
+      return _RAD_TO_DEG(std::atan(radians));
     }
 
     // ...
@@ -168,6 +188,16 @@ class CSystem_Math: public CSystem
         rotationAxis.z * invs
       );
     }
+
+    vector3f transform(glm::quat& q, vector3f v)
+    {
+       glm::quat tmp(0.0, v.to_glm());
+
+       tmp = (q * tmp * glm::conjugate(q));
+       //this(0);
+       return vector3f(tmp.x, tmp.y, tmp.z);
+    }
+
 };
 
 extern CSystem_Math gSystem_Math;

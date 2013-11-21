@@ -252,6 +252,12 @@ void Camara_main_movimiento(CGameObject* gameObject)
     {
       gameObject->transform()->LRotate(0, 0, -20.f * gTime.deltaTime_s());
     }
+    if(gKeyboardState[SDL_SCANCODE_R])
+    {
+      gameObject->transform()->SetAngle(0.f, 0.f, 0.f);
+      //gameObject->transform()->position.y += 1.f * gTime.deltaTime_s();
+    }
+    // cout << "Orientation: " << gameObject->transform()->EulerAngles() << endl;
   }
   else
   {
