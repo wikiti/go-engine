@@ -79,6 +79,12 @@ class CSystem_Math: public CSystem
 
     void Close() {}
 
+    // Aritmética
+    float abs(float val)
+    {
+      return std::abs(val);
+    }
+
     // trigonometría
 
     float rad_to_deg(float rad)

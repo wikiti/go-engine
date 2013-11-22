@@ -335,6 +335,22 @@ typedef struct vector3f_t
     return vector3f_t(x/v, y/v, z/v);
   }
 
+  vector3f_t up()
+  {
+    return vector3f_t(0.f, 1.f, 0.f);
+  }
+
+  vector3f_t forward()
+  {
+    return vector3f_t(0.f, 0.f, 1.f);
+  }
+
+  vector3f_t left()
+  {
+    return vector3f_t(1.f, 0.f, 0.f);
+  }
+
+
 } vector3f;
 
 

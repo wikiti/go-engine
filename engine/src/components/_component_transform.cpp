@@ -491,10 +491,34 @@ vector3f_t CComponent_Transform::Position()
 
 
 
-void CComponent_Transform::LookAt(vector3f target, vector3f up)
+void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward)
 {
+  //http://stackoverflow.com/questions/12435671/quaternion-lookat-function
+  vector3f forwardVector = (target - Position()).normalize();
+
+  //vector3f forward = gMath.Z_AXIS;
+
+  float dot = forward * forwardVector;
+
+  if (gMath.abs(dot - (-1.0f)) < 0.000001f)
+  {
+    //angle = glm::quat(gMath.Y_AXIS.x, gMath.Y_AXIS.y, gMath.Y_AXIS.z, 3.1415926535897932f) * angle;
+    angle = glm::angleAxis(3.1415926535897932f, up.to_glm());
+    return;
+  }
+  if (gMath.abs(dot - (1.0f)) < 0.000001f)
+  {
+    return;
+  }
+
+  float rotAngle = (float)acos(dot);
+  vector3f rotAxis = forward % forwardVector;
+  gMath.normalize(rotAxis);
+
+  angle = (glm::angleAxis(rotAngle, rotAxis.to_glm()));
+
   // http://gamedev.stackexchange.com/questions/53129/quaternion-look-at-with-up-vector
-  vector3f forward_l = (target - Position()).normalize();
+  /*vector3f forward_l = (target - Position()).normalize();
   vector3f forward_w(1, 0, 0);
   vector3f axis  = forward_l % forward_w;
   float angle1 = acos(forward_l * forward_w);
@@ -516,15 +540,15 @@ void CComponent_Transform::LookAt(vector3f target, vector3f up)
   vector3f     axis2  = up_l % up_w;
   float        angle2 = acos(up_l * up_w);
 
-  /*mx::Vector3f third2 = axis2 % up_w;
-  if (third2 * up_l < 0)
-  {
-    angle2 = - angle2;
-  }*/
+//  mx::Vector3f third2 = axis2 % up_w;
+//  if (third2 * up_l < 0)
+//  {
+//    angle2 = - angle2;
+//  }
   //glm::quat q2 = mx::axis_angle_to_quaternion(angle2, axis2);
   glm::quat q2 = glm::angleAxis(angle2, axis2.to_glm());
 
-  this->angle = (q2 * q1);
+  this->angle = (q2 * q1);*/
 
   /*vector3f current_pos = Position();
   vector3f direction(x - current_pos.x, y - current_pos.y, z - current_pos.z);
@@ -564,6 +588,21 @@ void CComponent_Transform::LookAt(vector3f target, vector3f up)
 
   //CSystem_Math::quat targetOrientation = rot2 * rot1; // remember, in reverse order.
   angle = glm::normalize(rot2 * rot1);*/
+}
+
+vector3f CComponent_Transform::up()
+{
+
+}
+
+vector3f CComponent_Transform::left()
+{
+
+}
+
+vector3f CComponent_Transform::forward()
+{
+
 }
 
 /*void CComponent_Transform::ApplyParentTransform()

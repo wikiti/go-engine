@@ -2,6 +2,7 @@
 #define __COMPONENT_TRANSFORM_H_
 
 #include "_globals.h"
+#include "systems/_other.h"
 #include "components/_component.h"
 
 class CComponent_Transform: public CComponent
@@ -87,7 +88,7 @@ class CComponent_Transform: public CComponent
     {
       LookAt(target.x, target.y, target.z);
     }*/
-    void LookAt(vector3f target, vector3f up_vector = vector3f(0.f, 1.f, 0.f));
+    void LookAt(vector3f target, vector3f up_vector = gMath.Y_AXIS, vector3f forward_vector = gMath.Z_AXIS);
     void LookAt(GLfloat x, GLfloat y, GLfloat z);
 
     void ApplyTransform();
@@ -115,6 +116,9 @@ class CComponent_Transform: public CComponent
       if(z >= 360 ) z = z - 360;
     }
 
+    vector3f up();
+    vector3f left();
+    vector3f forward();
 
 //    Por hacer: Posiciones globales y locales
     vector3f_t Position();
