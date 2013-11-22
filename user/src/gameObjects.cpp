@@ -58,6 +58,9 @@ bool SetGameObjects_Instance1()
   camara_main->SetBehaviourFunction(&Camara_main_behaviour);
   //camara_second->SetEventBehaviourFunction(&Camara_second_movimiento);
   cubo_second->SetKeyEventBehaviourFunction(&Cubo_second_movimiento);
+  cubo_third->SetBehaviourFunction(&Cubo_third_behaviour);
+
+
   hada->SetBehaviourFunction(&Hada_movimiento);
   DefineTramsformByVar("GO_HADA");
 
@@ -135,6 +138,11 @@ void Cubo_main_movimiento(CGameObject* gameObject)
     {
       gameObject->transform()->SetAngle(0, 0, 45);
     }
+//    cout << "Cubo vectors:" << endl;
+//    cout << "X: " << gameObject->transform()->left() << endl;
+//    cout << "Y: " << gameObject->transform()->up() << endl;
+//    cout << "Z: " << gameObject->transform()->forward() << endl;
+//    cout << "--------------------------------------" << endl;
   }
   else if(gKeyboardState[SDL_SCANCODE_LALT])
   {
@@ -347,6 +355,11 @@ void Cubo_second_cout(CGameObject* gameObject)
   cout << "Cubo_second GPOS: " << gameObject->transform()->Position() << endl;
   cout << "Cubo_second LPOS: " << gameObject->transform()->LPosition() << endl;
   cout << "----------------------------------------------------" << endl;
+}
+
+void Cubo_third_behaviour(CGameObject* gameObject)
+{
+  gameObject->transform()->LookAt(gGameObjects["camara_main"]->transform()->Position());
 }
 
 void Camara_second_movimiento(CGameObject* gameObject)

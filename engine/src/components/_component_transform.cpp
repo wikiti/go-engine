@@ -67,7 +67,7 @@ vector3f CComponent_Transform::EulerAngles()
   GLfloat ny = _RAD_TO_DEG(ea.y);
   GLfloat nz = _RAD_TO_DEG(ea.z);
 
-  NormalizeAngles(nx, ny, nz);
+  gMath.NormalizeAngles(nx, ny, nz);
   return vector3f(nx, ny, nz);
   // Necesario?
 }
@@ -101,7 +101,7 @@ void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
   if(!enabled) return;
 
   // Como Rotate(), sólo que primero se aplica la rotación, y luego la orientación (mientras que en Rotate se aplica primero la orientación y luego la rotación).
-  NormalizeAngles(x, y, z);
+  gMath.NormalizeAngles(x, y, z);
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = angle * glm::quat(EulerAngles);
@@ -212,7 +212,7 @@ void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
 {
   if(!enabled) return;
 
-  NormalizeAngles(x, y, z);
+  gMath.NormalizeAngles(x, y, z);
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = glm::quat(EulerAngles) * angle;
@@ -293,7 +293,7 @@ void CComponent_Transform::SetAngle(GLfloat x, GLfloat y, GLfloat z)
 {
   if(!enabled) return;
 
-  NormalizeAngles(x, y, z);
+  gMath.NormalizeAngles(x, y, z);
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = glm::quat(EulerAngles);
@@ -592,17 +592,26 @@ void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward
 
 vector3f CComponent_Transform::up()
 {
+  glm::vec3 y_axis(0.f, 1.f, 0.f);
 
+  glm::vec3 out = glm::rotate(angle, y_axis);
+  return vector3f(out.x, out.y, out.z);
 }
 
 vector3f CComponent_Transform::left()
 {
+  glm::vec3 x_axis(1.f, 0.f, 0.f);
 
+  glm::vec3 out = glm::rotate(angle, x_axis);
+  return vector3f(out.x, out.y, out.z);
 }
 
 vector3f CComponent_Transform::forward()
 {
+  glm::vec3 z_axis(0.f, 0.f, 1.f);
 
+  glm::vec3 out = glm::rotate(angle, z_axis);
+  return vector3f(out.x, out.y, out.z);
 }
 
 /*void CComponent_Transform::ApplyParentTransform()

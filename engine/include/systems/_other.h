@@ -86,6 +86,17 @@ class CSystem_Math: public CSystem
     }
 
     // trigonometría
+    inline void NormalizeAngles(GLfloat &deg_x, GLfloat &deg_y, GLfloat &deg_z)
+    {
+      if(deg_x < 0 ) deg_x = 360 + deg_x;
+      if(deg_y < 0 ) deg_y = 360 + deg_y;
+      if(deg_z < 0 ) deg_z = 360 + deg_z;
+
+      if(deg_x >= 360 ) deg_x = deg_x - 360;
+      if(deg_y >= 360 ) deg_y = deg_y - 360;
+      if(deg_z >= 360 ) deg_z = deg_z - 360;
+    }
+
 
     float rad_to_deg(float rad)
     {

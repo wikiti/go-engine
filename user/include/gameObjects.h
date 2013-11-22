@@ -15,6 +15,8 @@ void Camara_second_after_render(CGameObject* gameObject);
 void Cubo_main_movimiento(CGameObject* gameObject);
 void Cubo_second_movimiento(CGameObject* gameObject);
 void Cubo_second_cout(CGameObject* gameObject);
+void Cubo_third_behaviour(CGameObject* gameObject);
+
 void Camara_main_behaviour(CGameObject* gameObject);
 void Camara_main_movimiento(CGameObject* gameObject);
 void Camara_second_movimiento(CGameObject* gameObject);
