@@ -238,6 +238,9 @@ void CGameObject::OnRender()
   if(GetComponent<CComponent_Mesh_Render>())
     GetComponent<CComponent_Mesh_Render>()->OnRender();
 
+  if(GetComponent<CComponent_Particle_Emitter>())
+    GetComponent<CComponent_Particle_Emitter>()->OnRender();
+
   // Dummys
   if(GetComponent<CComponent_Dummy1>())
     GetComponent<CComponent_Dummy1>()->OnRender();

@@ -16,11 +16,11 @@ class CComponent_Particle_Emitter: public CComponent
 
       private:
         bool active;
-        GLfloat live, fade;
+        GLfloat life;//, fade;
 
         colorf_t color;
-        vector3f_t position, velocity, aceleration;
-        GLfloat angle, angle_velocity, angle_aceleration;
+        vector3f_t position, velocity, acceleration;
+        GLfloat angle, angle_velocity, angle_acceleration;
         vector3f_t scale, scale_factor;
 
         // ¿?
@@ -28,28 +28,55 @@ class CComponent_Particle_Emitter: public CComponent
         //void OnLoop();
     };
 
-    vector<CParticle> particles;
+    vector<CParticle*> particles;
+
+    void NewParticle(CParticle* p);
+
+  public:
+    void SetNumParticles(uint n)
+    {
+      if(n) particles.resize(n);
+    }
+
+    uint GetNumParticles()
+    {
+      return particles.size();
+    }
+
+    // Valores maximos y minimos iniciales (start values) y valores máximos y mínimos por iteración.
 
     // Se podrían usar varios materiales, con una probabilidad P(X)c[0.f, 1.f] de que una particula use el material X
-    string particle_material_name;
+    string material_name;
 
     // Usado para CSystem_Math::random_vector(direction, angle_spreed);
-    vector3f_t direction;
-    GLfloat angle_spreed;
     //CSystem_Math::cone_t spread_cone;
 
     // Propiedades del "emisor" de partículas
     bool freeze; // Congelar partículas.
     bool stop;   // Dejar de emitir partículas.
 
+    // Values
+    vector3f_t direction;
+    GLfloat angle_spreed;
+
     GLfloat max_vel, min_vel;
     GLfloat max_angle_vel, min_angle_vel;
     GLfloat max_scale, min_scale;
+    //GLfloat max_live_time, min_live_time;
 
-    // max/min_position, max/min_angle, max/min_scale_factor...
+    // Start values
+    GLfloat start_max_life_time, start_min_life_time;
+    GLfloat start_max_distance, start_min_distance;
+    GLfloat start_max_angle, start_min_angle;
+    GLfloat start_max_angle_vel, start_min_angle_vel;
+    GLfloat start_max_vel, start_min_vel;
+    GLfloat start_max_scale, start_min_scale;
+    GLfloat start_max_scale_factor, start_min_scale_factor;
+
+    colorf_t color;
+    vector3f gravity;
 
     // Para cambiar el nuevo color de las partículas
-    colorf_t color;
 
   private:
     static int GetID() { return components::particle_emitter; }
@@ -63,11 +90,20 @@ class CComponent_Particle_Emitter: public CComponent
 
   public:
     CComponent_Particle_Emitter(){};
-    CComponent_Particle_Emitter(CGameObject* gameObject){};
-    ~CComponent_Particle_Emitter(){};
+    CComponent_Particle_Emitter(CGameObject* gameObject);
+    ~CComponent_Particle_Emitter();
 
-    void OnRender(){};
-    void OnLoop(){};
+    void Start();
+
+    void Stop();
+    void Resume();
+
+    void Freeze();
+    void UnFreeze();
+
+    // Usamos glBegin() y glEnd() en vez de VBOs, ya que
+    void OnRender();
+    void OnLoop();
 };
 
 BOOST_CLASS_EXPORT_KEY( CComponent_Particle_Emitter );

@@ -89,7 +89,7 @@ class CComponent_Transform: public CComponent
       LookAt(target.x, target.y, target.z);
     }*/
     void LookAt(vector3f target, vector3f up_vector = gMath.Y_AXIS, vector3f forward_vector = gMath.Z_AXIS);
-    void LookAt(GLfloat x, GLfloat y, GLfloat z);
+    void LookAt(GLfloat x, GLfloat y, GLfloat z, vector3f up_vector = gMath.Y_AXIS, vector3f forward_vector = gMath.Z_AXIS);
 
     void ApplyTransform();
 

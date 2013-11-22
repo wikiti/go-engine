@@ -199,6 +199,16 @@ class CSystem_Math: public CSystem
       return (float)rand()/RAND_MAX;
     }
 
+    inline float random(float a, float b)
+    {
+      return random()*(b-a) + a;
+    }
+
+    inline int random(int a, int b)
+    {
+      return (int)(random()*(b-a)) + a;
+    }
+
     // vector
 
   public:
@@ -227,46 +237,27 @@ class CSystem_Math: public CSystem
 
     typedef glm::quat quat;
 
-    quat RotationBetweenVectors(vector3f start, vector3f dest)
+    quat LookAt(vector3f position, vector3f target, vector3f up = vector3f(0.f, 1.f, 0.f), vector3f forward = vector3f(0.f, 0.f, 1.f))
     {
-      normalize(start);
-      normalize(dest);
+      //http://stackoverflow.com/questions/12435671/quaternion-lookat-function
+      vector3f forwardVector = (target - position).normalize();
 
-      float cosTheta = start.dot_product(dest);
-      vector3f rotationAxis;
+      float dot = forward * forwardVector;
 
-      if (cosTheta < -1 + 0.001f){
-            // special case when vectors in opposite directions:
-            // there is no "ideal" rotation axis
-            // So guess one; any will do as long as it's perpendicular to start
-        rotationAxis = cross_product(Z_AXIS, start);
-        if (glm::length2(rotationAxis.to_glm()) < 0.01 ) // bad luck, they were parallel, try again!
-            rotationAxis = cross_product(X_AXIS, start);
-
-        normalize(rotationAxis);
-        return glm::angleAxis(180.0f, rotationAxis.to_glm());
+      if (abs(dot - (-1.0f)) < 0.000001f)
+      {
+        return glm::angleAxis(3.1415926535897932f, up.to_glm());
+      }
+      if (abs(dot - (1.0f)) < 0.000001f)
+      {
+        return glm::quat();
       }
 
-      rotationAxis = cross_product(start, dest);
+      float rotAngle = (float)acos(dot);
+      vector3f rotAxis = forward % forwardVector;
+      normalize(rotAxis);
 
-      float s = sqrt( (1+cosTheta)*2 );
-      float invs = 1 / s;
-
-      return quat(
-        s * 0.5f,
-        rotationAxis.x * invs,
-        rotationAxis.y * invs,
-        rotationAxis.z * invs
-      );
-    }
-
-    vector3f transform(glm::quat& q, vector3f v)
-    {
-       glm::quat tmp(0.0, v.to_glm());
-
-       tmp = (q * tmp * glm::conjugate(q));
-       //this(0);
-       return vector3f(tmp.x, tmp.y, tmp.z);
+      return glm::angleAxis(rotAngle, rotAxis.to_glm());
     }
 
 };

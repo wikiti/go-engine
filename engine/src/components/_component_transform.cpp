@@ -489,8 +489,6 @@ vector3f_t CComponent_Transform::Position()
   return vector3f(matrix[12], matrix[13], matrix[14]);
 }
 
-
-
 void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward)
 {
   //http://stackoverflow.com/questions/12435671/quaternion-lookat-function

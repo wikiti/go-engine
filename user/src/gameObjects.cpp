@@ -13,6 +13,12 @@ bool SetGameObjects_Instance1()
   CGameObject* cubo_third = gGameObjects.AddGameObject("cubo_third");
   CGameObject* hada = gGameObjects.AddGameObject("hada");
 
+  CGameObject* particle_emitter = gGameObjects.AddGameObject("particle_emitter");
+  particle_emitter->AddComponent<CComponent_Particle_Emitter>();
+  particle_emitter->GetComponent<CComponent_Particle_Emitter>()->SetNumParticles(100);
+  particle_emitter->GetComponent<CComponent_Particle_Emitter>()->material_name = "smoke1";
+  particle_emitter->GetComponent<CComponent_Particle_Emitter>()->Start();
+
   CGameObject* random_vector = gGameObjects.AddGameObject("random_vector");
   random_vector->AddComponent<CComponent_Dummy3>();
 

@@ -251,6 +251,14 @@ class CGameObject
 
       return (CComponent_Mesh_Render*)components[components::mesh_render];
     }
+
+    inline CComponent_Particle_Emitter* particleEmitter()
+    {
+      if(components.find(components::particle_emitter) == components.end())
+        components.insert(pair<int, CComponent*>(components::particle_emitter, new CComponent_Particle_Emitter(this)));
+
+      return (CComponent_Particle_Emitter*)components[components::particle_emitter];
+    }
 };
 
 template <class Type>
