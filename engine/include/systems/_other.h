@@ -79,6 +79,54 @@ class CSystem_Math: public CSystem
 
     void Close() {}
 
+    // Geometría
+    typedef struct cone_t
+    {
+      vector3f direction;
+      GLfloat angle;
+    } cone_t;
+
+    vector3f random_vector()
+    {
+      // http://www.gamedev.net/topic/499972-generate-a-random-unit-vector/
+      float theta = random() * 2.0f * PI;
+      float r = sqrt( random() );
+
+      float random_value = 1.f;
+      if(rand() < 0.5) random_value = -1.f;
+
+      float z = sqrt( 1.0f - r*r ) * random_value;
+      return vector3f( r * std::cos(theta), r * std::sin(theta), z );
+    }
+
+    vector3f random_vector(cone_t cone)
+    {
+      return random_vector(cone.direction, cone.angle);
+    }
+
+    inline vector3f random_vector(vector3f direction, GLfloat angle_degrees)
+    {
+      // http://stackoverflow.com/questions/2659257/perturb-vector-by-some-angle
+      NormalizeAngle(angle_degrees);
+
+      vector3f rand_vector = random_vector();
+      vector3f cross_vector = (direction % rand_vector).normalize();
+
+      float s = random();
+      float r = random();
+
+      float h = cos( angle_degrees );
+
+      float phi = 2 * PI * s;
+      float z = h + ( 1 - h ) * r;
+      float sinT = sqrt( 1 - z * z );
+
+      float x = std::cos( phi ) * sinT;
+      float y = std::sin( phi ) * sinT;
+
+      return (rand_vector * x + cross_vector * y + direction * z).normalize();
+    }
+
     // Aritmética
     float abs(float val)
     {
@@ -89,14 +137,20 @@ class CSystem_Math: public CSystem
     inline void NormalizeAngles(GLfloat &deg_x, GLfloat &deg_y, GLfloat &deg_z)
     {
       if(deg_x < 0 ) deg_x = 360 + deg_x;
-      if(deg_y < 0 ) deg_y = 360 + deg_y;
-      if(deg_z < 0 ) deg_z = 360 + deg_z;
+      else if(deg_x >= 360 ) deg_x = deg_x - 360;
 
-      if(deg_x >= 360 ) deg_x = deg_x - 360;
-      if(deg_y >= 360 ) deg_y = deg_y - 360;
-      if(deg_z >= 360 ) deg_z = deg_z - 360;
+      if(deg_y < 0 ) deg_y = 360 + deg_y;
+      else if(deg_y >= 360 ) deg_y = deg_y - 360;
+
+      if(deg_z < 0 ) deg_z = 360 + deg_z;
+      else if(deg_z >= 360 ) deg_z = deg_z - 360;
     }
 
+    inline void NormalizeAngle(GLfloat &deg)
+    {
+      if(deg < 0 ) deg = 360 + deg;
+      else if(deg >= 360 ) deg = deg - 360;
+    }
 
     float rad_to_deg(float rad)
     {
@@ -110,17 +164,17 @@ class CSystem_Math: public CSystem
 
     float cos(float degrees)
     {
-      return std::cos(_RAD_TO_DEG(degrees));
+      return std::cos(_DEG_TO_RAD(degrees));
     }
 
     float sin(float degrees)
     {
-      return std::sin(_RAD_TO_DEG(degrees));
+      return std::sin(_DEG_TO_RAD(degrees));
     }
 
     float tan(float degrees)
     {
-      return std::tan(_RAD_TO_DEG(degrees));
+      return std::tan(_DEG_TO_RAD(degrees));
     }
 
     float acos(float radians)
@@ -140,7 +194,7 @@ class CSystem_Math: public CSystem
 
     // ...
 
-    float random()
+    inline float random()
     {
       return (float)rand()/RAND_MAX;
     }

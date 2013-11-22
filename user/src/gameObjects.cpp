@@ -13,6 +13,9 @@ bool SetGameObjects_Instance1()
   CGameObject* cubo_third = gGameObjects.AddGameObject("cubo_third");
   CGameObject* hada = gGameObjects.AddGameObject("hada");
 
+  CGameObject* random_vector = gGameObjects.AddGameObject("random_vector");
+  random_vector->AddComponent<CComponent_Dummy3>();
+
   CGameObject* p1 = gGameObjects.AddGameObject("padre1");
   CGameObject* h1 = gGameObjects.AddGameObject("hijo1");
   CGameObject* h11 = gGameObjects.AddGameObject("hijo11");

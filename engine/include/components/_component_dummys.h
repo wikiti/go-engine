@@ -49,6 +49,55 @@ class CComponent_Dummy2: public CComponent
     void OnRender();
 };
 
+class CComponent_Dummy3: public CComponent
+{
+  private:
+    friend class CSystem_Render;
+    friend class CGameObject;
+
+  private:
+    static int GetID() { return components::dummy3; }
+
+    vector3f direction;
+    vector3f current_random;
+    vector3f another_random;
+
+    vector<vector3f> random_array;
+
+    float angle;
+
+  protected:
+
+#define __RANDOM_ARRAY_SIZE 1000
+
+  public:
+    CComponent_Dummy3()
+    {
+      angle = 45;
+      direction = current_random = vector3f(0.f, 1.f, 0.f);
+      another_random(1.f, 0.f, 0.f);
+      random_array.resize(__RANDOM_ARRAY_SIZE);
+      for(uint i = 0; i < __RANDOM_ARRAY_SIZE; i++)
+        random_array[i] = gMath.random_vector(direction, angle);
+    };
+
+    CComponent_Dummy3(CGameObject* gameObject): CComponent(gameObject)
+    {
+      angle = 45;
+      direction = current_random = vector3f(0.f, 1.f, 0.f);
+      another_random(1.f, 0.f, 0.f);
+
+      random_array.resize(__RANDOM_ARRAY_SIZE);
+      for(uint i = 0; i < __RANDOM_ARRAY_SIZE; i++)
+        random_array[i] = gMath.random_vector(direction, angle);
+    };
+
+    ~CComponent_Dummy3(){};
+
+    void OnRender();
+    void OnEvent();
+};
+
 BOOST_CLASS_EXPORT_KEY( CComponent_Dummy1 );
 
 #endif /* __COMPONENT_CAMERA_DUMMYS_H_ */

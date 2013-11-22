@@ -282,6 +282,12 @@ typedef struct vector3f_t
     return cross_product(v);
   }
 
+  void operator()(GLfloat x, GLfloat y, GLfloat z)
+  {
+    this->x = x;
+    this->y = y;
+    this->z = z;
+  }
 
 
   float operator[](int pos)

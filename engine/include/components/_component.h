@@ -7,7 +7,7 @@ namespace components
 {
   //   enum components { base = 0, camera = 0x01, dummy1 = 0x02, transform = 0x04};
   // ¿Usar esto como flags para pasarle a CGameObject?
-  enum components { base = 0, camera, mesh_render, dummy1, dummy2, transform, __not_defined};
+  enum components { base = 0, camera, mesh_render, particle_emitter, dummy1, dummy2, dummy3, transform, __not_defined};
 
   extern const char* components_s[];
   // Añadir componente "script" al final, para tener script+1, script+2, script+3... Y diferenciarlos por sus nombres, o por su orden de añadido

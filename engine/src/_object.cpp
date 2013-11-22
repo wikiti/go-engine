@@ -245,6 +245,9 @@ void CGameObject::OnRender()
   if(GetComponent<CComponent_Dummy2>())
     GetComponent<CComponent_Dummy2>()->OnRender();
 
+  if(GetComponent<CComponent_Dummy3>())
+    GetComponent<CComponent_Dummy3>()->OnRender();
+
   CallRenderFunction();
 }
 
