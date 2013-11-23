@@ -31,6 +31,7 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
 
   start_min_scale = start_max_scale = 1.f;
   start_max_scale_factor = start_min_scale_factor = 1.f;
+  start_max_angle_vel = start_min_angle_vel = 15;
 
   max_particles = 100;
   particles.resize(0);
@@ -127,25 +128,21 @@ void CComponent_Particle_Emitter::OnRender()
 
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(material_name)->GetID());
 
+  //vector3f camera_position = gSystem_Render.GetCurrentCamera()->transform()->Position();
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
     glPushMatrix();
 
-
-    GLenum active_matrix;
-    double MV[16];
-
-
-    glGetDoublev(GL_MODELVIEW_MATRIX, MV);
-
-    makebillboard_mat4x4(MV, MV);
-
-    glLoadMatrixd(MV);
+    //double MV[16];
+    //glGetDoublev(GL_MODELVIEW_MATRIX, MV);
+    //makebillboard_mat4x4(MV, MV);
+    //glLoadMatrixd(MV);
 
     glColor4f((*it)->color.r, (*it)->color.b, (*it)->color.b, (*it)->color.a*(*it)->life);
-    //glColor4f((*it)->color.r, (*it)->color.g, (*it)->color.b, 1.f);
 
-    //glRotatef((*it)->angle, 0.f, 0.f, 1.f);
+    //vector3f to_camera = camera_position - (gameObject->transform()->Position() + (*it)->position);
+
+    //glRotatef((*it)->angle, to_camera.x, to_camera.y, to_camera.z);
     //glScalef((*it)->scale.x, (*it)->scale.y, (*it)->scale.z);
 
     glTranslatef((*it)->position.x, (*it)->position.y, (*it)->position.z);
@@ -156,13 +153,6 @@ void CComponent_Particle_Emitter::OnRender()
       glTexCoord2d(1,0); glVertex3f( 0.25f,-0.25f, 0);
       glTexCoord2d(0,0); glVertex3f(-0.25f,-0.25f, 0);
     glEnd();
-
-//    glBegin(GL_TRIANGLE_STRIP);
-//      glTexCoord2d(1,1); glVertex3f((*it)->position.x+0.25f,(*it)->position.y+0.25f,(*it)->position.z);
-//      glTexCoord2d(0,1); glVertex3f((*it)->position.x-0.25f,(*it)->position.y+0.25f,(*it)->position.z);
-//      glTexCoord2d(1,0); glVertex3f((*it)->position.x+0.25f,(*it)->position.y-0.25f,(*it)->position.z);
-//      glTexCoord2d(0,0); glVertex3f((*it)->position.x-0.25f,(*it)->position.y-0.25f,(*it)->position.z);
-//    glEnd();
 
     glPopMatrix();
   }
@@ -181,10 +171,12 @@ void CComponent_Particle_Emitter::OnLoop()
     (*it)->position += (*it)->velocity * gTime.deltaTime_s();
     (*it)->velocity += (*it)->acceleration * gTime.deltaTime_s();
     (*it)->color += (color_adder * gTime.deltaTime_s());
+    gMath.NormalizeColor((*it)->color);
+
+    //(*it)->angle += (*it)->angle_velocity * gTime.deltaTime_s();
+    //gMath.NormalizeAngle((*it)->angle);
 
     (*it)->life -= gTime.deltaTime_s();
-
-    gMath.NormalizeColor((*it)->color);
 
     if((*it)->life < 0 && !stop)
     {

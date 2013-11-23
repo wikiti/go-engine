@@ -14,6 +14,7 @@ class CSystem_Render: public CSystem
     SDL_Window* window;
     SDL_GLContext GLcontext;
     vector<CGameObject*> camera_list;
+    int current_camera;
 
     /*
     struct gameObject_Render_count_t
@@ -64,6 +65,19 @@ class CSystem_Render: public CSystem
     virtual void Close();
 
     // Usar booleanos (o algo)
+
+    CGameObject* GetCurrentCamera()
+    {
+      if(current_camera < 0 || !camera_list.size() )
+        return NULL;
+
+      return camera_list[current_camera];
+    }
+
+    int GetCurrentCameraIndex()
+    {
+      return current_camera;
+    }
 
     void SetMainCamera(CGameObject* camera);
     void SetMainCamera(const string& camera);

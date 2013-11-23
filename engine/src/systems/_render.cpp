@@ -78,6 +78,8 @@ bool CSystem_Render::Init()
     return false;
   }
 
+  current_camera = -1;
+
   /*if(!glewIsSupported("GL_EXT_texture_env_combine"))
   {
     gSystem_Debug.error("From CSystem_Render: GLEW error: GL_EXT_texture_env_combine NOT supported!");
@@ -189,6 +191,8 @@ void CSystem_Render::OnRender()
 {
   Clear();
 
+  current_camera = 0;
+
   for(vector<CGameObject*>::iterator it = camera_list.begin(); it < camera_list.end(); it++)
   {
     // Disabled camera
@@ -249,7 +253,10 @@ void CSystem_Render::OnRender()
 	  }
 
     cam->AfterRender();
+    current_camera++;
+
   }
+  current_camera = -1;
 }
 
 void CSystem_Render::RenderGrid(int rows, int cols)
