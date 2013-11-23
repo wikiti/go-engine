@@ -37,6 +37,9 @@ bool CSystem_Render::Init()
   glEnable(GL_TEXTURE_2D);
   glShadeModel(GL_SMOOTH);
 
+  glEnable( GL_BLEND );
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
   glClearColor(0, 0, 0, 1.f);
   glClearDepth(1.0f);
 
@@ -188,6 +191,10 @@ void CSystem_Render::OnRender()
 
   for(vector<CGameObject*>::iterator it = camera_list.begin(); it < camera_list.end(); it++)
   {
+    // Disabled camera
+    if(!(*it)->IsEnabled())
+      break;
+
     CComponent_Camera* cam = (*it)->GetComponent<CComponent_Camera>();
 
     cam->BeforeRender();

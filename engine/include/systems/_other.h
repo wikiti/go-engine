@@ -64,7 +64,12 @@ extern CSystem_Time& gTime;
 class CSystem_Math: public CSystem
 {
   public:
-    const float PI = M_PI;
+    static const float PI;
+
+    static const vector3f X_AXIS;
+    static const vector3f Y_AXIS;
+    static const vector3f Z_AXIS;
+    static const vector3f ORIGIN;
 
   public:
     CSystem_Math(): CSystem(){}
@@ -86,45 +91,19 @@ class CSystem_Math: public CSystem
       GLfloat angle;
     } cone_t;
 
-    vector3f random_vector()
+    void NormalizeColor(colorf_t& color)
     {
-      // http://www.gamedev.net/topic/499972-generate-a-random-unit-vector/
-      float theta = random() * 2.0f * PI;
-      float r = sqrt( random() );
+      if(color.r < 0) color.r = 0.f;
+      else if(color.r > 1.f) color.r = 1.f;
 
-      float random_value = 1.f;
-      if(rand() < 0.5) random_value = -1.f;
+      if(color.g < 0) color.g = 0.f;
+      else if(color.g > 1.f) color.g = 1.f;
 
-      float z = sqrt( 1.0f - r*r ) * random_value;
-      return vector3f( r * std::cos(theta), r * std::sin(theta), z );
-    }
+      if(color.b < 0) color.b = 0.f;
+      else if(color.b > 1.f) color.b = 1.f;
 
-    vector3f random_vector(cone_t cone)
-    {
-      return random_vector(cone.direction, cone.angle);
-    }
-
-    inline vector3f random_vector(vector3f direction, GLfloat angle_degrees)
-    {
-      // http://stackoverflow.com/questions/2659257/perturb-vector-by-some-angle
-      NormalizeAngle(angle_degrees);
-
-      vector3f rand_vector = random_vector();
-      vector3f cross_vector = (direction % rand_vector).normalize();
-
-      float s = random();
-      float r = random();
-
-      float h = cos( angle_degrees );
-
-      float phi = 2 * PI * s;
-      float z = h + ( 1 - h ) * r;
-      float sinT = sqrt( 1 - z * z );
-
-      float x = std::cos( phi ) * sinT;
-      float y = std::sin( phi ) * sinT;
-
-      return (rand_vector * x + cross_vector * y + direction * z).normalize();
+      if(color.a < 0) color.a = 0.f;
+      else if(color.a > 1.f) color.a = 1.f;
     }
 
     // Aritmética
@@ -212,9 +191,6 @@ class CSystem_Math: public CSystem
     // vector
 
   public:
-    const vector3f X_AXIS = vector3f(1.f, 0.f, 0.f);
-    const vector3f Y_AXIS = vector3f(0.f, 1.f, 0.f);
-    const vector3f Z_AXIS = vector3f(0.f, 0.f, 1.f);
 
     void normalize(vector3f& v)
     {
@@ -258,6 +234,59 @@ class CSystem_Math: public CSystem
       normalize(rotAxis);
 
       return glm::angleAxis(rotAngle, rotAxis.to_glm());
+    }
+
+    vector3f random_vector()
+    {
+      // http://www.gamedev.net/topic/499972-generate-a-random-unit-vector/
+      float theta = random() * 2.0f * PI;
+      float r = sqrt( random() );
+
+      float random_value = 1.f;
+      if(rand() < 0.5) random_value = -1.f;
+
+      float z = sqrt( 1.0f - r*r ) * random_value;
+      return vector3f( r * std::cos(theta), r * std::sin(theta), z );
+    }
+
+    vector3f random_vector(cone_t cone)
+    {
+      return random_vector(cone.direction, cone.angle);
+    }
+
+    inline vector3f random_vector(vector3f direction, GLfloat angle_degrees)
+    {
+      // http://stackoverflow.com/questions/2659257/perturb-vector-by-some-angle
+      NormalizeAngle(angle_degrees);
+
+      vector3f rand_vector = random_vector();
+      vector3f cross_vector = (direction % rand_vector).normalize();
+
+      float s = random();
+      float r = random();
+
+      float h = cos( angle_degrees );
+
+      float phi = 2 * PI * s;
+      float z = h + ( 1 - h ) * r;
+      float sinT = sqrt( 1 - z * z );
+
+      float x = std::cos( phi ) * sinT;
+      float y = std::sin( phi ) * sinT;
+
+      return (rand_vector * x + cross_vector * y + direction * z).normalize();
+    }
+
+    // Random point - Sphere
+    vector3f random_point(GLfloat sphere_radius, vector3f origin = ORIGIN)
+    {
+      return origin + (random_vector(Y_AXIS, 180)*(random()*sphere_radius));
+    }
+
+    // Random point - Cuboid
+    vector3f random_point(vector3f dimensions, vector3f origin = ORIGIN)
+    {
+      return vector3f(origin.x + random()*dimensions.x, origin.y + random()*dimensions.y, origin.z + random()*dimensions.z);
     }
 
 };

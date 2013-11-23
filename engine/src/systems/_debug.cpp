@@ -355,6 +355,8 @@ void CSystem_Debug::OnRender()
   glClearColor(0.f, 0.f, 0.f, 1.f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+  glPushAttrib(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
   glBlendFunc(GL_SRC_ALPHA,GL_ONE);
   glEnable(GL_BLEND);
 
@@ -376,7 +378,8 @@ void CSystem_Debug::OnRender()
   glColor4f(0.75f, 0.75f, 0.75f, 1.f);
   print(__CSYSTEM_DEBUG_CONSOLE_X_OFFSET*3 + console_pointer_pos*10, 6, 0, "_");
 
-  glDisable(GL_BLEND);
+  //glDisable(GL_BLEND);
+  glPopAttrib();
 }
 
 void CSystem_Debug::print(GLint x, GLint y, int set, const char* fmt, ...)
@@ -988,9 +991,30 @@ void CSystem_Debug::Console_command__GAME_OBJECT_ENABLE(string arguments)
   string obj_name;
   ss >> obj_name;
 
+  if(obj_name == __CSYSTEM_DEBUG_KEYWORD_ALL)
+  {
+    string value;
+    ss >> value;
+
+    if(value == "1" or value == "enable")
+    {
+      gSystem_GameObject_Manager.EnableGameObjects();
+      console_msg("All game objects enabled");
+    }
+    else if(value == "0" or value == "disable")
+    {
+      gSystem_GameObject_Manager.DisableGameObjects();
+      console_msg("All game objects disabled");
+    }
+    else
+      console_warning_msg("Format is: enable_game_object <game_object_name | $ALL> < 1 | enable | 0 | disable> [r[ecursive]]");
+
+    return;
+  }
+
   if(obj_name == "")
   {
-    console_warning_msg("Format is: enable_game_object <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
+    console_warning_msg("Format is: enable_game_object <game_object_name | $ALL> < 1 | enable | 0 | disable> [r[ecursive]]");
     return;
   }
 

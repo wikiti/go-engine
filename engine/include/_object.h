@@ -112,12 +112,12 @@ class CGameObject
       behaviour = f;
     }
 
-    inline void SetEventBehaviourFunction(function_t f)
+    inline void SetEventFunction(function_t f)
     {
       event_behaviour = f;
     }
 
-    inline void SetKeyEventBehaviourFunction(function_t f)
+    inline void SetKeyEventFunction(function_t f)
     {
       keyevent_behaviour = f;
     }
@@ -137,12 +137,12 @@ class CGameObject
       if(behaviour) behaviour(this);
     }
 
-    inline void CallEventBehaviourFunction()
+    inline void CallEventFunction()
     {
       if(event_behaviour) event_behaviour(this);
     }
 
-    inline void CallKeyEventBehaviourFunction()
+    inline void CallKeyEventFunction()
     {
       if(keyevent_behaviour) keyevent_behaviour(this);
     }

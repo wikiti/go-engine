@@ -5,6 +5,12 @@
 
 bool SetGameObjects_Instance1()
 {
+  CGameObject* INVALID = NULL;
+  INVALID = gGameObjects.AddGameObject("$invalid1");
+  INVALID = gGameObjects.AddGameObject("_inva lid1");
+  INVALID = gGameObjects.AddGameObject("inva%liAd1");
+  INVALID = gGameObjects.AddGameObject("_VALID_");
+
   CGameObject* camara_main = new CGameObject("camara_main");
   gGameObjects.AddGameObject(camara_main);
   CGameObject* camara_second = gGameObjects.AddGameObject("camara_second");
@@ -14,10 +20,15 @@ bool SetGameObjects_Instance1()
   CGameObject* hada = gGameObjects.AddGameObject("hada");
 
   CGameObject* particle_emitter = gGameObjects.AddGameObject("particle_emitter");
-  particle_emitter->AddComponent<CComponent_Particle_Emitter>();
-  particle_emitter->GetComponent<CComponent_Particle_Emitter>()->SetNumParticles(100);
-  particle_emitter->GetComponent<CComponent_Particle_Emitter>()->material_name = "smoke1";
-  particle_emitter->GetComponent<CComponent_Particle_Emitter>()->Start();
+  //particle_emitter->GetComponent<CComponent_Particle_Emitter>()->SetNumParticles(100);
+  particle_emitter->particleEmitter()->material_name = "smoke1";
+  particle_emitter->particleEmitter()->max_particles = 1000;
+  particle_emitter->particleEmitter()->angle_spread = 360;
+  //particle_emitter->particleEmitter()->gravity(0, 0, 0);
+  particle_emitter->particleEmitter()->gravity(0, -5.f, 0);
+  particle_emitter->particleEmitter()->color_adder(0.f, -1.f, -1.f);
+  particle_emitter->transform()->Translate(0.f, 0.f, 5.f);
+  particle_emitter->SetEventFunction(&Particle_emitter_explosions);
 
   CGameObject* random_vector = gGameObjects.AddGameObject("random_vector");
   random_vector->AddComponent<CComponent_Dummy3>();
@@ -62,13 +73,12 @@ bool SetGameObjects_Instance1()
   camara_second->camera()->viewport.height = camara_second->camera()->viewport.width = 0.3f;
   camara_second->camera()->background_color(0, 0.5f, 0.75f, 1.f);
 
-  cubo_main->SetKeyEventBehaviourFunction(&Cubo_main_movimiento);
-  camara_main->SetKeyEventBehaviourFunction(&Camara_main_movimiento);
+  cubo_main->SetKeyEventFunction(&Cubo_main_movimiento);
+  camara_main->SetKeyEventFunction(&Camara_main_movimiento);
   camara_main->SetBehaviourFunction(&Camara_main_behaviour);
   //camara_second->SetEventBehaviourFunction(&Camara_second_movimiento);
-  cubo_second->SetKeyEventBehaviourFunction(&Cubo_second_movimiento);
+  cubo_second->SetKeyEventFunction(&Cubo_second_movimiento);
   cubo_third->SetBehaviourFunction(&Cubo_third_behaviour);
-
 
   hada->SetBehaviourFunction(&Hada_movimiento);
   DefineTramsformByVar("GO_HADA");
@@ -274,7 +284,10 @@ void Camara_main_movimiento(CGameObject* gameObject)
       gameObject->transform()->SetAngle(0.f, 0.f, 0.f);
       //gameObject->transform()->position.y += 1.f * gTime.deltaTime_s();
     }
-    // cout << "Orientation: " << gameObject->transform()->EulerAngles() << endl;
+    if(gKeyboardState[SDL_SCANCODE_SPACE])
+    {
+      gameObject->transform()->LookAt(gGameObjects["cubo"]->transform()->Position());
+    }
   }
   else
   {
@@ -308,12 +321,6 @@ void Camara_main_movimiento(CGameObject* gameObject)
       gameObject->transform()->LTranslate(0.f, 3.f * gTime.deltaTime_s(), 0.f);
       //gameObject->transform()->position.y += 1.f * gTime.deltaTime_s();
     }
-  }
-
-  if(gKeyboardState[SDL_SCANCODE_SPACE])
-  {
-    gameObject->transform()->LookAt(gGameObjects["cubo"]->transform()->Position());
-    //gameObject->transform()->position.y += 1.f * gTime.deltaTime_s();
   }
 
   // Viewport
@@ -388,4 +395,14 @@ void Camara_second_movimiento(CGameObject* gameObject)
 void Hada_movimiento(CGameObject* gameObject)
 {
   SetTransformByVar(gameObject, "GO_HADA");
+}
+
+void Particle_emitter_explosions(CGameObject* gameObject)
+{
+  if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
+  {
+    gameObject->transform()->position = gMath.random_point(vector3f(10, 10, 0), vector3f(-5, -5, 0));
+    gameObject->particleEmitter()->Start();
+    gameObject->particleEmitter()->Stop();
+  }
 }

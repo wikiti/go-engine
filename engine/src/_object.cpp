@@ -199,7 +199,7 @@ void CGameObject::OnEvent()
   if(!enabled)
     return;
 
-  CallEventBehaviourFunction();
+  CallEventFunction();
 
   for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
     it->second->OnEvent();
@@ -210,7 +210,7 @@ void CGameObject::OnKeyEvent()
   if(!enabled)
     return;
 
-  CallKeyEventBehaviourFunction();
+  CallKeyEventFunction();
 
   for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
     it->second->OnKeyEvent();

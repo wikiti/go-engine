@@ -13,8 +13,6 @@ bool CSystem_GameObject_Manager::Init()
   return true;
 }
 
-
-
 void CSystem_GameObject_Manager::SaveGameObjects(string file)
 {
   ofstream os;
@@ -103,6 +101,28 @@ void CSystem_GameObject_Manager::CloseGameObjects()
     it->second->Close();
 }
 
+bool CSystem_GameObject_Manager::IsNameValid(string go_name)
+{
+  /*if(go_name[0] != '_' or (go_name[0] < '0' and go_name[0] > '9') or (go_name[0] < 'A' and go_name[0] > 'Z') or (go_name[0] < 'a' and go_name[0] > 'z'))
+  {
+    gSystem_Debug.console_warning_msg("Invalid name:\"%s\" Must start with:", go_name);
+    gSystem_Debug.console_warning_msg("- An underscore  (_)");
+    gSystem_Debug.console_warning_msg("- An uppercase   (A-Z)");
+    gSystem_Debug.console_warning_msg("- A lowercase    (a-z)");
+    gSystem_Debug.console_warning_msg("- A number       (0-9)");
+    return false;
+  }*/
+  for(string::iterator it = go_name.begin(); it != go_name.end(); it++)
+    //if( (*it) != '_' or (((*it) < '0' and (*it) > '9') and ((*it) < 'A' and (*it) > 'Z') and ((*it) < 'a' and (*it) > 'z')))
+    if(!isalnum(*it) and (*it) != '_')
+    {
+      //cout << "Fail en char: " << (*it) << endl;
+      return false;
+    }
+
+  return true;
+}
+
 void CSystem_GameObject_Manager::InitGameObject(string name)
 {
   map<string, CGameObject*>::iterator it = gameObjects.find(name);
@@ -123,6 +143,12 @@ void CSystem_GameObject_Manager::CloseGameObject(string name)
 
 CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject_type type, bool init)
 {
+  if(!IsNameValid(nombre))
+  {
+    gSystem_Debug.console_warning_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", nombre.c_str());
+    return NULL;
+  }
+
   map<string, CGameObject*>::iterator it = gameObjects.find(nombre);
   if(it == gameObjects.end())
   {
@@ -148,6 +174,13 @@ CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject
 
 CGameObject* CSystem_GameObject_Manager::AddGameObject(CGameObject* go, bool init)
 {
+  if(!IsNameValid(go->GetName()))
+  {
+    gSystem_Debug.console_warning_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", go->GetName().c_str());
+
+    return NULL;
+  }
+
   map<string, CGameObject*>::iterator it = gameObjects.find(go->GetName());
   if(it != gameObjects.end() || go == NULL) // Solo lo colocamos si no existe otro o si go no es NULL
     return NULL;//return -1;
@@ -235,6 +268,13 @@ bool CSystem_GameObject_Manager::RebuildIndex()
 
 bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
 {
+  if(!IsNameValid(new_name))
+  {
+    gSystem_Debug.console_warning_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
+
+    return NULL;
+  }
+
   map<string, CGameObject*>::iterator it1 = gameObjects.find(name);
   map<string, CGameObject*>::iterator it2 = gameObjects.find(new_name);
 
@@ -268,6 +308,13 @@ bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
 
 bool CSystem_GameObject_Manager::RenameGameObject(CGameObject* go, string new_name)
 {
+  if(!IsNameValid(new_name))
+  {
+    gSystem_Debug.console_warning_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
+
+    return NULL;
+  }
+
   if(!go) return false;
 
   map<string, CGameObject*>::iterator it1 = gameObjects.find(go->GetName());
@@ -357,6 +404,24 @@ void CSystem_GameObject_Manager::SetGameObject(string name, bool state)
     it->second->SetState(state);
   else
     gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::SetGameObject: Could not find objet \"%s\"", name.c_str());
+}
+
+void CSystem_GameObject_Manager::EnableGameObjects()
+{
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+    it->second->Enable();
+}
+
+void CSystem_GameObject_Manager::DisableGameObjects()
+{
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+    it->second->Disable();
+}
+
+void CSystem_GameObject_Manager::SetGameObjects(bool state)
+{
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+    it->second->SetState(state);
 }
 
 void CSystem_GameObject_Manager::OnEvent()

@@ -33,7 +33,7 @@ class CComponent_Particle_Emitter: public CComponent
     void NewParticle(CParticle* p);
 
   public:
-    void SetNumParticles(uint n)
+    /*void SetNumParticles(uint n)
     {
       if(n) particles.resize(n);
     }
@@ -41,11 +41,12 @@ class CComponent_Particle_Emitter: public CComponent
     uint GetNumParticles()
     {
       return particles.size();
-    }
+    }*/
 
     // Valores maximos y minimos iniciales (start values) y valores máximos y mínimos por iteración.
 
     // Se podrían usar varios materiales, con una probabilidad P(X)c[0.f, 1.f] de que una particula use el material X
+    uint max_particles;
     string material_name;
 
     // Usado para CSystem_Math::random_vector(direction, angle_spreed);
@@ -57,7 +58,7 @@ class CComponent_Particle_Emitter: public CComponent
 
     // Values
     vector3f_t direction;
-    GLfloat angle_spreed;
+    GLfloat angle_spread;
 
     GLfloat max_vel, min_vel;
     GLfloat max_angle_vel, min_angle_vel;
@@ -75,6 +76,8 @@ class CComponent_Particle_Emitter: public CComponent
 
     colorf_t color;
     vector3f gravity;
+
+    colorf_t color_adder;
 
     // Para cambiar el nuevo color de las partículas
 

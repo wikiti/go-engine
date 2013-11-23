@@ -21,6 +21,7 @@ void Camara_main_behaviour(CGameObject* gameObject);
 void Camara_main_movimiento(CGameObject* gameObject);
 void Camara_second_movimiento(CGameObject* gameObject);
 
+void Particle_emitter_explosions(CGameObject* gameObject);
 
 void Hada_movimiento(CGameObject* gameObject);
 

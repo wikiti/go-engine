@@ -132,6 +132,9 @@ typedef struct colorf_t
 {
   GLfloat r, g, b, a;
 
+  //colorf_t(): r(1.f), g(1.f), b(1.f), a(1.f){};
+  colorf_t(GLfloat R = 1.f, GLfloat G = 1.f, GLfloat B = 1.f, GLfloat A = 1.f): r(R), g(G), b(B), a(A){};
+
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version)
   {
@@ -144,6 +147,21 @@ typedef struct colorf_t
     g = _g;
     b = _b;
     a = _a;
+  }
+
+  colorf_t operator*(GLfloat c)
+  {
+    return colorf_t(r*c, g*c, b*c, a*c);
+  }
+
+  colorf_t& operator+=(colorf_t c)
+  {
+    r += c.r;
+    g += c.g;
+    b += c.b;
+    a += c.a;
+
+    return *this;
   }
 
 } colorf_t;

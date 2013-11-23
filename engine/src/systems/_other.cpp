@@ -30,3 +30,10 @@ void CSystem_Time::OnLoop()
 
 CSystem_Math gSystem_Math;
 CSystem_Math& gMath = gSystem_Math;
+
+const float CSystem_Math::PI = M_PI;
+
+const vector3f CSystem_Math::X_AXIS = vector3f(1.f, 0.f, 0.f);
+const vector3f CSystem_Math::Y_AXIS = vector3f(0.f, 1.f, 0.f);
+const vector3f CSystem_Math::Z_AXIS = vector3f(0.f, 0.f, 1.f);
+const vector3f CSystem_Math::ORIGIN = vector3f(0.f, 0.f, 0.f);

@@ -52,7 +52,7 @@ output_t CComponent_Camera::Get()
 
 void CComponent_Camera::ApplyChanges()
 {
-  if(!enabled) return;
+  //if(!enabled) return;
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -99,7 +99,7 @@ void CComponent_Camera::Clear()
 
 void CComponent_Camera::SetUp()
 {
-  if(!enabled) return; // ¿?
+  //if(!enabled) return; // ¿?
 
   glMatrixMode(GL_PROJECTION);
   glLoadMatrixd(projMatrix);

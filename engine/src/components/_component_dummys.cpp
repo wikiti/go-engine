@@ -133,11 +133,13 @@ void CComponent_Dummy3::OnEvent()
     {
       angle += 15;
       gMath.NormalizeAngle(angle);
+      cout << "ANGLE:" << angle << endl;
     }
     else if(event.key.keysym.sym == SDLK_MINUS)
     {
       angle -= 15;
       gMath.NormalizeAngle(angle);
+      cout << "ANGLE:" << angle << endl;
     }
   }
 }
