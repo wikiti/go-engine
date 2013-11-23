@@ -102,6 +102,21 @@ void CComponent_Particle_Emitter::UnFreeze()
   freeze = false;
 }
 
+void makebillboard_mat4x4(double *BM, double const * const MV)
+{
+    for(size_t i = 0; i < 3; i++) {
+
+        for(size_t j = 0; j < 3; j++) {
+            BM[4*i + j] = i==j ? 1 : 0;
+        }
+        BM[4*i + 3] = MV[4*i + 3];
+    }
+
+    for(size_t i = 0; i < 4; i++) {
+        BM[12 + i] = MV[12 + i];
+    }
+}
+
 // Usamos glBegin() y glEnd() en vez de VBOs, ya que
 void CComponent_Particle_Emitter::OnRender()
 {
@@ -114,18 +129,42 @@ void CComponent_Particle_Emitter::OnRender()
 
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
+    glPushMatrix();
+
+
+    GLenum active_matrix;
+    double MV[16];
+
+
+    glGetDoublev(GL_MODELVIEW_MATRIX, MV);
+
+    makebillboard_mat4x4(MV, MV);
+
+    glLoadMatrixd(MV);
+
     glColor4f((*it)->color.r, (*it)->color.b, (*it)->color.b, (*it)->color.a*(*it)->life);
     //glColor4f((*it)->color.r, (*it)->color.g, (*it)->color.b, 1.f);
 
     //glRotatef((*it)->angle, 0.f, 0.f, 1.f);
     //glScalef((*it)->scale.x, (*it)->scale.y, (*it)->scale.z);
 
+    glTranslatef((*it)->position.x, (*it)->position.y, (*it)->position.z);
+
     glBegin(GL_TRIANGLE_STRIP);
-      glTexCoord2d(1,1); glVertex3f((*it)->position.x+0.25f,(*it)->position.y+0.25f,(*it)->position.z);
-      glTexCoord2d(0,1); glVertex3f((*it)->position.x-0.25f,(*it)->position.y+0.25f,(*it)->position.z);
-      glTexCoord2d(1,0); glVertex3f((*it)->position.x+0.25f,(*it)->position.y-0.25f,(*it)->position.z);
-      glTexCoord2d(0,0); glVertex3f((*it)->position.x-0.25f,(*it)->position.y-0.25f,(*it)->position.z);
+      glTexCoord2d(1,1); glVertex3f( 0.25f, 0.25f, 0);
+      glTexCoord2d(0,1); glVertex3f(-0.25f, 0.25f, 0);
+      glTexCoord2d(1,0); glVertex3f( 0.25f,-0.25f, 0);
+      glTexCoord2d(0,0); glVertex3f(-0.25f,-0.25f, 0);
     glEnd();
+
+//    glBegin(GL_TRIANGLE_STRIP);
+//      glTexCoord2d(1,1); glVertex3f((*it)->position.x+0.25f,(*it)->position.y+0.25f,(*it)->position.z);
+//      glTexCoord2d(0,1); glVertex3f((*it)->position.x-0.25f,(*it)->position.y+0.25f,(*it)->position.z);
+//      glTexCoord2d(1,0); glVertex3f((*it)->position.x+0.25f,(*it)->position.y-0.25f,(*it)->position.z);
+//      glTexCoord2d(0,0); glVertex3f((*it)->position.x-0.25f,(*it)->position.y-0.25f,(*it)->position.z);
+//    glEnd();
+
+    glPopMatrix();
   }
 
   //glEnable(GL_DEPTH_TEST);
