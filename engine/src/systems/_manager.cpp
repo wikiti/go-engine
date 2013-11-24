@@ -266,6 +266,21 @@ bool CSystem_GameObject_Manager::RebuildIndex()
   return true;
 }
 
+CGameObject* CSystem_GameObject_Manager::SearchGameObject(string prefix)
+{
+  map<string, CGameObject*>::const_iterator i = gameObjects.lower_bound(prefix);
+  if (i != gameObjects.end())
+  {
+      const string& key = i->first;
+      if (key.compare(0, prefix.size(), prefix) == 0)
+
+      return i->second;
+  }
+  return NULL;
+}
+
+
+
 bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
 {
   if(!IsNameValid(new_name))

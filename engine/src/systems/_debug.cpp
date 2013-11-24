@@ -12,19 +12,19 @@ void CSystem_Debug::ParseInput()
 {
   stringstream ss(input);
 
-  string comando, arguments;
-  ss >> comando;
+  string command, arguments;
+  ss >> command;
   getline(ss, arguments);
   if(arguments.size() > 1) arguments = arguments.substr(1);
 
-  map<string, command_p>::iterator it = console_commands.find(comando);
-  console_msg("> %s %s", comando.c_str(), arguments.c_str());
+  map<string, command_p>::iterator it = console_commands.find(command);
+  console_msg("> %s %s", command.c_str(), arguments.c_str());
   if(it != console_commands.end())
   {
     (this->*(it->second))(arguments);
   }
   else
-    Console_command__UNKNOWN_COMMAND(arguments);
+    Console_command__UNKNOWN_COMMAND(command);
 }
 
 bool CSystem_Debug::Init()
@@ -111,6 +111,10 @@ bool CSystem_Debug::InitCommandMap()
     // Useless
   console_commands.insert(pair<string, command_p>("save_state", &CSystem_Debug::Console_command__SAVE_STATE));
   console_commands.insert(pair<string, command_p>("load_state", &CSystem_Debug::Console_command__LOAD_STATE));
+
+    // Systems
+  console_commands.insert(pair<string, command_p>("system_time_setscale", &CSystem_Debug::Console_command__SYSTEM_TIME_SETSCALE));
+
 
     // Game objects
   console_commands.insert(pair<string, command_p>("game_object_show_tree", &CSystem_Debug::Console_command__GAME_OBJECT_SHOW_TREE));
@@ -479,7 +483,7 @@ void CSystem_Debug::console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat 
 
 void CSystem_Debug::Console_command__UNKNOWN_COMMAND(string arguments)
 {
-  console_error_msg("Unkown command: %s", input.c_str());
+  console_error_msg("Unkown command: %s", arguments.c_str());
 }
 
 void CSystem_Debug::Console_command__HELP(string arguments)
@@ -508,7 +512,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
   if(arguments == "")
   {
     console_msg("Use \"help <category>\". Categories are:");
-    console_warning_msg("general, game_objects, render");
+    console_warning_msg("general, systems, game_objects, render");
     console_warning_msg("Also, you can user <command> ?");
   }
   else if(arguments == "general")
@@ -534,6 +538,13 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("quit:                           Quits the program and save current opened files.");
     console_msg("exit:                           Aborts the program and exists.");
     console_msg("clear:                          Clears the console content.");
+  }
+  else if(arguments == "systems")
+  {
+    console_msg("Game Objects commands:");
+    console_msg("-----------------------------------------------------------------------");
+    console_msg("system_time_set_scale:          Set current time scale.");
+
   }
   else if(arguments == "game_objects")
   {
@@ -914,6 +925,28 @@ void CSystem_Debug::Console_command__SECRET_PLZ(string arguments)
   console_custom_msg(color.r, color.g, color.b, color.a, "            \\/                         \\/     \\//_____/         \\/     \\/");
 }
 
+// Systems
+void CSystem_Debug::Console_command__SYSTEM_TIME_SETSCALE(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: system_time_setscale <value>");
+    return;
+  }
+
+  stringstream ss(arguments);
+  GLfloat val;
+  ss >> val;
+
+  if(val >= 0)
+  {
+    gSystem_Time.SetTimeScale(val);
+    console_warning_msg("Time scale set to %f", val);
+  }
+  else
+    console_warning_msg("Value must be greather than 0");
+}
+
 // Game Objects
 void CSystem_Debug::Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level)
 {
@@ -925,10 +958,17 @@ void CSystem_Debug::Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CG
 
   // Se mostrarán hijos que no pertenezcan al manager de padres que sí pertenezca, recursivamente.
 
-  if(go->IsEnabled() && go->GetName()[0] != '_' && go->GetName()[1] != '_')
-    gSystem_Debug.console_msg("%s- %s", c.c_str(), go->GetName().c_str());
-  else if(go->GetName()[0] != '_' && go->GetName()[1] != '_')
-    gSystem_Debug.console_custom_msg(0.5f, 0.5f, 0.5f, 1.f, "%s- %s", c.c_str(), go->GetName().c_str());
+  if(go->GetName()[0] != '_' && go->GetName()[1] != '_')
+  {
+    char visible = '*';
+    if(gSystem_GameObject_Manager[go->GetName()] != NULL)
+      visible = ' ';
+
+    if(go->IsEnabled())
+      gSystem_Debug.console_msg("%s- %s", c.c_str(), go->GetName().c_str());
+    else
+      gSystem_Debug.console_custom_msg(0.5f, 0.5f, 0.5f, 1.f, "%s- %s%c", c.c_str(), go->GetName().c_str(), visible);
+  }
 
   list.insert(pair<string, void*>(go->GetName(), NULL));
 

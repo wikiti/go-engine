@@ -3,7 +3,7 @@
 SDL_Event event;
 const Uint8 *gKeyboardState = SDL_GetKeyboardState(NULL);
 
-string generate_random_string(uint n)
+string generate_random_alphanumeric_string(uint n)
 {
   static const char alphanum[] =
             "0123456789"

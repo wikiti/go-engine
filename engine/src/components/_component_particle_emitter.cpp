@@ -30,14 +30,17 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
   start_min_vel = 8.f;
 
   start_min_scale = start_max_scale = 1.f;
-  start_max_scale_factor = start_min_scale_factor = 1.f;
-  start_max_angle_vel = start_min_angle_vel = 15;
+  start_max_scale_factor = start_min_scale_factor = 0.f;
+  start_max_angle_vel = 120;
+  start_min_angle_vel = -120;
 
   max_particles = 100;
   particles.resize(0);
 
   gravity(0.f, -9.81f, 0.f);
-  color(1.f, 1.f, 1.f, 1.f);
+  //color(1.f, 1.f, 1.f, 1.f);
+  start_max_color(1.f, 1.f, 1.f, 1.f);
+  start_min_color(1.f, 1.f, 1.f, 1.f);
   color_adder(0.f, 0.f, 0.f, 0.f);
 }
 
@@ -48,8 +51,19 @@ CComponent_Particle_Emitter::~CComponent_Particle_Emitter()
 
 void CComponent_Particle_Emitter::Start()
 {
+  last_pos = gameObject->transform()->Position();
+
   particles.resize(max_particles);
   stop = freeze = false;
+
+  vector3f pos_difference(0.f, 0.f, 0.f);
+  vector3f current_pos = gameObject->transform()->Position();
+
+  if(last_pos != current_pos)
+  {
+    pos_difference = last_pos - current_pos;
+    last_pos = current_pos;
+  }
 
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
@@ -57,20 +71,23 @@ void CComponent_Particle_Emitter::Start()
     //GLfloat live, fade;
     (*it) = new CParticle;
 
-    NewParticle(*it);
+    NewParticle(*it, pos_difference);
   }
 }
 
-void CComponent_Particle_Emitter::NewParticle(CParticle* p)
+void CComponent_Particle_Emitter::NewParticle(CParticle* p, vector3f pos_difference)
 {
-  //p = new CParticle;
   p->active = true;
   p->life = gMath.random(start_min_life_time, start_max_life_time);
-  //p->fade
-  p->color = color;
+  //p->color = color;
+  p->color.r = gMath.random(start_min_color.r, start_max_color.r);
+  p->color.g = gMath.random(start_min_color.g, start_max_color.g);
+  p->color.b = gMath.random(start_min_color.b, start_max_color.b);
+  p->color.a = gMath.random(start_min_color.a, start_max_color.a);
 
   vector3f random_vector = gMath.random_vector(direction, angle_spread/2);
-  p->position = random_vector * gMath.random(start_min_distance, start_max_distance);
+
+  p->position = random_vector * gMath.random(start_min_distance, start_max_distance) + pos_difference;
   p->velocity = random_vector * gMath.random(start_min_vel, start_max_vel);
   p->acceleration = gravity;
 
@@ -78,8 +95,12 @@ void CComponent_Particle_Emitter::NewParticle(CParticle* p)
   p->angle_velocity = gMath.random(start_min_angle_vel, start_max_angle_vel);
   //angle_aceleration;
 
+  gMath.NormalizeAngle(p->angle);
+
   p->scale.x = p->scale.y = p->scale.z = gMath.random(start_min_scale, start_max_scale);
-  p->scale_factor.x = p->scale_factor.y = p->scale_factor.z = gMath.random(start_min_scale_factor, start_max_scale_factor);
+  p->scale_factor = gMath.random(start_min_scale_factor, start_max_scale_factor);
+
+  p->material_name = material_name;
 }
 
 void CComponent_Particle_Emitter::Stop()
@@ -126,26 +147,28 @@ void CComponent_Particle_Emitter::OnRender()
   glDepthMask(GL_FALSE);
   glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
-  glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(material_name)->GetID());
-
-  //vector3f camera_position = gSystem_Render.GetCurrentCamera()->transform()->Position();
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
+    if((*it)->life < 0.f)
+      continue;
+
+    float alpha = (*it)->color.a;
+    if((*it)->life < 1.f)
+      alpha *= (*it)->life;
+
+    glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture((*it)->material_name)->GetID());
+    glColor4f((*it)->color.r, (*it)->color.g, (*it)->color.b, alpha);
+
     glPushMatrix();
 
-    //double MV[16];
-    //glGetDoublev(GL_MODELVIEW_MATRIX, MV);
-    //makebillboard_mat4x4(MV, MV);
-    //glLoadMatrixd(MV);
-
-    glColor4f((*it)->color.r, (*it)->color.b, (*it)->color.b, (*it)->color.a*(*it)->life);
-
-    //vector3f to_camera = camera_position - (gameObject->transform()->Position() + (*it)->position);
-
-    //glRotatef((*it)->angle, to_camera.x, to_camera.y, to_camera.z);
-    //glScalef((*it)->scale.x, (*it)->scale.y, (*it)->scale.z);
+    double MV[16];
+    glGetDoublev(GL_MODELVIEW_MATRIX, MV);
+    makebillboard_mat4x4(MV, MV);
+    glLoadMatrixd(MV);
 
     glTranslatef((*it)->position.x, (*it)->position.y, (*it)->position.z);
+    glRotatef((*it)->angle, 0.f, 0.f, 1.f);
+    glScalef((*it)->scale.x, (*it)->scale.y, 1.f);
 
     glBegin(GL_TRIANGLE_STRIP);
       glTexCoord2d(1,1); glVertex3f( 0.25f, 0.25f, 0);
@@ -157,32 +180,44 @@ void CComponent_Particle_Emitter::OnRender()
     glPopMatrix();
   }
 
-  //glEnable(GL_DEPTH_TEST);
   glPopAttrib();
-  //glDisable(GL_BLEND);
 };
 
 void CComponent_Particle_Emitter::OnLoop()
 {
   if(freeze) return;
 
+  vector3f pos_difference(0.f, 0.f, 0.f);
+  vector3f current_pos = gameObject->transform()->Position();
+
+  if(last_pos != current_pos)
+  {
+    pos_difference = last_pos - current_pos;
+    last_pos = current_pos;
+  }
+
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
-    (*it)->position += (*it)->velocity * gTime.deltaTime_s();
+    (*it)->position += (*it)->velocity * gTime.deltaTime_s() + pos_difference;
     (*it)->velocity += (*it)->acceleration * gTime.deltaTime_s();
     (*it)->color += (color_adder * gTime.deltaTime_s());
     gMath.NormalizeColor((*it)->color);
 
-    //(*it)->angle += (*it)->angle_velocity * gTime.deltaTime_s();
-    //gMath.NormalizeAngle((*it)->angle);
+    (*it)->angle += (*it)->angle_velocity * gTime.deltaTime_s();
+    gMath.NormalizeAngle((*it)->angle);
+
+    (*it)->scale.x += (*it)->scale_factor * gTime.deltaTime_s();
+    (*it)->scale.y += (*it)->scale_factor * gTime.deltaTime_s();
+    (*it)->scale.z += (*it)->scale_factor * gTime.deltaTime_s();
 
     (*it)->life -= gTime.deltaTime_s();
+    //if((*it)->life < 0 ) (*it)->life = 0.f;
 
     if((*it)->life < 0 && !stop)
     {
       delete (*it);
       (*it) = new CParticle;
-      NewParticle(*it);
+      NewParticle(*it, pos_difference);
     }
   }
 };

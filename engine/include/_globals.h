@@ -9,6 +9,8 @@
 #include <map>
 #include <vector>
 #include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <climits>
 #include <cfloat>
 #include <fstream>
@@ -262,6 +264,7 @@ typedef struct vector3f_t
     out.z = z * value;
     return out;
   }
+
   vector3f_t& operator*=(double value)
   {
     x *= value;
@@ -374,13 +377,26 @@ typedef struct vector3f_t
     return vector3f_t(1.f, 0.f, 0.f);
   }
 
+  bool operator==(vector3f_t other)
+  {
+    if(x != other.y or y != other.y or z != other.z)
+      return false;
+
+    return true;
+  }
+
+  bool operator!=(vector3f_t other)
+  {
+    return !(*this == other);
+  }
+
 
 } vector3f;
 
 
 /**______Functions_______**/
 
-string generate_random_string(uint n);
+string generate_random_alphanumeric_string(uint n = 4);
 SDL_Surface* sdl_cargar_img(std::string s);
 
 

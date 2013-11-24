@@ -21,29 +21,19 @@ class CComponent_Particle_Emitter: public CComponent
         colorf_t color;
         vector3f_t position, velocity, acceleration;
         GLfloat angle, angle_velocity, angle_acceleration;
-        vector3f_t scale, scale_factor;
+        vector3f_t scale;
+        GLfloat scale_factor;
 
-        // ¿?
-        //void OnRender();
-        //void OnLoop();
+        string material_name;
     };
 
     vector<CParticle*> particles;
 
-    void NewParticle(CParticle* p);
+    void NewParticle(CParticle* p, vector3f go_pos);
 
   public:
-    /*void SetNumParticles(uint n)
-    {
-      if(n) particles.resize(n);
-    }
-
-    uint GetNumParticles()
-    {
-      return particles.size();
-    }*/
-
-    // Valores maximos y minimos iniciales (start values) y valores máximos y mínimos por iteración.
+    // GameObject stuff
+    vector3f last_pos;
 
     // Se podrían usar varios materiales, con una probabilidad P(X)c[0.f, 1.f] de que una particula use el material X
     uint max_particles;
@@ -74,12 +64,11 @@ class CComponent_Particle_Emitter: public CComponent
     GLfloat start_max_scale, start_min_scale;
     GLfloat start_max_scale_factor, start_min_scale_factor;
 
-    colorf_t color;
+    //colorf_t color;
+    colorf_t start_max_color, start_min_color;
     vector3f gravity;
 
     colorf_t color_adder;
-
-    // Para cambiar el nuevo color de las partículas
 
   private:
     static int GetID() { return components::particle_emitter; }

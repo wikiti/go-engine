@@ -141,6 +141,9 @@ class CSystem_Debug: public CSystem
     void Console_command__SAVE_STATE(string arguments);
     void Console_command__LOAD_STATE(string arguments);
 
+    // Systems
+    void Console_command__SYSTEM_TIME_SETSCALE(string arguments);
+
     // Game Objects
     void Console_command__GAME_OBJECT_SHOW_TREE(string arguments);
       void Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level = 1);
