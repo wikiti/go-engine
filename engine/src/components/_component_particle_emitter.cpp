@@ -1,4 +1,6 @@
-#include "_systems.h"
+#include "systems/_render.h"
+#include "systems/_other.h"
+#include "systems/_resource.h"
 #include "components/_component_particle_emitter.h"
 
 
@@ -216,8 +218,8 @@ void CComponent_Particle_Emitter::OnLoop()
 
     if((*it)->life < 0 && !stop)
     {
-      delete (*it);
-      (*it) = new CParticle;
+      //delete (*it);
+      //(*it) = new CParticle;
       NewParticle(*it, pos_difference);
     }
   }

@@ -2,7 +2,6 @@
 #define __RENDER_H_
 
 #include "_object.h"
-#include "_globals.h"
 #include "systems/_system.h"
 
 class CSystem_Render: public CSystem

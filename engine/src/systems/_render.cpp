@@ -1,13 +1,14 @@
 #include "_object.h"
-#include "_globals.h"
-#include "engine/_engine.h"
+
 #include "components/_component_camera.h"
 #include "components/_component_transform.h"
+
 #include "systems/_render.h"
 #include "systems/_debug.h"
 #include "systems/_data.h"
 #include "systems/_manager.h"
 
+#include "engine/_engine.h"
 
 CSystem_Render gSystem_Render;
 CSystem_Render& gRender = gSystem_Render;

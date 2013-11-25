@@ -1,8 +1,4 @@
 #include "particles/fireworks/fireworks.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-
 // Firework manager
 
 bool SetGameObjects_Instance1_Fireworks()

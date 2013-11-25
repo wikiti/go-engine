@@ -2,7 +2,7 @@
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent);
 
-const char* components::components_s[] = {"base", "camera", "mesh_render", "dummy1", "dummy2", "transform", "not_defined"};
+const char* components::components_s[] = {"base", "camera", "mesh_render", "particle_emitter", "dummy1", "dummy2", "transform", "not_defined"};
 
 const char* components::component_to_string(components c)
 {
@@ -14,13 +14,9 @@ const char* components::component_to_string(components c)
 
 int components::string_to_component(string c)
 {
-       if(c == "base")             return base;
-  else if(c == "camera")           return camera;
-  else if(c == "dummy1")           return dummy1;
-  else if(c == "dummy2")           return dummy2;
-  else if(c == "transform")        return transform;
-  else if(c == "mesh_render")      return mesh_render;
-
+  for(uint i = 0; i < components::__not_defined; i++)
+    if(c == components_s[i])
+      return i;
 
   return __not_defined;
 }

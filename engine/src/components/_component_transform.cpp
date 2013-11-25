@@ -1,5 +1,7 @@
 #include "components/_component_transform.h"
-#include "_systems.h"
+#include "systems/_other.h"
+
+#include "_object.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Transform);
 

@@ -1,6 +1,8 @@
-#include "_systems.h"
+#include "systems/_data.h"
 #include "components/_component_camera.h"
 #include "components/_component_transform.h"
+
+#include "_object.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Camera);
 

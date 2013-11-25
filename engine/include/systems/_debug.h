@@ -18,7 +18,6 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "_globals.h"
 #include "_object.h"
 #include "systems/_system.h"
 

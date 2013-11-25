@@ -2,8 +2,9 @@
 #define __ENGINE_H_
 
 #include "_globals.h"
-#include "_systems.h"
 #include "engine/_instance.h"
+
+#include "systems/_render.h"
 
 // Engine resource files
 // icono, etc

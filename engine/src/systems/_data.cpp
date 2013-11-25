@@ -1,8 +1,6 @@
 #include "systems/_data.h"
 #include "systems/_debug.h"
 
-#include <fstream>
-
 CSystem_Data_Storage gSystem_Data_Storage;
 
 bool CSystem_Data_Storage::Init()

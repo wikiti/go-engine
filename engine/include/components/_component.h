@@ -17,9 +17,6 @@ namespace components
   int string_to_component(string c);
 }
 
-
-
-
 class CGameObject;
 
 typedef void (*function_t)(CGameObject* self);

@@ -1,5 +1,5 @@
 #include "components/_component_mesh_render.h"
-#include "_systems.h"
+#include "systems/_resource.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Mesh_Render);
 

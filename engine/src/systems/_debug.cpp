@@ -1,5 +1,6 @@
 #include "systems/_debug.h"
 #include "systems/_resource.h"
+#include "systems/_manager.h"
 #include "systems/_render.h"
 #include "systems/_data.h"
 #include "systems/_other.h"

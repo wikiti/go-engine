@@ -4,9 +4,7 @@
 #define __CSYSTEM_DATA_STORAGE_DEFAULT_SAVEFILE "temp_go.tmp"
 
 #include "_object.h"
-#include "_globals.h"
 #include "_system.h"
-#include "_manager.h"
 
 class CSystem_GameObject_Manager: public CSystem
 {

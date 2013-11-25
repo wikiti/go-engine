@@ -1,6 +1,6 @@
 #include "_object.h"
 #include "_components.h"
-#include "_systems.h"
+#include "systems/_manager.h"
 
 CGameObject::CGameObject(string str)
 {

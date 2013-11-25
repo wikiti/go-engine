@@ -1,8 +1,5 @@
 #include "particles/rainbow/rainbow.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
 // Firework manager
 
 bool SetGameObjects_Instance1_Rainbow()
