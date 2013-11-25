@@ -10,5 +10,6 @@ mesh: mdl_hada1 data/resources/models/faerie.md2:
 texture: texture_mdl_hada1 data/resources/textures/faerie2.bmp: mipmap
 texture: smoke1 data/resources/textures/smoke1.tga: nearest
 texture: sprite1 data/resources/textures/sprite1.tga: nearest
+texture: penis1 data/resources/textures/penis.tga: nearest
 
 # Fin de fichero
