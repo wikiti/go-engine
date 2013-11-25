@@ -161,10 +161,12 @@ void CComponent_Particle_Emitter::OnRender()
 
     glPushMatrix();
 
+    // Esta parte es MUY problemática, ya que jode por completo el efecto de profundidad, y crea efectos muy extraños.
     double MV[16];
     glGetDoublev(GL_MODELVIEW_MATRIX, MV);
     makebillboard_mat4x4(MV, MV);
     glLoadMatrixd(MV);
+    // Fin parte problemática
 
     glTranslatef((*it)->position.x, (*it)->position.y, (*it)->position.z);
     glRotatef((*it)->angle, 0.f, 0.f, 1.f);
