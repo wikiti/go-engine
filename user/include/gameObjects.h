@@ -15,6 +15,7 @@
 
 bool SetGameObjects_Instance1();
 void Camara_main_movimiento(CGameObject* gameObject);
+void Camara_mouse_movimiento(CGameObject* gameObject);
 
 
 #endif /* GAMEOBJECTS_H_ */

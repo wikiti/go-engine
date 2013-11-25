@@ -11,6 +11,7 @@ bool SetGameObjects_Instance1()
   camara_main->transform()->position.z -= 20.f;
   //camara_main->transform()->SetAngle(-30.f, 0.f, 0.f);
   camara_main->SetKeyEventFunction(&Camara_main_movimiento);
+  camara_main->SetEventFunction(&Camara_mouse_movimiento);
   gRender.AddCamera(camara_main);
 
   CGameObject* rainbow_violet = gGameObjects.AddGameObject("rainbow_violet");
@@ -54,13 +55,13 @@ bool SetGameObjects_Instance1()
   rainbow_orange->particleEmitter()->material_name = "penis1";
   rainbow_red->particleEmitter()->material_name = "penis1";
 
-  rainbow_violet->particleEmitter()->direction(1.f, 1.6f, 0.f);
-  rainbow_dblue->particleEmitter()->direction(1.f, 1.5f, 0.f);
-  rainbow_blue->particleEmitter()->direction(1.f, 1.4f, 0.f);
-  rainbow_green->particleEmitter()->direction(1.f, 1.3f, 0.f);
-  rainbow_yellow->particleEmitter()->direction(1.f, 1.2f, 0.f);
-  rainbow_orange->particleEmitter()->direction(1.f, 1.1f, 0.f);
-  rainbow_red->particleEmitter()->direction(1.f, 1.f, 0.f);
+  rainbow_violet->particleEmitter()->direction(-1.f, 1.6f, 0.f);
+  rainbow_dblue->particleEmitter()->direction(-1.f, 1.5f, 0.f);
+  rainbow_blue->particleEmitter()->direction(-1.f, 1.4f, 0.f);
+  rainbow_green->particleEmitter()->direction(-1.f, 1.3f, 0.f);
+  rainbow_yellow->particleEmitter()->direction(-1.f, 1.2f, 0.f);
+  rainbow_orange->particleEmitter()->direction(-1.f, 1.1f, 0.f);
+  rainbow_red->particleEmitter()->direction(-1.f, 1.f, 0.f);
 
   rainbow_violet->particleEmitter()->angle_spread = 5.f;
   rainbow_dblue->particleEmitter()->angle_spread = 5.f;
@@ -106,67 +107,29 @@ bool SetGameObjects_Instance1()
 
 void Camara_main_movimiento(CGameObject* gameObject)
 {
-  if(gKeyboardState[SDL_SCANCODE_LCTRL])
+  if (gKeyboardState[SDL_SCANCODE_W])
   {
-    if(gKeyboardState[SDL_SCANCODE_UP])
-    {
-      gameObject->transform()->LRotate(-20.f * gTime.deltaTime_s(), 0, 0);
-    }
-    if(gKeyboardState[SDL_SCANCODE_DOWN])
-    {
-      gameObject->transform()->LRotate(20.f * gTime.deltaTime_s(), 0, 0);
-    }
-    if(gKeyboardState[SDL_SCANCODE_LEFT])
-    {
-      gameObject->transform()->Rotate(0, +20.f * gTime.deltaTime_s(), 0);
-    }
-    if(gKeyboardState[SDL_SCANCODE_RIGHT])
-    {
-      gameObject->transform()->Rotate(0, -20.f * gTime.deltaTime_s(), 0);
-    }
-    if(gKeyboardState[SDL_SCANCODE_PAGEDOWN])
-    {
-      gameObject->transform()->LRotate(0, 0, 20.f * gTime.deltaTime_s());
-    }
-    if(gKeyboardState[SDL_SCANCODE_PAGEUP])
-    {
-      gameObject->transform()->LRotate(0, 0, -20.f * gTime.deltaTime_s());
-    }
-    if(gKeyboardState[SDL_SCANCODE_R])
-    {
-      gameObject->transform()->SetAngle(0.f, 0.f, 0.f);
-    }
-    if(gKeyboardState[SDL_SCANCODE_SPACE])
-    {
-      //gameObject->transform()->LookAt(gGameObjects["cubo"]->transform()->Position());
-    }
+    gameObject->transform()->LTranslate(0.f, 0.f, 3.f * gTime.deltaTime_s());
   }
-  else
+  if (gKeyboardState[SDL_SCANCODE_S])
   {
-    if(gKeyboardState[SDL_SCANCODE_UP])
-    {
-      gameObject->transform()->LTranslate(0.f, 0.f, 3.f * gTime.deltaTime_s());
-    }
-    if(gKeyboardState[SDL_SCANCODE_DOWN])
-    {
-      gameObject->transform()->LTranslate(0.f, 0.f, -3.f * gTime.deltaTime_s());
-    }
-    if(gKeyboardState[SDL_SCANCODE_LEFT])
-    {
-      gameObject->transform()->LTranslate(3.f * gTime.deltaTime_s(), 0.f, 0.f);
-    }
-    if(gKeyboardState[SDL_SCANCODE_RIGHT])
-    {
-      gameObject->transform()->LTranslate(-3.f * gTime.deltaTime_s(), 0.f, 0.f);
-    }
-    if(gKeyboardState[SDL_SCANCODE_PAGEDOWN])
-    {
-      gameObject->transform()->Translate(0.f, -3.f * gTime.deltaTime_s(), 0.f);
-    }
-    if(gKeyboardState[SDL_SCANCODE_PAGEUP])
-    {
-      gameObject->transform()->Translate(0.f, 3.f * gTime.deltaTime_s(), 0.f);
-    }
+    gameObject->transform()->LTranslate(0.f, 0.f, -3.f * gTime.deltaTime_s());
+  }
+  if (gKeyboardState[SDL_SCANCODE_A])
+  {
+    gameObject->transform()->LTranslate(3.f * gTime.deltaTime_s(), 0.f, 0.f);
+  }
+  if (gKeyboardState[SDL_SCANCODE_D])
+  {
+    gameObject->transform()->LTranslate(-3.f * gTime.deltaTime_s(), 0.f, 0.f);
+  }
+  if (gKeyboardState[SDL_SCANCODE_E])
+  {
+    gameObject->transform()->Translate(0.f, -3.f * gTime.deltaTime_s(), 0.f);
+  }
+  if (gKeyboardState[SDL_SCANCODE_Q])
+  {
+    gameObject->transform()->Translate(0.f, 3.f * gTime.deltaTime_s(), 0.f);
   }
 
   // Viewport
@@ -193,5 +156,28 @@ void Camara_main_movimiento(CGameObject* gameObject)
     gameObject->camera()->viewport.width += 0.1f * gTime.deltaTime_s();
     if(gameObject->camera()->viewport.width > 1.f)
       gameObject->camera()->viewport.width = 1.f;
+  }
+}
+
+void Camara_mouse_movimiento(CGameObject* gameObject)
+{
+  static bool hide_cursor = false;
+
+  if(hide_cursor && event.type == SDL_MOUSEMOTION)
+  {
+    gameObject->transform()->LRotate(event.motion.yrel * 20.f * gTime.deltaTime_s(), 0, 0);
+    gameObject->transform()->Rotate(0, event.motion.xrel * -20.f * gTime.deltaTime_s(), 0);
+  }
+  else if(event.type == SDL_MOUSEWHEEL)
+  {
+    gameObject->transform()->LTranslate(0.f, 0.f, event.wheel.y * 20.f * gTime.deltaTime_s());
+  }
+  else if(event.type == SDL_MOUSEBUTTONDOWN)
+  {
+    if( event.button.button == SDL_BUTTON_MIDDLE )
+    {
+      hide_cursor = !hide_cursor;
+      gRender.SetRelativeMouseMode(hide_cursor);
+    }
   }
 }

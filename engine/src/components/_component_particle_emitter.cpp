@@ -161,6 +161,8 @@ void CComponent_Particle_Emitter::OnRender()
 
     glPushMatrix();
 
+    glTranslatef((*it)->position.x, (*it)->position.y, (*it)->position.z);
+
     // Esta parte es MUY problemática, ya que jode por completo el efecto de profundidad, y crea efectos muy extraños.
     double MV[16];
     glGetDoublev(GL_MODELVIEW_MATRIX, MV);
@@ -168,8 +170,8 @@ void CComponent_Particle_Emitter::OnRender()
     glLoadMatrixd(MV);
     // Fin parte problemática
 
-    glTranslatef((*it)->position.x, (*it)->position.y, (*it)->position.z);
     glRotatef((*it)->angle, 0.f, 0.f, 1.f);
+
     glScalef((*it)->scale.x, (*it)->scale.y, 1.f);
 
     glBegin(GL_TRIANGLE_STRIP);

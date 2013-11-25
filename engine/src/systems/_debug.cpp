@@ -229,7 +229,7 @@ void CSystem_Debug::OnEvent()
         console = false;
         SDL_StopTextInput();
       }
-      if(event.key.keysym.sym == SDLK_ESCAPE)
+      else if(event.key.keysym.sym == SDLK_ESCAPE)
       {
         console_pointer_pos = 0;
         if(input == "")
@@ -293,8 +293,8 @@ void CSystem_Debug::OnEvent()
       }
       else if(event.key.keysym.sym == SDLK_RIGHT)
       {
-          if(console_pointer_pos < input.length())
-            console_pointer_pos++;
+        if(console_pointer_pos < input.length())
+          console_pointer_pos++;
       }
       else if(event.key.keysym.sym == SDLK_PAGEUP)
       {
@@ -319,7 +319,7 @@ void CSystem_Debug::OnEvent()
         input.insert(console_pointer_pos, SDL_GetClipboardText());
         console_pointer_pos += strlen(SDL_GetClipboardText());
       }
-      if( event.button.button == SDL_BUTTON_MIDDLE )
+      else if( event.button.button == SDL_BUTTON_MIDDLE )
       {
         if(input != "") SDL_SetClipboardText(input.c_str());
       }

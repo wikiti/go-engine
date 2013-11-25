@@ -66,6 +66,11 @@ class CSystem_Render: public CSystem
 
     // Usar booleanos (o algo)
 
+    SDL_Window* GetWindow()
+    {
+      return window;
+    }
+
     CGameObject* GetCurrentCamera()
     {
       if(current_camera < 0 || !camera_list.size() )
@@ -110,6 +115,31 @@ class CSystem_Render: public CSystem
     {
       SDL_GetWindowSize(window, w, h);
     }
+
+    inline void ShowMouse(bool show = true)
+    {
+      SDL_ShowCursor(show);
+    }
+
+    inline void SetMousePos(int x = INT_MAX, int y = INT_MAX)
+    {
+      // Screen center
+      if(x == INT_MAX && y == INT_MAX)
+      {
+        GetWindowSize(&x, &y);
+        x /= 2;
+        y /= 2;
+      }
+
+      SDL_WarpMouseInWindow(window, x, y);
+    }
+
+    inline void SetRelativeMouseMode(bool mode = true)
+    {
+      if(mode) SDL_SetRelativeMouseMode(SDL_TRUE);
+      else     SDL_SetRelativeMouseMode(SDL_FALSE);
+    }
+
 
     //inline void ResizeWindow(int w,, int h);
 
