@@ -1,4 +1,4 @@
-#include "fireworks/fireworks.h"
+#include "particles/fireworks/fireworks.h"
 
 #include <stdio.h>
 #include <stdlib.h>

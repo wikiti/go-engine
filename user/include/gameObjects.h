@@ -10,8 +10,8 @@
 
 #include "predefined_functions.h"
 #include "random/random_stuff.h"
-#include "fireworks/fireworks.h"
-
+#include "particles/fireworks/fireworks.h"
+#include "particles/rainbow/rainbow.h"
 
 bool SetGameObjects_Instance1();
 void Camara_main_movimiento(CGameObject* gameObject);
