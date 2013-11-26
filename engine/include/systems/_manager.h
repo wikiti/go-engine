@@ -38,7 +38,8 @@ class CSystem_GameObject_Manager: public CSystem
     bool RemoveGameObject(string name);
       bool RebuildIndex(); // <- Mecanismo insano, pero puesto por si acaso (quien coño llega a 4 mil millones de objetos?)
 
-    CGameObject* SearchGameObject(string prefix);
+    //CGameObject* SearchGameObject(string prefix);
+    vector<CGameObject*> SearchGameObject(string prefix);
 
     bool RenameGameObject(string name, string new_name);
     bool RenameGameObject(CGameObject* go, string new_name);

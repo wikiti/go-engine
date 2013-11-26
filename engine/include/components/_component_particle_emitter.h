@@ -38,6 +38,7 @@ class CComponent_Particle_Emitter: public CComponent
     // Se podrían usar varios materiales, con una probabilidad P(X)c[0.f, 1.f] de que una particula use el material X
     uint max_particles;
     string material_name;
+    //vector<string> materials; // random materials, pero esto se podría conseguir con 2 emisores de partículas...
 
     // Usado para CSystem_Math::random_vector(direction, angle_spreed);
     //CSystem_Math::cone_t spread_cone;
