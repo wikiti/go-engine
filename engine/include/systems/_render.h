@@ -15,6 +15,13 @@ class CSystem_Render: public CSystem
     vector<CGameObject*> camera_list;
     int current_camera;
 
+    // Skybox VBO
+    unsigned int    m_nVBOVertices;                     // Vertex VBO Name
+    unsigned int    m_nVBOTexCoords;                    // Texture Coordinate VBO Name
+
+    //bool multitexture_supported;
+    //bool vbos_supported;
+
     /*
     struct gameObject_Render_count_t
     {
@@ -61,6 +68,7 @@ class CSystem_Render: public CSystem
     CSystem_Render(): window(NULL){ };
 
     virtual bool Init();
+      void InitSkyboxVBO();
     virtual void Close();
 
     // Usar booleanos (o algo)

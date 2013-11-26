@@ -18,6 +18,8 @@ bool CSystem_Render::Init()
 {
   CSystem::Init();
 
+  //multitexture_supported = vbos_supported = false;
+
   SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
   SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
   glEnable(GL_MULTISAMPLE);
@@ -80,6 +82,14 @@ bool CSystem_Render::Init()
     return false;
   }
 
+  if(!glewIsSupported("GL_ARB_vertex_buffer_object"))
+  {
+    gSystem_Debug.error("From CSystem_Render: GLEW error: GL_ARB_vertex_buffer_object NOT supported!");
+    return false;
+  }
+
+  InitSkyboxVBO();
+
   current_camera = -1;
 
   /*if(!glewIsSupported("GL_EXT_texture_env_combine"))
@@ -89,6 +99,38 @@ bool CSystem_Render::Init()
   }*/
 
   return true;
+}
+
+void CSystem_Render::InitSkyboxVBO()
+{
+  float r = 1.005f;
+
+  uint m_nSkyboxVertexCount = 24;
+  const GLfloat m_pVertices [][3] =
+  { /* Top    */ { r,  1.0f, -r}, {-r,  1.0f, -r}, {-r,  1.0f,  r}, { r,  1.0f,  r},
+    /* Bottom */ { r, -1.0f,  r}, {-r, -1.0f,  r}, {-r, -1.0f, -r}, { r, -1.0f, -r},
+    /* Left   */ { 1.0f,  r, -r}, { 1.0f,  r,  r}, { 1.0f, -r,  r}, { 1.0f, -r, -r},
+    /* Right  */ {-1.0f,  r,  r}, {-1.0f,  r, -r}, {-1.0f, -r, -r}, {-1.0f, -r,  r},
+    /* Front  */ { r,  r,  1.0f}, {-r,  r,  1.0f}, {-r, -r,  1.0f}, { r, -r,  1.0f},
+    /* Back   */ {-r,  r, -1.0f}, { r,  r, -1.0f}, { r, -r, -1.0f}, {-r, -r, -1.0f}
+  };
+
+  const GLfloat m_pTexCoords [][2] =
+  { /* Top    */ { 512/2048.f, 1536/1536.f}, {1024/2048.f, 1536/1536.f}, {1024/2048.f, 1024/1536.f}, { 512/2048.f, 1024/1536.f},
+    /* Bottom */ { 512/2048.f,  512/1536.f}, {1024/2048.f,  512/1536.f}, {1024/2048.f,    0/1536.f}, { 512/2048.f,    0/1536.f},
+    /* Left   */ {   0/2048.f, 1024/1536.f}, { 512/2048.f, 1024/1536.f}, { 512/2048.f,  512/1536.f}, {   0/2048.f,  512/1536.f},
+    /* Right  */ {1024/2048.f, 1024/1536.f}, {1536/2048.f, 1024/1536.f}, {1536/2048.f,  512/1536.f}, {1024/2048.f,  512/1536.f},
+    /* Front  */ { 512/2048.f, 1024/1536.f}, {1024/2048.f, 1024/1536.f}, {1024/2048.f,  512/1536.f}, { 512/2048.f,  512/1536.f},
+    /* Back   */ {1536/2048.f, 1024/1536.f}, {2048/2048.f, 1024/1536.f}, {2048/2048.f,  512/1536.f}, {1536/2048.f,  512/1536.f}
+  };
+
+  glGenBuffersARB( 1, &m_nVBOVertices );
+  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_nVBOVertices );
+  glBufferDataARB( GL_ARRAY_BUFFER_ARB, m_nSkyboxVertexCount*3*sizeof(GLfloat), m_pVertices, GL_STATIC_DRAW_ARB );
+
+  glGenBuffersARB( 1, &m_nVBOTexCoords );
+  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_nVBOTexCoords );
+  glBufferDataARB( GL_ARRAY_BUFFER_ARB, m_nSkyboxVertexCount*2*sizeof(GLfloat), m_pTexCoords, GL_STATIC_DRAW_ARB );
 }
 
 void CSystem_Render::Close()
@@ -209,19 +251,9 @@ void CSystem_Render::OnRender()
     cam->Clear();
 
     // Draw Skybox
-    glPushMatrix();
     DrawSkybox(cam);
-    glPopMatrix();
-
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
-    //glLoadIdentity();
-
     if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID") )
       RenderGrid(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS"), gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS"));
-
-    //glLoadIdentity();
-    glPopMatrix();
 
 	  for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	  {
@@ -267,6 +299,8 @@ void CSystem_Render::OnRender()
 
 void CSystem_Render::RenderGrid(int rows, int cols)
 {
+  glPushMatrix();
+
   glBindTexture(GL_TEXTURE_2D, 0);
 
   GLfloat cols_size = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_COLS_SIZE");
@@ -295,6 +329,8 @@ void CSystem_Render::RenderGrid(int rows, int cols)
       glVertex3f(i*rows_size, 0, rows*rows_size);
     }
   glEnd();
+
+  glPopMatrix();
 }
 
 
@@ -308,94 +344,27 @@ bool CSystem_Render::DrawSkybox(CComponent_Camera* cam)
   // http://content.gpwiki.org/index.php/Sky_Box
   glPushMatrix();
 
-  //glPushAttrib(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  //glDisable(GL_DEPTH_TEST);
-
   glColor3f(1.f, 1.f, 1.f);
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(cam->skybox_texture )->GetID());
 
   vector3f position = cam->gameObject->transform()->Position();
   glTranslatef(position.x, position.y, position.z);
 
-  float r = 1.005f; // If you have border issues change this to 1.005f
+  uint m_nSkyboxVertexCount = 24;
 
-  glBegin(GL_QUADS);
-      // Top
-    glTexCoord2f( 512/2048.f, 1536/1536.f); glVertex3f( r,  1.0f, -r);
-    glTexCoord2f(1024/2048.f, 1536/1536.f); glVertex3f(-r,  1.0f, -r);
-    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f(-r,  1.0f,  r);
-    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( r,  1.0f,  r);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-      // Bottom
-    glTexCoord2f( 512/2048.f, 512/1536.f);  glVertex3f( r, -1.0f,  r);
-    glTexCoord2f(1024/2048.f, 512/1536.f);  glVertex3f(-r, -1.0f,  r);
-    glTexCoord2f(1024/2048.f,   0/1536.f);  glVertex3f(-r, -1.0f, -r);
-    glTexCoord2f( 512/2048.f,   0/1536.f);  glVertex3f( r, -1.0f, -r);
+  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_nVBOVertices );
+  glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
+  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_nVBOTexCoords );
+  glTexCoordPointer( 2, GL_FLOAT, 0, (char *) NULL );
 
-      // Left
-    glTexCoord2f(   0/2048.f, 1024/1536.f); glVertex3f( 1.0f,  r, -r);
-    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( 1.0f,  r,  r);
-    glTexCoord2f( 512/2048.f,  512/1536.f); glVertex3f( 1.0f, -r,  r);
-    glTexCoord2f(   0/2048.f,  512/1536.f); glVertex3f( 1.0f, -r, -r);
+  glDrawArrays( GL_QUADS, 0, m_nSkyboxVertexCount );
 
-      // Right
-    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f(-1.0f,  r,  r);
-    glTexCoord2f(1536/2048.f, 1024/1536.f); glVertex3f(-1.0f,  r, -r);
-    glTexCoord2f(1536/2048.f,  512/1536.f); glVertex3f(-1.0f, -r, -r);
-    glTexCoord2f(1024/2048.f,  512/1536.f); glVertex3f(-1.0f, -r,  r);
+  glDisableClientState(GL_VERTEX_ARRAY);
+  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-      // Front
-    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( r,  r,  1.0f);
-    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f(-r,  r,  1.0f);
-    glTexCoord2f(1024/2048.f, 512/1536.f);  glVertex3f(-r, -r,  1.0f);
-    glTexCoord2f( 512/2048.f, 512/1536.f);  glVertex3f( r, -r,  1.0f);
-
-      // Back
-    glTexCoord2f(1536/2048.f, 1024/1536.f); glVertex3f(-r,  r, -1.0f);
-    glTexCoord2f(2048/2048.f, 1024/1536.f); glVertex3f( r,  r, -1.0f);
-    glTexCoord2f(2048/2048.f, 512/1536.f);  glVertex3f( r, -r, -1.0f);
-    glTexCoord2f(1536/2048.f, 512/1536.f);  glVertex3f(-r, -r, -1.0f);
-    glEnd();
-
-  /*glBegin(GL_QUADS);
-    // Top
-    glTexCoord2f( 512/2048.f, 0/1536.f);   glVertex3f( r, -r, 1.0f);
-    glTexCoord2f(1024/2048.f, 0/1536.f);   glVertex3f( r,  r, 1.0f);
-    glTexCoord2f(1024/2048.f, 512/1536.f); glVertex3f(-r,  r, 1.0f);
-    glTexCoord2f( 512/2048.f, 512/1536.f); glVertex3f(-r, -r, 1.0f);
-
-    // Bottom
-    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( r, -r, -1.0f);
-    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f( r,  r, -1.0f);
-    glTexCoord2f(1024/2048.f, 1536/1536.f); glVertex3f(-r,  r, -1.0f);
-    glTexCoord2f( 512/2048.f, 1536/1536.f); glVertex3f(-r, -r, -1.0f);
-
-    // Front
-    glTexCoord2f( 512/2048.f, 512/1536.f);  glVertex3f(-r, 1.0f,-r);
-    glTexCoord2f(1024/2048.f, 512/1536.f);  glVertex3f(-r, 1.0f, r);
-    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f( r, 1.0f, r);
-    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( r, 1.0f,-r);
-
-    // Back
-    glTexCoord2f(1536/2048.f, 512/1536.f);  glVertex3f(-r,-1.0f,-r);
-    glTexCoord2f(2048/2048.f, 512/1536.f);  glVertex3f(-r,-1.0f, r);
-    glTexCoord2f(2048/2048.f, 1024/1536.f); glVertex3f( r,-1.0f, r);
-    glTexCoord2f(1536/2048.f, 1024/1536.f); glVertex3f( r,-1.0f,-r);
-
-    // Left
-    glTexCoord2f(1024/2048.f, 512/1536.f);  glVertex3f(-1.0f, -r, r);
-    glTexCoord2f(1536/2048.f, 512/1536.f);  glVertex3f(-1.0f,  r, r);
-    glTexCoord2f(1536/2048.f, 1024/1536.f); glVertex3f(-1.0f,  r,-r);
-    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f(-1.0f, -r,-r);
-
-    // Right
-    glTexCoord2f(  0/2048.f, 512/1536.f);  glVertex3f(1.0f, -r, r);
-    glTexCoord2f(512/2048.f, 512/1536.f);  glVertex3f(1.0f,  r, r);
-    glTexCoord2f(512/2048.f, 1024/1536.f); glVertex3f(1.0f,  r,-r);
-    glTexCoord2f(  0/2048.f, 1024/1536.f); glVertex3f(1.0f, -r,-r);
-  glEnd();*/
-
-  //glPopAttrib();
   glClear(GL_DEPTH_BUFFER_BIT);
   glPopMatrix();
 
