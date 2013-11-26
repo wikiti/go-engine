@@ -13,6 +13,8 @@ class CSystem_Render: public CSystem
     SDL_Window* window;
     SDL_GLContext GLcontext;
     vector<CGameObject*> camera_list;
+    CGameObject* GUI_Camera;
+
     int current_camera;
 
     // Skybox VBO

@@ -11,6 +11,8 @@ using namespace viewmode;
 CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameObject),
  viewmode(perspective), field_of_view(45.f), near_clip(0.1f), far_clip(200.f), clear(true), target(NULL)
 {
+  disable_gui = false;
+
   viewport.x = viewport.y = 0;
   //gSystem_Render.GetWindowSize(&viewport.width, &viewport.height);
   viewport.width = viewport.height = 1.f;

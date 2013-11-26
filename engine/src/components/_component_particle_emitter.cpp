@@ -54,6 +54,8 @@ CComponent_Particle_Emitter::~CComponent_Particle_Emitter()
 
 void CComponent_Particle_Emitter::Start()
 {
+  if(!enabled) return;
+
   last_pos = gameObject->transform()->Position();
 
   particles.resize(max_particles);
@@ -111,23 +113,22 @@ void CComponent_Particle_Emitter::NewParticle(CParticle* p, vector3f pos_differe
 
 void CComponent_Particle_Emitter::Stop()
 {
-  stop = true;
-
+  if(enabled) stop = true;
 }
 
 void CComponent_Particle_Emitter::Resume()
 {
-  stop = false;
+  if(enabled) stop = false;
 }
 
 void CComponent_Particle_Emitter::Freeze()
 {
-  freeze = true;
+  if(enabled) freeze = true;
 }
 
 void CComponent_Particle_Emitter::UnFreeze()
 {
-  freeze = false;
+  if(enabled) freeze = false;
 }
 
 void makebillboard_mat4x4(double *BM, double const * const MV)
@@ -148,6 +149,8 @@ void makebillboard_mat4x4(double *BM, double const * const MV)
 // Usamos glBegin() y glEnd() en vez de VBOs, ya que
 void CComponent_Particle_Emitter::OnRender()
 {
+  if(!enabled) return;
+
   glPushAttrib(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glDepthMask(GL_FALSE);
@@ -192,7 +195,7 @@ void CComponent_Particle_Emitter::OnRender()
 
 void CComponent_Particle_Emitter::OnLoop()
 {
-  if(freeze) return;
+  if(freeze || !enabled) return;
 
   vector3f pos_difference(0.f, 0.f, 0.f);
   vector3f current_pos = gameObject->transform()->Position();

@@ -16,6 +16,8 @@ class CComponent_Camera: public CComponent
     GLdouble projMatrix[16];
 
   public:
+    bool disable_gui;
+
     viewmode::viewmode_t viewmode;
     //viewport_t viewport;
     viewportf_t viewport;

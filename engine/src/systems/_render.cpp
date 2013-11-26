@@ -92,6 +92,11 @@ bool CSystem_Render::Init()
 
   current_camera = -1;
 
+  GUI_Camera = gSystem_GameObject_Manager.AddGameObject("__RENDER_GUI_CAMERA");
+  GUI_Camera->camera()->clear = false;
+  GUI_Camera->camera()->viewmode = viewmode::ortho;
+
+
   /*if(!glewIsSupported("GL_EXT_texture_env_combine"))
   {
     gSystem_Debug.error("From CSystem_Render: GLEW error: GL_EXT_texture_env_combine NOT supported!");
