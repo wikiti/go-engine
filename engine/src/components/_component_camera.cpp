@@ -20,6 +20,8 @@ CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameOb
 
   before_render = after_render = NULL;
 
+  skybox_texture = "";
+
   // Invisible de cara al sistema
   pivot = new CGameObject("__camera_pivot");
   pivot->Init();

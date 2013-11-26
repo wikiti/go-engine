@@ -491,6 +491,11 @@ vector3f_t CComponent_Transform::Position()
   return vector3f(matrix[12], matrix[13], matrix[14]);
 }
 
+void CComponent_Transform::LookAt(GLfloat x, GLfloat y, GLfloat z, vector3f up_vector, vector3f forward_vector)
+{
+  LookAt(vector3f(x, y, z), up_vector, forward_vector);
+}
+
 void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward)
 {
   //http://stackoverflow.com/questions/12435671/quaternion-lookat-function

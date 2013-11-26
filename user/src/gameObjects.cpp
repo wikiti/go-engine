@@ -2,19 +2,20 @@
 
 bool SetGameObjects_Instance1()
 {
+  CGameObject* camara_main = gGameObjects.AddGameObject("camara_main");
+  camara_main->camera()->skybox_texture = "skybox1";
+  camara_main->transform()->position.y += 3.f;
+  camara_main->transform()->position.z -= 20.f;
+
+  camara_main->SetKeyEventFunction(&Camara_main_movimiento);
+  camara_main->SetEventFunction(&Camara_mouse_movimiento);
+
+  gRender.AddCamera(camara_main);
+
   SetGameObjects_Instance1_Fireworks();
   //SetGameObjects_Instance1_Rainbow();
   SetGameObjects_Instance1_Other_Particles();
   //SetGameObjects_Instance1_RandomStuff();
-
-  CGameObject* camara_main = gGameObjects.AddGameObject("camara_main");
-  camara_main->transform()->position.y += 3.f;
-  camara_main->transform()->position.z -= 20.f;
-  //camara_main->transform()->position.z -= 50.f;
-  //camara_main->transform()->SetAngle(-30.f, 0.f, 0.f);
-  camara_main->SetKeyEventFunction(&Camara_main_movimiento);
-  camara_main->SetEventFunction(&Camara_mouse_movimiento);
-  gRender.AddCamera(camara_main);
 
   return true;
 }
@@ -71,6 +72,11 @@ void Camara_main_movimiento(CGameObject* gameObject)
     gameObject->camera()->viewport.width += 0.1f * gTime.deltaTime_s();
     if(gameObject->camera()->viewport.width > 1.f)
       gameObject->camera()->viewport.width = 1.f;
+  }
+
+  if (gKeyboardState[SDL_SCANCODE_T])
+  {
+    gameObject->transform()->LookAt(vector3f(0.f, 0.f, 0.f));
   }
 }
 

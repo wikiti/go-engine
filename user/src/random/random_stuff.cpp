@@ -75,6 +75,7 @@ bool SetGameObjects_Instance1_RandomStuff()
   camara_second->camera()->SetTarget(cubo_third);
   camara_second->camera()->viewport.height = camara_second->camera()->viewport.width = 0.3f;
   camara_second->camera()->background_color(0, 0.5f, 0.75f, 1.f);
+  camara_second->camera()->skybox_texture = "skybox1";
 
   cubo_main->SetKeyEventFunction(&Cubo_main_movimiento);
   cubo_second->SetKeyEventFunction(&Cubo_second_movimiento);

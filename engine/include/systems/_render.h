@@ -102,6 +102,7 @@ class CSystem_Render: public CSystem
     void OnLoop();
     void OnRender();
       void RenderGrid(int rows = 20, int cols = 20);
+      bool DrawSkybox(CComponent_Camera* cam);
       inline void Clear();
       inline void RenderToScreen()
       {

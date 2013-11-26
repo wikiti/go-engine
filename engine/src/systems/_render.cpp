@@ -7,6 +7,7 @@
 #include "systems/_debug.h"
 #include "systems/_data.h"
 #include "systems/_manager.h"
+#include "systems/_resource.h"
 
 #include "engine/_engine.h"
 
@@ -198,7 +199,7 @@ void CSystem_Render::OnRender()
   {
     // Disabled camera
     if(!(*it)->IsEnabled())
-      break;
+      continue;
 
     CComponent_Camera* cam = (*it)->GetComponent<CComponent_Camera>();
 
@@ -206,7 +207,11 @@ void CSystem_Render::OnRender()
     cam->SetViewport();
     cam->SetUp();
     cam->Clear();
-    //cam->FillViewport();
+
+    // Draw Skybox
+    glPushMatrix();
+    DrawSkybox(cam);
+    glPopMatrix();
 
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
@@ -290,6 +295,111 @@ void CSystem_Render::RenderGrid(int rows, int cols)
       glVertex3f(i*rows_size, 0, rows*rows_size);
     }
   glEnd();
+}
+
+
+bool CSystem_Render::DrawSkybox(CComponent_Camera* cam)
+{
+  if(cam->skybox_texture == "")
+    return false;
+
+  // Idea sencilla: dibujamos un cubo de tamaño 1x1 sin depth_test justo donde esta la cámara.
+  // Todo lo demás se dibujará encima, por lo que creará un efecto de "tamaño inmenso".
+  // http://content.gpwiki.org/index.php/Sky_Box
+  glPushMatrix();
+
+  //glPushAttrib(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  //glDisable(GL_DEPTH_TEST);
+
+  glColor3f(1.f, 1.f, 1.f);
+  glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(cam->skybox_texture )->GetID());
+
+  vector3f position = cam->gameObject->transform()->Position();
+  glTranslatef(position.x, position.y, position.z);
+
+  float r = 1.005f; // If you have border issues change this to 1.005f
+
+  glBegin(GL_QUADS);
+      // Top
+    glTexCoord2f( 512/2048.f, 1536/1536.f); glVertex3f( r,  1.0f, -r);
+    glTexCoord2f(1024/2048.f, 1536/1536.f); glVertex3f(-r,  1.0f, -r);
+    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f(-r,  1.0f,  r);
+    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( r,  1.0f,  r);
+
+      // Bottom
+    glTexCoord2f( 512/2048.f, 512/1536.f);  glVertex3f( r, -1.0f,  r);
+    glTexCoord2f(1024/2048.f, 512/1536.f);  glVertex3f(-r, -1.0f,  r);
+    glTexCoord2f(1024/2048.f,   0/1536.f);  glVertex3f(-r, -1.0f, -r);
+    glTexCoord2f( 512/2048.f,   0/1536.f);  glVertex3f( r, -1.0f, -r);
+
+      // Left
+    glTexCoord2f(   0/2048.f, 1024/1536.f); glVertex3f( 1.0f,  r, -r);
+    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( 1.0f,  r,  r);
+    glTexCoord2f( 512/2048.f,  512/1536.f); glVertex3f( 1.0f, -r,  r);
+    glTexCoord2f(   0/2048.f,  512/1536.f); glVertex3f( 1.0f, -r, -r);
+
+      // Right
+    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f(-1.0f,  r,  r);
+    glTexCoord2f(1536/2048.f, 1024/1536.f); glVertex3f(-1.0f,  r, -r);
+    glTexCoord2f(1536/2048.f,  512/1536.f); glVertex3f(-1.0f, -r, -r);
+    glTexCoord2f(1024/2048.f,  512/1536.f); glVertex3f(-1.0f, -r,  r);
+
+      // Front
+    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( r,  r,  1.0f);
+    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f(-r,  r,  1.0f);
+    glTexCoord2f(1024/2048.f, 512/1536.f);  glVertex3f(-r, -r,  1.0f);
+    glTexCoord2f( 512/2048.f, 512/1536.f);  glVertex3f( r, -r,  1.0f);
+
+      // Back
+    glTexCoord2f(1536/2048.f, 1024/1536.f); glVertex3f(-r,  r, -1.0f);
+    glTexCoord2f(2048/2048.f, 1024/1536.f); glVertex3f( r,  r, -1.0f);
+    glTexCoord2f(2048/2048.f, 512/1536.f);  glVertex3f( r, -r, -1.0f);
+    glTexCoord2f(1536/2048.f, 512/1536.f);  glVertex3f(-r, -r, -1.0f);
+    glEnd();
+
+  /*glBegin(GL_QUADS);
+    // Top
+    glTexCoord2f( 512/2048.f, 0/1536.f);   glVertex3f( r, -r, 1.0f);
+    glTexCoord2f(1024/2048.f, 0/1536.f);   glVertex3f( r,  r, 1.0f);
+    glTexCoord2f(1024/2048.f, 512/1536.f); glVertex3f(-r,  r, 1.0f);
+    glTexCoord2f( 512/2048.f, 512/1536.f); glVertex3f(-r, -r, 1.0f);
+
+    // Bottom
+    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( r, -r, -1.0f);
+    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f( r,  r, -1.0f);
+    glTexCoord2f(1024/2048.f, 1536/1536.f); glVertex3f(-r,  r, -1.0f);
+    glTexCoord2f( 512/2048.f, 1536/1536.f); glVertex3f(-r, -r, -1.0f);
+
+    // Front
+    glTexCoord2f( 512/2048.f, 512/1536.f);  glVertex3f(-r, 1.0f,-r);
+    glTexCoord2f(1024/2048.f, 512/1536.f);  glVertex3f(-r, 1.0f, r);
+    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f( r, 1.0f, r);
+    glTexCoord2f( 512/2048.f, 1024/1536.f); glVertex3f( r, 1.0f,-r);
+
+    // Back
+    glTexCoord2f(1536/2048.f, 512/1536.f);  glVertex3f(-r,-1.0f,-r);
+    glTexCoord2f(2048/2048.f, 512/1536.f);  glVertex3f(-r,-1.0f, r);
+    glTexCoord2f(2048/2048.f, 1024/1536.f); glVertex3f( r,-1.0f, r);
+    glTexCoord2f(1536/2048.f, 1024/1536.f); glVertex3f( r,-1.0f,-r);
+
+    // Left
+    glTexCoord2f(1024/2048.f, 512/1536.f);  glVertex3f(-1.0f, -r, r);
+    glTexCoord2f(1536/2048.f, 512/1536.f);  glVertex3f(-1.0f,  r, r);
+    glTexCoord2f(1536/2048.f, 1024/1536.f); glVertex3f(-1.0f,  r,-r);
+    glTexCoord2f(1024/2048.f, 1024/1536.f); glVertex3f(-1.0f, -r,-r);
+
+    // Right
+    glTexCoord2f(  0/2048.f, 512/1536.f);  glVertex3f(1.0f, -r, r);
+    glTexCoord2f(512/2048.f, 512/1536.f);  glVertex3f(1.0f,  r, r);
+    glTexCoord2f(512/2048.f, 1024/1536.f); glVertex3f(1.0f,  r,-r);
+    glTexCoord2f(  0/2048.f, 1024/1536.f); glVertex3f(1.0f, -r,-r);
+  glEnd();*/
+
+  //glPopAttrib();
+  glClear(GL_DEPTH_BUFFER_BIT);
+  glPopMatrix();
+
+  return true;
 }
 
 void CSystem_Render::Clear()

@@ -13,8 +13,6 @@ class CComponent_Camera: public CComponent
 {
   private:
     friend class CSystem_Render;
-    //bool main_camera; // Inútil
-
     GLdouble projMatrix[16];
 
   public:
@@ -27,6 +25,8 @@ class CComponent_Camera: public CComponent
 
     colorf_t background_color;
     bool clear;
+
+    string skybox_texture;
 
     // Fallo: no apunta correctamente a hijos de padres
     // ¿solución? calcular la nueva posición o quitar esta opción
@@ -70,11 +70,6 @@ class CComponent_Camera: public CComponent
     inline virtual void Set(input_t data);
     inline virtual output_t Get();
 
-    void ApplyChanges();
-    void SetViewport();
-	  void SetUp();
-	  void Clear();
-
 	  void SetTarget(CGameObject* t)
 	  {
 	    target = t;
@@ -84,6 +79,14 @@ class CComponent_Camera: public CComponent
 	  {
 	    SetTarget(NULL);
 	  }
+
+  private:
+    void ApplyChanges();
+    void SetViewport();
+    void SetUp();
+    void Clear();
+
+    bool DrawSkybox();
 };
 
 BOOST_CLASS_EXPORT_KEY( CComponent_Camera );
