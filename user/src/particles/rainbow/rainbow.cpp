@@ -29,6 +29,16 @@ bool SetGameObjects_Instance1_Rainbow()
   rainbow_orange->particleEmitter()->start_min_vel = rainbow_orange->particleEmitter()->start_max_vel = 5.f;
   rainbow_red->particleEmitter()->start_min_vel = rainbow_red->particleEmitter()->start_max_vel = 4.f;
 
+//  rainbow_violet->particleEmitter()->start_max_base_radius = 2.f;
+//  rainbow_violet->particleEmitter()->start_min_base_radius = 2.f;
+//  rainbow_dblue->particleEmitter()->start_max_base_radius = rainbow_dblue->particleEmitter()->start_min_base_radius= 2.f;
+//  rainbow_blue->particleEmitter()->start_max_base_radius = rainbow_blue->particleEmitter()->start_min_base_radius = 2.f;
+//  rainbow_green->particleEmitter()->start_max_base_radius = rainbow_green->particleEmitter()->start_min_base_radius = 2.f;
+//  rainbow_yellow->particleEmitter()->start_max_base_radius = rainbow_yellow->particleEmitter()->start_min_base_radius = 2.f;
+//  rainbow_orange->particleEmitter()->start_max_base_radius = rainbow_orange->particleEmitter()->start_min_base_radius = 2.f;
+//  rainbow_red->particleEmitter()->start_max_base_radius = rainbow_red->particleEmitter()->start_min_base_radius = 2.f;
+
+  //rainbow_violet->particleEmitter()->max_particles = 2000;
   /*rainbow_violet->particleEmitter()->max_particles = 500;
    rainbow_dblue->particleEmitter()->max_particles = 500;
    rainbow_blue->particleEmitter()->max_particles = 500;
@@ -81,6 +91,8 @@ bool SetGameObjects_Instance1_Rainbow()
 
   rainbow_red->particleEmitter()->start_min_color(1.f, 0.f, 0.f);
   rainbow_red->particleEmitter()->start_max_color(1.f, 0.f, 0.f);
+
+//  rainbow_violet->particleEmitter()->gravity(0, 0, 0);
 
   rainbow_violet->particleEmitter()->Start();
   rainbow_dblue->particleEmitter()->Start();

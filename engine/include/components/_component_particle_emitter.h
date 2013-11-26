@@ -70,6 +70,10 @@ class CComponent_Particle_Emitter: public CComponent
 
     colorf_t color_adder;
 
+    // Radio de la base
+    GLfloat start_max_base_radius;
+    GLfloat start_min_base_radius;
+
   private:
     static int GetID() { return components::particle_emitter; }
 

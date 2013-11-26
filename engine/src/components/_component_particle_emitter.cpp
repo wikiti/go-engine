@@ -3,7 +3,6 @@
 #include "systems/_resource.h"
 #include "components/_component_particle_emitter.h"
 
-
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Particle_Emitter);
 
 CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject): CComponent(gameObject)
@@ -35,6 +34,8 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
   start_max_scale_factor = start_min_scale_factor = 0.f;
   start_max_angle_vel = 120;
   start_min_angle_vel = -120;
+
+  start_max_base_radius = start_min_base_radius = 0.f;
 
   max_particles = 100;
   particles.resize(0);
@@ -87,9 +88,12 @@ void CComponent_Particle_Emitter::NewParticle(CParticle* p, vector3f pos_differe
   p->color.b = gMath.random(start_min_color.b, start_max_color.b);
   p->color.a = gMath.random(start_min_color.a, start_max_color.a);
 
-  vector3f random_vector = gMath.random_vector(direction, angle_spread/2);
+  vector3f random_vector = gMath.random_vector(direction, angle_spread/2);                // Dirección
+  vector3f random_vector_XZ = vector3f(random_vector.x, 0, random_vector.z).normalize();  // Separación del origen
 
   p->position = random_vector * gMath.random(start_min_distance, start_max_distance) + pos_difference;
+  p->position += random_vector_XZ * gMath.random(start_max_base_radius, start_min_base_radius);
+
   p->velocity = random_vector * gMath.random(start_min_vel, start_max_vel);
   p->acceleration = gravity;
 

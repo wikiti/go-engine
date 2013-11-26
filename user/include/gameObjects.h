@@ -12,6 +12,7 @@
 #include "random/random_stuff.h"
 #include "particles/fireworks/fireworks.h"
 #include "particles/rainbow/rainbow.h"
+#include "particles/other_particles.h"
 
 bool SetGameObjects_Instance1();
 void Camara_main_movimiento(CGameObject* gameObject);

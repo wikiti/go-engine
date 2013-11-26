@@ -3,7 +3,8 @@
 bool SetGameObjects_Instance1()
 {
   SetGameObjects_Instance1_Fireworks();
-  SetGameObjects_Instance1_Rainbow();
+  //SetGameObjects_Instance1_Rainbow();
+  SetGameObjects_Instance1_Other_Particles();
   //SetGameObjects_Instance1_RandomStuff();
 
   CGameObject* camara_main = gGameObjects.AddGameObject("camara_main");

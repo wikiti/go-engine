@@ -8,8 +8,9 @@ texture: textura1 data/resources/textures/textura1.tga: mipmap
 texture: textura2 data/resources/textures/textura2.tga: mipmap
 mesh: mdl_hada1 data/resources/models/faerie.md2:
 texture: texture_mdl_hada1 data/resources/textures/faerie2.bmp: mipmap
-texture: smoke1 data/resources/textures/smoke1.tga: nearest
-texture: sprite1 data/resources/textures/sprite1.tga: nearest
-texture: penis1 data/resources/textures/penis.tga: nearest
+texture: smoke1 data/resources/textures/particles/smoke1.tga: nearest
+texture: sprite1 data/resources/textures/particles/sprite1.tga: nearest
+texture: penis1 data/resources/textures/particles/penis.tga: nearest
+texture: fire1 data/resources/textures/particles/fire1.tga: nearest
 
 # Fin de fichero
