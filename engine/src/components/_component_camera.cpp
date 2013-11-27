@@ -117,6 +117,10 @@ void CComponent_Camera::SetUp()
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
+  if(viewmode == viewmode::ortho) // Añadir rotaciones o algo
+    return;
+
+
   // Solución temporal: usar un pivote anclado al objeto que manipule la cámara como un hijo.
   // Mientras la cámara rote, se aplicarán las rotaciones al pivote, lo que permitirá a la cámara mirar libremente.
   //  -> La solución es un poco burda, pero sencilla. Al menos, no complicamos las cosas con procesos matemáticos innecesarios.
