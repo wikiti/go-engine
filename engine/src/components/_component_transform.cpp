@@ -63,14 +63,20 @@ vector3f CComponent_Transform::EulerAngles()
   /*glm::vec3 ea = glm::eulerAngles(angle);
   // Pasar a grados
   return vector3f(_RAD_TO_DEG(ea.x), _RAD_TO_DEG(ea.y), _RAD_TO_DEG(ea.z));*/
-  glm::vec3 ea = glm::eulerAngles(angle);
+  /*glm::vec3 ea = glm::eulerAngles(angle);
 
   GLfloat nx = _RAD_TO_DEG(ea.x);
   GLfloat ny = _RAD_TO_DEG(ea.y);
   GLfloat nz = _RAD_TO_DEG(ea.z);
 
   gMath.NormalizeAngles(nx, ny, nz);
-  return vector3f(nx, ny, nz);
+  return vector3f(nx, ny, nz);*/
+  float x = _RAD_TO_DEG(atan2(2*(angle.y*angle.z + angle.w*angle.x), angle.w*angle.w - angle.x*angle.x - angle.y*angle.y + angle.z*angle.z));
+  float y = _RAD_TO_DEG(asin(-2*(angle.x*angle.z - angle.w*angle.y)));
+  float z = _RAD_TO_DEG(atan2(2*(angle.x*angle.y + angle.w*angle.z), angle.w*angle.w + angle.x*angle.x - angle.y*angle.y - angle.z*angle.z));
+
+  gMath.NormalizeAngles(x, y, z);
+  return vector3f(x, y, z);
   // Necesario?
 }
 

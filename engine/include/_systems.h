@@ -14,6 +14,7 @@
 #include "systems/_render.h"
 #include "systems/_resource.h"
 #include "systems/_other.h"
+#include "systems/_mixer.h"
 
 bool Systems_Init();
 void Systems_Close();

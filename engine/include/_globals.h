@@ -77,8 +77,6 @@ extern const Uint8 *gKeyboardState;
 #include <GL/SOIL.h>
 #include <GL/glu.h>
 
-#include <AL/al.h>
-
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
@@ -89,6 +87,11 @@ extern const Uint8 *gKeyboardState;
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
 #include <assimp/postprocess.h>     // Post processing fla
+
+/**________OpenAL________**/
+
+#include <AL/al.h>
+#include <AL/alc.h>
 
 /**______ERRORS_CHARS_____**/
 

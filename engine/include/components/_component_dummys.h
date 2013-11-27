@@ -6,6 +6,8 @@
 #include "_globals.h"
 #include "components/_component.h"
 
+#include "systems/_other.h"
+
 class CComponent_Dummy1: public CComponent
 {
   private:

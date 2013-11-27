@@ -20,7 +20,7 @@ void CSystem_GameObject_Manager::SaveGameObjects(string file)
 
   if(!os.good())
   {
-    gSystem_Debug.console_error_msg("From CSystem_GameObject_Manager::SaveGameObjects: Could not open file: %s", file.c_str());
+    gSystem_Debug.console_error_msg("Error from Manager::SaveGameObjects: Could not open file: %s", file.c_str());
     return;
   }
 
@@ -46,7 +46,7 @@ void CSystem_GameObject_Manager::LoadGameObjects(string file)
 
   if(!is.good())
   {
-    gSystem_Debug.console_error_msg("From CSystem_GameObject_Manager::LoadGameObjects: Could not open file: %s", file.c_str());
+    gSystem_Debug.console_error_msg("Error from Manager::LoadGameObjects: Could not open file: %s", file.c_str());
     return;
   }
 
@@ -106,7 +106,7 @@ void CSystem_GameObject_Manager::InitGameObject(string name)
   if(it != gameObjects.end())
     it->second->Init();
   else
-    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::InitGameObject: Could not find objet \"%s\"", name.c_str());
+    gSystem_Debug.console_warning_msg("Error from Manager::InitGameObject: Could not find objet \"%s\"", name.c_str());
 }
 
 void CSystem_GameObject_Manager::CloseGameObject(string name)
@@ -115,14 +115,14 @@ void CSystem_GameObject_Manager::CloseGameObject(string name)
   if(it != gameObjects.end())
     it->second->Close();
   else
-    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::CloseGameObject: Could not find objet \"%s\"", name.c_str());
+    gSystem_Debug.console_warning_msg("Error from Manager::CloseGameObject: Could not find objet \"%s\"", name.c_str());
 }
 
 CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject_type type, bool init)
 {
   if(!gValidateIdentifier(nombre))
   {
-    gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", nombre.c_str());
+    gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", nombre.c_str());
     return NULL;
   }
 
@@ -153,7 +153,7 @@ CGameObject* CSystem_GameObject_Manager::AddGameObject(CGameObject* go, bool ini
 {
   if(!gValidateIdentifier(go->GetName()))
   {
-    gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", go->GetName().c_str());
+    gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", go->GetName().c_str());
 
     return NULL;
   }
@@ -201,7 +201,7 @@ bool CSystem_GameObject_Manager::DeleteGameObject(string nombre, bool remove_chi
     return true;
   }
 
-  gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::DeleteGameObject: Could not find objet \"%s\"", nombre.c_str());
+  gSystem_Debug.console_warning_msg("Error from Manager::DeleteGameObject: Could not find objet \"%s\"", nombre.c_str());
 
   return false;
 }
@@ -223,7 +223,7 @@ bool CSystem_GameObject_Manager::RemoveGameObject(string str)
     return true;
   }
 
-  gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::RemoveGameObject: Could not find objet \"%s\"", str.c_str());
+  gSystem_Debug.console_warning_msg("Error from Manager::RemoveGameObject: Could not find objet \"%s\"", str.c_str());
 
   return false;
 }

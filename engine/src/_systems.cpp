@@ -14,38 +14,45 @@ bool Systems_Init()
 
   if(!gSystem_GameObject_Manager.Init())
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Error cargando sistema GameObject Manager");
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load GameObject Manager system");
     return false;
   }
 
   if(!gSystem_Render.Init())
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Error cargando sistema Render");
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Render system");
     return false;
   }
 
   if(!gSystem_Debug.InitConsoleFont())
   {
-    gSystem_Debug.msg_box(ERROR_INIT, "Error cargando sistema Debug::Console");
+    gSystem_Debug.msg_box(ERROR_INIT, "Could not load Debug::Console system");
   }
 
   if(!gSystem_Resources.Init())
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Error cargando sistema de Recursos");
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load de Recursos system");
     return false;
   }
 
   if(!gSystem_Time.Init())
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Error cargando sistema Time");
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Time system");
     return false;
   }
 
   if(!gSystem_Math.Init())
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Error cargando sistema Time");
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Math system");
     return false;
   }
+
+  if(!gSystem_Mixer.Init())
+  {
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Mixer system");
+    return false;
+  }
+
 
   return true;
 }
@@ -59,6 +66,7 @@ void Systems_Close()
   gSystem_Resources.Close();
   gSystem_Time.Close();
   gSystem_Math.Close();
+  gSystem_Mixer.Close();
 }
 
 void Systems_OnEvent()
