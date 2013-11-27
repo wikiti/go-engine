@@ -479,7 +479,6 @@ void CSystem_Debug::console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat 
   console_buffer.insert(console_buffer.begin(), t);
 }
 
-
 /** Console commands **/
 
 void CSystem_Debug::Console_command__UNKNOWN_COMMAND(string arguments)

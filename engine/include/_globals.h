@@ -77,6 +77,8 @@ extern const Uint8 *gKeyboardState;
 #include <GL/SOIL.h>
 #include <GL/glu.h>
 
+#include <AL/al.h>
+
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
@@ -399,6 +401,7 @@ typedef struct vector3f_t
 
 string generate_random_alphanumeric_string(uint n = 4);
 SDL_Surface* sdl_cargar_img(std::string s);
+bool gValidateIdentifier(string identifier);
 
 
 /*typedef struct matrixf_t

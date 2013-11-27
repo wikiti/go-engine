@@ -27,3 +27,12 @@ SDL_Surface* sdl_cargar_img(std::string s)
 
   return img;
 }
+
+bool gValidateIdentifier(string identifier)
+{
+  for(string::iterator it = identifier.begin(); it != identifier.end(); it++)
+    if(!isalnum(*it) and (*it) != '_')
+      return false;
+
+  return true;
+}

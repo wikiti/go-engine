@@ -94,7 +94,7 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
     float startTime = gSystem_Data_Storage.GetFloat("firework_timer_"+value);
     float timeout = gSystem_Data_Storage.GetFloat("firework_timeout_"+value);
 
-    if((gTime.GetTicks_s() - startTime*gTime.timeScale()) < timeout) // 1.5 segundos.
+    if((gTime.GetTicks_s() - startTime) < timeout/gTime.timeScale()) // 1.5 segundos.
     {
       current_firework->Transform()->Translate(0.f, 20.f*gTime.deltaTime_s(), 0.f);
     }

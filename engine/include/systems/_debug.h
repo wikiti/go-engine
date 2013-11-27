@@ -113,6 +113,8 @@ class CSystem_Debug: public CSystem
 
   protected:
       // Console commands
+    // Test
+
     // General
     void Console_command__UNKNOWN_COMMAND(string arguments);
     void Console_command__HELP(string arguments);

@@ -100,28 +100,6 @@ void CSystem_GameObject_Manager::CloseGameObjects()
     it->second->Close();
 }
 
-bool CSystem_GameObject_Manager::IsNameValid(string go_name)
-{
-  /*if(go_name[0] != '_' or (go_name[0] < '0' and go_name[0] > '9') or (go_name[0] < 'A' and go_name[0] > 'Z') or (go_name[0] < 'a' and go_name[0] > 'z'))
-  {
-    gSystem_Debug.console_warning_msg("Invalid name:\"%s\" Must start with:", go_name);
-    gSystem_Debug.console_warning_msg("- An underscore  (_)");
-    gSystem_Debug.console_warning_msg("- An uppercase   (A-Z)");
-    gSystem_Debug.console_warning_msg("- A lowercase    (a-z)");
-    gSystem_Debug.console_warning_msg("- A number       (0-9)");
-    return false;
-  }*/
-  for(string::iterator it = go_name.begin(); it != go_name.end(); it++)
-    //if( (*it) != '_' or (((*it) < '0' and (*it) > '9') and ((*it) < 'A' and (*it) > 'Z') and ((*it) < 'a' and (*it) > 'z')))
-    if(!isalnum(*it) and (*it) != '_')
-    {
-      //cout << "Fail en char: " << (*it) << endl;
-      return false;
-    }
-
-  return true;
-}
-
 void CSystem_GameObject_Manager::InitGameObject(string name)
 {
   map<string, CGameObject*>::iterator it = gameObjects.find(name);
@@ -142,9 +120,9 @@ void CSystem_GameObject_Manager::CloseGameObject(string name)
 
 CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject_type type, bool init)
 {
-  if(!IsNameValid(nombre))
+  if(!gValidateIdentifier(nombre))
   {
-    gSystem_Debug.console_warning_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", nombre.c_str());
+    gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", nombre.c_str());
     return NULL;
   }
 
@@ -173,9 +151,9 @@ CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject
 
 CGameObject* CSystem_GameObject_Manager::AddGameObject(CGameObject* go, bool init)
 {
-  if(!IsNameValid(go->GetName()))
+  if(!gValidateIdentifier(go->GetName()))
   {
-    gSystem_Debug.console_warning_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", go->GetName().c_str());
+    gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", go->GetName().c_str());
 
     return NULL;
   }
@@ -297,9 +275,9 @@ vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObject(string prefix)
 
 bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
 {
-  if(!IsNameValid(new_name))
+  if(!gValidateIdentifier(new_name))
   {
-    gSystem_Debug.console_warning_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
+    gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
 
     return NULL;
   }
@@ -337,9 +315,9 @@ bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
 
 bool CSystem_GameObject_Manager::RenameGameObject(CGameObject* go, string new_name)
 {
-  if(!IsNameValid(new_name))
+  if(!gValidateIdentifier(new_name))
   {
-    gSystem_Debug.console_warning_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
+    gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
 
     return NULL;
   }

@@ -49,6 +49,7 @@
 									<listOptionValue builtIn="false" value="glew32"/>
 									<listOptionValue builtIn="false" value="glu32"/>
 									<listOptionValue builtIn="false" value="opengl32"/>
+									<listOptionValue builtIn="false" value="OpenAL32"/>
 									<listOptionValue builtIn="false" value="assimp"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.746257244" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">

@@ -347,6 +347,12 @@ bool CSystem_Resources::LoadResourceFile(string rc_file)
     getline(ss, file, ':');
     getline(ss, arguments);
 
+    if(!gValidateIdentifier(name))
+    {
+      gSystem_Debug.console_warning_msg("Invalid resource name \"%s\" (%s): Can only contain alphanumerics or underscores.", name.c_str(), file.c_str());
+      continue;
+    }
+
     if(file.length() > 1) file = file.substr(1);
     if(arguments.length() > 1) arguments = arguments.substr(1);
 

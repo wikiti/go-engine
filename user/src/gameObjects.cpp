@@ -7,10 +7,6 @@ bool SetGameObjects_Instance1()
   camara_main->Transform()->position.y += 3.f;
   camara_main->Transform()->position.z -= 20.f;
 
-  CGameObject* gui_example = gGameObjects.AddGameObject("gui_example");
-  gui_example->GUITexture()->texture_name = "textura1";
-  gui_example->GUITexture()->width = gui_example->GUITexture()->height = 0.25f;
-
   camara_main->SetKeyEventFunction(&Camara_main_movimiento);
   camara_main->SetEventFunction(&Camara_mouse_movimiento);
 
@@ -92,6 +88,7 @@ void Camara_mouse_movimiento(CGameObject* gameObject)
   {
     gameObject->Transform()->LRotate(event.motion.yrel * 20.f * gTime.deltaTime_s(), 0, 0);
     gameObject->Transform()->Rotate(0, event.motion.xrel * -20.f * gTime.deltaTime_s(), 0);
+    cout << gameObject->Transform()->EulerAngles() << endl;
   }
   else if(event.type == SDL_MOUSEWHEEL)
   {

@@ -29,8 +29,6 @@ class CSystem_GameObject_Manager: public CSystem
     void InitGameObject(string name);
     void CloseGameObject(string name);
 
-    bool IsNameValid(string game_object_name);
-
     CGameObject* AddGameObject(string name, gameObject_type type = gameObject_empty, bool init = true); // cambiar con un enum
     CGameObject* AddGameObject(CGameObject* go, bool init = true);
     bool DeleteGameObject(string name, bool remove_children = true);
