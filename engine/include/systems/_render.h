@@ -62,8 +62,10 @@ class CSystem_Render: public CSystem
     {
       for(vector<CGameObject*>::iterator it = camera_list.begin(); it != camera_list.end(); it++)
       {
-        (*it)->camera()->ApplyChanges();
+        (*it)->Camera()->ApplyChanges();
       }
+
+      GUI_Camera->Camera()->ApplyChanges();
     }
 
   public:

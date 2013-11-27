@@ -22,16 +22,16 @@ bool SetGameObjects_Instance1_RandomStuff()
   CGameObject* hada = gGameObjects.AddGameObject("hada");
 
   CGameObject* particle_emitter = gGameObjects.AddGameObject("particle_emitter");
-  particle_emitter->particleEmitter()->material_name = "smoke1";
-  particle_emitter->particleEmitter()->max_particles = 250;
-  particle_emitter->particleEmitter()->angle_spread = 90;
-  particle_emitter->particleEmitter()->gravity(0, -5.f, 0);
+  particle_emitter->ParticleEmitter()->material_name = "smoke1";
+  particle_emitter->ParticleEmitter()->max_particles = 250;
+  particle_emitter->ParticleEmitter()->angle_spread = 90;
+  particle_emitter->ParticleEmitter()->gravity(0, -5.f, 0);
   //particle_emitter->particleEmitter()->color_adder(-1.f, -1.f, 0.f);
-  particle_emitter->particleEmitter()->start_min_color(0.f, 0.5f, 0.5f, 1.f);
-  particle_emitter->particleEmitter()->start_max_color(0.f, 1.f, 1.f, 1.f);
-  particle_emitter->particleEmitter()->start_max_scale = 2.f;
-  particle_emitter->particleEmitter()->start_min_scale_factor = -0.5f;
-  particle_emitter->transform()->Translate(0.f, 0.f, 5.f);
+  particle_emitter->ParticleEmitter()->start_min_color(0.f, 0.5f, 0.5f, 1.f);
+  particle_emitter->ParticleEmitter()->start_max_color(0.f, 1.f, 1.f, 1.f);
+  particle_emitter->ParticleEmitter()->start_max_scale = 2.f;
+  particle_emitter->ParticleEmitter()->start_min_scale_factor = -0.5f;
+  particle_emitter->Transform()->Translate(0.f, 0.f, 5.f);
   particle_emitter->SetEventFunction(&Particle_emitter_explosions);
 
   CGameObject* random_vector = gGameObjects.AddGameObject("random_vector");
@@ -63,19 +63,19 @@ bool SetGameObjects_Instance1_RandomStuff()
   cubo_main->AddChild(particle_emitter);
   cubo_second->AddChild(cubo_third);
 
-  camara_second->transform()->position.y += 3.f;
-  cubo_second->transform()->Translate(1.f, 0.f, 0.f);
-  cubo_third->transform()->Translate(0.f, 1.f, 0.f);
-  cubo_main->transform()->Translate(0.f, 0.f, 5.f);
+  camara_second->Transform()->position.y += 3.f;
+  cubo_second->Transform()->Translate(1.f, 0.f, 0.f);
+  cubo_third->Transform()->Translate(0.f, 1.f, 0.f);
+  cubo_main->Transform()->Translate(0.f, 0.f, 5.f);
 
-  hada->transform()->SetScale(0.1f, 0.1f, 0.1f);
-  hada->transform()->Translate(0.f, 0.f, 10.f);
-  hada->transform()->Rotate(0.f, 90.f, 0.f);
+  hada->Transform()->SetScale(0.1f, 0.1f, 0.1f);
+  hada->Transform()->Translate(0.f, 0.f, 10.f);
+  hada->Transform()->Rotate(0.f, 90.f, 0.f);
 
-  camara_second->camera()->SetTarget(cubo_third);
-  camara_second->camera()->viewport.height = camara_second->camera()->viewport.width = 0.3f;
-  camara_second->camera()->background_color(0, 0.5f, 0.75f, 1.f);
-  camara_second->camera()->skybox_texture = "skybox1";
+  camara_second->Camera()->SetTarget(cubo_third);
+  camara_second->Camera()->viewport.height = camara_second->Camera()->viewport.width = 0.3f;
+  camara_second->Camera()->background_color(0, 0.5f, 0.75f, 1.f);
+  camara_second->Camera()->skybox_texture = "skybox1";
 
   cubo_main->SetKeyEventFunction(&Cubo_main_movimiento);
   cubo_second->SetKeyEventFunction(&Cubo_second_movimiento);
@@ -91,11 +91,11 @@ bool SetGameObjects_Instance1_RandomStuff()
   cubo_third->AddComponent<CComponent_Dummy1>();
   //hada->AddComponent<CComponent_Dummy2>();
 
-  hada->meshRender()->mesh_name = "mdl_hada1";
-  hada->meshRender()->material_name = "texture_mdl_hada1";
+  hada->MeshRender()->mesh_name = "mdl_hada1";
+  hada->MeshRender()->material_name = "texture_mdl_hada1";
 
-  camara_second->camera()->before_render = &Camara_second_before_render;
-  camara_second->camera()->after_render = &Camara_second_after_render;
+  camara_second->Camera()->before_render = &Camara_second_before_render;
+  camara_second->Camera()->after_render = &Camara_second_after_render;
 
   gGameObjects.RenameGameObject("cubo_main", "cubo_second");
   gGameObjects.RenameGameObject("cubo_main", "cubo");
@@ -105,12 +105,12 @@ bool SetGameObjects_Instance1_RandomStuff()
 
 void Camara_second_before_render(CGameObject* gameObject)
 {
-  gGameObjects["hada"]->meshRender()->material_name = "textura1";
+  gGameObjects["hada"]->MeshRender()->material_name = "textura1";
 }
 
 void Camara_second_after_render(CGameObject* gameObject)
 {
-  gGameObjects["hada"]->meshRender()->material_name = "texture_mdl_hada1";
+  gGameObjects["hada"]->MeshRender()->material_name = "texture_mdl_hada1";
 }
 
 void Cubo_main_movimiento(CGameObject* gameObject)
@@ -119,43 +119,43 @@ void Cubo_main_movimiento(CGameObject* gameObject)
   {
     if(gKeyboardState[SDL_SCANCODE_W])
     {
-      gameObject->transform()->Rotate(20.f * gTime.deltaTime_s());
+      gameObject->Transform()->Rotate(20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_S])
     {
-      gameObject->transform()->Rotate(-20.f * gTime.deltaTime_s());
+      gameObject->Transform()->Rotate(-20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_D])
     {
-      gameObject->transform()->Rotate(0.f, 20.f * gTime.deltaTime_s());
+      gameObject->Transform()->Rotate(0.f, 20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_A])
     {
-      gameObject->transform()->Rotate(0.f, -20.f * gTime.deltaTime_s());
+      gameObject->Transform()->Rotate(0.f, -20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_Q])
     {
-      gameObject->transform()->Rotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
+      gameObject->Transform()->Rotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_E])
     {
-      gameObject->transform()->Rotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
+      gameObject->Transform()->Rotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_R])
     {
-      gameObject->transform()->SetAngle(0, 0, 0);
+      gameObject->Transform()->SetAngle(0, 0, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_1])
     {
-      gameObject->transform()->SetAngle(45, 0, 0);
+      gameObject->Transform()->SetAngle(45, 0, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_2])
     {
-      gameObject->transform()->SetAngle(0, 45, 0);
+      gameObject->Transform()->SetAngle(0, 45, 0);
     }
     if(gKeyboardState[SDL_SCANCODE_3])
     {
-      gameObject->transform()->SetAngle(0, 0, 45);
+      gameObject->Transform()->SetAngle(0, 0, 45);
     }
 //    cout << "Cubo vectors:" << endl;
 //    cout << "X: " << gameObject->transform()->left() << endl;
@@ -167,81 +167,81 @@ void Cubo_main_movimiento(CGameObject* gameObject)
   {
     if(gKeyboardState[SDL_SCANCODE_W])
     {
-      gameObject->transform()->LRotate(20.f * gTime.deltaTime_s());
+      gameObject->Transform()->LRotate(20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_S])
     {
-      gameObject->transform()->LRotate(-20.f * gTime.deltaTime_s());
+      gameObject->Transform()->LRotate(-20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_D])
     {
-      gameObject->transform()->LRotate(0.f, 20.f * gTime.deltaTime_s());
+      gameObject->Transform()->LRotate(0.f, 20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_A])
     {
-      gameObject->transform()->LRotate(0.f, -20.f * gTime.deltaTime_s());
+      gameObject->Transform()->LRotate(0.f, -20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_Q])
     {
-      gameObject->transform()->LRotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
+      gameObject->Transform()->LRotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_E])
     {
-      gameObject->transform()->LRotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
+      gameObject->Transform()->LRotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
     }
   }
   else if(gKeyboardState[SDL_SCANCODE_LSHIFT])
   {
     if(gKeyboardState[SDL_SCANCODE_W])
     {
-      gameObject->transform()->LTranslate(0.f, 0.f, 5.f * gTime.deltaTime_s());
+      gameObject->Transform()->LTranslate(0.f, 0.f, 5.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_S])
     {
-      gameObject->transform()->LTranslate(0.f, 0.f, -5.f * gTime.deltaTime_s());
+      gameObject->Transform()->LTranslate(0.f, 0.f, -5.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_D])
     {
-      gameObject->transform()->LTranslate(5.f * gTime.deltaTime_s());
+      gameObject->Transform()->LTranslate(5.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_A])
     {
-      gameObject->transform()->LTranslate(-5.f * gTime.deltaTime_s());
+      gameObject->Transform()->LTranslate(-5.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_Q])
     {
-      gameObject->transform()->LTranslate(0.f, 5.f * gTime.deltaTime_s(), 0.f);
+      gameObject->Transform()->LTranslate(0.f, 5.f * gTime.deltaTime_s(), 0.f);
     }
     if(gKeyboardState[SDL_SCANCODE_E])
     {
-      gameObject->transform()->LTranslate(0.f, -5.f * gTime.deltaTime_s(), 0.f);
+      gameObject->Transform()->LTranslate(0.f, -5.f * gTime.deltaTime_s(), 0.f);
     }
   }
   else
   {
     if(gKeyboardState[SDL_SCANCODE_W])
     {
-      gameObject->transform()->Translate(0.f, 0.f, 5.f * gTime.deltaTime_s());
+      gameObject->Transform()->Translate(0.f, 0.f, 5.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_S])
     {
-      gameObject->transform()->Translate(0.f, 0.f, -5.f * gTime.deltaTime_s());
+      gameObject->Transform()->Translate(0.f, 0.f, -5.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_D])
     {
-      gameObject->transform()->Translate(5.f * gTime.deltaTime_s());
+      gameObject->Transform()->Translate(5.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_A])
     {
-      gameObject->transform()->Translate(-5.f * gTime.deltaTime_s());
+      gameObject->Transform()->Translate(-5.f * gTime.deltaTime_s());
     }
     if(gKeyboardState[SDL_SCANCODE_Q])
     {
-      gameObject->transform()->Translate(0.f, 5.f * gTime.deltaTime_s(), 0.f);
+      gameObject->Transform()->Translate(0.f, 5.f * gTime.deltaTime_s(), 0.f);
     }
     if(gKeyboardState[SDL_SCANCODE_E])
     {
-      gameObject->transform()->Translate(0.f, -5.f * gTime.deltaTime_s(), 0.f);
+      gameObject->Transform()->Translate(0.f, -5.f * gTime.deltaTime_s(), 0.f);
     }
   }
 }
@@ -254,25 +254,25 @@ void Cubo_second_movimiento(CGameObject* gameObject)
   if(gKeyboardState[SDL_SCANCODE_Y])
   {
     scale += 1.f * gTime.deltaTime_s();
-    gameObject->transform()->SetScale(1.f, scale, 1.f);
+    gameObject->Transform()->SetScale(1.f, scale, 1.f);
   }
   if(gKeyboardState[SDL_SCANCODE_H])
   {
     scale -= 1.f * gTime.deltaTime_s();
-    gameObject->transform()->SetScale(1.f, scale, 1.f);
+    gameObject->Transform()->SetScale(1.f, scale, 1.f);
   }
 }
 
 void Cubo_second_cout(CGameObject* gameObject)
 {
-  cout << "Cubo_second GPOS: " << gameObject->transform()->Position() << endl;
-  cout << "Cubo_second LPOS: " << gameObject->transform()->LPosition() << endl;
+  cout << "Cubo_second GPOS: " << gameObject->Transform()->Position() << endl;
+  cout << "Cubo_second LPOS: " << gameObject->Transform()->LPosition() << endl;
   cout << "----------------------------------------------------" << endl;
 }
 
 void Cubo_third_behaviour(CGameObject* gameObject)
 {
-  gameObject->transform()->LookAt(gGameObjects["camara_main"]->transform()->Position());
+  gameObject->Transform()->LookAt(gGameObjects["camara_main"]->Transform()->Position());
 }
 
 void Camara_second_movimiento(CGameObject* gameObject)
@@ -281,9 +281,9 @@ void Camara_second_movimiento(CGameObject* gameObject)
   if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
   {
     if(!target)
-      gameObject->camera()->SetTarget(gGameObjects["cubo_second"]);
+      gameObject->Camera()->SetTarget(gGameObjects["cubo_second"]);
     else
-      gameObject->camera()->UnSetTarget();
+      gameObject->Camera()->UnSetTarget();
 
     target = !target;
   }
@@ -298,8 +298,8 @@ void Particle_emitter_explosions(CGameObject* gameObject)
 {
   if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
   {
-    gameObject->transform()->position = gMath.random_point(vector3f(10, 10, 0), vector3f(-5, -5, 0));
-    gameObject->particleEmitter()->Start();
+    gameObject->Transform()->position = gMath.random_point(vector3f(10, 10, 0), vector3f(-5, -5, 0));
+    gameObject->ParticleEmitter()->Start();
     //gameObject->particleEmitter()->Stop();
   }
 }

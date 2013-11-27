@@ -435,12 +435,12 @@ void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
   ApplyParentTransform(parent->GetParent());
 
   // Posición
-  glTranslatef(parent->transform()->position.x, parent->transform()->position.y, parent->transform()->position.z);
+  glTranslatef(parent->Transform()->position.x, parent->Transform()->position.y, parent->Transform()->position.z);
   // Orientación
-  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(parent->transform()->angle)));                  // <- GLOBAL
+  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(parent->Transform()->angle)));                  // <- GLOBAL
   //glMultMatrixf((const float*)glm::value_ptr(glm::inverse(glm::toMat4(parent->transform()->angle))));  // <- LOCAL
   // Escala
-  glScalef(parent->transform()->scale.x, parent->transform()->scale.y, parent->transform()->scale.z);
+  glScalef(parent->Transform()->scale.x, parent->Transform()->scale.y, parent->Transform()->scale.z);
 
   /*std::stack<CGameObject*> parent_stack;
   CGameObject* p = gameObject->GetParent();

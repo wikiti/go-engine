@@ -7,9 +7,9 @@ void SetTransformByVar(CGameObject* go, string var_name)
   angle_var_name = var_name + "_ANGLE_";
   scale_var_name = var_name + "_SCALE_";
 
-  go->transform()->SetPosition(gSystem_Data_Storage.GetFloat((pos_var_name+"X")), gSystem_Data_Storage.GetFloat((pos_var_name+"Y")), gSystem_Data_Storage.GetFloat((pos_var_name+"Z")));
-  go->transform()->SetAngle(gSystem_Data_Storage.GetFloat((angle_var_name+"X")), gSystem_Data_Storage.GetFloat((angle_var_name+"Y")), gSystem_Data_Storage.GetFloat((angle_var_name+"Z")));
-  go->transform()->SetScale(gSystem_Data_Storage.GetFloat((scale_var_name+"X")), gSystem_Data_Storage.GetFloat((scale_var_name+"Y")), gSystem_Data_Storage.GetFloat((scale_var_name+"Z")));
+  go->Transform()->SetPosition(gSystem_Data_Storage.GetFloat((pos_var_name+"X")), gSystem_Data_Storage.GetFloat((pos_var_name+"Y")), gSystem_Data_Storage.GetFloat((pos_var_name+"Z")));
+  go->Transform()->SetAngle(gSystem_Data_Storage.GetFloat((angle_var_name+"X")), gSystem_Data_Storage.GetFloat((angle_var_name+"Y")), gSystem_Data_Storage.GetFloat((angle_var_name+"Z")));
+  go->Transform()->SetScale(gSystem_Data_Storage.GetFloat((scale_var_name+"X")), gSystem_Data_Storage.GetFloat((scale_var_name+"Y")), gSystem_Data_Storage.GetFloat((scale_var_name+"Z")));
 }
 
 void DefineTramsformByVar(string var_name)

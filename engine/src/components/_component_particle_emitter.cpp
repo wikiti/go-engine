@@ -56,13 +56,13 @@ void CComponent_Particle_Emitter::Start()
 {
   if(!enabled) return;
 
-  last_pos = gameObject->transform()->Position();
+  last_pos = gameObject->Transform()->Position();
 
   particles.resize(max_particles);
   stop = freeze = false;
 
   vector3f pos_difference(0.f, 0.f, 0.f);
-  vector3f current_pos = gameObject->transform()->Position();
+  vector3f current_pos = gameObject->Transform()->Position();
 
   if(last_pos != current_pos)
   {
@@ -198,7 +198,7 @@ void CComponent_Particle_Emitter::OnLoop()
   if(freeze || !enabled) return;
 
   vector3f pos_difference(0.f, 0.f, 0.f);
-  vector3f current_pos = gameObject->transform()->Position();
+  vector3f current_pos = gameObject->Transform()->Position();
 
   if(last_pos != current_pos)
   {

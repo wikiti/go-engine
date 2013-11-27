@@ -36,8 +36,8 @@ void CComponent_GUI_Texture::OnRender()
 {
   if(!enabled) return;
 
-  vector3f position = gameObject->transform()->position;
-  vector3f scale    = gameObject->transform()->scale;
+  vector3f position = gameObject->Transform()->position;
+  vector3f scale    = gameObject->Transform()->scale;
 
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(texture_name)->GetID());
   glColor4f(color.r, color.g, color.b, color.a);
@@ -49,10 +49,10 @@ void CComponent_GUI_Texture::OnRender()
   gSystem_Render.GetWindowSize(&w, &h);
 
   glBegin(GL_QUADS);
-    glTexCoord2d(0,1); glVertex3f(0.f   + (float)pixel_offset_x/w,  0.f    + (float)pixel_offset_y/h, 0.f);
-    glTexCoord2d(1,1); glVertex3f(width + (float)pixel_offset_x/w,  0.f    + (float)pixel_offset_y/h, 0.f);
-    glTexCoord2d(1,0); glVertex3f(width + (float)pixel_offset_x/w, -height + (float)pixel_offset_y/h, 0.f);
-    glTexCoord2d(0,0); glVertex3f(0.f   + (float)pixel_offset_x/w, -height + (float)pixel_offset_y/h, 0.f);
+    glTexCoord2d(0,1); glVertex3f(0.f   + (float)pixel_offset_x/w,  height + (float)pixel_offset_y/h, 0.f);
+    glTexCoord2d(1,1); glVertex3f(width + (float)pixel_offset_x/w,  height + (float)pixel_offset_y/h, 0.f);
+    glTexCoord2d(1,0); glVertex3f(width + (float)pixel_offset_x/w,  0      + (float)pixel_offset_y/h, 0.f);
+    glTexCoord2d(0,0); glVertex3f(0.f   + (float)pixel_offset_x/w,  0      + (float)pixel_offset_y/h, 0.f);
   glEnd();
 }
 

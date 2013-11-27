@@ -26,9 +26,6 @@ class CComponent_GUI_Texture: public CComponent
     CComponent_GUI_Texture(CGameObject* gameObject);
     ~CComponent_GUI_Texture();
 
-    inline virtual void Set(input_t data);
-    inline virtual output_t Get();
-
     bool HitTest(GLfloat pixel_x, GLfloat pixel_y);
     void OnRender();
 };

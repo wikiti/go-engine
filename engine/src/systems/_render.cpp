@@ -93,9 +93,9 @@ bool CSystem_Render::Init()
   current_camera = -1;
 
   GUI_Camera = gSystem_GameObject_Manager.AddGameObject("__RENDER_GUI_CAMERA");
-  GUI_Camera->camera()->clear = false;
-  GUI_Camera->camera()->viewmode = viewmode::ortho;
-
+  GUI_Camera->Camera()->clear = false;
+  GUI_Camera->Camera()->viewmode = viewmode::ortho;
+  GUI_Camera->Camera()->ApplyChanges();
 
   /*if(!glewIsSupported("GL_EXT_texture_env_combine"))
   {
@@ -153,7 +153,7 @@ void CSystem_Render::SetMainCamera(CGameObject* camera)
   // Control de repeticiones de objetos
   vector<CGameObject*>::iterator it = camera_list.begin();
   camera_list.insert(it, camera);
-  camera->camera()->ApplyChanges();
+  camera->Camera()->ApplyChanges();
 }
 
 void CSystem_Render::SetMainCamera(const string& cam)
@@ -165,7 +165,7 @@ void CSystem_Render::SetMainCamera(const string& cam)
   // ¿?
   vector<CGameObject*>::iterator it = camera_list.begin();
   camera_list.insert(it, camera);
-  camera->camera()->ApplyChanges();
+  camera->Camera()->ApplyChanges();
 }
 
 void CSystem_Render::UnSetMainCamera(const string& camera)
@@ -179,7 +179,7 @@ void CSystem_Render::AddCamera(CGameObject* camera)
   if(camera)
   {
     camera_list.push_back(camera);
-    camera->camera()->ApplyChanges();
+    camera->Camera()->ApplyChanges();
   }
 }
 
@@ -189,7 +189,7 @@ void CSystem_Render::AddCamera(const string& name)
   if(camera)
   {
     camera_list.push_back(camera);
-    camera->camera()->ApplyChanges();
+    camera->Camera()->ApplyChanges();
   }
 }
 
@@ -200,7 +200,7 @@ void CSystem_Render::AddCameraPrior(CGameObject* camera)
     vector<CGameObject*>::iterator it = camera_list.begin();
     it++;
     camera_list.insert(it, camera);
-    camera->camera()->ApplyChanges();
+    camera->Camera()->ApplyChanges();
   }
 }
 
@@ -212,7 +212,7 @@ void CSystem_Render::AddCameraPrior(const string& name)
     vector<CGameObject*>::iterator it = camera_list.begin();
     it++;
     camera_list.insert(it, camera);
-    camera->camera()->ApplyChanges();
+    camera->Camera()->ApplyChanges();
   }
 }
 
@@ -241,6 +241,9 @@ void CSystem_Render::OnRender()
   Clear();
 
   current_camera = 0;
+  // Usar un vector para guardar los objetos GUI que se vayan encontrando en la primera iteración.
+  // vector<CGameObject*> gui_texts;
+  vector<CComponent_GUI_Texture*> gui_textures;
 
   for(vector<CGameObject*>::iterator it = camera_list.begin(); it < camera_list.end(); it++)
   {
@@ -255,6 +258,7 @@ void CSystem_Render::OnRender()
     cam->SetUp();
     cam->Clear();
 
+
     // Draw Skybox
     DrawSkybox(cam);
     if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID") )
@@ -268,38 +272,51 @@ void CSystem_Render::OnRender()
       glColor3f(1.f, 1.f, 1.f);
       glBindTexture(GL_TEXTURE_2D, 0);
 
-      it2->second->transform()->ApplyTransform();
+      it2->second->Transform()->ApplyTransform();
 	    it2->second->OnRender();
 
 	    glPopMatrix();
+
+	    //CComponent_GUI_Font* gui_font = it2->second->GetComponent<CComponent_GUI_Font>();
+	    CComponent_GUI_Texture* gui_texture = it2->second->GetComponent<CComponent_GUI_Texture>();
+
+	    if(current_camera == 0 && gui_texture)
+	      gui_textures.push_back(gui_texture);
+      //if(current_camera == 0 && gui_font)
+        //gui_textures.push_back(gui_font);
 	  }
 
 	  // Other renders
 	  if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
 	  {
-	    GLboolean depth_state;
-	    glGetBooleanv(GL_DEPTH_TEST, &depth_state);
-
-	    if(depth_state) glDisable(GL_DEPTH_TEST);
-
+	    glClear(GL_DEPTH_BUFFER_BIT);
 	    for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	    {
 	       glPushMatrix();
 
-	       it2->second->transform()->ApplyTransform();
-	       it2->second->transform()->OnRender();
+	       it2->second->Transform()->ApplyTransform();
+	       it2->second->Transform()->OnRender();
 
 	       glPopMatrix();
 	    }
-
-	    if(depth_state) glEnable(GL_DEPTH_TEST);
 	  }
 
     cam->AfterRender();
     current_camera++;
-
   }
   current_camera = -1;
+
+  // Render GUI
+  glClear(GL_DEPTH_BUFFER_BIT);
+  glLoadIdentity();
+
+  GUI_Camera->Camera()->SetViewport();
+  GUI_Camera->Camera()->SetUp();
+
+  for(vector<CComponent_GUI_Texture*>::iterator it = gui_textures.begin(); it != gui_textures.end(); it++)
+  {
+    (*it)->OnRender();
+  }
 }
 
 void CSystem_Render::RenderGrid(int rows, int cols)
@@ -352,7 +369,7 @@ bool CSystem_Render::DrawSkybox(CComponent_Camera* cam)
   glColor3f(1.f, 1.f, 1.f);
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(cam->skybox_texture )->GetID());
 
-  vector3f position = cam->gameObject->transform()->Position();
+  vector3f position = cam->gameObject->Transform()->Position();
   glTranslatef(position.x, position.y, position.z);
 
   uint m_nSkyboxVertexCount = 24;

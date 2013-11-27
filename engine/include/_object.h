@@ -230,13 +230,13 @@ class CGameObject
      * Si no existe un componente, se crea. A diferencia de GetComponent<...>(), si el componente no existe, devuelve NULL.
      * **/
 
-    inline CComponent_Transform* transform()
+    inline CComponent_Transform* Transform()
     {
       // Siempre existe un componente Transform
       return (CComponent_Transform*)components[components::transform];
     }
 
-    inline CComponent_Camera* camera()
+    inline CComponent_Camera* Camera()
     {
       if(components.find(components::camera) == components.end())
         components.insert(pair<int, CComponent*>(components::camera, new CComponent_Camera(this)));
@@ -244,7 +244,7 @@ class CGameObject
       return (CComponent_Camera*)components[components::camera];
     }
 
-    inline CComponent_Mesh_Render* meshRender()
+    inline CComponent_Mesh_Render* MeshRender()
     {
       if(components.find(components::mesh_render) == components.end())
         components.insert(pair<int, CComponent*>(components::mesh_render, new CComponent_Mesh_Render(this)));
@@ -252,12 +252,20 @@ class CGameObject
       return (CComponent_Mesh_Render*)components[components::mesh_render];
     }
 
-    inline CComponent_Particle_Emitter* particleEmitter()
+    inline CComponent_Particle_Emitter* ParticleEmitter()
     {
       if(components.find(components::particle_emitter) == components.end())
         components.insert(pair<int, CComponent*>(components::particle_emitter, new CComponent_Particle_Emitter(this)));
 
       return (CComponent_Particle_Emitter*)components[components::particle_emitter];
+    }
+
+    inline CComponent_GUI_Texture* GUITexture()
+    {
+      if(components.find(components::gui_texture) == components.end())
+        components.insert(pair<int, CComponent*>(components::gui_texture, new CComponent_GUI_Texture(this)));
+
+      return (CComponent_GUI_Texture*)components[components::gui_texture];
     }
 };
 

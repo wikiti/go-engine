@@ -74,7 +74,7 @@ float angle;
 
 void CComponent_Dummy3::OnRender()
 {
-  vector3f pos = gameObject->transform()->position;
+  vector3f pos = gameObject->Transform()->position;
   glBindTexture(GL_TEXTURE_2D, 0);
 
   glColor3f(1.f, 0.5f, 0.f); // Naranja
