@@ -88,7 +88,8 @@ void Camara_mouse_movimiento(CGameObject* gameObject)
   {
     gameObject->Transform()->LRotate(event.motion.yrel * 20.f * gTime.deltaTime_s(), 0, 0);
     gameObject->Transform()->Rotate(0, event.motion.xrel * -20.f * gTime.deltaTime_s(), 0);
-    cout << gameObject->Transform()->EulerAngles() << endl;
+    //vector3f euler = gameObject->Transform()->EulerAngles();
+    //cout << ((float*) &euler)[0] << " " << ((float*) &euler)[1] << " " << ((float*) &euler)[2] << endl;
   }
   else if(event.type == SDL_MOUSEWHEEL)
   {

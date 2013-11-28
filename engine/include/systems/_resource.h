@@ -88,6 +88,8 @@ class CResource_Texture: public CResource
 class CResource_Sound: public CResource
 {
   protected:
+    friend class CSystem_Mixer;
+
     ALuint buffer_id;
     ALuint source_attached;
 

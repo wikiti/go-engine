@@ -24,9 +24,16 @@ bool Systems_Init()
     return false;
   }
 
+  // pasar esto a System_Resources.Init()!!
   if(!gSystem_Debug.InitConsoleFont())
   {
     gSystem_Debug.msg_box(ERROR_INIT, "Could not load Debug::Console system");
+  }
+
+  if(!gSystem_Mixer.Init())
+  {
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Mixer system");
+    return false;
   }
 
   if(!gSystem_Resources.Init())
@@ -46,13 +53,6 @@ bool Systems_Init()
     gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Math system");
     return false;
   }
-
-  if(!gSystem_Mixer.Init())
-  {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Mixer system");
-    return false;
-  }
-
 
   return true;
 }

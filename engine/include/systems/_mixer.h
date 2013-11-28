@@ -3,11 +3,16 @@
 
 #include "_globals.h"
 #include "_system.h"
+#include "_object.h"
 
 class CSystem_Mixer: public CSystem
 {
   private:
     vector<ALuint> source_list;
+    // sería conveniente usar un vector de pilas para los conflictos...
+
+  public:
+    string listener; // Si es inválido o no reconocido, se usará la cámara principal del Render como listener.
 
   public:
     CSystem_Mixer() {};
@@ -18,9 +23,9 @@ class CSystem_Mixer: public CSystem
     bool RemoveBuffer(ALuint id);
 
     // ¿Listener?
-    void PlaySound(ALuint id);
-    void PauseSound(ALuint id);
-    void RewindSound(ALuint id);
+    bool PlaySound(string name, CGameObject* source);
+    bool PauseSound(string name);
+    bool RewindSound(string name);
 
     ALuint GetSourceID(uint index)
     {

@@ -90,6 +90,14 @@ class CSystem_Render: public CSystem
       return camera_list[current_camera];
     }
 
+    CGameObject* GetMainCamera()
+    {
+      if(!camera_list.size() )
+        return NULL;
+
+      return camera_list[0];
+    }
+
     int GetCurrentCameraIndex()
     {
       return current_camera;
