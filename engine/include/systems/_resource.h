@@ -87,9 +87,31 @@ class CResource_Texture: public CResource
 
 class CResource_Sound: public CResource
 {
+  protected:
+    ALuint buffer_id;
+    ALuint source_attached;
+
+    bool loop;
+    bool in_source;
+
   public:
     CResource_Sound(): CResource(){ type = resources::sound; };
     ~CResource_Sound(){ Clear(); }
+
+    ALuint GetBufferID()
+    {
+      return buffer_id;
+    }
+
+    ALuint GetSourceAttached()
+    {
+      return source_attached;
+    }
+
+    /*void PlaySound();
+    void StopSound();
+    void PauseSound();
+    void RewindSound();*/
 
     bool LoadFile(string file, string arguments);
     void Clear();

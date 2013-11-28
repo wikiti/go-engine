@@ -7,7 +7,7 @@
 class CSystem_Mixer: public CSystem
 {
   private:
-    map<string, ALuint> source_list;
+    vector<ALuint> source_list;
 
   public:
     CSystem_Mixer() {};
@@ -15,21 +15,19 @@ class CSystem_Mixer: public CSystem
     bool Init();
     void Close();
 
-    bool LoadFile(string name, string file);
+    bool RemoveBuffer(ALuint id);
 
-    bool AddEmpty(string name);
-    bool Remove(string name);
-
-    ALuint GetSourceID();
-
-    void PlaySound(string name);
+    // ¿Listener?
     void PlaySound(ALuint id);
-
-    void PauseSound(string name);
     void PauseSound(ALuint id);
-
-    void RewindSound(string name);
     void RewindSound(ALuint id);
+
+    ALuint GetSourceID(uint index)
+    {
+      return source_list[index-1];
+    }
+
+    static const uint NUMBER_SOURCES;
 };
 
 extern CSystem_Mixer gSystem_Mixer;

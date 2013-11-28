@@ -13,5 +13,6 @@ texture: sprite1 data/resources/textures/particles/sprite1.tga: nearest
 texture: penis1 data/resources/textures/particles/penis.tga: nearest
 texture: fire1 data/resources/textures/particles/fire1.tga: nearest
 texture: skybox1 data/resources/textures/skybox1.tga: mipmap
+sound: leroy data/resources/sound/leroy.wav: s1
 
 # Fin de fichero

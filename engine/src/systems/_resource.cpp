@@ -1,5 +1,6 @@
 #include "systems/_resource.h"
 #include "systems/_debug.h"
+#include "systems/_mixer.h"
 
 CSystem_Resources gSystem_Resources;
 
@@ -248,12 +249,68 @@ void CResource_Texture::Clear()
 
 bool CResource_Sound::LoadFile(string file, string arguments)
 {
+  loop = in_source = false;
+  source_attached = 0;
+  buffer_id = 0;
+
+  stringstream ss(arguments);
+  string arg;
+
+  ss >> arg;
+  while(arg != "")
+  {
+    if(arg == "loop")
+      loop = true;
+
+    else if(arg[0] == 's' && arg.length() > 1)
+    {
+      stringstream ss2( arg.substr(1) );
+      ALuint source_id;
+      ss2 >> source_id;
+      if(source_id > 0 && source_id < CSystem_Mixer::NUMBER_SOURCES)
+      {
+        source_attached = gSystem_Mixer.GetSourceID(source_id);
+      }
+      else
+      {
+        gSystem_Debug.console_error_msg("Error from Resource Manager: Invalid source identifier for \"%s\".", file.c_str());
+        gSystem_Debug.console_error_msg("Must be between 1 and 30. Using source 1.");
+        source_attached = gSystem_Mixer.GetSourceID(1);
+      }
+    }
+
+    ss >> arg;
+    if(ss.eof()) break;
+  }
+
+  Mix_Chunk *sound = Mix_LoadWAV(file.c_str());
+  if(!sound)
+  {
+    gSystem_Debug.console_error_msg("Error from Resource Manager: Could not load sound file \"%s\": %s.", file.c_str(), Mix_GetError());
+    return false;
+  }
+
+  ALenum error;
+
+  alGenBuffers(1, &buffer_id);
+  error = alGetError();
+  if (error != AL_NO_ERROR)
+  {
+    gSystem_Debug.console_error_msg("Error from Resource Manager: Could not generate buffer for sound file \"%s\": %d.", file.c_str(), error);
+    Mix_FreeChunk(sound);
+
+    return false;
+  }
+
+  alBufferData(buffer_id, AL_FORMAT_MONO16, sound->abuf, sound->alen, 44100);
+  Mix_FreeChunk(sound);
+
   return true;
 }
 
 void CResource_Sound::Clear()
 {
-
+  if(buffer_id) alDeleteBuffers(1, &buffer_id);
 }
 
 /** Resources System **/
@@ -329,7 +386,7 @@ bool CSystem_Resources::LoadResourceFile(string rc_file)
 
   if(!is || !is.good())
   {
-    line = "From CSystem_Resources: Could not load file: " + rc_file;
+    line = "Error from Resource Manager: Could not load file: " + rc_file;
     gSystem_Debug.msg_box(ERROR_FILE, line.c_str());
     return false;
   }
@@ -349,7 +406,7 @@ bool CSystem_Resources::LoadResourceFile(string rc_file)
 
     if(!gValidateIdentifier(name))
     {
-      gSystem_Debug.console_warning_msg("Invalid resource name \"%s\" (%s): Can only contain alphanumerics or underscores.", name.c_str(), file.c_str());
+      gSystem_Debug.console_warning_msg("Error from Resource Manager: Invalid resource name \"%s\" (%s): Can only contain alphanumerics or underscores.", name.c_str(), file.c_str());
       continue;
     }
 
@@ -365,7 +422,7 @@ bool CSystem_Resources::LoadResourceFile(string rc_file)
     else if(type == "font:")
       LoadResource(name, file, resources::font, arguments);
     else
-      gSystem_Debug.error("From CSystem_Resources: From Resource %s: Invalid resource type.", name.c_str(), rc_file.c_str());
+      gSystem_Debug.error("Error from Resource Manager: Invalid resource type \"%s\" for resource\"%s\".", type.c_str(), name.c_str());
   }
 
   is.close();
