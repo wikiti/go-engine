@@ -129,11 +129,20 @@ bool CSystem_Mixer::PlaySound(string name, CGameObject* source)
   }
 
   //alGetSourcei(sound->source_attached, AL_BUFFER, (ALint*)&buffer);
-  alGetSourcei(sound->source_attached, AL_PROCESSED_BUFFER, (ALint*)&buffer);
+  ALint processed;
+  alGetSourcei(sound->source_attached, AL_BUFFERS_PROCESSED, &processed);
   if ((error = alGetError()) != AL_NO_ERROR)
   {
     gSystem_Debug.console_error_msg("Error from Mixer: alGetSourcei error for \"%s\": %d\n", name.c_str(), error);
     return false;
+  }
+
+  while(processed > 0)
+  {
+    alSourceUnqueueBuffers(sound->source_attached, 1, &buffer);
+    // lolwut con buffer
+
+    processed--;
   }
 
   cout << "BUFFER:" << buffer << endl;
