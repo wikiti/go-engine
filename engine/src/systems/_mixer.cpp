@@ -14,7 +14,7 @@ bool CSystem_Mixer::Init()
   CSystem::Init();
 
   /* Init SDL_Mixer */
-  int audio_rate = 22050;
+  int audio_rate = 44100;
   Uint16 audio_format = AUDIO_S16SYS;
   int audio_channels = 1;
   int audio_buffers = 4096;
@@ -94,15 +94,18 @@ bool CSystem_Mixer::PlaySound(string name, CGameObject* source)
   CResource_Sound* sound   = gSystem_Resources.GetSound(name);
   CGameObject* go_listener = gSystem_GameObject_Manager[listener];
 
-  if(!sound || !source) return false;
+  if(!sound) return false;
 
   if(!go_listener) go_listener = gSystem_Render.GetMainCamera();
   if(!go_listener) return false;
 
   // Source propertiers
   vector3f vel, pos, euler;
-  pos = source->Transform()->Position();
-  euler = source->Transform()->EulerAngles();
+  if(source)
+  {
+    pos = source->Transform()->Position();
+    euler = source->Transform()->EulerAngles();
+  }
 
   alSourcefv (sound->source_attached, AL_POSITION,  ((float*) &pos)   );
   alSourcefv (sound->source_attached, AL_VELOCITY,  ((float*) &vel)   );
@@ -125,13 +128,15 @@ bool CSystem_Mixer::PlaySound(string name, CGameObject* source)
     return false;
   }
 
-  alGetSourcei(sound->source_attached, AL_BUFFER, (ALint*)&buffer);
+  //alGetSourcei(sound->source_attached, AL_BUFFER, (ALint*)&buffer);
+  alGetSourcei(sound->source_attached, AL_PROCESSED_BUFFER, (ALint*)&buffer);
   if ((error = alGetError()) != AL_NO_ERROR)
   {
     gSystem_Debug.console_error_msg("Error from Mixer: alGetSourcei error for \"%s\": %d\n", name.c_str(), error);
     return false;
   }
 
+  cout << "BUFFER:" << buffer << endl;
   //alSourceUnqueueBuffers(sound->source_attached, 1, &buffer);
   if ((error = alGetError()) != AL_NO_ERROR)
   {

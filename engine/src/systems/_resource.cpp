@@ -310,7 +310,7 @@ bool CResource_Sound::LoadFile(string file, string arguments)
 
 void CResource_Sound::Clear()
 {
-  if(buffer_id) alDeleteBuffers(1, &buffer_id);
+  alDeleteBuffers(1, &buffer_id);
 }
 
 /** Resources System **/

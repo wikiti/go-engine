@@ -104,6 +104,7 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
       current_firework->GetChild("firework_explosion_"+value)->ParticleEmitter()->Start();
       current_firework->GetChild("firework_explosion_"+value)->ParticleEmitter()->Stop();
 
+      gMixer.PlaySound("leroy", current_firework);
       gMixer.PlaySound("explosion", current_firework);
 
       exploded[i] = true;

@@ -23,7 +23,7 @@ class CSystem_Mixer: public CSystem
     bool RemoveBuffer(ALuint id);
 
     // ¿Listener?
-    bool PlaySound(string name, CGameObject* source);
+    bool PlaySound(string name, CGameObject* source = NULL);
     bool PauseSound(string name);
     bool RewindSound(string name);
 
