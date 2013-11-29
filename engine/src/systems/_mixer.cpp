@@ -7,7 +7,7 @@
 CSystem_Mixer gSystem_Mixer;
 CSystem_Mixer& gMixer = gSystem_Mixer;
 
-const uint CSystem_Mixer::NUMBER_SOURCES = 31;
+const uint CSystem_Mixer::NUMBER_SOURCES = 255;
 
 bool CSystem_Mixer::Init()
 {
@@ -48,7 +48,18 @@ bool CSystem_Mixer::Init()
     return false;
   }
 
+
   ALenum error;
+  /*ALuint source[1024];
+  for(uint i = 0; i < 1024; i++)
+  {
+    alGenSources(1, &source[i]);
+    if ((error = alGetError()) != AL_NO_ERROR)
+    {
+      gSystem_Debug.console_error_msg("OpenAL maximun sources: %d (Error %d)", i, error);
+      break;
+    }
+  }*/
   ALuint source[NUMBER_SOURCES];
   // Generate the sources
   alGenSources(NUMBER_SOURCES, source);
@@ -145,7 +156,6 @@ bool CSystem_Mixer::PlaySound(string name, CGameObject* source)
     processed--;
   }
 
-  cout << "BUFFER:" << buffer << endl;
   //alSourceUnqueueBuffers(sound->source_attached, 1, &buffer);
   if ((error = alGetError()) != AL_NO_ERROR)
   {
@@ -182,3 +192,8 @@ bool CSystem_Mixer::RewindSound(string name)
   return true;
 }
 
+void CSystem_Mixer::OnLoop()
+{
+  for(vector<ALuint>::iterator it = source_list.begin(); it != source_list.end(); it++)
+    alSourcef((*it), AL_PITCH, gSystem_Time.timeScale());
+}

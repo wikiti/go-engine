@@ -32,6 +32,8 @@ class CSystem_Mixer: public CSystem
       return source_list[index-1];
     }
 
+    void OnLoop();
+
     static const uint NUMBER_SOURCES;
 };
 
