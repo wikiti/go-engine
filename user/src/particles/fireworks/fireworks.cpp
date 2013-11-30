@@ -7,6 +7,13 @@ bool SetGameObjects_Instance1_Fireworks()
   firework_manager->SetEventFunction(&Firework_Manager_Event);
   firework_manager->SetBehaviourFunction(&Firework_Manager_Behaviour);
 
+  firework_manager->AudioSource()->music = true;
+  firework_manager->AudioSource()->loop = true;
+  firework_manager->AudioSource()->everywhere = true;
+  firework_manager->AudioSource()->start_playing = true;
+  firework_manager->AudioSource()->SetSound("fireworks");
+  firework_manager->AudioSource()->Bind();
+
   return true;
 }
 
@@ -53,6 +60,7 @@ void Firework_Manager_Event(CGameObject* gameObject)
 
     explosion->AudioSource()->SetSound("explosion");
     explosion->AudioSource()->volume = 1.f;
+    //explosion->AudioSource()->loop = true;
     explosion->AudioSource()->max_distance = 100.f;
     //explosion->AudioSource()->everywhere = false;
     explosion->AudioSource()->Bind();

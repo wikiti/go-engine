@@ -18,7 +18,7 @@ CComponent_Audio_Source::CComponent_Audio_Source(CGameObject* gameObject): CComp
   sound = NULL;
   pitch = volume = 1.f;
 
-  mute = loop = start_playing = false;
+  mute = loop = start_playing = music = false;
   affected_by_time = true;
 
   everywhere = false;
@@ -35,6 +35,8 @@ CComponent_Audio_Source::~CComponent_Audio_Source()
 void CComponent_Audio_Source::OnLoop()
 {
   if(!sound || !enabled || !source_attached) return;
+  if(mute && playing)
+    alSourceStop(source_attached);
 
   if(playing && !paused)
     Setup();
@@ -62,8 +64,8 @@ void CComponent_Audio_Source::Setup()
   else
   {
     alGetListenerfv(AL_POSITION,    ((float*) &pos)   );
-    alGetListenerfv(AL_VELOCITY,    ((float*) &vel)   );
-    alGetListenerfv(AL_ORIENTATION, ((float*) &euler) );
+    //alGetListenerfv(AL_VELOCITY,    ((float*) &vel)   );
+    //alGetListenerfv(AL_ORIENTATION, ((float*) &euler) );
   }
 
   alSourcefv(source_attached, AL_POSITION,  ((float*) &pos)   );
@@ -73,15 +75,23 @@ void CComponent_Audio_Source::Setup()
   if(affected_by_time) alSourcef(source_attached, AL_PITCH, pitch*gSystem_Time.timeScale());
   else                 alSourcef(source_attached, AL_PITCH, pitch);
 
-  alSourcef(source_attached, AL_GAIN, gSystem_Time.timeScale());
+  float gVolume = 1.f;
+  if(music)
+    gVolume = gSystem_Data_Storage.GetFloat("__SOUND_MUSIC_VOLUME");
+  else
+    gVolume = gSystem_Data_Storage.GetFloat("__SOUND_VOLUME");
+
+  alSourcef(source_attached, AL_GAIN, volume*gVolume);
 
   alSourcef(source_attached, AL_MAX_DISTANCE, max_distance);
   alSourcef(source_attached, AL_REFERENCE_DISTANCE, min_distance);
+
+  alSourcei(source_attached, AL_LOOPING, loop);
 }
 
 void CComponent_Audio_Source::Play()
 {
-  if(!enabled) return;
+  if(!enabled || mute) return;
 
   if(!sound)
   {
@@ -110,7 +120,7 @@ void CComponent_Audio_Source::Play()
 
 void CComponent_Audio_Source::PlayOneShot()
 {
-  if(!sound || !enabled) return;
+  if(!sound || !enabled || mute) return;
 
 
 }
@@ -123,7 +133,7 @@ void CComponent_Audio_Source::PlayAt(vector3f pos)
 
 void CComponent_Audio_Source::PlayAt(ALfloat x, ALfloat y, ALfloat z)
 {
-  if(!sound || !enabled) return;
+  if(!sound || !enabled || mute) return;
 
   // usar PlayOneShot() para esto, evitando que OnLoop() cambie los valores de volumne, pitch o posición
 }
@@ -175,6 +185,8 @@ void CComponent_Audio_Source::Bind()
   {
     source_attached = gSystem_Mixer.GetFreeSource();
     alSourcei(source_attached, AL_BUFFER, sound->BufferID());
+
+    if(start_playing) Play();
   }
 }
 

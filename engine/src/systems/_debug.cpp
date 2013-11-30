@@ -122,6 +122,10 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("game_object_enable", &CSystem_Debug::Console_command__GAME_OBJECT_ENABLE));
   console_commands.insert(pair<string, command_p>("game_object_component_enable", &CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE));
 
+    // Sound
+  console_commands.insert(pair<string, command_p>("snd_volume", &CSystem_Debug::Console_command__SND_VOLUME));
+  console_commands.insert(pair<string, command_p>("snd_music_volume", &CSystem_Debug::Console_command__SND_MUSIC_VOLUME));
+
     // Render
   console_commands.insert(pair<string, command_p>("r_update_window", &CSystem_Debug::Console_command__R_UPDATE_WINDOW));
   console_commands.insert(pair<string, command_p>("r_resize_window", &CSystem_Debug::Console_command__R_RESIZE_WINDOW));
@@ -513,7 +517,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
   if(arguments == "")
   {
     console_msg("Use \"help <category>\". Categories are:");
-    console_warning_msg("general, systems, game_objects, render");
+    console_warning_msg("general, systems, game_objects, sound, render");
     console_warning_msg("Also, you can user <command> ?");
   }
   else if(arguments == "general")
@@ -555,6 +559,14 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("game_object_enable:             Enables or disables a game object and/or its children.");
     console_msg("game_object_component_enable:   Enables or disables a game object's component.");
 
+  }
+  else if(arguments == "sound")
+  {
+    console_msg("Sound commands:");
+    console_msg("-----------------------------------------------------------------------");
+    console_msg("snd_volume:                     Set volume.");
+    console_msg("snd_music_volume:               Set music volume.");
+    // Sound
   }
   else if(arguments == "render")
   {
@@ -1164,8 +1176,56 @@ void CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE(string argumen
   }
 }
 
-// Render
+// Sound
+void CSystem_Debug::Console_command__SND_VOLUME(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: snd_volume < volume | $MUTE >");
+    return;
+  }
 
+  if(arguments == "$MUTE")
+  {
+    gSystem_Data_Storage.SetFloat("__SOUND_VOLUME", 0);
+  }
+  else
+  {
+    stringstream ss(arguments);
+    float value = 1.f;
+    ss >> value;
+
+    if(value > 1) value = 1.f;
+    gSystem_Data_Storage.SetFloat("__SOUND_VOLUME", value);
+    console_msg("Set volume to %f", value);
+  }
+}
+
+void CSystem_Debug::Console_command__SND_MUSIC_VOLUME(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: snd_music_volume < volume | $MUTE >");
+    return;
+  }
+
+  if(arguments == "$MUTE")
+  {
+    gSystem_Data_Storage.SetFloat("__SOUND_MUSIC_VOLUME",0);
+  }
+  else
+  {
+    stringstream ss(arguments);
+    float value = 1.f;
+    ss >> value;
+
+    if(value > 1) value = 1.f;
+    gSystem_Data_Storage.SetFloat("__SOUND_MUSIC_VOLUME",value);
+    console_msg("Set music volume to %f", value);
+  }
+}
+
+// Render
 void CSystem_Debug::Console_command__R_UPDATE_WINDOW(string arguments)
 {
   if(arguments == "?")

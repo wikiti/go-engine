@@ -70,9 +70,9 @@ int CInstance::OnExecute()
 void CInstance::OnLoop()
 {
   gSystem_Time.OnLoop();
+  gSystem_Mixer.OnLoop();
   gSystem_GameObject_Manager.OnLoop();
   gSystem_Render.OnLoop();
-  gSystem_Mixer.OnLoop();
 }
 
 void CInstance::OnEvent()

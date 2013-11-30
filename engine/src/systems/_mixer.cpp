@@ -87,12 +87,18 @@ void CSystem_Mixer::Close()
 
   // Borrar sources
   for(vector<ALuint>::iterator it = sources_used.begin(); it != sources_used.end(); it++)
+  {
+    alSourceStop((*it));
     alDeleteSources(1, &(*it));
+  }
   for(vector<ALuint>::iterator it = sources_unused.begin(); it != sources_unused.end(); it++)
     alDeleteSources(1, &(*it));
 
   for(vector<ALuint>::iterator it = oneshot_used.begin(); it != oneshot_used.end(); it++)
+  {
+    alSourceStop((*it));
     alDeleteSources(1, &(*it));
+  }
   for(vector<ALuint>::iterator it = oneshot_unused.begin(); it != oneshot_unused.end(); it++)
     alDeleteSources(1, &(*it));
 
@@ -152,5 +158,5 @@ void CSystem_Mixer::OnLoop()
   // FALTA VEL!!!
   alListenerfv(AL_POSITION,    ((float*) &pos)   );
   alListenerfv(AL_VELOCITY,    ((float*) &vel)   );
-  alListenerfv(AL_ORIENTATION, ((float*) &euler) );
+  //alListenerfv(AL_ORIENTATION, ((float*) &euler) );   // <- Fix this :C
 }

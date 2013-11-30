@@ -25,6 +25,7 @@ class CComponent_Audio_Source: public CComponent
     ALfloat volume;
 
     bool mute;
+    bool music;
     bool loop;
     bool start_playing;
     bool affected_by_time;

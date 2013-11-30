@@ -151,7 +151,10 @@ class CSystem_Debug: public CSystem
     void Console_command__GAME_OBJECT_ENABLE(string arguments);
     void Console_command__GAME_OBJECT_COMPONENT_ENABLE(string arguments);
     //void Console_command__ENABLE_SYSTEM(string arguments);
-    //
+
+    // Sound
+    void Console_command__SND_VOLUME(string arguments);
+    void Console_command__SND_MUSIC_VOLUME(string arguments);
 
     // Render
     void Console_command__R_UPDATE_WINDOW(string arguments);
