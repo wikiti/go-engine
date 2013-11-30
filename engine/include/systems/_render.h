@@ -10,6 +10,9 @@ class CSystem_Render: public CSystem
     friend class CSystem_Debug;
     friend class CEngine;
 
+    // Draw primitives
+    GLUquadricObj *quadratic;
+
     SDL_Window* window;
     SDL_GLContext GLcontext;
     vector<CGameObject*> camera_list;
@@ -76,7 +79,6 @@ class CSystem_Render: public CSystem
     virtual void Close();
 
     // Usar booleanos (o algo)
-
     SDL_Window* GetWindow()
     {
       return window;
@@ -160,6 +162,10 @@ class CSystem_Render: public CSystem
       else     SDL_SetRelativeMouseMode(SDL_FALSE);
     }
 
+    void RenderSphere(GLdouble radius, GLint slices = 10, GLint stacks = 10)
+    {
+      gluSphere(quadratic, radius, slices, stacks);
+    }
 
     //inline void ResizeWindow(int w,, int h);
 

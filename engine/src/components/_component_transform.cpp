@@ -7,16 +7,8 @@ BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Transform);
 
 CComponent_Transform::CComponent_Transform(CGameObject* gameObject): CComponent(gameObject)
 {
-  //id = ccomponents::transform;
-
   position.x = position.y = position.z = 0;
-  //angle.x = angle.y = angle.z = 0;
   scale.x = scale.y = scale.z = 1.f;
-
-  //glm::vec3 EulerAngles(0, 0, 0);
-  //angle = glm::quat(EulerAngles);
-  //angle = glm::quat;
-  //SetAngle(0, 0, 0);
 }
 
 CComponent_Transform::~CComponent_Transform()
@@ -37,8 +29,6 @@ output_t CComponent_Transform::Get()
 void CComponent_Transform::OnRender()
 {
   if(!enabled) return;
-
-  glBindTexture(GL_TEXTURE_2D, 0);
 
   glBegin(GL_LINES);
     // X - Rojo
@@ -113,59 +103,6 @@ void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = angle * glm::quat(EulerAngles);
-
-  /* Basura
-  glMatrixMode(GL_MODELVIEW); // <- ?
-  glPushMatrix();
-  glLoadIdentity(); // <- ?
-  glm::quat QuatAroundX = glm::normalize(glm::quat( glm::vec3(_DEG_TO_RAD(x), 0.f, 0.f) ));
-  glm::quat QuatAroundY = glm::normalize(glm::quat( glm::vec3(0.f, _DEG_TO_RAD(y), 0.f) ));
-  glm::quat QuatAroundZ = glm::normalize(glm::quat( glm::vec3(0.f, 0.f, _DEG_TO_RAD(z)) ));
-
-  angle = glm::normalize(QuatAroundZ * QuatAroundY * QuatAroundX * angle);
-
-  Basura
-  glRotatef(angle.x, 1.f, 0.f, 0.f);
-  glRotatef(angle.y, 0.f, 1.f, 0.f);
-  glRotatef(angle.z, 0.f, 0.f, 1.f);
-
-  glRotatef(x, 1.f, 0.f, 0.f);
-  glRotatef(y, 0.f, 1.f, 0.f);
-  glRotatef(z, 0.f, 0.f, 1.f);
-
-  GLdouble mat[16];
-  glGetDoublev(GL_MODELVIEW_MATRIX, mat);
-
-#define RADIANS M_PI/180
-
-  float C, D, _trx, _try;
-  angle.y = D = -asin( mat[2]);
-  C           =  cos( angle.y );
-  angle.y    *= RADIANS;
-
-  if ( fabs( C ) > 0.005 )
-  {
-    _trx      =  mat[10] / C;
-    _try      = -mat[6]  / C;
-
-    angle.x  = atan2( _try, _trx ) * RADIANS;
-
-    _trx      =  mat[0] / C;
-    _try      = -mat[1] / C;
-
-    angle.z  = atan2( _try, _trx ) * RADIANS;
-  }
-  else
-  {
-    angle.x  = 0;
-
-    _trx      = mat[5];
-    _try      = mat[4];
-
-    angle.z  = atan2( _try, _trx ) * RADIANS;
-  }
-
-  NormalizeAngles();*/
 }
 
 void CComponent_Transform::Translate(vector3f v)
@@ -181,10 +118,6 @@ void CComponent_Transform::Translate(GLfloat x, GLfloat y, GLfloat z)
   position.y += y;
   position.z += z;
 
-  /*int num = gameObject->GetNumChildren();
-  for(int i = 0; i < num && num != 0; i++)
-    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Translate(x, y, z);*/
-
 }
 
 void CComponent_Transform::SetPosition(vector3f v)
@@ -195,16 +128,6 @@ void CComponent_Transform::SetPosition(vector3f v)
 void CComponent_Transform::SetPosition(GLfloat x, GLfloat y, GLfloat z)
 {
   if(!enabled) return;
-
-   /*vector3f input(x, y, z);
-
-   input.x -= position.x;
-   input.y -= position.y;
-   input.z -= position.z;
-
-   int num = gameObject->GetNumChildren();
-   for(int i = 0; i < num && num != 0; i++)
-     gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Translate(input);*/
 
    position.x = x;
    position.y = y;
@@ -224,72 +147,6 @@ void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = glm::quat(EulerAngles) * angle;
-
-  // Equivalente a
-
-  /*glm::quat QuatAroundX = glm::quat( glm::vec3(_DEG_TO_RAD(x), 0.f, 0.f) );
-  glm::quat QuatAroundY = glm::quat( glm::vec3(0.f, _DEG_TO_RAD(y), 0.f) );
-  glm::quat QuatAroundZ = glm::quat( glm::vec3(0.f, 0.f, _DEG_TO_RAD(z)) );
-
-  angle = glm::normalize(QuatAroundZ * QuatAroundY * QuatAroundX * angle);*/
-
-  /*  BASURA!glm::quat QuatAroundX = glm::quat( glm::vec3(_DEG_TO_RAD(x), 0.f, 0.f) );
-  glm::quat QuatAroundY = glm::quat( glm::vec3(0.f, _DEG_TO_RAD(y), 0.f) );
-  glm::quat QuatAroundZ = glm::quat( glm::vec3(0.f, 0.f, _DEG_TO_RAD(z)) );
-
-  angle = glm::normalize(QuatAroundZ * QuatAroundY * QuatAroundX * angle);
-
-  glm::quat QuatAroundX = glm::quat( 1.f, 0.f, 0.f, _DEG_TO_RAD(x) );
-  glm::quat QuatAroundY = glm::quat( 0.f, 1.f, 0.f, _DEG_TO_RAD(y) );
-  glm::quat QuatAroundZ = glm::quat( 0.f, 0.f, 1.f, _DEG_TO_RAD(z) );
-  angle = angle * QuatAroundZ * QuatAroundY * QuatAroundX;
-
-  glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
-  glm::quat rotacion = glm::quat(EulerAngles);
-
-  glm::vec3 ea(EulerAngles().x + x, EulerAngles().y + y, EulerAngles().z + z);
-  cout << "EULER: " << EulerAngles().x << " " << EulerAngles().y << " " << EulerAngles().z << " " << endl;
-  GLfloat rx = EulerAngles().x + x;
-  GLfloat ry = EulerAngles().y + y;
-  GLfloat rz = EulerAngles().z + z;
-
-  NormalizeAngles(rx, ry, rz);
-  SetAngle(rx, ry, rz);
-  SetAngle(EulerAngles().x + x, EulerAngles().y + y, EulerAngles().z + z);
-
-  angle = glm::quat(ea);
-
-  NormalizeAngles(x, y, z);
-
-  glm::quat QuatAroundX = glm::quat( 1.0, 0.f, 0.f, _DEG_TO_RAD(x) );
-  glm::quat QuatAroundZ = glm::quat( 0.f, 0.f, 1.f, _DEG_TO_RAD(z) );
-
-  angle = QuatAroundX * QuatAroundY * QuatAroundZ * angle;
-
-
-  glm::vec3 ea(_DEG_TO_RAD(EulerAngles().x + x), _DEG_TO_RAD(EulerAngles().y + y), _DEG_TO_RAD( EulerAngles().z + z));
-  angle = glm::quat(ea);
-
-  glm::vec3 ea(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
-  angle = glm::quat(ea) * angle;
-
-  glm::vec3 ea(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
-  glm::quat rotacion = glm::quat(ea);
-  angle = rotacion * angle;
-
-  Quaternion finalOrientation = QuatAroundX * QuatAroundY * QuatAroundZ;
-  angle = rotacion * angle;
-   Comprobar que no se pasen de 360
-  angle.x += x;
-  angle.y += y;
-  angle.z += z;
-
-  int num = gameObject->GetNumChildren();
-  for(int i = 0; i < num && num != 0; i++)
-    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Rotate(x, y, z);
-
-  NormalizeAngles();
-  cout << "Current angles: " << angle << endl;*/
 }
 
 void CComponent_Transform::SetAngle(vector3f v)
@@ -306,39 +163,6 @@ void CComponent_Transform::SetAngle(GLfloat x, GLfloat y, GLfloat z)
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
   angle = glm::quat(EulerAngles);
 
-  /* Basura!!
-  glm::quat QuatAroundX = glm::quat( 1.0, 0.f, 0.f, _DEG_TO_RAD(x) );
-  glm::quat QuatAroundY = glm::quat( 0.f, 1.f, 0.f, _DEG_TO_RAD(y) );
-  glm::quat QuatAroundZ = glm::quat( 0.f, 0.f, 1.f, _DEG_TO_RAD(z) );
-  angle = QuatAroundX * QuatAroundY * QuatAroundZ;
-  glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
-  angle = glm::quat(EulerAngles);
-   Pseudocode
-  Quaternion QuatAroundX = Quaternion( Vector3(1.0,0.0,0.0), EulerAngle.x );
-  Quaternion QuatAroundY = Quaternion( Vector3(0.0,1.0,0.0), EulerAngle.y );
-  Quaternion QuatAroundZ = Quaternion( Vector3(0.0,0.0,1.0), EulerAngle.z );
-  Quaternion finalOrientation = QuatAroundX * QuatAroundY * QuatAroundZ;
-
-  angle.x = x;
-  angle.y = y;
-  angle.z = z;
-
-  NormalizeAngles();
-  vector3f input(x, y, z);
-
-  input.x -= angle.x;
-  input.y -= angle.y;
-  input.z -= angle.z;
-
-  int num = gameObject->GetNumChildren();
-  for(int i = 0; i < num && num != 0; i++)
-    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Rotate(input);
-
-  angle.x = x;
-  angle.y = y;
-  angle.z = z;
-
-  NormalizeAngles();*/
 }
 
 void CComponent_Transform::Scale(vector3f v)
@@ -354,15 +178,6 @@ void CComponent_Transform::Scale(GLfloat x, GLfloat y, GLfloat z)
   scale.x *= x;
   scale.y *= y;
   scale.z *= z;
-
-  /*
-  if(scale.x < 0) scale.x = -scale.x;
-  if(scale.y < 0) scale.y = -scale.y;
-  if(scale.z < 0) scale.z = -scale.z;*/
-
-  /*int num = gameObject->GetNumChildren();
-  for(int i = 0; i < num && num != 0; i++)
-    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Scale(x, y, z);*/
 }
 
 void CComponent_Transform::SetScale(vector3f v)
@@ -374,16 +189,6 @@ void CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)
 {
   if(!enabled) return;
 
-  /*vector3f input(x, y, z);
-
-  input.x -= scale.x;
-  input.y -= scale.y;
-  input.z -= scale.z;
-
-  int num = gameObject->GetNumChildren();
-  for(int i = 0; i < num && num != 0; i++)
-    gameObject->GetChild(i)->GetComponent<CComponent_Transform>()->Scale(input);*/
-
   scale.x = x;
   scale.y = y;
   scale.z = z;
@@ -391,35 +196,8 @@ void CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)
 
 void CComponent_Transform::ApplyTransform()
 {
-  //   if(!enabled) return;
-  //glLoadIdentity();
   if(gameObject->GetParent())
     ApplyParentTransform(gameObject->GetParent());
-
-  /* BASURA!
-  glRotatef(angle.y, 0.f, 1.f, 0.f);
-  glRotatef(angle.z, 0.f, 0.f, 1.f);
-  glRotatef(angle.x, 1.f, 0.f, 0.f);
-
-  glRotatef(angle.z, 0.f, 0.f, 1.f);
-  glRotatef(angle.y, 0.f, 1.f, 0.f);
-  glRotatef(angle.x, 1.f, 0.f, 0.f);
-
-  glRotatef(angle.y, 0.f, 1.f, 0.f);
-  glRotatef(angle.x, cos(angle.y * M_PI/180), 0, sin(angle.y*M_PI/180)); // <- CASI!
-  glRotatef(angle.z, cos(angle.y * M_PI/180), 0.f, sin(angle.y*M_PI/180));
-  glRotatef(angle.x, cos(angle.y * M_PI/180), 0, sin(angle.y*M_PI/180));
-  glRotatef(angle.z, cos(angle.y * M_PI/180), cos(angle.x * M_PI/180), sin(angle.y*M_PI/180));
-
-  glRotatef(angle.z, 0.f, 0.f, 1.f);
-  glRotatef(angle.y, 0.f, 1.f, 0.f);
-  glRotatef(angle.x, 1.f, 0.f, 0.f);
-
-  glRotatef(angle.y, 0.f, 1.f, 0.f);
-  glRotatef(angle.z, 0.f, 0.f, 1.f);
-  glRotatef(angle.x, 1.f, 0.f, 0.f);
-
-  glRotatef(_RAD_TO_DEG(angle.w), angle.x, angle.y, angle.z);*/
 
   // Posición
   glTranslatef(position.x, position.y, position.z);
@@ -444,7 +222,6 @@ void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
   glTranslatef(parent->Transform()->position.x, parent->Transform()->position.y, parent->Transform()->position.z);
   // Orientación
   glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(parent->Transform()->angle)));                  // <- GLOBAL
-  //glMultMatrixf((const float*)glm::value_ptr(glm::inverse(glm::toMat4(parent->transform()->angle))));  // <- LOCAL
   // Escala
   glScalef(parent->Transform()->scale.x, parent->Transform()->scale.y, parent->Transform()->scale.z);
 
@@ -507,13 +284,10 @@ void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward
   //http://stackoverflow.com/questions/12435671/quaternion-lookat-function
   vector3f forwardVector = (target - Position()).normalize();
 
-  //vector3f forward = gMath.Z_AXIS;
-
   float dot = forward * forwardVector;
 
   if (gMath.abs(dot - (-1.0f)) < 0.000001f)
   {
-    //angle = glm::quat(gMath.Y_AXIS.x, gMath.Y_AXIS.y, gMath.Y_AXIS.z, 3.1415926535897932f) * angle;
     angle = glm::angleAxis(3.1415926535897932f, up.to_glm());
     return;
   }

@@ -267,6 +267,14 @@ class CGameObject
 
       return (CComponent_GUI_Texture*)components[components::gui_texture];
     }
+
+    inline CComponent_Audio_Source* AudioSource()
+    {
+      if(components.find(components::audio_source) == components.end())
+        components.insert(pair<int, CComponent*>(components::audio_source, new CComponent_Audio_Source(this)));
+
+      return (CComponent_Audio_Source*)components[components::audio_source];
+    }
 };
 
 template <class Type>

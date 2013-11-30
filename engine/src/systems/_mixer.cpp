@@ -7,7 +7,8 @@
 CSystem_Mixer gSystem_Mixer;
 CSystem_Mixer& gMixer = gSystem_Mixer;
 
-const uint CSystem_Mixer::NUMBER_SOURCES = 255;
+const uint CSystem_Mixer::NUMBER_SOURCES = 225;
+const uint CSystem_Mixer::NUMBER_SOURCES_ONESHOT = 30;
 
 bool CSystem_Mixer::Init()
 {
@@ -48,19 +49,10 @@ bool CSystem_Mixer::Init()
     return false;
   }
 
-
   ALenum error;
-  /*ALuint source[1024];
-  for(uint i = 0; i < 1024; i++)
-  {
-    alGenSources(1, &source[i]);
-    if ((error = alGetError()) != AL_NO_ERROR)
-    {
-      gSystem_Debug.console_error_msg("OpenAL maximun sources: %d (Error %d)", i, error);
-      break;
-    }
-  }*/
   ALuint source[NUMBER_SOURCES];
+  ALuint source_oneshot[NUMBER_SOURCES_ONESHOT];
+
   // Generate the sources
   alGenSources(NUMBER_SOURCES, source);
   if ((error = alGetError()) != AL_NO_ERROR)
@@ -69,11 +61,22 @@ bool CSystem_Mixer::Init()
     return false;
   }
 
-  source_list.resize(NUMBER_SOURCES);
-  for(uint i = 0; i < NUMBER_SOURCES; i++)
-    source_list[i] = source[i];
+  alDistanceModel(AL_LINEAR_DISTANCE_CLAMPED);
 
-  listener = "";
+  // Generate the sources
+  alGenSources(NUMBER_SOURCES_ONESHOT, source_oneshot);
+  if ((error = alGetError()) != AL_NO_ERROR)
+  {
+    gSystem_Debug.error("Error from Mixer: Could not create OpenAL sources!: %d", error);
+    return false;
+  }
+
+  for(uint i = 0; i < NUMBER_SOURCES; i++)
+    sources_unused.push_back(source[i]);
+  for(uint i = 0; i < NUMBER_SOURCES_ONESHOT; i++)
+    oneshot_unused.push_back(source_oneshot[i]);
+
+  listener = NULL;
 
   return true;
 }
@@ -83,7 +86,14 @@ void CSystem_Mixer::Close()
   Mix_CloseAudio();
 
   // Borrar sources
-  for(vector<ALuint>::iterator it = source_list.begin(); it != source_list.end(); it++)
+  for(vector<ALuint>::iterator it = sources_used.begin(); it != sources_used.end(); it++)
+    alDeleteSources(1, &(*it));
+  for(vector<ALuint>::iterator it = sources_unused.begin(); it != sources_unused.end(); it++)
+    alDeleteSources(1, &(*it));
+
+  for(vector<ALuint>::iterator it = oneshot_used.begin(); it != oneshot_used.end(); it++)
+    alDeleteSources(1, &(*it));
+  for(vector<ALuint>::iterator it = oneshot_unused.begin(); it != oneshot_unused.end(); it++)
     alDeleteSources(1, &(*it));
 
   ALCdevice *device;
@@ -100,100 +110,47 @@ void CSystem_Mixer::Close()
   alcCloseDevice(device);
 }
 
-bool CSystem_Mixer::PlaySound(string name, CGameObject* source)
+ALuint CSystem_Mixer::GetFreeSource()
 {
-  CResource_Sound* sound   = gSystem_Resources.GetSound(name);
-  CGameObject* go_listener = gSystem_GameObject_Manager[listener];
-
-  if(!sound) return false;
-
-  if(!go_listener) go_listener = gSystem_Render.GetMainCamera();
-  if(!go_listener) return false;
-
-  // Source propertiers
-  vector3f vel, pos, euler;
-  if(source)
+  if(!sources_unused.size())
   {
-    pos = source->Transform()->Position();
-    euler = source->Transform()->EulerAngles();
+    gSystem_Debug.console_error_msg("Error from Mixer: No more sources availables. Unbind some of them! (MAX sources: %d)", NUMBER_SOURCES);
+    return 0;
   }
 
-  alSourcefv (sound->source_attached, AL_POSITION,  ((float*) &pos)   );
-  alSourcefv (sound->source_attached, AL_VELOCITY,  ((float*) &vel)   );
-  alSourcefv (sound->source_attached, AL_DIRECTION, ((float*) &euler) ); // <- no funcional :(
+  ALuint out = sources_unused.back();
+  sources_unused.pop_back();
 
-  // Listener propertiers
-  pos = go_listener->Transform()->Position();
-  euler = go_listener->Transform()->EulerAngles();
-  alListenerfv(AL_POSITION,    ((float*) &pos)   );
-  alListenerfv(AL_VELOCITY,    ((float*) &vel)   );
-  alListenerfv(AL_ORIENTATION, ((float*) &euler) );
+  sources_used.push_back(out);
 
-  ALenum error;
-  ALuint buffer;
-
-  alSourceStop(sound->source_attached);
-  if ((error = alGetError()) != AL_NO_ERROR)
-  {
-    gSystem_Debug.console_error_msg("Error from Mixer: alSourceStop error for \"%s\": %d\n", name.c_str(), error);
-    return false;
-  }
-
-  //alGetSourcei(sound->source_attached, AL_BUFFER, (ALint*)&buffer);
-  ALint processed;
-  alGetSourcei(sound->source_attached, AL_BUFFERS_PROCESSED, &processed);
-  if ((error = alGetError()) != AL_NO_ERROR)
-  {
-    gSystem_Debug.console_error_msg("Error from Mixer: alGetSourcei error for \"%s\": %d\n", name.c_str(), error);
-    return false;
-  }
-
-  while(processed > 0)
-  {
-    alSourceUnqueueBuffers(sound->source_attached, 1, &buffer);
-    // lolwut con buffer
-
-    processed--;
-  }
-
-  //alSourceUnqueueBuffers(sound->source_attached, 1, &buffer);
-  if ((error = alGetError()) != AL_NO_ERROR)
-  {
-    gSystem_Debug.console_error_msg("Error from Mixer: alSourceUnqueueBuffers error for \"%s\": %d\n", name.c_str(), error);
-    return false;
-  }
-
-  alSourceQueueBuffers(sound->source_attached, 1, &sound->buffer_id);
-  if ((error = alGetError()) != AL_NO_ERROR)
-  {
-    gSystem_Debug.console_error_msg("Error from Mixer: alSourceQueueBuffers error for \"%s\": %d\n", name.c_str(), error);
-    return false;
-  }
-
-  alSourcePlay(sound->source_attached);
-  if ((error = alGetError()) != AL_NO_ERROR)
-  {
-    gSystem_Debug.console_error_msg("Error from Mixer: alSourcePlay error for \"%s\": %d\n", name.c_str(), error);
-    return false;
-  }
-
-  return true;
+  return out;
 }
 
-bool CSystem_Mixer::PauseSound(string name)
+void CSystem_Mixer::AddFreeSource(ALuint source)
 {
+  sources_unused.push_back(source);
 
-  return true;
-}
-
-bool CSystem_Mixer::RewindSound(string name)
-{
-
-  return true;
+  for(vector<ALuint>::iterator it = sources_used.begin(); it != sources_used.end(); it++)
+  {
+    if(source == (*it))
+    {
+      sources_used.erase(it);
+      break;
+    }
+  }
 }
 
 void CSystem_Mixer::OnLoop()
 {
-  for(vector<ALuint>::iterator it = source_list.begin(); it != source_list.end(); it++)
-    alSourcef((*it), AL_PITCH, gSystem_Time.timeScale());
+  if(!listener) listener = gSystem_Render.GetMainCamera();
+  if(!listener) return;
+
+  // Source propertiers
+  vector3f vel, pos, euler;
+  pos = listener->Transform()->Position();
+  euler = listener->Transform()->EulerAngles();
+  // FALTA VEL!!!
+  alListenerfv(AL_POSITION,    ((float*) &pos)   );
+  alListenerfv(AL_VELOCITY,    ((float*) &vel)   );
+  alListenerfv(AL_ORIENTATION, ((float*) &euler) );
 }

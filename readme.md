@@ -33,6 +33,7 @@ Se definirán 3 partes en el proyecto bien claras y definidas:
 
 ## 4. Librerías y dependencias: ##
 - [OpenGL32](http://www.opengl.org/ "OpenGL32") (Gráficos) 
+- [Glew32](http://glew.sourceforge.net/ "glew32") (Extensión de gráficos) 
 - [OpenAL](http://kcat.strangesoft.net/openal.html "OpenAL") (Sonido)
 - [Qt](http://qt-project.org/ "Qt") (Interfaz gráfica del editor)
 - [SDL2](http://www.libsdl.org/ "SDL2")

@@ -5,14 +5,29 @@
 #include "_system.h"
 #include "_object.h"
 
+// Más sencillo:
+// Audio Source y Audio Listener como componentes, no como audio.
 class CSystem_Mixer: public CSystem
 {
+  friend class CComponent_Audio_Source;
+
   private:
-    vector<ALuint> source_list;
-    // sería conveniente usar un vector de pilas para los conflictos...
+    // Buffers reservados "one shots"...
+    vector< ALuint > oneshot_used;
+    vector< ALuint > oneshot_unused;
+
+    // Buffers normales
+    vector< ALuint > sources_used;
+    vector< ALuint > sources_unused;
+
+    static const uint NUMBER_SOURCES;
+    static const uint NUMBER_SOURCES_ONESHOT;
+
+    ALuint GetFreeSource();
+    void AddFreeSource(ALuint source);
 
   public:
-    string listener; // Si es inválido o no reconocido, se usará la cámara principal del Render como listener.
+    CGameObject* listener; // Si es inválido o no reconocido, se usará la cámara principal del Render como listener.
 
   public:
     CSystem_Mixer() {};
@@ -20,21 +35,7 @@ class CSystem_Mixer: public CSystem
     bool Init();
     void Close();
 
-    bool RemoveBuffer(ALuint id);
-
-    // ¿Listener?
-    bool PlaySound(string name, CGameObject* source = NULL);
-    bool PauseSound(string name);
-    bool RewindSound(string name);
-
-    ALuint GetSourceID(uint index)
-    {
-      return source_list[index-1];
-    }
-
     void OnLoop();
-
-    static const uint NUMBER_SOURCES;
 };
 
 extern CSystem_Mixer gSystem_Mixer;

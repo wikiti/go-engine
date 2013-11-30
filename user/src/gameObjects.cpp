@@ -23,29 +23,33 @@ bool SetGameObjects_Instance1()
 
 void Camara_main_movimiento(CGameObject* gameObject)
 {
+  float boost = 1.f;
+  if (gKeyboardState[SDL_SCANCODE_LSHIFT])
+    boost = 3.f;
+
   if (gKeyboardState[SDL_SCANCODE_W])
   {
-    gameObject->Transform()->LTranslate(0.f, 0.f, 3.f * gTime.deltaTime_s());
+    gameObject->Transform()->LTranslate(0.f, 0.f, boost * 3.f * gTime.deltaTime_s());
   }
   if (gKeyboardState[SDL_SCANCODE_S])
   {
-    gameObject->Transform()->LTranslate(0.f, 0.f, -3.f * gTime.deltaTime_s());
+    gameObject->Transform()->LTranslate(0.f, 0.f, boost * -3.f * gTime.deltaTime_s());
   }
   if (gKeyboardState[SDL_SCANCODE_A])
   {
-    gameObject->Transform()->LTranslate(3.f * gTime.deltaTime_s(), 0.f, 0.f);
+    gameObject->Transform()->LTranslate(boost * 3.f * gTime.deltaTime_s(), 0.f, 0.f);
   }
   if (gKeyboardState[SDL_SCANCODE_D])
   {
-    gameObject->Transform()->LTranslate(-3.f * gTime.deltaTime_s(), 0.f, 0.f);
+    gameObject->Transform()->LTranslate(boost * -3.f * gTime.deltaTime_s(), 0.f, 0.f);
   }
   if (gKeyboardState[SDL_SCANCODE_E])
   {
-    gameObject->Transform()->Translate(0.f, -3.f * gTime.deltaTime_s(), 0.f);
+    gameObject->Transform()->Translate(0.f, boost * -3.f * gTime.deltaTime_s(), 0.f);
   }
   if (gKeyboardState[SDL_SCANCODE_Q])
   {
-    gameObject->Transform()->Translate(0.f, 3.f * gTime.deltaTime_s(), 0.f);
+    gameObject->Transform()->Translate(0.f, boost * 3.f * gTime.deltaTime_s(), 0.f);
   }
 
   // Viewport

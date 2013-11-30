@@ -159,6 +159,7 @@ class CSystem_Debug: public CSystem
     void Console_command__R_DRAW_TRANSFORM(string arguments);
     void Console_command__R_DRAW_GRID(string arguments);
     void Console_command__R_FPS(string arguments);
+    void Console_command__R_DRAW_SOUND(string arguments);
 };
 
 extern CSystem_Debug gSystem_Debug;

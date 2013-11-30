@@ -111,6 +111,8 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   if (mesh->HasNormals())         normalArray -= mesh->mNumFaces*3*3;
   if (mesh->HasPositions())       vertexArray -= mesh->mNumFaces*3*3;
 
+  rc_file = file;
+
   return true;
 }
 
@@ -197,6 +199,7 @@ bool CResource_Texture::LoadFile(string file, string arguments)
   }
 
   glBindTexture(GL_TEXTURE_2D, 0);
+  rc_file = file;
 
   return true;
 }
@@ -249,19 +252,18 @@ void CResource_Texture::Clear()
 
 bool CResource_Sound::LoadFile(string file, string arguments)
 {
-  loop = in_source = false;
-  source_attached = 0;
   buffer_id = 0;
 
   stringstream ss(arguments);
   string arg;
 
-  ss >> arg;
+  /*ss >> arg;
   while(arg != "")
   {
     if(arg == "loop")
       loop = true;
 
+    // esto sobra ya
     else if(arg[0] == 's' && arg.length() > 1)
     {
       stringstream ss2( arg.substr(1) );
@@ -281,7 +283,7 @@ bool CResource_Sound::LoadFile(string file, string arguments)
 
     ss >> arg;
     if(ss.eof()) break;
-  }
+  }*/
 
   Mix_Chunk *sound = Mix_LoadWAV(file.c_str());
   if(!sound)
@@ -304,6 +306,8 @@ bool CResource_Sound::LoadFile(string file, string arguments)
 
   alBufferData(buffer_id, AL_FORMAT_MONO16, sound->abuf, sound->alen, 44100);
   Mix_FreeChunk(sound);
+
+  rc_file = file;
 
   return true;
 }

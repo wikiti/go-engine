@@ -103,6 +103,8 @@ bool CSystem_Render::Init()
     return false;
   }*/
 
+  quadratic = gluNewQuadric();
+
   return true;
 }
 
@@ -141,6 +143,9 @@ void CSystem_Render::InitSkyboxVBO()
 void CSystem_Render::Close()
 {
   CSystem::Close();
+
+  gluDeleteQuadric(quadratic);
+
   SDL_GL_DeleteContext(GLcontext);
   SDL_DestroyWindow(window);
 }
@@ -287,9 +292,35 @@ void CSystem_Render::OnRender()
 	  }
 
 	  // Other renders
+    if(gSystem_Data_Storage.GetInt("__RENDER_SOUND_RADIUS"))
+    {
+      glPushAttrib(GL_POLYGON_BIT);
+
+      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+      glBindTexture(GL_TEXTURE_2D, 0);
+      glColor4f(1.f, 1.f, 0.f, 1.f);
+
+      for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
+      {
+        if(it2->second->GetComponent<CComponent_Audio_Source>())
+        {
+          glPushMatrix();
+
+          it2->second->Transform()->ApplyTransform();
+          it2->second->AudioSource()->OnRender();
+
+          glPopMatrix();
+        }
+      }
+
+      glPopAttrib();
+    }
+
 	  if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
 	  {
 	    glClear(GL_DEPTH_BUFFER_BIT);
+      glBindTexture(GL_TEXTURE_2D, 0);
+
 	    for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	    {
 	       glPushMatrix();

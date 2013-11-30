@@ -1,4 +1,4 @@
-#include "components/_component_gui_texture.h"
+#include "components/_component_gui.h"
 
 #include "systems/_resource.h"
 #include "systems/_render.h"

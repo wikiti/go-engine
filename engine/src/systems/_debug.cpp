@@ -128,6 +128,7 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("r_draw_transform", &CSystem_Debug::Console_command__R_DRAW_TRANSFORM));
   console_commands.insert(pair<string, command_p>("r_draw_grid", &CSystem_Debug::Console_command__R_DRAW_GRID));
   console_commands.insert(pair<string, command_p>("r_fps", &CSystem_Debug::Console_command__R_FPS));
+  console_commands.insert(pair<string, command_p>("r_draw_sound", &CSystem_Debug::Console_command__R_DRAW_SOUND));
 
   return true;
 }
@@ -564,6 +565,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("r_update_window:                Resizes the window.");
     console_msg("r_draw_transform:               Draws transform component for each game object (X, Y, Z Local axis).");
     console_msg("r_draw_grid:                    Draws a world grid.");
+    console_msg("r_draw_sound:                   Draw sound radius (max and min) for each audio source.");
     console_msg("r_fps:                          Gets current frames per second.");
   }
   // ...
@@ -1215,7 +1217,6 @@ void CSystem_Debug::Console_command__R_DRAW_TRANSFORM(string arguments)
     return;
   }
 
-
   stringstream ss(arguments);
   int val = -1;
   ss >> val;
@@ -1257,4 +1258,27 @@ void CSystem_Debug::Console_command__R_FPS(string arguments)
   }
 
   console_msg("FPS: %f", gEngine.fps());
+}
+
+void CSystem_Debug::Console_command__R_DRAW_SOUND(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: r_draw_sound <0 | 1> [Z subdivisions] [X subdivisions]");
+    return;
+  }
+
+  stringstream ss(arguments);
+  int val = -1;
+  float sub_x = -1, sub_z = -1;
+  ss >> val >> sub_x >> sub_z;
+
+  if(val < 0 or val > 1)
+    console_warning_msg("Format is: r_draw_sound <0 | 1> [Z subdivisions] [X subdivisions]");
+  else
+  {
+    gSystem_Data_Storage.SetInt("__RENDER_SOUND_RADIUS", val);
+    if(sub_x > 0) gSystem_Data_Storage.SetFloat("__RENDER_SOUND_RADIUS_X", sub_x);
+    if(sub_z > 0) gSystem_Data_Storage.SetFloat("__RENDER_SOUND_RADIUS_Z", sub_z);
+  }
 }

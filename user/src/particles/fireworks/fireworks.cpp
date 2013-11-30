@@ -51,6 +51,12 @@ void Firework_Manager_Event(CGameObject* gameObject)
     explosion->ParticleEmitter()->start_max_color(r, g, b, 1.f);
     //explosion->particleEmitter()->color_adder(0, 0, 0, -0.1f);
 
+    explosion->AudioSource()->SetSound("explosion");
+    explosion->AudioSource()->volume = 1.f;
+    explosion->AudioSource()->max_distance = 100.f;
+    //explosion->AudioSource()->everywhere = false;
+    explosion->AudioSource()->Bind();
+
       // Trail
     trail->ParticleEmitter()->material_name = "smoke1";
     trail->ParticleEmitter()->max_particles = 100;
@@ -103,8 +109,9 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
       current_firework->GetChild("firework_trail_"+value)->ParticleEmitter()->Stop();
       current_firework->GetChild("firework_explosion_"+value)->ParticleEmitter()->Start();
       current_firework->GetChild("firework_explosion_"+value)->ParticleEmitter()->Stop();
+      current_firework->GetChild("firework_explosion_"+value)->AudioSource()->Play();
 
-      gMixer.PlaySound("leroy", current_firework);
+      //gMixer.PlaySound("leroy", current_firework);
       //gMixer.PlaySound("explosion", current_firework);
 
       exploded[i] = true;

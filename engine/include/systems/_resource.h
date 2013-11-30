@@ -26,6 +26,8 @@ class CResource
     virtual void Clear(){};
 
     resources::types_t Type(){ return type; };
+
+    string File(){ return rc_file; }
 };
 
 class CResource_Mesh: public CResource
@@ -91,23 +93,14 @@ class CResource_Sound: public CResource
     friend class CSystem_Mixer;
 
     ALuint buffer_id;
-    ALuint source_attached;
-
-    bool loop;
-    bool in_source;
 
   public:
     CResource_Sound(): CResource(){ type = resources::sound; };
     ~CResource_Sound(){ Clear(); }
 
-    ALuint GetBufferID()
+    ALuint BufferID()
     {
       return buffer_id;
-    }
-
-    ALuint GetSourceAttached()
-    {
-      return source_attached;
     }
 
     /*void PlaySound();
