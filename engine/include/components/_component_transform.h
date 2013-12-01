@@ -110,6 +110,10 @@ class CComponent_Transform: public CComponent
     vector3f left();
     vector3f forward();
 
+    GLfloat pitch();
+    GLfloat yaw();
+    GLfloat roll();
+
 //    Por hacer: Posiciones globales y locales
     vector3f_t Position();
 //    vector3f_t Angle();

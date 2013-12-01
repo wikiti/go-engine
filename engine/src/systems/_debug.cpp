@@ -230,12 +230,12 @@ void CSystem_Debug::OnEvent()
   {
     if(event.type == SDL_KEYDOWN)
     {
-      if(event.key.keysym.sym == SDLK_F10)
+      if(event.key.keysym.scancode == SDL_SCANCODE_F10)
       {
         console = false;
         SDL_StopTextInput();
       }
-      else if(event.key.keysym.sym == SDLK_ESCAPE)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
       {
         console_pointer_pos = 0;
         if(input == "")
@@ -246,7 +246,7 @@ void CSystem_Debug::OnEvent()
         else
           input = "";
       }
-      else if(event.key.keysym.sym == SDLK_RETURN)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_RETURN)
       {
         if(input != "")
         {
@@ -257,7 +257,7 @@ void CSystem_Debug::OnEvent()
           console_pointer_pos = 0;
         }
       }
-      else if(event.key.keysym.sym == SDLK_DELETE && input.length())
+      else if(event.key.keysym.scancode == SDL_SCANCODE_DELETE && input.length())
       {
         if(console_pointer_pos < input.length())
         {
@@ -266,7 +266,7 @@ void CSystem_Debug::OnEvent()
              //console_pointer_pos--;
         }
       }
-      else if(event.key.keysym.sym == SDLK_BACKSPACE && input.length())
+      else if(event.key.keysym.scancode == SDL_SCANCODE_BACKSPACE && input.length())
       {
         if(console_pointer_pos > 0)
         {
@@ -274,7 +274,7 @@ void CSystem_Debug::OnEvent()
           console_pointer_pos--;
         }
       }
-      else if(event.key.keysym.sym == SDLK_UP)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_UP)
       {
         if(command_buffer.size() && current_last_command > 0)
         {
@@ -283,7 +283,7 @@ void CSystem_Debug::OnEvent()
           console_pointer_pos = input.size();
         }
       }
-      else if(event.key.keysym.sym == SDLK_DOWN)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_DOWN)
       {
         if(command_buffer.size() && current_last_command < command_buffer.size()-1)
         {
@@ -292,24 +292,24 @@ void CSystem_Debug::OnEvent()
           console_pointer_pos = input.size();
         }
       }
-      else if(event.key.keysym.sym == SDLK_LEFT)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_LEFT)
       {
         if(console_pointer_pos > 0)
           console_pointer_pos--;
       }
-      else if(event.key.keysym.sym == SDLK_RIGHT)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
       {
         if(console_pointer_pos < input.length())
           console_pointer_pos++;
       }
-      else if(event.key.keysym.sym == SDLK_PAGEUP)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_PAGEUP)
       {
         if(console_buffer.size() && current_line_buffered < console_buffer.size()-1)
         {
           current_line_buffered++;
         }
       }
-      else if(event.key.keysym.sym == SDLK_PAGEDOWN)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_PAGEDOWN)
       {
         if(console_buffer.size() && current_line_buffered > 0)
         {
@@ -345,7 +345,7 @@ void CSystem_Debug::OnEvent()
   }
   else
   {
-    if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_F10)
+    if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_F10)
     {
       console = true;
       SDL_StartTextInput();

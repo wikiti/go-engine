@@ -146,6 +146,22 @@ void CSystem_Mixer::AddFreeSource(ALuint source)
   }
 }
 
+ALuint CSystem_Mixer::GetFreeOneShot()
+{
+  if(!oneshot_unused.size())
+  {
+    gSystem_Debug.console_error_msg("Error from Mixer: No more one-shots sources availables. (MAX one-shot sources: %d)", NUMBER_SOURCES_ONESHOT);
+    return 0;
+  }
+
+  ALuint out = oneshot_unused.back();
+  oneshot_unused.pop_back();
+
+  oneshot_used.push_back(out);
+
+  return out;
+}
+
 void CSystem_Mixer::OnLoop()
 {
   if(!listener) listener = gSystem_Render.GetMainCamera();
@@ -159,4 +175,34 @@ void CSystem_Mixer::OnLoop()
   alListenerfv(AL_POSITION,    ((float*) &pos)   );
   alListenerfv(AL_VELOCITY,    ((float*) &vel)   );
   //alListenerfv(AL_ORIENTATION, ((float*) &euler) );   // <- Fix this :C
+
+  ALint processed;
+  ALuint trash;
+  GLenum error;
+
+  for(vector<ALuint>::iterator it = oneshot_used.begin(); it != oneshot_used.end();)
+  {
+    // Comprobar si ha sido procesado y sacarlo de la cola.
+    alGetSourcei((*it), AL_BUFFERS_PROCESSED, &processed);
+    if ((error = alGetError()) != AL_NO_ERROR)
+      gSystem_Debug.console_error_msg("Error %d from Mixer: Could not get buffers processed from source %d", error, (*it));
+
+    if(processed != 0)
+    {
+      alSourceUnqueueBuffers((*it), 1, &trash);
+      // lolwut con buffer
+      //processed--;
+
+      oneshot_unused.push_back((*it));
+      oneshot_used.erase(it);
+    }
+    else
+    {
+      //alSourcef((*it), AL_PITCH, gSystem_Time.timeScale());
+
+      //float gVolume = gSystem_Data_Storage.GetFloat("__SOUND_VOLUME");
+      //alSourcef((*it), AL_GAIN, gVolume);
+      it++;
+    }
+  }
 }

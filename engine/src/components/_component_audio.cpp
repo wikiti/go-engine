@@ -122,13 +122,50 @@ void CComponent_Audio_Source::PlayOneShot()
 {
   if(!sound || !enabled || mute) return;
 
+  ALuint source_oneshot = gSystem_Mixer.GetFreeOneShot();
+  if(!source_oneshot) return;
 
+  ALuint buffer = sound->BufferID();
+  alSourceQueueBuffers(source_oneshot, 1, &buffer);
+
+  vector3f vel, pos, euler;
+  if(!everywhere)
+  {
+    pos = gameObject->Transform()->Position();
+    euler = gameObject->Transform()->EulerAngles();
+  }
+  else
+  {
+    alGetListenerfv(AL_POSITION,    ((float*) &pos)   );
+    //alGetListenerfv(AL_VELOCITY,    ((float*) &vel)   );
+    //alGetListenerfv(AL_ORIENTATION, ((float*) &euler) );
+  }
+
+  alSourcefv(source_oneshot, AL_POSITION,  ((float*) &pos)   );
+  alSourcefv(source_oneshot, AL_VELOCITY,  ((float*) &vel)   );
+  alSourcefv(source_oneshot, AL_DIRECTION, ((float*) &euler) );
+
+  if(affected_by_time) alSourcef(source_oneshot, AL_PITCH, pitch*gSystem_Time.timeScale());
+  else                 alSourcef(source_oneshot, AL_PITCH, pitch);
+
+  float gVolume = 1.f;
+  if(music)
+    gVolume = gSystem_Data_Storage.GetFloat("__SOUND_MUSIC_VOLUME");
+  else
+    gVolume = gSystem_Data_Storage.GetFloat("__SOUND_VOLUME");
+
+  alSourcef(source_oneshot, AL_GAIN, volume*gVolume);
+
+  alSourcef(source_oneshot, AL_MAX_DISTANCE, max_distance);
+  alSourcef(source_oneshot, AL_REFERENCE_DISTANCE, min_distance);
+
+  //alSourcei(source_oneshot, AL_LOOPING, loop);
+  alSourcePlay(source_oneshot);
 }
 
 void CComponent_Audio_Source::PlayAt(vector3f pos)
 {
   PlayAt(pos.x, pos.y, pos.z);
-
 }
 
 void CComponent_Audio_Source::PlayAt(ALfloat x, ALfloat y, ALfloat z)

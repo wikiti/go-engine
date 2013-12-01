@@ -26,6 +26,8 @@ class CSystem_Mixer: public CSystem
     ALuint GetFreeSource();
     void AddFreeSource(ALuint source);
 
+    ALuint GetFreeOneShot();
+
   public:
     CGameObject* listener; // Si es inválido o no reconocido, se usará la cámara principal del Render como listener.
 

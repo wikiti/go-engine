@@ -399,6 +399,46 @@ vector3f CComponent_Transform::forward()
   return vector3f(out.x, out.y, out.z);
 }
 
+GLfloat CComponent_Transform::pitch()
+{
+  vector3f new_z_axis = forward();
+  new_z_axis.x = 0;
+
+  GLfloat output = gMath.acos((new_z_axis.dot_product(gMath.Z_AXIS))/(new_z_axis.length()));
+  if(new_z_axis.y < 0)
+    output *= -1;
+
+  gMath.NormalizeAngle(output);
+  return output;
+}
+
+GLfloat CComponent_Transform::yaw()
+{
+  vector3f new_x_axis = left();
+  new_x_axis.y = 0;
+
+  GLfloat output = gMath.acos((new_x_axis.dot_product(gMath.X_AXIS))/(new_x_axis.length()));
+  if(new_x_axis.z < 0)
+    output *= -1;
+
+  gMath.NormalizeAngle(output);
+  return output;
+}
+
+GLfloat CComponent_Transform::roll()
+{
+  vector3f new_y_axis = forward();
+  new_y_axis.z = 0;
+
+  GLfloat output = gMath.acos((new_y_axis.dot_product(gMath.Y_AXIS))/(new_y_axis.length()));
+  if(new_y_axis.x < 0)
+    output *= -1;
+
+  gMath.NormalizeAngle(output);
+  return output;
+}
+
+
 /*void CComponent_Transform::ApplyParentTransform()
 {
   CGameObject* parent = gameObject->GetParent();

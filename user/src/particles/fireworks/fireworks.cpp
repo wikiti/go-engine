@@ -19,10 +19,12 @@ bool SetGameObjects_Instance1_Fireworks()
 
 int number_of_fireworks = 0;
 vector<bool> exploded;
+vector<CGameObject*> fireworks;
+vector<int> fireworks_value;
 
 void Firework_Manager_Event(CGameObject* gameObject)
 {
-  if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
+  if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_SPACE)
   {
     //std::string random_string = generate_random_alphanumeric_string(5);
     ostringstream oss;
@@ -86,13 +88,57 @@ void Firework_Manager_Event(CGameObject* gameObject)
 
     trail->ParticleEmitter()->Start();
 
+    fireworks_value.push_back(number_of_fireworks);
+    exploded.push_back(false);
+    fireworks.push_back(firework);
     number_of_fireworks++;
-    exploded.resize(number_of_fireworks);
-    exploded[exploded.size()-1] = false;
+
+    //exploded.resize(number_of_fireworks);
+    //exploded[exploded.size()-1] = false;
   }
 }
 
 void Firework_Manager_Behaviour(CGameObject* gameObject)
+{
+  for(vector<CGameObject*>::iterator it = fireworks.begin(); it != fireworks.end(); it++)
+  {
+    int i = it - fireworks.begin();
+
+    ostringstream oss;
+    oss << fireworks_value[i];
+    string value = oss.str();
+
+    CGameObject* current_firework = (*it);
+
+    float startTime = gSystem_Data_Storage.GetFloat("firework_timer_"+value);
+    float timeout = gSystem_Data_Storage.GetFloat("firework_timeout_"+value);
+
+    if((gTime.GetTicks_s() - startTime) < timeout/gTime.timeScale()) // 1.5 segundos.
+    {
+      current_firework->Transform()->Translate(0.f, 20.f*gTime.deltaTime_s(), 0.f);
+    }
+    else if(!exploded[i])
+    {
+      current_firework->GetChild(1)->ParticleEmitter()->Stop();
+      current_firework->GetChild(0)->ParticleEmitter()->Start();
+      current_firework->GetChild(0)->ParticleEmitter()->Stop();
+      current_firework->GetChild(0)->AudioSource()->PlayOneShot();
+
+      exploded[i] = true;
+    }
+    else if ((gTime.GetTicks_s() - startTime) > 5/gTime.timeScale())
+    {
+      gGameObjects.DeleteGameObject(current_firework->GetName(), true);
+      exploded.erase(exploded.begin() + (it - fireworks.begin()));
+      fireworks_value.erase(fireworks_value.begin() + (it - fireworks.begin()));
+      fireworks.erase(it);
+      it--;
+    }
+    //Firework_Behaviour(gGameObjects["firework_"+value]);
+  }
+}
+
+/*void Firework_Manager_Behaviour(CGameObject* gameObject)
 {
   if(!number_of_fireworks)
     return;
@@ -117,7 +163,7 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
       current_firework->GetChild("firework_trail_"+value)->ParticleEmitter()->Stop();
       current_firework->GetChild("firework_explosion_"+value)->ParticleEmitter()->Start();
       current_firework->GetChild("firework_explosion_"+value)->ParticleEmitter()->Stop();
-      current_firework->GetChild("firework_explosion_"+value)->AudioSource()->Play();
+      current_firework->GetChild("firework_explosion_"+value)->AudioSource()->PlayOneShot();
 
       //gMixer.PlaySound("leroy", current_firework);
       //gMixer.PlaySound("explosion", current_firework);
@@ -126,4 +172,4 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
     }
     //Firework_Behaviour(gGameObjects["firework_"+value]);
   }
-}
+}*/

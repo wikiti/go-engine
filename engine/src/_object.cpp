@@ -127,14 +127,20 @@ CGameObject* CGameObject::GetChild(string str)
 
 CGameObject* CGameObject::GetChild(uint index)
 {
-  map<string, CGameObject*>::iterator it = children.begin();
-  for(uint i = 0; i < index; i++)
-    it++;
-
-  if(it == children.end())
+  if(index < 0 or index >= children.size())
     return NULL;
 
+  map<string, CGameObject*>::iterator it = children.begin();
+  advance(it, index);
   return it->second;
+//  map<string, CGameObject*>::iterator it = children.begin();
+//  for(uint i = 0; i < index; i++)
+//    it++;
+//
+//  if(it == children.end())
+//    return NULL;
+//
+//  return it->second;
 }
 
 /*void CGameObject::SendMessage(CGameObject* dest, string func, input_t data, output_t o_data)
