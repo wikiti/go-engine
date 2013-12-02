@@ -114,6 +114,10 @@ class CComponent_Transform: public CComponent
     GLfloat yaw();
     GLfloat roll();
 
+    // Pitch, yaw, roll
+    vector3f Rotation();
+    vector3f LRotation();
+
 //    Por hacer: Posiciones globales y locales
     vector3f_t Position();
 //    vector3f_t Angle();

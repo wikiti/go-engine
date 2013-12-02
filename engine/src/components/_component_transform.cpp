@@ -378,24 +378,24 @@ void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward
 vector3f CComponent_Transform::up()
 {
   glm::vec3 y_axis(0.f, 1.f, 0.f);
-
   glm::vec3 out = glm::rotate(angle, y_axis);
+
   return vector3f(out.x, out.y, out.z);
 }
 
 vector3f CComponent_Transform::left()
 {
   glm::vec3 x_axis(1.f, 0.f, 0.f);
-
   glm::vec3 out = glm::rotate(angle, x_axis);
+
   return vector3f(out.x, out.y, out.z);
 }
 
 vector3f CComponent_Transform::forward()
 {
   glm::vec3 z_axis(0.f, 0.f, 1.f);
-
   glm::vec3 out = glm::rotate(angle, z_axis);
+
   return vector3f(out.x, out.y, out.z);
 }
 
@@ -438,7 +438,39 @@ GLfloat CComponent_Transform::roll()
   return output;
 }
 
+void rotate_by_parent(glm::quat& angle, CGameObject* self)
+{
+  if(self == NULL)
+    return;
+  else
+  {
+    rotate_by_parent(angle, self->GetParent());
+    angle = self->Transform()->angle * angle;
+  }
+}
 
+vector3f CComponent_Transform::Rotation()
+{
+  glm::quat langle(angle);
+  rotate_by_parent(langle, gameObject);
+
+//  vector3f new_y_axis = forward();
+//  new_y_axis.z = 0;
+//  GLfloat roll = gMath.acos((new_y_axis.dot_product(gMath.Y_AXIS))/(new_y_axis.length()));
+//  if(new_y_axis.x < 0)
+//    roll *= -1;
+//  gMath.NormalizeAngle(roll);
+
+  // ¿?¿?
+
+
+  //return langle;
+}
+
+vector3f CComponent_Transform::LRotation()
+{
+  return vector3f(pitch(), yaw(), roll());
+}
 /*void CComponent_Transform::ApplyParentTransform()
 {
   CGameObject* parent = gameObject->GetParent();

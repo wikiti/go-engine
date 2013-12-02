@@ -397,6 +397,31 @@ typedef struct vector3f_t
     return !(*this == other);
   }
 
+  vector3f_t up(glm::quat angle)
+  {
+    glm::vec3 y_axis(0.f, 1.f, 0.f);
+
+    glm::vec3 out = glm::rotate(angle, y_axis);
+    return vector3f_t(out.x, out.y, out.z);
+  }
+
+  vector3f_t left(glm::quat angle)
+  {
+    glm::vec3 x_axis(1.f, 0.f, 0.f);
+
+    glm::vec3 out = glm::rotate(angle, x_axis);
+    return vector3f_t(out.x, out.y, out.z);
+  }
+
+  vector3f_t forward(glm::quat angle)
+  {
+    glm::vec3 z_axis(0.f, 0.f, 1.f);
+
+    glm::vec3 out = glm::rotate(angle, z_axis);
+    return vector3f_t(out.x, out.y, out.z);
+  }
+
+
 
 } vector3f;
 

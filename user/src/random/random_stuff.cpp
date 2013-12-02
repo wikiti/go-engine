@@ -271,6 +271,8 @@ void Cubo_second_movimiento(CGameObject* gameObject)
     scale -= 1.f * gTime.deltaTime_s();
     gameObject->Transform()->SetScale(1.f, scale, 1.f);
   }
+  cout << " ROTATION: " << gameObject->Transform()->Rotation() << endl;
+  cout << "LROTATION: " << gameObject->Transform()->LRotation() << endl;
 }
 
 void Cubo_second_cout(CGameObject* gameObject)
