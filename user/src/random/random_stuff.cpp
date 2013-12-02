@@ -22,7 +22,7 @@ bool SetGameObjects_Instance1_RandomStuff()
   gui_example->Transform()->position(0.5f, 0.5f, 0.f);
   gui_example->Transform()->Rotate(0.f, 0.f, 45.f);
   gui_example->GUITexture()->pixel_offset_x = 2;
-  gui_example->GUITexture()->color.a = 0.25f;
+  gui_example->GUITexture()->color.a = 0.5f;
   gui_example->GUITexture()->color.g = gui_example->GUITexture()->color.b = 0.f;
 
   CGameObject* camara_second = gGameObjects.AddGameObject("camara_second");

@@ -339,7 +339,7 @@ void CSystem_Render::OnRender()
 
   // Render GUI
   glClear(GL_DEPTH_BUFFER_BIT);
-  glDisable(GL_DEPTH_TEST);
+  //glDisable(GL_DEPTH_TEST);
   glLoadIdentity();
 
   GUI_Camera->Camera()->SetViewport();
@@ -349,7 +349,7 @@ void CSystem_Render::OnRender()
   {
     (*it)->OnRender();
   }
-  glEnable(GL_DEPTH_TEST);
+  //glEnable(GL_DEPTH_TEST);
 }
 
 void CSystem_Render::RenderGrid(int rows, int cols)
