@@ -2,17 +2,21 @@
 #include "systems/_debug.h"
 #include "systems/_resource.h"
 #include "systems/_render.h"
+#include "systems/_data.h"
 #include "systems/_manager.h"
 
 CSystem_Mixer gSystem_Mixer;
 CSystem_Mixer& gMixer = gSystem_Mixer;
 
-const uint CSystem_Mixer::NUMBER_SOURCES = 225;
-const uint CSystem_Mixer::NUMBER_SOURCES_ONESHOT = 30;
+//const uint CSystem_Mixer::NUMBER_SOURCES = 225;
+//const uint CSystem_Mixer::NUMBER_SOURCES_ONESHOT = 30;
 
 bool CSystem_Mixer::Init()
 {
   CSystem::Init();
+
+  NUMBER_SOURCES = gSystem_Data_Storage.GetInt("__SOUND_NUMBER_SOURCES");
+  NUMBER_SOURCES_ONESHOT = gSystem_Data_Storage.GetInt("__SOUND_NUMBER_SOURCES_ONESHOT");
 
   /* Init SDL_Mixer */
   int audio_rate = 44100;

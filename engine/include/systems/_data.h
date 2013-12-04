@@ -28,6 +28,8 @@
 
 #define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_VOLUME 1.0
 #define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_MUSIC_VOLUME 1.0
+#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES 225
+#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES_ONESHOT 30
 
 #include "_globals.h"
 #include "_system.h"
@@ -79,6 +81,6 @@ class CSystem_Data_Storage: public CSystem
 
 // Crear 2 objetos: 1 para la configuración de la aplicación, y otra para guardar variables de usuario.
 extern CSystem_Data_Storage gSystem_Data_Storage;
-
+extern CSystem_Data_Storage& gData;
 
 #endif /* __CSYSTEM_DATA_STORAGE_ */

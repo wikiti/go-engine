@@ -20,8 +20,8 @@ class CSystem_Mixer: public CSystem
     vector< ALuint > sources_used;
     vector< ALuint > sources_unused;
 
-    static const uint NUMBER_SOURCES;
-    static const uint NUMBER_SOURCES_ONESHOT;
+    /*static const */uint NUMBER_SOURCES;
+    /*static const */uint NUMBER_SOURCES_ONESHOT;
 
     ALuint GetFreeSource();
     void AddFreeSource(ALuint source);

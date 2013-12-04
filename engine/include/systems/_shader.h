@@ -4,6 +4,10 @@
 #include "_globals.h"
 #include "_system.h"
 
+/* References:
+ *   - http://luugiathuy.com/2012/04/glsl-shader-manager-opengl/
+ */
+
 class CShader
 {
   protected:
@@ -40,6 +44,8 @@ class CShader
 class CSystem_Shader_Manager: public CSystem
 {
   private:
+    map<string, CShader*> shaders;
+    static const char* DEFAULT_SHADER;
 
   public:
     CSystem_Shader_Manager();
@@ -48,10 +54,21 @@ class CSystem_Shader_Manager: public CSystem
     bool Init();
     void Close();
 
-    void OnLoop();
+    //void OnLoop();
+
+    CShader* GetShader(string vertFile, const string& fragFile, const string& geomFile);
+
+  private:
+    CShader* Load(const string& vertexFile, const string& fragmentFile, const string& geometryFile);
+    void Clear(CShader* inShader);
+
+    bool LoadShader(uint inShaderType,  const std::string& inFileName, uint& inOutShader);
+    char** LoadSource(int& outLineCount, const std::string& inFileName);
+
+
 };
 
-extern CSystem_Shader_Manager gSystem_Shader_Manager;
-extern CSystem_Shader_Manager& gShader;
+//extern CSystem_Shader_Manager gSystem_Shader_Manager;
+//extern CSystem_Shader_Manager& gShader;
 
 #endif /* __CSYSTEM_SHADER_MANAGER_H_ */

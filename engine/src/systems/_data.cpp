@@ -2,6 +2,7 @@
 #include "systems/_debug.h"
 
 CSystem_Data_Storage gSystem_Data_Storage;
+CSystem_Data_Storage& gData = gSystem_Data_Storage;
 
 bool CSystem_Data_Storage::Init()
 {
@@ -179,6 +180,10 @@ void CSystem_Data_Storage::LoadConfig()
 
     SetFloat("__SOUND_VOLUME", __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_VOLUME);
     SetFloat("__SOUND_MUSIC_VOLUME", __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_MUSIC_VOLUME);
+
+    SetInt("__SOUND_NUMBER_SOURCES", __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES);
+    SetInt("__SOUND_NUMBER_SOURCES_ONESHOT", __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES_ONESHOT);
+
   }
 }
 
