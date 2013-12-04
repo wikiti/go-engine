@@ -32,7 +32,7 @@ class CSystem_Mixer: public CSystem
     CGameObject* listener; // Si es inválido o no reconocido, se usará la cámara principal del Render como listener.
 
   public:
-    CSystem_Mixer() {};
+    CSystem_Mixer(): CSystem() {};
 
     bool Init();
     void Close();
