@@ -46,3 +46,33 @@ int CShader::GetVariableIndex(const string& varname, bool isUniform)
 
   return output;
 }
+
+// Shader manager
+CShader* CSystem_Shader_Manager::GetShader(const string vertFile, const string& fragFile, const string& geomFile)
+{
+  string theString = vertFile;
+  if(fragFile)
+    theString += fragFile;
+  if(geomFile)
+  theString += geomFile;
+
+  map<string, CShader*>::iterator i = shaders.find(theString);
+  if(i != shaders.end())
+  {
+    return (i->second);
+  }
+  else
+  {
+    CShader* theResult = Load(vertFile, fragFile, geomFile);
+    if(theResult != NULL)
+    {
+      // successful loaded and linked shader program, added to map and return the result
+      shaders[theString] = theResult;
+      return theResult;
+    }
+  }
+
+  // if load/link unsuccessfully, return default shader which program = 0
+  return shaders[DEFAULT_SHADER];
+}
+

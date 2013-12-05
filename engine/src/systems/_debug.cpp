@@ -1340,5 +1340,8 @@ void CSystem_Debug::Console_command__R_DRAW_SOUND(string arguments)
     gSystem_Data_Storage.SetInt("__RENDER_SOUND_RADIUS", val);
     if(sub_x > 0) gSystem_Data_Storage.SetFloat("__RENDER_SOUND_RADIUS_X", sub_x);
     if(sub_z > 0) gSystem_Data_Storage.SetFloat("__RENDER_SOUND_RADIUS_Z", sub_z);
+
+    if(val) console_msg("Sound radius render enabled.");
+    else    console_msg("Sound radius render disabled.");
   }
 }
