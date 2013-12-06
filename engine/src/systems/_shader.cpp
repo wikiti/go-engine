@@ -48,12 +48,10 @@ int CShader::GetVariableIndex(const string& varname, bool isUniform)
 }
 
 // Shader manager
-CShader* CSystem_Shader_Manager::GetShader(const string vertFile, const string& fragFile, const string& geomFile)
+/*CShader* CSystem_Shader_Manager::GetShader(const string& vertFile, const string& fragFile, const string& geomFile)
 {
   string theString = vertFile;
-  if(fragFile)
-    theString += fragFile;
-  if(geomFile)
+  theString += fragFile;
   theString += geomFile;
 
   map<string, CShader*>::iterator i = shaders.find(theString);
@@ -74,5 +72,5 @@ CShader* CSystem_Shader_Manager::GetShader(const string vertFile, const string& 
 
   // if load/link unsuccessfully, return default shader which program = 0
   return shaders[DEFAULT_SHADER];
-}
+}*/
 

@@ -481,8 +481,9 @@ void CSystem_Resources::ClearResources()
   {
     //it->second->Clear();
     delete it->second;
-    resource_list.erase(it);
+    //resource_list.erase(it);
   }
+  resource_list.clear();
 }
 
 void CSystem_Resources::ClearResource(string id)

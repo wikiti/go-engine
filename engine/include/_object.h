@@ -67,7 +67,10 @@ class CGameObject
     CGameObject(string name);
     CGameObject();
 
-    virtual ~CGameObject(){}
+    virtual ~CGameObject()
+    {
+      Close();
+    }
 
     void Init();
       virtual void InitCustom(){};

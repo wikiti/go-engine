@@ -155,6 +155,7 @@ class CSystem_Debug: public CSystem
     // Sound
     void Console_command__SND_VOLUME(string arguments);
     void Console_command__SND_MUSIC_VOLUME(string arguments);
+    void Console_command__SND_CHECKSOURCES(string arguments);
 
     // Render
     void Console_command__R_UPDATE_WINDOW(string arguments);

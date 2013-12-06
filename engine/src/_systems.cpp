@@ -63,6 +63,7 @@ void Systems_Close()
   gSystem_GameObject_Manager.Close();
   gSystem_Render.Close();
   gSystem_Debug.Close();
+  gSystem_Mixer.ResetSources();
   gSystem_Resources.Close();
   gSystem_Time.Close();
   gSystem_Math.Close();

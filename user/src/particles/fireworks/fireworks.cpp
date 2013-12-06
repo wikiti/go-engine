@@ -60,12 +60,12 @@ void Firework_Manager_Event(CGameObject* gameObject)
     explosion->ParticleEmitter()->start_max_color(r, g, b, 1.f);
     //explosion->particleEmitter()->color_adder(0, 0, 0, -0.1f);
 
-    explosion->AudioSource()->SetSound("explosion");
+    explosion->AudioSource()->SetSound("firework_explosion");
     explosion->AudioSource()->volume = 1.f;
     //explosion->AudioSource()->loop = true;
     explosion->AudioSource()->max_distance = 100.f;
     //explosion->AudioSource()->everywhere = false;
-    explosion->AudioSource()->Bind();
+    //explosion->AudioSource()->Bind();
 
       // Trail
     trail->ParticleEmitter()->material_name = "smoke1";
@@ -87,6 +87,12 @@ void Firework_Manager_Event(CGameObject* gameObject)
     trail->ParticleEmitter()->start_min_life_time = 0.85f;
 
     trail->ParticleEmitter()->Start();
+
+    trail->AudioSource()->SetSound("firework_trail");
+    trail->AudioSource()->volume = 1.f;
+    trail->AudioSource()->max_distance = 100.f;
+    trail->AudioSource()->Bind();
+    trail->AudioSource()->Play();
 
     fireworks_value.push_back(number_of_fireworks);
     exploded.push_back(false);

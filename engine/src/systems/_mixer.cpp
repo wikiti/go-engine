@@ -85,26 +85,45 @@ bool CSystem_Mixer::Init()
   return true;
 }
 
-void CSystem_Mixer::Close()
+void CSystem_Mixer::ResetSources()
 {
-  Mix_CloseAudio();
-
-  // Borrar sources
   for(vector<ALuint>::iterator it = sources_used.begin(); it != sources_used.end(); it++)
   {
     alSourceStop((*it));
-    alDeleteSources(1, &(*it));
+    alSourcei((*it), AL_BUFFER, 0);
+    //alDeleteSources(1, &(*it));
+
+    sources_unused.push_back((*it));
   }
-  for(vector<ALuint>::iterator it = sources_unused.begin(); it != sources_unused.end(); it++)
-    alDeleteSources(1, &(*it));
+  sources_used.clear();
 
   for(vector<ALuint>::iterator it = oneshot_used.begin(); it != oneshot_used.end(); it++)
   {
     alSourceStop((*it));
+    alSourcei((*it), AL_BUFFER, 0);
+    //alDeleteSources(1, &(*it));
+
+    oneshot_unused.push_back((*it));
+  }
+  oneshot_used.clear();
+}
+
+void CSystem_Mixer::Close()
+{
+  Mix_CloseAudio();
+
+  ResetSources();
+
+  // Borrar sources
+  for(vector<ALuint>::iterator it = sources_unused.begin(); it != sources_unused.end(); it++)
+  {
     alDeleteSources(1, &(*it));
   }
+
   for(vector<ALuint>::iterator it = oneshot_unused.begin(); it != oneshot_unused.end(); it++)
+  {
     alDeleteSources(1, &(*it));
+  }
 
   ALCdevice *device;
   ALCcontext *ctx;
@@ -194,6 +213,7 @@ void CSystem_Mixer::OnLoop()
     if(processed != 0)
     {
       alSourceUnqueueBuffers((*it), 1, &trash);
+      alSourcei((*it), AL_BUFFER, 0);
       // lolwut con buffer
       //processed--;
 

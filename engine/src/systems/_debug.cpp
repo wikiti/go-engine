@@ -4,6 +4,7 @@
 #include "systems/_render.h"
 #include "systems/_data.h"
 #include "systems/_other.h"
+#include "systems/_mixer.h"
 
 #include "engine/_engine.h"
 
@@ -125,6 +126,7 @@ bool CSystem_Debug::InitCommandMap()
     // Sound
   console_commands.insert(pair<string, command_p>("snd_volume", &CSystem_Debug::Console_command__SND_VOLUME));
   console_commands.insert(pair<string, command_p>("snd_music_volume", &CSystem_Debug::Console_command__SND_MUSIC_VOLUME));
+  console_commands.insert(pair<string, command_p>("snd_checksources", &CSystem_Debug::Console_command__SND_CHECKSOURCES));
 
     // Render
   console_commands.insert(pair<string, command_p>("r_update_window", &CSystem_Debug::Console_command__R_UPDATE_WINDOW));
@@ -499,21 +501,6 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     return;
   }
 
-  /*// Game Objects
-  void Console_command__GAME_OBJECT_SHOW_TREE(string arguments);
-    void Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level = 1);
-  void Console_command__GAME_OBJECT_ENABLE(string arguments);
-  void Console_command__GAME_OBJECT_COMPONENT_ENABLE(string arguments);
-  //void Console_command__ENABLE_SYSTEM(string arguments);
-  //
-
-  // Render
-  void Console_command__R_UPDATE_WINDOW(string arguments);
-  void Console_command__R_RESIZE_WINDOW(string arguments);
-  void Console_command__R_DRAW_TRANSFORM(string arguments);
-  void Console_command__R_DRAW_GRID(string arguments);
-  void Console_command__R_FPS(string arguments);*/
-
   if(arguments == "")
   {
     console_msg("Use \"help <category>\". Categories are:");
@@ -566,6 +553,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("-----------------------------------------------------------------------");
     console_msg("snd_volume:                     Set volume.");
     console_msg("snd_music_volume:               Set music volume.");
+    console_msg("snd_checksources:               Shows source vectors status.");
     // Sound
   }
   else if(arguments == "render")
@@ -1223,6 +1211,33 @@ void CSystem_Debug::Console_command__SND_MUSIC_VOLUME(string arguments)
     gSystem_Data_Storage.SetFloat("__SOUND_MUSIC_VOLUME",value);
     console_msg("Set music volume to %f", value);
   }
+}
+
+void CSystem_Debug::Console_command__SND_CHECKSOURCES(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: snd_checksources");
+    return;
+  }
+
+  // Sources
+  uint n_sources = gSystem_Mixer.sources_used.size();
+  if(n_sources == gSystem_Mixer.NUMBER_SOURCES)
+    console_error_msg("Sources used:  %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES);
+  else if(n_sources >= gSystem_Mixer.NUMBER_SOURCES*0.8)
+    console_warning_msg("Sources used:  %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES);
+  else
+    console_msg("Sources used:  %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES);
+
+  // Oneshots
+  n_sources = gSystem_Mixer.oneshot_used.size();
+  if(n_sources == gSystem_Mixer.NUMBER_SOURCES_ONESHOT)
+    console_error_msg("OneShots used: %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES_ONESHOT);
+  else if(n_sources >= gSystem_Mixer.NUMBER_SOURCES_ONESHOT*0.8)
+    console_warning_msg("OneShots used: %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES_ONESHOT);
+  else
+    console_msg("OneShots used: %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES_ONESHOT);
 }
 
 // Render

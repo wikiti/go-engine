@@ -56,7 +56,7 @@ class CSystem_Shader_Manager: public CSystem
 
     //void OnLoop();
 
-    CShader* GetShader(const string vertFile, const string& fragFile, const string& geomFile);
+    CShader* GetShader(const string& vertFile, const string& fragFile = "", const string& geomFile = "");
 
   private:
     CShader* Load(const string& vertexFile, const string& fragmentFile, const string& geometryFile);

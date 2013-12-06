@@ -232,7 +232,10 @@ void CComponent_Audio_Source::UnBind()
   if(source_attached)
   {
     gSystem_Mixer.AddFreeSource(source_attached);
-    source_attached = 0;
+
+    alSourceStop(source_attached);
     alSourcei(source_attached, AL_BUFFER, 0);
+
+    source_attached = 0;
   }
 }

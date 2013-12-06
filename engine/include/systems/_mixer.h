@@ -10,6 +10,7 @@
 class CSystem_Mixer: public CSystem
 {
   friend class CComponent_Audio_Source;
+  friend class CSystem_Debug;
 
   private:
     // Buffers reservados "one shots"...
@@ -36,6 +37,8 @@ class CSystem_Mixer: public CSystem
 
     bool Init();
     void Close();
+
+    void ResetSources();
 
     void OnLoop();
 };
