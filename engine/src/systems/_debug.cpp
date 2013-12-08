@@ -5,6 +5,7 @@
 #include "systems/_data.h"
 #include "systems/_other.h"
 #include "systems/_mixer.h"
+#include "systems/_shader.h"
 
 #include "engine/_engine.h"
 
@@ -416,6 +417,23 @@ void CSystem_Debug::print(GLint x, GLint y, int set, const char* fmt, ...)
   glTranslated(x, y, 0);
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(__CSYSTEM_DEBUG_CONSOLE_FONT)->GetID());
   glListBase(base-32 + (128)*set);
+
+  const char* SHADER_UNIF_PROJMAT              = "ProjMatrix";
+  const char* SHADER_UNIF_MODELMAT             = "ModelViewMatrix";
+  const char* SHADER_UNIF_TEXTUREMAP           = "TextureMap";
+
+  CShader* simpleShader = gShader.GetShader("example1");
+  glUseProgram(simpleShader->GetProgram());
+
+  GLfloat modelMatrix[16] = {0};
+  glGetFloatv(GL_MODELVIEW_MATRIX, modelMatrix);
+  glUniformMatrix4fv(simpleShader->GetUniformIndex(SHADER_UNIF_MODELMAT), 1, GL_FALSE, &modelMatrix[0]);
+
+  GLfloat projMatrix[16] = {0};
+  glGetFloatv(GL_PROJECTION_MATRIX, projMatrix);
+  glUniformMatrix4fv(simpleShader->GetUniformIndex(SHADER_UNIF_PROJMAT), 1, GL_FALSE, &projMatrix[0]);
+
+  glUniform1i(simpleShader->GetUniformIndex(SHADER_UNIF_TEXTUREMAP), 0);
 
   glCallLists(strlen(text), GL_UNSIGNED_BYTE, text);
 
@@ -1223,7 +1241,7 @@ void CSystem_Debug::Console_command__SND_CHECKSOURCES(string arguments)
 
   // Sources
   uint n_sources = gSystem_Mixer.sources_used.size();
-  if(n_sources == gSystem_Mixer.NUMBER_SOURCES)
+  if(n_sources >= gSystem_Mixer.NUMBER_SOURCES*0.95)
     console_error_msg("Sources used:  %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES);
   else if(n_sources >= gSystem_Mixer.NUMBER_SOURCES*0.8)
     console_warning_msg("Sources used:  %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES);
@@ -1232,7 +1250,7 @@ void CSystem_Debug::Console_command__SND_CHECKSOURCES(string arguments)
 
   // Oneshots
   n_sources = gSystem_Mixer.oneshot_used.size();
-  if(n_sources == gSystem_Mixer.NUMBER_SOURCES_ONESHOT)
+  if(n_sources >= gSystem_Mixer.NUMBER_SOURCES_ONESHOT*0.95)
     console_error_msg("OneShots used: %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES_ONESHOT);
   else if(n_sources >= gSystem_Mixer.NUMBER_SOURCES_ONESHOT*0.8)
     console_warning_msg("OneShots used: %3d / %3d", n_sources, gSystem_Mixer.NUMBER_SOURCES_ONESHOT);
@@ -1281,6 +1299,7 @@ void CSystem_Debug::Console_command__R_RESIZE_WINDOW(string arguments)
     gSystem_Data_Storage.SetInt("__RESOLUTION_WIDTH", w);
     gSystem_Data_Storage.SetInt("__RESOLUTION_HEIGHT", h);
     Console_command__R_UPDATE_WINDOW(arguments);
+    console_msg("Resized window to %i x %i", gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
   }
 }
 
@@ -1301,6 +1320,9 @@ void CSystem_Debug::Console_command__R_DRAW_TRANSFORM(string arguments)
   else
   {
     gSystem_Data_Storage.SetInt("__RENDER_TRANSFORM", val);
+    if(val) console_msg("Transform render enabled.");
+    else    console_msg("Transform render disabled.");
+
   }
 }
 
@@ -1321,6 +1343,8 @@ void CSystem_Debug::Console_command__R_DRAW_GRID(string arguments)
   else
   {
     gSystem_Data_Storage.SetInt("__RENDER_TRANSFORM_GRID", val);
+    if(val) console_msg("Grid render enabled.");
+    else    console_msg("Grid render disabled.");
   }
 }
 

@@ -13,6 +13,7 @@
 #include "particles/fireworks/fireworks.h"
 #include "particles/rainbow/rainbow.h"
 #include "particles/other_particles.h"
+#include "shaders/shaders.h"
 
 bool SetGameObjects_Instance1();
 void Camara_main_movimiento(CGameObject* gameObject);
