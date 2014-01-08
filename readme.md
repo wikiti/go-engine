@@ -29,7 +29,7 @@ Se definirán 3 partes en el proyecto bien claras y definidas:
 - **Editor**: Interfaz gráfica para que el usuario pueda trabajar cómodamente.
 
 ## 3. Implementación: ##
-***C++*** implementado en [**Mingw**](http://www.mingw.org/) (principalmente), *GCC* o cualquier compilador libre de C++
+***C++*** implementado en [**Mingw**](http://www.mingw.org/) (principalmente), *GCC* o cualquier compilador libre de *C++*
 
 ## 4. Librerías y dependencias: ##
 - [OpenGL32](http://www.opengl.org/ "OpenGL32") (Gráficos) 
@@ -53,9 +53,34 @@ Se definirán 3 partes en el proyecto bien claras y definidas:
 
 Este proyecto ha sido desarrollado, en conjunto, por:
 
-- Daniel Herzog Cruz, ***Wikiti***: [wikiti.doghound@gmail.com](mailto:wikiti.doghound@gmail.com)
-- Laura Fariña Rodríguez, ***Kiarapoke***: [kiarapoke@gmail.com](mailto:kiarapoke@gmail.com)
-- Eliasib Jesús García Martín, ***Eliasib13***: [eliasib.lv.12@gmail.com](mailto:eliasib.lv13@gmail.com)
+<!-- Tabla -->
+<table cellspacing="0">
+  <tr  style="background-color: #E3E3E3;">
+    <td> <b>Avatar</b> </td>
+    <td> <b>Nombre</b> </td>
+    <td> <b>Nickname</b> </td>
+	<td> <b>Correo electrónico</b> </td>
+  </tr>
+  <tr style="background-color: #FFFFFF;">
+    <td> <img width="64"src="http://imageshack.us/a/img209/6782/parrotav.png"/> </td>
+    <td> Daniel Herzog Cruz </td>
+    <td> <b>Wikiti</b> </td>
+	<td> <a href="mailto:wikiti.doghound@gmail.com"> wikiti.doghound@gmail.com</a> </td>
+  </tr>
+  <tr style="background-color: #FFFFFF;">
+    <td> <img width="64"src="http://media.steampowered.com/steamcommunity/public/images/avatars/a8/a85132cd5fbfd5f510012342a3074ef613003332_full.jpg"/> </td>
+    <td> Laura Fariña Rodríguez </td>
+    <td> <b>Kiarapoke</b> </td>
+	<td> <a href="mailto:kiarapoke@gmail.com"> kiarapoke@gmail.com</a> </td>
+  </tr>
+  <tr style="background-color: #FFFFFF;">
+    <td> <img width="64"src="http://media.steampowered.com/steamcommunity/public/images/avatars/6d/6d11192b1c41f360c6763f55d926436b112c207e_full.jpg"/> </td>
+    <td> Eliasib Jesús García Martín </td>
+    <td> <b>Eliasib13</b> </td>
+	<td> <a href="mailto:eliasib.lv.12@gmail.com"> eliasib.lv.12@gmail.com</a> </td>
+  </tr>
+</table>
+<!-- Fin tabla -->
 
 
 ## 6. Enlaces de interés ##

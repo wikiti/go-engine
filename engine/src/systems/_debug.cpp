@@ -423,17 +423,17 @@ void CSystem_Debug::print(GLint x, GLint y, int set, const char* fmt, ...)
   const char* SHADER_UNIF_TEXTUREMAP           = "TextureMap";
 
   CShader* simpleShader = gShader.GetShader("example1");
-  glUseProgram(simpleShader->GetProgram());
+  //glUseProgram(simpleShader->GetProgram());
 
   GLfloat modelMatrix[16] = {0};
   glGetFloatv(GL_MODELVIEW_MATRIX, modelMatrix);
-  glUniformMatrix4fv(simpleShader->GetUniformIndex(SHADER_UNIF_MODELMAT), 1, GL_FALSE, &modelMatrix[0]);
+  //glUniformMatrix4fv(simpleShader->GetUniformIndex(SHADER_UNIF_MODELMAT), 1, GL_FALSE, &modelMatrix[0]);
 
   GLfloat projMatrix[16] = {0};
   glGetFloatv(GL_PROJECTION_MATRIX, projMatrix);
-  glUniformMatrix4fv(simpleShader->GetUniformIndex(SHADER_UNIF_PROJMAT), 1, GL_FALSE, &projMatrix[0]);
+  //glUniformMatrix4fv(simpleShader->GetUniformIndex(SHADER_UNIF_PROJMAT), 1, GL_FALSE, &projMatrix[0]);
 
-  glUniform1i(simpleShader->GetUniformIndex(SHADER_UNIF_TEXTUREMAP), 0);
+  //glUniform1i(simpleShader->GetUniformIndex(SHADER_UNIF_TEXTUREMAP), 0);
 
   glCallLists(strlen(text), GL_UNSIGNED_BYTE, text);
 
