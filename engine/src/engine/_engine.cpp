@@ -14,7 +14,7 @@ CEngine::CEngine(): title(""), running(false)
 
 }
 
-bool CEngine::Init()
+bool CEngine::Init(int argc, char* argv[])
 {
   if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
   {
@@ -44,6 +44,9 @@ bool CEngine::Init()
   current_instance = 0;
   running = true;
 
+  for(int i = 0; i < argc; i++)
+    arguments.push_back(string(argv[i]));
+
   return true;
 }
 
@@ -56,9 +59,9 @@ void CEngine::Close()
   SDL_Quit();
 }
 
-int CEngine::OnExecute()
+int CEngine::OnExecute(int argc, char* argv[])
 {
-  Init();
+  Init(argc, argv);
 
   while(current_instance >= 0 && running)
     current_instance = instances[current_instance]->OnExecute();
@@ -84,7 +87,7 @@ void CEngine::RemoveAllInstances()
 
 void CEngine::SetIcon(string icon_dir)
 {
-  SDL_Surface* icon = sdl_cargar_img(icon_dir);
+  SDL_Surface* icon = GO_Utils::sdl_cargar_img(icon_dir);
   SDL_SetWindowIcon(gRender.window, icon);
   SDL_FreeSurface(icon);
 }

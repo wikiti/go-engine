@@ -4,6 +4,12 @@
 #include "_globals.h"
 #include "_system.h"
 
+// Puede ser de utilidad plantear el uso de teclas tal que así :D
+/*namespace GO_Keystates
+{
+  enum keystates_t {unpressed = 0, pressed, keydown, keyup, };
+}*/
+
 class CSystem_UserInput: public CSystem
 {
   friend class CSystem_Debug;
@@ -21,7 +27,7 @@ class CSystem_UserInput: public CSystem
         bool operator()() {return state;}
         bool State(){return state;}
         SDL_Scancode Key() {return key;}
-        char* KeyName() {return SDL_GetScancodeName(key);}
+        const char* KeyName() {return SDL_GetScancodeName(key);}
     };
 
     class CAxis
@@ -36,7 +42,7 @@ class CSystem_UserInput: public CSystem
     };
 
     // raw keyboard
-    const Uint8 *keyboard;
+    const Uint8 *keyboard = SDL_GetKeyboardState(NULL);;
 
   public:
       // Axis - para el futuro, se sopotarán joysticks
@@ -44,14 +50,15 @@ class CSystem_UserInput: public CSystem
     CAxis axis2; // arrows
 
       // Keys/actions
-    CKey fire1;   // mouse1
-    CKey fire2;   // mouse2
+    //CKey fire1;   // mouse1
+    //CKey fire2;   // mouse2
     CKey action1; // n
     CKey action2; // m
     CKey action3; // j
+    CKey action4; // k
 
     CKey run;     // L-shift
-    CKey crouch;  // L-cntrl
+    CKey crouch;  // L-ctrl
     CKey jump;    // space
 
   public:
@@ -61,19 +68,21 @@ class CSystem_UserInput: public CSystem
     void Close();
 
     void OnEvent();
+    void OnLoop();
 
     Uint8 Keyboard(string keyname);
     Uint8 Keyboard(SDL_Scancode key);
 
-    CAxis GetAxis1(){return axis1();}
-    CAxis GetAxis2(){return axis2();}
+    CAxis GetAxis1(){return axis1;}
+    CAxis GetAxis2(){return axis2;}
 
       // Keys/actions
-    bool GetFire1(){return fire1();}
-    bool GetFire2(){return fire2();}
+    //bool GetFire1(){return fire1();}
+    //bool GetFire2(){return fire2();}
     bool GetAction1(){return action1();}
     bool GetAction2(){return action2();}
     bool GetAction3(){return action3();}
+    bool GetAction4(){return action4();}
 
     bool GetRun(){return run();}
     bool GetCrouch(){return crouch();}

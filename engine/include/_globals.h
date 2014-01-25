@@ -3,21 +3,22 @@
 
 /**_______C++ STL________**/
 
-#include <iostream>
-#include <string>
-#include <sstream>
+#include <algorithm>
+#include <cfloat>
+#include <climits>
+#include <exception>
 #include <fstream>
-#include <map>
-#include <vector>
+#include <iostream>
 #include <limits.h>
+#include <map>
+#include <math.h>
+#include <sstream>
+#include <stack>
 #include <stdio.h>
 #include <stdlib.h>
-#include <climits>
-#include <cfloat>
-#include <fstream>
-#include <math.h>
-#include <stack>
-#include <exception>
+#include <string>
+#include <vector>
+
 
 #define THROW(exceptionClass, message) throw exceptionClass(__FILE__, __LINE__, (message) )
 
@@ -67,7 +68,7 @@ class general_exception: public std::exception
 #include <SDL2/SDL_net.h>
 
 extern SDL_Event event;
-extern const Uint8 *gKeyboardState;
+//extern const Uint8 *gKeyboardState;
 
 
 /**________OpenGL________**/
@@ -428,9 +429,18 @@ typedef struct vector3f_t
 
 /**______Functions_______**/
 
-string generate_random_alphanumeric_string(uint n = 4);
-SDL_Surface* sdl_cargar_img(std::string s);
-bool gValidateIdentifier(string identifier);
+namespace GO_Utils
+{
+  string string_generate_random_alphanumeric(uint n = 4);
+  string string_to_lower(string& str);
+  string string_to_upper(string& str);
+
+  SDL_Surface* sdl_cargar_img(std::string s);
+  bool validateIdentifier(string identifier);
+}
+
+
+
 
 
 /*typedef struct matrixf_t

@@ -25,10 +25,34 @@ bool SetGameObjects_Instance1()
 void Camara_main_movimiento(CGameObject* gameObject)
 {
   float boost = 1.f;
-  if (gKeyboardState[SDL_SCANCODE_LSHIFT])
+  if (gUserInput.Keyboard("left shift"))
     boost = 3.f;
 
-  if (gKeyboardState[SDL_SCANCODE_W])
+  if (gUserInput.axis1.vertical > 0)
+  {
+    gameObject->Transform()->LTranslate(0.f, 0.f, boost * 3.f * gTime.deltaTime_s());
+  }
+  if (gUserInput.axis1.vertical < 0)
+  {
+    gameObject->Transform()->LTranslate(0.f, 0.f, boost * -3.f * gTime.deltaTime_s());
+  }
+  if (gUserInput.axis1.horizontal < 0)
+  {
+    gameObject->Transform()->LTranslate(boost * 3.f * gTime.deltaTime_s(), 0.f, 0.f);
+  }
+  if (gUserInput.axis1.horizontal > 0)
+  {
+    gameObject->Transform()->LTranslate(boost * -3.f * gTime.deltaTime_s(), 0.f, 0.f);
+  }
+  if (gUserInput.Keyboard("E"))
+  {
+    gameObject->Transform()->Translate(0.f, boost * -3.f * gTime.deltaTime_s(), 0.f);
+  }
+  if (gUserInput.Keyboard("Q"))
+  {
+    gameObject->Transform()->Translate(0.f, boost * 3.f * gTime.deltaTime_s(), 0.f);
+  }
+  /*if (gKeyboardState[SDL_SCANCODE_W])
   {
     gameObject->Transform()->LTranslate(0.f, 0.f, boost * 3.f * gTime.deltaTime_s());
   }
@@ -51,35 +75,35 @@ void Camara_main_movimiento(CGameObject* gameObject)
   if (gKeyboardState[SDL_SCANCODE_Q])
   {
     gameObject->Transform()->Translate(0.f, boost * 3.f * gTime.deltaTime_s(), 0.f);
-  }
+  }*/
 
   // Viewport
-  if(gKeyboardState[SDL_SCANCODE_I])
+  if(gUserInput.axis2.vertical > 0)
   {
     gameObject->Camera()->viewport.height += 0.1f * gTime.deltaTime_s();
     if(gameObject->Camera()->viewport.height > 1.f)
       gameObject->Camera()->viewport.height = 1.f;
   }
-  if(gKeyboardState[SDL_SCANCODE_K])
+  if(gUserInput.axis2.vertical < 0)
   {
     gameObject->Camera()->viewport.height -= 0.1f * gTime.deltaTime_s();
     if(gameObject->Camera()->viewport.height < 0.f)
       gameObject->Camera()->viewport.height = 0.f;
   }
-  if(gKeyboardState[SDL_SCANCODE_J])
+  if(gUserInput.axis2.horizontal < 0)
   {
     gameObject->Camera()->viewport.width -= 0.1f * gTime.deltaTime_s();
     if(gameObject->Camera()->viewport.width < 0.f)
       gameObject->Camera()->viewport.width = 0.f;
   }
-  if(gKeyboardState[SDL_SCANCODE_L])
+  if(gUserInput.axis2.horizontal > 0)
   {
     gameObject->Camera()->viewport.width += 0.1f * gTime.deltaTime_s();
     if(gameObject->Camera()->viewport.width > 1.f)
       gameObject->Camera()->viewport.width = 1.f;
   }
 
-  if (gKeyboardState[SDL_SCANCODE_T])
+  if (gUserInput.Keyboard("T"))
   {
     gameObject->Transform()->LookAt(vector3f(0.f, 0.f, 0.f));
   }

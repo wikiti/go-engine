@@ -125,45 +125,45 @@ void Camara_second_after_render(CGameObject* gameObject)
 
 void Cubo_main_movimiento(CGameObject* gameObject)
 {
-  if(gKeyboardState[SDL_SCANCODE_LCTRL])
+  if(gUserInput.Keyboard(SDL_SCANCODE_LCTRL))
   {
-    if(gKeyboardState[SDL_SCANCODE_W])
+    if(gUserInput.Keyboard(SDL_SCANCODE_W))
     {
       gameObject->Transform()->Rotate(20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_S])
+    if(gUserInput.Keyboard(SDL_SCANCODE_S))
     {
       gameObject->Transform()->Rotate(-20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_D])
+    if(gUserInput.Keyboard(SDL_SCANCODE_D))
     {
       gameObject->Transform()->Rotate(0.f, 20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_A])
+    if(gUserInput.Keyboard(SDL_SCANCODE_A))
     {
       gameObject->Transform()->Rotate(0.f, -20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_Q])
+    if(gUserInput.Keyboard(SDL_SCANCODE_Q))
     {
       gameObject->Transform()->Rotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_E])
+    if(gUserInput.Keyboard(SDL_SCANCODE_E))
     {
       gameObject->Transform()->Rotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_R])
+    if(gUserInput.Keyboard(SDL_SCANCODE_R))
     {
       gameObject->Transform()->SetAngle(0, 0, 0);
     }
-    if(gKeyboardState[SDL_SCANCODE_1])
+    if(gUserInput.Keyboard(SDL_SCANCODE_1))
     {
       gameObject->Transform()->SetAngle(45, 0, 0);
     }
-    if(gKeyboardState[SDL_SCANCODE_2])
+    if(gUserInput.Keyboard(SDL_SCANCODE_2))
     {
       gameObject->Transform()->SetAngle(0, 45, 0);
     }
-    if(gKeyboardState[SDL_SCANCODE_3])
+    if(gUserInput.Keyboard(SDL_SCANCODE_3))
     {
       gameObject->Transform()->SetAngle(0, 0, 45);
     }
@@ -173,83 +173,83 @@ void Cubo_main_movimiento(CGameObject* gameObject)
 //    cout << "Z: " << gameObject->transform()->forward() << endl;
 //    cout << "--------------------------------------" << endl;
   }
-  else if(gKeyboardState[SDL_SCANCODE_LALT])
+  else if(gUserInput.Keyboard(SDL_SCANCODE_LALT))
   {
-    if(gKeyboardState[SDL_SCANCODE_W])
+    if(gUserInput.Keyboard(SDL_SCANCODE_W))
     {
       gameObject->Transform()->LRotate(20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_S])
+    if(gUserInput.Keyboard(SDL_SCANCODE_S))
     {
       gameObject->Transform()->LRotate(-20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_D])
+    if(gUserInput.Keyboard(SDL_SCANCODE_D))
     {
       gameObject->Transform()->LRotate(0.f, 20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_A])
+    if(gUserInput.Keyboard(SDL_SCANCODE_A))
     {
       gameObject->Transform()->LRotate(0.f, -20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_Q])
+    if(gUserInput.Keyboard(SDL_SCANCODE_Q))
     {
       gameObject->Transform()->LRotate(0.f, 0.f, -20.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_E])
+    if(gUserInput.Keyboard(SDL_SCANCODE_E))
     {
       gameObject->Transform()->LRotate(0.f, 0.f, 20.f * gTime.deltaTime_s());
     }
   }
-  else if(gKeyboardState[SDL_SCANCODE_LSHIFT])
+  else if(gUserInput.Keyboard(SDL_SCANCODE_LSHIFT))
   {
-    if(gKeyboardState[SDL_SCANCODE_W])
+    if(gUserInput.Keyboard(SDL_SCANCODE_W))
     {
       gameObject->Transform()->LTranslate(0.f, 0.f, 5.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_S])
+    if(gUserInput.Keyboard(SDL_SCANCODE_S))
     {
       gameObject->Transform()->LTranslate(0.f, 0.f, -5.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_D])
+    if(gUserInput.Keyboard(SDL_SCANCODE_D))
     {
       gameObject->Transform()->LTranslate(5.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_A])
+    if(gUserInput.Keyboard(SDL_SCANCODE_A))
     {
       gameObject->Transform()->LTranslate(-5.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_Q])
+    if(gUserInput.Keyboard(SDL_SCANCODE_Q))
     {
       gameObject->Transform()->LTranslate(0.f, 5.f * gTime.deltaTime_s(), 0.f);
     }
-    if(gKeyboardState[SDL_SCANCODE_E])
+    if(gUserInput.Keyboard(SDL_SCANCODE_E))
     {
       gameObject->Transform()->LTranslate(0.f, -5.f * gTime.deltaTime_s(), 0.f);
     }
   }
   else
   {
-    if(gKeyboardState[SDL_SCANCODE_W])
+    if(gUserInput.Keyboard(SDL_SCANCODE_W))
     {
       gameObject->Transform()->Translate(0.f, 0.f, 5.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_S])
+    if(gUserInput.Keyboard(SDL_SCANCODE_S))
     {
       gameObject->Transform()->Translate(0.f, 0.f, -5.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_D])
+    if(gUserInput.Keyboard(SDL_SCANCODE_D))
     {
       gameObject->Transform()->Translate(5.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_A])
+    if(gUserInput.Keyboard(SDL_SCANCODE_A))
     {
       gameObject->Transform()->Translate(-5.f * gTime.deltaTime_s());
     }
-    if(gKeyboardState[SDL_SCANCODE_Q])
+    if(gUserInput.Keyboard(SDL_SCANCODE_Q))
     {
       gameObject->Transform()->Translate(0.f, 5.f * gTime.deltaTime_s(), 0.f);
     }
-    if(gKeyboardState[SDL_SCANCODE_E])
+    if(gUserInput.Keyboard(SDL_SCANCODE_E))
     {
       gameObject->Transform()->Translate(0.f, -5.f * gTime.deltaTime_s(), 0.f);
     }
@@ -261,12 +261,12 @@ void Cubo_second_movimiento(CGameObject* gameObject)
 {
   static float scale = 1.f;
   // Viewport
-  if(gKeyboardState[SDL_SCANCODE_Y])
+  if(gUserInput.Keyboard(SDL_SCANCODE_Y))
   {
     scale += 1.f * gTime.deltaTime_s();
     gameObject->Transform()->SetScale(1.f, scale, 1.f);
   }
-  if(gKeyboardState[SDL_SCANCODE_H])
+  if(gUserInput.Keyboard(SDL_SCANCODE_H))
   {
     scale -= 1.f * gTime.deltaTime_s();
     gameObject->Transform()->SetScale(1.f, scale, 1.f);

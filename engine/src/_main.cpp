@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
   try
   {
     //THROW(general_exception, "Error de loquesea.");
-    return gEngine.OnExecute();
+    return gEngine.OnExecute(argc, argv);
   }
   catch(exception& e)
   {

@@ -69,6 +69,7 @@ int CInstance::OnExecute()
 }
 void CInstance::OnLoop()
 {
+  gSystem_UserInput.OnLoop();
   gSystem_Time.OnLoop();
   gSystem_Mixer.OnLoop();
   gSystem_GameObject_Manager.OnLoop();
@@ -87,6 +88,7 @@ void CInstance::OnEvent()
       SDL_StopTextInput();
     }
 
+    gSystem_UserInput.OnEvent();
     gSystem_Debug.OnEvent();
     if(!gSystem_Debug.IsConsole()) gSystem_GameObject_Manager.OnEvent();
   }

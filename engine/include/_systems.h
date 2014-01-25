@@ -16,6 +16,7 @@
 #include "systems/_other.h"
 #include "systems/_mixer.h"
 #include "systems/_shader.h"
+#include "systems/_input.h"
 
 bool Systems_Init();
 void Systems_Close();

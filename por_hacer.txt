@@ -1,5 +1,6 @@
-﻿- Crear skybox
-- Recompilar glew
+﻿- Cambiar nombres de las funciones "OnEvent" por algo más intuitivo, como "OnUserInput" o "OnInput".
+x- Crear skybox
+x- Recompilar glew
 - Añadir threads o hilos distintos para el render y para la lógica.
 -/- Definir correctamente el estado "enabled" o "disabled" para los objetos, los componentes y los sistemas.
 x- Posicion del viewport en función del tamaño de pantalla (por ejemplo, 0-100 en vez de 0-__RESOLUTION_WIDTH para el ancho).

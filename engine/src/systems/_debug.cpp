@@ -20,7 +20,7 @@ void CSystem_Debug::ParseInput()
   getline(ss, arguments);
   if(arguments.size() > 1) arguments = arguments.substr(1);
 
-  map<string, command_p>::iterator it = console_commands.find(command);
+  map<string, command_p>::iterator it = console_commands.find(GO_Utils::string_to_lower(command));
   console_msg("> %s %s", command.c_str(), arguments.c_str());
   if(it != console_commands.end())
   {
@@ -682,7 +682,7 @@ void CSystem_Debug::Console_command__SET_STRING(string arguments)
     getline(ss, val);
     if(val.size() > 2) val = val.substr(1);
 
-    console_msg("%s = %s", val_name.c_str(), val.c_str());
+    console_msg("%s = \"%s\"", val_name.c_str(), val.c_str());
     gSystem_Data_Storage.SetString(val_name, val);
   }
   else

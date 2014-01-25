@@ -120,7 +120,7 @@ void CSystem_GameObject_Manager::CloseGameObject(string name)
 
 CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject_type type, bool init)
 {
-  if(!gValidateIdentifier(nombre))
+  if(!GO_Utils::validateIdentifier(nombre))
   {
     gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", nombre.c_str());
     return NULL;
@@ -151,7 +151,7 @@ CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject
 
 CGameObject* CSystem_GameObject_Manager::AddGameObject(CGameObject* go, bool init)
 {
-  if(!gValidateIdentifier(go->GetName()))
+  if(!GO_Utils::validateIdentifier(go->GetName()))
   {
     gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", go->GetName().c_str());
 
@@ -275,7 +275,7 @@ vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObject(string prefix)
 
 bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
 {
-  if(!gValidateIdentifier(new_name))
+  if(!GO_Utils::validateIdentifier(new_name))
   {
     gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
 
@@ -315,7 +315,7 @@ bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
 
 bool CSystem_GameObject_Manager::RenameGameObject(CGameObject* go, string new_name)
 {
-  if(!gValidateIdentifier(new_name))
+  if(!GO_Utils::validateIdentifier(new_name))
   {
     gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
 

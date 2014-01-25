@@ -54,6 +54,12 @@ bool Systems_Init()
     return false;
   }
 
+  if(!gSystem_UserInput.Init())
+  {
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load UserInput system");
+    return false;
+  }
+
   /*if(!gSystem_Shader_Manager.Init())
   {
     gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Shader system");
@@ -74,6 +80,7 @@ void Systems_Close()
   gSystem_Time.Close();
   gSystem_Math.Close();
   gSystem_Mixer.Close();
+  gSystem_UserInput.Close();
   //gSystem_Shader_Manager.Close();
 }
 

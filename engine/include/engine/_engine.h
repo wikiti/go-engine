@@ -18,14 +18,17 @@ class CEngine
 
     int current_instance;
 
+    // Arguments
+    vector<string> arguments;
+
   public:
     CEngine();
     virtual ~CEngine(){};
 
-    virtual bool Init();
+    virtual bool Init(int argc, char* argv[]);
     virtual void Close();
 
-    virtual int OnExecute();
+    virtual int OnExecute(int argc, char* argv[]);
 
     // Should be 32x32 RGBA format
     void SetIcon(string icon_name);
@@ -54,6 +57,11 @@ class CEngine
     CInstance* CurrentInstance()
     {
       return instances[current_instance];
+    }
+
+    vector<string> Arguments()
+    {
+      return arguments;
     }
 
     // Exits without saving.

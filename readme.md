@@ -1,13 +1,13 @@
 # GO Engine
 
-## 1. Resumen: ##
+## 1. Resumen ##
 *Go Engine* es un motor gráfico multiplataforma para poder utilizar como base a la hora de realizar videojuegos. El nombre proviene de la orientación del proyecto (*GameObject Engine*), basado en entidades y componentes.
 
 <div align="center">
 ![](assets/logo.png)
 
 <div align="left">
-## 2. Descripción detallada: ##
+## 2. Descripción detallada ##
 En este proyecto, trataremos de implementar un motor de videojuegos multiplataforma (*Windows, Linux y Mac*) que será utilizado como API por los usuarios para realizar sus propios videojuegos.
 El sistema dispondrá de una simple interfaz gráfica que permitirá a los usuarios trabajar de una forma más cómoda e intuitiva.
 Dentro de las especificaciones del motor, podemos mencionar las siguientes:
@@ -28,10 +28,10 @@ Se definirán 3 partes en el proyecto bien claras y definidas:
 - **Usuario**: Apartado en el que irá el código del usuario.
 - **Editor**: Interfaz gráfica para que el usuario pueda trabajar cómodamente.
 
-## 3. Implementación: ##
+## 3. Implementación ##
 ***C++*** implementado en [**Mingw**](http://www.mingw.org/) (principalmente), *GCC* o cualquier compilador libre de *C++*
 
-## 4. Librerías y dependencias: ##
+## 4. Librerías y dependencias ##
 - [OpenGL32](http://www.opengl.org/ "OpenGL32") (Gráficos) 
 - [Glew32](http://glew.sourceforge.net/ "glew32") (Extensión de gráficos) 
 - [OpenAL](http://kcat.strangesoft.net/openal.html "OpenAL") (Sonido)
