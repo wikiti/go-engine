@@ -60,7 +60,38 @@ class CSystem_UserInput: public CSystem
     CKey jump;    // space
 
       // Mouse
+    class CMouse
+    {
+      protected:
+        class CButton
+        {
+          friend class CSystem_UserInput;
+          friend class CMouse;
 
+          protected:
+            GO_Keystates::keystate_t state;
+            Uint8 button;
+            string button_name;
+
+          public:
+            GO_Keystates::keystate_t operator()() {return state;}
+            GO_Keystates::keystate_t State(){return state;}
+            Uint8 Button() {return button;}
+            string ButtonName(){ return button_name;}
+        };
+
+      public:
+        int x, y;
+        float y_vel, x_vel;
+
+        int wheel_x, wheel_y;
+
+        CButton mouse1, mouse2, mouse3; // mouseX1, mouseX2;
+
+        void OnEvent();
+        void OnKeyEvent();
+    };
+    CMouse mouse;
 
   public:
     CSystem_UserInput(): CSystem() {};
@@ -68,8 +99,8 @@ class CSystem_UserInput: public CSystem
     bool Init();
     void Close();
 
+    void OnEvent();
     void OnKeyEvent();
-    void OnLoop();
 
     Uint8 Keyboard(string keyname);
     Uint8 Keyboard(SDL_Scancode key);

@@ -257,16 +257,9 @@ void CSystem_UserInput::OnKeyEvent()
 
 }
 
-void CSystem_UserInput::OnLoop()
+void CSystem_UserInput::OnEvent()
 {
-  /*if(axis1.v_up.state)
-  {
-    gSystem_Debug.console_msg("Pulsando la tecla %s", gSystem_Data_Storage.GetString("__INPUT_AXIS1_UP_KEY").c_str());
-  }
-  if(axis1.v_down.state)
-  {
-    gSystem_Debug.console_msg("Pulsando la tecla %s", gSystem_Data_Storage.GetString("__INPUT_AXIS1_DOWN_KEY").c_str());
-  }*/
+
 }
 
 Uint8 CSystem_UserInput::Keyboard(string keyname)
