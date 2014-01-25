@@ -418,7 +418,7 @@ void CSystem_Debug::print(GLint x, GLint y, int set, const char* fmt, ...)
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(__CSYSTEM_DEBUG_CONSOLE_FONT)->GetID());
   glListBase(base-32 + (128)*set);
 
-  const char* SHADER_UNIF_PROJMAT              = "ProjMatrix";
+  /*const char* SHADER_UNIF_PROJMAT              = "ProjMatrix";
   const char* SHADER_UNIF_MODELMAT             = "ModelViewMatrix";
   const char* SHADER_UNIF_TEXTUREMAP           = "TextureMap";
 
@@ -433,7 +433,7 @@ void CSystem_Debug::print(GLint x, GLint y, int set, const char* fmt, ...)
   glGetFloatv(GL_PROJECTION_MATRIX, projMatrix);
   //glUniformMatrix4fv(simpleShader->GetUniformIndex(SHADER_UNIF_PROJMAT), 1, GL_FALSE, &projMatrix[0]);
 
-  //glUniform1i(simpleShader->GetUniformIndex(SHADER_UNIF_TEXTUREMAP), 0);
+  //glUniform1i(simpleShader->GetUniformIndex(SHADER_UNIF_TEXTUREMAP), 0);*/
 
   glCallLists(strlen(text), GL_UNSIGNED_BYTE, text);
 
