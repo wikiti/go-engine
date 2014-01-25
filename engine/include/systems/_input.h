@@ -5,10 +5,10 @@
 #include "_system.h"
 
 // Puede ser de utilidad plantear el uso de teclas tal que así :D
-/*namespace GO_Keystates
+namespace GO_Keystates
 {
-  enum keystates_t {unpressed = 0, pressed, keydown, keyup, };
-}*/
+  enum keystate_t {unpressed = -2, keyup = -1, pressed = 1, keydown = 2 };
+}
 
 class CSystem_UserInput: public CSystem
 {
@@ -20,12 +20,12 @@ class CSystem_UserInput: public CSystem
       friend class CSystem_UserInput;
 
       protected:
-        bool state;
+        GO_Keystates::keystate_t state;
         SDL_Scancode key;
 
       public:
-        bool operator()() {return state;}
-        bool State(){return state;}
+        GO_Keystates::keystate_t operator()() {return state;}
+        GO_Keystates::keystate_t State(){return state;}
         SDL_Scancode Key() {return key;}
         const char* KeyName() {return SDL_GetScancodeName(key);}
     };
@@ -50,8 +50,6 @@ class CSystem_UserInput: public CSystem
     CAxis axis2; // arrows
 
       // Keys/actions
-    //CKey fire1;   // mouse1
-    //CKey fire2;   // mouse2
     CKey action1; // n
     CKey action2; // m
     CKey action3; // j
@@ -61,13 +59,16 @@ class CSystem_UserInput: public CSystem
     CKey crouch;  // L-ctrl
     CKey jump;    // space
 
+      // Mouse
+
+
   public:
     CSystem_UserInput(): CSystem() {};
 
     bool Init();
     void Close();
 
-    void OnEvent();
+    void OnKeyEvent();
     void OnLoop();
 
     Uint8 Keyboard(string keyname);
@@ -79,14 +80,14 @@ class CSystem_UserInput: public CSystem
       // Keys/actions
     //bool GetFire1(){return fire1();}
     //bool GetFire2(){return fire2();}
-    bool GetAction1(){return action1();}
-    bool GetAction2(){return action2();}
-    bool GetAction3(){return action3();}
-    bool GetAction4(){return action4();}
+    GO_Keystates::keystate_t GetAction1(){return action1();}
+    GO_Keystates::keystate_t GetAction2(){return action2();}
+    GO_Keystates::keystate_t GetAction3(){return action3();}
+    GO_Keystates::keystate_t GetAction4(){return action4();}
 
-    bool GetRun(){return run();}
-    bool GetCrouch(){return crouch();}
-    bool GetJump(){return jump();}
+    GO_Keystates::keystate_t GetRun(){return run();}
+    GO_Keystates::keystate_t GetCrouch(){return crouch();}
+    GO_Keystates::keystate_t GetJump(){return jump();}
 
 };
 

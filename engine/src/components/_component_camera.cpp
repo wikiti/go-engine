@@ -1,4 +1,5 @@
 #include "systems/_data.h"
+#include "systems/_manager.h"
 #include "components/_component_camera.h"
 #include "components/_component_transform.h"
 
@@ -9,7 +10,7 @@ BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Camera);
 using namespace viewmode;
 
 CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameObject),
- viewmode(perspective), field_of_view(45.f), near_clip(0.1f), far_clip(200.f), clear(true), target(NULL)
+ viewmode(perspective), field_of_view(45.f), near_clip(0.1f), far_clip(200.f), clear(true), target("")
 {
   disable_gui = false; // ¿?
 
@@ -131,10 +132,12 @@ void CComponent_Camera::SetUp()
 
   // Por cierto, falta recalcular el vector UP, que dependerá del ángulo de la cámara (Eje local Z).
 
-  if(!target) // Añadir pivote y calcular su posición global:
+  CGameObject* target_p = gSystem_GameObject_Manager[target];
+
+  if(!target_p) // Añadir pivote y calcular su posición global:
     tp = pivot->Transform()->Position(); // Inservible...
   else        // O coger la posición global del objeto.
-    tp = target->Transform()->Position();
+    tp = target_p->Transform()->Position();
 
   gluLookAt(p.x, p.y, p.z,     // Camera position
             tp.x, tp.y, tp.z,     // Target point

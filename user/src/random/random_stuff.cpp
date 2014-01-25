@@ -82,7 +82,7 @@ bool SetGameObjects_Instance1_RandomStuff()
   hada->Transform()->Translate(0.f, 0.f, 10.f);
   hada->Transform()->Rotate(0.f, 90.f, 0.f);
 
-  camara_second->Camera()->SetTarget(cubo_third);
+  camara_second->Camera()->SetTarget(cubo_third->GetName());
   camara_second->Camera()->viewport.height = camara_second->Camera()->viewport.width = 0.3f;
   camara_second->Camera()->background_color(0, 0.5f, 0.75f, 1.f);
   camara_second->Camera()->skybox_texture = "skybox1";
@@ -293,7 +293,7 @@ void Camara_second_movimiento(CGameObject* gameObject)
   if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
   {
     if(!target)
-      gameObject->Camera()->SetTarget(gGameObjects["cubo_second"]);
+      gameObject->Camera()->SetTarget(gGameObjects["cubo_second"]->GetName());
     else
       gameObject->Camera()->UnSetTarget();
 

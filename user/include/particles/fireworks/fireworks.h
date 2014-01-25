@@ -10,7 +10,7 @@
 
 bool SetGameObjects_Instance1_Fireworks();
 
-void Firework_Manager_Event(CGameObject* gameObject);
+void Firework_Manager_KeyEvent(CGameObject* gameObject);
 void Firework_Manager_Behaviour(CGameObject* gameObject);
 
 #endif /* FIREWORKS_H_ */

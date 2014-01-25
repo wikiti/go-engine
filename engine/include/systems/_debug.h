@@ -167,8 +167,6 @@ class CSystem_Debug: public CSystem
 };
 
 extern CSystem_Debug gSystem_Debug;
-//extern CSystem_Debug& gDebug;
-
-
+extern CSystem_Debug& gDebug;
 
 #endif /* DEBUG_H_ */

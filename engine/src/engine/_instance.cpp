@@ -88,11 +88,11 @@ void CInstance::OnEvent()
       SDL_StopTextInput();
     }
 
-    gSystem_UserInput.OnEvent();
     gSystem_Debug.OnEvent();
     if(!gSystem_Debug.IsConsole()) gSystem_GameObject_Manager.OnEvent();
   }
 
+  gSystem_UserInput.OnKeyEvent();
   if(!gSystem_Debug.IsConsole()) gSystem_GameObject_Manager.OnKeyEvent();
 }
 

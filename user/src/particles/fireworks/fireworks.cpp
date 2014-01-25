@@ -4,7 +4,7 @@
 bool SetGameObjects_Instance1_Fireworks()
 {
   CGameObject* firework_manager = gGameObjects.AddGameObject("firework_manager");
-  firework_manager->SetEventFunction(&Firework_Manager_Event);
+  firework_manager->SetKeyEventFunction(&Firework_Manager_KeyEvent);
   firework_manager->SetBehaviourFunction(&Firework_Manager_Behaviour);
 
   firework_manager->AudioSource()->music = true;
@@ -22,9 +22,10 @@ vector<bool> exploded;
 vector<CGameObject*> fireworks;
 vector<int> fireworks_value;
 
-void Firework_Manager_Event(CGameObject* gameObject)
+void Firework_Manager_KeyEvent(CGameObject* gameObject)
 {
-  if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_SPACE)
+  //if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_SPACE)
+  if(gUserInput.jump() == GO_Keystates::keydown)
   {
     //std::string random_string = generate_random_alphanumeric_string(5);
     ostringstream oss;
@@ -101,6 +102,7 @@ void Firework_Manager_Event(CGameObject* gameObject)
 
     //exploded.resize(number_of_fireworks);
     //exploded[exploded.size()-1] = false;
+    //gGameObjects["camara_main"]->Camera()->SetTarget(firework->GetName());
   }
 }
 

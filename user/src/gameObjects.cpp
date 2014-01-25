@@ -52,30 +52,6 @@ void Camara_main_movimiento(CGameObject* gameObject)
   {
     gameObject->Transform()->Translate(0.f, boost * 3.f * gTime.deltaTime_s(), 0.f);
   }
-  /*if (gKeyboardState[SDL_SCANCODE_W])
-  {
-    gameObject->Transform()->LTranslate(0.f, 0.f, boost * 3.f * gTime.deltaTime_s());
-  }
-  if (gKeyboardState[SDL_SCANCODE_S])
-  {
-    gameObject->Transform()->LTranslate(0.f, 0.f, boost * -3.f * gTime.deltaTime_s());
-  }
-  if (gKeyboardState[SDL_SCANCODE_A])
-  {
-    gameObject->Transform()->LTranslate(boost * 3.f * gTime.deltaTime_s(), 0.f, 0.f);
-  }
-  if (gKeyboardState[SDL_SCANCODE_D])
-  {
-    gameObject->Transform()->LTranslate(boost * -3.f * gTime.deltaTime_s(), 0.f, 0.f);
-  }
-  if (gKeyboardState[SDL_SCANCODE_E])
-  {
-    gameObject->Transform()->Translate(0.f, boost * -3.f * gTime.deltaTime_s(), 0.f);
-  }
-  if (gKeyboardState[SDL_SCANCODE_Q])
-  {
-    gameObject->Transform()->Translate(0.f, boost * 3.f * gTime.deltaTime_s(), 0.f);
-  }*/
 
   // Viewport
   if(gUserInput.axis2.vertical > 0)
@@ -106,6 +82,15 @@ void Camara_main_movimiento(CGameObject* gameObject)
   if (gUserInput.Keyboard("T"))
   {
     gameObject->Transform()->LookAt(vector3f(0.f, 0.f, 0.f));
+  }
+
+  if (gUserInput.jump() == GO_Keystates::keydown)
+  {
+    gDebug.console_msg("lololo");
+  }
+  if (gUserInput.jump() == GO_Keystates::keyup)
+  {
+    gDebug.console_msg("lololo");
   }
 }
 

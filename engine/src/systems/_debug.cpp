@@ -10,6 +10,7 @@
 #include "engine/_engine.h"
 
 CSystem_Debug gSystem_Debug;
+CSystem_Debug& gDebug = gSystem_Debug;
 
 void CSystem_Debug::ParseInput()
 {

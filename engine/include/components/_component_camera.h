@@ -32,7 +32,7 @@ class CComponent_Camera: public CComponent
 
     // Fallo: no apunta correctamente a hijos de padres
     // ¿solución? calcular la nueva posición o quitar esta opción
-    CGameObject* target;  // Si hay target, se usará la posición del objetivo como pivote.
+    string target;  // Si hay target, se usará la posición del objetivo como pivote.
     CGameObject* pivot;  // Si no, se usará un pivote en la posición local (0, 0, -1)
     //string target_texture;
 
@@ -72,14 +72,20 @@ class CComponent_Camera: public CComponent
     inline virtual void Set(input_t data);
     inline virtual output_t Get();
 
-	  void SetTarget(CGameObject* t)
+	  void SetTarget(string t)
 	  {
 	    target = t;
 	  }
 
+    void SetTarget(CGameObject* obj)
+    {
+      if(obj) target = obj->GetName();
+    }
+
+
 	  void UnSetTarget()
 	  {
-	    SetTarget(NULL);
+	    SetTarget("");
 	  }
 
   private:
