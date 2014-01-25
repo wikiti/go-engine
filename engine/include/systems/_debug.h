@@ -78,7 +78,7 @@ class CSystem_Debug: public CSystem
     uint console_pointer_pos;
 
   public:
-    CSystem_Debug(): opened(false), file(NULL){}
+    CSystem_Debug(): opened(false), file(NULL), CSystem(){}
     bool IsOpened(){return opened;}
 
     bool Init();

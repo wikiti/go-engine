@@ -17,6 +17,8 @@ class CSystem_GameObject_Manager: public CSystem
     int last_ID;
 
   public:
+    CSystem_GameObject_Manager(): CSystem() {};
+
     bool Init();
     void Close();
 

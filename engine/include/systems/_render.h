@@ -72,7 +72,7 @@ class CSystem_Render: public CSystem
     }
 
   public:
-    CSystem_Render(): window(NULL){ };
+    CSystem_Render(): CSystem(), window(NULL){ };
 
     virtual bool Init();
       void InitSkyboxVBO();

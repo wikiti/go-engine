@@ -13,7 +13,7 @@ class CSystem_Time: public CSystem
     GLfloat Tscale;
 
   public:
-    CSystem_Time() {};
+    CSystem_Time(): CSystem() {};
 
     bool Init();
     void Close();

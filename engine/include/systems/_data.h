@@ -46,7 +46,7 @@ class CSystem_Data_Storage: public CSystem
     //bool enabled
 
   public:
-    CSystem_Data_Storage() {};
+    CSystem_Data_Storage(): CSystem() {};
 
     bool Init();
     void Close();

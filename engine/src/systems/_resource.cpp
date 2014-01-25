@@ -319,7 +319,7 @@ void CResource_Sound::Clear()
 
 /** Resources System **/
 
-CSystem_Resources::CSystem_Resources()
+CSystem_Resources::CSystem_Resources(): CSystem()
 {
 
 }
