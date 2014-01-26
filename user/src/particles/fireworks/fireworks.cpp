@@ -136,6 +136,11 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
     }
     else if ((gTime.GetTicks_s() - startTime) > 5/gTime.timeScale())
     {
+      // Clear float vars
+      gSystem_Data_Storage.RemoveFloat("firework_timer_"+value);
+      gSystem_Data_Storage.RemoveFloat("firework_timeout_"+value);
+
+      // Clear vectors
       gGameObjects.DeleteGameObject(current_firework->GetName(), true);
       exploded.erase(exploded.begin() + (it - fireworks.begin()));
       fireworks_value.erase(fireworks_value.begin() + (it - fireworks.begin()));

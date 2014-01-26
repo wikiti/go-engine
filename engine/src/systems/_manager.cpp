@@ -243,20 +243,26 @@ bool CSystem_GameObject_Manager::RebuildIndex()
   return true;
 }
 
-/*CGameObject* CSystem_GameObject_Manager::SearchGameObject(string prefix)
+vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObjects(string prefix)
 {
-  map<string, CGameObject*>::const_iterator i = gameObjects.lower_bound(prefix);
-  if (i != gameObjects.end())
+  vector<CGameObject*> output;
+
+  map<string, CGameObject*>::iterator it = gameObjects.lower_bound(prefix);
+  if (it != gameObjects.end())
   {
-      const string& key = i->first;
-      if (key.compare(0, prefix.size(), prefix) == 0)
-
-      return i->second;
+    for( ; it != gameObjects.end(); it++)
+    {
+      if (it->first.compare(0, prefix.size(), prefix) == 0)
+        output.push_back(it->second);
+      else
+        break;
+    }
   }
-  return NULL;
-}*/
 
-vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObject(string prefix)
+  return output;
+}
+
+/*vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObject(string prefix)
 {
   vector<CGameObject*> output;
 
@@ -269,7 +275,7 @@ vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObject(string prefix)
   }
 
   return output;
-}
+}*/
 
 
 

@@ -93,6 +93,5 @@ void Camara_mouse_movimiento(CGameObject* gameObject)
   else if(gUserInput.mouse.mouse3() > 0)
   {
     gameObject->Transform()->LTranslate(3.f * gUserInput.mouse.x_vel * gTime.deltaTime_s(), 3.f * gUserInput.mouse.y_vel * gTime.deltaTime_s(), 0.f);
-
   }
 }

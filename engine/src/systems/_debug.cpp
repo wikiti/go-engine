@@ -125,6 +125,7 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("go_show_tree", &CSystem_Debug::Console_command__GO_SHOW_TREE));
   console_commands.insert(pair<string, command_p>("go_enable", &CSystem_Debug::Console_command__GO_ENABLE));
   console_commands.insert(pair<string, command_p>("go_component_enable", &CSystem_Debug::Console_command__GO_COMPONENT_ENABLE));
+  console_commands.insert(pair<string, command_p>("go_search", &CSystem_Debug::Console_command__GO_SEARCH));
 
     // Sound
   console_commands.insert(pair<string, command_p>("snd_volume", &CSystem_Debug::Console_command__SND_VOLUME));
@@ -563,9 +564,11 @@ void CSystem_Debug::Console_command__HELP(string arguments)
   {
     console_msg("Game Objects commands:");
     console_msg("-----------------------------------------------------------------------");
-    console_msg("go_show_tree:                   Displays current game object's tree stored in the manager.");
-    console_msg("go_enable:                      Enables or disables a game object and/or its children.");
+
     console_msg("go_component_enable:            Enables or disables a game object's component.");
+    console_msg("go_enable:                      Enables or disables a game object and/or its children.");
+    console_msg("go_show_tree:                   Displays current game object's tree stored in the manager.");
+    console_msg("go_search:                      Searches game objects by prefix.");
 
   }
   else if(arguments == "sound")
@@ -582,12 +585,12 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("Render commands:");
     console_msg("-----------------------------------------------------------------------");
 
-    console_msg("r_update_window:                Updates window's modified properties and applys them to the window.");
-    console_msg("r_update_window:                Resizes the window.");
     console_msg("r_draw_transform:               Draws transform component for each game object (X, Y, Z Local axis).");
     console_msg("r_draw_grid:                    Draws a world grid.");
     console_msg("r_draw_sound:                   Draw sound radius (max and min) for each audio source.");
     console_msg("r_fps:                          Gets current frames per second.");
+    console_msg("r_update_window:                Updates window's modified properties and applys them to the window.");
+    console_msg("r_resize_window:                Resizes the window.");
   }
   // ...
   else
@@ -1199,6 +1202,33 @@ void CSystem_Debug::Console_command__GO_COMPONENT_ENABLE(string arguments)
   {
     console_warning_msg("Format is: go_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
   }
+}
+
+void CSystem_Debug::Console_command__GO_SEARCH(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: go_search <prefix>");
+    return;
+  }
+
+  stringstream ss(arguments);
+  string prefix;
+  ss >> prefix;
+
+  if(prefix == "")
+  {
+    console_warning_msg("Format is: go_search <prefix>");
+    return;
+  }
+
+  vector<CGameObject*> v_go = gSystem_GameObject_Manager.SearchGameObjects(prefix);
+
+  if(!v_go.size())
+    console_error_msg("Could not find game object prefixed with \"%s\"", prefix.c_str());
+  else
+    for(vector<CGameObject*>::iterator it = v_go.begin(); it != v_go.end(); it++)
+      gDebug.console_msg("%s", (*it)->GetName().c_str());
 }
 
 // Sound
