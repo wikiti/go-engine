@@ -28,22 +28,9 @@ void Camara_main_movimiento(CGameObject* gameObject)
   if (gUserInput.Keyboard("left shift"))
     boost = 3.f;
 
-  if (gUserInput.axis1.vertical > 0)
-  {
-    gameObject->Transform()->LTranslate(0.f, 0.f, boost * 3.f * gTime.deltaTime_s());
-  }
-  if (gUserInput.axis1.vertical < 0)
-  {
-    gameObject->Transform()->LTranslate(0.f, 0.f, boost * -3.f * gTime.deltaTime_s());
-  }
-  if (gUserInput.axis1.horizontal < 0)
-  {
-    gameObject->Transform()->LTranslate(boost * 3.f * gTime.deltaTime_s(), 0.f, 0.f);
-  }
-  if (gUserInput.axis1.horizontal > 0)
-  {
-    gameObject->Transform()->LTranslate(boost * -3.f * gTime.deltaTime_s(), 0.f, 0.f);
-  }
+  gameObject->Transform()->LTranslate(0.f, 0.f, gUserInput.axis1.vertical * boost * 3.f * gTime.deltaTime_s());
+  gameObject->Transform()->LTranslate(gUserInput.axis1.horizontal * boost * -3.f * gTime.deltaTime_s(), 0.f, 0.f);
+
   if (gUserInput.Keyboard("E"))
   {
     gameObject->Transform()->Translate(0.f, boost * -3.f * gTime.deltaTime_s(), 0.f);
@@ -60,7 +47,7 @@ void Camara_main_movimiento(CGameObject* gameObject)
     if(gameObject->Camera()->viewport.height > 1.f)
       gameObject->Camera()->viewport.height = 1.f;
   }
-  if(gUserInput.axis2.vertical < 0)
+  else if(gUserInput.axis2.vertical < 0)
   {
     gameObject->Camera()->viewport.height -= 0.1f * gTime.deltaTime_s();
     if(gameObject->Camera()->viewport.height < 0.f)
@@ -72,7 +59,7 @@ void Camara_main_movimiento(CGameObject* gameObject)
     if(gameObject->Camera()->viewport.width < 0.f)
       gameObject->Camera()->viewport.width = 0.f;
   }
-  if(gUserInput.axis2.horizontal > 0)
+  else if(gUserInput.axis2.horizontal > 0)
   {
     gameObject->Camera()->viewport.width += 0.1f * gTime.deltaTime_s();
     if(gameObject->Camera()->viewport.width > 1.f)
@@ -91,14 +78,21 @@ void Camara_mouse_movimiento(CGameObject* gameObject)
 {
   gameObject->Transform()->LTranslate(0.f, 0.f, gUserInput.mouse.wheel_y * 20.f * gTime.deltaTime_s());
 
-  if(gUserInput.mouse.mouse1() == GO_Keystates::keydown)
+  if(gUserInput.mouse.mouse1() == GO_Keystates::keydown or gUserInput.mouse.mouse3() == GO_Keystates::keydown)
     gUserInput.SetMouseTrap(true);
-  else if(gUserInput.mouse.mouse1() == GO_Keystates::keyup)
+  else if(gUserInput.mouse.mouse1() == GO_Keystates::keyup or gUserInput.mouse.mouse3() == GO_Keystates::keyup)
     gUserInput.SetMouseTrap(false);
 
+  // Rotate
   if(gUserInput.mouse.mouse1() > 0)
   {
     gameObject->Transform()->LRotate(gUserInput.mouse.y_vel * 20.f * gTime.deltaTime_s(), 0, 0);
     gameObject->Transform()->Rotate(0, gUserInput.mouse.x_vel * -20.f * gTime.deltaTime_s(), 0);
+  }
+  // Pan
+  else if(gUserInput.mouse.mouse3() > 0)
+  {
+    gameObject->Transform()->LTranslate(3.f * gUserInput.mouse.x_vel * gTime.deltaTime_s(), 3.f * gUserInput.mouse.y_vel * gTime.deltaTime_s(), 0.f);
+
   }
 }

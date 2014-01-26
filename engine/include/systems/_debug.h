@@ -127,6 +127,7 @@ class CSystem_Debug: public CSystem
     void Console_command__GET_INT(string arguments);
     void Console_command__GET_FLOAT(string arguments);
     void Console_command__GET_STRING(string arguments);
+    void Console_command__GET_VAR(string arguments);
 
     void Console_command__REMOVE_INT(string arguments);
     void Console_command__REMOVE_FLOAT(string arguments);
@@ -146,10 +147,10 @@ class CSystem_Debug: public CSystem
     void Console_command__SYSTEM_TIME_SETSCALE(string arguments);
 
     // Game Objects
-    void Console_command__GAME_OBJECT_SHOW_TREE(string arguments);
-      void Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level = 1);
-    void Console_command__GAME_OBJECT_ENABLE(string arguments);
-    void Console_command__GAME_OBJECT_COMPONENT_ENABLE(string arguments);
+    void Console_command__GO_SHOW_TREE(string arguments);
+      void Console_command__AUX__GO_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level = 1);
+    void Console_command__GO_ENABLE(string arguments);
+    void Console_command__GO_COMPONENT_ENABLE(string arguments);
     //void Console_command__ENABLE_SYSTEM(string arguments);
 
     // Sound

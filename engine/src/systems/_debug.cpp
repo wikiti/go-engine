@@ -96,6 +96,7 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("get_int", &CSystem_Debug::Console_command__GET_INT));
   console_commands.insert(pair<string, command_p>("get_float", &CSystem_Debug::Console_command__GET_FLOAT));
   console_commands.insert(pair<string, command_p>("get_string", &CSystem_Debug::Console_command__GET_STRING));
+  console_commands.insert(pair<string, command_p>("get_var", &CSystem_Debug::Console_command__GET_VAR));
 
   console_commands.insert(pair<string, command_p>("set_int", &CSystem_Debug::Console_command__SET_INT));
   console_commands.insert(pair<string, command_p>("set_float", &CSystem_Debug::Console_command__SET_FLOAT));
@@ -121,9 +122,9 @@ bool CSystem_Debug::InitCommandMap()
 
 
     // Game objects
-  console_commands.insert(pair<string, command_p>("game_object_show_tree", &CSystem_Debug::Console_command__GAME_OBJECT_SHOW_TREE));
-  console_commands.insert(pair<string, command_p>("game_object_enable", &CSystem_Debug::Console_command__GAME_OBJECT_ENABLE));
-  console_commands.insert(pair<string, command_p>("game_object_component_enable", &CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE));
+  console_commands.insert(pair<string, command_p>("go_show_tree", &CSystem_Debug::Console_command__GO_SHOW_TREE));
+  console_commands.insert(pair<string, command_p>("go_enable", &CSystem_Debug::Console_command__GO_ENABLE));
+  console_commands.insert(pair<string, command_p>("go_component_enable", &CSystem_Debug::Console_command__GO_COMPONENT_ENABLE));
 
     // Sound
   console_commands.insert(pair<string, command_p>("snd_volume", &CSystem_Debug::Console_command__SND_VOLUME));
@@ -540,6 +541,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("get_int:                        Gets a variable of a int.");
     console_msg("get_float:                      Gets a variable of a float.");
     console_msg("get_string:                     Gets a variable of a string.");
+    console_msg("get_var:                        Gets a variable of any type.");
 
     console_msg("remove_int:                     Remove a int variable.");
     console_msg("remove_float:                   Remove a float variable.");
@@ -554,16 +556,16 @@ void CSystem_Debug::Console_command__HELP(string arguments)
   {
     console_msg("Game Objects commands:");
     console_msg("-----------------------------------------------------------------------");
-    console_msg("system_time_set_scale:          Set current time scale.");
+    console_msg("system_time_setscale:           Set current time scale.");
 
   }
   else if(arguments == "game_objects")
   {
     console_msg("Game Objects commands:");
     console_msg("-----------------------------------------------------------------------");
-    console_msg("game_object_show_tree:          Displays current game object's tree stored in the manager.");
-    console_msg("game_object_enable:             Enables or disables a game object and/or its children.");
-    console_msg("game_object_component_enable:   Enables or disables a game object's component.");
+    console_msg("go_show_tree:                   Displays current game object's tree stored in the manager.");
+    console_msg("go_enable:                      Enables or disables a game object and/or its children.");
+    console_msg("go_component_enable:            Enables or disables a game object's component.");
 
   }
   else if(arguments == "sound")
@@ -777,6 +779,22 @@ void CSystem_Debug::Console_command__GET_STRING(string arguments)
   }
 }
 
+void CSystem_Debug::Console_command__GET_VAR(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: get_vars [identifier]");
+    return;
+  }
+
+  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "  Searching ints:");
+  Console_command__GET_INT(arguments);    // Search int
+  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "  Searching floats:");
+  Console_command__GET_FLOAT(arguments);  // Search float
+  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "  Searching strings:");
+  Console_command__GET_STRING(arguments); // Search string
+}
+
 void CSystem_Debug::Console_command__REMOVE_INT(string arguments)
 {
   if(arguments == "?")
@@ -969,7 +987,7 @@ void CSystem_Debug::Console_command__SYSTEM_TIME_SETSCALE(string arguments)
 }
 
 // Game Objects
-void CSystem_Debug::Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level)
+void CSystem_Debug::Console_command__AUX__GO_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level)
 {
   if(list.find(go->GetName()) != list.end()) // Ya dibujado :(
     return;
@@ -997,14 +1015,14 @@ void CSystem_Debug::Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(CG
   for(uint i = 0; i < num_child && num_child != 0; i++)
     print_element(go->GetChild(i), list, level+1);*/
   for(map<string, CGameObject*>::iterator it = go->children.begin(); it != go->children.end(); it++)
-    Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(it->second, list, level+1);
+    Console_command__AUX__GO_SHOW_TREE_print_element(it->second, list, level+1);
 }
 
-void CSystem_Debug::Console_command__GAME_OBJECT_SHOW_TREE(string arguments)
+void CSystem_Debug::Console_command__GO_SHOW_TREE(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: game_object_show_tree [game object]");
+    console_warning_msg("Format is: go_show_tree [game object]");
     return;
   }
 
@@ -1016,12 +1034,12 @@ void CSystem_Debug::Console_command__GAME_OBJECT_SHOW_TREE(string arguments)
 
   if(go_name == "")
   {
-    gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "Hierarchy of current game objects:");
-    gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "-----------------------------");
+    gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "Hierarchy of current game objects");
+    gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "---------------------------------");
 
     for(map<string, CGameObject*>::iterator it = gSystem_GameObject_Manager.gameObjects.begin(); it != gSystem_GameObject_Manager.gameObjects.end(); it++)
       if(game_objects.find(it->first) == game_objects.end() && it->second->GetParent() == NULL)
-        Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(it->second, game_objects);
+        Console_command__AUX__GO_SHOW_TREE_print_element(it->second, game_objects);
   }
   else
   {
@@ -1035,16 +1053,16 @@ void CSystem_Debug::Console_command__GAME_OBJECT_SHOW_TREE(string arguments)
 
     gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "Hierarchy of \"%s\":", go_name.c_str());
     gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "-----------------------------");
-    Console_command__AUX__GAME_OBJECT_SHOW_TREE_print_element(go, game_objects);
+    Console_command__AUX__GO_SHOW_TREE_print_element(go, game_objects);
   }
 }
 
 
-void CSystem_Debug::Console_command__GAME_OBJECT_ENABLE(string arguments)
+void CSystem_Debug::Console_command__GO_ENABLE(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: enable_game_object <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
+    console_warning_msg("Format is: go_enable <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
     return;
   }
 
@@ -1068,14 +1086,14 @@ void CSystem_Debug::Console_command__GAME_OBJECT_ENABLE(string arguments)
       console_msg("All game objects disabled");
     }
     else
-      console_warning_msg("Format is: enable_game_object <game_object_name | $ALL> < 1 | enable | 0 | disable> [r[ecursive]]");
+      console_warning_msg("Format is: go_enable <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
 
     return;
   }
 
   if(obj_name == "")
   {
-    console_warning_msg("Format is: enable_game_object <game_object_name | $ALL> < 1 | enable | 0 | disable> [r[ecursive]]");
+    console_warning_msg("Format is: go_enable <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
     return;
   }
 
@@ -1097,7 +1115,7 @@ void CSystem_Debug::Console_command__GAME_OBJECT_ENABLE(string arguments)
   else if(recursive == "")
     recursive_b = false;
   else
-    console_warning_msg("Format is: game_object_enable <game_object_name> < 1 | enable | 0 | disable> [r[recursive]]");
+    console_warning_msg("Format is: go_enable <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
 
   if(value == "1" or value == "enable")
   {
@@ -1111,15 +1129,15 @@ void CSystem_Debug::Console_command__GAME_OBJECT_ENABLE(string arguments)
   }
   else
   {
-    console_warning_msg("Format is: game_object_enable <game_object_name> < 1 | enable | 0 | disable> [r[recursive]]");
+    console_warning_msg("Format is: go_enable <game_object_name> < 1 | enable | 0 | disable> [r[ecursive]]");
   }
 }
 
-void CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE(string arguments)
+void CSystem_Debug::Console_command__GO_COMPONENT_ENABLE(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: game_object_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
+    console_warning_msg("Format is: go_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
     return;
   }
 
@@ -1129,7 +1147,7 @@ void CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE(string argumen
 
   if(obj_name == "")
   {
-    console_warning_msg("Format is: game_object_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
+    console_warning_msg("Format is: go_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
     return;
   }
 
@@ -1146,7 +1164,7 @@ void CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE(string argumen
 
   if(component == "")
   {
-    console_warning_msg("Format is: game_object_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
+    console_warning_msg("Format is: go_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
     return;
   }
 
@@ -1179,7 +1197,7 @@ void CSystem_Debug::Console_command__GAME_OBJECT_COMPONENT_ENABLE(string argumen
   }
   else
   {
-    console_warning_msg("Format is: game_object_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
+    console_warning_msg("Format is: go_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
   }
 }
 
