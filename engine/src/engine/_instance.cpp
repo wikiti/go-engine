@@ -89,6 +89,7 @@ void CInstance::OnEvent()
     }
 
     gSystem_Debug.OnEvent();
+    gSystem_UserInput.OnEvent();
     if(!gSystem_Debug.IsConsole()) gSystem_GameObject_Manager.OnEvent();
   }
 

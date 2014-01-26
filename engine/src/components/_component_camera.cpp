@@ -57,6 +57,12 @@ output_t CComponent_Camera::Get()
   return (void*)(this);
 }
 
+void CComponent_Camera::SetTarget(CGameObject* obj)
+{
+  if(obj) target = obj->GetName();
+}
+
+
 void CComponent_Camera::ApplyChanges()
 {
   //if(!enabled) return;

@@ -1,6 +1,7 @@
 #include "systems/_input.h"
 #include "systems/_data.h"
 #include "systems/_debug.h"
+#include "systems/_render.h"
 
 CSystem_UserInput gSystem_UserInput;
 CSystem_UserInput& gUserInput = gSystem_UserInput;
@@ -29,7 +30,6 @@ bool CSystem_UserInput::Init()
   axis2.h_right.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_AXIS2_RIGHT_KEY").c_str());
 
     // Actions
-  //fire1.state = fire2.state = false;
   action1.state = action2.state = action3.state = action4.state = unpressed;
   action1.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_ACTION1_KEY").c_str());
   action2.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_ACTION2_KEY").c_str());
@@ -41,8 +41,23 @@ bool CSystem_UserInput::Init()
   crouch.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_CROUCH_KEY").c_str());
   jump.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_JUMP_KEY").c_str());
 
+    // Mouse
+  mouse.x = mouse.y = 0;
+  mouse.y_vel = mouse.x_vel = 0;
+  mouse.wheel_x = mouse.wheel_y = 0;
+
+  mouse.mouse1.state = mouse.mouse2.state = mouse.mouse3.state = unpressed;
+  mouse.mouse1.button = SDL_BUTTON_LEFT; mouse.mouse1.button_name = "Mouse Left";
+  mouse.mouse2.button = SDL_BUTTON_RIGHT; mouse.mouse2.button_name = "Mouse Right";
+  mouse.mouse3.button = SDL_BUTTON_MIDDLE; mouse.mouse2.button_name = "Mouse Middle";
+  mouse.moved = mouse.scrolled = false;
+
   return true;
 }
+
+GO_Keystates::keystate_t state;
+Uint8 button;
+string button_name;
 
 void CSystem_UserInput::Close()
 {
@@ -259,7 +274,12 @@ void CSystem_UserInput::OnKeyEvent()
 
 void CSystem_UserInput::OnEvent()
 {
+  mouse.OnEvent();
+}
 
+void CSystem_UserInput::OnLoop()
+{
+  mouse.OnLoop();
 }
 
 Uint8 CSystem_UserInput::Keyboard(string keyname)
@@ -273,4 +293,80 @@ Uint8 CSystem_UserInput::Keyboard(SDL_Scancode key)
   if(key == SDL_SCANCODE_UNKNOWN)
     return 0; // Simulamos que no se pulsa la tecla
   return keyboard[key];
+}
+
+
+// -- Mouse
+
+void CSystem_UserInput::CMouse::OnLoop()
+{
+  SDL_GetMouseState(&x, &y);
+
+  if(!moved)
+    x_vel = y_vel = 0;
+  if(!scrolled)
+    wheel_x = wheel_y = 0;
+
+  moved = scrolled = false;
+}
+
+void CSystem_UserInput::CMouse::OnEvent()
+{
+  if(event.type == SDL_MOUSEMOTION)
+  {
+    x_vel = event.motion.xrel;
+    y_vel = event.motion.yrel;
+
+    moved = true;
+  }
+  else if(event.type == SDL_MOUSEWHEEL)
+  {
+    wheel_x = event.wheel.x;
+    wheel_y = event.wheel.y;
+
+    scrolled = true;
+  }
+  // Para simplificar, usamos 2 estados (pulsado y no-pulsado)
+  else if(event.type == SDL_MOUSEBUTTONDOWN)
+  {
+    if (event.button.button == mouse1.button)
+      mouse1.state = pressed;
+    else if (event.button.button == mouse2.button)
+      mouse2.state = pressed;
+    else if (event.button.button == mouse3.button)
+      mouse3.state = pressed;
+  }
+  else if (event.type == SDL_MOUSEBUTTONUP)
+  {
+    if (event.button.button == mouse1.button)
+      mouse1.state = unpressed;
+    else if (event.button.button == mouse2.button)
+      mouse2.state = unpressed;
+    else if (event.button.button == mouse3.button)
+      mouse3.state = unpressed;
+  }
+}
+
+void CSystem_UserInput::ShowMouse(bool show)
+{
+  SDL_ShowCursor(show);
+}
+
+void CSystem_UserInput::SetMousePos(int x, int y)
+{
+  // Screen center
+  if(x == INT_MAX && y == INT_MAX)
+  {
+    gSystem_Render.GetWindowSize(&x, &y);
+    x /= 2;
+    y /= 2;
+  }
+
+  SDL_WarpMouseInWindow(gSystem_Render.GetWindow(), x, y);
+}
+
+void CSystem_UserInput::SetRelativeMouseMode(bool mode)
+{
+  if(mode) SDL_SetRelativeMouseMode(SDL_TRUE);
+  else     SDL_SetRelativeMouseMode(SDL_FALSE);
 }

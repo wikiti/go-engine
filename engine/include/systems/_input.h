@@ -62,6 +62,8 @@ class CSystem_UserInput: public CSystem
       // Mouse
     class CMouse
     {
+      friend class CSystem_UserInput;
+
       protected:
         class CButton
         {
@@ -80,6 +82,8 @@ class CSystem_UserInput: public CSystem
             string ButtonName(){ return button_name;}
         };
 
+        bool moved, scrolled;
+
       public:
         int x, y;
         float y_vel, x_vel;
@@ -88,8 +92,9 @@ class CSystem_UserInput: public CSystem
 
         CButton mouse1, mouse2, mouse3; // mouseX1, mouseX2;
 
+        void OnLoop();
         void OnEvent();
-        void OnKeyEvent();
+
     };
     CMouse mouse;
 
@@ -99,6 +104,7 @@ class CSystem_UserInput: public CSystem
     bool Init();
     void Close();
 
+    void OnLoop();
     void OnEvent();
     void OnKeyEvent();
 
@@ -109,8 +115,6 @@ class CSystem_UserInput: public CSystem
     CAxis GetAxis2(){return axis2;}
 
       // Keys/actions
-    //bool GetFire1(){return fire1();}
-    //bool GetFire2(){return fire2();}
     GO_Keystates::keystate_t GetAction1(){return action1();}
     GO_Keystates::keystate_t GetAction2(){return action2();}
     GO_Keystates::keystate_t GetAction3(){return action3();}
@@ -119,6 +123,11 @@ class CSystem_UserInput: public CSystem
     GO_Keystates::keystate_t GetRun(){return run();}
     GO_Keystates::keystate_t GetCrouch(){return crouch();}
     GO_Keystates::keystate_t GetJump(){return jump();}
+
+      // Mouse stuff
+    void ShowMouse(bool show = true);
+    void SetMousePos(int x = INT_MAX, int y = INT_MAX);
+    void SetRelativeMouseMode(bool mode = true);
 
 };
 

@@ -77,11 +77,7 @@ class CComponent_Camera: public CComponent
 	    target = t;
 	  }
 
-    void SetTarget(CGameObject* obj)
-    {
-      if(obj) target = obj->GetName();
-    }
-
+    void SetTarget(CGameObject* obj);
 
 	  void UnSetTarget()
 	  {
