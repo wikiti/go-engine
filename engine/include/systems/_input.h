@@ -4,10 +4,21 @@
 #include "_globals.h"
 #include "_system.h"
 
-// Puede ser de utilidad plantear el uso de teclas tal que así :D
+/*
+ * keyup     (-2) => Instante en el que se deja de presionar la tecla.
+ * unpressed (-1) => Tecla sin presionar.
+ * keydown   ( 1) => Instante en el que se presiona la tecla.
+ * pressed   ( 2) => Tecla presionada.
+ *
+ * Ciclo normal de estados: unpressed -> keydown -> pressed -> keyup -> unpressed -> ...
+ *
+ * Si el valor es menor que 0, se considera la tecla como "no activada".
+ * Si el valor es mayor que 0, se considera la tecla como "activada".
+ */
+
 namespace GO_Keystates
 {
-  enum keystate_t {unpressed = -2, keyup = -1, pressed = 1, keydown = 2 };
+  enum keystate_t {keyup = -2, unpressed = -1, keydown = 1, pressed = 2};
 }
 
 class CSystem_UserInput: public CSystem
@@ -20,7 +31,7 @@ class CSystem_UserInput: public CSystem
       friend class CSystem_UserInput;
 
       protected:
-        GO_Keystates::keystate_t state;
+        GO_Keystates::keystate_t state; // Estado (presionado, no presionado, siendo presionado, siendo des-presionado)
         SDL_Scancode key;
 
       public:
@@ -83,6 +94,7 @@ class CSystem_UserInput: public CSystem
         };
 
         bool moved, scrolled;
+        bool mouse1_key, mouse2_key, mouse3_key;
 
       public:
         int x, y;
@@ -94,6 +106,7 @@ class CSystem_UserInput: public CSystem
 
         void OnLoop();
         void OnEvent();
+        void OnKeyEvent();
 
     };
     CMouse mouse;
@@ -111,7 +124,7 @@ class CSystem_UserInput: public CSystem
     Uint8 Keyboard(string keyname);
     Uint8 Keyboard(SDL_Scancode key);
 
-    CAxis GetAxis1(){return axis1;}
+    /*CAxis GetAxis1(){return axis1;}
     CAxis GetAxis2(){return axis2;}
 
       // Keys/actions
@@ -122,12 +135,12 @@ class CSystem_UserInput: public CSystem
 
     GO_Keystates::keystate_t GetRun(){return run();}
     GO_Keystates::keystate_t GetCrouch(){return crouch();}
-    GO_Keystates::keystate_t GetJump(){return jump();}
+    GO_Keystates::keystate_t GetJump(){return jump();}*/
 
       // Mouse stuff
     void ShowMouse(bool show = true);
     void SetMousePos(int x = INT_MAX, int y = INT_MAX);
-    void SetRelativeMouseMode(bool mode = true);
+    void SetMouseTrap(bool mode = true);
 
 };
 

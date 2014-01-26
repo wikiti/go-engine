@@ -72,7 +72,7 @@ vector3f CComponent_Transform::EulerAngles()
 
 void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
 {
-  if(!enabled) return;
+  if(!enabled or (x == 0 and y == 0 and z == 0)) return;
 
   // Mover basandose en la rotación (cosa extraña)
   // Translate X
@@ -96,7 +96,7 @@ void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
 
 void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
 {
-  if(!enabled) return;
+  if(!enabled or (x == 0 and y == 0 and z == 0)) return;
 
   // Como Rotate(), sólo que primero se aplica la rotación, y luego la orientación (mientras que en Rotate se aplica primero la orientación y luego la rotación).
   gMath.NormalizeAngles(x, y, z);
@@ -112,7 +112,7 @@ void CComponent_Transform::Translate(vector3f v)
 
 void CComponent_Transform::Translate(GLfloat x, GLfloat y, GLfloat z)
 {
-  if(!enabled) return;
+  if(!enabled or (x == 0 and y == 0 and z == 0)) return;
 
   position.x += x;
   position.y += y;
@@ -141,7 +141,7 @@ void CComponent_Transform::Rotate(vector3f v)
 
 void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
 {
-  if(!enabled) return;
+  if(!enabled or (x == 0 and y == 0 and z == 0)) return;
 
   gMath.NormalizeAngles(x, y, z);
 
@@ -172,7 +172,7 @@ void CComponent_Transform::Scale(vector3f v)
 
 void CComponent_Transform::Scale(GLfloat x, GLfloat y, GLfloat z)
 {
-  if(!enabled) return;
+  if(!enabled or (x == 1 and y == 1 and z == 1)) return;
 
   // Multiplicar en vez de sumar
   scale.x *= x;

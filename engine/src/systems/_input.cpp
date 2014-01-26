@@ -270,6 +270,8 @@ void CSystem_UserInput::OnKeyEvent()
   else if(jump.state == keyup and !keyboard[jump.key])
     jump.state = unpressed;
 
+
+  mouse.OnKeyEvent();
 }
 
 void CSystem_UserInput::OnEvent()
@@ -329,22 +331,67 @@ void CSystem_UserInput::CMouse::OnEvent()
   // Para simplificar, usamos 2 estados (pulsado y no-pulsado)
   else if(event.type == SDL_MOUSEBUTTONDOWN)
   {
-    if (event.button.button == mouse1.button)
-      mouse1.state = pressed;
-    else if (event.button.button == mouse2.button)
-      mouse2.state = pressed;
-    else if (event.button.button == mouse3.button)
-      mouse3.state = pressed;
+    if (event.button.button == mouse1.button and (mouse1.state == unpressed or mouse1.state == keyup))
+    {
+      mouse1.state = keydown;
+      mouse1_key = true;
+    }
+    else if (event.button.button == mouse2.button and (mouse2.state == unpressed or mouse2.state == keyup))
+    {
+      mouse2.state = keydown;
+      mouse2_key = true;
+    }
+    else if (event.button.button == mouse3.button and (mouse3.state == unpressed or mouse3.state == keyup))
+    {
+      mouse3.state = keydown;
+      mouse3_key = true;
+    }
   }
   else if (event.type == SDL_MOUSEBUTTONUP)
   {
-    if (event.button.button == mouse1.button)
+    if (event.button.button == mouse1.button and (mouse1.state == pressed or mouse1.state == keydown))
+    {
+      mouse1.state = keyup;
+      mouse1_key = true;
+    }
+    else if (event.button.button == mouse2.button and (mouse2.state == pressed or mouse2.state == keydown))
+    {
+      mouse2.state = keyup;
+      mouse2_key = true;
+    }
+    else if (event.button.button == mouse3.button and (mouse3.state == pressed or mouse3.state == keydown))
+    {
+      mouse3.state = keyup;
+      mouse3_key = true;
+    }
+  }
+}
+
+void CSystem_UserInput::CMouse::OnKeyEvent()
+{
+  if(!mouse1_key)
+  {
+    if(mouse1.state == keydown)
+      mouse1.state = pressed;
+    else if(mouse1.state == keyup)
       mouse1.state = unpressed;
-    else if (event.button.button == mouse2.button)
+  }
+  if(!mouse2_key)
+  {
+    if(mouse2.state == keydown)
+      mouse2.state = pressed;
+    else if(mouse2.state == keyup)
       mouse2.state = unpressed;
-    else if (event.button.button == mouse3.button)
+  }
+  if(!mouse3_key)
+  {
+    if(mouse3.state == keydown)
+      mouse3.state = pressed;
+    else if(mouse3.state == keyup)
       mouse3.state = unpressed;
   }
+
+  mouse1_key = mouse2_key = mouse3_key = false;
 }
 
 void CSystem_UserInput::ShowMouse(bool show)
@@ -365,7 +412,7 @@ void CSystem_UserInput::SetMousePos(int x, int y)
   SDL_WarpMouseInWindow(gSystem_Render.GetWindow(), x, y);
 }
 
-void CSystem_UserInput::SetRelativeMouseMode(bool mode)
+void CSystem_UserInput::SetMouseTrap(bool mode)
 {
   if(mode) SDL_SetRelativeMouseMode(SDL_TRUE);
   else     SDL_SetRelativeMouseMode(SDL_FALSE);

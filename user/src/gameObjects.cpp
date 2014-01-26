@@ -8,7 +8,7 @@ bool SetGameObjects_Instance1()
   camara_main->Transform()->position.z -= 20.f;
 
   camara_main->SetKeyEventFunction(&Camara_main_movimiento);
-  camara_main->SetEventFunction(&Camara_mouse_movimiento);
+  //camara_main->SetKeyEventFunction(&Camara_mouse_movimiento);
 
   gRender.AddCamera(camara_main);
 
@@ -84,41 +84,21 @@ void Camara_main_movimiento(CGameObject* gameObject)
     gameObject->Transform()->LookAt(vector3f(0.f, 0.f, 0.f));
   }
 
-  if (gUserInput.jump() == GO_Keystates::keydown)
-  {
-    gDebug.console_msg("lololo");
-  }
-  if (gUserInput.jump() == GO_Keystates::keyup)
-  {
-    gDebug.console_msg("lololo");
-  }
+  Camara_mouse_movimiento(gameObject);
 }
 
 void Camara_mouse_movimiento(CGameObject* gameObject)
 {
-  static bool hide_cursor = false;
+  gameObject->Transform()->LTranslate(0.f, 0.f, gUserInput.mouse.wheel_y * 20.f * gTime.deltaTime_s());
 
-  if(hide_cursor && event.type == SDL_MOUSEMOTION)
+  if(gUserInput.mouse.mouse1() == GO_Keystates::keydown)
+    gUserInput.SetMouseTrap(true);
+  else if(gUserInput.mouse.mouse1() == GO_Keystates::keyup)
+    gUserInput.SetMouseTrap(false);
+
+  if(gUserInput.mouse.mouse1() > 0)
   {
-    //GLfloat pitch = gameObject->Transform()->pitch();
-    //GLfloat yaw = gameObject->Transform()->yaw();
-    //if(pitch + event.motion.yrel * 20.f * gTime.deltaTime_s() < 90 or pitch + event.motion.yrel * 20.f * gTime.deltaTime_s() > 270)
-    gameObject->Transform()->LRotate(event.motion.yrel * 20.f * gTime.deltaTime_s(), 0, 0);
-    gameObject->Transform()->Rotate(0, event.motion.xrel * -20.f * gTime.deltaTime_s(), 0);
-    //cout << gameObject->Transform()->pitch() << " " << gameObject->Transform()->yaw() << " " << gameObject->Transform()->roll() << endl;
-    //vector3f euler = gameObject->Transform()->EulerAngles();
-    //cout << ((float*) &euler)[0] << " " << ((float*) &euler)[1] << " " << ((float*) &euler)[2] << endl;
-  }
-  else if(event.type == SDL_MOUSEWHEEL)
-  {
-    gameObject->Transform()->LTranslate(0.f, 0.f, event.wheel.y * 20.f * gTime.deltaTime_s());
-  }
-  else if(event.type == SDL_MOUSEBUTTONDOWN)
-  {
-    if( event.button.button == SDL_BUTTON_RIGHT)
-    {
-      hide_cursor = !hide_cursor;
-      gRender.SetRelativeMouseMode(hide_cursor);
-    }
+    gameObject->Transform()->LRotate(gUserInput.mouse.y_vel * 20.f * gTime.deltaTime_s(), 0, 0);
+    gameObject->Transform()->Rotate(0, gUserInput.mouse.x_vel * -20.f * gTime.deltaTime_s(), 0);
   }
 }
