@@ -21,8 +21,8 @@ class CSystem_Render: public CSystem
     int current_camera;
 
     // Skybox VBO
-    unsigned int    m_nVBOVertices;                     // Vertex VBO Name
-    unsigned int    m_nVBOTexCoords;                    // Texture Coordinate VBO Name
+    unsigned int    m_SkyboxVBOVertices;                     // Vertex VBO Name
+    unsigned int    m_SkyboxVBOTexCoords;                    // Texture Coordinate VBO Name
 
     //bool multitexture_supported;
     //bool vbos_supported;

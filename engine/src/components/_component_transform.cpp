@@ -5,6 +5,41 @@
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Transform);
 
+GLuint CComponent_Transform::vertex_transformVBO = 0;
+GLuint CComponent_Transform::colors_transformVBO = 0;
+
+void CComponent_Transform::InitRenderVBO()
+{
+  GLfloat transform_vertex[][3]
+  {
+    {0.f, 0.f, 0.f}, {0.5f, 0.0f, 0.0f},
+    {0.f, 0.f, 0.f}, {0.0f, 0.5f, 0.0f},
+    {0.f, 0.f, 0.f}, {0.0f, 0.0f, 0.5f}
+  };
+
+  GLfloat colors_vertex[][3]
+  {
+    {1.f, 0.f, 0.f}, {1.0f, 0.0f, 0.0f},
+    {0.f, 1.f, 0.f}, {0.0f, 1.0f, 0.0f},
+    {0.f, 0.f, 1.f}, {0.0f, 0.0f, 1.0f}
+  };
+
+  glGenBuffers( 1, &vertex_transformVBO );
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, vertex_transformVBO );
+  glBufferData( GL_ARRAY_BUFFER_ARB, 6*3*sizeof(GLfloat), transform_vertex, GL_STATIC_DRAW_ARB );
+
+  glGenBuffers( 1, &colors_transformVBO );
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, colors_transformVBO );
+  glBufferData( GL_ARRAY_BUFFER_ARB, 6*3*sizeof(GLfloat), colors_vertex, GL_STATIC_DRAW_ARB );
+}
+
+void CComponent_Transform::CloseRenderVBO()
+{
+  glDeleteBuffers(1, &vertex_transformVBO);
+  glDeleteBuffers(1, &colors_transformVBO);
+}
+
+
 CComponent_Transform::CComponent_Transform(CGameObject* gameObject): CComponent(gameObject)
 {
   position.x = position.y = position.z = 0;
@@ -30,7 +65,41 @@ void CComponent_Transform::OnRender()
 {
   if(!enabled) return;
 
-  glBegin(GL_LINES);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glEnableClientState(GL_COLOR_ARRAY);
+
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, vertex_transformVBO );
+  glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, colors_transformVBO );
+  glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
+
+  glDrawArrays( GL_LINES, 0, 6 );
+
+  glDisableClientState(GL_VERTEX_ARRAY);
+  glDisableClientState(GL_COLOR_ARRAY);
+
+  /*glEnableClientState(GL_VERTEX_ARRAY);
+
+  GLfloat axis_x_vertex[][3]{ {0.f, 0.f, 0.f}, {0.5f, 0.0f, 0.0f} };
+  GLfloat axis_y_vertex[][3]{ {0.f, 0.f, 0.f}, {0.0f, 0.5f, 0.0f} };
+  GLfloat axis_z_vertex[][3]{ {0.f, 0.f, 0.f}, {0.0f, 0.0f, 0.5f} };
+
+  // X - Rojo
+  glVertexPointer(2, GL_FLOAT, 0, &axis_x_vertex[0]);
+  glColor3f(1.f, 0.f, 0.f); glDrawArrays(GL_LINES, 0, 1);
+
+  // Y - Verde
+  glVertexPointer(2, GL_FLOAT, 0, &axis_y_vertex[0]);
+  glColor3f(0.f, 1.f, 0.f); glDrawArrays(GL_LINES, 0, 1);
+
+  // Z - Azul
+  glVertexPointer(3, GL_FLOAT, 0, &axis_z_vertex[0]);
+  glColor3f(0.f, 0.f, 1.f); glDrawArrays(GL_LINES, 0, 1);
+
+  glDisableClientState(GL_VERTEX_ARRAY);*/
+
+
+  /*glBegin(GL_LINES);
     // X - Rojo
     glColor3f(1.f, 0.f, 0.f);
     glVertex3f(0.f, 0.f, 0.f);
@@ -45,7 +114,7 @@ void CComponent_Transform::OnRender()
     glColor3f(0.f, 0.f, 1.f);
     glVertex3f(0.f, 0.f, 0.f);
     glVertex3f(0.f, 0.f, 0.5f);
-  glEnd();
+  glEnd();*/
 }
 
 vector3f CComponent_Transform::EulerAngles()

@@ -13,6 +13,8 @@
 #include "particles/fireworks/fireworks.h"
 #include "particles/rainbow/rainbow.h"
 #include "particles/other_particles.h"
+#include "render/mesh.h"
+
 #include "shaders/shaders.h"
 
 bool SetGameObjects_Instance1();

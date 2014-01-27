@@ -4,6 +4,8 @@
 
 CSystem_Resources gSystem_Resources;
 
+
+
 CResource::CResource(): rc_file(""), type(resources::base)
 {
 
@@ -138,6 +140,7 @@ void CResource_Mesh::Render()
   glEnableClientState(GL_NORMAL_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, 0);
   glVertexPointer(3,GL_FLOAT, 0, &vertexArray[0]);
   glNormalPointer(GL_FLOAT, 0, &normalArray[0]);
 

@@ -16,6 +16,8 @@ class CComponent_Transform: public CComponent
 
   private:
     //vector3f angle_vector;
+    static GLuint vertex_transformVBO;
+    static GLuint colors_transformVBO;
 
     static int GetID() { return components::transform; }
 
@@ -43,6 +45,8 @@ class CComponent_Transform: public CComponent
     inline virtual output_t Get();
 
     void OnRender();
+    static void InitRenderVBO();
+    static void CloseRenderVBO();
 
   public:
     // Movimientos locales o globales al eje x,y,z

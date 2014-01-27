@@ -105,6 +105,9 @@ bool CSystem_Render::Init()
 
   quadratic = gluNewQuadric();
 
+  // Other renders
+  CComponent_Transform::InitRenderVBO();
+
   return true;
 }
 
@@ -131,17 +134,24 @@ void CSystem_Render::InitSkyboxVBO()
     /* Back   */ {1536/2048.f, 1024/1536.f}, {2048/2048.f, 1024/1536.f}, {2048/2048.f,  512/1536.f}, {1536/2048.f,  512/1536.f}
   };
 
-  glGenBuffersARB( 1, &m_nVBOVertices );
-  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_nVBOVertices );
-  glBufferDataARB( GL_ARRAY_BUFFER_ARB, m_nSkyboxVertexCount*3*sizeof(GLfloat), m_pVertices, GL_STATIC_DRAW_ARB );
+  glGenBuffers( 1, &m_SkyboxVBOVertices );
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, m_SkyboxVBOVertices );
+  glBufferData( GL_ARRAY_BUFFER_ARB, m_nSkyboxVertexCount*3*sizeof(GLfloat), m_pVertices, GL_STATIC_DRAW_ARB );
 
-  glGenBuffersARB( 1, &m_nVBOTexCoords );
-  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_nVBOTexCoords );
-  glBufferDataARB( GL_ARRAY_BUFFER_ARB, m_nSkyboxVertexCount*2*sizeof(GLfloat), m_pTexCoords, GL_STATIC_DRAW_ARB );
+  glGenBuffers( 1, &m_SkyboxVBOTexCoords );
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, m_SkyboxVBOTexCoords );
+  glBufferData( GL_ARRAY_BUFFER_ARB, m_nSkyboxVertexCount*2*sizeof(GLfloat), m_pTexCoords, GL_STATIC_DRAW_ARB );
 }
 
 void CSystem_Render::Close()
 {
+  //Destroy VBOs
+  glDeleteBuffers( 1, &m_SkyboxVBOTexCoords );
+  glDeleteBuffers( 1, &m_SkyboxVBOVertices );
+
+  // Other renders
+  CComponent_Transform::CloseRenderVBO();
+
   CSystem::Close();
 
   gluDeleteQuadric(quadratic);
@@ -410,9 +420,9 @@ bool CSystem_Render::DrawSkybox(CComponent_Camera* cam)
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_nVBOVertices );
+  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_SkyboxVBOVertices );
   glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
-  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_nVBOTexCoords );
+  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_SkyboxVBOTexCoords );
   glTexCoordPointer( 2, GL_FLOAT, 0, (char *) NULL );
 
   glDrawArrays( GL_QUADS, 0, m_nSkyboxVertexCount );
