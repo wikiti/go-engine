@@ -4,6 +4,7 @@
 /**_______C++ STL________**/
 
 #include <algorithm>
+#include <array>
 #include <cfloat>
 #include <climits>
 #include <exception>

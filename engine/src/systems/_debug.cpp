@@ -6,6 +6,7 @@
 #include "systems/_other.h"
 #include "systems/_mixer.h"
 #include "systems/_shader.h"
+#include "systems/_input.h"
 
 #include "engine/_engine.h"
 
@@ -119,7 +120,7 @@ bool CSystem_Debug::InitCommandMap()
 
     // Systems
   console_commands.insert(pair<string, command_p>("system_time_setscale", &CSystem_Debug::Console_command__SYSTEM_TIME_SETSCALE));
-
+  console_commands.insert(pair<string, command_p>("system_userinput_show_joysticks", &CSystem_Debug::Console_command__SYSTEM_USERINPUT_SHOW_JOYSTICKS));
 
     // Game objects
   console_commands.insert(pair<string, command_p>("go_show_tree", &CSystem_Debug::Console_command__GO_SHOW_TREE));
@@ -257,6 +258,8 @@ void CSystem_Debug::OnEvent()
         if(input != "")
         {
           command_buffer.push_back(input);
+          if(command_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_COMMAND_BUFFER_MAXLINES) command_buffer.erase(command_buffer.begin()); // Check command_buffer size and clean if necesary
+
           current_last_command = command_buffer.size();
           ParseInput();
           input = "";
@@ -315,12 +318,14 @@ void CSystem_Debug::OnEvent()
           current_line_buffered++;
         }
       }
-      else if(event.key.keysym.scancode == SDL_SCANCODE_PAGEDOWN)
+      else if(event.key.keysym.scancode == SDL_SCANCODE_END)
       {
-        if(console_buffer.size() && current_line_buffered > 0)
-        {
-          current_line_buffered--;
-        }
+        current_line_buffered = 0;
+      }
+      else if(event.key.keysym.scancode == SDL_SCANCODE_HOME)
+      {
+        if(console_buffer.size())
+          current_line_buffered = console_buffer.size()-1;
       }
     }
     else if(event.type == SDL_MOUSEBUTTONDOWN)
@@ -457,6 +462,7 @@ void CSystem_Debug::console_msg(const char* fmt, ...)
 
   string_console_t t(text, 1.f, 1.f, 1.f, 1.f);
   console_buffer.insert(console_buffer.begin(), t);
+  if(console_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES) console_buffer.pop_back();
 }
 
 void CSystem_Debug::console_error_msg(const char* fmt, ...)
@@ -473,6 +479,7 @@ void CSystem_Debug::console_error_msg(const char* fmt, ...)
 
   string_console_t t(text, 1.f, 0.f, 0.f, 1.f);
   console_buffer.insert(console_buffer.begin(), t);
+  if(console_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES) console_buffer.pop_back();
 }
 
 void CSystem_Debug::console_warning_msg(const char* fmt, ...)
@@ -489,6 +496,7 @@ void CSystem_Debug::console_warning_msg(const char* fmt, ...)
 
   string_console_t t(text, 1.f, 0.75f, 0.f, 1.f);
   console_buffer.insert(console_buffer.begin(), t);
+  if(console_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES) console_buffer.pop_back();
 }
 
 void CSystem_Debug::console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat a, const char* fmt, ...)
@@ -505,6 +513,7 @@ void CSystem_Debug::console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat 
 
   string_console_t t(text, r, g, b, a);
   console_buffer.insert(console_buffer.begin(), t);
+  if(console_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES) console_buffer.pop_back();
 }
 
 /** Console commands **/
@@ -557,7 +566,9 @@ void CSystem_Debug::Console_command__HELP(string arguments)
   {
     console_msg("Game Objects commands:");
     console_msg("-----------------------------------------------------------------------");
-    console_msg("system_time_setscale:           Set current time scale.");
+    console_msg("system_time_setscale:                Set current time scale.");
+    console_msg("system_userinput_show_joysticks:     Show current joysticks connected to the system.");
+
 
   }
   else if(arguments == "game_objects")
@@ -565,19 +576,19 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("Game Objects commands:");
     console_msg("-----------------------------------------------------------------------");
 
-    console_msg("go_component_enable:            Enables or disables a game object's component.");
-    console_msg("go_enable:                      Enables or disables a game object and/or its children.");
-    console_msg("go_show_tree:                   Displays current game object's tree stored in the manager.");
-    console_msg("go_search:                      Searches game objects by prefix.");
+    console_msg("go_component_enable:      Enables or disables a game object's component.");
+    console_msg("go_enable:                Enables or disables a game object and/or its children.");
+    console_msg("go_show_tree:             Displays current game object's tree stored in the manager.");
+    console_msg("go_search:                Searches game objects by prefix.");
 
   }
   else if(arguments == "sound")
   {
     console_msg("Sound commands:");
     console_msg("-----------------------------------------------------------------------");
-    console_msg("snd_volume:                     Set volume.");
-    console_msg("snd_music_volume:               Set music volume.");
-    console_msg("snd_checksources:               Shows source vectors status.");
+    console_msg("snd_volume:                Set volume.");
+    console_msg("snd_music_volume:          Set music volume.");
+    console_msg("snd_checksources:          Shows source vectors status.");
     // Sound
   }
   else if(arguments == "render")
@@ -987,6 +998,26 @@ void CSystem_Debug::Console_command__SYSTEM_TIME_SETSCALE(string arguments)
   }
   else
     console_warning_msg("Value must be greather than 0");
+}
+
+void CSystem_Debug::Console_command__SYSTEM_USERINPUT_SHOW_JOYSTICKS(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: system_userinput_show_joysticks");
+    return;
+  }
+
+  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "Joysticks connected");
+  gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "-------------------");
+  gSystem_Debug.console_custom_msg(0.75f, 0.75f, 0.75f, 1.f, " <id>- <Name> - <Num axes>/<Num balls>/<Num buttons>/<Num povs>");
+
+  vector<GO_InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
+  for(vector<GO_InputClasses::CJoystick>::iterator it = joys.begin(); it != joys.end(); it++)
+  {
+    gSystem_Debug.console_msg(" %d- %s - %d/%d/%d/%d", it - joys.begin(), (*it).GetName().c_str(), (*it).axes.size(), (*it).balls.size(), (*it).buttons.size(), (*it).povs.size());
+  }
+
 }
 
 // Game Objects

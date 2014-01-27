@@ -9,6 +9,8 @@
 #define __CSYSTEM_DEBUG_KEYWORD_ALL "$ALL"
 
 #define __CSYSTEM_DEBUG_CONSOLE_SIZE 200
+#define __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES 1024
+#define __CSYSTEM_DEBUG_CONSOLE_COMMAND_BUFFER_MAXLINES 1024
 #define __CSYSTEM_DEBUG_CONSOLE_LINES 11
 #define __CSYSTEM_DEBUG_CONSOLE_LINESPACE 16
 #define __CSYSTEM_DEBUG_CONSOLE_Y_OFFSET 30
@@ -145,6 +147,7 @@ class CSystem_Debug: public CSystem
 
     // Systems
     void Console_command__SYSTEM_TIME_SETSCALE(string arguments);
+    void Console_command__SYSTEM_USERINPUT_SHOW_JOYSTICKS(string arguments);
 
     // Game Objects
     void Console_command__GO_SHOW_TREE(string arguments);

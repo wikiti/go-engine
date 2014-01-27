@@ -25,7 +25,7 @@ vector<int> fireworks_value;
 void Firework_Manager_KeyEvent(CGameObject* gameObject)
 {
   //if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_SPACE)
-  if(gUserInput.jump() == GO_Keystates::keydown)
+  if(gUserInput.jump() == GO_Input::key_keydown)
   {
     //std::string random_string = generate_random_alphanumeric_string(5);
     ostringstream oss;

@@ -3,43 +3,71 @@
 
 #include "_globals.h"
 #include "_system.h"
+#include "systems/_debug.h"
 
-/*
- * keyup     (-2) => Instante en el que se deja de presionar la tecla.
- * unpressed (-1) => Tecla sin presionar.
- * keydown   ( 1) => Instante en el que se presiona la tecla.
- * pressed   ( 2) => Tecla presionada.
- *
- * Ciclo normal de estados: unpressed -> keydown -> pressed -> keyup -> unpressed -> ...
- *
- * Si el valor es menor que 0, se considera la tecla como "no activada".
- * Si el valor es mayor que 0, se considera la tecla como "activada".
- */
+#define __CSYSTEM_USERINPUT_JOYSTICK_REBUILD_TIMEOUT 500.0f
 
-namespace GO_Keystates
+namespace GO_Input
 {
-  enum keystate_t {keyup = -2, unpressed = -1, keydown = 1, pressed = 2};
+  enum keystate_t {key_keyup = -2, key_unpressed = -1, key_keydown = 1, key_pressed = 2};
+  /*
+   * key_keyup     (-2) => Instante en el que se deja de presionar la tecla.
+   * key_unpressed (-1) => Tecla sin presionar.
+   * key_keydown   ( 1) => Instante en el que se presiona la tecla.
+   * key_pressed   ( 2) => Tecla presionada.
+   *
+   * Ciclo normal de estados: unpressed -> keydown -> pressed -> keyup -> unpressed -> ...
+   *
+   * Si el valor es menor que 0, se considera la tecla como "no activada".
+   * Si el valor es mayor que 0, se considera la tecla como "activada".
+   */
+
+  enum pov_pos_t {
+    pov_leftup   = SDL_HAT_LEFTUP,     pov_up     = SDL_HAT_UP,             pov_rightup   = SDL_HAT_RIGHTUP,
+    pov_left     = SDL_HAT_LEFT,       pov_center = SDL_HAT_CENTERED,       pov_right     = SDL_HAT_RIGHT,
+    pov_leftdown = SDL_HAT_LEFTDOWN,   pov_down   = SDL_HAT_DOWN,           pov_rightdown = SDL_HAT_RIGHTDOWN
+  };
+
+  enum button_t {button_unpressed = 0, button_pressed = 1};
 }
 
 class CSystem_UserInput: public CSystem
 {
   friend class CSystem_Debug;
 
-  protected:
+  public:
     class CButton
     {
-        friend class CSystem_UserInput;
-        friend class CMouse;
-        friend class CJoystick;
+      friend class CSystem_UserInput;
+      friend class CMouse;
+      friend class CJoystick;
 
       protected:
-        GO_Keystates::keystate_t state;
+        GO_Input::keystate_t state;
         Uint8 button;
         string button_name;
 
       public:
-        GO_Keystates::keystate_t operator()(){return state;}
-        GO_Keystates::keystate_t State(){return state;}
+        GO_Input::keystate_t operator()(){return state;}
+        GO_Input::keystate_t State(){return state;}
+        Uint8 Button(){return button;}
+        string ButtonName(){return button_name;}
+    };
+
+    class CJoyButton
+    {
+      friend class CSystem_UserInput;
+      friend class CMouse;
+      friend class CJoystick;
+
+      protected:
+        GO_Input::button_t state;
+        Uint8 button;
+        string button_name;
+
+      public:
+        GO_Input::button_t operator()(){return state;}
+        GO_Input::button_t State(){return state;}
         Uint8 Button(){return button;}
         string ButtonName(){return button_name;}
     };
@@ -49,14 +77,22 @@ class CSystem_UserInput: public CSystem
       friend class CSystem_UserInput;
 
       protected:
-        GO_Keystates::keystate_t state; // Estado (presionado, no presionado, siendo presionado, siendo des-presionado)
+        GO_Input::keystate_t state; // Estado (presionado, no presionado, siendo presionado, siendo des-presionado)
         SDL_Scancode key;
 
       public:
-        GO_Keystates::keystate_t operator()() {return state;}
-        GO_Keystates::keystate_t State(){return state;}
+        GO_Input::keystate_t operator()() {return state;}
+        GO_Input::keystate_t State(){return state;}
         SDL_Scancode Key() {return key;}
         const char* KeyName() {return SDL_GetScancodeName(key);}
+    };
+
+    class CBall
+    {
+      friend class CSystem_UserInput;
+
+      public:
+        int dx, dy;
     };
 
     class CKeyAxis
@@ -64,10 +100,9 @@ class CSystem_UserInput: public CSystem
       friend class CSystem_UserInput;
 
       public:
-       float vertical;
-       float horizontal;
+        float vertical, horizontal;
 
-       CKey v_up, v_down, h_left, h_right;
+        CKey v_up, v_down, h_left, h_right;
     };
 
     class CAxis
@@ -86,6 +121,12 @@ class CSystem_UserInput: public CSystem
         bool moved, scrolled;
         bool mouse1_key, mouse2_key, mouse3_key;
 
+        bool Init();
+
+        void OnLoop();
+        void OnEvent();
+        void OnKeyEvent();
+
       public:
         int x, y;
         float y_vel, x_vel;
@@ -93,44 +134,70 @@ class CSystem_UserInput: public CSystem
         int wheel_x, wheel_y;
 
         CButton mouse1, mouse2, mouse3; // mouseX1, mouseX2;
-
-        void OnLoop();
-        void OnEvent();
-        void OnKeyEvent();
-
     };
 
     class CJoystick
     {
-      friend class CSystem;
+      friend class CSystem_UserInput;
 
       protected:
         SDL_Joystick* joystick;
-
-        vector<CAxis> axis;
-        vector<CAxis[2]> balls;
-        vector<CButton> buttons;
-
-        void Init();
-        void Close();
-
-        void OnEvent();
-        void OnKeyEvent();
-        void OnLoop();
+        string joystick_name;
 
       public:
-        vector<CAxis> GetAxis(){return axis;}
-        vector<CAxis[2]> GetBalls(){return balls;}
-        vector<CButton> GetButtons() {return buttons;}
+        vector<CAxis> axes;         // -- read only
+        vector<CBall> balls;        // -- read only
+        vector<CJoyButton> buttons; // -- read only
+        vector<Uint8> povs;         // -- read only
+        /*
+         * See http://wiki.libsdl.org/SDL_JoystickGetHat?highlight=%28%5CbCategoryJoystick%5Cb%29%7C%28CategoryEnum%29%7C%28CategoryStruct%29
+         * pov_leftup     pov_up         pov_rightup
+         * pov_left       pov_centered   pov_right
+         * pov_leftdown   pov_down       pov_rightdown
+         */
+
+      protected:
+        bool Init(int index);
+        void Close();
+
+        //void OnEvent();
+        void OnKeyEvent();
+        //void OnLoop(); // Debería usarse para comprobar si un joystick ha sido desconectado :L <- medianamente necesario
+
+      public:
+        /*vector<CAxis> GetAxes(){return axes;}
+        vector<CBall> GetBalls(){return balls;}
+        vector<CJoyButton> GetButtons() {return buttons;}
+        vector<Uint8> GetPovs(){return povs;}*/
+
+        inline string GetName(){return joystick_name;}
+        inline bool CheckStatus()
+        {
+          if(SDL_JoystickGetAttached(joystick) == SDL_FALSE)
+          {
+            gDebug.console_error_msg("Joystick %s disconnected: %s", joystick_name.c_str(), SDL_GetError());
+            return false;
+          }
+          return true;
+        }
     };
 
+  protected:
     // raw keyboard
-    const Uint8 *keyboard = SDL_GetKeyboardState(NULL);;
+    const Uint8 *keyboard = SDL_GetKeyboardState(NULL);
+
+    // joysticks
+    vector<CJoystick> joysticks;
+
+    bool rebuild_joysticks;
+    float rebuild_joysticks_timeout;
+    void CheckJoysticks();
+      bool RebuildJoysticks();
 
   public:
       // Axis - para el futuro, se sopotarán joysticks
-    CAxis axis1; // wasd
-    CAxis axis2; // arrows
+    CKeyAxis axis1; // wasd
+    CKeyAxis axis2; // arrows
 
       // Keys/actions
     CKey action1; // n
@@ -145,8 +212,6 @@ class CSystem_UserInput: public CSystem
       // Mouse
     CMouse mouse;
 
-      // Joysticks
-    vector<CJoystick> joysticks;
 
   public:
     CSystem_UserInput(): CSystem() {};
@@ -160,6 +225,14 @@ class CSystem_UserInput: public CSystem
 
     Uint8 Keyboard(string keyname);
     Uint8 Keyboard(SDL_Scancode key);
+
+    vector<CJoystick> GetJoysticks() {return joysticks;}
+    /*unsigned int GetNumJoysticks() {return joysticks.size();}
+    CJoystick* GetJoystick(int index)
+    {
+      return ((index < 0 or index > joysticks.size())? NULL : &joysticks[index]);
+    }*/
+
 
     /*CAxis GetAxis1(){return axis1;}
     CAxis GetAxis2(){return axis2;}
@@ -180,6 +253,8 @@ class CSystem_UserInput: public CSystem
     void SetMouseTrap(bool mode = true);
 
 };
+
+typedef CSystem_UserInput GO_InputClasses;
 
 // Crear 2 objetos: 1 para la configuración de la aplicación, y otra para guardar variables de usuario.
 extern CSystem_UserInput gSystem_UserInput;
