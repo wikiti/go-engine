@@ -38,6 +38,9 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
     return false;
   }
 
+  float *vertexArray, *normalArray, *uvArray;
+  int numUvCoords;
+
   numTriangles = mesh->mNumFaces*3;
   numUvCoords = mesh->GetNumUVChannels();
 
@@ -113,6 +116,22 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   if (mesh->HasNormals())         normalArray -= mesh->mNumFaces*3*3;
   if (mesh->HasPositions())       vertexArray -= mesh->mNumFaces*3*3;
 
+  glGenBuffers( 1, &model_vertexVBO );
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_vertexVBO  );
+  glBufferData( GL_ARRAY_BUFFER_ARB, numTriangles*3*3*sizeof(GLfloat), vertexArray, GL_STATIC_DRAW_ARB );
+
+  glGenBuffers( 1, &model_normalVBO );
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_normalVBO );
+  glBufferData( GL_ARRAY_BUFFER_ARB, numTriangles*3*3*sizeof(GLfloat), normalArray, GL_STATIC_DRAW_ARB );
+
+  glGenBuffers( 1, &model_uvArrayVBO );
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_uvArrayVBO );
+  glBufferData( GL_ARRAY_BUFFER_ARB, numTriangles*3*2*sizeof(GLfloat), uvArray, GL_STATIC_DRAW_ARB );
+
+  if(vertexArray) delete vertexArray;
+  if(normalArray) delete normalArray;
+  if(uvArray)     delete uvArray;
+
   rc_file = file;
 
   return true;
@@ -124,12 +143,11 @@ void CResource_Mesh::Clear()
   normalArray.clear();
   uvArray.clear();*/
 
-  if(vertexArray) delete vertexArray;
-  if(normalArray) delete normalArray;
-  if(uvArray)     delete uvArray;
+  numTriangles = 0;
 
-  vertexArray = normalArray = uvArray = NULL;
-  numTriangles = numUvCoords = 0;
+  glDeleteBuffers(1, &model_vertexVBO);
+  glDeleteBuffers(1, &model_normalVBO);
+  glDeleteBuffers(1, &model_uvArrayVBO);
 }
 
 void CResource_Mesh::Render()
@@ -140,7 +158,16 @@ void CResource_Mesh::Render()
   glEnableClientState(GL_NORMAL_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, 0);
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_vertexVBO );
+  glVertexPointer(3,GL_FLOAT, 0, (char* )NULL);
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_normalVBO );
+  glNormalPointer(GL_FLOAT, 0, (char* )NULL);
+  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_uvArrayVBO );
+  glTexCoordPointer(2, GL_FLOAT, 0, (char* )NULL);
+
+  glDrawArrays(GL_TRIANGLES, 0, numTriangles);
+
+  /*glBindBuffer( GL_ARRAY_BUFFER_ARB, 0);
   glVertexPointer(3,GL_FLOAT, 0, &vertexArray[0]);
   glNormalPointer(GL_FLOAT, 0, &normalArray[0]);
 
@@ -148,7 +175,7 @@ void CResource_Mesh::Render()
 
   glTexCoordPointer(2, GL_FLOAT, 0, &uvArray[0]);
 
-  glDrawArrays(GL_TRIANGLES, 0, numTriangles);
+  glDrawArrays(GL_TRIANGLES, 0, numTriangles);*/
 
   glDisableClientState(GL_VERTEX_ARRAY);
   glDisableClientState(GL_NORMAL_ARRAY);
