@@ -26,6 +26,24 @@ class CSystem_UserInput: public CSystem
   friend class CSystem_Debug;
 
   protected:
+    class CButton
+    {
+        friend class CSystem_UserInput;
+        friend class CMouse;
+        friend class CJoystick;
+
+      protected:
+        GO_Keystates::keystate_t state;
+        Uint8 button;
+        string button_name;
+
+      public:
+        GO_Keystates::keystate_t operator()(){return state;}
+        GO_Keystates::keystate_t State(){return state;}
+        Uint8 Button(){return button;}
+        string ButtonName(){return button_name;}
+    };
+
     class CKey
     {
       friend class CSystem_UserInput;
@@ -41,7 +59,7 @@ class CSystem_UserInput: public CSystem
         const char* KeyName() {return SDL_GetScancodeName(key);}
     };
 
-    class CAxis
+    class CKeyAxis
     {
       friend class CSystem_UserInput;
 
@@ -50,6 +68,60 @@ class CSystem_UserInput: public CSystem
        float horizontal;
 
        CKey v_up, v_down, h_left, h_right;
+    };
+
+    class CAxis
+    {
+      friend class CSystem_UserInput;
+
+      public:
+       float value;
+    };
+
+    class CMouse
+    {
+      friend class CSystem_UserInput;
+
+      protected:
+        bool moved, scrolled;
+        bool mouse1_key, mouse2_key, mouse3_key;
+
+      public:
+        int x, y;
+        float y_vel, x_vel;
+
+        int wheel_x, wheel_y;
+
+        CButton mouse1, mouse2, mouse3; // mouseX1, mouseX2;
+
+        void OnLoop();
+        void OnEvent();
+        void OnKeyEvent();
+
+    };
+
+    class CJoystick
+    {
+      friend class CSystem;
+
+      protected:
+        SDL_Joystick* joystick;
+
+        vector<CAxis> axis;
+        vector<CAxis[2]> balls;
+        vector<CButton> buttons;
+
+        void Init();
+        void Close();
+
+        void OnEvent();
+        void OnKeyEvent();
+        void OnLoop();
+
+      public:
+        vector<CAxis> GetAxis(){return axis;}
+        vector<CAxis[2]> GetBalls(){return balls;}
+        vector<CButton> GetButtons() {return buttons;}
     };
 
     // raw keyboard
@@ -71,45 +143,10 @@ class CSystem_UserInput: public CSystem
     CKey jump;    // space
 
       // Mouse
-    class CMouse
-    {
-      friend class CSystem_UserInput;
-
-      protected:
-        class CButton
-        {
-          friend class CSystem_UserInput;
-          friend class CMouse;
-
-          protected:
-            GO_Keystates::keystate_t state;
-            Uint8 button;
-            string button_name;
-
-          public:
-            GO_Keystates::keystate_t operator()() {return state;}
-            GO_Keystates::keystate_t State(){return state;}
-            Uint8 Button() {return button;}
-            string ButtonName(){ return button_name;}
-        };
-
-        bool moved, scrolled;
-        bool mouse1_key, mouse2_key, mouse3_key;
-
-      public:
-        int x, y;
-        float y_vel, x_vel;
-
-        int wheel_x, wheel_y;
-
-        CButton mouse1, mouse2, mouse3; // mouseX1, mouseX2;
-
-        void OnLoop();
-        void OnEvent();
-        void OnKeyEvent();
-
-    };
     CMouse mouse;
+
+      // Joysticks
+    vector<CJoystick> joysticks;
 
   public:
     CSystem_UserInput(): CSystem() {};
