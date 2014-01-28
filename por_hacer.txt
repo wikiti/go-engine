@@ -1,4 +1,6 @@
-﻿- Cambiar nombres de las funciones "OnEvent" por algo más intuitivo, como "OnUserInput" o "OnInput".
+﻿- Hacer una especie de "interfaz" para cada componente para poder modificar atributos (se le pasa un string a una funcion "ParseInput" o algo y se analiza).
+- Cambiar nombres de las funciones "OnEvent" por algo más intuitivo, como "OnUserInput" o "OnInput".
+- Añadir un función al sistema Debug para prestar una opción de autocompletado de comandos (sencillo, comandos almacenados en un map).
 x- Crear skybox
 x- Recompilar glew
 - Añadir threads o hilos distintos para el render y para la lógica.

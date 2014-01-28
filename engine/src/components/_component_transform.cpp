@@ -25,12 +25,12 @@ void CComponent_Transform::InitRenderVBO()
   };
 
   glGenBuffers( 1, &vertex_transformVBO );
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, vertex_transformVBO );
-  glBufferData( GL_ARRAY_BUFFER_ARB, 6*3*sizeof(GLfloat), transform_vertex, GL_STATIC_DRAW_ARB );
+  glBindBuffer( GL_ARRAY_BUFFER, vertex_transformVBO );
+  glBufferData( GL_ARRAY_BUFFER, 6*3*sizeof(GLfloat), transform_vertex, GL_STATIC_DRAW );
 
   glGenBuffers( 1, &colors_transformVBO );
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, colors_transformVBO );
-  glBufferData( GL_ARRAY_BUFFER_ARB, 6*3*sizeof(GLfloat), colors_vertex, GL_STATIC_DRAW_ARB );
+  glBindBuffer( GL_ARRAY_BUFFER, colors_transformVBO );
+  glBufferData( GL_ARRAY_BUFFER, 6*3*sizeof(GLfloat), colors_vertex, GL_STATIC_DRAW );
 }
 
 void CComponent_Transform::CloseRenderVBO()
@@ -68,9 +68,9 @@ void CComponent_Transform::OnRender()
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_COLOR_ARRAY);
 
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, vertex_transformVBO );
+  glBindBuffer( GL_ARRAY_BUFFER, vertex_transformVBO );
   glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, colors_transformVBO );
+  glBindBuffer( GL_ARRAY_BUFFER, colors_transformVBO );
   glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
 
   glDrawArrays( GL_LINES, 0, 6 );

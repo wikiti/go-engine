@@ -76,19 +76,20 @@ bool CSystem_Render::Init()
     return false;
   }
 
-  if(!glewIsSupported("GL_ARB_multitexture"))
+  /*if(!glewIsSupported("GL_multitexture"))
   {
-    gSystem_Debug.error("From CSystem_Render: GLEW error: GL_ARB_multitexture NOT supported!");
+    gSystem_Debug.error("From CSystem_Render: GLEW error: GL_multitexture NOT supported!");
     return false;
   }
 
-  if(!glewIsSupported("GL_ARB_vertex_buffer_object"))
+  if(!glewIsSupported("GL_vertex_buffer_object"))
   {
-    gSystem_Debug.error("From CSystem_Render: GLEW error: GL_ARB_vertex_buffer_object NOT supported!");
+    gSystem_Debug.error("From CSystem_Render: GLEW error: GL_vertex_buffer_object NOT supported!");
     return false;
-  }
+  }*/
 
   InitSkyboxVBO();
+  InitGridVBO();
 
   current_camera = -1;
 
@@ -135,19 +136,69 @@ void CSystem_Render::InitSkyboxVBO()
   };
 
   glGenBuffers( 1, &m_SkyboxVBOVertices );
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, m_SkyboxVBOVertices );
-  glBufferData( GL_ARRAY_BUFFER_ARB, m_nSkyboxVertexCount*3*sizeof(GLfloat), m_pVertices, GL_STATIC_DRAW_ARB );
+  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOVertices );
+  glBufferData( GL_ARRAY_BUFFER, m_nSkyboxVertexCount*3*sizeof(GLfloat), m_pVertices, GL_STATIC_DRAW );
 
   glGenBuffers( 1, &m_SkyboxVBOTexCoords );
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, m_SkyboxVBOTexCoords );
-  glBufferData( GL_ARRAY_BUFFER_ARB, m_nSkyboxVertexCount*2*sizeof(GLfloat), m_pTexCoords, GL_STATIC_DRAW_ARB );
+  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOTexCoords );
+  glBufferData( GL_ARRAY_BUFFER, m_nSkyboxVertexCount*2*sizeof(GLfloat), m_pTexCoords, GL_STATIC_DRAW );
+}
+
+void CSystem_Render::InitGridVBO()
+{
+  // Lines vertex
+  const GLfloat pVertices[][3] =
+  {
+      // White lines
+    {0.f, 0.f, 0.f}, {0.f, 0.f, 1.f},
+    {0.f, 0.f, 1.f}, {1.f, 0.f, 1.f},
+    {1.f, 0.f, 1.f}, {1.f, 0.f, 0.f},
+    {1.f, 0.f, 0.f}, {0.f, 0.f, 0.f},
+
+      // Grey lines
+    // Verticals
+    {0.f, 0.f, 0.25f}, {1.f, 0.f, 0.25f},
+    {0.f, 0.f, 0.50f}, {1.f, 0.f, 0.50f},
+    {0.f, 0.f, 0.75f}, {1.f, 0.f, 0.75f},
+
+    // Horizontals
+    {0.25f, 0.f, 0.f}, {0.25f, 0.f, 1.f},
+    {0.50f, 0.f, 0.f}, {0.50f, 0.f, 1.f},
+    {0.75f, 0.f, 0.f}, {0.75f, 0.f, 1.f}
+  };
+
+  const GLfloat pColors[][3] =
+  {
+    {1.f, 1.f, 1.f}, {1.f, 1.f, 1.f},
+    {1.f, 1.f, 1.f}, {1.f, 1.f, 1.f},
+    {1.f, 1.f, 1.f}, {1.f, 1.f, 1.f},
+    {1.f, 1.f, 1.f}, {1.f, 1.f, 1.f},
+    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
+    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
+    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
+    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
+    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
+    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f}
+  };
+
+  glGenBuffers( 1, &m_GridVBOVertices );
+  glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
+  glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pVertices, GL_STATIC_DRAW );
+
+  glGenBuffers( 1, &m_GridVBOColors );
+  glBindBuffer( GL_ARRAY_BUFFER,m_GridVBOColors );
+  glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pColors, GL_STATIC_DRAW );
+
 }
 
 void CSystem_Render::Close()
 {
   //Destroy VBOs
-  glDeleteBuffers( 1, &m_SkyboxVBOTexCoords );
-  glDeleteBuffers( 1, &m_SkyboxVBOVertices );
+  glDeleteBuffers(1, &m_SkyboxVBOTexCoords);
+  glDeleteBuffers(1, &m_SkyboxVBOVertices);
+
+  glDeleteBuffers(1, &m_GridVBOVertices);
+  glDeleteBuffers(1, &m_GridVBOColors);
 
   // Other renders
   CComponent_Transform::CloseRenderVBO();
@@ -368,12 +419,12 @@ void CSystem_Render::RenderGrid(int rows, int cols)
 
   glBindTexture(GL_TEXTURE_2D, 0);
 
-  GLfloat cols_size = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_COLS_SIZE");
-  GLfloat rows_size = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_ROWS_SIZE");
+  GLfloat cols_scale = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_COLS_SCALE");
+  GLfloat rows_scale = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_ROWS_SCALE");
 
-  glTranslatef((-cols*cols_size)/2.f, 0.f, -(rows*rows_size)/2.f);
+  glTranslatef(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f);
 
-  glBegin(GL_LINES);
+  /*glBegin(GL_LINES);
     // Horizontal lines.
 
     for (int i = 0; i <= rows; i++)
@@ -393,7 +444,31 @@ void CSystem_Render::RenderGrid(int rows, int cols)
       glVertex3f(i*rows_size, 0, 0);
       glVertex3f(i*rows_size, 0, rows*rows_size);
     }
-  glEnd();
+  glEnd();*/
+
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glEnableClientState(GL_COLOR_ARRAY);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
+  glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
+  glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
+  glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
+
+  glScalef(rows_scale, 0.f, cols_scale);
+
+  // Usar mejor glDrawArraysInstanced(), o algo
+  for (int i = 0; i <= rows; i++)
+  {
+    for(int j = 0; j <= cols; j++)
+    {
+      glDrawArrays( GL_LINES, 0, 20 );
+      glTranslatef(0.f, 0.f, 1.f);
+    }
+    glTranslatef(1.f, 0.f, -(cols + 1));
+  }
+
+  glDisableClientState(GL_VERTEX_ARRAY);
+  glDisableClientState(GL_COLOR_ARRAY);
 
   glPopMatrix();
 }
@@ -420,9 +495,9 @@ bool CSystem_Render::DrawSkybox(CComponent_Camera* cam)
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_SkyboxVBOVertices );
+  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOVertices );
   glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
-  glBindBufferARB( GL_ARRAY_BUFFER_ARB, m_SkyboxVBOTexCoords );
+  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOTexCoords );
   glTexCoordPointer( 2, GL_FLOAT, 0, (char *) NULL );
 
   glDrawArrays( GL_QUADS, 0, m_nSkyboxVertexCount );

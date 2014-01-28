@@ -5,7 +5,7 @@ bool SetGameObjects_Instance1()
   CGameObject* camara_main = gGameObjects.AddGameObject("camara_main");
   camara_main->Camera()->skybox_texture = "skybox1";
   camara_main->Transform()->position.y += 3.f;
-  camara_main->Transform()->position.z -= 20.f;
+  camara_main->Transform()->position.z -= 10.f;
 
   camara_main->SetKeyEventFunction(&Camara_main_movimiento);
   //camara_main->SetKeyEventFunction(&Camara_mouse_movimiento);

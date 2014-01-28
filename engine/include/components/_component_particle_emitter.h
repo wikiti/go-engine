@@ -4,6 +4,8 @@
 #include "_globals.h"
 #include "components/_component.h"
 
+// Ver http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/particles-instancing/ para VBOs
+
 // falta activar los valores "maximos" durante la emisión de la partícula.
 class CComponent_Particle_Emitter: public CComponent
 {

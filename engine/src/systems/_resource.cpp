@@ -39,7 +39,6 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   }
 
   float *vertexArray, *normalArray, *uvArray;
-  int numUvCoords;
 
   numTriangles = mesh->mNumFaces*3;
   numUvCoords = mesh->GetNumUVChannels();
@@ -117,16 +116,16 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   if (mesh->HasPositions())       vertexArray -= mesh->mNumFaces*3*3;
 
   glGenBuffers( 1, &model_vertexVBO );
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_vertexVBO  );
-  glBufferData( GL_ARRAY_BUFFER_ARB, numTriangles*3*3*sizeof(GLfloat), vertexArray, GL_STATIC_DRAW_ARB );
+  glBindBuffer( GL_ARRAY_BUFFER, model_vertexVBO  );
+  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), vertexArray, GL_STATIC_DRAW );
 
   glGenBuffers( 1, &model_normalVBO );
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_normalVBO );
-  glBufferData( GL_ARRAY_BUFFER_ARB, numTriangles*3*3*sizeof(GLfloat), normalArray, GL_STATIC_DRAW_ARB );
+  glBindBuffer( GL_ARRAY_BUFFER, model_normalVBO );
+  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), normalArray, GL_STATIC_DRAW );
 
   glGenBuffers( 1, &model_uvArrayVBO );
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_uvArrayVBO );
-  glBufferData( GL_ARRAY_BUFFER_ARB, numTriangles*3*2*sizeof(GLfloat), uvArray, GL_STATIC_DRAW_ARB );
+  glBindBuffer( GL_ARRAY_BUFFER, model_uvArrayVBO );
+  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*2*sizeof(GLfloat), uvArray, GL_STATIC_DRAW );
 
   if(vertexArray) delete vertexArray;
   if(normalArray) delete normalArray;
@@ -158,20 +157,20 @@ void CResource_Mesh::Render()
   glEnableClientState(GL_NORMAL_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_vertexVBO );
+  glBindBuffer( GL_ARRAY_BUFFER, model_vertexVBO );
   glVertexPointer(3,GL_FLOAT, 0, (char* )NULL);
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_normalVBO );
+  glBindBuffer( GL_ARRAY_BUFFER, model_normalVBO );
   glNormalPointer(GL_FLOAT, 0, (char* )NULL);
-  glBindBuffer( GL_ARRAY_BUFFER_ARB, model_uvArrayVBO );
+  glBindBuffer( GL_ARRAY_BUFFER, model_uvArrayVBO );
   glTexCoordPointer(2, GL_FLOAT, 0, (char* )NULL);
 
   glDrawArrays(GL_TRIANGLES, 0, numTriangles);
 
-  /*glBindBuffer( GL_ARRAY_BUFFER_ARB, 0);
+  /*glBindBuffer( GL_ARRAY_BUFFER, 0);
   glVertexPointer(3,GL_FLOAT, 0, &vertexArray[0]);
   glNormalPointer(GL_FLOAT, 0, &normalArray[0]);
 
-  //glClientActiveTexture(GL_TEXTURE0_ARB);
+  //glClientActiveTexture(GL_TEXTURE0);
 
   glTexCoordPointer(2, GL_FLOAT, 0, &uvArray[0]);
 

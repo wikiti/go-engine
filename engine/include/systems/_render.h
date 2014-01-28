@@ -24,6 +24,10 @@ class CSystem_Render: public CSystem
     unsigned int    m_SkyboxVBOVertices;                     // Vertex VBO Name
     unsigned int    m_SkyboxVBOTexCoords;                    // Texture Coordinate VBO Name
 
+    // Grid VBO
+    unsigned int    m_GridVBOVertices;                     // Vertex VBO Name
+    unsigned int    m_GridVBOColors;                       // Vertex VBO Name
+
     //bool multitexture_supported;
     //bool vbos_supported;
 
@@ -76,6 +80,7 @@ class CSystem_Render: public CSystem
 
     virtual bool Init();
       void InitSkyboxVBO();
+      void InitGridVBO();
     virtual void Close();
 
     // Usar booleanos (o algo)
