@@ -28,11 +28,16 @@ class CComponent_Particle_Emitter: public CComponent
         GLfloat scale_factor;
 
         string material_name;
+      public:
+        CParticle();
     };
 
     vector<CParticle*> particles;
 
     void NewParticle(CParticle* p, vector3f go_pos);
+
+    // Aux
+    float new_particles;
 
   public:
     // GameObject stuff
@@ -40,6 +45,7 @@ class CComponent_Particle_Emitter: public CComponent
 
     // Se podrían usar varios materiales, con una probabilidad P(X)c[0.f, 1.f] de que una particula use el material X
     uint max_particles;
+    GLfloat particles_per_second;
     string material_name;
     //vector<string> materials; // random materials, pero esto se podría conseguir con 2 emisores de partículas...
 
@@ -58,6 +64,7 @@ class CComponent_Particle_Emitter: public CComponent
     GLfloat max_angle_vel, min_angle_vel;
     GLfloat max_scale, min_scale;
     //GLfloat max_live_time, min_live_time;
+    colorf_t max_color, min_color;
 
     // Start values
     GLfloat start_max_life_time, start_min_life_time;

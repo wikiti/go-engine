@@ -1436,7 +1436,13 @@ void CSystem_Debug::Console_command__R_FPS(string arguments)
     return;
   }
 
-  console_msg("FPS: %f", gEngine.fps());
+  GLdouble fps = gEngine.fps();
+  if(fps < 10)
+    console_error_msg("FPS: %f", gEngine.fps());
+  else if(fps < 30)
+    console_warning_msg("FPS: %f", gEngine.fps());
+  else
+    console_msg("FPS: %f", gEngine.fps());
 }
 
 void CSystem_Debug::Console_command__R_DRAW_SOUND(string arguments)

@@ -113,10 +113,13 @@ void CInstance::CalculateFPS()
   current_time = SDL_GetTicks();
   int timeInterval = current_time - previous_time;
 
-  if(timeInterval > 1000)
+  //FPS = 1/(timeInterval/1000.f);
+  //previous_time = current_time;
+
+  if(timeInterval > 10)
   {
-     FPS = frames / (timeInterval / 1000.0f);
-     previous_time = current_time;
-     frames = 0;
+    FPS = frames / (timeInterval / 1000.0f);
+    previous_time = current_time;
+    frames = 0;
   }
 }

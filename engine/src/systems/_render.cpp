@@ -401,7 +401,6 @@ void CSystem_Render::OnRender()
   // Render GUI
   glClear(GL_DEPTH_BUFFER_BIT);
   //glDisable(GL_DEPTH_TEST);
-  glLoadIdentity();
 
   GUI_Camera->Camera()->SetViewport();
   GUI_Camera->Camera()->SetUp();
@@ -410,6 +409,7 @@ void CSystem_Render::OnRender()
   {
     (*it)->OnRender();
   }
+
   //glEnable(GL_DEPTH_TEST);
 }
 

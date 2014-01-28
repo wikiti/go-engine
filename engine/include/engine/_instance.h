@@ -15,7 +15,7 @@ class CInstance
     string resource_file;
 
     /** FPS **/
-    GLfloat FPS;
+    GLdouble FPS;
     uint frames;
     Uint32 current_time, previous_time;
 
@@ -35,7 +35,7 @@ class CInstance
     void OnRender();
     void CalculateFPS();
 
-    GLfloat fps()
+    GLdouble fps()
     {
       return FPS;
     }

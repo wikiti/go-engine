@@ -5,6 +5,15 @@
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Particle_Emitter);
 
+CComponent_Particle_Emitter::CParticle::CParticle()
+{
+  active = false;
+  life = -1.f;
+
+  position = velocity = scale = acceleration = vector3f_t();
+  angle = angle_velocity = angle_acceleration = scale_factor = 0.f;
+}
+
 CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject): CComponent(gameObject)
 {
   material_name = "";
@@ -19,6 +28,9 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
 
   max_angle_vel = min_angle_vel = 0.f;
   max_scale = min_scale = 1.f;
+
+  min_color = colorf_t(0.f, 0.f, 0.f, 0.f);
+  max_color = colorf_t(1.f, 1.f, 1.f, 1.f);
 
   // Start values
   start_max_life_time = 2.f;
@@ -38,6 +50,7 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
   start_max_base_radius = start_min_base_radius = 0.f;
 
   max_particles = 100;
+  particles_per_second = 100;
   particles.resize(0);
 
   gravity(0.f, -9.81f, 0.f);
@@ -45,11 +58,16 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
   start_max_color(1.f, 1.f, 1.f, 1.f);
   start_min_color(1.f, 1.f, 1.f, 1.f);
   color_adder(0.f, 0.f, 0.f, 0.f);
+
+  //for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+    //(*it) = new CParticle;
+  new_particles = 0;
 }
 
 CComponent_Particle_Emitter::~CComponent_Particle_Emitter()
 {
-
+  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+    delete (*it);
 }
 
 void CComponent_Particle_Emitter::Start()
@@ -70,13 +88,24 @@ void CComponent_Particle_Emitter::Start()
     last_pos = current_pos;
   }
 
+  // If it's already started, we must kill (delete) the old particles.
+  if(particles.size())
+  {
+    for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+      delete (*it);
+
+    particles.clear();
+    particles.resize(max_particles);
+  }
+
+  float new_particles = particles_per_second * gSystem_Time.GetTicks_s();
+
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
-    //bool active;
-    //GLfloat live, fade;
     (*it) = new CParticle;
 
-    NewParticle(*it, pos_difference);
+    if((int)new_particles and (it - particles.begin()) < new_particles)  // Even if new_particles is bigger that max_particles, there will be up to max_particles updates (particles.size())
+      NewParticle(*it, pos_difference);
   }
 }
 
@@ -206,28 +235,55 @@ void CComponent_Particle_Emitter::OnLoop()
     last_pos = current_pos;
   }
 
+  // Now, count how many particles should we add to the emitter (if necesary) defined by particles_per_second.
+  float new_particles_iteration = particles_per_second * gSystem_Time.deltaTime_s();
+  new_particles += new_particles_iteration;
+  int added_particles = 0;
+
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
-    (*it)->position += (*it)->velocity * gTime.deltaTime_s() + pos_difference;
-    (*it)->velocity += (*it)->acceleration * gTime.deltaTime_s();
-    (*it)->color += (color_adder * gTime.deltaTime_s());
-    gMath.NormalizeColor((*it)->color);
-
-    (*it)->angle += (*it)->angle_velocity * gTime.deltaTime_s();
-    gMath.NormalizeAngle((*it)->angle);
-
-    (*it)->scale.x += (*it)->scale_factor * gTime.deltaTime_s();
-    (*it)->scale.y += (*it)->scale_factor * gTime.deltaTime_s();
-    (*it)->scale.z += (*it)->scale_factor * gTime.deltaTime_s();
-
-    (*it)->life -= gTime.deltaTime_s();
-    //if((*it)->life < 0 ) (*it)->life = 0.f;
-
-    if((*it)->life < 0 && !stop)
+    if((*it)->life >= 0 and (*it)->active)
     {
-      //delete (*it);
-      //(*it) = new CParticle;
+        // Update values
+      (*it)->position += (*it)->velocity * gTime.deltaTime_s() + pos_difference;
+      (*it)->velocity += (*it)->acceleration * gTime.deltaTime_s();
+      (*it)->color += (color_adder * gTime.deltaTime_s());
+      gMath.NormalizeColor((*it)->color);
+
+      (*it)->angle += (*it)->angle_velocity * gTime.deltaTime_s();
+      gMath.NormalizeAngle((*it)->angle);
+
+      (*it)->scale.x += (*it)->scale_factor * gTime.deltaTime_s();
+      (*it)->scale.y += (*it)->scale_factor * gTime.deltaTime_s();
+      (*it)->scale.z += (*it)->scale_factor * gTime.deltaTime_s();
+
+      (*it)->life -= gTime.deltaTime_s();
+      //if((*it)->life < 0 ) (*it)->life = 0.f;
+
+        // Control values
+      // Speed
+      // Angle
+      // Scale
+      // Position
+      // etc
+      // Color
+      if((*it)->color.r < min_color.r) (*it)->color.r = min_color.r;
+      if((*it)->color.g < min_color.g) (*it)->color.g = min_color.g;
+      if((*it)->color.b < min_color.b) (*it)->color.b = min_color.b;
+      if((*it)->color.a < min_color.a) (*it)->color.a = min_color.a;
+
+      if((*it)->color.r > max_color.r) (*it)->color.r = max_color.r;
+      if((*it)->color.g > max_color.g) (*it)->color.g = max_color.g;
+      if((*it)->color.b > max_color.b) (*it)->color.b = max_color.b;
+      if((*it)->color.a > max_color.a) (*it)->color.a = max_color.a;
+    }
+    else if((*it)->life < 0 and !stop and (int)new_particles and added_particles < (int)new_particles)
+    {
       NewParticle(*it, pos_difference);
+      added_particles++;
     }
   }
+
+  if(((int)new_particles) > 0)  // If enough time has elapsed, lets reset this var.
+    new_particles = 0;
 };

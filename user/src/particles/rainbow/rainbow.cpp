@@ -12,6 +12,10 @@ bool SetGameObjects_Instance1_Rainbow()
   CGameObject* rainbow_orange = gGameObjects.AddGameObject("rainbow_orange");
   CGameObject* rainbow_red = gGameObjects.AddGameObject("rainbow_red");
 
+  CGameObject* rainbow = gGameObjects.AddGameObject("rainbow");
+  rainbow->AddChildren({rainbow_violet, rainbow_dblue, rainbow_blue, rainbow_green, rainbow_yellow, rainbow_orange, rainbow_red});
+  rainbow->Transform()->position.y += 3.f;
+
   rainbow_violet->Transform()->position.x += 3.f;
   rainbow_dblue->Transform()->position.x += 2.5f;
   rainbow_blue->Transform()->position.x += 2.f;
@@ -38,14 +42,21 @@ bool SetGameObjects_Instance1_Rainbow()
 //  rainbow_orange->particleEmitter()->start_max_base_radius = rainbow_orange->particleEmitter()->start_min_base_radius = 2.f;
 //  rainbow_red->particleEmitter()->start_max_base_radius = rainbow_red->particleEmitter()->start_min_base_radius = 2.f;
 
-  //rainbow_violet->particleEmitter()->max_particles = 2000;
-  /*rainbow_violet->particleEmitter()->max_particles = 500;
-   rainbow_dblue->particleEmitter()->max_particles = 500;
-   rainbow_blue->particleEmitter()->max_particles = 500;
-   rainbow_green->particleEmitter()->max_particles = 500;
-   rainbow_yellow->particleEmitter()->max_particles = 500;
-   rainbow_orange->particleEmitter()->max_particles = 500;
-   rainbow_red->particleEmitter()->max_particles = 500;*/
+    rainbow_violet->ParticleEmitter()->max_particles = 200;
+   rainbow_dblue->ParticleEmitter()->max_particles = 200;
+   rainbow_blue->ParticleEmitter()->max_particles = 200;
+   rainbow_green->ParticleEmitter()->max_particles = 200;
+   rainbow_yellow->ParticleEmitter()->max_particles = 200;
+   rainbow_orange->ParticleEmitter()->max_particles = 200;
+   rainbow_red->ParticleEmitter()->max_particles = 200;
+
+  rainbow_violet->ParticleEmitter()->particles_per_second = 200;
+  rainbow_dblue->ParticleEmitter()->particles_per_second = 200;
+  rainbow_blue->ParticleEmitter()->particles_per_second = 200;
+  rainbow_green->ParticleEmitter()->particles_per_second = 200;
+  rainbow_yellow->ParticleEmitter()->particles_per_second = 200;
+  rainbow_orange->ParticleEmitter()->particles_per_second = 200;
+  rainbow_red->ParticleEmitter()->particles_per_second = 200;
 
   rainbow_violet->ParticleEmitter()->material_name = "sprite1";
   rainbow_dblue->ParticleEmitter()->material_name = "sprite1";

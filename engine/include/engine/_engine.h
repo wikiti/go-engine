@@ -49,7 +49,7 @@ class CEngine
     void AddInstance(fboolpointer load_gameObject_function, string resource_file);
     void RemoveAllInstances();
 
-    GLfloat fps()
+    GLdouble fps()
     {
       return instances[current_instance]->fps();
     }

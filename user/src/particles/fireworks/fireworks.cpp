@@ -78,9 +78,10 @@ void Firework_Manager_KeyEvent(CGameObject* gameObject)
     trail->ParticleEmitter()->start_max_vel = 0.f;
     trail->ParticleEmitter()->start_min_vel = 0.f;
 
-    trail->ParticleEmitter()->start_min_color(1.f, 0.5f, 0.f, 1.f);
-    trail->ParticleEmitter()->start_max_color(1.f, 0.5f, 0.f, 1.f);
-    trail->ParticleEmitter()->color_adder(-0.2f, -0.1f, 0.f, 0.f);
+    trail->ParticleEmitter()->start_min_color(1.f, 0.5f, 0.12f, 1.f);
+    trail->ParticleEmitter()->start_max_color(1.f, 0.5f, 0.12f, 1.f);
+    trail->ParticleEmitter()->min_color(0.12f, 0.12f, 0.12f, 0.f);
+    trail->ParticleEmitter()->color_adder(-3.f, -1.5f, 0.f, 0.f);
 
     trail->ParticleEmitter()->start_max_vel = 0.5f;
     trail->ParticleEmitter()->start_min_vel = 0.f;

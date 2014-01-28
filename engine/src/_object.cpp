@@ -97,6 +97,18 @@ bool CGameObject::AddChild(CGameObject* ch)
   return false;
 }
 
+short int CGameObject::AddChildren(const vector<CGameObject*>& children)
+{
+  short int output = 1;
+
+  for(vector<CGameObject*>::const_iterator it = children.begin(); it != children.end(); it++)
+  {
+    if(!AddChild((*it)))
+      output = -(it - children.begin());
+  }
+  return output;
+}
+
 bool CGameObject::RemoveChild(string str)
 {
   map<string, CGameObject*>::iterator it = children.find(str);

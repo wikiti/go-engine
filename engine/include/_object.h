@@ -79,7 +79,11 @@ class CGameObject
 
     flags_t Get_flags() {return flags; } // Los flags sólo deberían ser maniplados por el objeto, no por el usuario
 
-    bool AddChild(CGameObject* children);
+    bool AddChild(CGameObject* child);
+    short int AddChildren(const vector<CGameObject*>& children); // Returns 1 on succes. Otherwise, returns the negative index of the last element which failed at AddChild (0, -1, -2, ..., -N)
+    //bool AddChildren(const std::initializer_list<CGameObject*>& init) { return }
+
+
     bool RemoveChild(string name);
     void RemoveChildren();
     CGameObject* GetChild(string name);
