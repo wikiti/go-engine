@@ -299,6 +299,14 @@ void CGameObject::SetState(bool state, bool recursive)
       it->second->SetState(state, true);
 }
 
+bool CGameObject::NearBy(CGameObject* go, double distance)
+{
+  if(go->Transform()->Position().distance_to(Transform()->Position()) < distance)
+    return true;
+
+  return false;
+}
+
 // ¿?¿?
 /*void CGameObject::OnRenderDebug()
 {

@@ -86,6 +86,7 @@ extern SDL_Event event;
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtx/norm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
@@ -423,7 +424,10 @@ typedef struct vector3f_t
     return vector3f_t(out.x, out.y, out.z);
   }
 
-
+  double distance_to(vector3f_t v)
+  {
+    return ((*this) - v).length();
+  }
 
 } vector3f;
 

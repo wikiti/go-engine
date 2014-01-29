@@ -200,6 +200,8 @@ class CGameObject
       return inited;
     }
 
+    bool NearBy(CGameObject* go, double distance);
+
     /** PLANTILLAS **/
     template <class Type>
     Type* GetComponent();

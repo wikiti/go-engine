@@ -112,6 +112,11 @@ class CSystem_Math: public CSystem
       return std::abs(val);
     }
 
+    float sqroot(float val)
+    {
+      return std::sqrt(val);
+    }
+
     // trigonometría
     inline void NormalizeAngles(GLfloat &deg_x, GLfloat &deg_y, GLfloat &deg_z)
     {
@@ -189,6 +194,11 @@ class CSystem_Math: public CSystem
     }
 
     // vector
+
+    double distance(vector3f_t v1, vector3f v2)
+    {
+      return (v1 - v2).length();
+    }
 
   public:
 

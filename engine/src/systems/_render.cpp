@@ -8,6 +8,7 @@
 #include "systems/_data.h"
 #include "systems/_manager.h"
 #include "systems/_resource.h"
+#include "systems/_shader.h"
 
 #include "engine/_engine.h"
 
@@ -189,6 +190,11 @@ void CSystem_Render::InitGridVBO()
   glBindBuffer( GL_ARRAY_BUFFER,m_GridVBOColors );
   glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pColors, GL_STATIC_DRAW );
 
+  // Shader test
+  if(!gSystem_Shader_Manager.LoadShader("simpleShader", "data/shaders/simple.vert", "data/shaders/simple.frag"))
+  {
+    gSystem_Debug.msg_box("SHADER ERROR!", "SHADER ERROR!!");
+  }
 }
 
 void CSystem_Render::Close()
@@ -413,6 +419,10 @@ void CSystem_Render::OnRender()
   //glEnable(GL_DEPTH_TEST);
 }
 
+// http://www.opengl.org/wiki/Tutorial1:_Rendering_shapes_with_glDrawRangeElements,_VAO,_VBO,_shaders_(C%2B%2B_/_freeGLUT)
+// http://www.opengl.org/wiki/Tutorial2:_VAOs,_VBOs,_Vertex_and_Fragment_Shaders_(C_/_SDL)
+// !! http://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/attributes.php
+
 void CSystem_Render::RenderGrid(int rows, int cols)
 {
   glPushMatrix();
@@ -422,7 +432,12 @@ void CSystem_Render::RenderGrid(int rows, int cols)
   GLfloat cols_scale = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_COLS_SCALE");
   GLfloat rows_scale = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_ROWS_SCALE");
 
-  glTranslatef(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f);
+  GLfloat p_projection_matrix[16];
+  glGetFloatv(GL_PROJECTION_MATRIX, p_projection_matrix);
+
+  GLfloat p_modelview_matrix[16];
+  glGetFloatv(GL_MODELVIEW_MATRIX, p_modelview_matrix);
+  glm::mat4 modelview_matrix = glm::make_mat4(p_modelview_matrix);
 
   /*glBegin(GL_LINES);
     // Horizontal lines.
@@ -446,6 +461,11 @@ void CSystem_Render::RenderGrid(int rows, int cols)
     }
   glEnd();*/
 
+  CShader* simpleShader = gSystem_Shader_Manager.GetShader("simpleShader");
+  glUseProgram(simpleShader->GetProgram());
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, &p_projection_matrix[0]);
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelview_matrix));
+
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_COLOR_ARRAY);
 
@@ -454,21 +474,28 @@ void CSystem_Render::RenderGrid(int rows, int cols)
   glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
   glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
 
-  glScalef(rows_scale, 0.f, cols_scale);
+  glBindAttribLocation("in_Color");
 
-  // Usar mejor glDrawArraysInstanced(), o algo
+  modelview_matrix = glm::translate(modelview_matrix, glm::vec3(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f)); //glTranslatef(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f);
+  modelview_matrix = glm::scale(modelview_matrix, glm::vec3(rows_scale, 0.f, cols_scale)); //glScalef(rows_scale, 0.f, cols_scale);
+
+  // Usar mejor glDrawArraysInstanced(), o algo, ya que esto es muy lento (n*m)
   for (int i = 0; i <= rows; i++)
   {
     for(int j = 0; j <= cols; j++)
     {
+      glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE,  glm::value_ptr(modelview_matrix));
       glDrawArrays( GL_LINES, 0, 20 );
-      glTranslatef(0.f, 0.f, 1.f);
+      modelview_matrix = glm::translate(modelview_matrix, glm::vec3(0.f, 0.f, 1.f));        //glTranslatef(0.f, 0.f, 1.f);
     }
-    glTranslatef(1.f, 0.f, -(cols + 1));
+
+    modelview_matrix = glm::translate(modelview_matrix, glm::vec3(1.f, 0.f, -(cols + 1)));  //glTranslatef(1.f, 0.f, -(cols + 1));
   }
 
   glDisableClientState(GL_VERTEX_ARRAY);
   glDisableClientState(GL_COLOR_ARRAY);
+
+  glUseProgram(0);
 
   glPopMatrix();
 }

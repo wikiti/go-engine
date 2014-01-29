@@ -60,11 +60,11 @@ bool Systems_Init()
     return false;
   }
 
-  /*if(!gSystem_Shader_Manager.Init())
+  if(!gSystem_Shader_Manager.Init())
   {
     gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load Shader system");
     return false;
-  }*/
+  }
 
   return true;
 }
@@ -81,7 +81,7 @@ void Systems_Close()
   gSystem_Math.Close();
   gSystem_Mixer.Close();
   gSystem_UserInput.Close();
-  //gSystem_Shader_Manager.Close();
+  gSystem_Shader_Manager.Close();
 }
 
 void Systems_OnEvent()
