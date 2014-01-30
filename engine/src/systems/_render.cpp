@@ -147,6 +147,9 @@ void CSystem_Render::InitSkyboxVBO()
 
 void CSystem_Render::InitGridVBO()
 {
+  m_GridVBO_numcols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
+  m_GridVBO_numrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
+
   // Lines vertex
   const GLfloat pVertices[][3] =
   {
@@ -184,16 +187,55 @@ void CSystem_Render::InitGridVBO()
 
   glGenBuffers( 1, &m_GridVBOVertices );
   glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
-  glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pVertices, GL_STATIC_DRAW );
+  glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pVertices, GL_DYNAMIC_DRAW );
 
   glGenBuffers( 1, &m_GridVBOColors );
   glBindBuffer( GL_ARRAY_BUFFER,m_GridVBOColors );
-  glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pColors, GL_STATIC_DRAW );
+  glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pColors, GL_DYNAMIC_DRAW );
 
   // Shader test
-  if(!gSystem_Shader_Manager.LoadShader("simpleShader", "data/shaders/simple.vert", "data/shaders/simple.frag"))
+  if(!gSystem_Shader_Manager.LoadShader("simpleShader", "data/shaders/simple.vert", "data/shaders/simple.frag") or !gSystem_Shader_Manager.CompileShader("simpleShader"))
   {
     gSystem_Debug.msg_box("SHADER ERROR!", "SHADER ERROR!!");
+  }
+}
+
+void CSystem_Render::UpdateSkyboxVBO()
+{
+  if( m_GridVBO_numcols > 0 and m_GridVBO_numrows > 0)
+  {
+                        /*                 White lines                 */
+    int nLines = (m_GridVBO_numcols + 1) + (m_GridVBO_numrows + 1); // +...
+
+    vector< vector<GLfloat> > pVertices; pVertices.reserve(nLines*2);
+    vector< vector<GLfloat> > pColors; pColors.reserve(nLines*2);
+
+    // White vertical lines
+    uint index = 0;
+    for(float i = 0; i < m_GridVBO_numcols; i++, index++)
+    {
+      pVertices.push_back({i, 0, 0});
+      pVertices.push_back({i, 0, (float)m_GridVBO_numcols});
+
+      pColors.push_back({1.f, 1.f, 1.f});
+      pColors.push_back({1.f, 1.f, 1.f});
+    }
+    // White horizontal lines
+    for(float i = 0; i < m_GridVBO_numrows; i++, index++)
+    {
+      pVertices.push_back({0, 0, i});
+      pVertices.push_back({(float)m_GridVBO_numrows, 0, i});
+
+      pColors.push_back({0.5f, 0.5f, 0.5f});
+      pColors.push_back({0.5f, 0.5f, 0.5f});
+    }
+
+
+    glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
+    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), &pVertices[0], GL_STATIC_DRAW );
+
+    glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
+    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), &pColors[0], GL_STATIC_DRAW );
   }
 }
 
@@ -300,12 +342,13 @@ void CSystem_Render::RemoveCamera(const string& camera)
 
 void CSystem_Render::OnLoop()
 {
-  GLenum error = glGetError();
+  /*GLenum error = glGetError();
   if(error != GL_NO_ERROR)
   {
     //gSystem_Debug.msg_box(debug::error, ERROR_RENDER, "From CSystem_Render: OpenGL error: %s", gluErrorString(error) );
-    gSystem_Debug.console_error_msg("From CSystem_Render: OpenGL error: %s", gluErrorString(error));
-  }
+    gSystem_Debug.console_error_msg("From CSystem_Render: OpenGL error %d: %s", error, gluErrorString(error));
+  }*/
+  __GL_CHECK_ERRORS();
 }
 
 void CSystem_Render::OnRender()
@@ -332,7 +375,7 @@ void CSystem_Render::OnRender()
 
 
     // Draw Skybox
-    DrawSkybox(cam);
+    RenderSkybox(cam);
     if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID") )
       RenderGrid(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS"), gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS"));
 
@@ -463,6 +506,11 @@ void CSystem_Render::RenderGrid(int rows, int cols)
 
   CShader* simpleShader = gSystem_Shader_Manager.GetShader("simpleShader");
   glUseProgram(simpleShader->GetProgram());
+
+  modelview_matrix = glm::translate(modelview_matrix, glm::vec3(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f)); //glTranslatef(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f);
+  modelview_matrix = glm::scale(modelview_matrix, glm::vec3(rows_scale, 0.f, cols_scale)); //glScalef(rows_scale, 0.f, cols_scale);
+
+
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, &p_projection_matrix[0]);
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelview_matrix));
 
@@ -474,22 +522,17 @@ void CSystem_Render::RenderGrid(int rows, int cols)
   glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
   glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
 
-  glBindAttribLocation("in_Color");
-
-  modelview_matrix = glm::translate(modelview_matrix, glm::vec3(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f)); //glTranslatef(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f);
-  modelview_matrix = glm::scale(modelview_matrix, glm::vec3(rows_scale, 0.f, cols_scale)); //glScalef(rows_scale, 0.f, cols_scale);
+  //glBindAttribLocation("in_Color");
 
   // Usar mejor glDrawArraysInstanced(), o algo, ya que esto es muy lento (n*m)
   for (int i = 0; i <= rows; i++)
   {
     for(int j = 0; j <= cols; j++)
     {
-      glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE,  glm::value_ptr(modelview_matrix));
+      glUniform3f(simpleShader->GetUniformIndex("in_Translation") , i, 0, j);
       glDrawArrays( GL_LINES, 0, 20 );
-      modelview_matrix = glm::translate(modelview_matrix, glm::vec3(0.f, 0.f, 1.f));        //glTranslatef(0.f, 0.f, 1.f);
     }
 
-    modelview_matrix = glm::translate(modelview_matrix, glm::vec3(1.f, 0.f, -(cols + 1)));  //glTranslatef(1.f, 0.f, -(cols + 1));
   }
 
   glDisableClientState(GL_VERTEX_ARRAY);
@@ -501,7 +544,7 @@ void CSystem_Render::RenderGrid(int rows, int cols)
 }
 
 
-bool CSystem_Render::DrawSkybox(CComponent_Camera* cam)
+bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
 {
   if(cam->skybox_texture == "")
     return false;

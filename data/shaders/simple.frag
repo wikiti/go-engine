@@ -1,8 +1,8 @@
 /* FRAG */
 
-attribute vec3 in_Color;
+attribute vec4 in_Color;
 
 void main(void)
 {
-    gl_FragColor = in_Color;
+    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.f);
 }

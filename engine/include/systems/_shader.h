@@ -14,6 +14,7 @@
 
 class CShader
 {
+  friend class CSystem_Shader_Manager;
   protected:
     map<string, int> shader_variables;
 
@@ -21,6 +22,8 @@ class CShader
     uint GeometricShader;
     uint FragmentShader;
     uint Program;
+
+    bool link_status;
 
     //enum type_t {attribute = false, uniform = true};
 
@@ -61,6 +64,7 @@ class CSystem_Shader_Manager: public CSystem
     //void OnLoop();
 
     CShader* LoadShader(const string& name, const string& vertFile, const string& fragFile = "", const string& geomFile = "");
+    CShader* CompileShader(const string& name);
     CShader* GetShader(const string& name);
 
   private:

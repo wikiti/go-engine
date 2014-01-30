@@ -8,6 +8,7 @@ CShader::CShader()
 {
   shader_variables.clear();
   VertexShader =  GeometricShader = FragmentShader = Program = 0;
+  link_status = false;
 }
 
 CShader::~CShader()
@@ -118,19 +119,17 @@ CShader* CSystem_Shader_Manager::LoadShader(const string& name, const string& ve
   return shaders[DEFAULT_SHADER];
 }
 
-CShader* CSystem_Shader_Manager::Load(const string& name, const string& vertexFile, const string& fragmentFile, const string& geometryFile)
+CShader* CSystem_Shader_Manager::CompileShader(const string& name)
 {
-  unsigned int vertShader = 0, fragShader = 0, geomShader = 0, programShader = 0;
-  bool loadStatus;
+  unsigned int programShader = 0;
 
-  // load and compile vertex. geometric and fragment sources
-  loadStatus = LoadShader(name, GL_VERTEX_SHADER, vertexFile, vertShader);
-  loadStatus &= LoadShader(name, GL_FRAGMENT_SHADER, fragmentFile, fragShader);
-  // if geometry file is provided, load it
-  if (geometryFile != "")
-    loadStatus &= LoadShader(name, GL_GEOMETRY_SHADER_EXT, geometryFile, geomShader);
+  map<string, CShader*>::iterator it = shaders.find(name);
+  if(it == shaders.end())
+    return NULL;
 
-  if (loadStatus)
+  if(it->second->link_status)
+    return it->second;
+  else
   {
     // create a program
     programShader = glCreateProgram();
@@ -139,12 +138,12 @@ CShader* CSystem_Shader_Manager::Load(const string& name, const string& vertexFi
       return NULL;
 
     // attach the vertex and fragment shader codes, and the geometric if available
-    glAttachShader(programShader, vertShader);
+    glAttachShader(programShader, it->second->VertexShader);
 
-    if (geomShader != 0)
-      glAttachShader(programShader, geomShader);
+    if (it->second->GeometricShader != 0)
+      glAttachShader(programShader, it->second->GeometricShader);
 
-    glAttachShader(programShader, fragShader);
+    glAttachShader(programShader, it->second->FragmentShader);
 
     // link
     glLinkProgram(programShader);
@@ -175,17 +174,38 @@ CShader* CSystem_Shader_Manager::Load(const string& name, const string& vertexFi
       return NULL;
     }
 
+    it->second->link_status = true;
     // the program has been loaded/linked successfully
-    CShader* theResult = new CShader;
-    theResult->SetVertShader(vertShader);
-    theResult->SetFragShader(fragShader);
-    theResult->SetGeomShader(geomShader);
-    theResult->SetProgram(programShader);
+    it->second->SetProgram(programShader);
 
-    return theResult;
+    return it->second;
   }
+}
 
-  return NULL;
+CShader* CSystem_Shader_Manager::Load(const string& name, const string& vertexFile, const string& fragmentFile, const string& geometryFile)
+{
+  unsigned int vertShader = 0, fragShader = 0, geomShader = 0;
+  bool loadStatus;
+
+  // load and compile vertex. geometric and fragment sources
+  loadStatus = LoadShader(name, GL_VERTEX_SHADER, vertexFile, vertShader);
+  loadStatus &= LoadShader(name, GL_FRAGMENT_SHADER, fragmentFile, fragShader);
+  // if geometry file is provided, load it
+  if (geometryFile != "")
+    loadStatus &= LoadShader(name, GL_GEOMETRY_SHADER_EXT, geometryFile, geomShader);
+
+  if(!loadStatus)
+    return NULL;
+  else
+  {
+    // the program has been loaded/linked successfully
+    CShader* output = new CShader;
+    output->SetVertShader(vertShader);
+    output->SetFragShader(fragShader);
+    output->SetGeomShader(geomShader);
+
+    return output;
+  }
 }
 
 void CSystem_Shader_Manager::Clear(CShader* inShader)

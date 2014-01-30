@@ -9,6 +9,7 @@ class CSystem_Render: public CSystem
   private:
     friend class CSystem_Debug;
     friend class CEngine;
+    friend class CInstance;
 
     // Draw primitives
     GLUquadricObj *quadratic;
@@ -27,6 +28,8 @@ class CSystem_Render: public CSystem
     // Grid VBO
     unsigned int    m_GridVBOVertices;                     // Vertex VBO Name
     unsigned int    m_GridVBOColors;                       // Vertex VBO Name
+    unsigned int    m_GridVBO_numcols;
+    unsigned int    m_GridVBO_numrows;
 
     //bool multitexture_supported;
     //bool vbos_supported;
@@ -80,6 +83,7 @@ class CSystem_Render: public CSystem
 
     virtual bool Init();
       void InitSkyboxVBO();
+        void UpdateSkyboxVBO();
       void InitGridVBO();
     virtual void Close();
 
@@ -126,10 +130,11 @@ class CSystem_Render: public CSystem
     void RemoveCamera(const string& camera);
 
     //inline void RenderGameObject(CGameObject* go);
+  protected:
     void OnLoop();
     void OnRender();
       void RenderGrid(int rows = 20, int cols = 20);
-      bool DrawSkybox(CComponent_Camera* cam);
+      bool RenderSkybox(CComponent_Camera* cam);
       inline void Clear();
       inline void RenderToScreen()
       {
@@ -137,6 +142,7 @@ class CSystem_Render: public CSystem
         // http://wiki.libsdl.org/MigrationGuide#OpenGL
       }
 
+  public:
 
     inline void GetWindowSize(int* w, int* h)
     {
@@ -146,6 +152,21 @@ class CSystem_Render: public CSystem
     void RenderSphere(GLdouble radius, GLint slices = 10, GLint stacks = 10)
     {
       gluSphere(quadratic, radius, slices, stacks);
+    }
+
+#define __GL_CHECK_ERRORS() CSystem_Render::_check_gl_error(__FILE__, __LINE__)
+
+    void _check_gl_error(const char *file, int line)
+    {
+      GLenum error(glGetError());
+
+      while(error != GL_NO_ERROR)
+      {
+        gSystem_Debug.console_error_msg("From CSystem_Render: OpenGL error %d: %s - %s:%d", error, gluErrorString(error), __FILE__, __LINE__);
+        gSystem_Debug.error("From CSystem_Render: OpenGL error %d: %s - %s:%d", error, gluErrorString(error), __FILE__, __LINE__);
+
+        error = glGetError();
+      }
     }
 
     //inline void ResizeWindow(int w,, int h);
