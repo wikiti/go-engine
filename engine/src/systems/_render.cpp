@@ -150,48 +150,11 @@ void CSystem_Render::InitGridVBO()
   m_GridVBO_numcols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
   m_GridVBO_numrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
 
-  // Lines vertex
-  const GLfloat pVertices[][3] =
-  {
-      // White lines
-    {0.f, 0.f, 0.f}, {0.f, 0.f, 1.f},
-    {0.f, 0.f, 1.f}, {1.f, 0.f, 1.f},
-    {1.f, 0.f, 1.f}, {1.f, 0.f, 0.f},
-    {1.f, 0.f, 0.f}, {0.f, 0.f, 0.f},
-
-      // Grey lines
-    // Verticals
-    {0.f, 0.f, 0.25f}, {1.f, 0.f, 0.25f},
-    {0.f, 0.f, 0.50f}, {1.f, 0.f, 0.50f},
-    {0.f, 0.f, 0.75f}, {1.f, 0.f, 0.75f},
-
-    // Horizontals
-    {0.25f, 0.f, 0.f}, {0.25f, 0.f, 1.f},
-    {0.50f, 0.f, 0.f}, {0.50f, 0.f, 1.f},
-    {0.75f, 0.f, 0.f}, {0.75f, 0.f, 1.f}
-  };
-
-  const GLfloat pColors[][3] =
-  {
-    {1.f, 1.f, 1.f}, {1.f, 1.f, 1.f},
-    {1.f, 1.f, 1.f}, {1.f, 1.f, 1.f},
-    {1.f, 1.f, 1.f}, {1.f, 1.f, 1.f},
-    {1.f, 1.f, 1.f}, {1.f, 1.f, 1.f},
-    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
-    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
-    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
-    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
-    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f},
-    {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, 0.5f}
-  };
-
   glGenBuffers( 1, &m_GridVBOVertices );
-  glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
-  glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pVertices, GL_DYNAMIC_DRAW );
-
   glGenBuffers( 1, &m_GridVBOColors );
-  glBindBuffer( GL_ARRAY_BUFFER,m_GridVBOColors );
-  glBufferData( GL_ARRAY_BUFFER, 20*3*sizeof(GLfloat), pColors, GL_DYNAMIC_DRAW );
+
+  // Lines vertex
+  UpdateSkyboxVBO();
 
   // Shader test
   if(!gSystem_Shader_Manager.LoadShader("simpleShader", "data/shaders/simple.vert", "data/shaders/simple.frag") or !gSystem_Shader_Manager.CompileShader("simpleShader"))
@@ -207,35 +170,57 @@ void CSystem_Render::UpdateSkyboxVBO()
                         /*                 White lines                 */
     int nLines = (m_GridVBO_numcols + 1) + (m_GridVBO_numrows + 1); // +...
 
-    vector< vector<GLfloat> > pVertices; pVertices.reserve(nLines*2);
-    vector< vector<GLfloat> > pColors; pColors.reserve(nLines*2);
+    //vector< GLfloat* > pVertices(nLines*2);
+    //vector< GLfloat* > pColors(nLines*2);
 
-    // White vertical lines
-    uint index = 0;
-    for(float i = 0; i < m_GridVBO_numcols; i++, index++)
+    GLfloat pVertices[nLines*2][3];
+    GLfloat pColors[nLines*2][3];
+
+    /*GLfloat** pVertices = new GLfloat*[nLines*2];
+    GLfloat** pColors = new GLfloat*[nLines*2];
+
+    for(int i = 0; i < nLines*2; i++)
     {
-      pVertices.push_back({i, 0, 0});
-      pVertices.push_back({i, 0, (float)m_GridVBO_numcols});
+      pVertices[i] = new GLfloat[3];
+      pColors[i] = new GLfloat[3];
+    }*/
 
-      pColors.push_back({1.f, 1.f, 1.f});
-      pColors.push_back({1.f, 1.f, 1.f});
+    uint index = 0;
+    // White vertical lines
+    for(float i = 0; i <= m_GridVBO_numcols; i++, index += 2)
+    {
+      pVertices[index][0] = i; pVertices[index][1] = 0; pVertices[index][2] = 0; //= {index, 0, 0};
+      pVertices[index+1][0] = i; pVertices[index+1][1] = 0; pVertices[index+1][2] = m_GridVBO_numrows; //pVertindexces.push_back({index, 0, (float)m_GrindexdVBO_numcols});
+
+      pColors[index][0] = pColors[index][1] = pColors[index][2] = 1.f;
+      pColors[index+1][0] = pColors[index+1][1] = pColors[index+1][2] = 1.f;
     }
     // White horizontal lines
-    for(float i = 0; i < m_GridVBO_numrows; i++, index++)
+    for(float i = 0; i <= m_GridVBO_numrows; i++, index += 2)
     {
-      pVertices.push_back({0, 0, i});
-      pVertices.push_back({(float)m_GridVBO_numrows, 0, i});
+      pVertices[index][0] = 0; pVertices[index][1] = 0; pVertices[index][2] = i; //= {index, 0, 0};
+      pVertices[index+1][0] = m_GridVBO_numcols; pVertices[index+1][1] = 0; pVertices[index+1][2] = i; //pVertindexces.push_back({index, 0, (float)m_GrindexdVBO_numcols});
 
-      pColors.push_back({0.5f, 0.5f, 0.5f});
-      pColors.push_back({0.5f, 0.5f, 0.5f});
+      pColors[index][0] = pColors[index][1] = pColors[index][2] = 1.f;
+      pColors[index+1][0] = pColors[index+1][1] = pColors[index+1][2] = 1.f;
+
+      //pColors.push_back({0.5f, 0.5f, 0.5f});
+      //pColors.push_back({0.5f, 0.5f, 0.5f});
     }
 
-
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
-    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), &pVertices[0], GL_STATIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pVertices[0], GL_DYNAMIC_DRAW );
 
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
-    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), &pColors[0], GL_STATIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pColors[0], GL_DYNAMIC_DRAW );
+
+    /*for(int i = 0; i < nLines*2; i++)
+    {
+      delete [] pVertices[i];
+      delete [] pColors[i];
+    }
+    delete [] pVertices;
+    delete [] pColors;*/
   }
 }
 
@@ -522,10 +507,14 @@ void CSystem_Render::RenderGrid(int rows, int cols)
   glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
   glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
 
+
+  int nLines = (m_GridVBO_numcols + 1) + (m_GridVBO_numrows + 1);
+  glDrawArrays( GL_LINES, 0, nLines*2);
+
   //glBindAttribLocation("in_Color");
 
   // Usar mejor glDrawArraysInstanced(), o algo, ya que esto es muy lento (n*m)
-  for (int i = 0; i <= rows; i++)
+  /*for (int i = 0; i <= rows; i++)
   {
     for(int j = 0; j <= cols; j++)
     {
@@ -533,7 +522,7 @@ void CSystem_Render::RenderGrid(int rows, int cols)
       glDrawArrays( GL_LINES, 0, 20 );
     }
 
-  }
+  }*/
 
   glDisableClientState(GL_VERTEX_ARRAY);
   glDisableClientState(GL_COLOR_ARRAY);
