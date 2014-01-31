@@ -119,10 +119,8 @@ CShader* CSystem_Shader_Manager::LoadShader(const string& name, const string& ve
   return shaders[DEFAULT_SHADER];
 }
 
-CShader* CSystem_Shader_Manager::CompileShader(const string& name)
+CShader* CSystem_Shader_Manager::LinkShader(const string& name)
 {
-  unsigned int programShader = 0;
-
   map<string, CShader*>::iterator it = shaders.find(name);
   if(it == shaders.end())
     return NULL;
@@ -131,34 +129,20 @@ CShader* CSystem_Shader_Manager::CompileShader(const string& name)
     return it->second;
   else
   {
-    // create a program
-    programShader = glCreateProgram();
-
-    if (programShader == 0)
-      return NULL;
-
-    // attach the vertex and fragment shader codes, and the geometric if available
-    glAttachShader(programShader, it->second->VertexShader);
-
-    if (it->second->GeometricShader != 0)
-      glAttachShader(programShader, it->second->GeometricShader);
-
-    glAttachShader(programShader, it->second->FragmentShader);
-
     // link
-    glLinkProgram(programShader);
+    glLinkProgram(it->second->Program);
 
     // check link status
     GLint status = GL_FALSE;
-    glGetProgramiv(programShader, GL_LINK_STATUS, &status);
+    glGetProgramiv(it->second->Program, GL_LINK_STATUS, &status);
     if (status != GL_TRUE)
     {
       // The link has failed, check log info
       int logLength = 1;
-      glGetProgramiv(programShader, GL_INFO_LOG_LENGTH, &logLength);
+      glGetProgramiv(it->second->Program, GL_INFO_LOG_LENGTH, &logLength);
 
       char* infoLog = (char*) malloc(logLength + 1);
-      glGetProgramInfoLog(programShader, logLength, &logLength, infoLog);
+      glGetProgramInfoLog(it->second->Program, logLength, &logLength, infoLog);
       gSystem_Debug.error("Failed to link the shader \"%s\": %s", name.c_str(), infoLog);
       free(infoLog);
 
@@ -166,8 +150,8 @@ CShader* CSystem_Shader_Manager::CompileShader(const string& name)
     }
 
     // check if the shader will run in the current OpenGL state
-    glValidateProgram(programShader);
-    glGetProgramiv(programShader, GL_VALIDATE_STATUS, &status);
+    glValidateProgram(it->second->Program);
+    glGetProgramiv(it->second->Program, GL_VALIDATE_STATUS, &status);
     if (status != GL_TRUE)
     {
       gSystem_Debug.error("Shader \"%s\" program will not run in this OpenGL environment!", name.c_str());
@@ -176,7 +160,6 @@ CShader* CSystem_Shader_Manager::CompileShader(const string& name)
 
     it->second->link_status = true;
     // the program has been loaded/linked successfully
-    it->second->SetProgram(programShader);
 
     return it->second;
   }
@@ -184,7 +167,7 @@ CShader* CSystem_Shader_Manager::CompileShader(const string& name)
 
 CShader* CSystem_Shader_Manager::Load(const string& name, const string& vertexFile, const string& fragmentFile, const string& geometryFile)
 {
-  unsigned int vertShader = 0, fragShader = 0, geomShader = 0;
+  GLuint vertShader = 0, fragShader = 0, geomShader = 0, programShader = 0;
   bool loadStatus;
 
   // load and compile vertex. geometric and fragment sources
@@ -198,11 +181,24 @@ CShader* CSystem_Shader_Manager::Load(const string& name, const string& vertexFi
     return NULL;
   else
   {
+    programShader = glCreateProgram();
+    if (programShader == 0)
+    {
+      gSystem_Debug.error("From Render: Could not generate glProgram (Shader) for %s", name.c_str());
+      return NULL;
+    }
+
+    // attach the vertex and fragment shader codes, and the geometric if available
+    glAttachShader(programShader, vertShader);
+    if (geomShader != 0) glAttachShader(programShader, geomShader);
+    glAttachShader(programShader, fragShader);
+
     // the program has been loaded/linked successfully
     CShader* output = new CShader;
     output->SetVertShader(vertShader);
     output->SetFragShader(fragShader);
     output->SetGeomShader(geomShader);
+    output->SetProgram(programShader);
 
     return output;
   }

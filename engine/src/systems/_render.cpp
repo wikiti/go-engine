@@ -89,8 +89,7 @@ bool CSystem_Render::Init()
     return false;
   }*/
 
-  InitSkyboxVBO();
-  InitGridVBO();
+  if(!InitSkyboxVBO() or !InitGridVBO()) return false;
 
   current_camera = -1;
 
@@ -113,7 +112,7 @@ bool CSystem_Render::Init()
   return true;
 }
 
-void CSystem_Render::InitSkyboxVBO()
+bool CSystem_Render::InitSkyboxVBO()
 {
   float r = 1.005f;
 
@@ -143,24 +142,63 @@ void CSystem_Render::InitSkyboxVBO()
   glGenBuffers( 1, &m_SkyboxVBOTexCoords );
   glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOTexCoords );
   glBufferData( GL_ARRAY_BUFFER, m_nSkyboxVertexCount*2*sizeof(GLfloat), m_pTexCoords, GL_STATIC_DRAW );
+
+  if(!m_SkyboxVBOVertices or !m_SkyboxVBOTexCoords)
+  {
+    gSystem_Debug.error("From Render: Could not generate Skybox VBO.");
+    return false;
+  }
+
+  return true;
 }
 
-void CSystem_Render::InitGridVBO()
+bool CSystem_Render::InitGridVBO()
 {
   m_GridVBO_numcols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
   m_GridVBO_numrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
 
+  m_GridVBOVertices = m_GridVBOColors = m_GridVAO = 0;
+
   glGenBuffers( 1, &m_GridVBOVertices );
   glGenBuffers( 1, &m_GridVBOColors );
+  if(!m_GridVBOVertices or !m_GridVBOColors)
+  {
+    gSystem_Debug.error("From Render: Could not generate Grid VBO.");
+    return false;
+  }
+
+  glGenVertexArrays(1, &m_GridVAO);
+  if(!m_GridVAO)
+  {
+    gSystem_Debug.error("From Render: Could not generate Grid VAO.");
+    return false;
+  }
+
+  glBindVertexArray(m_GridVAO);
 
   // Lines vertex
   UpdateSkyboxVBO();
 
-  // Shader test
-  if(!gSystem_Shader_Manager.LoadShader("simpleShader", "data/shaders/simple.vert", "data/shaders/simple.frag") or !gSystem_Shader_Manager.CompileShader("simpleShader"))
+    // Shader test
+  // Load Shader
+  CShader* simpleShader = gSystem_Shader_Manager.LoadShader("simpleShader", "data/shaders/simple.vert", "data/shaders/simple.frag");
+  if(!simpleShader)
   {
-    gSystem_Debug.msg_box("SHADER ERROR!", "SHADER ERROR!!");
+    gSystem_Debug.msg_box("SHADER ERROR!", "LOAD SHADER ERROR!!");
+    return false;
   }
+
+  glBindAttribLocation(simpleShader->GetProgram(), 0, "in_Position");
+  glBindAttribLocation(simpleShader->GetProgram(), 1, "in_Color");
+
+  // Link Shader
+  if (!gSystem_Shader_Manager.LinkShader("simpleShader"))
+  {
+    gSystem_Debug.msg_box("SHADER ERROR!", "LINK SHADER ERROR!!");
+    return false;
+  }
+
+  return true;
 }
 
 void CSystem_Render::UpdateSkyboxVBO()
@@ -210,9 +248,11 @@ void CSystem_Render::UpdateSkyboxVBO()
 
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
     glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pVertices[0], GL_DYNAMIC_DRAW );
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
     glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pColors[0], GL_DYNAMIC_DRAW );
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     /*for(int i = 0; i < nLines*2; i++)
     {
@@ -502,10 +542,13 @@ void CSystem_Render::RenderGrid(int rows, int cols)
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_COLOR_ARRAY);
 
-  glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
-  glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
-  glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
-  glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
+  glBindVertexArray(m_GridVAO);
+    glEnableVertexAttribArray(0);
+      glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
+      glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
+    glEnableVertexAttribArray(1);
+      glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
+      glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
 
 
   int nLines = (m_GridVBO_numcols + 1) + (m_GridVBO_numrows + 1);
@@ -523,6 +566,9 @@ void CSystem_Render::RenderGrid(int rows, int cols)
     }
 
   }*/
+
+  glDisableVertexAttribArray(0);
+  glDisableVertexAttribArray(1);
 
   glDisableClientState(GL_VERTEX_ARRAY);
   glDisableClientState(GL_COLOR_ARRAY);

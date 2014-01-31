@@ -22,14 +22,15 @@ class CSystem_Render: public CSystem
     int current_camera;
 
     // Skybox VBO
-    unsigned int    m_SkyboxVBOVertices;                     // Vertex VBO Name
-    unsigned int    m_SkyboxVBOTexCoords;                    // Texture Coordinate VBO Name
+    GLuint m_SkyboxVBOVertices;                     // Vertex VBO Name
+    GLuint m_SkyboxVBOTexCoords;                    // Texture Coordinate VBO Name
 
     // Grid VBO
-    unsigned int    m_GridVBOVertices;                     // Vertex VBO Name
-    unsigned int    m_GridVBOColors;                       // Vertex VBO Name
-    unsigned int    m_GridVBO_numcols;
-    unsigned int    m_GridVBO_numrows;
+    GLuint m_GridVBOVertices;                     // Vertex VBO Name
+    GLuint m_GridVBOColors;                       // Vertex VBO Name
+    GLuint m_GridVBO_numcols;
+    GLuint m_GridVBO_numrows;
+    GLuint m_GridVAO;
 
     //bool multitexture_supported;
     //bool vbos_supported;
@@ -82,9 +83,9 @@ class CSystem_Render: public CSystem
     CSystem_Render(): CSystem(), window(NULL){ };
 
     virtual bool Init();
-      void InitSkyboxVBO();
+      bool InitSkyboxVBO();
         void UpdateSkyboxVBO();
-      void InitGridVBO();
+      bool InitGridVBO();
     virtual void Close();
 
     // Usar booleanos (o algo)

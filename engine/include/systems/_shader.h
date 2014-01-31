@@ -64,7 +64,7 @@ class CSystem_Shader_Manager: public CSystem
     //void OnLoop();
 
     CShader* LoadShader(const string& name, const string& vertFile, const string& fragFile = "", const string& geomFile = "");
-    CShader* CompileShader(const string& name);
+    CShader* LinkShader(const string& name);
     CShader* GetShader(const string& name);
 
   private:
