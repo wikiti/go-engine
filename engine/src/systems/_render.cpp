@@ -205,51 +205,55 @@ void CSystem_Render::UpdateSkyboxVBO()
 {
   if( m_GridVBO_numcols > 0 and m_GridVBO_numrows > 0)
   {
-                        /*                 White lines                 */
-    int nLines = (m_GridVBO_numcols + 1) + (m_GridVBO_numrows + 1); // +...
-
-    //vector< GLfloat* > pVertices(nLines*2);
-    //vector< GLfloat* > pColors(nLines*2);
-
+    int nLines = (m_GridVBO_numcols*5 + 1) + (m_GridVBO_numrows*5 + 1);
     GLfloat pVertices[nLines*2][3];
     GLfloat pColors[nLines*2][3];
 
-    /*GLfloat** pVertices = new GLfloat*[nLines*2];
-    GLfloat** pColors = new GLfloat*[nLines*2];
-
-    for(int i = 0; i < nLines*2; i++)
-    {
-      pVertices[i] = new GLfloat[3];
-      pColors[i] = new GLfloat[3];
-    }*/
 
     uint index = 0;
-    // White vertical lines
-    for(float i = 0; i <= m_GridVBO_numcols; i++, index += 2)
+
+      // White vertical lines
+    for(uint i = 0; i < m_GridVBO_numcols*5 + 1; i++, index += 2)
     {
-      pVertices[index][0] = i; pVertices[index][1] = 0; pVertices[index][2] = 0; //= {index, 0, 0};
-      pVertices[index+1][0] = i; pVertices[index+1][1] = 0; pVertices[index+1][2] = m_GridVBO_numrows; //pVertindexces.push_back({index, 0, (float)m_GrindexdVBO_numcols});
+      pVertices[index][0] = i*0.2; pVertices[index][1] = 0; pVertices[index][2] = 0; //= {index, 0, 0};
+      pVertices[index+1][0] = i*0.2; pVertices[index+1][1] = 0; pVertices[index+1][2] = m_GridVBO_numrows; //pVertindexces.push_back({index, 0, (float)m_GrindexdVBO_numcols});
 
-      pColors[index][0] = pColors[index][1] = pColors[index][2] = 1.f;
-      pColors[index+1][0] = pColors[index+1][1] = pColors[index+1][2] = 1.f;
+      if(i%5 == 0)
+      {
+        pColors[index][0] = pColors[index][1] = pColors[index][2] = 1.f;
+        pColors[index+1][0] = pColors[index+1][1] = pColors[index+1][2] = 1.f;
+
+      }
+      else
+      {
+        pColors[index][0] = pColors[index][1] = pColors[index][2] = 0.5f;
+        pColors[index+1][0] = pColors[index+1][1] = pColors[index+1][2] = 0.5f;
+      }
     }
-    // White horizontal lines
-    for(float i = 0; i <= m_GridVBO_numrows; i++, index += 2)
+      // White horizontal lines
+    for(uint i = 0; i < m_GridVBO_numrows*5 + 1; i++, index += 2)
     {
-      pVertices[index][0] = 0; pVertices[index][1] = 0; pVertices[index][2] = i; //= {index, 0, 0};
-      pVertices[index+1][0] = m_GridVBO_numcols; pVertices[index+1][1] = 0; pVertices[index+1][2] = i; //pVertindexces.push_back({index, 0, (float)m_GrindexdVBO_numcols});
+      pVertices[index][0] = 0; pVertices[index][1] = 0; pVertices[index][2] = i*0.2; //= {index, 0, 0};
+      pVertices[index+1][0] = m_GridVBO_numcols; pVertices[index+1][1] = 0; pVertices[index+1][2] = i*0.2; //pVertindexces.push_back({index, 0, (float)m_GrindexdVBO_numcols});
 
-      pColors[index][0] = pColors[index][1] = pColors[index][2] = 1.f;
-      pColors[index+1][0] = pColors[index+1][1] = pColors[index+1][2] = 1.f;
-
-      //pColors.push_back({0.5f, 0.5f, 0.5f});
-      //pColors.push_back({0.5f, 0.5f, 0.5f});
+      if(i%5 == 0)
+      {
+        pColors[index][0] = pColors[index][1] = pColors[index][2] = 1.f;
+        pColors[index+1][0] = pColors[index+1][1] = pColors[index+1][2] = 1.f;
+      }
+      else
+      {
+        pColors[index][0] = pColors[index][1] = pColors[index][2] = 0.5f;
+        pColors[index+1][0] = pColors[index+1][1] = pColors[index+1][2] = 0.5f;
+      }
     }
 
+    glEnableVertexAttribArray(0);
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
     glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pVertices[0], GL_DYNAMIC_DRAW );
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
+    glEnableVertexAttribArray(1);
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
     glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pColors[0], GL_DYNAMIC_DRAW );
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
@@ -539,8 +543,8 @@ void CSystem_Render::RenderGrid(int rows, int cols)
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, &p_projection_matrix[0]);
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelview_matrix));
 
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_COLOR_ARRAY);
+  //glEnableClientState(GL_VERTEX_ARRAY);
+  //glEnableClientState(GL_COLOR_ARRAY);
 
   glBindVertexArray(m_GridVAO);
     glEnableVertexAttribArray(0);
@@ -551,7 +555,7 @@ void CSystem_Render::RenderGrid(int rows, int cols)
       glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
 
 
-  int nLines = (m_GridVBO_numcols + 1) + (m_GridVBO_numrows + 1);
+  int nLines = (m_GridVBO_numcols*5 + 1) + (m_GridVBO_numrows*5 + 1);
   glDrawArrays( GL_LINES, 0, nLines*2);
 
   //glBindAttribLocation("in_Color");
@@ -570,8 +574,8 @@ void CSystem_Render::RenderGrid(int rows, int cols)
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
 
-  glDisableClientState(GL_VERTEX_ARRAY);
-  glDisableClientState(GL_COLOR_ARRAY);
+  //glDisableClientState(GL_VERTEX_ARRAY);
+  //glDisableClientState(GL_COLOR_ARRAY);
 
   glUseProgram(0);
 
