@@ -154,8 +154,8 @@ bool CSystem_Render::InitSkyboxVBO()
 
 bool CSystem_Render::InitGridVBO()
 {
-  m_GridVBO_numcols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
-  m_GridVBO_numrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
+  //m_GridVBO_numcols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
+  //m_GridVBO_numrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
 
   m_GridVBOVertices = m_GridVBOColors = m_GridVAO = 0;
 
@@ -176,8 +176,9 @@ bool CSystem_Render::InitGridVBO()
 
   glBindVertexArray(m_GridVAO);
 
-  // Lines vertex
-  UpdateSkyboxVBO();
+  m_GridVBO_numcols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
+  m_GridVBO_numrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
+  UpdateGridVBO(m_GridVBO_numcols, m_GridVBO_numrows);
 
     // Shader test
   // Load Shader
@@ -201,14 +202,16 @@ bool CSystem_Render::InitGridVBO()
   return true;
 }
 
-void CSystem_Render::UpdateSkyboxVBO()
+void CSystem_Render::UpdateGridVBO(int ncols, int nrows)
 {
+  m_GridVBO_numcols = ncols;
+  m_GridVBO_numrows = nrows;
+
   if( m_GridVBO_numcols > 0 and m_GridVBO_numrows > 0)
   {
     int nLines = (m_GridVBO_numcols*5 + 1) + (m_GridVBO_numrows*5 + 1);
     GLfloat pVertices[nLines*2][3];
     GLfloat pColors[nLines*2][3];
-
 
     uint index = 0;
 
@@ -248,23 +251,13 @@ void CSystem_Render::UpdateSkyboxVBO()
       }
     }
 
-    glEnableVertexAttribArray(0);
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
     glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pVertices[0], GL_DYNAMIC_DRAW );
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-    glEnableVertexAttribArray(1);
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
     glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pColors[0], GL_DYNAMIC_DRAW );
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-    /*for(int i = 0; i < nLines*2; i++)
-    {
-      delete [] pVertices[i];
-      delete [] pColors[i];
-    }
-    delete [] pVertices;
-    delete [] pColors;*/
   }
 }
 
@@ -276,6 +269,7 @@ void CSystem_Render::Close()
 
   glDeleteBuffers(1, &m_GridVBOVertices);
   glDeleteBuffers(1, &m_GridVBOColors);
+  glDeleteVertexArrays(1, &m_GridVAO);
 
   // Other renders
   CComponent_Transform::CloseRenderVBO();
@@ -406,7 +400,7 @@ void CSystem_Render::OnRender()
     // Draw Skybox
     RenderSkybox(cam);
     if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID") )
-      RenderGrid(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS"), gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS"));
+      RenderGrid();
 
 	  for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	  {
@@ -495,14 +489,19 @@ void CSystem_Render::OnRender()
 // http://www.opengl.org/wiki/Tutorial2:_VAOs,_VBOs,_Vertex_and_Fragment_Shaders_(C_/_SDL)
 // !! http://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/attributes.php
 
-void CSystem_Render::RenderGrid(int rows, int cols)
+void CSystem_Render::RenderGrid()
 {
-  glPushMatrix();
+  //glPushMatrix();
 
   glBindTexture(GL_TEXTURE_2D, 0);
 
   GLfloat cols_scale = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_COLS_SCALE");
   GLfloat rows_scale = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_ROWS_SCALE");
+
+  GLint ncols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
+  GLint nrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
+
+  if((GLuint)ncols != m_GridVBO_numcols or (GLuint)nrows != m_GridVBO_numrows) UpdateGridVBO(ncols, nrows);
 
   GLfloat p_projection_matrix[16];
   glGetFloatv(GL_PROJECTION_MATRIX, p_projection_matrix);
@@ -536,50 +535,31 @@ void CSystem_Render::RenderGrid(int rows, int cols)
   CShader* simpleShader = gSystem_Shader_Manager.GetShader("simpleShader");
   glUseProgram(simpleShader->GetProgram());
 
-  modelview_matrix = glm::translate(modelview_matrix, glm::vec3(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f)); //glTranslatef(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f);
+  modelview_matrix = glm::translate(modelview_matrix, glm::vec3((-ncols*cols_scale)/2.f, 0.f, (-nrows*rows_scale)/2.f)); //glTranslatef(-(rows*rows_scale)/2.f, 0.f, (-cols*cols_scale)/2.f);
   modelview_matrix = glm::scale(modelview_matrix, glm::vec3(rows_scale, 0.f, cols_scale)); //glScalef(rows_scale, 0.f, cols_scale);
-
 
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, &p_projection_matrix[0]);
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelview_matrix));
 
-  //glEnableClientState(GL_VERTEX_ARRAY);
-  //glEnableClientState(GL_COLOR_ARRAY);
-
   glBindVertexArray(m_GridVAO);
-    glEnableVertexAttribArray(0);
-      glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
-      glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
-    glEnableVertexAttribArray(1);
-      glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
-      glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
+  glEnableVertexAttribArray(0);
+  glEnableVertexAttribArray(1);
 
+  glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
+  //glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
+  glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
+  //glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
 
   int nLines = (m_GridVBO_numcols*5 + 1) + (m_GridVBO_numrows*5 + 1);
   glDrawArrays( GL_LINES, 0, nLines*2);
 
-  //glBindAttribLocation("in_Color");
-
-  // Usar mejor glDrawArraysInstanced(), o algo, ya que esto es muy lento (n*m)
-  /*for (int i = 0; i <= rows; i++)
-  {
-    for(int j = 0; j <= cols; j++)
-    {
-      glUniform3f(simpleShader->GetUniformIndex("in_Translation") , i, 0, j);
-      glDrawArrays( GL_LINES, 0, 20 );
-    }
-
-  }*/
-
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
-
-  //glDisableClientState(GL_VERTEX_ARRAY);
-  //glDisableClientState(GL_COLOR_ARRAY);
+  glBindVertexArray(0);
 
   glUseProgram(0);
 
-  glPopMatrix();
+  //glPopMatrix();
 }
 
 
@@ -593,7 +573,7 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
   // http://content.gpwiki.org/index.php/Sky_Box
   glPushMatrix();
 
-  glColor3f(1.f, 1.f, 1.f);
+  //glColor3f(1.f, 1.f, 1.f);
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(cam->skybox_texture )->GetID());
 
   vector3f position = cam->gameObject->Transform()->Position();

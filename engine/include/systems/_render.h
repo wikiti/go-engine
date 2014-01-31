@@ -84,8 +84,8 @@ class CSystem_Render: public CSystem
 
     virtual bool Init();
       bool InitSkyboxVBO();
-        void UpdateSkyboxVBO();
       bool InitGridVBO();
+        void UpdateGridVBO(int ncols, int nrows);
     virtual void Close();
 
     // Usar booleanos (o algo)
@@ -134,7 +134,7 @@ class CSystem_Render: public CSystem
   protected:
     void OnLoop();
     void OnRender();
-      void RenderGrid(int rows = 20, int cols = 20);
+      void RenderGrid();
       bool RenderSkybox(CComponent_Camera* cam);
       inline void Clear();
       inline void RenderToScreen()
