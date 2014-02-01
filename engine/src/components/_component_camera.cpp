@@ -115,19 +115,12 @@ void CComponent_Camera::SetUp()
 {
   //if(!enabled) return; // ¿?
 
-  glMatrixMode(GL_PROJECTION);
-  glLoadMatrixf( glm::value_ptr(projMatrix) );
-
   vector3f p = gameObject->Transform()->Position();       // Camera position
   vector3f up(0, 1, 0);                                   // Up vector (for "screen rotation")
   vector3f tp(0, 0, 1);                                   // Target point
 
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-
   if(viewmode == viewmode::ortho) // Añadir rotaciones o algo
     return;
-
 
   // Solución temporal: usar un pivote anclado al objeto que manipule la cámara como un hijo.
   // Mientras la cámara rote, se aplicarán las rotaciones al pivote, lo que permitirá a la cámara mirar libremente.
@@ -146,7 +139,5 @@ void CComponent_Camera::SetUp()
   else        // O coger la posición global del objeto.
     tp = target_p->Transform()->Position();
 
-  gluLookAt(p.x, p.y, p.z,     // Camera position
-            tp.x, tp.y, tp.z,     // Target point
-            up.x, up.y, up.z);    // Up vector
+  modelViewMatrix = glm::lookAt(p.to_glm(), tp.to_glm(), up.to_glm());
 }

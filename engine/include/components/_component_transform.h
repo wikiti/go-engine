@@ -16,8 +16,9 @@ class CComponent_Transform: public CComponent
 
   private:
     //vector3f angle_vector;
-    static GLuint vertex_transformVBO;
-    static GLuint colors_transformVBO;
+    static GLuint m_TransformVBOVertices;
+    static GLuint m_TransformVBOColors;
+    static GLuint m_TransformVAO;
 
     static int GetID() { return components::transform; }
 
@@ -44,8 +45,8 @@ class CComponent_Transform: public CComponent
     inline virtual void Set(input_t data);
     inline virtual output_t Get();
 
-    void OnRender();
-    static void InitRenderVBO();
+    void OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMatrix);
+    static bool InitRenderVBO();
     static void CloseRenderVBO();
 
   public:

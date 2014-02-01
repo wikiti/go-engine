@@ -53,6 +53,7 @@ bool GO_Utils::validateIdentifier(string identifier)
   return true;
 }
 
+/* NO FUNCIONA!
 void GO_Utils::glhLookAtf2(glm::mat4& matrix, vector3f& eyePosition3D, vector3f& center3D, vector3f& upVector3D )
 {
   vector3f forward, side, up;
@@ -72,23 +73,23 @@ void GO_Utils::glhLookAtf2(glm::mat4& matrix, vector3f& eyePosition3D, vector3f&
   //Recompute up as: up = side x forward
   forward = GO_Utils::glComputeNormalOfPlane(up, side);
   //------------------
-  matrix2[0] = side[0];
-  matrix2[4] = side[1];
-  matrix2[8] = side[2];
-  matrix2[12] = 0.0;
+  matrix2[0][0] = side[0];
+  matrix2[1][0] = side[1];
+  matrix2[2][0] = side[2];
+  matrix2[3][0] = 0.0;
   //------------------
-  matrix2[1] = up[0];
-  matrix2[5] = up[1];
-  matrix2[9] = up[2];
-  matrix2[13] = 0.0;
+  matrix2[0][1] = up[0];
+  matrix2[1][1] = up[1];
+  matrix2[2][1] = up[2];
+  matrix2[3][1] = 0.0;
   //------------------
-  matrix2[2] = -forward[0];
-  matrix2[6] = -forward[1];
-  matrix2[10] = -forward[2];
-  matrix2[14] = 0.0;
+  matrix2[0][2] = -forward[0];
+  matrix2[1][2] = -forward[1];
+  matrix2[2][2] = -forward[2];
+  matrix2[3][2] = 0.0;
   //------------------
-  matrix2[3] = matrix2[7] = matrix2[11] = 0.0;
-  matrix2[15] = 1.0;
+  matrix2[0][3] = matrix2[1][3] = matrix2[2][3] = 0.0;
+  matrix2[3][3] = 1.0;
   //------------------
   matrix = matrix * matrix2; //MultiplyMatrices4by4OpenGL_FLOAT(resultMatrix, matrix, matrix2);
   matrix = glm::translate(matrix, glm::vec3(-eyePosition3D.x, -eyePosition3D.y, -eyePosition3D.z));
@@ -107,4 +108,4 @@ vector3f GO_Utils::glComputeNormalOfPlane( vector3f& vec1, vector3f& vec2)
   out[2] = vec1[0] * vec2[1] - vec1[1] * vec2[0];
 
   return out;
-}
+}*/

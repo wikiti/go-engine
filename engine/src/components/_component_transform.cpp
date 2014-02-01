@@ -1,42 +1,67 @@
 #include "components/_component_transform.h"
 #include "systems/_other.h"
+#include "systems/_shader.h"
 
 #include "_object.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Transform);
 
-GLuint CComponent_Transform::vertex_transformVBO = 0;
-GLuint CComponent_Transform::colors_transformVBO = 0;
+GLuint CComponent_Transform::m_TransformVBOVertices = 0;
+GLuint CComponent_Transform::m_TransformVBOColors = 0;
+GLuint CComponent_Transform::m_TransformVAO = 0;
 
-void CComponent_Transform::InitRenderVBO()
+
+bool CComponent_Transform::InitRenderVBO()
 {
-  GLfloat transform_vertex[][3]
+  GLfloat transform_vertices[][3]
   {
     {0.f, 0.f, 0.f}, {0.5f, 0.0f, 0.0f},
     {0.f, 0.f, 0.f}, {0.0f, 0.5f, 0.0f},
     {0.f, 0.f, 0.f}, {0.0f, 0.0f, 0.5f}
   };
 
-  GLfloat colors_vertex[][3]
+  GLfloat transform_colors[][3]
   {
     {1.f, 0.f, 0.f}, {1.0f, 0.0f, 0.0f},
     {0.f, 1.f, 0.f}, {0.0f, 1.0f, 0.0f},
     {0.f, 0.f, 1.f}, {0.0f, 0.0f, 1.0f}
   };
 
-  glGenBuffers( 1, &vertex_transformVBO );
-  glBindBuffer( GL_ARRAY_BUFFER, vertex_transformVBO );
-  glBufferData( GL_ARRAY_BUFFER, 6*3*sizeof(GLfloat), transform_vertex, GL_STATIC_DRAW );
+  glGenVertexArrays(1, &m_TransformVAO);
+  if(!m_TransformVAO)
+  {
+    gSystem_Debug.error("From CComponent_Transform: Could not generate Transform VAO.");
+    return false;
+  }
+  glBindVertexArray(m_TransformVAO);
 
-  glGenBuffers( 1, &colors_transformVBO );
-  glBindBuffer( GL_ARRAY_BUFFER, colors_transformVBO );
-  glBufferData( GL_ARRAY_BUFFER, 6*3*sizeof(GLfloat), colors_vertex, GL_STATIC_DRAW );
+  glGenBuffers( 1, &m_TransformVBOVertices );
+  glGenBuffers( 1, &m_TransformVBOColors );
+
+  if(!m_TransformVBOVertices or !m_TransformVBOColors)
+  {
+    gSystem_Debug.error("From CComponent_Transform: Could not generate Transform VBO.");
+    return false;
+  }
+  glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOVertices );
+  glBufferData( GL_ARRAY_BUFFER, 6*3*sizeof(GLfloat), transform_vertices, GL_STATIC_DRAW );
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOColors );
+  glBufferData( GL_ARRAY_BUFFER, 6*3*sizeof(GLfloat), transform_colors, GL_STATIC_DRAW );
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindVertexArray(0);
+
+  return true;
 }
 
 void CComponent_Transform::CloseRenderVBO()
 {
-  glDeleteBuffers(1, &vertex_transformVBO);
-  glDeleteBuffers(1, &colors_transformVBO);
+  glDeleteBuffers(1, &m_TransformVBOVertices);
+  glDeleteBuffers(1, &m_TransformVBOColors);
+
+  glDeleteVertexArrays(1, &m_TransformVAO);
 }
 
 
@@ -61,60 +86,42 @@ output_t CComponent_Transform::Get()
   return (void*)this; // ?
 }
 
-void CComponent_Transform::OnRender()
+void CComponent_Transform::OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMatrix)
 {
   if(!enabled) return;
 
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_COLOR_ARRAY);
+  /*glBindVertexArray(m_TransformVAO);
 
-  glBindBuffer( GL_ARRAY_BUFFER, vertex_transformVBO );
+  glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOVertices );
   glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
-  glBindBuffer( GL_ARRAY_BUFFER, colors_transformVBO );
+  glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOColors );
   glColorPointer( 3, GL_FLOAT, 0, (char *) NULL );
 
-  glDrawArrays( GL_LINES, 0, 6 );
+  glDrawArrays( GL_LINES, 0, 6 );*/
 
-  glDisableClientState(GL_VERTEX_ARRAY);
-  glDisableClientState(GL_COLOR_ARRAY);
+  CShader* simpleShader = gSystem_Shader_Manager.GetShader("__flatShader");
+  glUseProgram(simpleShader->GetProgram());
 
-  /*glEnableClientState(GL_VERTEX_ARRAY);
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(projMatrix));
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelViewMatrix));
 
-  GLfloat axis_x_vertex[][3]{ {0.f, 0.f, 0.f}, {0.5f, 0.0f, 0.0f} };
-  GLfloat axis_y_vertex[][3]{ {0.f, 0.f, 0.f}, {0.0f, 0.5f, 0.0f} };
-  GLfloat axis_z_vertex[][3]{ {0.f, 0.f, 0.f}, {0.0f, 0.0f, 0.5f} };
+  glBindTexture(GL_TEXTURE_2D, 0);
 
-  // X - Rojo
-  glVertexPointer(2, GL_FLOAT, 0, &axis_x_vertex[0]);
-  glColor3f(1.f, 0.f, 0.f); glDrawArrays(GL_LINES, 0, 1);
+  glBindVertexArray(m_TransformVAO);
+  glEnableVertexAttribArray(0);
+  glEnableVertexAttribArray(1);
 
-  // Y - Verde
-  glVertexPointer(2, GL_FLOAT, 0, &axis_y_vertex[0]);
-  glColor3f(0.f, 1.f, 0.f); glDrawArrays(GL_LINES, 0, 1);
+  glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOVertices );
+  glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOColors );
 
-  // Z - Azul
-  glVertexPointer(3, GL_FLOAT, 0, &axis_z_vertex[0]);
-  glColor3f(0.f, 0.f, 1.f); glDrawArrays(GL_LINES, 0, 1);
+  glDrawArrays( GL_LINES, 0, 6);
 
-  glDisableClientState(GL_VERTEX_ARRAY);*/
+  glDisableVertexAttribArray(0);
+  glDisableVertexAttribArray(1);
+  glBindVertexArray(0);
 
+  glUseProgram(0);
 
-  /*glBegin(GL_LINES);
-    // X - Rojo
-    glColor3f(1.f, 0.f, 0.f);
-    glVertex3f(0.f, 0.f, 0.f);
-    glVertex3f(0.5f, 0.f, 0.f);
-
-    // Y - Verde
-    glColor3f(0.f, 1.f, 0.f);
-    glVertex3f(0.f, 0.f, 0.f);
-    glVertex3f(0.f, 0.5f, 0.f);
-
-    // Z - Azul
-    glColor3f(0.f, 0.f, 1.f);
-    glVertex3f(0.f, 0.f, 0.f);
-    glVertex3f(0.f, 0.f, 0.5f);
-  glEnd();*/
 }
 
 vector3f CComponent_Transform::EulerAngles()

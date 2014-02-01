@@ -107,7 +107,7 @@ bool CSystem_Render::Init()
   quadratic = gluNewQuadric();
 
   // Other renders
-  CComponent_Transform::InitRenderVBO();
+  if(!CComponent_Transform::InitRenderVBO()) return false;
 
   return true;
 }
@@ -143,31 +143,38 @@ bool CSystem_Render::InitSkyboxVBO()
     gSystem_Debug.error("From Render: Could not generate Skybox VAO.");
     return false;
   }
-  glBindVertexArray(m_SkyboxVAO);
+  //glBindVertexArray(m_SkyboxVAO);
 
   glGenBuffers( 1, &m_SkyboxVBOVertices );
-  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOVertices );
-  glBufferData( GL_ARRAY_BUFFER, m_nSkyboxVertexCount*3*sizeof(GLfloat), m_pVertices, GL_STATIC_DRAW );
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
   glGenBuffers( 1, &m_SkyboxVBOTexCoords );
-  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOTexCoords );
-  glBufferData( GL_ARRAY_BUFFER, m_nSkyboxVertexCount*2*sizeof(GLfloat), m_pTexCoords, GL_STATIC_DRAW );
-  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
   if(!m_SkyboxVBOVertices or !m_SkyboxVBOTexCoords)
   {
     gSystem_Debug.error("From Render: Could not generate Skybox VBO.");
     return false;
   }
 
+  glBindVertexArray(m_SkyboxVAO);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOVertices );
+  glBufferData( GL_ARRAY_BUFFER, m_nSkyboxVertexCount*3*sizeof(GLfloat), m_pVertices, GL_STATIC_DRAW );
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOTexCoords );
+  glBufferData( GL_ARRAY_BUFFER, m_nSkyboxVertexCount*2*sizeof(GLfloat), m_pTexCoords, GL_STATIC_DRAW );
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
   return true;
 }
 
 bool CSystem_Render::InitGridVBO()
 {
-  //m_GridVBO_numcols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
-  //m_GridVBO_numrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
+  glGenVertexArrays(1, &m_GridVAO);
+  if(!m_GridVAO)
+  {
+    gSystem_Debug.error("From Render: Could not generate Grid VAO.");
+    return false;
+  }
+  //glBindVertexArray(m_GridVAO);
 
   m_GridVBOVertices = m_GridVBOColors = m_GridVAO = 0;
 
@@ -179,19 +186,10 @@ bool CSystem_Render::InitGridVBO()
     return false;
   }
 
-  glGenVertexArrays(1, &m_GridVAO);
-  if(!m_GridVAO)
-  {
-    gSystem_Debug.error("From Render: Could not generate Grid VAO.");
-    return false;
-  }
-
-  glBindVertexArray(m_GridVAO);
-
   m_GridVBO_numcols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
   m_GridVBO_numrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
-  UpdateGridVBO(m_GridVBO_numcols, m_GridVBO_numrows);
 
+  UpdateGridVBO(m_GridVBO_numcols, m_GridVBO_numrows);
 
   return true;
 }
@@ -245,12 +243,14 @@ void CSystem_Render::UpdateGridVBO(int ncols, int nrows)
       }
     }
 
+    glBindVertexArray(m_GridVAO);
+
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOVertices );
-    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pVertices[0], GL_DYNAMIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pVertices, GL_DYNAMIC_DRAW );
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     glBindBuffer( GL_ARRAY_BUFFER, m_GridVBOColors );
-    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pColors[0], GL_DYNAMIC_DRAW );
+    glBufferData( GL_ARRAY_BUFFER, nLines*2*3*sizeof(GLfloat), pColors, GL_DYNAMIC_DRAW );
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
   }
 }
@@ -395,9 +395,15 @@ void CSystem_Render::OnRender()
 
 
     // Draw Skybox
-    RenderSkybox(cam, cam->projMatrix);
+    RenderSkybox(cam);
     if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID") )
-      RenderGrid(cam->projMatrix);
+      RenderGrid(cam);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadMatrixf( glm::value_ptr(cam->projMatrix) );
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixf(glm::value_ptr(cam->modelViewMatrix));
 
 	  for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	  {
@@ -424,11 +430,11 @@ void CSystem_Render::OnRender()
 	  // Other renders
     if(gSystem_Data_Storage.GetInt("__RENDER_SOUND_RADIUS"))
     {
-      glPushAttrib(GL_POLYGON_BIT);
+      glPushAttrib(GL_POLYGON_BIT); // <- deprecated!
 
       glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
       glBindTexture(GL_TEXTURE_2D, 0);
-      glColor4f(1.f, 1.f, 0.f, 1.f);
+      glColor4f(1.f, 1.f, 0.f, 1.f); // <- deprecated!
 
       for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
       {
@@ -456,7 +462,12 @@ void CSystem_Render::OnRender()
 	       glPushMatrix();
 
 	       it2->second->Transform()->ApplyTransform();
-	       it2->second->Transform()->OnRender();
+
+	       GLfloat modelViewMatrixf[16];
+	       glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrixf);
+	       glm::mat4 modelViewMatrix = glm::make_mat4(modelViewMatrixf);
+
+	       it2->second->Transform()->OnRender(modelViewMatrix, cam->projMatrix);
 
 	       glPopMatrix();
 	    }
@@ -486,32 +497,28 @@ void CSystem_Render::OnRender()
 // http://www.opengl.org/wiki/Tutorial2:_VAOs,_VBOs,_Vertex_and_Fragment_Shaders_(C_/_SDL)
 // !! http://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/attributes.php
 
-void CSystem_Render::RenderGrid(glm::mat4 projMatrix)
+void CSystem_Render::RenderGrid(CComponent_Camera* cam)
 {
-  //glPushMatrix();
-
-  glBindTexture(GL_TEXTURE_2D, 0);
-
   GLfloat cols_scale = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_COLS_SCALE");
   GLfloat rows_scale = gSystem_Data_Storage.GetFloat("__RENDER_TRANSFORM_GRID_ROWS_SCALE");
 
   GLint ncols = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_COLS");
   GLint nrows = gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID_ROWS");
 
-  if((GLuint)ncols != m_GridVBO_numcols or (GLuint)nrows != m_GridVBO_numrows) UpdateGridVBO(ncols, nrows);
+  if((GLuint)ncols != m_GridVBO_numcols or (GLuint)nrows != m_GridVBO_numrows)
+    UpdateGridVBO(ncols, nrows);
 
-  GLfloat p_modelview_matrix[16];
-  glGetFloatv(GL_MODELVIEW_MATRIX, p_modelview_matrix);
-  glm::mat4 modelview_matrix = glm::make_mat4(p_modelview_matrix);
+  glm::mat4 local_modelViewMatrix = cam->modelViewMatrix;
+  local_modelViewMatrix = glm::translate(local_modelViewMatrix, glm::vec3((-ncols*cols_scale)/2.f, 0.f, (-nrows*rows_scale)/2.f));
+  local_modelViewMatrix = glm::scale(local_modelViewMatrix, glm::vec3(rows_scale, 0.f, cols_scale));
 
   CShader* simpleShader = gSystem_Shader_Manager.GetShader("__flatShader");
   glUseProgram(simpleShader->GetProgram());
 
-  modelview_matrix = glm::translate(modelview_matrix, glm::vec3((-ncols*cols_scale)/2.f, 0.f, (-nrows*rows_scale)/2.f));
-  modelview_matrix = glm::scale(modelview_matrix, glm::vec3(rows_scale, 0.f, cols_scale));
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(cam->projMatrix));
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(local_modelViewMatrix));
 
-  glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(projMatrix));
-  glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelview_matrix));
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   glBindVertexArray(m_GridVAO);
   glEnableVertexAttribArray(0);
@@ -525,58 +532,38 @@ void CSystem_Render::RenderGrid(glm::mat4 projMatrix)
 
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
-  glBindVertexArray(0);
 
+  glBindVertexArray(0);
   glUseProgram(0);
 }
 
 
-bool CSystem_Render::RenderSkybox(CComponent_Camera* cam, glm::mat4 projMatrix)
+bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
 {
-  if(cam->skybox_texture == "")
+  if(!cam or cam->skybox_texture == "")
     return false;
 
   // Idea sencilla: dibujamos un cubo de tamaño 1x1 sin depth_test justo donde esta la cámara.
   // Todo lo demás se dibujará encima, por lo que creará un efecto de "tamaño inmenso".
   // http://content.gpwiki.org/index.php/Sky_Box
-  glPushMatrix();
-
-
-//  GLfloat p_modelview_matrix[16];
-//  glGetFloatv(GL_MODELVIEW_MATRIX, p_modelview_matrix);
-//  glm::mat4 modelview_matrix = glm::make_mat4(p_modelview_matrix);
-//
-//  GLfloat p_modelview_matrix[16];
-//  glGetFloatv(GL_MODELVIEW_MATRIX, p_modelview_matrix);
-//  glm::mat4 modelview_matrix = glm::make_mat4(p_modelview_matrix);
 
   glColor3f(1.f, 1.f, 1.f);
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(cam->skybox_texture )->GetID());
 
   vector3f position = cam->gameObject->Transform()->Position();
-  glTranslatef(position.x, position.y, position.z);
+  glm::mat4 local_modelViewMatrix = cam->modelViewMatrix;//glTranslatef(position.x, position.y, position.z);
+  local_modelViewMatrix = glm::translate(local_modelViewMatrix, position.to_glm());
 
   uint m_nSkyboxVertexCount = 24;
 
   CShader* simpleShader = gSystem_Shader_Manager.GetShader("__textureShader");
   glUseProgram(simpleShader->GetProgram());
 
-  GLfloat fModelViewMatrix[16];
-  glGetFloatv(GL_MODELVIEW_MATRIX, fModelViewMatrix);
-  glm::mat4 modelViewMatrix = glm::make_mat4(fModelViewMatrix);
-
-  glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(projMatrix));
-  glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelViewMatrix));
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(cam->projMatrix));
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(local_modelViewMatrix));
   glUniform1i(simpleShader->GetUniformIndex( "texture"), 0);
 
-
-  /*glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOVertices );
-  glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
-  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOTexCoords );
-  glTexCoordPointer( 2, GL_FLOAT, 0, (char *) NULL );
-
-  glDrawArrays( GL_QUADS, 0, m_nSkyboxVertexCount );*/
   glBindVertexArray(m_SkyboxVAO);
   glEnableVertexAttribArray(0);
   glEnableVertexAttribArray(1);
@@ -591,7 +578,6 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam, glm::mat4 projMatrix)
   glBindVertexArray(0);
 
   glClear(GL_DEPTH_BUFFER_BIT);
-  glPopMatrix();
 
   glUseProgram(0);
 
