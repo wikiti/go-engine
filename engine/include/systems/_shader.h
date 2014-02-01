@@ -59,6 +59,7 @@ class CSystem_Shader_Manager: public CSystem
     ~CSystem_Shader_Manager() {};
 
     bool Init();
+      bool InitMainShaders();
     void Close();
 
     //void OnLoop();
@@ -71,9 +72,12 @@ class CSystem_Shader_Manager: public CSystem
     CShader* Load(const string& name, const string& vertexFile, const string& fragmentFile, const string& geometryFile = "");
     void Clear(CShader* inShader);
 
-    bool LoadShader(const string& name, uint inShaderType,  const std::string& inFileName, uint& inOutShader);
+    bool LoadShader(const string& name, uint inShaderType, const std::string& inFileName, uint& inOutShader);
+      char** LoadSource(int& outLineCount, const std::string& inFileName);
+
+    CShader* LoadShaderStr(const string& name, const char** inVertCode, const char** inFragCode, const char** inGeomCode = NULL);
+    bool LoadStr(const string& name, uint inShaderType, const char** inShaderCode, uint& inOutShader);
     // ¿?
-    char** LoadSource(int& outLineCount, const std::string& inFileName);
 };
 
 extern CSystem_Shader_Manager gSystem_Shader_Manager;

@@ -72,17 +72,21 @@ void CComponent_Camera::ApplyChanges()
 
   if(viewmode == viewmode::ortho)
   {
-    glOrtho(0.f, 1.f, 0.f, 1.f, -1.f, 0.f);
+    //glOrtho(0.f, 1.f, 0.f, 1.f, -1.f, 0.f);
+    projMatrix = glm::ortho(0.f, 1.f, 0.f, 1.f, -1.f, 0.f);
   }
   else if(viewmode == viewmode::perspective)
   {
     //gluPerspective(field_of_view, (GLfloat)viewport.width/(GLfloat)viewport.height, near_clip, far_clip);
-    gluPerspective(field_of_view,
+    //gluPerspective(field_of_view,
+        //(viewport.width*gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH")) / (viewport.height*gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT")),
+        //near_clip, far_clip);
+    projMatrix = glm::perspective(field_of_view,
         (viewport.width*gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH")) / (viewport.height*gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT")),
         near_clip, far_clip);
   }
 
-  glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
+  //glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
 }
 
 void CComponent_Camera::SetViewport()
@@ -115,7 +119,7 @@ void CComponent_Camera::SetUp()
   //if(!enabled) return; // ¿?
 
   glMatrixMode(GL_PROJECTION);
-  glLoadMatrixd(projMatrix);
+  glLoadMatrixf( glm::value_ptr(projMatrix) );
 
   vector3f p = gameObject->Transform()->Position();       // Camera position
   vector3f up(0, 1, 0);                                   // Up vector (for "screen rotation")

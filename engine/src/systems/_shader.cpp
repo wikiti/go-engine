@@ -76,13 +76,115 @@ int CShader::GetVariableIndex(const string& varname, bool isUniform)
     char** LoadSource(const string& name, int& outLineCount, const std::string& inFileName);
 };*/
 
-const char* CSystem_Shader_Manager::DEFAULT_SHADER = "__DefaultShader";
+const char* CSystem_Shader_Manager::DEFAULT_SHADER = "__flatShader";
 const int MAX_LINE_LENGTH = 1024;
 
 bool CSystem_Shader_Manager::Init()
 {
-  CShader* theDefaultShader = new CShader();
-  shaders[DEFAULT_SHADER] = theDefaultShader;
+  if(!InitMainShaders())
+    return false;
+
+
+  //CShader* theDefaultShader = new CShader();
+  //shaders[DEFAULT_SHADER] = theDefaultShader;
+
+
+
+  return true;
+}
+
+bool CSystem_Shader_Manager::InitMainShaders()
+{
+    // Flat shader
+  const char* __flatShader_VertexCode[] =
+  {
+    "uniform mat4 ProjMatrix;"
+    "uniform mat4 ModelViewMatrix;"
+
+    "attribute vec4 in_Position;"
+    "attribute vec4 in_Color;"
+    "attribute vec2 in_TexCoords;"
+
+    "varying vec4 frag_Color;"
+    "varying vec2 frag_TexCoords;"
+
+    "void main(void)"
+    "{"
+      "mat4 MVPMatrix = ProjMatrix * ModelViewMatrix;"
+      "gl_Position = MVPMatrix * in_Position;"
+
+      "frag_Color = in_Color;"
+      "frag_TexCoords = in_TexCoords;"
+    "}"
+
+  };
+
+  const char* __flatShader_FragmentCode[] =
+  {
+    "uniform sampler2D texture;"
+    "uniform float textureFlag;"
+
+    "varying vec4 frag_Color;"
+    "varying vec2 frag_TexCoords;"
+
+    "void main(void)"
+    "{"
+      "gl_FragColor = frag_Color;"
+    "}"
+  };
+
+  CShader* shader = gSystem_Shader_Manager.LoadShaderStr("__flatShader", __flatShader_VertexCode, __flatShader_FragmentCode);
+  if(!shader) return false;
+
+  glBindAttribLocation(shader->GetProgram(), 0, "in_Position");
+  glBindAttribLocation(shader->GetProgram(), 1, "in_Color");
+
+  if(!gSystem_Shader_Manager.LinkShader("__flatShader")) return false;
+
+  /*
+  // Texture simple shader
+  const char* __flatShader_VertexCode[] = {"uniform mat4 ProjMatrix;"
+      "uniform mat4 ModelViewMatrix;"
+
+      "attribute vec4 in_Position;"
+      "attribute vec4 in_Color;"
+      "attribute vec2 in_TexCoords;"
+
+      "varying vec4 frag_Color;"
+      "varying vec2 frag_TexCoords;"
+
+      "void main(void)"
+      "{"
+      "mat4 MVPMatrix = ProjMatrix * ModelViewMatrix;"
+      "gl_Position = MVPMatrix * in_Position;"
+
+      "frag_Color = in_Color;"
+      "frag_TexCoords = in_TexCoords;"
+      "}"
+
+  };
+
+  const char* __flatShader_FragmentCode[] = {"uniform sampler2D texture;"
+      "uniform float textureFlag;"
+
+      "varying vec4 frag_Color;"
+      "varying vec2 frag_TexCoords;"
+
+      "void main(void)"
+      "{"
+      "gl_FragColor = frag_Color;"
+      "}"};
+
+  CShader* shader = gSystem_Shader_Manager.LoadShaderStr("__flatShader", __flatShader_VertexCode,
+      __flatShader_FragmentCode);
+  if(!shader)
+    return false;
+
+  glBindAttribLocation(shader->GetProgram(), 0, "in_Position");
+  glBindAttribLocation(shader->GetProgram(), 1, "in_Color");
+
+  if(!gSystem_Shader_Manager.LinkShader("__flatShader"))
+    return false;*/
 
   return true;
 }
@@ -227,11 +329,117 @@ void CSystem_Shader_Manager::Clear(CShader* inShader)
   }
 }
 
+CShader* CSystem_Shader_Manager::LoadShaderStr(const string& name, const char** inVertCode, const char** inFragCode, const char** inGeomCode)
+{
+  CShader* r_shader = NULL;
+
+  GLuint vertShader = 0, fragShader = 0, geomShader = 0, programShader = 0;
+  bool loadStatus;
+
+  // load and compile vertex. geometric and fragment sources
+  loadStatus = LoadStr(name, GL_VERTEX_SHADER, inVertCode, vertShader);
+  loadStatus &= LoadStr(name, GL_FRAGMENT_SHADER, inFragCode, fragShader);
+  // if geometry file is provided, load it
+  if (inGeomCode != NULL)
+    loadStatus &= LoadStr(name, GL_GEOMETRY_SHADER_EXT, inGeomCode, geomShader);
+
+  if(!loadStatus)
+    return NULL;
+  else
+  {
+    programShader = glCreateProgram();
+    if (programShader == 0)
+    {
+      gSystem_Debug.error("From Render: Could not generate glProgram (Shader) for %s", name.c_str());
+      return NULL;
+    }
+
+    // attach the vertex and fragment shader codes, and the geometric if available
+    glAttachShader(programShader, vertShader);
+    if (geomShader != 0) glAttachShader(programShader, geomShader);
+    glAttachShader(programShader, fragShader);
+
+    // the program has been loaded/linked successfully
+    r_shader = new CShader;
+    r_shader->SetVertShader(vertShader);
+    r_shader->SetFragShader(fragShader);
+    r_shader->SetGeomShader(geomShader);
+    r_shader->SetProgram(programShader);
+
+    //return r_shader;
+  }
+
+  if (r_shader != NULL)
+  {
+    shaders[name] = r_shader;
+    return r_shader;
+  }
+
+  return shaders[DEFAULT_SHADER];
+}
+
+bool CSystem_Shader_Manager::LoadStr(const string& name, uint inShaderType, const char** inShaderCode, uint& inOutShader)
+{
+  // load shader source from file
+  int sourceSize = strlen(inShaderCode[0]);
+
+  if(inShaderCode == NULL)
+  {
+    gSystem_Debug.error("From Shader Manager: No code strings detected when loading \"%s\".", name.c_str());
+    return false;
+  }
+
+  // Get source size
+
+
+  // create shader pointer
+  inOutShader = glCreateShader(inShaderType);
+  if(inOutShader == 0)
+  {
+    gSystem_Debug.error("From Shader Manager: Cannot create shader \"%s\", type: %u", name.c_str(), inShaderType);
+    return false;
+  }
+
+  // compile shader
+  glShaderSource(inOutShader, 1, (const GLchar**)&inShaderCode[0], NULL);
+  glCompileShader(inOutShader);
+
+  // free up the source
+  /*for(int i = 0; i < sourceSize; ++i)
+  {
+    if(pShaderSource[i] != NULL)
+      free(pShaderSource[i]);
+  }
+  free(pShaderSource);*/
+
+  // check compilation success
+  GLint status = GL_FALSE;
+  glGetShaderiv(inOutShader, GL_COMPILE_STATUS, &status);
+  if(status != GL_TRUE)
+  {
+    // fail to compile, check the log
+    int logLength = 1;
+    glGetShaderiv(inOutShader, GL_INFO_LOG_LENGTH, &logLength);
+
+    char* infoLog = (char*) malloc(logLength + 1);
+    glGetShaderInfoLog(inOutShader, logLength, &logLength, infoLog);
+    gSystem_Debug.error("From Shader Manager: Failed to compile shader \"%s\"", name.c_str());
+    gSystem_Debug.error("%s", infoLog);
+    free(infoLog);
+
+    return false;
+  }
+
+  return true;
+
+  return true;
+}
+
 bool CSystem_Shader_Manager::LoadShader(const string& name, uint inShaderType,  const std::string& inFileName, uint& inOutShader)
 {
   if (inFileName.empty())
   {
-    gSystem_Debug.error("\"%s\" shader's filename is empty!", name.c_str());
+    gSystem_Debug.error("From Shader Manager: \"%s\" shader's filename is empty!", name.c_str());
     return false;
   }
 
@@ -240,7 +448,7 @@ bool CSystem_Shader_Manager::LoadShader(const string& name, uint inShaderType,  
   char** pShaderSource = LoadSource(sourceSize, inFileName);
   if (pShaderSource == NULL)
   {
-    gSystem_Debug.error("Cannot load file source \"%s\" for shader \"%s\"", inFileName.c_str(), name.c_str());
+    gSystem_Debug.error("From Shader Manager: Cannot load file source \"%s\" for shader \"%s\"", inFileName.c_str(), name.c_str());
     return false;
   }
 
@@ -248,7 +456,7 @@ bool CSystem_Shader_Manager::LoadShader(const string& name, uint inShaderType,  
   inOutShader = glCreateShader(inShaderType);
   if (inOutShader == 0)
   {
-    gSystem_Debug.error("Cannot create shader \"%s\", type: %u", name.c_str(), inShaderType);
+    gSystem_Debug.error("From Shader Manager: Cannot create shader \"%s\", type: %u", name.c_str(), inShaderType);
     return false;
   }
 
@@ -275,7 +483,7 @@ bool CSystem_Shader_Manager::LoadShader(const string& name, uint inShaderType,  
 
     char* infoLog = (char*) malloc(logLength + 1);
     glGetShaderInfoLog(inOutShader, logLength, &logLength, infoLog);
-    gSystem_Debug.error("Failed to compile shader \"%s\" from \"%s\"", name.c_str(), inFileName.c_str());
+    gSystem_Debug.error("From Shader Manager: Failed to compile shader \"%s\" from \"%s\"", name.c_str(), inFileName.c_str());
     gSystem_Debug.error("%s", infoLog);
     free(infoLog);
 
@@ -295,7 +503,7 @@ char** CSystem_Shader_Manager::LoadSource(int& outLineCount, const std::string& 
   FILE* pFile = fopen(inFileName.c_str(), "r");
   if (pFile == NULL)
   {
-    gSystem_Debug.error("Cannot open file: %s\n", inFileName.c_str());
+    gSystem_Debug.error("From Shader Manager: Cannot open file: %s\n", inFileName.c_str());
     return NULL;
   }
 
@@ -305,7 +513,7 @@ char** CSystem_Shader_Manager::LoadSource(int& outLineCount, const std::string& 
     lineLength = strlen(line);
     if (lineLength > MAX_LINE_LENGTH)
     {
-      gSystem_Debug.error("Cannot read lines longer than %i characters in file: %s", MAX_LINE_LENGTH, inFileName.c_str());
+      gSystem_Debug.error("From Shader Manager: Cannot read lines longer than %i characters in file: %s", MAX_LINE_LENGTH, inFileName.c_str());
       outLineCount = 0;
       fclose(pFile);
       return NULL;
@@ -318,7 +526,7 @@ char** CSystem_Shader_Manager::LoadSource(int& outLineCount, const std::string& 
   pSource = (GLchar**) malloc(sizeof(GLchar*) * (outLineCount));
   if (pSource == NULL)
   {
-    gSystem_Debug.error("Out of memory!\n");
+    gSystem_Debug.error("From Shader Manager: Out of memory!\n");
     return NULL;
   }
 
@@ -330,7 +538,7 @@ char** CSystem_Shader_Manager::LoadSource(int& outLineCount, const std::string& 
     pSource[i] = (GLchar*) malloc(sizeof(GLchar) * (lineLength + 1));
     if (pSource[i] == NULL)
     {
-      printf("Out of memory!\n");
+      printf("From Shader Manager: Out of memory!\n");
       return NULL;
     }
 

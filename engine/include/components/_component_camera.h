@@ -13,7 +13,8 @@ class CComponent_Camera: public CComponent
 {
   private:
     friend class CSystem_Render;
-    GLdouble projMatrix[16];
+    //GLdouble projMatrix[16];
+    glm::mat4 projMatrix;
 
   public:
     bool disable_gui;

@@ -24,6 +24,7 @@ class CSystem_Render: public CSystem
     // Skybox VBO
     GLuint m_SkyboxVBOVertices;                     // Vertex VBO Name
     GLuint m_SkyboxVBOTexCoords;                    // Texture Coordinate VBO Name
+    GLuint m_SkyboxVAO;
 
     // Grid VBO
     GLuint m_GridVBOVertices;                     // Vertex VBO Name
@@ -134,7 +135,7 @@ class CSystem_Render: public CSystem
   protected:
     void OnLoop();
     void OnRender();
-      void RenderGrid();
+      void RenderGrid(glm::mat4 projMatrix);
       bool RenderSkybox(CComponent_Camera* cam);
       inline void Clear();
       inline void RenderToScreen()

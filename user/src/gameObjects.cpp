@@ -3,7 +3,7 @@
 bool SetGameObjects_Instance1()
 {
   CGameObject* camara_main = gGameObjects.AddGameObject("camara_main");
-  camara_main->Camera()->skybox_texture = "skybox1";
+  camara_main->Camera()->skybox_texture = "skybox_example";
   //camara_main->Camera()->background_color(1.f, 1.f, 1.f);
   camara_main->Transform()->position.y += 3.f;
   camara_main->Transform()->position.z -= 10.f;
