@@ -54,6 +54,8 @@ class CSystem_Shader_Manager: public CSystem
     map<string, CShader*> shaders;
     static const char* DEFAULT_SHADER;
 
+    string last_shader_used;
+
   public:
     CSystem_Shader_Manager(): CSystem() {};
     ~CSystem_Shader_Manager() {};
@@ -67,6 +69,15 @@ class CSystem_Shader_Manager: public CSystem
     CShader* LoadShader(const string& name, const string& vertFile, const string& fragFile = "", const string& geomFile = "");
     CShader* LinkShader(const string& name);
     CShader* GetShader(const string& name);
+
+    void UseShader(const string& name)
+    {
+      if(name != last_shader_used)
+      {
+        glUseProgram(shaders[name]->GetProgram());
+        last_shader_used = name;
+      }
+    }
 
   private:
     CShader* Load(const string& name, const string& vertexFile, const string& fragmentFile, const string& geometryFile = "");

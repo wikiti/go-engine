@@ -245,7 +245,7 @@ void CGameObject::OnLoop()
     it->second->OnLoop();
 }
 
-void CGameObject::OnRender()
+void CGameObject::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
   if(!enabled)
     return;
@@ -254,20 +254,20 @@ void CGameObject::OnRender()
   //for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
     //it->second->OnRender();
   if(GetComponent<CComponent_Mesh_Render>())
-    GetComponent<CComponent_Mesh_Render>()->OnRender();
+    GetComponent<CComponent_Mesh_Render>()->OnRender(projMatrix, modelViewMatrix);
 
   if(GetComponent<CComponent_Particle_Emitter>())
-    GetComponent<CComponent_Particle_Emitter>()->OnRender();
+    GetComponent<CComponent_Particle_Emitter>()->OnRender(projMatrix, modelViewMatrix);
 
   // Dummys
   if(GetComponent<CComponent_Dummy1>())
-    GetComponent<CComponent_Dummy1>()->OnRender();
+    GetComponent<CComponent_Dummy1>()->OnRender(projMatrix, modelViewMatrix);
 
   if(GetComponent<CComponent_Dummy2>())
-    GetComponent<CComponent_Dummy2>()->OnRender();
+    GetComponent<CComponent_Dummy2>()->OnRender(projMatrix, modelViewMatrix);
 
   if(GetComponent<CComponent_Dummy3>())
-    GetComponent<CComponent_Dummy3>()->OnRender();
+    GetComponent<CComponent_Dummy3>()->OnRender(projMatrix, modelViewMatrix);
 
   CallRenderFunction();
 }

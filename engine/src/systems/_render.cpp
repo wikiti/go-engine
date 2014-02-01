@@ -414,7 +414,12 @@ void CSystem_Render::OnRender()
       glBindTexture(GL_TEXTURE_2D, 0);
 
       it2->second->Transform()->ApplyTransform();
-	    it2->second->OnRender();
+      // -------------------------------
+        GLfloat local_modelViewMatrixf[16];
+        glGetFloatv(GL_MODELVIEW_MATRIX, local_modelViewMatrixf);
+        glm::mat4 local_modelViewMatrix = glm::make_mat4(local_modelViewMatrixf);
+      // -------------------------------
+	    it2->second->OnRender(cam->projMatrix, local_modelViewMatrix);
 
 	    glPopMatrix();
 
@@ -443,7 +448,7 @@ void CSystem_Render::OnRender()
           glPushMatrix();
 
           it2->second->Transform()->ApplyTransform();
-          it2->second->AudioSource()->OnRender();
+          it2->second->AudioSource()->OnRender(cam->projMatrix, cam->modelViewMatrix);
 
           glPopMatrix();
         }
@@ -465,9 +470,9 @@ void CSystem_Render::OnRender()
 
 	       GLfloat modelViewMatrixf[16];
 	       glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrixf);
-	       glm::mat4 modelViewMatrix = glm::make_mat4(modelViewMatrixf);
+	       glm::mat4 local_modelViewMatrix = glm::make_mat4(modelViewMatrixf);
 
-	       it2->second->Transform()->OnRender(modelViewMatrix, cam->projMatrix);
+	       it2->second->Transform()->OnRender(local_modelViewMatrix, cam->projMatrix);
 
 	       glPopMatrix();
 	    }
@@ -487,7 +492,7 @@ void CSystem_Render::OnRender()
 
   for(vector<CComponent_GUI_Texture*>::iterator it = gui_textures.begin(); it != gui_textures.end(); it++)
   {
-    (*it)->OnRender();
+    (*it)->OnRender(GUI_Camera->Camera()->modelViewMatrix, GUI_Camera->Camera()->projMatrix);
   }
 
   //glEnable(GL_DEPTH_TEST);
@@ -575,7 +580,6 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
 
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
-  glBindVertexArray(0);
 
   glClear(GL_DEPTH_BUFFER_BIT);
 

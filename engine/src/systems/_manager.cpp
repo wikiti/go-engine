@@ -455,11 +455,3 @@ void CSystem_GameObject_Manager::OnLoop()
     it->second->OnLoop();
 }
 
-// Esto se hará desde el Render
-void CSystem_GameObject_Manager::OnRender()
-{
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
-    it->second->OnRender();
-}
-
-

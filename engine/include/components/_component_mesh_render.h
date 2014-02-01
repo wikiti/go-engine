@@ -9,7 +9,7 @@ class CComponent_Mesh_Render: public CComponent
   public:
     friend class CGameObject;
 
-    string mesh_name, material_name;
+    string mesh_name, material_name, shader_name;
     //vector<string> materials;
     // Guardar colores en un vector, o algo por el estilo...
     colorf_t color;
@@ -32,7 +32,7 @@ class CComponent_Mesh_Render: public CComponent
     CComponent_Mesh_Render(CGameObject* gameObject);
     ~CComponent_Mesh_Render();
 
-    void OnRender();
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
 
   public:
 

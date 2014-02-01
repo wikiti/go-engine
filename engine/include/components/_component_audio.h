@@ -51,7 +51,7 @@ class CComponent_Audio_Source: public CComponent
     }
 
     void OnLoop();
-    void OnRender();
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
 
     void Play();
     void PlayOneShot();

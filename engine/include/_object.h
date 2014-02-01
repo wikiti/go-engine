@@ -166,7 +166,7 @@ class CGameObject
     void OnEvent();
     void OnKeyEvent();
     void OnLoop();
-    void OnRender();
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
     //void OnRenderDebug();
 
   protected:

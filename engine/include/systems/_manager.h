@@ -57,7 +57,6 @@ class CSystem_GameObject_Manager: public CSystem
     void OnEvent();
     void OnKeyEvent();
     void OnLoop();
-    void OnRender();
 };
 
 extern CSystem_GameObject_Manager gSystem_GameObject_Manager;

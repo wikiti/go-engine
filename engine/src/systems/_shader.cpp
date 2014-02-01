@@ -84,7 +84,7 @@ bool CSystem_Shader_Manager::Init()
   if(!InitMainShaders())
     return false;
 
-
+  last_shader_used = DEFAULT_SHADER;
   //CShader* theDefaultShader = new CShader();
   //shaders[DEFAULT_SHADER] = theDefaultShader;
 

@@ -176,7 +176,7 @@ void makebillboard_mat4x4(double *BM, double const * const MV)
 }
 
 // Usamos glBegin() y glEnd() en vez de VBOs, ya que
-void CComponent_Particle_Emitter::OnRender()
+void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
   if(!enabled) return;
 

@@ -33,7 +33,6 @@ bool CComponent_Transform::InitRenderVBO()
     gSystem_Debug.error("From CComponent_Transform: Could not generate Transform VAO.");
     return false;
   }
-  glBindVertexArray(m_TransformVAO);
 
   glGenBuffers( 1, &m_TransformVBOVertices );
   glGenBuffers( 1, &m_TransformVBOColors );
@@ -43,6 +42,9 @@ bool CComponent_Transform::InitRenderVBO()
     gSystem_Debug.error("From CComponent_Transform: Could not generate Transform VBO.");
     return false;
   }
+
+  glBindVertexArray(m_TransformVAO);
+
   glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOVertices );
   glBufferData( GL_ARRAY_BUFFER, 6*3*sizeof(GLfloat), transform_vertices, GL_STATIC_DRAW );
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);

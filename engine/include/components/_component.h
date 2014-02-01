@@ -49,7 +49,7 @@ class CComponent
     virtual void Set(input_t data){};
     virtual output_t Get(){return NULL;};
 
-    inline virtual void OnRender(){};
+    inline virtual void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix){};
     inline virtual void OnLoop(){};
     inline virtual void OnEvent(){};
     inline virtual void OnKeyEvent(){};

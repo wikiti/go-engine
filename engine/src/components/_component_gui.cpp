@@ -32,7 +32,7 @@ bool CComponent_GUI_Texture::HitTest(GLfloat x, GLfloat y)
   return false;
 }
 
-void CComponent_GUI_Texture::OnRender()
+void CComponent_GUI_Texture::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
   if(!enabled) return;
 

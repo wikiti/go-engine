@@ -9,7 +9,7 @@ CComponent_Dummy1::CComponent_Dummy1(CGameObject* go): CComponent(go)
   cube_side = 0.1f;
 }
 
-void CComponent_Dummy1::OnRender()
+void CComponent_Dummy1::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
   if(!enabled) return;
 
@@ -56,7 +56,7 @@ void CComponent_Dummy1::OnRender()
   glEnd();
 }
 
-void CComponent_Dummy2::OnRender()
+void CComponent_Dummy2::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
   if(!enabled) return;
 
@@ -72,7 +72,7 @@ void CComponent_Dummy2::OnRender()
 vector3f direction;
 float angle;
 
-void CComponent_Dummy3::OnRender()
+void CComponent_Dummy3::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
   vector3f pos = gameObject->Transform()->position;
   glBindTexture(GL_TEXTURE_2D, 0);

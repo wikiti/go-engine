@@ -27,7 +27,7 @@ class CComponent_GUI_Texture: public CComponent
     ~CComponent_GUI_Texture();
 
     bool HitTest(GLfloat pixel_x, GLfloat pixel_y);
-    void OnRender();
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
 };
 
 #endif /* __COMPONENT_GUI_TEXTURE_H_ */

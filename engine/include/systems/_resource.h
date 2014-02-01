@@ -39,12 +39,13 @@ class CResource_Mesh: public CResource
     vector<GLfloat> uvArray;*/
 
     int numTriangles, numUvCoords;
-    GLuint model_vertexVBO;
-    GLuint model_normalVBO;
-    GLuint model_uvArrayVBO;
+    GLuint m_ModelVBOVertices;
+    GLuint m_ModelVBONormals;
+    GLuint m_ModelVBOuvArray;
+    GLuint m_ModelVAO;
 
   public:
-    CResource_Mesh(): CResource(){ numTriangles = numUvCoords = 0; model_vertexVBO = model_normalVBO = model_uvArrayVBO = 0; type = resources::mesh; };
+    CResource_Mesh(): CResource(){ numTriangles = numUvCoords = 0; m_ModelVBOVertices = m_ModelVBONormals = m_ModelVBOuvArray = 0; type = resources::mesh; };
     ~CResource_Mesh(){ Clear(); }
 
     bool LoadFile(string file, string arguments = "");

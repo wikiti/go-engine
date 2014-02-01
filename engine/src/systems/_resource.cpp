@@ -1,10 +1,9 @@
 #include "systems/_resource.h"
 #include "systems/_debug.h"
 #include "systems/_mixer.h"
+#include "systems/_shader.h"
 
 CSystem_Resources gSystem_Resources;
-
-
 
 CResource::CResource(): rc_file(""), type(resources::base)
 {
@@ -115,17 +114,34 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   if (mesh->HasNormals())         normalArray -= mesh->mNumFaces*3*3;
   if (mesh->HasPositions())       vertexArray -= mesh->mNumFaces*3*3;
 
-  glGenBuffers( 1, &model_vertexVBO );
-  glBindBuffer( GL_ARRAY_BUFFER, model_vertexVBO  );
+  glGenVertexArrays(1, &m_ModelVAO);
+  if(!m_ModelVAO)
+  {
+    gSystem_Debug.error("From CResource_Mesh: Could not generate Mesh VAO for \"%s\".", file.c_str());
+    return false;
+  }
+
+  glGenBuffers( 1, &m_ModelVBOVertices );
+  glGenBuffers( 1, &m_ModelVBONormals );
+  glGenBuffers( 1, &m_ModelVBOuvArray );
+  if(!m_ModelVBOVertices or !m_ModelVBONormals or !m_ModelVBOuvArray)
+  {
+    gSystem_Debug.error("From CResource_Mesh: Could not generate Mesh VBO for \"%s\".", file.c_str());
+    return false;
+  }
+  glBindVertexArray(m_ModelVAO);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOVertices  );
   glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), vertexArray, GL_STATIC_DRAW );
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-  glGenBuffers( 1, &model_normalVBO );
-  glBindBuffer( GL_ARRAY_BUFFER, model_normalVBO );
-  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), normalArray, GL_STATIC_DRAW );
-
-  glGenBuffers( 1, &model_uvArrayVBO );
-  glBindBuffer( GL_ARRAY_BUFFER, model_uvArrayVBO );
+  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOuvArray );
   glBufferData( GL_ARRAY_BUFFER, numTriangles*3*2*sizeof(GLfloat), uvArray, GL_STATIC_DRAW );
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBONormals );
+  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), normalArray, GL_STATIC_DRAW );
+  glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
   if(vertexArray) delete vertexArray;
   if(normalArray) delete normalArray;
@@ -144,41 +160,33 @@ void CResource_Mesh::Clear()
 
   numTriangles = 0;
 
-  glDeleteBuffers(1, &model_vertexVBO);
-  glDeleteBuffers(1, &model_normalVBO);
-  glDeleteBuffers(1, &model_uvArrayVBO);
+  glDeleteBuffers(1, &m_ModelVBOVertices);
+  glDeleteBuffers(1, &m_ModelVBONormals);
+  glDeleteBuffers(1, &m_ModelVBOuvArray);
+
+  glDeleteVertexArrays(1, &m_ModelVAO);
 }
 
 void CResource_Mesh::Render()
 {
   //http://nickthecoder.wordpress.com/2013/01/20/mesh-loading-with-assimp/
   // Tal vez es conveniente no llamar a todas estas de golpe
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_NORMAL_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glBindBuffer( GL_ARRAY_BUFFER, model_vertexVBO );
-  glVertexPointer(3,GL_FLOAT, 0, (char* )NULL);
-  glBindBuffer( GL_ARRAY_BUFFER, model_normalVBO );
-  glNormalPointer(GL_FLOAT, 0, (char* )NULL);
-  glBindBuffer( GL_ARRAY_BUFFER, model_uvArrayVBO );
-  glTexCoordPointer(2, GL_FLOAT, 0, (char* )NULL);
+  glBindVertexArray(m_ModelVAO);
+  glEnableVertexAttribArray(0);
+  glEnableVertexAttribArray(1);
+  glEnableVertexAttribArray(2);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOVertices );
+  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOuvArray );
+  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBONormals );
 
   glDrawArrays(GL_TRIANGLES, 0, numTriangles);
 
-  /*glBindBuffer( GL_ARRAY_BUFFER, 0);
-  glVertexPointer(3,GL_FLOAT, 0, &vertexArray[0]);
-  glNormalPointer(GL_FLOAT, 0, &normalArray[0]);
-
-  //glClientActiveTexture(GL_TEXTURE0);
-
-  glTexCoordPointer(2, GL_FLOAT, 0, &uvArray[0]);
-
-  glDrawArrays(GL_TRIANGLES, 0, numTriangles);*/
-
-  glDisableClientState(GL_VERTEX_ARRAY);
-  glDisableClientState(GL_NORMAL_ARRAY);
-  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+  glDisableVertexAttribArray(0);
+  glDisableVertexAttribArray(1);
+  glDisableVertexAttribArray(2);
+  glBindVertexArray(0);
 }
 
 /** Texture **/

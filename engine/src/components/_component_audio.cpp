@@ -42,7 +42,7 @@ void CComponent_Audio_Source::OnLoop()
     Setup();
 }
 
-void CComponent_Audio_Source::OnRender()
+void CComponent_Audio_Source::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
   if(everywhere) return;
 

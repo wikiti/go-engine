@@ -28,7 +28,7 @@ class CComponent_Dummy1: public CComponent
 
     ~CComponent_Dummy1(){};
 
-    void OnRender();
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
 };
 
 class CComponent_Dummy2: public CComponent
@@ -48,7 +48,7 @@ class CComponent_Dummy2: public CComponent
 
     ~CComponent_Dummy2(){};
 
-    void OnRender();
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
 };
 
 class CComponent_Dummy3: public CComponent
@@ -96,7 +96,7 @@ class CComponent_Dummy3: public CComponent
 
     ~CComponent_Dummy3(){};
 
-    void OnRender();
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
     void OnEvent();
 };
 
