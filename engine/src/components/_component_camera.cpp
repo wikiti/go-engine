@@ -67,9 +67,6 @@ void CComponent_Camera::ApplyChanges()
 {
   //if(!enabled) return;
 
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-
   if(viewmode == viewmode::ortho)
   {
     //glOrtho(0.f, 1.f, 0.f, 1.f, -1.f, 0.f);

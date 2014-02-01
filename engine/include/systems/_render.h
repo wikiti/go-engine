@@ -136,7 +136,7 @@ class CSystem_Render: public CSystem
     void OnLoop();
     void OnRender();
       void RenderGrid(glm::mat4 projMatrix);
-      bool RenderSkybox(CComponent_Camera* cam);
+      bool RenderSkybox(CComponent_Camera* cam, glm::mat4 projMatrix);
       inline void Clear();
       inline void RenderToScreen()
       {

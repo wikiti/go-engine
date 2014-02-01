@@ -118,7 +118,8 @@ bool CSystem_Render::InitSkyboxVBO()
 
   uint m_nSkyboxVertexCount = 24;
   const GLfloat m_pVertices [][3] =
-  { /* Top    */ { r,  1.0f, -r}, {-r,  1.0f, -r}, {-r,  1.0f,  r}, { r,  1.0f,  r},
+  {
+    /* Top    */ { r,  1.0f, -r}, {-r,  1.0f, -r}, {-r,  1.0f,  r}, { r,  1.0f,  r},
     /* Bottom */ { r, -1.0f,  r}, {-r, -1.0f,  r}, {-r, -1.0f, -r}, { r, -1.0f, -r},
     /* Left   */ { 1.0f,  r, -r}, { 1.0f,  r,  r}, { 1.0f, -r,  r}, { 1.0f, -r, -r},
     /* Right  */ {-1.0f,  r,  r}, {-1.0f,  r, -r}, {-1.0f, -r, -r}, {-1.0f, -r,  r},
@@ -127,7 +128,8 @@ bool CSystem_Render::InitSkyboxVBO()
   };
 
   const GLfloat m_pTexCoords [][2] =
-  { /* Top    */ { 512/2048.f, 1536/1536.f}, {1024/2048.f, 1536/1536.f}, {1024/2048.f, 1024/1536.f}, { 512/2048.f, 1024/1536.f},
+  {
+    /* Top    */ { 512/2048.f, 1536/1536.f}, {1024/2048.f, 1536/1536.f}, {1024/2048.f, 1024/1536.f}, { 512/2048.f, 1024/1536.f},
     /* Bottom */ { 512/2048.f,  512/1536.f}, {1024/2048.f,  512/1536.f}, {1024/2048.f,    0/1536.f}, { 512/2048.f,    0/1536.f},
     /* Left   */ {   0/2048.f, 1024/1536.f}, { 512/2048.f, 1024/1536.f}, { 512/2048.f,  512/1536.f}, {   0/2048.f,  512/1536.f},
     /* Right  */ {1024/2048.f, 1024/1536.f}, {1536/2048.f, 1024/1536.f}, {1536/2048.f,  512/1536.f}, {1024/2048.f,  512/1536.f},
@@ -156,25 +158,6 @@ bool CSystem_Render::InitSkyboxVBO()
   if(!m_SkyboxVBOVertices or !m_SkyboxVBOTexCoords)
   {
     gSystem_Debug.error("From Render: Could not generate Skybox VBO.");
-    return false;
-  }
-
-  // Shader test
-  CShader* simpleShader = gSystem_Shader_Manager.LoadShader("__textureShader", "data/shaders/texture.vert", "data/shaders/texture.frag");
-  if(!simpleShader)
-  {
-    gSystem_Debug.msg_box("SHADER ERROR!", "LOAD SHADER ERROR!!");
-    return false;
-  }
-
-  glBindAttribLocation(simpleShader->GetProgram(), 0, "in_Position");
-  glBindAttribLocation(simpleShader->GetProgram(), 1, "in_TexCoords");
-
-
-  // Link Shader
-  if (!gSystem_Shader_Manager.LinkShader("__textureShader"))
-  {
-    gSystem_Debug.msg_box("SHADER ERROR!", "LINK SHADER ERROR!!");
     return false;
   }
 
@@ -412,7 +395,7 @@ void CSystem_Render::OnRender()
 
 
     // Draw Skybox
-    RenderSkybox(cam);
+    RenderSkybox(cam, cam->projMatrix);
     if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID") )
       RenderGrid(cam->projMatrix);
 
@@ -548,7 +531,7 @@ void CSystem_Render::RenderGrid(glm::mat4 projMatrix)
 }
 
 
-bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
+bool CSystem_Render::RenderSkybox(CComponent_Camera* cam, glm::mat4 projMatrix)
 {
   if(cam->skybox_texture == "")
     return false;
@@ -567,8 +550,8 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
 //  glGetFloatv(GL_MODELVIEW_MATRIX, p_modelview_matrix);
 //  glm::mat4 modelview_matrix = glm::make_mat4(p_modelview_matrix);
 
-
   glColor3f(1.f, 1.f, 1.f);
+  glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(cam->skybox_texture )->GetID());
 
   vector3f position = cam->gameObject->Transform()->Position();
@@ -576,21 +559,41 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
 
   uint m_nSkyboxVertexCount = 24;
 
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  CShader* simpleShader = gSystem_Shader_Manager.GetShader("__textureShader");
+  glUseProgram(simpleShader->GetProgram());
 
-  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOVertices );
+  GLfloat fModelViewMatrix[16];
+  glGetFloatv(GL_MODELVIEW_MATRIX, fModelViewMatrix);
+  glm::mat4 modelViewMatrix = glm::make_mat4(fModelViewMatrix);
+
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(projMatrix));
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelViewMatrix));
+  glUniform1i(simpleShader->GetUniformIndex( "texture"), 0);
+
+
+  /*glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOVertices );
   glVertexPointer( 3, GL_FLOAT, 0, (char *) NULL );
   glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOTexCoords );
   glTexCoordPointer( 2, GL_FLOAT, 0, (char *) NULL );
 
-  glDrawArrays( GL_QUADS, 0, m_nSkyboxVertexCount );
+  glDrawArrays( GL_QUADS, 0, m_nSkyboxVertexCount );*/
+  glBindVertexArray(m_SkyboxVAO);
+  glEnableVertexAttribArray(0);
+  glEnableVertexAttribArray(1);
 
-  glDisableClientState(GL_VERTEX_ARRAY);
-  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOVertices );
+  glBindBuffer( GL_ARRAY_BUFFER, m_SkyboxVBOTexCoords );
+
+  glDrawArrays( GL_QUADS, 0, m_nSkyboxVertexCount);
+
+  glDisableVertexAttribArray(0);
+  glDisableVertexAttribArray(1);
+  glBindVertexArray(0);
 
   glClear(GL_DEPTH_BUFFER_BIT);
   glPopMatrix();
+
+  glUseProgram(0);
 
   return true;
 }

@@ -442,6 +442,10 @@ namespace GO_Utils
 
   SDL_Surface* sdl_cargar_img(std::string s);
   bool validateIdentifier(string identifier);
+
+
+  void glhLookAtf2(glm::mat4& matrix, vector3f& eyePosition3D, vector3f& center3D, vector3f& upVector3D ); // http://www.opengl.org/wiki/GluLookAt_code
+  vector3f glComputeNormalOfPlane( vector3f& vec1, vector3f& vec2); // https://code.google.com/p/lightsimulator/source/browse/trunk/src/glutshadowmap.cpp?spec=svn133&r=133
 }
 
 

@@ -103,10 +103,8 @@ bool CSystem_Shader_Manager::InitMainShaders()
 
     "attribute vec4 in_Position;"
     "attribute vec4 in_Color;"
-    "attribute vec2 in_TexCoords;"
 
     "varying vec4 frag_Color;"
-    "varying vec2 frag_TexCoords;"
 
     "void main(void)"
     "{"
@@ -114,18 +112,13 @@ bool CSystem_Shader_Manager::InitMainShaders()
       "gl_Position = MVPMatrix * in_Position;"
 
       "frag_Color = in_Color;"
-      "frag_TexCoords = in_TexCoords;"
     "}"
 
   };
 
   const char* __flatShader_FragmentCode[] =
   {
-    "uniform sampler2D texture;"
-    "uniform float textureFlag;"
-
     "varying vec4 frag_Color;"
-    "varying vec2 frag_TexCoords;"
 
     "void main(void)"
     "{"
@@ -141,50 +134,51 @@ bool CSystem_Shader_Manager::InitMainShaders()
 
   if(!gSystem_Shader_Manager.LinkShader("__flatShader")) return false;
 
-  /*
-  // Texture simple shader
-  const char* __flatShader_VertexCode[] = {"uniform mat4 ProjMatrix;"
-      "uniform mat4 ModelViewMatrix;"
+  shaders[DEFAULT_SHADER] = shader;
 
-      "attribute vec4 in_Position;"
-      "attribute vec4 in_Color;"
-      "attribute vec2 in_TexCoords;"
+  // -----------------------------------------------------
 
-      "varying vec4 frag_Color;"
-      "varying vec2 frag_TexCoords;"
+    // Texture simple shader
+  const char* __textureShader_VertexCode[] =
+  {
+    "uniform mat4 ProjMatrix;"
+    "uniform mat4 ModelViewMatrix;"
 
-      "void main(void)"
-      "{"
-      "mat4 MVPMatrix = ProjMatrix * ModelViewMatrix;"
-      "gl_Position = MVPMatrix * in_Position;"
+    "attribute vec4 in_Position;"
+    "attribute vec2 in_TexCoords;"
 
-      "frag_Color = in_Color;"
-      "frag_TexCoords = in_TexCoords;"
-      "}"
+    "varying vec2 frag_TexCoords;"
 
+    "void main(void)"
+    "{"
+        "mat4 MVPMatrix = ProjMatrix * ModelViewMatrix;"
+        "gl_Position = MVPMatrix * in_Position;"
+
+        "frag_TexCoords = in_TexCoords;"
+    "}"
   };
 
-  const char* __flatShader_FragmentCode[] = {"uniform sampler2D texture;"
-      "uniform float textureFlag;"
+  const char* __textureShader_FragmentCode[] =
+  {
+    "uniform sampler2D texture;"
 
-      "varying vec4 frag_Color;"
-      "varying vec2 frag_TexCoords;"
+    "varying vec2 frag_TexCoords;"
 
-      "void main(void)"
-      "{"
-      "gl_FragColor = frag_Color;"
-      "}"};
+    "void main(void)"
+    "{"
+      "gl_FragColor = texture2D(texture, frag_TexCoords);"
+    "}"
+  };
 
-  CShader* shader = gSystem_Shader_Manager.LoadShaderStr("__flatShader", __flatShader_VertexCode,
-      __flatShader_FragmentCode);
+  shader = gSystem_Shader_Manager.LoadShaderStr("__textureShader", __textureShader_VertexCode, __textureShader_FragmentCode);
   if(!shader)
     return false;
 
   glBindAttribLocation(shader->GetProgram(), 0, "in_Position");
-  glBindAttribLocation(shader->GetProgram(), 1, "in_Color");
+  glBindAttribLocation(shader->GetProgram(), 1, "in_TexCoords");
 
-  if(!gSystem_Shader_Manager.LinkShader("__flatShader"))
-    return false;*/
+  if(!gSystem_Shader_Manager.LinkShader("__textureShader"))
+    return false;
 
   return true;
 }
