@@ -13,14 +13,14 @@ GLuint CComponent_Transform::m_TransformVAO = 0;
 
 bool CComponent_Transform::InitRenderVBO()
 {
-  GLfloat transform_vertices[][3]
+  const GLfloat transform_vertices[][3]
   {
     {0.f, 0.f, 0.f}, {0.5f, 0.0f, 0.0f},
     {0.f, 0.f, 0.f}, {0.0f, 0.5f, 0.0f},
     {0.f, 0.f, 0.f}, {0.0f, 0.0f, 0.5f}
   };
 
-  GLfloat transform_colors[][3]
+  const GLfloat transform_colors[][3]
   {
     {1.f, 0.f, 0.f}, {1.0f, 0.0f, 0.0f},
     {0.f, 1.f, 0.f}, {0.0f, 1.0f, 0.0f},

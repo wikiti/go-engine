@@ -1363,27 +1363,45 @@ void CSystem_Debug::Console_command__R_RESIZE_WINDOW(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: r_resize_window <width> <height>");
+    console_warning_msg("Format is: r_resize_window <width> <height> [windowed | fullscreen | fullwindowed]");
     return;
   }
 
   stringstream ss(arguments);
-  int w = 0,
-      h = 0;
-
+  int w = 0, h = 0;
   ss >> w >> h;
+
+  string videomode;
+  ss >> videomode;
+
+  if(videomode != "")
+  {
+    if(videomode == "windowed")
+      gSystem_Render.SetFullScreenWindow(GO_Render::windowed);
+    else if (videomode == "fullscreen")
+      gSystem_Render.SetFullScreenWindow(GO_Render::fullscreen);
+    else if (videomode == "fullwindowed")
+      gSystem_Render.SetFullScreenWindow(GO_Render::fullwindowed);
+    else
+      console_error_msg("Invalid video mode: %s", videomode.c_str());
+  }
+
   if(w <= 0 or h <= 0)
   {
     console_error_msg("Invalid values of width (%i) or height (%i)", w, h);
-    console_warning_msg("Format is: r_resize_window <width> <height>");
+    console_warning_msg(
+        "Format is: r_resize_window <width> <height> [windowed | fullscreen | fullwindowed]");
   }
   else
   {
     gSystem_Data_Storage.SetInt("__RESOLUTION_WIDTH", w);
     gSystem_Data_Storage.SetInt("__RESOLUTION_HEIGHT", h);
     Console_command__R_UPDATE_WINDOW(arguments);
-    console_msg("Resized window to %i x %i", gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
+    console_msg("Resized window to %i x %i", gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"),
+        gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
   }
+
+
 }
 
 void CSystem_Debug::Console_command__R_DRAW_TRANSFORM(string arguments)

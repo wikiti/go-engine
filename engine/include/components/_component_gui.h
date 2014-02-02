@@ -10,6 +10,11 @@ class CComponent_GUI_Texture: public CComponent
     friend class CSystem_Render;
     friend class CGameObject;
 
+  protected:
+    GLuint m_GUITextureVBOVertices;
+    GLuint m_GUITextureVBOTexCoords;
+    GLuint m_GUITextureVAO;
+
   public:
     string texture_name;
 
@@ -20,6 +25,8 @@ class CComponent_GUI_Texture: public CComponent
 
   private:
     static int GetID() { return components::gui_texture; }
+    void InitVBO();
+    void UpdateVBO();
 
   public:
     CComponent_GUI_Texture(){};

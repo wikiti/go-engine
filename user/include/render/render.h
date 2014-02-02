@@ -17,6 +17,6 @@
 
 #include "predefined_functions.h"
 
-bool SetGameObjects_Instance1_Mesh();
+bool SetGameObjects_Instance1_Render();
 
 #endif /* MESH_H_ */

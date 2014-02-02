@@ -24,6 +24,7 @@ class CGameObject
     friend class CComponent_Transform;
     friend class CSystem_GameObject_Manager;
     friend class CSystem_Debug;
+    friend class CSystem_Render;
     //friend class boost::serialization::access;
 
   protected:

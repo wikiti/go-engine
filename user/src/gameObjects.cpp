@@ -15,7 +15,7 @@ bool SetGameObjects_Instance1()
 
   SetGameObjects_Instance1_Fireworks();
   SetGameObjects_Instance1_Rainbow();
-  SetGameObjects_Instance1_Mesh();
+  SetGameObjects_Instance1_Render();
   //SetGameObjects_Instance1_Other_Particles();
   //SetGameObjects_Instance1_Shaders();
   //SetGameObjects_Instance1_RandomStuff();

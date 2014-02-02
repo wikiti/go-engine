@@ -232,7 +232,7 @@ CShader* CSystem_Shader_Manager::UseShader(const string& name)
         glUseProgram(r_shader->GetProgram());
         last_shader_used = name;
 
-        if(r_shader == shaders[DEFAULT_SHADER])
+        if(r_shader == shaders[DEFAULT_SHADER] and name != DEFAULT_SHADER)
           gSystem_Debug.console_warning_msg("From Shader Manager: Warning. Using DEFAULT_SHADER instead of \"%s\" (not exists)", name.c_str());
       }
     }

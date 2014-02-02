@@ -25,13 +25,25 @@ bool CSystem_Render::Init()
   SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
   glEnable(GL_MULTISAMPLE);
 
-  window = SDL_CreateWindow( gEngine.GetTitle().c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"), SDL_WINDOW_OPENGL);
+  window = SDL_CreateWindow( gEngine.GetTitle().c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"), SDL_WINDOW_OPENGL);
   if(!window)
   {
     gSystem_Debug.error("From CSystem_Render: Could not create window: %s", SDL_GetError());
     gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not create window. Check log.txt");
     return false;
   }
+
+  string videomode = gSystem_Data_Storage.GetString("__RESOLUTION_WINDOW_MODE");
+  videomode = GO_Utils::string_to_lower(videomode);
+
+  if (videomode == "fullscreen")
+    gSystem_Render.SetFullScreenWindow(GO_Render::fullscreen);
+  else if (videomode == "fullwindowed")
+    gSystem_Render.SetFullScreenWindow(GO_Render::fullwindowed);
+  else
+    gSystem_Render.SetFullScreenWindow(GO_Render::windowed);
+
+
 
   GLcontext = SDL_GL_CreateContext(window);
 
@@ -497,7 +509,8 @@ void CSystem_Render::OnRender()
 
   for(vector<CComponent_GUI_Texture*>::iterator it = gui_textures.begin(); it != gui_textures.end(); it++)
   {
-    (*it)->OnRender(GUI_Camera->Camera()->modelViewMatrix, GUI_Camera->Camera()->projMatrix);
+    if((*it)->gameObject->enabled)
+      (*it)->OnRender(GUI_Camera->Camera()->modelViewMatrix, GUI_Camera->Camera()->projMatrix);
   }
 
   //glEnable(GL_DEPTH_TEST);

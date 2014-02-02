@@ -19,6 +19,11 @@
  *     dibujar objetos de atrás hacia delante
  */
 
+namespace GO_Render
+{
+  enum window_display_t {windowed = 0, fullscreen = SDL_WINDOW_FULLSCREEN, fullwindowed = SDL_WINDOW_FULLSCREEN_DESKTOP};
+}
+
 class CSystem_Render: public CSystem
 {
   private:
@@ -79,12 +84,6 @@ class CSystem_Render: public CSystem
 
     //CComponent_Camera* GUI_Camera;
 
-    inline void ResizeWindow(int w, int h)
-    {
-      SDL_SetWindowSize(window, w, h);
-      ApplyCameraChanges();
-    }
-
     inline void ApplyCameraChanges()
     {
       for(vector<CGameObject*>::iterator it = camera_list.begin(); it != camera_list.end(); it++)
@@ -103,6 +102,25 @@ class CSystem_Render: public CSystem
       bool InitGridVBO();
         void UpdateGridVBO(int ncols, int nrows);
     virtual void Close();
+
+    inline void ResizeWindow(int w, int h)
+    {
+      if(w > 0 and h > 0)
+      {
+        SDL_SetWindowSize(window, w, h);
+        ApplyCameraChanges();
+        SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+      }
+    }
+
+    inline void SetFullScreenWindow(GO_Render::window_display_t mode)
+    {
+      if(mode == GO_Render::windowed or mode == GO_Render::fullscreen or mode == GO_Render::fullwindowed)
+      {
+        SDL_SetWindowFullscreen(window, mode);
+        SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+      }
+    }
 
     // Usar booleanos (o algo)
     SDL_Window* GetWindow()
