@@ -33,13 +33,13 @@ class CComponent
   private:
     static int getID() { return components::base; }
 
-    friend class boost::serialization::access;
+    /*friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
       ar & enabled;
       //ar & id;
-    }
+    }*/
 
   public:
     CComponent(){};
@@ -83,8 +83,8 @@ class CComponent
     }
 };
 
-BOOST_SERIALIZATION_ASSUME_ABSTRACT( CComponent );
-BOOST_CLASS_EXPORT_KEY( CComponent );
+//BOOST_SERIALIZATION_ASSUME_ABSTRACT( CComponent );
+//BOOST_CLASS_EXPORT_KEY( CComponent );
 
 
 #endif /* __COMPONENT_H_ */

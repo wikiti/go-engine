@@ -100,6 +100,6 @@ class CComponent_Dummy3: public CComponent
     void OnEvent();
 };
 
-BOOST_CLASS_EXPORT_KEY( CComponent_Dummy1 );
+//BOOST_CLASS_EXPORT_KEY( CComponent_Dummy1 );
 
 #endif /* __COMPONENT_CAMERA_DUMMYS_H_ */

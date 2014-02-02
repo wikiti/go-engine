@@ -2,7 +2,7 @@
 #include "systems/_resource.h"
 #include "systems/_shader.h"
 
-BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Mesh_Render);
+//BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Mesh_Render);
 
 CComponent_Mesh_Render::CComponent_Mesh_Render(CGameObject* gameObject): CComponent(gameObject)
 {

@@ -2,7 +2,7 @@
 #include "components/_component_dummys.h"
 #include "components/_component_transform.h"
 
-BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Dummy1);
+//BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Dummy1);
 
 CComponent_Dummy1::CComponent_Dummy1(CGameObject* go): CComponent(go)
 {

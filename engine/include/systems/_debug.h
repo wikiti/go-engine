@@ -142,8 +142,8 @@ class CSystem_Debug: public CSystem
 
     void Console_command__SECRET_PLZ(string arguments);
 
-    void Console_command__SAVE_STATE(string arguments);
-    void Console_command__LOAD_STATE(string arguments);
+    //void Console_command__SAVE_STATE(string arguments);
+    //void Console_command__LOAD_STATE(string arguments);
 
     // Systems
     void Console_command__SYSTEM_TIME_SETSCALE(string arguments);

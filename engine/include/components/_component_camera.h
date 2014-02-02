@@ -58,13 +58,13 @@ class CComponent_Camera: public CComponent
   private:
     static int GetID() { return components::camera; }
 
-    friend class boost::serialization::access;
+    /*friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
       ar & boost::serialization::base_object<CComponent>(*this);
-      ar & viewmode & viewport & field_of_view & near_clip & far_clip & background_color & clear & target /*& main_camera*/;
-    }
+      ar & viewmode & viewport & field_of_view & near_clip & far_clip & background_color & clear & target;
+    }*/
 
   public:
     CComponent_Camera(){};
@@ -95,6 +95,6 @@ class CComponent_Camera: public CComponent
     bool DrawSkybox();
 };
 
-BOOST_CLASS_EXPORT_KEY( CComponent_Camera );
+//BOOST_CLASS_EXPORT_KEY( CComponent_Camera );
 
 #endif /* __COMPONENT_CAMERA_H_ */

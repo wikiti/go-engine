@@ -22,8 +22,8 @@ class CSystem_GameObject_Manager: public CSystem
     bool Init();
     void Close();
 
-    void LoadGameObjects(string file = __CSYSTEM_DATA_STORAGE_DEFAULT_SAVEFILE);
-    void SaveGameObjects(string file = __CSYSTEM_DATA_STORAGE_DEFAULT_SAVEFILE);
+    //void LoadGameObjects(string file = __CSYSTEM_DATA_STORAGE_DEFAULT_SAVEFILE);
+    //void SaveGameObjects(string file = __CSYSTEM_DATA_STORAGE_DEFAULT_SAVEFILE);
 
     void InitGameObjects();
     void CloseGameObjects();

@@ -24,7 +24,7 @@ class CGameObject
     friend class CComponent_Transform;
     friend class CSystem_GameObject_Manager;
     friend class CSystem_Debug;
-    friend class boost::serialization::access;
+    //friend class boost::serialization::access;
 
   protected:
     flags_t flags;
@@ -47,7 +47,7 @@ class CGameObject
     function_t render;
 
   private:
-    template<class Archive>
+    /*template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
       ar & flags;
@@ -61,7 +61,7 @@ class CGameObject
 
       // Inservible
       //ar & start & behaviour & event_behaviour & keyevent_behaviour;
-    }
+    }*/
 
   public:
     CGameObject(string name);

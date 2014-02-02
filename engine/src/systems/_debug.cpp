@@ -115,8 +115,8 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("secret_plz", &CSystem_Debug::Console_command__SECRET_PLZ));
 
     // Useless
-  console_commands.insert(pair<string, command_p>("save_state", &CSystem_Debug::Console_command__SAVE_STATE));
-  console_commands.insert(pair<string, command_p>("load_state", &CSystem_Debug::Console_command__LOAD_STATE));
+  //console_commands.insert(pair<string, command_p>("save_state", &CSystem_Debug::Console_command__SAVE_STATE));
+  //console_commands.insert(pair<string, command_p>("load_state", &CSystem_Debug::Console_command__LOAD_STATE));
 
     // Systems
   console_commands.insert(pair<string, command_p>("system_time_setscale", &CSystem_Debug::Console_command__SYSTEM_TIME_SETSCALE));
@@ -952,7 +952,7 @@ void CSystem_Debug::Console_command__QUIT(string arguments)
   gEngine.Quit();
 }
 
-void CSystem_Debug::Console_command__SAVE_STATE(string arguments)
+/*void CSystem_Debug::Console_command__SAVE_STATE(string arguments)
 {
   gSystem_GameObject_Manager.SaveGameObjects(arguments);
 }
@@ -960,7 +960,7 @@ void CSystem_Debug::Console_command__SAVE_STATE(string arguments)
 void CSystem_Debug::Console_command__LOAD_STATE(string arguments)
 {
   gSystem_GameObject_Manager.LoadGameObjects(arguments);
-}
+}*/
 
 void CSystem_Debug::Console_command__SECRET_PLZ(string arguments)
 {

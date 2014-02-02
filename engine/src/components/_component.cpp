@@ -1,6 +1,6 @@
 #include "components/_component.h"
 
-BOOST_CLASS_EXPORT_IMPLEMENT(CComponent);
+//BOOST_CLASS_EXPORT_IMPLEMENT(CComponent);
 
 const char* components::components_s[] = {"base", "camera", "mesh_render", "particle_emitter", "gui_texture", "audio_source", "dummy1", "dummy2", "transform", "not_defined"};
 

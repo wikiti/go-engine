@@ -88,12 +88,12 @@ class CComponent_Particle_Emitter: public CComponent
   private:
     static int GetID() { return components::particle_emitter; }
 
-    friend class boost::serialization::access;
+    /*friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
       ar & boost::serialization::base_object<CComponent>(*this);
-    }
+    }*/
 
   public:
     CComponent_Particle_Emitter(){};
@@ -113,7 +113,7 @@ class CComponent_Particle_Emitter: public CComponent
     void OnLoop();
 };
 
-BOOST_CLASS_EXPORT_KEY( CComponent_Particle_Emitter );
+//BOOST_CLASS_EXPORT_KEY( CComponent_Particle_Emitter );
 
 
 #endif /* __COMPONENT_PARTICLE_EMITTER_H_ */

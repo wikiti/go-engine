@@ -22,13 +22,13 @@ class CComponent_Transform: public CComponent
 
     static int GetID() { return components::transform; }
 
-    friend class boost::serialization::access;
+    /*friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
       //ar & boost::serialization::base_object<CComponent>(*this);
       //ar & position &  angle & scale;
-    }
+    }*/
 
   protected:
     //component_transform_t data;
@@ -136,7 +136,7 @@ class CComponent_Transform: public CComponent
 //    vector3f_t LScale();
 };
 
-BOOST_CLASS_EXPORT_KEY( CComponent_Transform );
+//BOOST_CLASS_EXPORT_KEY( CComponent_Transform );
 
 
 #endif /* __COMPONENT_TRANSFORM_H_ */

@@ -12,7 +12,7 @@ bool CSystem_GameObject_Manager::Init()
   return true;
 }
 
-void CSystem_GameObject_Manager::SaveGameObjects(string file)
+/*void CSystem_GameObject_Manager::SaveGameObjects(string file)
 {
   ofstream os;
 
@@ -25,10 +25,10 @@ void CSystem_GameObject_Manager::SaveGameObjects(string file)
   }
 
 
-  boost::archive::binary_oarchive oa(os);
+  //boost::archive::binary_oarchive oa(os);
 
   uint size = gameObjects.size();
-  oa << size;
+  //oa << size;
 
   for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
   {
@@ -56,12 +56,12 @@ void CSystem_GameObject_Manager::LoadGameObjects(string file)
 
   // esto deberia bastar...
   //ia >> gameObjects;
-  /*for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
-  {
-    for(map<string, CComponent*>::iterator it2 = it->second->components.begin(); it2 != it->second->components.end(); it2++)
-      it2->second->AddFuncs(it->second);
-    it->second->functions["helloworld"] = (&CGameObject::CallFunc_HelloWorld);
-  }*/
+//  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+//  {
+//    for(map<string, CComponent*>::iterator it2 = it->second->components.begin(); it2 != it->second->components.end(); it2++)
+//      it2->second->AddFuncs(it->second);
+//    it->second->functions["helloworld"] = (&CGameObject::CallFunc_HelloWorld);
+//  }
 
   uint size;
   ia >> size;
@@ -71,15 +71,15 @@ void CSystem_GameObject_Manager::LoadGameObjects(string file)
     ia >> obj;
     gameObjects.insert(pair<string, CGameObject*>(obj->GetName(), obj));
     // Esto sobra
-    /*for(map<int, CComponent*>::iterator it = obj->components.begin(); it != obj->components.end(); it++)
-      it->second->AddFuncs(obj);*/
+    //for(map<int, CComponent*>::iterator it = obj->components.begin(); it != obj->components.end(); it++)
+      //it->second->AddFuncs(obj);
 
 
     //gameObjects[obj->GetName()]->functions["helloworld"] = (&CGameObject::CallFunc_HelloWorld);
   }
 
   is.close();
-}
+}*/
 
 void CSystem_GameObject_Manager::Close()
 {

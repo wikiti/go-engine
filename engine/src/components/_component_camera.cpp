@@ -5,7 +5,7 @@
 
 #include "_object.h"
 
-BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Camera);
+//BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Camera);
 
 using namespace viewmode;
 

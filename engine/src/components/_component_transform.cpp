@@ -4,7 +4,7 @@
 
 #include "_object.h"
 
-BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Transform);
+//BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Transform);
 
 GLuint CComponent_Transform::m_TransformVBOVertices = 0;
 GLuint CComponent_Transform::m_TransformVBOColors = 0;

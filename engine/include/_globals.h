@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <ctime>
 #include <vector>
 
 
@@ -47,7 +48,7 @@ class general_exception: public std::exception
 
 /**_________BOOST________**/
 
-#include <boost/archive/text_oarchive.hpp>
+/*#include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
@@ -58,7 +59,7 @@ class general_exception: public std::exception
 #include <boost/serialization/map.hpp>
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/vector.hpp>
-#include <boost/serialization/utility.hpp>
+#include <boost/serialization/utility.hpp>*/
 
 /**__________SDL_________**/
 

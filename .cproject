@@ -40,7 +40,6 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.2022026523" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.1758663113" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
 								<option id="gnu.cpp.link.option.libs.2145204744" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="boost_serialization-mgw48-1_54"/>
 									<listOptionValue builtIn="false" value="mingw32"/>
 									<listOptionValue builtIn="false" value="SDL2main"/>
 									<listOptionValue builtIn="false" value="SDL2"/>
@@ -111,23 +110,23 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="Engine.cdt.managedbuild.target.gnu.mingw.exe.311271234" name="Executable" projectType="cdt.managedbuild.target.gnu.mingw.exe"/>
 	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/Engine"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.618137972;cdt.managedbuild.config.gnu.mingw.exe.release.618137972.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.967592476;cdt.managedbuild.tool.gnu.c.compiler.input.1978247574">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
-		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1287757350;cdt.managedbuild.config.gnu.mingw.exe.debug.1287757350.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.322826450;cdt.managedbuild.tool.gnu.cpp.compiler.input.1002753931">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.618137972;cdt.managedbuild.config.gnu.mingw.exe.release.618137972.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.510598938;cdt.managedbuild.tool.gnu.cpp.compiler.input.680181174">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1287757350;cdt.managedbuild.config.gnu.mingw.exe.debug.1287757350.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.515025689;cdt.managedbuild.tool.gnu.c.compiler.input.1815374386">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.618137972;cdt.managedbuild.config.gnu.mingw.exe.release.618137972.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.967592476;cdt.managedbuild.tool.gnu.c.compiler.input.1978247574">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.618137972;cdt.managedbuild.config.gnu.mingw.exe.release.618137972.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.510598938;cdt.managedbuild.tool.gnu.cpp.compiler.input.680181174">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="refreshScope" versionNumber="1">
-		<resource resourceType="PROJECT" workspacePath="/Engine"/>
-	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
