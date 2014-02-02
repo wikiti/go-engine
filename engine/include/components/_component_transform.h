@@ -13,6 +13,7 @@ class CComponent_Transform: public CComponent
 
   public:
     friend class CGameObject;
+    friend class CSystem_Render;
 
   private:
     //vector3f angle_vector;

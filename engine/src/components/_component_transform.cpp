@@ -94,7 +94,7 @@ void CComponent_Transform::OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMat
 
   //CShader* simpleShader = gSystem_Shader_Manager.GetShader("__flatShader");
   //glUseProgram(simpleShader->GetProgram());
-  CShader* simpleShader = gSystem_Shader_Manager.UseShader("__flatShader");
+  /*CShader* simpleShader = gSystem_Shader_Manager.UseShader("__flatShader");
 
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(projMatrix));
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelViewMatrix));
@@ -106,13 +106,13 @@ void CComponent_Transform::OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMat
   glEnableVertexAttribArray(1);
 
   glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOVertices );
-  glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOColors );
+  glBindBuffer( GL_ARRAY_BUFFER, m_TransformVBOColors );*/
 
   glDrawArrays( GL_LINES, 0, 6);
 
-  glDisableVertexAttribArray(0);
+  /*glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
-  glBindVertexArray(0);
+  glBindVertexArray(0);*/
 
   //glUseProgram(0);
 

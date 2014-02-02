@@ -452,11 +452,12 @@ void CSystem_Render::OnRender()
 	  // Other renders
     if(gSystem_Data_Storage.GetInt("__RENDER_SOUND_RADIUS"))
     {
-      glPushAttrib(GL_POLYGON_BIT); // <- deprecated!
-
       glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
       glBindTexture(GL_TEXTURE_2D, 0);
-      glColor4f(1.f, 1.f, 0.f, 1.f); // <- deprecated!
+
+      CShader* simpleShader = gSystem_Shader_Manager.UseShader("__simpleGLUShader");
+      glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(cam->projMatrix));
+      glUniform4f(simpleShader->GetUniformIndex("in_Color"), 1.0, 1.0, 0.0, 1.0);
 
       for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
       {
@@ -465,19 +466,36 @@ void CSystem_Render::OnRender()
           glPushMatrix();
 
           it2->second->Transform()->ApplyTransform();
+
+          GLfloat modelViewMatrixf[16];
+          glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrixf);
+          glm::mat4 local_modelViewMatrix = glm::make_mat4(modelViewMatrixf);
+
+          glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(local_modelViewMatrix));
+
           it2->second->AudioSource()->OnRender(cam->projMatrix, cam->modelViewMatrix);
 
           glPopMatrix();
         }
       }
 
-      glPopAttrib();
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
 	  if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM"))
 	  {
 	    glClear(GL_DEPTH_BUFFER_BIT);
       glBindTexture(GL_TEXTURE_2D, 0);
+
+      CShader* simpleShader = gSystem_Shader_Manager.UseShader("__flatShader");
+      glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(cam->projMatrix));
+
+      glBindVertexArray(CComponent_Transform::m_TransformVAO);
+      glEnableVertexAttribArray(0);
+      glEnableVertexAttribArray(1);
+
+      glBindBuffer( GL_ARRAY_BUFFER, CComponent_Transform::m_TransformVBOVertices );
+      glBindBuffer( GL_ARRAY_BUFFER, CComponent_Transform::m_TransformVBOColors );
 
 	    for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	    {
@@ -489,10 +507,16 @@ void CSystem_Render::OnRender()
 	       glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrixf);
 	       glm::mat4 local_modelViewMatrix = glm::make_mat4(modelViewMatrixf);
 
+	       glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(local_modelViewMatrix));
+
 	       it2->second->Transform()->OnRender(local_modelViewMatrix, cam->projMatrix);
 
 	       glPopMatrix();
 	    }
+
+      glDisableVertexAttribArray(0);
+      glDisableVertexAttribArray(1);
+      glBindVertexArray(0);
 	  }
 
     cam->AfterRender();

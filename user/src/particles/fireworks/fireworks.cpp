@@ -64,7 +64,7 @@ void Firework_Manager_KeyEvent(CGameObject* gameObject)
     explosion->AudioSource()->SetSound("firework_explosion");
     explosion->AudioSource()->volume = 1.f;
     //explosion->AudioSource()->loop = true;
-    explosion->AudioSource()->max_distance = 100.f;
+    explosion->AudioSource()->max_distance = 200.f;
     //explosion->AudioSource()->everywhere = false;
     //explosion->AudioSource()->Bind();
 
@@ -91,7 +91,7 @@ void Firework_Manager_KeyEvent(CGameObject* gameObject)
     trail->ParticleEmitter()->Start();
 
     trail->AudioSource()->SetSound("firework_trail");
-    trail->AudioSource()->volume = 1.f;
+    trail->AudioSource()->volume = 0.6f;
     trail->AudioSource()->max_distance = 100.f;
     trail->AudioSource()->Bind();
     trail->AudioSource()->Play();
