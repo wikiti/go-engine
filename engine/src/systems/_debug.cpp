@@ -59,6 +59,7 @@ bool CSystem_Debug::InitConsoleFont()
 {
   if(!gSystem_Resources.LoadResource(__CSYSTEM_DEBUG_CONSOLE_FONT, __CSYSTEM_DEBUG_CONSOLE_FONT_FILE, resources::texture, "mipmap"))
   {
+    error("From Debug: Could not file file \"%s\"", __CSYSTEM_DEBUG_CONSOLE_FONT_FILE);
     return false;
   }
 

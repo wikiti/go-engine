@@ -231,6 +231,9 @@ CShader* CSystem_Shader_Manager::UseShader(const string& name)
       {
         glUseProgram(r_shader->GetProgram());
         last_shader_used = name;
+
+        if(r_shader == shaders[DEFAULT_SHADER])
+          gSystem_Debug.console_warning_msg("From Shader Manager: Warning. Using DEFAULT_SHADER instead of \"%s\" (not exists)", name.c_str());
       }
     }
 
@@ -315,7 +318,7 @@ CShader* CSystem_Shader_Manager::Load(const string& name, const string& vertexFi
     programShader = glCreateProgram();
     if (programShader == 0)
     {
-      gSystem_Debug.error("From Render: Could not generate glProgram (Shader) for %s", name.c_str());
+      gSystem_Debug.error("From Shader Manager: Could not generate glProgram (Shader) for %s", name.c_str());
       return NULL;
     }
 
@@ -379,7 +382,7 @@ CShader* CSystem_Shader_Manager::LoadShaderStr(const string& name, const char** 
     programShader = glCreateProgram();
     if (programShader == 0)
     {
-      gSystem_Debug.error("From Render: Could not generate glProgram (Shader) for %s", name.c_str());
+      gSystem_Debug.error("From Shader Manager: Could not generate glProgram (Shader) for %s", name.c_str());
       return NULL;
     }
 
@@ -410,7 +413,7 @@ CShader* CSystem_Shader_Manager::LoadShaderStr(const string& name, const char** 
 bool CSystem_Shader_Manager::LoadStr(const string& name, uint inShaderType, const char** inShaderCode, uint& inOutShader)
 {
   // load shader source from file
-  int sourceSize = strlen(inShaderCode[0]);
+  //int sourceSize = strlen(inShaderCode[0]);
 
   if(inShaderCode == NULL)
   {

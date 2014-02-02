@@ -44,11 +44,14 @@ bool CSystem_UserInput::Init()
     // Mouse
   if(!mouse.Init())
   {
-    gSystem_Debug.msg_box(ERROR_INIT, "Error cargando dispositivo mouse");
+    gSystem_Debug.msg_box(ERROR_INIT, "From UserInput: Could not load mouse device");
   }
 
     // Joystick
-  RebuildJoysticks();
+  if(!RebuildJoysticks())
+  {
+    gSystem_Debug.msg_box(ERROR_INIT, "From UserInput: Could not load joysticks devices");
+  }
   rebuild_joysticks = false;
   rebuild_joysticks_timeout = 0.f;
 
