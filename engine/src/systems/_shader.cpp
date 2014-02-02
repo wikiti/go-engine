@@ -132,9 +132,47 @@ bool CSystem_Shader_Manager::InitMainShaders()
   glBindAttribLocation(shader->GetProgram(), 0, "in_Position");
   glBindAttribLocation(shader->GetProgram(), 1, "in_Color");
 
-  if(!gSystem_Shader_Manager.LinkShader("__flatShader")) return false;
+  if(!gSystem_Shader_Manager.LinkShader("__flatShader"))
+      return false;
 
   shaders[DEFAULT_SHADER] = shader;
+
+  // -----------------------------------------------------
+
+    // Simple GLU shader
+  const char* __simpleGLUShader_VertexCode[] =
+  {
+    "uniform mat4 ProjMatrix;"
+    "uniform mat4 ModelViewMatrix;"
+    "uniform vec4 in_Color;"
+
+    "varying vec4 frag_Color;"
+
+    "void main(void)"
+    "{"
+      "mat4 MVPMatrix = ProjMatrix * ModelViewMatrix;"
+      "gl_Position = MVPMatrix * gl_Vertex;"
+
+      "frag_Color = in_Color;"
+    "}"
+  };
+
+  const char* __simpleGLUShader_FragmentCode[] =
+  {
+    "varying vec4 frag_Color;"
+
+    "void main(void)"
+    "{"
+      "gl_FragColor = frag_Color;"
+    "}"
+  };
+
+  shader = gSystem_Shader_Manager.LoadShaderStr("__simpleGLUShader", __simpleGLUShader_VertexCode, __simpleGLUShader_FragmentCode);
+  if(!shader)
+    return false;
+
+  if(!gSystem_Shader_Manager.LinkShader("__simpleGLUShader"))
+    return false;
 
   // -----------------------------------------------------
 

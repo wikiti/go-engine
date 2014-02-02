@@ -49,8 +49,6 @@ void CComponent_Audio_Source::OnRender(glm::mat4 projMatrix, glm::mat4 modelView
 
   float sub_x = gSystem_Data_Storage.GetFloat("__RENDER_SOUND_RADIUS_X"), sub_z = gSystem_Data_Storage.GetFloat("__RENDER_SOUND_RADIUS_Z");
 
-  gSystem_Shader_Manager.UseShader();
-
   gSystem_Render.RenderSphere(max_distance, sub_x, sub_z);
   gSystem_Render.RenderSphere(min_distance, sub_x, sub_z);
 }

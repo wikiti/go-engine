@@ -44,9 +44,6 @@ void CComponent_Mesh_Render::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
 
   if(before_render) before_render(gameObject);
 
-  //"uniform float textureFlag;"
-  //"uniform vec4 in_Color;"
-
   glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   CResource_Mesh* mesh = gSystem_Resources.GetMesh(mesh_name);
   if(mesh) mesh->Render();
