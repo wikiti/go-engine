@@ -5,6 +5,7 @@
 #include "systems/_render.h"
 #include "systems/_mixer.h"
 #include "systems/_data.h"
+#include "systems/_shader.h"
 
 #include "_object.h"
 
@@ -47,6 +48,8 @@ void CComponent_Audio_Source::OnRender(glm::mat4 projMatrix, glm::mat4 modelView
   if(everywhere) return;
 
   float sub_x = gSystem_Data_Storage.GetFloat("__RENDER_SOUND_RADIUS_X"), sub_z = gSystem_Data_Storage.GetFloat("__RENDER_SOUND_RADIUS_Z");
+
+  gSystem_Shader_Manager.UseShader();
 
   gSystem_Render.RenderSphere(max_distance, sub_x, sub_z);
   gSystem_Render.RenderSphere(min_distance, sub_x, sub_z);

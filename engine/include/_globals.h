@@ -176,6 +176,11 @@ typedef struct colorf_t
     return *this;
   }
 
+  float* to_a()
+  {
+    return (float*)this;
+  }
+
 } colorf_t;
 
 typedef struct viewport_t

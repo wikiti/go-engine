@@ -4,6 +4,21 @@
 #include "_object.h"
 #include "systems/_system.h"
 
+// Problema grave: alphablending
+// http://blogs.msdn.com/b/shawnhar/archive/2009/02/18/depth-sorting-alpha-blended-objects.aspx
+// http://stackoverflow.com/questions/5793354/how-to-write-prevent-writing-to-opengl-depth-buffer-in-glsl
+/*
+ * Parece que el "algoritmo" será:
+ *
+ * Para cada objeto a dibujar:
+ *   Si el objeto es transparente, añadir en el vector "lista_transparente", ordenando por la distancia hacia la cámara
+ *   Si no es transparente, dibujar el objeto
+ *
+ * Desactivar la escritura al depth buffer
+ * Para cada objeto en lista_transparente
+ *     dibujar objetos de atrás hacia delante
+ */
+
 class CSystem_Render: public CSystem
 {
   private:

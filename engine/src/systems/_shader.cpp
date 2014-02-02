@@ -139,15 +139,20 @@ bool CSystem_Shader_Manager::InitMainShaders()
   // -----------------------------------------------------
 
     // Texture simple shader
+  // http://stackoverflow.com/questions/6686741/fragment-shader-glsl-for-texture-color-and-texture-color
   const char* __textureShader_VertexCode[] =
   {
     "uniform mat4 ProjMatrix;"
     "uniform mat4 ModelViewMatrix;"
+    "uniform float textureFlag;"
+    "uniform vec4 in_Color;"
 
     "attribute vec4 in_Position;"
     "attribute vec2 in_TexCoords;"
 
     "varying vec2 frag_TexCoords;"
+    "varying vec4 frag_Color;"
+    "varying float frag_textureFlag;"
 
     "void main(void)"
     "{"
@@ -155,6 +160,8 @@ bool CSystem_Shader_Manager::InitMainShaders()
         "gl_Position = MVPMatrix * in_Position;"
 
         "frag_TexCoords = in_TexCoords;"
+        "frag_Color = in_Color;"
+        "frag_textureFlag = textureFlag;"
     "}"
   };
 
@@ -163,10 +170,12 @@ bool CSystem_Shader_Manager::InitMainShaders()
     "uniform sampler2D texture;"
 
     "varying vec2 frag_TexCoords;"
+    "varying vec4 frag_Color;"
+    "varying float frag_textureFlag;"
 
     "void main(void)"
     "{"
-      "gl_FragColor = texture2D(texture, frag_TexCoords);"
+      "gl_FragColor = mix(frag_Color, texture2D(texture, frag_TexCoords) * frag_Color, frag_textureFlag);"
     "}"
   };
 
@@ -203,6 +212,32 @@ CShader* CSystem_Shader_Manager::GetShader(const string& name)
   // if load/link unsuccessfully, return default shader which program = 0
   return shaders[DEFAULT_SHADER];
 }
+
+CShader* CSystem_Shader_Manager::UseShader(const string& name)
+{
+  if(name == "")
+  {
+    glUseProgram(0);
+    last_shader_used = name;
+
+    return NULL;
+  }
+  else
+  {
+    CShader* r_shader = GetShader(name);
+    if(r_shader)
+    {
+      if(name != last_shader_used)
+      {
+        glUseProgram(r_shader->GetProgram());
+        last_shader_used = name;
+      }
+    }
+
+    return r_shader;
+  }
+}
+
 
 CShader* CSystem_Shader_Manager::LoadShader(const string& name, const string& vertFile, const string& fragFile, const string& geomFile)
 {

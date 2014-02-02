@@ -1,6 +1,7 @@
 #include "systems/_render.h"
 #include "systems/_other.h"
 #include "systems/_resource.h"
+#include "systems/_shader.h"
 #include "components/_component_particle_emitter.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Particle_Emitter);
@@ -29,8 +30,8 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
   max_angle_vel = min_angle_vel = 0.f;
   max_scale = min_scale = 1.f;
 
-  min_color = colorf_t(0.f, 0.f, 0.f, 0.f);
-  max_color = colorf_t(1.f, 1.f, 1.f, 1.f);
+  min_color(0.f, 0.f, 0.f, 0.f);
+  max_color(1.f, 1.f, 1.f, 1.f);
 
   // Start values
   start_max_life_time = 2.f;
@@ -184,6 +185,10 @@ void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 model
 
   glDepthMask(GL_FALSE);
   glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+  //glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+  //glBlendFunc(GL_DST_COLOR, GL_ONE);
+
+  gSystem_Shader_Manager.UseShader();
 
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {

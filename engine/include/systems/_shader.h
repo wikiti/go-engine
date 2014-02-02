@@ -70,14 +70,7 @@ class CSystem_Shader_Manager: public CSystem
     CShader* LinkShader(const string& name);
     CShader* GetShader(const string& name);
 
-    void UseShader(const string& name)
-    {
-      if(name != last_shader_used)
-      {
-        glUseProgram(shaders[name]->GetProgram());
-        last_shader_used = name;
-      }
-    }
+    CShader* UseShader(const string& name = "");
 
   private:
     CShader* Load(const string& name, const string& vertexFile, const string& fragmentFile, const string& geometryFile = "");

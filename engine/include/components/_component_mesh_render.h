@@ -13,6 +13,10 @@ class CComponent_Mesh_Render: public CComponent
     //vector<string> materials;
     // Guardar colores en un vector, o algo por el estilo...
     colorf_t color;
+    GLfloat color_apply_force;
+
+    // Puede ser útil para
+    function_t before_render, after_render;
 
     // Modo difuso, etc etc
 

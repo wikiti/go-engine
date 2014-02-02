@@ -418,6 +418,8 @@ void CSystem_Debug::print(GLint x, GLint y, int set, const char* fmt, ...)
   if(set > 1 || set < 0)
     set = 1;
 
+  gSystem_Shader_Manager.UseShader();
+
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
   glLoadIdentity();
