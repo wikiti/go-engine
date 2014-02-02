@@ -73,6 +73,11 @@ class CSystem_Debug: public CSystem
     void ParseInput();
 
     // Console Font
+    // De momento no vamos a usar los VBOs, ya que es el debugger y no tiene mucha importancia :D
+    /*GLuint m_ConsoleFontVAO;
+    GLuint m_ConsoleFontVBOVertices;
+    GLuint m_ConsoleFontVBOTexCoords;
+    GLuint m_ConsoleFontVBOTypeInfo;*/
     GLuint base;
     void print(GLint x, GLint y, int set, const char* fmt, ...);
 

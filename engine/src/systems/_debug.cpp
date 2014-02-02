@@ -84,8 +84,50 @@ bool CSystem_Debug::InitConsoleFont()
 
   glBindTexture(GL_TEXTURE_2D, 0);
 
-  //gSystem_Textures.DeleteTexture(nombre);
   return true;
+
+  // Posible problema: vec2 a vec3
+  /*const GLfloat consoleFont_vertices[][2]
+  {
+    { 0.f, 16.f}, {16.f, 16.0f},
+    {16.f,  0.f}, { 0.f,  0.0f}
+  };
+
+  const GLfloat consoleFont_texCoords[][2]
+  {
+    // problema, tal vez estén mal puestos
+    {    0.f,  0.999f}, {0.0625f,  0.999f},
+    {0.0625f, 0.9375f}, {   0.0f, 0.9375f}
+  };
+
+  glGenVertexArrays(1, &m_ConsoleFontVAO);
+  if(!m_ConsoleFontVAO)
+  {
+    gSystem_Debug.error("From Debug: Could not generate ConsoleFont VAO.");
+    return false;
+  }
+
+  glGenBuffers( 1, &m_ConsoleFontVBOVertices );
+  glGenBuffers( 1, &m_ConsoleFontVBOTexCoords );
+  glGenBuffers( 1, &m_ConsoleFontVBOTypeInfo ); // Este se actualiza automáticamente cada vez que se llama a print().
+
+  if(!m_ConsoleFontVBOVertices or !m_ConsoleFontVBOTexCoords or !m_ConsoleFontVBOTypeInfo)
+  {
+    gSystem_Debug.error("From Debug: Could not generate ConsoleFont VBO.");
+    return false;
+  }
+
+  glBindVertexArray(m_ConsoleFontVAO);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_ConsoleFontVBOVertices );
+  glBufferData( GL_ARRAY_BUFFER, 4*2*sizeof(GLfloat), consoleFont_vertices, GL_STATIC_DRAW );
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer( GL_ARRAY_BUFFER, m_ConsoleFontVBOTexCoords );
+  glBufferData( GL_ARRAY_BUFFER, 4*2*sizeof(GLfloat), consoleFont_texCoords, GL_STATIC_DRAW );
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindVertexArray(0);*/
 }
 
 bool CSystem_Debug::InitCommandMap()
@@ -155,6 +197,11 @@ void CSystem_Debug::Close()
   gSystem_Resources.ClearResource(__CSYSTEM_DEBUG_CONSOLE_FONT);
   glDeleteLists(base,256);
   base = 0;
+
+  /*glDeleteVertexArrays(1, &m_ConsoleFontVAO);
+  glDeleteBuffers( 1, &m_ConsoleFontVBOVertices );
+  glDeleteBuffers( 1, &m_ConsoleFontVBOTexCoords );
+  glDeletenBuffers( 1, &m_ConsoleFontVBOTypeInfo );*/
 }
 
 void CSystem_Debug::log(const char* fmt, ...)
