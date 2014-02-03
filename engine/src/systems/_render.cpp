@@ -560,7 +560,6 @@ void CSystem_Render::RenderGrid(CComponent_Camera* cam)
   glm::mat4 local_modelViewMatrix = cam->modelViewMatrix;
   local_modelViewMatrix = glm::translate(local_modelViewMatrix, glm::vec3((-ncols*cols_scale)/2.f, 0.f, (-nrows*rows_scale)/2.f));
   local_modelViewMatrix = glm::scale(local_modelViewMatrix, glm::vec3(rows_scale, 0.f, cols_scale));
-  glm::rotate(local_modelViewMatrix, 20.f, glm::vec3(0.f, 0.f, 1.f));
 
   //CShader* simpleShader = gSystem_Shader_Manager.GetShader("__flatShader");
   CShader* simpleShader = gSystem_Shader_Manager.UseShader("__flatShader");
