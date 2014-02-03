@@ -10,6 +10,52 @@ GLuint CComponent_Transform::m_TransformVBOVertices = 0;
 GLuint CComponent_Transform::m_TransformVBOColors = 0;
 GLuint CComponent_Transform::m_TransformVAO = 0;
 
+// Test
+void decompose(glm::mat4 matrix, glm::vec3& scaling, glm::quat& rotation, glm::vec3& position)
+{
+  // extract translation
+  position.x = matrix[3][0];
+  position.y = matrix[3][0];
+  position.z = matrix[3][1];
+
+  // extract the rows of the matrix
+
+  glm::vec3 columns[3] =
+  {
+      glm::vec3(matrix[0].x, matrix[0].y, matrix[0].z),
+      glm::vec3(matrix[1][0], matrix[1][1], matrix[1][2]),
+      glm::vec3(matrix[2][0], matrix[2][1], matrix[2][2])
+  };
+
+  glm::vec3 test(columns[0]);
+
+  // extract the scaling factors
+  scaling.x = columns[0].length();
+  scaling.y = columns[1].length();
+  scaling.z = columns[2].length();
+
+  // and remove all scaling from the matrix
+  if(scaling.x)
+  {
+    columns[0] /= scaling.x;
+  }
+  if(scaling.y)
+  {
+    columns[1] /= scaling.y;
+  }
+  if(scaling.z)
+  {
+    columns[2] /= scaling.z;
+  }
+
+  // build a 3x3 rotation matrix
+  glm::mat3 m(columns[0].x, columns[1].x, columns[2].x, columns[0].y, columns[1].y, columns[2].y,
+      columns[0].z, columns[1].z, columns[2].z);
+
+  // and generate the rotation quaternion from it
+  rotation = glm::quat(m);
+}
+
 
 bool CComponent_Transform::InitRenderVBO()
 {
