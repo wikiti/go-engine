@@ -11,8 +11,8 @@ CComponent_Particle_Emitter::CParticle::CParticle()
   active = false;
   life = -1.f;
 
-  position = velocity = scale = acceleration = vector3f_t();
-  angle = angle_velocity = angle_acceleration = scale_factor = 0.f;
+  position = velocity = acceleration = vector3f_t();
+  angle = angle_velocity = angle_acceleration = scale = scale_factor = 0.f;
 }
 
 CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject): CComponent(gameObject)
@@ -82,7 +82,6 @@ void CComponent_Particle_Emitter::Start()
 
   last_pos = gameObject->Transform()->Position();
 
-  particles.resize(max_particles);
   stop = freeze = false;
 
   vector3f pos_difference(0.f, 0.f, 0.f);
@@ -101,8 +100,10 @@ void CComponent_Particle_Emitter::Start()
       delete (*it);
 
     particles.clear();
-    particles.resize(max_particles);
+    //particles.resize(max_particles);
   }
+
+  particles.resize(max_particles);
 
   float new_particles = particles_per_second * gSystem_Time.GetTicks_s();
 
@@ -198,12 +199,12 @@ void makebillboardGLM(glm::mat4& matrix)
   for(size_t i = 0; i < 3; i++)
   {
     for(size_t j = 0; j < 3; j++)
-      output[4 * i + j] = i == j ? 1 : 0;
-    output[4 * i + 3] = matrix[4 * i + 3];
+      output[i][j] = i == j ? 1 : 0;
+    output[i][3] = matrix[i][3];
   }
 
   for(size_t i = 0; i < 4; i++)
-    output[12 + i] = matrix[12 + i];
+    output[3][i] = matrix[3][i];
 
   matrix = output;
 }

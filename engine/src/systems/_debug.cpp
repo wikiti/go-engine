@@ -19,11 +19,17 @@ void CSystem_Debug::ParseInput()
 
   string command, arguments;
   ss >> command;
+
   getline(ss, arguments);
   if(arguments.size() > 1) arguments = arguments.substr(1);
 
-  map<string, command_p>::iterator it = console_commands.find(GO_Utils::string_to_lower(command));
+  command = GO_Utils::string_to_lower(command);
+  map<string, command_p>::iterator it = console_commands.find(command);
   console_msg("> %s %s", command.c_str(), arguments.c_str());
+
+  if(command[0] == '#') // ignore comments
+    return;
+
   if(it != console_commands.end())
   {
     (this->*(it->second))(arguments);
@@ -154,6 +160,8 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("exit", &CSystem_Debug::Console_command__EXIT));
   console_commands.insert(pair<string, command_p>("quit", &CSystem_Debug::Console_command__QUIT));
   console_commands.insert(pair<string, command_p>("clear", &CSystem_Debug::Console_command__CLEAR));
+
+  console_commands.insert(pair<string, command_p>("run", &CSystem_Debug::Console_command__RUN));
 
   console_commands.insert(pair<string, command_p>("secret_plz", &CSystem_Debug::Console_command__SECRET_PLZ));
 
@@ -312,6 +320,7 @@ void CSystem_Debug::OnEvent()
           ParseInput();
           input = "";
           console_pointer_pos = 0;
+          current_line_buffered = 0;
         }
       }
       else if(event.key.keysym.scancode == SDL_SCANCODE_DELETE && input.length())
@@ -342,7 +351,7 @@ void CSystem_Debug::OnEvent()
       }
       else if(event.key.keysym.scancode == SDL_SCANCODE_DOWN)
       {
-        if(command_buffer.size() && current_last_command < command_buffer.size()-1)
+        if(command_buffer.size() && (uint)current_last_command < command_buffer.size()-1)
         {
           current_last_command++;
           input = command_buffer[current_last_command];
@@ -361,9 +370,20 @@ void CSystem_Debug::OnEvent()
       }
       else if(event.key.keysym.scancode == SDL_SCANCODE_PAGEUP)
       {
-        if(console_buffer.size() && current_line_buffered < console_buffer.size()-1)
+        if(console_buffer.size() )
         {
-          current_line_buffered++;
+          current_line_buffered += __CSYSTEM_DEBUG_CONSOLE_LINES;
+          if((uint)current_line_buffered > console_buffer.size()-1)
+            current_line_buffered = console_buffer.size()-1;
+        }
+      }
+      else if(event.key.keysym.scancode == SDL_SCANCODE_PAGEDOWN)
+      {
+        if(console_buffer.size() )
+        {
+          current_line_buffered -= __CSYSTEM_DEBUG_CONSOLE_LINES;
+          if(current_line_buffered < 0)
+            current_line_buffered = 0;
         }
       }
       else if(event.key.keysym.scancode == SDL_SCANCODE_END)
@@ -391,7 +411,7 @@ void CSystem_Debug::OnEvent()
     }
     else if(event.type == SDL_MOUSEWHEEL)
     {
-      if(event.wheel.y > 0 && console_buffer.size() && current_line_buffered < console_buffer.size()-1)
+      if(event.wheel.y > 0 && console_buffer.size() && (uint)current_line_buffered < console_buffer.size()-1)
         current_line_buffered++;
       else if(event.wheel.y < 0 && console_buffer.size() && current_line_buffered > 0)
         current_line_buffered--;
@@ -436,7 +456,7 @@ void CSystem_Debug::OnRender()
 
   // Show console buffer
   //int line = 0;
-  for(uint i = current_line_buffered, line = 0; i < __CSYSTEM_DEBUG_CONSOLE_LINES + current_line_buffered && i < console_buffer.size(); i++, line++)
+  for(uint i = current_line_buffered, line = 0; i < __CSYSTEM_DEBUG_CONSOLE_LINES + (uint)current_line_buffered && i < console_buffer.size(); i++, line++)
   {
     string_console_t& s = console_buffer[i];
     glColor4f(s.line_color.r, s.line_color.g, s.line_color.b, s.line_color.a);
@@ -570,7 +590,7 @@ void CSystem_Debug::console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat 
 
 void CSystem_Debug::Console_command__UNKNOWN_COMMAND(string arguments)
 {
-  console_error_msg("Unkown command: %s", arguments.c_str());
+  console_error_msg("Unkown command: \"%s\"", arguments.c_str());
 }
 
 void CSystem_Debug::Console_command__HELP(string arguments)
@@ -611,6 +631,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("quit:                           Quits the program and save current opened files.");
     console_msg("exit:                           Aborts the program and exists.");
     console_msg("clear:                          Clears the console content.");
+    console_msg("run:                            Runs a console script file (batch file). Fil must be in data/resources/console_scripts.");
   }
   else if(arguments == "systems")
   {
@@ -998,6 +1019,54 @@ void CSystem_Debug::Console_command__QUIT(string arguments)
 
   gSystem_Debug.log("Quit: \"%s\"", arguments.c_str());
   gEngine.Quit();
+}
+
+void CSystem_Debug::Console_command__RUN(string arguments)
+{
+  // Parse txt (or binary) file
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: run <file>");
+    return;
+  }
+
+  stringstream ss(arguments);
+  string file;
+  ss >> file;
+
+  file = "data\\resources\\console_scripts\\" + file;
+
+  ifstream is(file.c_str());
+
+  if(!is || !is.good())
+  {
+    console_error_msg("Cannot open file \"%s\"", file.c_str());
+    return;
+  }
+
+  console_msg("Running script \"%s\"", file.c_str());
+  console_msg("---------------------------------");
+
+  string line;
+  while(getline(is, line, '\n'))
+  {
+    //gSystem_Debug.log("Linea: %s", line.c_str());
+    if(line[0] == '#' || line[0] == '\0') // Ignore comments and blank lines
+      continue;
+
+    command_buffer.push_back(line);
+    if(command_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_COMMAND_BUFFER_MAXLINES) command_buffer.erase(command_buffer.begin()); // Check command_buffer size and clean if necesary
+
+    current_last_command = command_buffer.size();
+    input = line;
+    ParseInput();
+    input = "";
+    console_pointer_pos = 0;
+  }
+
+  console_msg("---------------------------------");
+
+  is.close();
 }
 
 /*void CSystem_Debug::Console_command__SAVE_STATE(string arguments)

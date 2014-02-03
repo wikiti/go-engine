@@ -62,8 +62,8 @@ class CSystem_Debug: public CSystem
     vector<string_console_t> console_buffer;
     vector<string> command_buffer;
 
-    uint current_line_buffered;
-    uint current_last_command;
+    int current_line_buffered;
+    int current_last_command;
 
     typedef void (CSystem_Debug::*command_p)(string);
     map<string, command_p> console_commands;
@@ -144,6 +144,7 @@ class CSystem_Debug: public CSystem
     void Console_command__QUIT(string arguments);
     void Console_command__CLEAR(string arguments);
     void Console_command__EXIT(string arguments);
+    void Console_command__RUN(string arguments);
 
     void Console_command__SECRET_PLZ(string arguments);
 

@@ -14,6 +14,8 @@ bool SetGameObjects_Instance1_Fireworks()
   firework_manager->AudioSource()->SetSound("fireworks");
   firework_manager->AudioSource()->Bind();
 
+  gData.SetInt("firework_explosion_particles", 500);
+
   return true;
 }
 
@@ -47,7 +49,7 @@ void Firework_Manager_KeyEvent(CGameObject* gameObject)
 
       // Explosion
     explosion->ParticleEmitter()->material_name = "sprite1";
-    explosion->ParticleEmitter()->max_particles = 500;
+    explosion->ParticleEmitter()->max_particles = gData.GetInt("firework_explosion_particles");
     explosion->ParticleEmitter()->angle_spread = 360;
     explosion->ParticleEmitter()->gravity(0, -5.f, 0);
     explosion->ParticleEmitter()->start_max_life_time = gMath.random(1.5f, 3.f);
