@@ -227,6 +227,106 @@ bool CSystem_Shader_Manager::InitMainShaders()
   if(!gSystem_Shader_Manager.LinkShader("__textureShader"))
     return false;
 
+  // -----------------------------------------------------
+
+    // Simple GLU shader
+  const char* __particlesShader_VertexCode[] =
+  {
+    "uniform mat4 ProjMatrix;"
+    "uniform mat4 ModelViewMatrix;"
+    "uniform float textureFlag;"
+
+    "attribute vec4 in_Vertex;"
+    "attribute vec2 in_TexCoords;"
+
+    "attribute vec4 in_Position;" // <-- vec3?
+    "attribute vec2 in_AngleScale;"
+    "attribute vec4 in_Color;"
+
+    "varying vec4 frag_Color;"
+    "varying vec2 frag_TexCoords;"
+    "varying float frag_textureFlag;"
+
+    // hay que definir aquí dentro makebillboard...
+
+    "mat4 translate(mat4 m, vec3 v)"
+    "{"
+      "mat4 translated = m;"
+      "translated[3] = m[0] * v[0] + m[1] * v[1] + m[2] * v[2] + m[3];"
+
+      "return translated;"
+    "}"
+
+      "mat4 makebillboard(mat4 inputmat)"
+      "{"
+        "mat4 outputmat = mat4(1.0);"
+        "for(int i = 0; i < 3; i++)"
+        "{"
+          "for(int j = 0; j < 3; j++)"
+          "{"
+            "if(i == j)"
+              "outputmat[i][j] = 1.0;"
+            "else {"
+              "outputmat[i][j] = 0.0; }"
+          "}"
+          "outputmat[i][3] = inputmat[i][3];"
+        "}"
+
+        "for(int i = 0; i < 4; i++)"
+          "outputmat[3][i] = inputmat[3][i];"
+
+        "return outputmat;"
+      "}"
+
+    "void main(void)"
+    "{"
+      "frag_Color = in_Color;"
+      "frag_TexCoords = in_TexCoords;"
+      "frag_textureFlag = textureFlag;"
+
+      // Translate
+      "mat4 MVPMatrix = translate(ModelViewMatrix, vec3(in_Position.x, in_Position.y, in_Position.z));" // <- problemas aquí!
+      //Makebillboard
+      "MVPMatrix = makebillboard(MVPMatrix);"
+      // Rotate
+
+      // Scale
+
+      // Project
+      "MVPMatrix = ProjMatrix * MVPMatrix;"
+
+      "gl_Position = MVPMatrix * in_Vertex;"
+    "}"
+  };
+
+  const char* __particlesShader_FragmentCode[] =
+  {
+    "uniform sampler2D texture;"
+
+    "varying vec2 frag_TexCoords;"
+    "varying vec4 frag_Color;"
+    "varying float frag_textureFlag;"
+
+    "void main(void)"
+    "{"
+      //"gl_FragColor = mix(frag_Color, texture2D(texture, frag_TexCoords) * frag_Color, frag_textureFlag);"
+      "gl_FragColor = mix(frag_Color, texture2D(texture, frag_TexCoords) * frag_Color, frag_textureFlag);"
+    "}"
+  };
+
+  shader = gSystem_Shader_Manager.LoadShaderStr("__particlesShader", __particlesShader_VertexCode, __particlesShader_FragmentCode);
+  if(!shader)
+    return false;
+
+  glBindAttribLocation(shader->GetProgram(), 0, "in_Vertex");
+  glBindAttribLocation(shader->GetProgram(), 1, "in_TexCoords");
+  glBindAttribLocation(shader->GetProgram(), 2, "in_Position");
+  glBindAttribLocation(shader->GetProgram(), 3, "in_AngleScale");
+  glBindAttribLocation(shader->GetProgram(), 4, "in_Color");
+
+  if(!gSystem_Shader_Manager.LinkShader("__particlesShader"))
+    return false;
+
   return true;
 }
 

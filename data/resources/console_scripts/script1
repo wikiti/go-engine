@@ -1,3 +1,4 @@
+go_enable rainbow 0 r
+go_enable rainbow_red 1
 
 go_show_tree
-# comment lol

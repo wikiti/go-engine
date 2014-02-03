@@ -138,6 +138,8 @@ void CComponent_Particle_Emitter::Start()
     gSystem_Debug.error("From CComponent_Particle_Emitter: Could not generate Particle Emitter VAO.");
   }
 
+  glBindVertexArray(m_ParticlesVAO);
+
   glGenBuffers(1, &m_ParticlesVBOVertices);
   glGenBuffers(1, &m_ParticlesVBOTexCoords);
 
@@ -171,8 +173,6 @@ void CComponent_Particle_Emitter::Start()
       {1,0}, {0,0}
   };
 
-  glBindVertexArray(m_ParticlesVAO);
-
   // This will remain static, so we use GL_STATIC_DRAW
   glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOVertices);
   glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(GLfloat), p_ParticleVertices, GL_STATIC_DRAW);
@@ -181,6 +181,8 @@ void CComponent_Particle_Emitter::Start()
   glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOTexCoords);
   glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(GLfloat), p_ParticleTexCoords, GL_STATIC_DRAW);
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+  // los 2 VBOs de arriban se pueden poner como constantes dentro del shader, ya que permanecen intactos
 
   // Other, not inited yet
   glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOPosition);
@@ -193,7 +195,13 @@ void CComponent_Particle_Emitter::Start()
 
   glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOColor);
   glBufferData(GL_ARRAY_BUFFER, particles.size() * 4 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
-  glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 0, 0);
+  glVertexAttribPointer(4, 4, GL_FLOAT, GL_TRUE, 0, 0);
+
+  glVertexAttribDivisor(0, 0);
+  glVertexAttribDivisor(1, 0);
+  glVertexAttribDivisor(2, 1);
+  glVertexAttribDivisor(3, 1);
+  glVertexAttribDivisor(4, 1);
 
   glBindVertexArray(0);
 }
@@ -205,17 +213,17 @@ void CComponent_Particle_Emitter::UpdateVBO()
   glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOPosition);
   glBufferData(GL_ARRAY_BUFFER, particles.size() * 3 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
   glBufferSubData(GL_ARRAY_BUFFER, 0, particles.size() * 3 * sizeof(GLfloat), &v_ParticlePosition_data[0]);
-  //glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
+  glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
   glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOAngleScale);
   glBufferData(GL_ARRAY_BUFFER, particles.size() * 2 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
   glBufferSubData(GL_ARRAY_BUFFER, 0, particles.size() * 2 * sizeof(GLfloat), &v_ParticlesAngleScale_data[0]);
-  //glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 0, 0);
+  glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
   glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOColor);
   glBufferData(GL_ARRAY_BUFFER, particles.size() * 4 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
   glBufferSubData(GL_ARRAY_BUFFER, 0, particles.size() * 4 * sizeof(GLfloat), &v_ParticlesColor_data[0]);
-  //glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 0, 0);
+  glVertexAttribPointer(4, 4, GL_FLOAT, GL_TRUE, 0, 0);
 
   //glBindVertexArray(0);
 }
@@ -315,9 +323,44 @@ void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 model
   //glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
   //glBlendFunc(GL_DST_COLOR, GL_ONE);
 
-  gSystem_Shader_Manager.UseShader();
+  UpdateVBO();
 
-  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+  glActiveTexture(GL_TEXTURE0);
+  if(material_name != "") glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(material_name)->GetID());
+  else                    glBindTexture(GL_TEXTURE_2D, 0); // ¿?
+
+  CShader* shader = gSystem_Shader_Manager.UseShader("__particlesShader");
+  glUniformMatrix4fv(shader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(projMatrix));
+  glUniformMatrix4fv(shader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelViewMatrix));
+  glUniform1i(shader->GetUniformIndex("texture"), 0);
+  glUniform1f(shader->GetUniformIndex("textureFlag"), 1.f);
+
+  glEnableVertexAttribArray(0);
+  glEnableVertexAttribArray(1);
+  glEnableVertexAttribArray(2);
+  glEnableVertexAttribArray(3);
+  glEnableVertexAttribArray(4);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOVertices);
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOTexCoords);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOPosition);
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOAngleScale);
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOColor);
+
+
+
+  glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, particles.size());
+
+  glDisableVertexAttribArray(0);
+  glDisableVertexAttribArray(1);
+  glDisableVertexAttribArray(2);
+  glDisableVertexAttribArray(3);
+  glDisableVertexAttribArray(4);
+
+  glBindVertexArray(0);
+
+  /*for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
     if((*it)->life < 0.f)
       continue;
@@ -334,6 +377,7 @@ void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 model
 
     glTranslatef((*it)->position.x, (*it)->position.y, (*it)->position.z);
 
+    // El billboarding debería hacerse aquí
     double MV[16];
     glGetDoublev(GL_MODELVIEW_MATRIX, MV);
     makebillboard_mat4x4(MV, MV);
@@ -350,7 +394,7 @@ void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 model
     glEnd();
 
     glPopMatrix();
-  }
+  }*/
 
   glPopAttrib();
 };
@@ -411,26 +455,26 @@ void CComponent_Particle_Emitter::OnLoop()
 
 
       // Update VBO aux variables
-      uint index = it - particles.begin();
+      int index = it - particles.begin();
 
       // Position
-      v_ParticlePosition_data[index + 0] = (*it)->position.x;
-      v_ParticlePosition_data[index + 1] = (*it)->position.y;
-      v_ParticlePosition_data[index + 2] = (*it)->position.y;
+      v_ParticlePosition_data[3*index + 0] = (*it)->position.x;
+      v_ParticlePosition_data[3*index + 1] = (*it)->position.y;
+      v_ParticlePosition_data[3*index + 2] = (*it)->position.z;
 
       // Angle and scale
-      v_ParticlesAngleScale_data[index + 0] = (*it)->angle;
-      v_ParticlesAngleScale_data[index + 1] = (*it)->scale;
+      v_ParticlesAngleScale_data[2*index + 0] = (*it)->angle;
+      v_ParticlesAngleScale_data[2*index + 1] = (*it)->scale;
 
       // Color
       float alpha = (*it)->color.a;
       if((*it)->life < 1.f)
         alpha *= (*it)->life;
 
-      v_ParticlesColor_data[index + 0] = (*it)->color.r;
-      v_ParticlesColor_data[index + 1] = (*it)->color.g;
-      v_ParticlesColor_data[index + 2] = (*it)->color.b;
-      v_ParticlesColor_data[index + 3] = alpha;
+      v_ParticlesColor_data[4*index + 0] = (*it)->color.r;
+      v_ParticlesColor_data[4*index + 1] = (*it)->color.g;
+      v_ParticlesColor_data[4*index + 2] = (*it)->color.b;
+      v_ParticlesColor_data[4*index + 3] = alpha;
     }
     else if((*it)->life < 0 and !stop and (int)new_particles and added_particles < (int)new_particles)
     {
@@ -441,6 +485,26 @@ void CComponent_Particle_Emitter::OnLoop()
 
   if(((int)new_particles) > 0)  // If enough time has elapsed, lets reset this var.
     new_particles = 0;
+
+  /*v_ParticlesColor_data[0] = 1.f;
+  v_ParticlesColor_data[1] = 0.f;
+  v_ParticlesColor_data[2] = 0.f;
+  v_ParticlesColor_data[3] = 1.f;
+
+  v_ParticlesColor_data[4] = 1.f;
+  v_ParticlesColor_data[5] = 0.f;
+  v_ParticlesColor_data[6] = 0.f;
+  v_ParticlesColor_data[7] = 1.f;
+
+  v_ParticlesColor_data[8] = 1.f;
+  v_ParticlesColor_data[9] = 0.f;
+  v_ParticlesColor_data[10] = 0.f;
+  v_ParticlesColor_data[11] = 1.f;
+
+  v_ParticlesColor_data[12] = 1.f;
+  v_ParticlesColor_data[13] = 0.f;
+  v_ParticlesColor_data[14] = 0.f;
+  v_ParticlesColor_data[15] = 1.f;*/
 
   // Now, update VBOs
   // ...
