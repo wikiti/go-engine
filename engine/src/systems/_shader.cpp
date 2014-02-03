@@ -237,7 +237,7 @@ bool CSystem_Shader_Manager::InitMainShaders()
     "uniform float textureFlag;"
 
     "attribute vec4 in_Vertex;"
-    "attribute vec2 in_TexCoords;"
+    //"attribute vec2 in_TexCoords;"
 
     "attribute vec4 in_Position;" // <-- vec3?
     "attribute vec2 in_AngleScale;"
@@ -247,7 +247,7 @@ bool CSystem_Shader_Manager::InitMainShaders()
     "varying vec2 frag_TexCoords;"
     "varying float frag_textureFlag;"
 
-    // hay que definir aquí dentro makebillboard...
+    // Recomiendo meter todas las funciones de transformación en una única que haga todas las cosas.
 
     "mat4 translate(mat4 m, vec3 v)"
     "{"
@@ -257,44 +257,91 @@ bool CSystem_Shader_Manager::InitMainShaders()
       "return translated;"
     "}"
 
-      "mat4 makebillboard(mat4 inputmat)"
+    "mat4 scale(mat4 m, vec3 v)"
+    "{"
+      "if(v == vec3(1.0, 1.0, 1.0))"
+        "return m;"
+      "mat4 output = mat4(0);"
+
+      "output[0] = m[0] * v[0];"
+      "output[1] = m[1] * v[1];"
+      "output[2] = m[2] * v[2];"
+      "output[3] = m[3];"
+
+      "return output;"
+    "}"
+
+    "mat4 rotate(mat4 m, float angle, vec3 v)"
+    "{"
+      "if(angle == 0)"
+        "return m;"
+
+      "angle = radians(angle);   "
+
+      "float c = cos(angle);"
+      "float s = sin(angle);"
+
+      "vec3 axis = normalize(v);"
+      "vec3 temp = (1.0 - c) * axis;"
+
+      "mat4 Rotate = mat4(0.0);"
+
+      "Rotate[0][0] = c + temp[0] * axis[0];"
+      "Rotate[0][1] = 0.0 + temp[0] * axis[1] + s * axis[2];"
+      "Rotate[0][2] = 0.0 + temp[0] * axis[2] - s * axis[1];"
+
+      "Rotate[1][0] = 0.0 + temp[1] * axis[0] - s * axis[2];"
+      "Rotate[1][1] = c + temp[1] * axis[1];"
+      "Rotate[1][2] = 0.0 + temp[1] * axis[2] + s * axis[0];"
+
+      "Rotate[2][0] = 0.0 + temp[2] * axis[0] + s * axis[1];"
+      "Rotate[2][1] = 0.0 + temp[2] * axis[1] - s * axis[0];"
+      "Rotate[2][2] = c + temp[2] * axis[2];"
+
+      "mat4 Result = mat4(0.0);"
+      "Result[0] = m[0] * Rotate[0][0] + m[1] * Rotate[0][1] + m[2] * Rotate[0][2];"
+      "Result[1] = m[0] * Rotate[1][0] + m[1] * Rotate[1][1] + m[2] * Rotate[1][2];"
+      "Result[2] = m[0] * Rotate[2][0] + m[1] * Rotate[2][1] + m[2] * Rotate[2][2];"
+      "Result[3] = m[3];"
+
+      "return Result;"
+    "}"
+
+    "mat4 makebillboard(mat4 inputmat)"
+    "{"
+      "mat4 outputmat = mat4(1.0);"
+      "for(int i = 0; i < 3; i++)"
       "{"
-        "mat4 outputmat = mat4(1.0);"
-        "for(int i = 0; i < 3; i++)"
+        "for(int j = 0; j < 3; j++)"
         "{"
-          "for(int j = 0; j < 3; j++)"
-          "{"
-            "if(i == j)"
-              "outputmat[i][j] = 1.0;"
-            "else {"
-              "outputmat[i][j] = 0.0; }"
-          "}"
-          "outputmat[i][3] = inputmat[i][3];"
+          "if(i == j)"
+            "outputmat[i][j] = 1.0;"
+          "else {"
+            "outputmat[i][j] = 0.0; }"
         "}"
-
-        "for(int i = 0; i < 4; i++)"
-          "outputmat[3][i] = inputmat[3][i];"
-
-        "return outputmat;"
+        "outputmat[i][3] = inputmat[i][3];"
       "}"
+
+      "for(int i = 0; i < 4; i++)"
+        "outputmat[3][i] = inputmat[3][i];"
+
+      "return outputmat;"
+    "}"
 
     "void main(void)"
     "{"
       "frag_Color = in_Color;"
-      "frag_TexCoords = in_TexCoords;"
+      //"frag_TexCoords = in_TexCoords;"
+      "frag_TexCoords = in_Vertex*2 + vec2(0.5, 0.5);"
       "frag_textureFlag = textureFlag;"
 
-      // Translate
-      "mat4 MVPMatrix = translate(ModelViewMatrix, vec3(in_Position.x, in_Position.y, in_Position.z));" // <- problemas aquí!
-      //Makebillboard
-      "MVPMatrix = makebillboard(MVPMatrix);"
-      // Rotate
+      //"mat4 MVPMatrix = translate(ModelViewMatrix, vec3(in_Position.x, in_Position.y, in_Position.z));" // Translate
+      //"MVPMatrix = makebillboard(MVPMatrix);"                                                           //Makebillboard
+      //"MVPMatrix = rotate(MVPMatrix, in_AngleScale[0], vec3(0.0, 0.0, 1.0));"                           // Rotate
+      //"MVPMatrix = scale(MVPMatrix, vec3(in_AngleScale[1], in_AngleScale[1], 1.f));"                    // Scale
+      //"MVPMatrix = ProjMatrix * MVPMatrix;"                                                             // Project
 
-      // Scale
-
-      // Project
-      "MVPMatrix = ProjMatrix * MVPMatrix;"
-
+      "mat4 MVPMatrix = ProjMatrix * scale(rotate(makebillboard(translate(ModelViewMatrix, vec3(in_Position.x, in_Position.y, in_Position.z))), in_AngleScale[0], vec3(0.0, 0.0, 1.0)) , vec3(in_AngleScale[1], in_AngleScale[1], 1.f));"
       "gl_Position = MVPMatrix * in_Vertex;"
     "}"
   };
@@ -319,10 +366,9 @@ bool CSystem_Shader_Manager::InitMainShaders()
     return false;
 
   glBindAttribLocation(shader->GetProgram(), 0, "in_Vertex");
-  glBindAttribLocation(shader->GetProgram(), 1, "in_TexCoords");
-  glBindAttribLocation(shader->GetProgram(), 2, "in_Position");
-  glBindAttribLocation(shader->GetProgram(), 3, "in_AngleScale");
-  glBindAttribLocation(shader->GetProgram(), 4, "in_Color");
+  glBindAttribLocation(shader->GetProgram(), 1, "in_Position");
+  glBindAttribLocation(shader->GetProgram(), 2, "in_AngleScale");
+  glBindAttribLocation(shader->GetProgram(), 3, "in_Color");
 
   if(!gSystem_Shader_Manager.LinkShader("__particlesShader"))
     return false;

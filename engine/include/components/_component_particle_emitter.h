@@ -9,8 +9,8 @@
 // falta activar los valores "maximos" durante la emisión de la partícula.
 class CComponent_Particle_Emitter: public CComponent
 {
-  public:
-    friend class CGameObject;
+  friend class CGameObject;
+  friend class CSystem_Render;
 
   private:
     class CParticle
@@ -27,12 +27,15 @@ class CComponent_Particle_Emitter: public CComponent
         GLfloat scale;
         GLfloat scale_factor;
 
-        string material_name;
+        //string material_name;
       public:
         CParticle();
     };
 
     vector<CParticle*> particles;
+
+    static bool InitRenderVBO();
+    static void CloseRenderVBO();
 
     void NewParticle(CParticle* p, vector3f go_pos);
 
@@ -40,22 +43,21 @@ class CComponent_Particle_Emitter: public CComponent
     float new_particles;
 
       // VertexArray
-    GLuint m_ParticlesVAO;
+    // Esto lo voy a intentar hacer estático, por lo que reducirá enormemente el número de VBOs en escena
+    static GLuint m_ParticlesVAO;
 
       // For all (divisor = 0)
-    GLuint m_ParticlesVBOVertices;
-    GLuint m_ParticlesVBOTexCoords;
+    static GLuint m_ParticlesVBOVertices;
 
       // Per particle (divisor = 1)
-    // Estaría bien, si funciona, usar un mat3 para guardar esto (9 elementos).
-    GLuint m_ParticlesVBOPosition;   // vec3
-    GLuint m_ParticlesVBOAngleScale; // vec2
-    GLuint m_ParticlesVBOColor;      // vec4
+    // Estaría bien, si funciona, usar un mat3 para guardar esto (9 elementos), usando así un único VBO
+    static GLuint m_ParticlesVBOPosition;   // vec3
+    static GLuint m_ParticlesVBOAngleScale; // vec2
+    static GLuint m_ParticlesVBOColor;      // vec4
 
       // Used to store update info.
     vector<GLfloat> v_ParticlePosition_data;
     vector<GLfloat> v_ParticlesAngleScale_data;
-    //vector<GLfloat> v_ParticlesColor_data;
     vector<GLfloat> v_ParticlesColor_data;
 
     void UpdateVBO();

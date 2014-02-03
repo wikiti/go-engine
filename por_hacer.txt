@@ -1,4 +1,5 @@
-﻿- Hacer una especie de "interfaz" para cada componente para poder modificar atributos (se le pasa un string a una funcion "ParseInput" o algo y se analiza).
+﻿- Estaría bien probar un VBO static para los CResource_Mesh, ya que muchos de este tipo podrían bloquear el sistema.
+- Hacer una especie de "interfaz" para cada componente para poder modificar atributos (se le pasa un string a una funcion "ParseInput" o algo y se analiza).
 - Cambiar nombres de las funciones "OnEvent" por algo más intuitivo, como "OnUserInput" o "OnInput".
 - Añadir un función al sistema Debug para prestar una opción de autocompletado de comandos (sencillo, comandos almacenados en un map).
 x- Crear skybox
@@ -7,50 +8,8 @@ x- Recompilar glew
 -/- Definir correctamente el estado "enabled" o "disabled" para los objetos, los componentes y los sistemas.
 x- Posicion del viewport en función del tamaño de pantalla (por ejemplo, 0-100 en vez de 0-__RESOLUTION_WIDTH para el ancho).
 x- Billboards para sistema de particulas:
-void makebillboard_mat4x4(double *BM, double const * const MV)
-{
-    for(size_t i = 0; i < 3; i++) {
 
-        for(size_t j = 0; j < 3; j++) {
-            BM[4*i + j] = i==j ? 1 : 0;
-        }
-        BM[4*i + 3] = MV[4*i + 3];
-    }
-
-    for(size_t i = 0; i < 4; i++) {
-        BM[12 + i] = MV[12 + i];
-    }
-}
-
-void mygltoolMakeMVBillboard(void)
-{
-    GLenum active_matrix;
-    double MV[16];
-
-    glGetIntegerv(GL_MATRIX_MODE, &active_matrix);
-
-    glMatrixMode(GL_MODELVIEW);
-    glGetDoublev(GL_MODELVIEW_MATRIX, MV);
-    makebillboard_mat4x4(MV, MV);
-    glLoadMatrixd(MV);
-    glMatrixMode(active_matrix);
-}
 ------------------------------------------------------------
-mat4 billboard(vec3 position, vec3 cameraPos, vec3 cameraUp) {
-    vec3 look = normalize(cameraPos - position);
-    vec3 right = cross(cameraUp, look);
-    vec3 up2 = cross(look, right);
-    mat4 transform;
-    transform[0] = vec4(right, 0);
-    transform[1] = vec4(up2, 0);
-    transform[2] = vec4(look, 0);
-    // Uncomment this line to translate the position as well
-    // (without it, it's just a rotation)
-    //transform[3] = vec4(position, 0);
-    return transform;
-}
-------------------------------------------------------------
-- Añadir sistema para cargar datos de objetos desde un fichero, y no desde la instancia
 - Contrucción de ASSIMP: 
 > cmake -G "MSYS Makefiles" -DENABLE_BOOST_WORKAROUND=1  -DBUILD_ASSIMP_TOOLS=OFF
 > make

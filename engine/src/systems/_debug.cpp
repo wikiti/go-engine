@@ -1017,7 +1017,8 @@ void CSystem_Debug::Console_command__QUIT(string arguments)
     return;
   }
 
-  gSystem_Debug.log("Quit: \"%s\"", arguments.c_str());
+  if(arguments != "")
+    gSystem_Debug.log("Quit: \"%s\"", arguments.c_str());
   gEngine.Quit();
 }
 
