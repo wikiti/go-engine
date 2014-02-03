@@ -24,7 +24,7 @@ class CComponent_Particle_Emitter: public CComponent
         colorf_t color;
         vector3f_t position, velocity, acceleration;
         GLfloat angle, angle_velocity, angle_acceleration;
-        vector3f_t scale;
+        GLfloat scale;
         GLfloat scale_factor;
 
         string material_name;
@@ -38,6 +38,26 @@ class CComponent_Particle_Emitter: public CComponent
 
     // Aux
     float new_particles;
+
+      // VertexArray
+    GLuint m_ParticlesVAO;
+
+      // For all (divisor = 0)
+    GLuint m_ParticlesVBOVertices;
+    GLuint m_ParticlesVBOTexCoords;
+
+      // Per particle (divisor = 4)
+    GLuint m_ParticlesVBOPosition;
+    GLuint m_ParticlesVBOAngle;
+    GLuint m_ParticlesVBOColor;
+    GLuint m_ParticlesVBOScale;
+
+      // Used to store update info.
+    vector<GLfloat> v_ParticlePosition_data;
+    vector<GLfloat> v_ParticlesAngle_data;
+    vector<GLfloat> v_ParticlesColor_data;
+    vector<GLfloat> v_ParticlesScale_data;
+
 
   public:
     // GameObject stuff

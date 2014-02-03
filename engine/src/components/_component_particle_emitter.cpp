@@ -69,6 +69,11 @@ CComponent_Particle_Emitter::~CComponent_Particle_Emitter()
 {
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
     delete (*it);
+
+  v_ParticlePosition_data.clear();
+  v_ParticlesAngle_data.clear();
+  v_ParticlesScale_data.clear();
+  v_ParticlesColor_data.clear();
 }
 
 void CComponent_Particle_Emitter::Start()
@@ -108,6 +113,16 @@ void CComponent_Particle_Emitter::Start()
     if((int)new_particles and (it - particles.begin()) < new_particles)  // Even if new_particles is bigger that max_particles, there will be up to max_particles updates (particles.size())
       NewParticle(*it, pos_difference);
   }
+
+  v_ParticlePosition_data.clear();
+  v_ParticlesAngle_data.clear();
+  v_ParticlesScale_data.clear();
+  v_ParticlesColor_data.clear();
+
+  v_ParticlePosition_data.resize(max_particles*3);
+  v_ParticlesAngle_data.resize(max_particles);
+  v_ParticlesScale_data.resize(max_particles);
+  v_ParticlesColor_data.resize(max_particles*4);
 }
 
 void CComponent_Particle_Emitter::NewParticle(CParticle* p, vector3f pos_difference)
@@ -135,7 +150,7 @@ void CComponent_Particle_Emitter::NewParticle(CParticle* p, vector3f pos_differe
 
   gMath.NormalizeAngle(p->angle);
 
-  p->scale.x = p->scale.y = p->scale.z = gMath.random(start_min_scale, start_max_scale);
+  p->scale = gMath.random(start_min_scale, start_max_scale);
   p->scale_factor = gMath.random(start_min_scale_factor, start_max_scale_factor);
 
   p->material_name = material_name;
@@ -176,6 +191,23 @@ void makebillboard_mat4x4(double *BM, double const * const MV)
     }
 }
 
+// No se si funciona, hay que probarlo
+void makebillboardGLM(glm::mat4& matrix)
+{
+  glm::mat4 output;
+  for(size_t i = 0; i < 3; i++)
+  {
+    for(size_t j = 0; j < 3; j++)
+      output[4 * i + j] = i == j ? 1 : 0;
+    output[4 * i + 3] = matrix[4 * i + 3];
+  }
+
+  for(size_t i = 0; i < 4; i++)
+    output[12 + i] = matrix[12 + i];
+
+  matrix = output;
+}
+
 // Usamos glBegin() y glEnd() en vez de VBOs, ya que
 void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
@@ -195,6 +227,7 @@ void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 model
     if((*it)->life < 0.f)
       continue;
 
+    // Esto lo voy a poner en OnLoop()
     float alpha = (*it)->color.a;
     if((*it)->life < 1.f)
       alpha *= (*it)->life;
@@ -212,7 +245,7 @@ void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 model
     glLoadMatrixd(MV);
 
     glRotatef((*it)->angle, 0.f, 0.f, 1.f);
-    glScalef((*it)->scale.x, (*it)->scale.y, 1.f);
+    glScalef((*it)->scale, (*it)->scale, 1.f);
 
     glBegin(GL_TRIANGLE_STRIP);
       glTexCoord2d(1,1); glVertex3f( 0.25f, 0.25f, 0);
@@ -244,7 +277,6 @@ void CComponent_Particle_Emitter::OnLoop()
   float new_particles_iteration = particles_per_second * gSystem_Time.deltaTime_s();
   new_particles += new_particles_iteration;
   int added_particles = 0;
-
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {
     if((*it)->life >= 0 and (*it)->active)
@@ -258,9 +290,9 @@ void CComponent_Particle_Emitter::OnLoop()
       (*it)->angle += (*it)->angle_velocity * gTime.deltaTime_s();
       gMath.NormalizeAngle((*it)->angle);
 
-      (*it)->scale.x += (*it)->scale_factor * gTime.deltaTime_s();
-      (*it)->scale.y += (*it)->scale_factor * gTime.deltaTime_s();
-      (*it)->scale.z += (*it)->scale_factor * gTime.deltaTime_s();
+      (*it)->scale += (*it)->scale_factor * gTime.deltaTime_s();
+      //(*it)->scale.y += (*it)->scale_factor * gTime.deltaTime_s();
+      //(*it)->scale.z += (*it)->scale_factor * gTime.deltaTime_s(); // <-- useless
 
       (*it)->life -= gTime.deltaTime_s();
       //if((*it)->life < 0 ) (*it)->life = 0.f;
@@ -281,6 +313,31 @@ void CComponent_Particle_Emitter::OnLoop()
       if((*it)->color.g > max_color.g) (*it)->color.g = max_color.g;
       if((*it)->color.b > max_color.b) (*it)->color.b = max_color.b;
       if((*it)->color.a > max_color.a) (*it)->color.a = max_color.a;
+
+
+      // Update VBO aux variables
+      uint index = it - particles.begin();
+
+      // Position
+      v_ParticlePosition_data[index + 0] = (*it)->position.x;
+      v_ParticlePosition_data[index + 1] = (*it)->position.y;
+      v_ParticlePosition_data[index + 2] = (*it)->position.y;
+
+      // Angle
+      v_ParticlesAngle_data[index + 0] = (*it)->angle;
+
+      // Scale
+      v_ParticlesScale_data[index + 0] = (*it)->scale;
+
+      // Color
+      float alpha = (*it)->color.a;
+      if((*it)->life < 1.f)
+        alpha *= (*it)->life;
+
+      v_ParticlesColor_data[index + 0] = (*it)->color.r;
+      v_ParticlesColor_data[index + 1] = (*it)->color.g;
+      v_ParticlesColor_data[index + 2] = (*it)->color.b;
+      v_ParticlesColor_data[index + 3] = alpha;
     }
     else if((*it)->life < 0 and !stop and (int)new_particles and added_particles < (int)new_particles)
     {
@@ -291,4 +348,7 @@ void CComponent_Particle_Emitter::OnLoop()
 
   if(((int)new_particles) > 0)  // If enough time has elapsed, lets reset this var.
     new_particles = 0;
+
+  // Now, update VBOs
+  // ...
 };
