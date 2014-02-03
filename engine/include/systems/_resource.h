@@ -41,11 +41,11 @@ class CResource_Mesh: public CResource
     int numTriangles, numUvCoords;
     GLuint m_ModelVBOVertices;
     GLuint m_ModelVBONormals;
-    GLuint m_ModelVBOuvArray;
+    GLuint m_ModelVBOTexCoords;
     GLuint m_ModelVAO;
 
   public:
-    CResource_Mesh(): CResource(){ numTriangles = numUvCoords = 0; m_ModelVBOVertices = m_ModelVBONormals = m_ModelVBOuvArray = 0; type = resources::mesh; };
+    CResource_Mesh(): CResource(){ numTriangles = numUvCoords = 0; m_ModelVBOVertices = m_ModelVBONormals = m_ModelVBOTexCoords = 0; type = resources::mesh; };
     ~CResource_Mesh(){ Clear(); }
 
     bool LoadFile(string file, string arguments = "");

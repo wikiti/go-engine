@@ -47,16 +47,17 @@ class CComponent_Particle_Emitter: public CComponent
     GLuint m_ParticlesVBOTexCoords;
 
       // Per particle (divisor = 4)
-    GLuint m_ParticlesVBOPosition;
-    GLuint m_ParticlesVBOAngle;
-    GLuint m_ParticlesVBOColor;
-    GLuint m_ParticlesVBOScale;
+    // Estaría bien, si funciona, usar un mat3 para guardar esto (9 elementos).
+    GLuint m_ParticlesVBOPosition;   // vec3
+    GLuint m_ParticlesVBOAngleScale; // vec2
+    GLuint m_ParticlesVBOColor;      // vec4
 
       // Used to store update info.
     vector<GLfloat> v_ParticlePosition_data;
-    vector<GLfloat> v_ParticlesAngle_data;
+    vector<GLfloat> v_ParticlesAngleScale_data;
     vector<GLfloat> v_ParticlesColor_data;
-    vector<GLfloat> v_ParticlesScale_data;
+
+    void UpdateVBO();
 
 
   public:

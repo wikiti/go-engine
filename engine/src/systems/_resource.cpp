@@ -123,8 +123,8 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
 
   glGenBuffers( 1, &m_ModelVBOVertices );
   glGenBuffers( 1, &m_ModelVBONormals );
-  glGenBuffers( 1, &m_ModelVBOuvArray );
-  if(!m_ModelVBOVertices or !m_ModelVBONormals or !m_ModelVBOuvArray)
+  glGenBuffers( 1, &m_ModelVBOTexCoords );
+  if(!m_ModelVBOVertices or !m_ModelVBONormals or !m_ModelVBOTexCoords)
   {
     gSystem_Debug.error("From CResource_Mesh: Could not generate Mesh VBO for \"%s\".", file.c_str());
     return false;
@@ -135,7 +135,7 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), vertexArray, GL_STATIC_DRAW );
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOuvArray );
+  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOTexCoords );
   glBufferData( GL_ARRAY_BUFFER, numTriangles*3*2*sizeof(GLfloat), uvArray, GL_STATIC_DRAW );
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
@@ -162,7 +162,7 @@ void CResource_Mesh::Clear()
 
   glDeleteBuffers(1, &m_ModelVBOVertices);
   glDeleteBuffers(1, &m_ModelVBONormals);
-  glDeleteBuffers(1, &m_ModelVBOuvArray);
+  glDeleteBuffers(1, &m_ModelVBOTexCoords);
 
   glDeleteVertexArrays(1, &m_ModelVAO);
 }
@@ -178,7 +178,7 @@ void CResource_Mesh::Render()
   glEnableVertexAttribArray(2);
 
   glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOVertices );
-  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOuvArray );
+  glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOTexCoords );
   glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBONormals );
 
   glDrawArrays(GL_TRIANGLES, 0, numTriangles);

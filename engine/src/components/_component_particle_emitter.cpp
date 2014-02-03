@@ -71,9 +71,17 @@ CComponent_Particle_Emitter::~CComponent_Particle_Emitter()
     delete (*it);
 
   v_ParticlePosition_data.clear();
-  v_ParticlesAngle_data.clear();
-  v_ParticlesScale_data.clear();
+  v_ParticlesAngleScale_data.clear();
   v_ParticlesColor_data.clear();
+
+  glDeleteBuffers(1, &m_ParticlesVBOVertices);
+  glDeleteBuffers(1, &m_ParticlesVBOTexCoords);
+
+  glDeleteBuffers(1, &m_ParticlesVBOPosition);
+  glDeleteBuffers(1, &m_ParticlesVBOAngleScale);
+  glDeleteBuffers(1, &m_ParticlesVBOColor);
+
+  glDeleteVertexArrays(1, &m_ParticlesVAO);
 }
 
 void CComponent_Particle_Emitter::Start()
@@ -116,14 +124,100 @@ void CComponent_Particle_Emitter::Start()
   }
 
   v_ParticlePosition_data.clear();
-  v_ParticlesAngle_data.clear();
-  v_ParticlesScale_data.clear();
+  v_ParticlesAngleScale_data.clear();
   v_ParticlesColor_data.clear();
 
   v_ParticlePosition_data.resize(max_particles*3);
-  v_ParticlesAngle_data.resize(max_particles);
-  v_ParticlesScale_data.resize(max_particles);
+  v_ParticlesAngleScale_data.resize(max_particles*2);
   v_ParticlesColor_data.resize(max_particles*4);
+
+
+  glGenVertexArrays(1, &m_ParticlesVAO);
+  if(!m_ParticlesVAO)
+  {
+    gSystem_Debug.error("From CComponent_Particle_Emitter: Could not generate Particle Emitter VAO.");
+  }
+
+  glGenBuffers(1, &m_ParticlesVBOVertices);
+  glGenBuffers(1, &m_ParticlesVBOTexCoords);
+
+  glGenBuffers(1, &m_ParticlesVBOPosition);
+  glGenBuffers(1, &m_ParticlesVBOAngleScale);
+  glGenBuffers(1, &m_ParticlesVBOColor);
+
+  if(!m_ParticlesVBOVertices or !m_ParticlesVBOTexCoords or !m_ParticlesVBOPosition or !m_ParticlesVBOAngleScale or !m_ParticlesVBOColor)
+  {
+    gSystem_Debug.error("From CComponent_Particle_Emitter: Could not generate Particle Emitter VBO.");
+
+    glDeleteBuffers(1, &m_ParticlesVBOVertices);
+    glDeleteBuffers(1, &m_ParticlesVBOTexCoords);
+
+    glDeleteBuffers(1, &m_ParticlesVBOPosition);
+    glDeleteBuffers(1, &m_ParticlesVBOAngleScale);
+    glDeleteBuffers(1, &m_ParticlesVBOColor);
+
+    glDeleteVertexArrays(1, &m_ParticlesVAO);
+  }
+
+  const GLfloat p_ParticleVertices [][3] =
+  {
+      { 0.25f, 0.25f, 0.f}, {-0.25f, 0.25f, 0.f},
+      { 0.25f,-0.25f, 0.f}, {-0.25f,-0.25f, 0.f}
+  };
+
+  const GLfloat p_ParticleTexCoords [][2] =
+  {
+      {1,1}, {0,1},
+      {1,0}, {0,0}
+  };
+
+  glBindVertexArray(m_ParticlesVAO);
+
+  // This will remain static, so we use GL_STATIC_DRAW
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOVertices);
+  glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(GLfloat), p_ParticleVertices, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOTexCoords);
+  glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(GLfloat), p_ParticleTexCoords, GL_STATIC_DRAW);
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+  // Other, not inited yet
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOPosition);
+  glBufferData(GL_ARRAY_BUFFER, particles.size() * 3 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
+  glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOAngleScale);
+  glBufferData(GL_ARRAY_BUFFER, particles.size() * 2 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
+  glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOColor);
+  glBufferData(GL_ARRAY_BUFFER, particles.size() * 4 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
+  glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindVertexArray(0);
+}
+
+void CComponent_Particle_Emitter::UpdateVBO()
+{
+  glBindVertexArray(m_ParticlesVAO);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOPosition);
+  glBufferData(GL_ARRAY_BUFFER, particles.size() * 3 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, particles.size() * 3 * sizeof(GLfloat), &v_ParticlePosition_data[0]);
+  //glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOAngleScale);
+  glBufferData(GL_ARRAY_BUFFER, particles.size() * 2 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, particles.size() * 2 * sizeof(GLfloat), &v_ParticlesAngleScale_data[0]);
+  //glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+  glBindBuffer(GL_ARRAY_BUFFER, m_ParticlesVBOColor);
+  glBufferData(GL_ARRAY_BUFFER, particles.size() * 4 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
+  glBufferSubData(GL_ARRAY_BUFFER, 0, particles.size() * 4 * sizeof(GLfloat), &v_ParticlesColor_data[0]);
+  //glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 0, 0);
+
+  //glBindVertexArray(0);
 }
 
 void CComponent_Particle_Emitter::NewParticle(CParticle* p, vector3f pos_difference)
@@ -324,11 +418,9 @@ void CComponent_Particle_Emitter::OnLoop()
       v_ParticlePosition_data[index + 1] = (*it)->position.y;
       v_ParticlePosition_data[index + 2] = (*it)->position.y;
 
-      // Angle
-      v_ParticlesAngle_data[index + 0] = (*it)->angle;
-
-      // Scale
-      v_ParticlesScale_data[index + 0] = (*it)->scale;
+      // Angle and scale
+      v_ParticlesAngleScale_data[index + 0] = (*it)->angle;
+      v_ParticlesAngleScale_data[index + 1] = (*it)->scale;
 
       // Color
       float alpha = (*it)->color.a;
