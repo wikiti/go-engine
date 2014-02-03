@@ -11,6 +11,7 @@ GLuint CComponent_Transform::m_TransformVBOColors = 0;
 GLuint CComponent_Transform::m_TransformVAO = 0;
 
 // Test
+// https://forum.libcinder.org/topic/extract-position-rotations-and-scale-from-a-matrix44f-and-vice-versa
 void decompose(glm::mat4 matrix, glm::vec3& scaling, glm::quat& rotation, glm::vec3& position)
 {
   // extract translation

@@ -49,7 +49,6 @@ Se definirán 3 partes en el proyecto bien claras y definidas:
 - [Bullet Engine](http://bulletphysics.org/wordpress/ "Bullet Engine") (Física)
 - [ASSIMP](http://assimp.sourceforge.net/ "ASSIMP") (Modelos 3D, etc)
 - [GLM](http://glm.g-truc.net/ "GL Maths") (Matemática de gráficos 3D)
-- [Boost](http://www.boost.org/ "Boost") (Serialization) (Planteado eliminar su uso)
 - Otras menores (ya se mencionarán cuando se decidan)
 
 
