@@ -31,6 +31,10 @@ class CSystem_Render: public CSystem
     friend class CEngine;
     friend class CInstance;
 
+    // OpenGL info
+    vector<string> GLInfo;
+    void SetGLInfo();
+
     // Draw primitives
     GLUquadricObj *quadratic;
 
@@ -152,6 +156,11 @@ class CSystem_Render: public CSystem
         SDL_SetWindowFullscreen(window, mode);
         SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
       }
+    }
+
+    vector<string> GetGLInfo()
+    {
+      return GLInfo;
     }
 
     // Usar booleanos (o algo)

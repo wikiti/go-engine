@@ -192,6 +192,7 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("r_draw_grid", &CSystem_Debug::Console_command__R_DRAW_GRID));
   console_commands.insert(pair<string, command_p>("r_fps", &CSystem_Debug::Console_command__R_FPS));
   console_commands.insert(pair<string, command_p>("r_draw_sound", &CSystem_Debug::Console_command__R_DRAW_SOUND));
+  console_commands.insert(pair<string, command_p>("r_glinfo", &CSystem_Debug::Console_command__R_GLINFO));
 
   return true;
 }
@@ -675,6 +676,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("r_fps:                          Gets current frames per second.");
     console_msg("r_update_window:                Updates window's modified properties and applys them to the window.");
     console_msg("r_resize_window:                Resizes the window.");
+    console_msg("r_glinfo:                       Gets information about current opengl driver.");
   }
   // ...
   else
@@ -1609,4 +1611,51 @@ void CSystem_Debug::Console_command__R_DRAW_SOUND(string arguments)
     if(val) console_msg("Sound radius render enabled.");
     else    console_msg("Sound radius render disabled.");
   }
+}
+
+void CSystem_Debug::Console_command__R_GLINFO(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: r_glinfo [ext]");
+    return;
+  }
+
+  if(gSystem_Render.GLInfo.size())
+  {
+    console_msg("");
+    console_msg("Opengl Information:");
+    console_msg("------------------------------------");
+
+    console_msg("Vendor:          %s", gSystem_Render.GLInfo[0].c_str());
+    console_msg("Renderer:        %s", gSystem_Render.GLInfo[1].c_str());
+    console_msg("Version:         %s", gSystem_Render.GLInfo[2].c_str());
+    console_msg("GLSL Version:    %s", gSystem_Render.GLInfo[3].c_str());
+
+    stringstream ss(arguments);
+    string argument;
+    ss >> argument;
+
+    if(argument == "ext")
+    {
+      console_msg("");
+      console_msg("Extensions supported:");
+      console_msg("------------------------------------");
+
+      stringstream ss(gSystem_Render.GLInfo[4]);
+      string extension;
+      int i = 0;
+      while(getline(ss, extension, ' '))
+      {
+        console_msg("%d. %s", i, extension.c_str());
+        i++;
+      }
+    }
+    else if(argument != "")
+    {
+      console_error_msg("Invalid option \"%s\"", arguments.c_str());
+      console_warning_msg("Format is: r_glinfo [ext]");
+    }
+  }
+
 }

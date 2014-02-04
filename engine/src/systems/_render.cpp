@@ -172,7 +172,40 @@ bool CSystem_Render::Init()
 
   CSystem::Init();
 
+  SetGLInfo();
+
   return true;
+}
+
+void CSystem_Render::SetGLInfo()
+{
+  string aux = (char*)glGetString(GL_VENDOR);
+  GLInfo.push_back(aux);
+
+  aux = (char*)glGetString(GL_RENDERER);
+  GLInfo.push_back(aux);
+
+  aux = (char*)glGetString(GL_VERSION);
+  GLInfo.push_back(aux);
+
+  aux = (char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
+  GLInfo.push_back(aux);
+
+  GLint num_ext = 0;
+  glGetIntegerv(GL_NUM_EXTENSIONS, &num_ext);
+  aux = "";
+  for(int i = 0; i < num_ext and num_ext != 0; i++)
+  {
+    char* extension = (char*)glGetStringi(GL_EXTENSIONS, i);
+    if(extension)
+    {
+      aux += extension;
+      if(i != num_ext - 1)
+        aux += " ";
+    }
+  }
+  GLInfo.push_back(aux);
+  cout << GLInfo[4] << endl;
 }
 
 bool CSystem_Render::InitSkyboxVBO()
