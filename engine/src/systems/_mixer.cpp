@@ -13,7 +13,7 @@ CSystem_Mixer& gMixer = gSystem_Mixer;
 
 bool CSystem_Mixer::Init()
 {
-  CSystem::Init();
+  if(enabled) return true;
 
   NUMBER_SOURCES = gSystem_Data_Storage.GetInt("__SOUND_NUMBER_SOURCES");
   NUMBER_SOURCES_ONESHOT = gSystem_Data_Storage.GetInt("__SOUND_NUMBER_SOURCES_ONESHOT");
@@ -82,6 +82,8 @@ bool CSystem_Mixer::Init()
 
   listener = NULL;
 
+  CSystem::Init();
+
   return true;
 }
 
@@ -110,6 +112,9 @@ void CSystem_Mixer::ResetSources()
 
 void CSystem_Mixer::Close()
 {
+  if(!enabled) return;
+  CSystem::Close();
+
   Mix_CloseAudio();
 
   ResetSources();

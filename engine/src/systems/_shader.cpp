@@ -81,6 +81,8 @@ const int MAX_LINE_LENGTH = 1024;
 
 bool CSystem_Shader_Manager::Init()
 {
+  if(enabled) return true;
+
   if(!InitMainShaders())
     return false;
 
@@ -88,7 +90,7 @@ bool CSystem_Shader_Manager::Init()
   //CShader* theDefaultShader = new CShader();
   //shaders[DEFAULT_SHADER] = theDefaultShader;
 
-
+  CSystem::Init();
 
   return true;
 }
@@ -378,6 +380,9 @@ bool CSystem_Shader_Manager::InitMainShaders()
 
 void CSystem_Shader_Manager::Close()
 {
+  if(!enabled) return;
+  CSystem::Close();
+
   map<string, CShader*>::iterator iter;
   for (iter = shaders.begin(); iter != shaders.end(); ++iter)
   {

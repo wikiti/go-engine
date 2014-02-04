@@ -12,6 +12,8 @@ using namespace GO_Input;
 
 bool CSystem_UserInput::Init()
 {
+  if(enabled) return true;
+
   // Axis
   axis1.horizontal = axis2.horizontal = 0;
   axis1.vertical = axis2.vertical = 0;
@@ -55,11 +57,16 @@ bool CSystem_UserInput::Init()
   rebuild_joysticks = false;
   rebuild_joysticks_timeout = 0.f;
 
+  CSystem::Init();
+
   return true;
 }
 
 void CSystem_UserInput::Close()
 {
+  if(!enabled) return;
+  CSystem::Close();
+
     // Joystick
   //SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
   for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); it++)

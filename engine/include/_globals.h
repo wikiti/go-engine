@@ -77,7 +77,7 @@ extern SDL_Event event;
 
 #include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
-#include <GL/glext.h>
+//#include <GL/glext.h>
 #include <GL/SOIL.h>
 #include <GL/glu.h>
 

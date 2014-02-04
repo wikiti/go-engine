@@ -368,8 +368,11 @@ CSystem_Resources::~CSystem_Resources()
 
 bool CSystem_Resources::Init()
 {
-  CSystem::Init();
+  if(enabled) return true;
+
   InitEngineResources();
+
+  CSystem::Init();
 
   return true;
 }
@@ -414,8 +417,10 @@ bool CSystem_Resources::InitEngineResources()
 
 void CSystem_Resources::Close()
 {
-  ClearResources();
+  if(!enabled) return;
   CSystem::Close();
+
+  ClearResources();
 }
 
 bool CSystem_Resources::LoadResourceFile(string rc_file)

@@ -40,7 +40,7 @@ void CSystem_Debug::ParseInput()
 
 bool CSystem_Debug::Init()
 {
-  CSystem::Init();
+  if(enabled) return true;
 
   file = fopen (__CSYSTEM_DEBUG_STORAGE_SAVEFILE, __CSYSTEM_DEBUG_STORAGE_ACCESS);//file = fopen ("log.txt","w");
   if(!file)
@@ -58,6 +58,7 @@ bool CSystem_Debug::Init()
 
   opened = true;
 
+  CSystem::Init();
   return true;
 }
 
@@ -197,6 +198,7 @@ bool CSystem_Debug::InitCommandMap()
 
 void CSystem_Debug::Close()
 {
+  if(!enabled) return;
   CSystem::Close();
 
   fclose(file);

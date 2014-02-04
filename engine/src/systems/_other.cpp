@@ -5,6 +5,9 @@ CSystem_Time& gTime = gSystem_Time;
 
 bool CSystem_Time::Init()
 {
+  if(enabled) return true;
+  CSystem::Init();
+
   deltaT = lastT = 0;
   Tscale = 1.f;
   return true;
@@ -12,6 +15,9 @@ bool CSystem_Time::Init()
 
 void CSystem_Time::Close()
 {
+  if(!enabled) return;
+  CSystem::Close();
+
   Tscale = 0.f;
 
   deltaT = lastT = 0;

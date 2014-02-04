@@ -17,12 +17,12 @@ CSystem_Render& gRender = gSystem_Render;
 
 bool CSystem_Render::Init()
 {
-  CSystem::Init();
+  if(enabled) return true;
 
   //multitexture_supported = vbos_supported = false;
 
   SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-  SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
+  SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 8);
   glEnable(GL_MULTISAMPLE);
 
   window = SDL_CreateWindow( gEngine.GetTitle().c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"), SDL_WINDOW_OPENGL);
@@ -131,6 +131,8 @@ bool CSystem_Render::Init()
 
   // Other renders
   if(!CComponent_Transform::InitRenderVBO() or !CComponent_Particle_Emitter::InitRenderVBO()) return false;
+
+  CSystem::Init();
 
   return true;
 }
@@ -280,6 +282,9 @@ void CSystem_Render::UpdateGridVBO(int ncols, int nrows)
 
 void CSystem_Render::Close()
 {
+  if(!enabled) return;
+  CSystem::Close();
+
   //Destroy VBOs
   glDeleteBuffers(1, &m_SkyboxVBOTexCoords);
   glDeleteBuffers(1, &m_SkyboxVBOVertices);

@@ -6,7 +6,8 @@ CSystem_Data_Storage& gData = gSystem_Data_Storage;
 
 bool CSystem_Data_Storage::Init()
 {
-  CSystem::Init();
+  if(enabled) return true;
+
   // Enable, etc...
   //RemoveAll();
   //LoadConfig();
@@ -15,12 +16,16 @@ bool CSystem_Data_Storage::Init()
   //return Load();
   LoadConfig();
 
+  CSystem::Init();
+
   return true;
 }
 
 void CSystem_Data_Storage::Close()
 {
+  if(!enabled) return;
   CSystem::Close();
+
   // Disable, etc...
   SaveConfig();
   //Save(__CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE);

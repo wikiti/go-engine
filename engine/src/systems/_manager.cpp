@@ -6,7 +6,9 @@ CSystem_GameObject_Manager& gGameObjects = gSystem_GameObject_Manager;
 
 bool CSystem_GameObject_Manager::Init()
 {
+  if(enabled) return true;
   CSystem::Init();
+
   last_ID = 0;
 
   return true;
@@ -83,9 +85,10 @@ void CSystem_GameObject_Manager::LoadGameObjects(string file)
 
 void CSystem_GameObject_Manager::Close()
 {
-  DeleteGameObjects();
-
+  if(!enabled) return;
   CSystem::Close();
+
+  DeleteGameObjects();
 }
 
 void CSystem_GameObject_Manager::InitGameObjects()
