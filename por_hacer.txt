@@ -1,4 +1,9 @@
-﻿- Estaría bien probar un VBO static para los CResource_Mesh, ya que muchos de este tipo podrían bloquear el sistema.
+﻿- Estaría bien hacer que, para el componente emisor de partículas, se dibujen solo las partículas "vivas".
+  - Para ello, se cuentan las partículas vivas, y se ordenan todas según dicho atributo.
+  - Por tanto, se dibujan las primera n partículas del vector (ordenador), siendo n el nº de partículas vivas.
+  - ¿Problema? Vectores auxiliares para guardar la posición de todas las partículas. ¿Cuándo se actualiza? ¿De manera dinámica? Eso es muy chapuza, ¿no?
+
+- Estaría bien probar un VBO static para los CResource_Mesh, ya que muchos de este tipo podrían bloquear el sistema.
 - Hacer una especie de "interfaz" para cada componente para poder modificar atributos (se le pasa un string a una funcion "ParseInput" o algo y se analiza).
 - Cambiar nombres de las funciones "OnEvent" por algo más intuitivo, como "OnUserInput" o "OnInput".
 - Añadir un función al sistema Debug para prestar una opción de autocompletado de comandos (sencillo, comandos almacenados en un map).
