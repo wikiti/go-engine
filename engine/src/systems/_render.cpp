@@ -21,11 +21,49 @@ bool CSystem_Render::Init()
 
   //multitexture_supported = vbos_supported = false;
 
-  SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-  SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 8);
-  glEnable(GL_MULTISAMPLE);
+  int sampling_usability, sampling_max_value;
+  GetMaxSamples(sampling_usability, sampling_max_value);
 
-  window = SDL_CreateWindow( gEngine.GetTitle().c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"), SDL_WINDOW_OPENGL);
+  int user_sampling_usability = gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_MULTISAMPLING");
+  int user_sampling_max_value = gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_MULTISAMPLING_VALUE");
+
+  // Crear una ventana "dummy" para ver los valores de multisampling permitidos.
+  if(user_sampling_usability <= 0 or user_sampling_max_value <= 0 )
+  {
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
+  }
+  else if(user_sampling_usability > 0)
+  {
+    if(sampling_usability)
+    {
+      SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+      if(user_sampling_max_value > sampling_max_value)
+      {
+        gSystem_Debug.log("WARNING!! From Render: Trying to set multisampling samples to %d, being the max value %d. Using %d.", user_sampling_max_value, sampling_max_value, sampling_max_value);
+        gSystem_Debug.console_warning_msg("From Render: Trying to set multisampling samples to %d, being the max value %d. Using %d.", user_sampling_max_value, sampling_max_value, sampling_max_value);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, sampling_max_value);
+      }
+      else if(!gSystem_Math.IsPowerOfTwo(user_sampling_max_value))
+      {
+        gSystem_Debug.log("WARNING!! From Render: Trying to set multisampling samples to %d, which is non power of 2. Using %d.", user_sampling_max_value, sampling_max_value);
+        gSystem_Debug.console_warning_msg("From Render: Trying to set multisampling samples to %d, which is non power of 2. Using %d.", user_sampling_max_value, sampling_max_value);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, sampling_max_value);
+      }
+      else
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, user_sampling_max_value);
+    }
+    else
+    {
+      gSystem_Debug.log("WARNING!! From Render: Trying to enable multisampling (antialising), which is not supported.");
+      gSystem_Debug.console_warning_msg("From Render: Trying to enable multisampling (antialising), which is not supported.");
+
+      SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
+      SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
+    }
+  }
+
+  window = SDL_CreateWindow( gEngine.GetTitle().c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT"), SDL_WINDOW_OPENGL);
   if(!window)
   {
     gSystem_Debug.error("From CSystem_Render: Could not create window: %s", SDL_GetError());
@@ -33,7 +71,7 @@ bool CSystem_Render::Init()
     return false;
   }
 
-  string videomode = gSystem_Data_Storage.GetString("__RESOLUTION_WINDOW_MODE");
+  string videomode = gSystem_Data_Storage.GetString("__RENDER_RESOLUTION_WINDOW_MODE");
   videomode = GO_Utils::string_to_lower(videomode);
 
   if (videomode == "fullscreen")
@@ -43,9 +81,9 @@ bool CSystem_Render::Init()
   else
     gSystem_Render.SetFullScreenWindow(GO_Render::windowed);
 
-
-
   GLcontext = SDL_GL_CreateContext(window);
+
+  glEnable(GL_MULTISAMPLE);
 
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
@@ -130,7 +168,7 @@ bool CSystem_Render::Init()
   quadratic = gluNewQuadric();
 
   // Other renders
-  if(!CComponent_Transform::InitRenderVBO() or !CComponent_Particle_Emitter::InitRenderVBO()) return false;
+  if(!CComponent_Transform::InitRenderVBO() or !CComponent_Particle_Emitter::InitRenderVBO() or !CComponent_GUI_Texture::InitRenderVBO()) return false;
 
   CSystem::Init();
 
@@ -297,7 +335,7 @@ void CSystem_Render::Close()
   // Other renders
   CComponent_Transform::CloseRenderVBO();
   CComponent_Particle_Emitter::CloseRenderVBO();
-
+  CComponent_GUI_Texture::CloseRenderVBO();
 
   CSystem::Close();
 
@@ -651,7 +689,7 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
 
 void CSystem_Render::Clear()
 {
-  glScissor(0, 0, gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
+  glScissor(0, 0, gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT"));
 
   glClearColor(0, 0, 0, 1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

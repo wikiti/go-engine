@@ -79,7 +79,7 @@ void CComponent_Camera::ApplyChanges()
         //(viewport.width*gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH")) / (viewport.height*gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT")),
         //near_clip, far_clip);
     projMatrix = glm::perspective(field_of_view,
-        (viewport.width*gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH")) / (viewport.height*gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT")),
+        (viewport.width*gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH")) / (viewport.height*gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT")),
         near_clip, far_clip);
   }
 
@@ -94,8 +94,8 @@ void CComponent_Camera::SetViewport()
   //glViewport(viewport.x, viewport.y, viewport.width, viewport.height);
   //glScissor(viewport.x, viewport.y, viewport.width, viewport.height);
 
-  int w = gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH");
-  int h = gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT");
+  int w = gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH");
+  int h = gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT");
 
   glViewport(viewport.x*w, viewport.y*h, viewport.width*w, viewport.height*h);
   glScissor(viewport.x*w, viewport.y*h, viewport.width*w, viewport.height*h);

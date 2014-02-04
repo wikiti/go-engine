@@ -4,6 +4,10 @@
 #include "systems/_render.h"
 #include "systems/_shader.h"
 
+GLuint CComponent_GUI_Texture::m_GUITextureVBOVertices = 0;
+GLuint CComponent_GUI_Texture::m_GUITextureVBOTexCoords = 0;
+GLuint CComponent_GUI_Texture::m_GUITextureVAO = 0;
+
 CComponent_GUI_Texture::CComponent_GUI_Texture(CGameObject* gameObject): CComponent(gameObject)
 {
   texture_name = "";
@@ -12,8 +16,6 @@ CComponent_GUI_Texture::CComponent_GUI_Texture(CGameObject* gameObject): CCompon
   width = height = 1.f;
 
   color(1.f, 1.f, 1.f, 1.f);
-
-  InitVBO();
 }
 
 CComponent_GUI_Texture::~CComponent_GUI_Texture()
@@ -24,7 +26,7 @@ CComponent_GUI_Texture::~CComponent_GUI_Texture()
 // Problemático: deben reconstruirse estos VBOs cada vez que se cambie el tamaño de la pantalla :L
 //   Solución temporal -> Actualizar el VBO de vértices en cada iteración.
 
-void CComponent_GUI_Texture::InitVBO()
+bool CComponent_GUI_Texture::InitRenderVBO()
 {
   const GLfloat GUITexture_TexCoords[][2]
   {
@@ -35,7 +37,7 @@ void CComponent_GUI_Texture::InitVBO()
   if(!m_GUITextureVAO)
   {
     gSystem_Debug.error("From CComponent_Transform: Could not generate Transform VAO.");
-    return;
+    return false;
   }
 
   glGenBuffers( 1, &m_GUITextureVBOVertices );
@@ -46,10 +48,10 @@ void CComponent_GUI_Texture::InitVBO()
     gSystem_Debug.error("From CComponent_Transform: Could not generate Transform VBO.");
 
     glDeleteVertexArrays(1, &m_GUITextureVAO);
-    glGenBuffers( 1, &m_GUITextureVBOVertices );
-    glGenBuffers( 1, &m_GUITextureVBOTexCoords );
+    glDeleteBuffers( 1, &m_GUITextureVBOVertices );
+    glDeleteBuffers( 1, &m_GUITextureVBOTexCoords );
 
-    return;
+    return false;
   }
 
   glBindVertexArray(m_GUITextureVAO);
@@ -64,6 +66,14 @@ void CComponent_GUI_Texture::InitVBO()
 
   glBindVertexArray(0);
 
+  return true;
+}
+
+void CComponent_GUI_Texture::CloseRenderVBO()
+{
+  glDeleteVertexArrays(1, &m_GUITextureVAO);
+  glDeleteBuffers( 1, &m_GUITextureVBOVertices );
+  glDeleteBuffers( 1, &m_GUITextureVBOTexCoords );
 }
 
 void CComponent_GUI_Texture::UpdateVBO()

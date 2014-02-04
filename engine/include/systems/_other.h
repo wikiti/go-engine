@@ -117,6 +117,11 @@ class CSystem_Math: public CSystem
       return std::sqrt(val);
     }
 
+    bool IsPowerOfTwo(unsigned int x)
+    {
+       return ((x != 0) && !(x & (x - 1)));
+    }
+
     // trigonometría
     inline void NormalizeAngles(GLfloat &deg_x, GLfloat &deg_y, GLfloat &deg_z)
     {

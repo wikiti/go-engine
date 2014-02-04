@@ -84,6 +84,38 @@ class CSystem_Render: public CSystem
 
     //CComponent_Camera* GUI_Camera;
 
+    inline void GetMaxSamples(int& enabled, int& max_value)
+    {
+      SDL_Window* l_window = SDL_CreateWindow("", 0, 0, 0, 0, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN);
+      if(!l_window)
+      {
+        gSystem_Debug.error("From CSystem_Render: Could not create window for multisampling: %s", SDL_GetError());
+
+        enabled = 0;
+        max_value = 0;
+      }
+
+      SDL_GLContext l_GLcontext = SDL_GL_CreateContext(l_window);
+
+      glEnable(GL_MULTISAMPLE);
+
+      if(SDL_GL_ExtensionSupported("GL_ARB_multisample"))
+      {
+        glGetIntegerv(GL_MAX_SAMPLES, &max_value);
+
+        enabled = 1;
+        max_value /= 2;
+      }
+      else
+      {
+        enabled = 0;
+        max_value = 0;
+      }
+
+      SDL_GL_DeleteContext(l_GLcontext);
+      SDL_DestroyWindow(l_window);
+    }
+
     inline void ApplyCameraChanges()
     {
       for(vector<CGameObject*>::iterator it = camera_list.begin(); it != camera_list.end(); it++)

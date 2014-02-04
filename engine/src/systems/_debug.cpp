@@ -438,10 +438,10 @@ void CSystem_Debug::OnRender()
 {
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0, gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), 0, __CSYSTEM_DEBUG_CONSOLE_SIZE, -1, 1);
+  glOrtho(0, gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"), 0, __CSYSTEM_DEBUG_CONSOLE_SIZE, -1, 1);
 
-  glViewport(0, gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT") - __CSYSTEM_DEBUG_CONSOLE_SIZE, gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), __CSYSTEM_DEBUG_CONSOLE_SIZE);
-  glScissor(0, gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT") - __CSYSTEM_DEBUG_CONSOLE_SIZE, gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), __CSYSTEM_DEBUG_CONSOLE_SIZE);
+  glViewport(0, gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT") - __CSYSTEM_DEBUG_CONSOLE_SIZE, gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"), __CSYSTEM_DEBUG_CONSOLE_SIZE);
+  glScissor(0, gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT") - __CSYSTEM_DEBUG_CONSOLE_SIZE, gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"), __CSYSTEM_DEBUG_CONSOLE_SIZE);
 
   glClearColor(0.f, 0.f, 0.f, 1.f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -1469,12 +1469,12 @@ void CSystem_Debug::Console_command__R_UPDATE_WINDOW(string arguments)
     return;
   }
 
-  if(gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH") <= 0 or gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT") <= 0 )
-    console_error_msg("Invalid values of __RESOLUTION_WIDTH (%i) or __RESOLUTION_HEIGHT (%i)", gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
+  if(gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH") <= 0 or gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT") <= 0 )
+    console_error_msg("Invalid values of __RENDER_RESOLUTION_WIDTH (%i) or __RENDER_RESOLUTION_HEIGHT (%i)", gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT"));
   else
   {
-    gSystem_Render.ResizeWindow(gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
-    console_msg("Set window to resolution %i x %i", gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
+    gSystem_Render.ResizeWindow(gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT"));
+    console_msg("Set window to resolution %i x %i", gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"), gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT"));
   }
 }
 
@@ -1513,11 +1513,11 @@ void CSystem_Debug::Console_command__R_RESIZE_WINDOW(string arguments)
   }
   else
   {
-    gSystem_Data_Storage.SetInt("__RESOLUTION_WIDTH", w);
-    gSystem_Data_Storage.SetInt("__RESOLUTION_HEIGHT", h);
+    gSystem_Data_Storage.SetInt("__RENDER_RESOLUTION_WIDTH", w);
+    gSystem_Data_Storage.SetInt("__RENDER_RESOLUTION_HEIGHT", h);
     Console_command__R_UPDATE_WINDOW(arguments);
-    console_msg("Resized window to %i x %i", gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH"),
-        gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT"));
+    console_msg("Resized window to %i x %i", gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH"),
+        gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT"));
   }
 
 

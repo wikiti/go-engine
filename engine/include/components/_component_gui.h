@@ -6,14 +6,8 @@
 
 class CComponent_GUI_Texture: public CComponent
 {
-  private:
-    friend class CSystem_Render;
-    friend class CGameObject;
-
-  protected:
-    GLuint m_GUITextureVBOVertices;
-    GLuint m_GUITextureVBOTexCoords;
-    GLuint m_GUITextureVAO;
+  friend class CSystem_Render;
+  friend class CGameObject;
 
   public:
     string texture_name;
@@ -24,8 +18,14 @@ class CComponent_GUI_Texture: public CComponent
     colorf_t color;
 
   private:
+    static GLuint m_GUITextureVBOVertices;
+    static GLuint m_GUITextureVBOTexCoords;
+    static GLuint m_GUITextureVAO;
+
     static int GetID() { return components::gui_texture; }
-    void InitVBO();
+    static bool InitRenderVBO();
+    static void CloseRenderVBO();
+
     void UpdateVBO();
 
   public:
