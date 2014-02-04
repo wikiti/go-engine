@@ -94,6 +94,12 @@ bool CSystem_Render::Init()
     return false;
   }
 
+  if (!GLEW_ARB_instanced_arrays)
+  {
+    gSystem_Debug.error("JAJA PRINGADOq %s", glewGetErrorString(err));
+    return false;
+  }
+
   /*if(!glewIsSupported("GL_multitexture"))
   {
     gSystem_Debug.error("From CSystem_Render: GLEW error: GL_multitexture NOT supported!");

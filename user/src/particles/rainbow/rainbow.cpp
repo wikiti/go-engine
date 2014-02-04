@@ -16,12 +16,12 @@ bool SetGameObjects_Instance1_Rainbow()
   rainbow->AddChildren({rainbow_violet, rainbow_dblue, rainbow_blue, rainbow_green, rainbow_yellow, rainbow_orange, rainbow_red});
   rainbow->Transform()->position.y += 3.f;
 
-  rainbow_violet->Transform()->position.x += 3.f;
-  rainbow_dblue->Transform()->position.x += 2.5f;
-  rainbow_blue->Transform()->position.x += 2.f;
-  rainbow_green->Transform()->position.x += 1.5f;
-  rainbow_yellow->Transform()->position.x += 1.f;
-  rainbow_orange->Transform()->position.x += 0.5f;
+  rainbow_violet->Transform()->position.x = 3.f;
+  rainbow_dblue->Transform()->position.x = 2.5f;
+  rainbow_blue->Transform()->position.x = 2.f;
+  rainbow_green->Transform()->position.x = 1.5f;
+  rainbow_yellow->Transform()->position.x = 1.f;
+  rainbow_orange->Transform()->position.x = 0.5f;
   //rainbow_red->transform()->position.x -= 10.f;
 
   // velocidades

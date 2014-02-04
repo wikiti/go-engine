@@ -47,7 +47,7 @@ Se definirán 3 partes en el proyecto bien claras y definidas:
 	- [SDL_net 2.0](	http://www.libsdl.org/projects/SDL_net/ "SDL_net 2.0")
 - [SOIL](http://www.opengl.org/wiki/Image_Libraries "SOIL") (Imágenes)
 - [Bullet Engine](http://bulletphysics.org/wordpress/ "Bullet Engine") (Física)
-- [ASSIMP](http://assimp.sourceforge.net/ "ASSIMP") (Modelos 3D, etc)
+- [ASSIMP 3.0.1270](http://assimp.sourceforge.net/ "ASSIMP") (Modelos 3D, etc)
 - [GLM](http://glm.g-truc.net/ "GL Maths") (Matemática de gráficos 3D)
 - Otras menores (ya se mencionarán cuando se decidan)
 

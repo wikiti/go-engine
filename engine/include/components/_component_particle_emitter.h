@@ -62,10 +62,10 @@ class CComponent_Particle_Emitter: public CComponent
 
     void UpdateVBO();
 
+    vector3f last_pos;
 
   public:
     // GameObject stuff
-    vector3f last_pos;
 
     // Se podrían usar varios materiales, con una probabilidad P(X)c[0.f, 1.f] de que una particula use el material X
     uint max_particles;
