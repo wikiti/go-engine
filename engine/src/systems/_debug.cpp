@@ -1072,6 +1072,16 @@ void CSystem_Debug::Console_command__RUN(string arguments)
     return;
   }
 
+  vector<string> parameters;
+  string arg = file;
+
+  while(arg != "" and parameters.size() < 10)
+  {
+    parameters.push_back(arg);
+    arg = "";
+    ss >> arg;
+  }
+
   console_msg("Running script \"%s\"", file.c_str());
   console_msg("---------------------------------");
 
@@ -1082,8 +1092,24 @@ void CSystem_Debug::Console_command__RUN(string arguments)
     if(line[0] == '#' || line[0] == '\0') // Ignore comments and blank lines
       continue;
 
-    command_buffer.push_back(line);
-    if(command_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_COMMAND_BUFFER_MAXLINES) command_buffer.erase(command_buffer.begin()); // Check command_buffer size and clean if necesary
+    // Replace parameters
+    size_t ampersand_pos = 0;
+    while((ampersand_pos = line.find('&', ampersand_pos)) != string::npos)
+    {
+      if(ampersand_pos < line.size() - 1)
+      {
+        ampersand_pos++;
+        int value = (int)(line[ampersand_pos] - '0');
+
+        line.erase(ampersand_pos - 1, 2);
+        if(value >= 0 and value < (int)parameters.size())
+          line.insert(ampersand_pos - 1, parameters[value]);
+      }
+    }
+
+    // Parse command
+    //command_buffer.push_back(line);
+    //if(command_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_COMMAND_BUFFER_MAXLINES) command_buffer.erase(command_buffer.begin()); // Check command_buffer size and clean if necesary
 
     current_last_command = command_buffer.size();
     input = line;

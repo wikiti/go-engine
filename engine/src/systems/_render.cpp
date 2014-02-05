@@ -110,13 +110,19 @@ bool CSystem_Render::Init()
 
   glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
   glHint(GL_POINT_SMOOTH_HINT,GL_NICEST);
+  glHint(GL_LINE_SMOOTH_HINT, GL_NICEST );
+  glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST );
+
+  //glEnable(GL_PERSPECTIVE_CORRECTION);
+  glEnable(GL_POINT_SMOOTH);
+  glEnable(GL_LINE_SMOOTH);
+  glEnable(GL_POLYGON_SMOOTH);
+
 
   glEnable(GL_COLOR_MATERIAL);
 
   //glEnable(GL_BLEND);
   //glBlendFunc(GL_ONE, GL_ONE);
-
-  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
   GLenum error = glGetError();
   if(error != GL_NO_ERROR)

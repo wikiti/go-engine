@@ -1,4 +1,3 @@
-go_enable rainbow 0 r
-go_enable rainbow_red 1
-
-go_show_tree
+# Arguments are: &0 => file, &1 => arg1, &2 => arg2 ... &9 => arg9 
+snd_music_volume &1
+snd_volume &1
