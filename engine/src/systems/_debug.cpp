@@ -38,6 +38,29 @@ void CSystem_Debug::ParseInput()
     Console_command__UNKNOWN_COMMAND(command);
 }
 
+void CSystem_Debug::ParseAppArguments()
+{
+  vector<string>& args = gEngine.Arguments();
+  for(vector<string>::iterator it = args.begin(); it != args.end(); it++)
+  {
+    // Command case
+    if((*it)[0] == '-')
+    {
+      input = (*it);
+      input = input.substr(1);
+      if(input.size())
+      {
+        replace(input.begin(), input.end(), '#', ' ');
+
+        ParseInput();
+        input = "";
+      }
+    }
+    // Other cases here
+  }
+  console_msg("-----------------------------------------------");
+}
+
 bool CSystem_Debug::Init()
 {
   if(enabled) return true;
@@ -1617,44 +1640,61 @@ void CSystem_Debug::Console_command__R_GLINFO(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: r_glinfo [ext]");
+    console_warning_msg("Format is: r_glinfo <show | log> [ext]");
+    return;
+  }
+
+  stringstream ss(arguments);
+  string argument;
+  ss >> argument;
+
+  void (CSystem_Debug::*display_function)(const char*, ...) = NULL;
+  if(argument == "show")
+  {
+    display_function = &CSystem_Debug::console_msg;
+  }
+  else if(argument == "log")
+  {
+    display_function = &CSystem_Debug::raw_log;
+  }
+  else
+  {
+    console_warning_msg("Format is: r_glinfo <show | log> [ext]");
     return;
   }
 
   if(gSystem_Render.GLInfo.size())
   {
-    console_msg("");
-    console_msg("Opengl Information:");
-    console_msg("------------------------------------");
+    (this->*display_function)("\n\n");
+    (this->*display_function)("Opengl Information:\n");
+    (this->*display_function)("------------------------------------\n");
 
-    console_msg("Vendor:          %s", gSystem_Render.GLInfo[0].c_str());
-    console_msg("Renderer:        %s", gSystem_Render.GLInfo[1].c_str());
-    console_msg("Version:         %s", gSystem_Render.GLInfo[2].c_str());
-    console_msg("GLSL Version:    %s", gSystem_Render.GLInfo[3].c_str());
+    (this->*display_function)("Vendor:          %s\n", gSystem_Render.GLInfo[0].c_str());
+    (this->*display_function)("Renderer:        %s\n", gSystem_Render.GLInfo[1].c_str());
+    (this->*display_function)("Version:         %s\n", gSystem_Render.GLInfo[2].c_str());
+    (this->*display_function)("GLSL Version:    %s\n", gSystem_Render.GLInfo[3].c_str());
 
-    stringstream ss(arguments);
-    string argument;
+    argument = "";
     ss >> argument;
 
     if(argument == "ext")
     {
-      console_msg("");
-      console_msg("Extensions supported:");
-      console_msg("------------------------------------");
+      (this->*display_function)("\n");
+      (this->*display_function)("Extensions supported:\n");
+      (this->*display_function)("------------------------------------\n");
 
       stringstream ss(gSystem_Render.GLInfo[4]);
       string extension;
       int i = 0;
       while(getline(ss, extension, ' '))
       {
-        console_msg("%d. %s", i, extension.c_str());
+        (this->*display_function)("%d. %s\n", i, extension.c_str());
         i++;
       }
     }
     else if(argument != "")
     {
-      console_error_msg("Invalid option \"%s\"", arguments.c_str());
-      console_warning_msg("Format is: r_glinfo [ext]");
+      console_warning_msg("Format is: r_glinfo <show | log> [ext]");
     }
   }
 

@@ -66,6 +66,8 @@ bool Systems_Init()
     return false;
   }
 
+  gSystem_Debug.ParseAppArguments();
+
   return true;
 }
 

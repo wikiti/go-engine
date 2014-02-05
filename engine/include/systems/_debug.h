@@ -50,8 +50,8 @@ namespace debug
 
 class CSystem_Debug: public CSystem
 {
-  private:
-    friend class CSystem_Render;
+  friend class CSystem_Render;
+  friend bool Systems_Init();
 
   protected:
     // Debug
@@ -71,6 +71,7 @@ class CSystem_Debug: public CSystem
     bool console;
     string input;
     void ParseInput();
+    void ParseAppArguments();
 
     // Console Font
     // De momento no vamos a usar los VBOs, ya que es el debugger y no tiene mucha importancia :D

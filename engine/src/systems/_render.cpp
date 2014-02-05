@@ -205,7 +205,6 @@ void CSystem_Render::SetGLInfo()
     }
   }
   GLInfo.push_back(aux);
-  cout << GLInfo[4] << endl;
 }
 
 bool CSystem_Render::InitSkyboxVBO()

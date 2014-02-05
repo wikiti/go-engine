@@ -59,7 +59,7 @@ class CEngine
       return instances[current_instance];
     }
 
-    vector<string> Arguments()
+    vector<string>& Arguments()
     {
       return arguments;
     }

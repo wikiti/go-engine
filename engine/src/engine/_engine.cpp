@@ -16,6 +16,9 @@ CEngine::CEngine(): title(""), running(false)
 
 bool CEngine::Init(int argc, char* argv[])
 {
+  for(int i = 0; i < argc; i++)
+    arguments.push_back(string(argv[i]));
+
   if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
   {
     gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load SDL module");
@@ -44,8 +47,6 @@ bool CEngine::Init(int argc, char* argv[])
   current_instance = 0;
   running = true;
 
-  for(int i = 0; i < argc; i++)
-    arguments.push_back(string(argv[i]));
 
   return true;
 }
