@@ -1695,10 +1695,11 @@ void CSystem_Debug::Console_command__R_GLINFO(string arguments)
     (this->*display_function)("Opengl Information:\n");
     (this->*display_function)("------------------------------------\n");
 
-    (this->*display_function)("Vendor:          %s\n", gSystem_Render.GLInfo[0].c_str());
-    (this->*display_function)("Renderer:        %s\n", gSystem_Render.GLInfo[1].c_str());
-    (this->*display_function)("Version:         %s\n", gSystem_Render.GLInfo[2].c_str());
-    (this->*display_function)("GLSL Version:    %s\n", gSystem_Render.GLInfo[3].c_str());
+    (this->*display_function)("Vendor:             %s\n", gSystem_Render.GLInfo[0].c_str());
+    (this->*display_function)("Renderer:           %s\n", gSystem_Render.GLInfo[1].c_str());
+    (this->*display_function)("Version:            %s\n", gSystem_Render.GLInfo[2].c_str());
+    (this->*display_function)("GLSL Version:       %s\n", gSystem_Render.GLInfo[3].c_str());
+    (this->*display_function)("Max MSAA samples:   %s\n", gSystem_Render.GLInfo[4].c_str());
 
     argument = "";
     ss >> argument;
@@ -1709,7 +1710,7 @@ void CSystem_Debug::Console_command__R_GLINFO(string arguments)
       (this->*display_function)("Extensions supported:\n");
       (this->*display_function)("------------------------------------\n");
 
-      stringstream ss(gSystem_Render.GLInfo[4]);
+      stringstream ss(gSystem_Render.GLInfo[5]);
       string extension;
       int i = 0;
       while(getline(ss, extension, ' '))
