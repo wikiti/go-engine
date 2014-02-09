@@ -4,6 +4,8 @@
 #include "_object.h"
 #include "systems/_system.h"
 
+#define __RENDER_OPENGL_MIN_CORE "3.3.0"
+
 // Problema grave: alphablending
 // http://blogs.msdn.com/b/shawnhar/archive/2009/02/18/depth-sorting-alpha-blended-objects.aspx
 // http://stackoverflow.com/questions/5793354/how-to-write-prevent-writing-to-opengl-depth-buffer-in-glsl
@@ -22,6 +24,7 @@
 namespace GO_Render
 {
   enum window_display_t {windowed = 0, fullscreen = SDL_WINDOW_FULLSCREEN, fullwindowed = SDL_WINDOW_FULLSCREEN_DESKTOP};
+  enum opengl_core_support_t { not_supported = 0, in_core, arb_extension };
 }
 
 class CSystem_Render: public CSystem

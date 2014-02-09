@@ -1,5 +1,16 @@
 #include "particles/other_particles.h"
 
+void particle_emitter1_behaviour(CGameObject* object)
+{
+  GLfloat& n_particles_per_second = object->ParticleEmitter()->particles_per_second;
+  if(n_particles_per_second < 10000)
+  {
+    n_particles_per_second += 1;
+    if((int)n_particles_per_second % 100 == 0)
+      gSystem_Debug.console_msg("Particles per second: %f", n_particles_per_second);
+  }
+}
+
 bool SetGameObjects_Instance1_Other_Particles()
 {
   CGameObject* fire = gGameObjects.AddGameObject("fire1");
@@ -37,6 +48,31 @@ bool SetGameObjects_Instance1_Other_Particles()
   fire->ParticleEmitter()->gravity(0, 0, 0);
 
   fire->ParticleEmitter()->Start();
+
+  // Huge test
+  CGameObject* particle_emitter1 = gGameObjects.AddGameObject("particle_emitter1");
+  particle_emitter1->ParticleEmitter()->direction(0.f, 1.f, 0.f);
+
+  // velocidades
+  particle_emitter1->ParticleEmitter()->start_min_vel = 10.f;
+  particle_emitter1->ParticleEmitter()->start_max_vel = 12.5f;
+
+  particle_emitter1->ParticleEmitter()->start_max_life_time = 5.5f;
+  particle_emitter1->ParticleEmitter()->start_min_life_time = 2.5f;
+
+  particle_emitter1->ParticleEmitter()->max_particles = 10000;
+  particle_emitter1->ParticleEmitter()->particles_per_second = 10;
+
+  particle_emitter1->ParticleEmitter()->material_name = "sprite1";
+
+  particle_emitter1->ParticleEmitter()->angle_spread = 35.f;
+
+  particle_emitter1->ParticleEmitter()->start_max_color(1.f, 0.f, 0.f, 0.f);
+  particle_emitter1->ParticleEmitter()->start_min_color(0.3f, 0.0f, 0.0f, 1.f);
+
+  particle_emitter1->ParticleEmitter()->Start();
+
+  particle_emitter1->SetBehaviourFunction(&particle_emitter1_behaviour);
 
   return true;
 }

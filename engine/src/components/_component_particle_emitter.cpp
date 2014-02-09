@@ -194,7 +194,12 @@ void CComponent_Particle_Emitter::Start()
   if(particles_per_second == 0)
     new_particles = max_particles;
   else
-    new_particles = particles_per_second * gSystem_Time.GetTicks_s();
+  {
+    if(gSystem_Time.deltaTime())
+      new_particles = particles_per_second * gSystem_Time.deltaTime_s();
+    else
+      new_particles = particles_per_second * gSystem_Time.GetTicks_s();
+  }
 
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
   {

@@ -72,10 +72,11 @@ bool CSystem_Debug::Init()
   if(!InitCommandMap())
     return false;
 
+  Console_command__RUN("auto");
+
   console_msg("Use \"help\" or \"?\" to list all commands.");
   current_line_buffered = current_last_command = console_pointer_pos = 0;
   console = false;
-
 
   input = "";
 
