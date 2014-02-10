@@ -19,10 +19,17 @@ bool CSystem_Render::Init()
 {
   if(enabled) return true;
 
+  GLInfo.resize(6);
+
   //multitexture_supported = vbos_supported = false;
 
   int sampling_usability, sampling_max_value;
   GetMaxSamples(sampling_usability, sampling_max_value);
+
+  // Set MaxSamplers
+  stringstream ss;
+  ss << sampling_max_value;
+  GLInfo[4] = ss.str();
 
   int user_sampling_usability = gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_MULTISAMPLING");
   int user_sampling_max_value = gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_MULTISAMPLING_VALUE");
@@ -186,16 +193,16 @@ bool CSystem_Render::Init()
 void CSystem_Render::SetGLInfo()
 {
   string aux = (char*)glGetString(GL_VENDOR);
-  GLInfo.push_back(aux);
+  GLInfo[0] = aux;
 
   aux = (char*)glGetString(GL_RENDERER);
-  GLInfo.push_back(aux);
+  GLInfo[1] = aux;
 
   aux = (char*)glGetString(GL_VERSION);
-  GLInfo.push_back(aux);
+  GLInfo[2] = aux;
 
   aux = (char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
-  GLInfo.push_back(aux);
+  GLInfo[3] = aux;
 
   GLint num_ext = 0;
   glGetIntegerv(GL_NUM_EXTENSIONS, &num_ext);
@@ -210,7 +217,7 @@ void CSystem_Render::SetGLInfo()
         aux += " ";
     }
   }
-  GLInfo.push_back(aux);
+  GLInfo[5] = aux;
 }
 
 bool CSystem_Render::InitSkyboxVBO()

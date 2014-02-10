@@ -3,3 +3,5 @@ bin/
 Debug/
 log.txt
 user.cfg
+.project
+.cproject
