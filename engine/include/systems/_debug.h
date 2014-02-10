@@ -100,6 +100,9 @@ class CSystem_Debug: public CSystem
       return console;
     }
 
+    // Commands
+    void command(const string& command, bool log = false);
+
     // log.txt File
     void log(const char* fmt, ...);
     void error(const char* fmt, ...);

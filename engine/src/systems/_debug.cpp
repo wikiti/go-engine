@@ -72,7 +72,8 @@ bool CSystem_Debug::Init()
   if(!InitCommandMap())
     return false;
 
-  Console_command__RUN("auto");
+  //Console_command__RUN("auto");
+  command("run auto");
 
   console_msg("Use \"help\" or \"?\" to list all commands.");
   current_line_buffered = current_last_command = console_pointer_pos = 0;
@@ -239,6 +240,24 @@ void CSystem_Debug::Close()
   glDeletenBuffers( 1, &m_ConsoleFontVBOTypeInfo );*/
 }
 
+void CSystem_Debug::command(const string& command, bool log)
+{
+  if(command != "")
+  {
+    if(log)
+    {
+      command_buffer.push_back(command);
+      if(command_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_COMMAND_BUFFER_MAXLINES) command_buffer.erase(command_buffer.begin()); // Check command_buffer size and clean if necesary
+      current_last_command = command_buffer.size();
+      console_pointer_pos = current_line_buffered = 0;
+    }
+
+    input = command;
+    ParseInput();
+    input = "";
+  }
+}
+
 void CSystem_Debug::log(const char* fmt, ...)
 {
   if(!file)
@@ -346,8 +365,7 @@ void CSystem_Debug::OnEvent()
           current_last_command = command_buffer.size();
           ParseInput();
           input = "";
-          console_pointer_pos = 0;
-          current_line_buffered = 0;
+          console_pointer_pos = current_line_buffered = 0;
         }
       }
       else if(event.key.keysym.scancode == SDL_SCANCODE_DELETE && input.length())

@@ -4,21 +4,21 @@ bool SetGameObjects_Instance1()
 {
   CGameObject* camara_main = gGameObjects.AddGameObject("camara_main");
   camara_main->Camera()->skybox_texture = "skybox1";
-  //camara_main->Camera()->background_color(1.f, 1.f, 1.f);
   camara_main->Transform()->position.y += 3.f;
   camara_main->Transform()->position.z -= 10.f;
 
   camara_main->SetKeyEventFunction(&Camara_main_movimiento);
-  //camara_main->SetKeyEventFunction(&Camara_mouse_movimiento);
 
   gRender.AddCamera(camara_main);
 
   SetGameObjects_Instance1_Fireworks();
-  //SetGameObjects_Instance1_Rainbow();
-  //SetGameObjects_Instance1_Render();
-  //SetGameObjects_Instance1_Other_Particles();
+  SetGameObjects_Instance1_Rainbow();
+  SetGameObjects_Instance1_Render();
+  SetGameObjects_Instance1_Other_Particles();
   //SetGameObjects_Instance1_Shaders();
   //SetGameObjects_Instance1_RandomStuff();
+
+  gDebug.command("run script_scene1_setup", true);
 
   return true;
 }
@@ -31,7 +31,6 @@ void Camara_main_movimiento(CGameObject* gameObject)
     boost = 3.f;
 
   gameObject->Transform()->LTranslate(gUserInput.axis1.horizontal * boost * -3.f * gTime.deltaTime_s(), 0.f, gUserInput.axis1.vertical * boost * 3.f * gTime.deltaTime_s());
-  //gameObject->Transform()->LTranslate(gUserInput.axis1.horizontal * boost * -3.f * gTime.deltaTime_s(), 0.f, 0.f);
 
   if (gUserInput.Keyboard("E"))
   {
@@ -125,8 +124,6 @@ void Camara_Joystick_movimiento(CGameObject* gameObject)
     {
       gameObject->Transform()->LTranslate(0.f, 0.f, -(joys[0].axes[4].value + 1)/2 * boost * 3.f * gTime.deltaTime_s());
       gameObject->Transform()->LTranslate(0.f, 0.f,  (joys[0].axes[5].value + 1)/2 * boost * 3.f * gTime.deltaTime_s());
-      //gDebug.console_msg("%f", joys[0].axes[4].value);
     }
-
   }
 }
