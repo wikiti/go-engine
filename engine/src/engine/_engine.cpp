@@ -65,7 +65,10 @@ int CEngine::OnExecute(int argc, char* argv[])
   Init(argc, argv);
 
   while(current_instance >= 0 && running)
+  {
     current_instance = instances[current_instance]->OnExecute();
+    // Resetear contenido de los sistemas.
+  }
 
   Close();
 

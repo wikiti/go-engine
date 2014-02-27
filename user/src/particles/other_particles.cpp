@@ -6,8 +6,8 @@ void particle_emitter1_behaviour(CGameObject* object)
   if(n_particles_per_second < 10000)
   {
     n_particles_per_second += 1;
-    if((int)n_particles_per_second % 100 == 0)
-      gSystem_Debug.console_msg("Particles per second: %f", n_particles_per_second);
+    //if((int)n_particles_per_second % 100 == 0)
+      //gSystem_Debug.console_msg("Particles per second: %f", n_particles_per_second);
   }
 }
 

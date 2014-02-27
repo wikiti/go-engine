@@ -520,21 +520,11 @@ void CSystem_Render::OnRender()
 
 	  for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	  {
-	    //glLoadIdentity();
-	    //glPushMatrix();
-
-      glColor3f(1.f, 1.f, 1.f);
+      //glColor3f(1.f, 1.f, 1.f);
       glBindTexture(GL_TEXTURE_2D, 0);
 
       glm::mat4 local_modelViewMatrix = it2->second->Transform()->ApplyTransform(cam->modelViewMatrix);
-      /* -------------------------------
-        GLfloat local_modelViewMatrixf[16];
-        glGetFloatv(GL_MODELVIEW_MATRIX, local_modelViewMatrixf);
-        glm::mat4 local_modelViewMatrix = glm::make_mat4(local_modelViewMatrixf);
-        ------------------------------- */
 	    it2->second->OnRender(cam->projMatrix, local_modelViewMatrix);
-
-	    //glPopMatrix();
 
 	    //CComponent_GUI_Font* gui_font = it2->second->GetComponent<CComponent_GUI_Font>();
 	    CComponent_GUI_Texture* gui_texture = it2->second->GetComponent<CComponent_GUI_Texture>();
@@ -655,9 +645,7 @@ void CSystem_Render::RenderGrid(CComponent_Camera* cam)
   local_modelViewMatrix = glm::translate(local_modelViewMatrix, glm::vec3((-ncols*cols_scale)/2.f, 0.f, (-nrows*rows_scale)/2.f));
   local_modelViewMatrix = glm::scale(local_modelViewMatrix, glm::vec3(rows_scale, 0.f, cols_scale));
 
-  //CShader* simpleShader = gSystem_Shader_Manager.GetShader("__flatShader");
   CShader* simpleShader = gSystem_Shader_Manager.UseShader("__flatShader");
-  //glUseProgram(simpleShader->GetProgram());
 
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(cam->projMatrix));
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(local_modelViewMatrix));
@@ -701,8 +689,6 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
 
   uint m_nSkyboxVertexCount = 24;
 
-  //CShader* simpleShader = gSystem_Shader_Manager.GetShader("__textureShader");
-  //glUseProgram(simpleShader->GetProgram());
   CShader* simpleShader = gSystem_Shader_Manager.UseShader("__textureShader");
 
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(cam->projMatrix));
@@ -710,8 +696,6 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
   glUniform1i(simpleShader->GetUniformIndex("texture"), 0);
   glUniform1f(simpleShader->GetUniformIndex("textureFlag"), 1.0f);
   glUniform4f(simpleShader->GetUniformIndex("in_Color"), 1.0, 1.0, 1.0, 1.0);
-  //"uniform float textureFlag;"
-  //"uniform vec4 in_Color;"
 
   glBindVertexArray(m_SkyboxVAO);
   glEnableVertexAttribArray(0);

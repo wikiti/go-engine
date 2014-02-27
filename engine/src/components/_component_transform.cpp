@@ -193,7 +193,7 @@ void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
 
   // Mover basandose en la rotación (cosa extraña)
   // Translate X
-  glMatrixMode(GL_MODELVIEW);
+  /*glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
   glLoadIdentity();
 
@@ -208,7 +208,11 @@ void CComponent_Transform::LTranslate(GLfloat x, GLfloat y, GLfloat z)
   position.y += matrix[13];
   position.z += matrix[14];
 
-  glPopMatrix();
+  glPopMatrix();*/
+  glm::mat4 transformMatrix = glm::translate( glm::mat4(1.0) * glm::toMat4(angle), glm::vec3(x, y, z));
+  position.x += transformMatrix[3][0];
+  position.y += transformMatrix[3][1];
+  position.z += transformMatrix[3][2];
 }
 
 void CComponent_Transform::LRotate(GLfloat x, GLfloat y, GLfloat z)
