@@ -43,7 +43,7 @@ typedef struct string_console_t
 
 } string_console_t;
 
-namespace debug
+namespace GO_Debug
 {
   enum flags_t {error = SDL_MESSAGEBOX_ERROR, warning = SDL_MESSAGEBOX_WARNING, information = SDL_MESSAGEBOX_INFORMATION};
 }
@@ -95,6 +95,8 @@ class CSystem_Debug: public CSystem
 
     void Close();
 
+    bool Reset();
+
     bool IsConsole()
     {
       return console;
@@ -110,7 +112,7 @@ class CSystem_Debug: public CSystem
 
     // Message Boxes
     // Flags: debug::error for error, debug::warning for warnings, debug::information for info
-    void msg_box(const char* title, const char* message, Uint32 flags = debug::error);
+    void msg_box(const char* title, const char* message, Uint32 flags = GO_Debug::error);
     void msg_box(Uint32 flags, const char* title, const char* fmt, ...);
 
     // Console

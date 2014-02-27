@@ -33,6 +33,13 @@ void CSystem_Data_Storage::Close()
   RemoveAll();
 }
 
+bool CSystem_Data_Storage::Reset()
+{
+  SaveConfig();
+
+  return true;
+}
+
 bool CSystem_Data_Storage::Save(const char* file)
 {
   ofstream os;

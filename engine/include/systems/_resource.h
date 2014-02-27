@@ -148,6 +148,7 @@ class CSystem_Resources: public CSystem
 
     bool Init();
     void Close();
+    bool Reset();
 
     bool LoadResourceFile(string rc_file);
       bool LoadResource(string name, string rc_file, resources::types_t type, string arguments = "");

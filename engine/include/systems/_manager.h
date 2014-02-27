@@ -21,6 +21,7 @@ class CSystem_GameObject_Manager: public CSystem
 
     bool Init();
     void Close();
+    bool Reset();
 
     //void LoadGameObjects(string file = __CSYSTEM_DATA_STORAGE_DEFAULT_SAVEFILE);
     //void SaveGameObjects(string file = __CSYSTEM_DATA_STORAGE_DEFAULT_SAVEFILE);
@@ -35,6 +36,7 @@ class CSystem_GameObject_Manager: public CSystem
     CGameObject* AddGameObject(CGameObject* go, bool init = true);
     bool DeleteGameObject(string name, bool remove_children = true);
     void DeleteGameObjects();
+    void DeleteGameObjects_NonPreserved();
     bool RemoveGameObject(string name);
       bool RebuildIndex(); // <- Mecanismo insano, pero puesto por si acaso (quien coño llega a 4 mil millones de objetos?)
 

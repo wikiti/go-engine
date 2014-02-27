@@ -144,6 +144,13 @@ void CSystem_Mixer::Close()
   alcCloseDevice(device);
 }
 
+bool CSystem_Mixer::Reset()
+{
+  ResetSources();
+
+  return true;
+}
+
 ALuint CSystem_Mixer::GetFreeSource()
 {
   if(!sources_unused.size())

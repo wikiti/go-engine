@@ -392,6 +392,12 @@ void CSystem_Shader_Manager::Close()
   shaders.clear();
 }
 
+bool CSystem_Shader_Manager::Reset()
+{
+  Close();
+  return Init();
+}
+
 CShader* CSystem_Shader_Manager::GetShader(const string& name)
 {
   map<string, CShader*>::iterator i = shaders.find(name);

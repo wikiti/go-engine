@@ -15,6 +15,8 @@ class CSystem
     virtual bool Init(){ enabled = true; return true;}
     virtual void Close(){ enabled = false;}
 
+    virtual bool Reset() {return true; }
+
     virtual void OnRender(){};
     virtual void OnLoop(){};
     virtual void OnEvent(){};

@@ -87,6 +87,18 @@ bool CSystem_Debug::Init()
   return true;
 }
 
+bool CSystem_Debug::Reset()
+{
+  if(file)
+    fclose(file);
+
+  file = fopen (__CSYSTEM_DEBUG_STORAGE_SAVEFILE, __CSYSTEM_DEBUG_STORAGE_ACCESS);//file = fopen ("log.txt","w");
+  if(!file)
+    return false;
+
+  return true;
+}
+
 bool CSystem_Debug::InitConsoleFont()
 {
   if(!gSystem_Resources.LoadResource(__CSYSTEM_DEBUG_CONSOLE_FONT, __CSYSTEM_DEBUG_CONSOLE_FONT_FILE, resources::texture, "mipmap"))
