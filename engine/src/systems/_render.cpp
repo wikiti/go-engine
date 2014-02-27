@@ -512,29 +512,29 @@ void CSystem_Render::OnRender()
     if(gSystem_Data_Storage.GetInt("__RENDER_TRANSFORM_GRID") )
       RenderGrid(cam);
 
-    glMatrixMode(GL_PROJECTION);
+    /*glMatrixMode(GL_PROJECTION);
     glLoadMatrixf( glm::value_ptr(cam->projMatrix) );
 
     glMatrixMode(GL_MODELVIEW);
-    glLoadMatrixf(glm::value_ptr(cam->modelViewMatrix));
+    glLoadMatrixf(glm::value_ptr(cam->modelViewMatrix));*/
 
 	  for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	  {
 	    //glLoadIdentity();
-	    glPushMatrix();
+	    //glPushMatrix();
 
       glColor3f(1.f, 1.f, 1.f);
       glBindTexture(GL_TEXTURE_2D, 0);
 
-      it2->second->Transform()->ApplyTransform();
-      // -------------------------------
+      glm::mat4 local_modelViewMatrix = it2->second->Transform()->ApplyTransform(cam->modelViewMatrix);
+      /* -------------------------------
         GLfloat local_modelViewMatrixf[16];
         glGetFloatv(GL_MODELVIEW_MATRIX, local_modelViewMatrixf);
         glm::mat4 local_modelViewMatrix = glm::make_mat4(local_modelViewMatrixf);
-      // -------------------------------
+        ------------------------------- */
 	    it2->second->OnRender(cam->projMatrix, local_modelViewMatrix);
 
-	    glPopMatrix();
+	    //glPopMatrix();
 
 	    //CComponent_GUI_Font* gui_font = it2->second->GetComponent<CComponent_GUI_Font>();
 	    CComponent_GUI_Texture* gui_texture = it2->second->GetComponent<CComponent_GUI_Texture>();
@@ -561,7 +561,7 @@ void CSystem_Render::OnRender()
         {
           glPushMatrix();
 
-          it2->second->Transform()->ApplyTransform();
+          it2->second->Transform()->ApplyTransform(cam->modelViewMatrix);
 
           GLfloat modelViewMatrixf[16];
           glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrixf);
@@ -597,7 +597,7 @@ void CSystem_Render::OnRender()
 	    {
 	       glPushMatrix();
 
-	       it2->second->Transform()->ApplyTransform();
+	       it2->second->Transform()->ApplyTransform(cam->modelViewMatrix);
 
 	       GLfloat modelViewMatrixf[16];
 	       glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrixf);

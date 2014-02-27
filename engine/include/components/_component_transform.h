@@ -11,6 +11,8 @@ class CComponent_Transform: public CComponent
     vector3f position, scale;
     glm::quat angle;
 
+    //glm::mat4 transformMatrix;
+
   public:
     friend class CGameObject;
     friend class CSystem_Render;
@@ -33,7 +35,7 @@ class CComponent_Transform: public CComponent
 
   protected:
     //component_transform_t data;
-    void ApplyParentTransform(CGameObject* parent);
+    void ApplyParentTransform(CGameObject* parent, glm::mat4& transformMatrix);
 
     //inline virtual bool AddFuncs(CGameObject* obj);
     //inline virtual bool RemoveFuncs(CGameObject* obj);
@@ -97,7 +99,7 @@ class CComponent_Transform: public CComponent
     void LookAt(vector3f target, vector3f up_vector = gMath.Y_AXIS, vector3f forward_vector = gMath.Z_AXIS);
     void LookAt(GLfloat x, GLfloat y, GLfloat z, vector3f up_vector = gMath.Y_AXIS, vector3f forward_vector = gMath.Z_AXIS);
 
-    void ApplyTransform();
+    glm::mat4 ApplyTransform(const glm::mat4& modelviewMatrix);
 
     inline void NormalizeAngles()
     {

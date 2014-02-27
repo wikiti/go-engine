@@ -16,8 +16,8 @@ void decompose(glm::mat4 matrix, glm::vec3& scaling, glm::quat& rotation, glm::v
 {
   // extract translation
   position.x = matrix[3][0];
-  position.y = matrix[3][0];
-  position.z = matrix[3][1];
+  position.y = matrix[3][1];
+  position.z = matrix[3][2];
 
   // extract the rows of the matrix
 
@@ -311,36 +311,51 @@ void CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)
   scale.z = z;
 }
 
-void CComponent_Transform::ApplyTransform()
+glm::mat4 CComponent_Transform::ApplyTransform(const glm::mat4& modelviewMatrix)
 {
+  //transformMatrix = modelviewMatrix;
+  glm::mat4 transformMatrix = modelviewMatrix;
+
   if(gameObject->GetParent())
-    ApplyParentTransform(gameObject->GetParent());
+    ApplyParentTransform(gameObject->GetParent(), transformMatrix);
 
   // Posición
-  glTranslatef(position.x, position.y, position.z);
+  // -> glTranslatef(position.x, position.y, position.z);
   // Orientación
-  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(angle)));                  // <- GLOBAL
+  // -> glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(angle)));                  // <- GLOBAL
   //glMultMatrixf((const float*)glm::value_ptr(glm::inverse(glm::toMat4(angle))));  // <- LOCAL
   // Escala
-  glScalef(scale.x, scale.y, scale.z);
+  // -> glScalef(scale.x, scale.y, scale.z);
+  transformMatrix = glm::translate(transformMatrix, position.to_glm());
+  transformMatrix = transformMatrix * (glm::toMat4(angle));
+  transformMatrix = glm::scale(transformMatrix, scale.to_glm());
+
+  //glLoadMatrixf((const float*)glm::value_ptr(transformMatrix));
+  return transformMatrix;
 }
 
-void CComponent_Transform::ApplyParentTransform(CGameObject* parent)
+void CComponent_Transform::ApplyParentTransform(CGameObject* parent, glm::mat4& transformMatrix)
 {
   //   if(!parent->transform()->enabled) return;
   // Se puede usar en una pila sin problemas y sin llamadas recursivas
   // se evita el parámetro "parent"
   if(parent == NULL)
-    return;
+    return ;
 
-  ApplyParentTransform(parent->GetParent());
+  ApplyParentTransform(parent->GetParent(), transformMatrix);
 
   // Posición
-  glTranslatef(parent->Transform()->position.x, parent->Transform()->position.y, parent->Transform()->position.z);
+  //glTranslatef(parent->Transform()->position.x, parent->Transform()->position.y, parent->Transform()->position.z);
   // Orientación
-  glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(parent->Transform()->angle)));                  // <- GLOBAL
+  //glMultMatrixf((const float*)glm::value_ptr(glm::toMat4(parent->Transform()->angle)));                  // <- GLOBAL
   // Escala
-  glScalef(parent->Transform()->scale.x, parent->Transform()->scale.y, parent->Transform()->scale.z);
+  //glScalef(parent->Transform()->scale.x, parent->Transform()->scale.y, parent->Transform()->scale.z);
+
+  transformMatrix = glm::translate(transformMatrix, parent->Transform()->position.to_glm());
+  transformMatrix = transformMatrix * (glm::toMat4(parent->Transform()->angle));
+  transformMatrix = glm::scale(transformMatrix, parent->Transform()->scale.to_glm());
+
+  //glLoadMatrixf((const float*)glm::value_ptr(transformMatrix));
 
   /*std::stack<CGameObject*> parent_stack;
   CGameObject* p = gameObject->GetParent();
@@ -370,7 +385,7 @@ vector3f_t CComponent_Transform::Position()
   if(!gameObject->GetParent())
     return position;
 
-  glMatrixMode(GL_MODELVIEW);
+  /*glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
   glLoadIdentity();
 
@@ -387,8 +402,10 @@ vector3f_t CComponent_Transform::Position()
   glGetDoublev(GL_MODELVIEW_MATRIX, matrix);
 
   glPopMatrix();
-
-  return vector3f(matrix[12], matrix[13], matrix[14]);
+  return vector3f(matrix[12], matrix[13], matrix[14]);*/
+  //glm::mat4 matrix = ApplyParentTransform(gameObject->GetParent());
+  glm::mat4 matrix = ApplyTransform(glm::mat4(1.0));
+  return vector3f(matrix[3][0], matrix[3][1], matrix[3][2]);
 }
 
 void CComponent_Transform::LookAt(GLfloat x, GLfloat y, GLfloat z, vector3f up_vector, vector3f forward_vector)
