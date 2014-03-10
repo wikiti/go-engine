@@ -175,7 +175,8 @@ IF(SDL2_LIBRARY_TEMP)
   ENDIF(WIN32)
 
   # Set the final string here so the GUI reflects the final state.
-  SET(SDL2_LIBRARY ${SDL2_LIBRARY_TEMP} CACHE STRING "Where the SDL2 Library can be found")
+  # SET(SDL2_LIBRARY ${SDL2_LIBRARY_TEMP} CACHE STRING "Where the SDL2 Library can be found")
+  SET(SDL2_LIBRARY ${SDL2_LIBRARY_TEMP})
   # Set the temp variable to INTERNAL so it is not seen in the CMake GUI
   SET(SDL2_LIBRARY_TEMP "${SDL2_LIBRARY_TEMP}" CACHE INTERNAL "")
   

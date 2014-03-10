@@ -26,7 +26,6 @@ SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/build/Modules/
 
 # -- Búsqueda de Dependencias --
 # - SDL2 - 
-SET(SDL2_BUILDING_LIBRARY 0)
 FIND_PACKAGE(SDL2)
 IF(NOT SDL2_FOUND)
   MESSAGE(FATAL_ERROR "**ERROR** SDL2 Not found. Try setting the enviroment variable \"SDL2DIR\" to your SDL2 root directory, which should contain a lib/ directory and a include/SDL2 directory.")
