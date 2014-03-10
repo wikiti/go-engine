@@ -272,6 +272,8 @@ void CGameObject::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
   CallRenderFunction();
 }
 
+
+
 void CGameObject::Enable(bool recursive)
 {
   enabled = true;

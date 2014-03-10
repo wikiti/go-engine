@@ -57,6 +57,7 @@ bool SetGameObjects_Instance1_RandomStuff()
 
   p1->AddChild(h1);
   p1->AddChild(h2);
+  //p1->AddChildren({h1, h2});
 
   h1->AddChild(h11);
   h1->AddChild(h12);

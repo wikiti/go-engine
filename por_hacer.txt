@@ -1,4 +1,7 @@
-﻿- Pasar los shaders a una versión mas "simple" y apta para todas las versiones de glsl (Dropbox).
+﻿- Añadir la posibilidad de renderizar solo líneas (glPolygonMode).
+- Añadir textura "__BLACK" y textura "__WHITE".
+- Mejorar la carga de meshes para una mayor variedad de aplicaciones.
+- Pasar los shaders a una versión mas "simple" y apta para todas las versiones de glsl (Dropbox).
 - Estaría bien hacer que, para el componente emisor de partículas, se dibujen solo las partículas "vivas".
   - Para ello, se cuentan las partículas vivas, y se ordenan todas según dicho atributo.
   - Por tanto, se dibujan las primera n partículas del vector (ordenador), siendo n el nº de partículas vivas.
