@@ -1,7 +1,7 @@
 #ifndef DEBUG_H_
 #define DEBUG_H_
 
-#define __CSYSTEM_DEBUG_STORAGE_SAVEFILE "log.txt"
+#define __CSYSTEM_DEBUG_STORAGE_SAVEFILE "data/log.txt"
 #define __CSYSTEM_DEBUG_STORAGE_ACCESS "a"
 #define __CSYSTEM_DEBUG_CONSOLE_FONT "__CONSOLE_FONT"
 #define __CSYSTEM_DEBUG_CONSOLE_FONT_FILE "data/engine/console_font.tga"
