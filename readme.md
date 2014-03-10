@@ -81,7 +81,9 @@ Para saber la lista de *toolchains* disponibles, basta con usar:
 
 Por defecto, si no se usa la opción *-G*, se usará la *toolchain* predeterminada.
 
-Recomiendo commpilar el proyecto en ***Windows***, con ***MiNGW Makefiles*** o ***MSYS Makefiles***. 
+Recomiendo commpilar el proyecto en ***Windows***, con ***MiNGW Makefiles***
+
+<span style="color: red; font-weight: bold;">Nota:</span> ***MSYS Makefiles*** para *Windows* dará problemas, ya que no enlazará correctamente la librería *libSDL2main.a*. 
 
 ## 6. Autores ##
 

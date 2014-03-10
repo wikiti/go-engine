@@ -45,8 +45,6 @@ FIND_PATH(ASSIMP_INCLUDE_DIR ai_assert.h
       /opt/include
       ${_assimp_INCLUDE_SEARCH_DIRS_SYSTEM}
 )
-    
-MESSAGE("${ASSIMP_INCLUDE_DIR} -- $ENV{ASSIMPDIR}")
 
 FIND_LIBRARY(ASSIMP_LIBRARY_DEBUG 
     NAMES assimp assimp-3.0.1270
