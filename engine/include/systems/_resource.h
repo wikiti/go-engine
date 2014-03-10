@@ -154,6 +154,7 @@ class CSystem_Resources: public CSystem
       bool LoadResource(string name, string rc_file, resources::types_t type, string arguments = "");
     void AddEmpty(string name);
 
+    void ClearNonEngineResources();
     void ClearResources();
       void ClearResource(string name);
 

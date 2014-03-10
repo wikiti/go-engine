@@ -32,7 +32,7 @@ bool CSystem_GameObject_Manager::Init()
   uint size = gameObjects.size();
   //oa << size;
 
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
   {
     oa << it->second;
   }
@@ -58,7 +58,7 @@ void CSystem_GameObject_Manager::LoadGameObjects(string file)
 
   // esto deberia bastar...
   //ia >> gameObjects;
-//  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+//  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
 //  {
 //    for(map<string, CComponent*>::iterator it2 = it->second->components.begin(); it2 != it->second->components.end(); it2++)
 //      it2->second->AddFuncs(it->second);
@@ -73,7 +73,7 @@ void CSystem_GameObject_Manager::LoadGameObjects(string file)
     ia >> obj;
     gameObjects.insert(pair<string, CGameObject*>(obj->GetName(), obj));
     // Esto sobra
-    //for(map<int, CComponent*>::iterator it = obj->components.begin(); it != obj->components.end(); it++)
+    //for(map<int, CComponent*>::iterator it = obj->components.begin(); it != obj->components.end(); ++it)
       //it->second->AddFuncs(obj);
 
 
@@ -100,13 +100,13 @@ bool CSystem_GameObject_Manager::Reset()
 
 void CSystem_GameObject_Manager::InitGameObjects()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
     it->second->Init();
 }
 
 void CSystem_GameObject_Manager::CloseGameObjects()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
     it->second->Close();
 }
 
@@ -242,7 +242,7 @@ bool CSystem_GameObject_Manager::RebuildIndex()
 {
   map<string, CGameObject*>::iterator it;
   last_ID = 0;
-  for(it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(it = gameObjects.begin(); it != gameObjects.end(); ++it)
   {
     it->second->Register(last_ID);
     last_ID ++;
@@ -260,7 +260,7 @@ vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObjects(string prefix
   map<string, CGameObject*>::iterator it = gameObjects.lower_bound(prefix);
   if (it != gameObjects.end())
   {
-    for( ; it != gameObjects.end(); it++)
+    for( ; it != gameObjects.end(); ++it)
     {
       if (it->first.compare(0, prefix.size(), prefix) == 0)
         output.push_back(it->second);
@@ -276,7 +276,7 @@ vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObjects(string prefix
 {
   vector<CGameObject*> output;
 
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
   {
     int comp = it->first.compare(0, prefix.length(), prefix);
 
@@ -372,7 +372,7 @@ bool CSystem_GameObject_Manager::RenameGameObject(CGameObject* go, string new_na
 
 void CSystem_GameObject_Manager::DeleteGameObjects()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
   {
     it->second->Close();
     delete it->second;
@@ -394,7 +394,7 @@ void CSystem_GameObject_Manager::DeleteGameObjects_NonPreserved()
     }
     else
     {
-      it++;
+      ++it;
     }
   }
 }
@@ -450,37 +450,37 @@ void CSystem_GameObject_Manager::SetGameObject(string name, bool state)
 
 void CSystem_GameObject_Manager::EnableGameObjects()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
     it->second->Enable();
 }
 
 void CSystem_GameObject_Manager::DisableGameObjects()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
     it->second->Disable();
 }
 
 void CSystem_GameObject_Manager::SetGameObjects(bool state)
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
     it->second->SetState(state);
 }
 
 void CSystem_GameObject_Manager::OnEvent()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
     it->second->OnEvent();
 }
 
 void CSystem_GameObject_Manager::OnKeyEvent()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
     it->second->OnKeyEvent();
 }
 
 void CSystem_GameObject_Manager::OnLoop()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
     it->second->OnLoop();
 }
 

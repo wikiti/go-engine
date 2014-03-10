@@ -89,7 +89,7 @@ bool CSystem_Mixer::Init()
 
 void CSystem_Mixer::ResetSources()
 {
-  for(vector<ALuint>::iterator it = sources_used.begin(); it != sources_used.end(); it++)
+  for(vector<ALuint>::iterator it = sources_used.begin(); it != sources_used.end(); ++it)
   {
     alSourceStop((*it));
     alSourcei((*it), AL_BUFFER, 0);
@@ -99,7 +99,7 @@ void CSystem_Mixer::ResetSources()
   }
   sources_used.clear();
 
-  for(vector<ALuint>::iterator it = oneshot_used.begin(); it != oneshot_used.end(); it++)
+  for(vector<ALuint>::iterator it = oneshot_used.begin(); it != oneshot_used.end(); ++it)
   {
     alSourceStop((*it));
     alSourcei((*it), AL_BUFFER, 0);
@@ -120,12 +120,12 @@ void CSystem_Mixer::Close()
   ResetSources();
 
   // Borrar sources
-  for(vector<ALuint>::iterator it = sources_unused.begin(); it != sources_unused.end(); it++)
+  for(vector<ALuint>::iterator it = sources_unused.begin(); it != sources_unused.end(); ++it)
   {
     alDeleteSources(1, &(*it));
   }
 
-  for(vector<ALuint>::iterator it = oneshot_unused.begin(); it != oneshot_unused.end(); it++)
+  for(vector<ALuint>::iterator it = oneshot_unused.begin(); it != oneshot_unused.end(); ++it)
   {
     alDeleteSources(1, &(*it));
   }
@@ -171,7 +171,7 @@ void CSystem_Mixer::AddFreeSource(ALuint source)
 {
   sources_unused.push_back(source);
 
-  for(vector<ALuint>::iterator it = sources_used.begin(); it != sources_used.end(); it++)
+  for(vector<ALuint>::iterator it = sources_used.begin(); it != sources_used.end(); ++it)
   {
     if(source == (*it))
     {
@@ -238,7 +238,7 @@ void CSystem_Mixer::OnLoop()
 
       //float gVolume = gSystem_Data_Storage.GetFloat("__SOUND_VOLUME");
       //alSourcef((*it), AL_GAIN, gVolume);
-      it++;
+      ++it;
     }
   }
 }

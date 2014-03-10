@@ -145,9 +145,10 @@ bool CSystem_Render::Init()
     return false;
   }
 
+  // ->PorHacer Hay que tener en cuenta los detalles de la compatibilidad de opengl (y extensiones de GLEW).
   if (!GLEW_ARB_instanced_arrays)
   {
-    gSystem_Debug.error("JAJA PRINGADOq %s", glewGetErrorString(err));
+    gSystem_Debug.error("-> %s", glewGetErrorString(err));
     return false;
   }
 
@@ -388,6 +389,22 @@ void CSystem_Render::Close()
 
   SDL_GL_DeleteContext(GLcontext);
   SDL_DestroyWindow(window);
+
+  camera_list.clear();
+}
+
+// En principio, solo hay que liberar las cámaras.
+// ->PorHacer estaría bien añadir una opción para que CSystem_Render::Reset() reiniciase la ventana, no solo las cámaras.
+// ->PorHacer hay que probar CSystem_Render::Reset()
+bool CSystem_Render::Reset() {
+  for(vector<CGameObject*>::iterator it = camera_list.begin(); it != camera_list.end(); ) {
+    if(!(*it)->IsPreserved())
+      camera_list.erase(it);
+    else
+      ++it;
+  }
+
+  return true;
 }
 
 void CSystem_Render::SetMainCamera(CGameObject* camera)
@@ -443,7 +460,7 @@ void CSystem_Render::AddCameraPrior(CGameObject* camera)
   if(camera_list.size() >= 1 && camera)
   {
     vector<CGameObject*>::iterator it = camera_list.begin();
-    it++;
+    ++it;
     camera_list.insert(it, camera);
     camera->Camera()->ApplyChanges();
   }
@@ -455,7 +472,7 @@ void CSystem_Render::AddCameraPrior(const string& name)
   if(camera_list.size() >= 1 && camera)
   {
     vector<CGameObject*>::iterator it = camera_list.begin();
-    it++;
+    ++it;
     camera_list.insert(it, camera);
     camera->Camera()->ApplyChanges();
   }
@@ -464,7 +481,7 @@ void CSystem_Render::AddCameraPrior(const string& name)
 void CSystem_Render::RemoveCamera(const string& camera)
 {
   // ouh shit
-  for(vector<CGameObject*>::iterator it = camera_list.begin(); it < camera_list.end(); it++)
+  for(vector<CGameObject*>::iterator it = camera_list.begin(); it < camera_list.end(); ++it)
   {
     if( (*it)->GetName() == camera )
       camera_list.erase(it);
@@ -491,7 +508,7 @@ void CSystem_Render::OnRender()
   // vector<CGameObject*> gui_texts;
   vector<CComponent_GUI_Texture*> gui_textures;
 
-  for(vector<CGameObject*>::iterator it = camera_list.begin(); it < camera_list.end(); it++)
+  for(vector<CGameObject*>::iterator it = camera_list.begin(); it < camera_list.end(); ++it)
   {
     // Disabled camera
     if(!(*it)->IsEnabled())
@@ -617,7 +634,7 @@ void CSystem_Render::OnRender()
   GUI_Camera->Camera()->SetViewport();
   GUI_Camera->Camera()->SetUp();
 
-  for(vector<CComponent_GUI_Texture*>::iterator it = gui_textures.begin(); it != gui_textures.end(); it++)
+  for(vector<CComponent_GUI_Texture*>::iterator it = gui_textures.begin(); it != gui_textures.end(); ++it)
   {
     if((*it)->gameObject->enabled)
       (*it)->OnRender(GUI_Camera->Camera()->modelViewMatrix, GUI_Camera->Camera()->projMatrix);

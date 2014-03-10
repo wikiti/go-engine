@@ -46,7 +46,7 @@ SDL_Surface* GO_Utils::sdl_cargar_img(std::string s)
 
 bool GO_Utils::validateIdentifier(string identifier)
 {
-  for(string::iterator it = identifier.begin(); it != identifier.end(); it++)
+  for(string::iterator it = identifier.begin(); it != identifier.end(); ++it)
     if(!isalnum(*it) and (*it) != '_')
       return false;
 

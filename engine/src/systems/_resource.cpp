@@ -423,6 +423,16 @@ void CSystem_Resources::Close()
   ClearResources();
 }
 
+bool CSystem_Resources::Reset() {
+  // Un poco brusco, pero funciona.
+  //Close();
+  ClearNonEngineResources();
+  enabled = true;
+
+  return true;
+  //return Init();
+}
+
 bool CSystem_Resources::LoadResourceFile(string rc_file)
 {
   // Parse txt (or binary) file
@@ -517,9 +527,26 @@ void CSystem_Resources::AddEmpty(string name)
   resource_list.insert(pair<string, CResource*>(name, new_rc));
 }
 
+// ->PorHacer Hay que testear la función CSystem_Resources::ClearNonEngineResources().
+void CSystem_Resources::ClearNonEngineResources()
+{
+  for(map<string, CResource*>::iterator it = resource_list.begin(); it != resource_list.end(); )
+  {
+    if(it->first.size() >= 2 and !(it->first[0] == '_' and it->first[1] == '_'))
+    {
+      delete it->second;
+      resource_list.erase(it);
+    }
+    else
+    {
+      ++it;
+    }
+  }
+}
+
 void CSystem_Resources::ClearResources()
 {
-  for(map<string, CResource*>::iterator it = resource_list.begin(); it != resource_list.end(); it++)
+  for(map<string, CResource*>::iterator it = resource_list.begin(); it != resource_list.end(); ++it)
   {
     //it->second->Clear();
     delete it->second;

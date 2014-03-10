@@ -57,7 +57,7 @@ bool CSystem_Data_Storage::Save(const char* file)
   // Save strings
   uint num_to_load = strings.size();
   os.write((char*)&num_to_load, sizeof(unsigned int));
-  for(map<string, string>::iterator it = strings.begin(); it != strings.end(); it++)
+  for(map<string, string>::iterator it = strings.begin(); it != strings.end(); ++it)
   {
     num_to_load = it->first.size() + 1;
     os.write((char*)&num_to_load, sizeof(uint));
@@ -71,7 +71,7 @@ bool CSystem_Data_Storage::Save(const char* file)
   // Save ints
   num_to_load = ints.size();
   os.write((char*)&num_to_load, sizeof(unsigned int));
-  for(map<string, int>::iterator it = ints.begin(); it != ints.end(); it++)
+  for(map<string, int>::iterator it = ints.begin(); it != ints.end(); ++it)
   {
     num_to_load = it->first.size() + 1;
     os.write((char*)&num_to_load, sizeof(uint));
@@ -83,7 +83,7 @@ bool CSystem_Data_Storage::Save(const char* file)
   // Save floats
   num_to_load = floats.size();
   os.write((char*)&num_to_load, sizeof(unsigned int));
-  for(map<string, float>::iterator it = floats.begin(); it != floats.end(); it++)
+  for(map<string, float>::iterator it = floats.begin(); it != floats.end(); ++it)
   {
     num_to_load = it->first.size() + 1;
     os.write((char*)&num_to_load, sizeof(uint));
@@ -332,15 +332,15 @@ void CSystem_Data_Storage::RemoveAll()
 
 void CSystem_Data_Storage::RemoveUserVars()
 {
-  for(map<string, string>::iterator it = strings.begin(); it != strings.end(); it++)
+  for(map<string, string>::iterator it = strings.begin(); it != strings.end(); ++it)
     if(it->first[0] != '_' && it->first[1] != '_')
       strings.erase(it);
 
-  for(map<string, int>::iterator it = ints.begin(); it != ints.end(); it++)
+  for(map<string, int>::iterator it = ints.begin(); it != ints.end(); ++it)
     if(it->first[0] != '_' && it->first[1] != '_')
       ints.erase(it);
 
-  for(map<string, float>::iterator it = floats.begin(); it != floats.end(); it++)
+  for(map<string, float>::iterator it = floats.begin(); it != floats.end(); ++it)
     if(it->first[0] != '_' && it->first[1] != '_')
       floats.erase(it);
 }

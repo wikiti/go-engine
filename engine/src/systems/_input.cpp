@@ -69,7 +69,7 @@ void CSystem_UserInput::Close()
 
     // Joystick
   //SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
-  for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); it++)
+  for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); ++it)
   {
     (*it).Close();
   }
@@ -292,7 +292,7 @@ void CSystem_UserInput::OnKeyEvent()
 
 
   mouse.OnKeyEvent();
-  for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); it++)
+  for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); ++it)
       (*it).OnKeyEvent();
 }
 
@@ -333,7 +333,7 @@ void CSystem_UserInput::CheckJoysticks()
   }
 
   // Some other joystick is disconnected?
-  for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); it++)
+  for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); ++it)
   {
     if(!(*it).CheckStatus())
     {
@@ -347,7 +347,7 @@ void CSystem_UserInput::CheckJoysticks()
 
 bool CSystem_UserInput::RebuildJoysticks()
 {
-  for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); it++)
+  for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); ++it)
     (*it).Close();
 
   joysticks.clear();
@@ -356,7 +356,7 @@ bool CSystem_UserInput::RebuildJoysticks()
   if (int njoy = SDL_NumJoysticks() > 0)
   {
     joysticks.resize(njoy);
-    for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); it++)
+    for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); ++it)
     {
       int index = it - joysticks.begin(); // Truco sencillo para sacar el índice de un iterador
       if(!(*it).Init(index))
@@ -538,13 +538,13 @@ bool CSystem_UserInput::CJoystick::Init(int index)
   buttons.resize(SDL_JoystickNumButtons(joystick));
   povs.resize(SDL_JoystickNumHats(joystick));
 
-  for(vector<CAxis>::iterator it = axes.begin(); it != axes.end(); it++)
+  for(vector<CAxis>::iterator it = axes.begin(); it != axes.end(); ++it)
     (*it).value = 0.f;
 
-  for(vector<CBall>::iterator it = balls.begin(); it != balls.end(); it++)
+  for(vector<CBall>::iterator it = balls.begin(); it != balls.end(); ++it)
    (*it).dx = (*it).dy = 0;
 
-  for(vector<CJoyButton>::iterator it = buttons.begin(); it != buttons.end(); it++)
+  for(vector<CJoyButton>::iterator it = buttons.begin(); it != buttons.end(); ++it)
   {
     uint button_index = it - buttons.begin();
 
@@ -556,7 +556,7 @@ bool CSystem_UserInput::CJoystick::Init(int index)
     (*it).button_name = ss.str();
   }
 
-  for(vector<Uint8>::iterator it = povs.begin(); it != povs.end(); it++)
+  for(vector<Uint8>::iterator it = povs.begin(); it != povs.end(); ++it)
     (*it) = pov_center;
 
   return true;
@@ -580,17 +580,17 @@ void CSystem_UserInput::CJoystick::Close()
 
 void CSystem_UserInput::CJoystick::OnKeyEvent()
 {
-  for(vector<CAxis>::iterator it = axes.begin(); it != axes.end(); it++)
+  for(vector<CAxis>::iterator it = axes.begin(); it != axes.end(); ++it)
     (*it).value = SDL_JoystickGetAxis(joystick, (it - axes.begin()))/32768.f;
 
-  for(vector<Uint8>::iterator it = povs.begin(); it != povs.end(); it++)
+  for(vector<Uint8>::iterator it = povs.begin(); it != povs.end(); ++it)
     (*it) = SDL_JoystickGetHat(joystick, it - povs.begin());
 
-  for(vector<CBall>::iterator it = balls.begin(); it != balls.end(); it++)
+  for(vector<CBall>::iterator it = balls.begin(); it != balls.end(); ++it)
     if(SDL_JoystickGetBall(joystick, it - balls.begin(), &(*it).dx, &(*it).dy) < 0)
       gSystem_Debug.console_error_msg("Error reading Ball%d from joystick %s: %s", it - balls.begin(), joystick_name.c_str(), SDL_GetError());
 
-  for(vector<CJoyButton>::iterator it = buttons.begin(); it != buttons.end(); it++)
+  for(vector<CJoyButton>::iterator it = buttons.begin(); it != buttons.end(); ++it)
   {
     (*it).state = static_cast<button_t>((int)SDL_JoystickGetButton(joystick, it - buttons.begin())); // 1 -> pressed, 0 -> unpressed
   }

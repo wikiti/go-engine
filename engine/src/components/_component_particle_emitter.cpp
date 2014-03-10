@@ -146,14 +146,14 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
   start_min_color(1.f, 1.f, 1.f, 1.f);
   color_adder(0.f, 0.f, 0.f, 0.f);
 
-  //for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+  //for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
     //(*it) = new CParticle;
   new_particles = 0;
 }
 
 CComponent_Particle_Emitter::~CComponent_Particle_Emitter()
 {
-  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
     delete (*it);
 
   v_ParticlePosition_data.clear();
@@ -183,7 +183,7 @@ void CComponent_Particle_Emitter::Start()
   // If it's already started, we must kill (delete) the old particles.
   if(particles.size())
   {
-    for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+    for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
       delete (*it);
 
     particles.clear();
@@ -201,7 +201,7 @@ void CComponent_Particle_Emitter::Start()
       new_particles = particles_per_second * gSystem_Time.GetTicks_s();
   }
 
-  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
   {
     (*it) = new CParticle;
 
@@ -387,7 +387,7 @@ void CComponent_Particle_Emitter::OnLoop()
   }
 
   int added_particles = 0;
-  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); it++)
+  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
   {
     if((*it)->life >= 0 and (*it)->active)
     {

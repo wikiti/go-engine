@@ -45,13 +45,13 @@ void CGameObject::Close()
   //id = -1;
   name = "";
 
-  for(map<int, CComponent*>::const_iterator it = components.begin(); it != components.end(); it++)
+  for(map<int, CComponent*>::const_iterator it = components.begin(); it != components.end(); ++it)
     delete it->second;
   components.clear();
 
   //functions.clear();
 
-   for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+   for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
      it->second->Close();
    children.clear();
 }
@@ -103,7 +103,7 @@ short int CGameObject::AddChildren(const vector<CGameObject*>& children)
 {
   short int output = 1;
 
-  for(vector<CGameObject*>::const_iterator it = children.begin(); it != children.end(); it++)
+  for(vector<CGameObject*>::const_iterator it = children.begin(); it != children.end(); ++it)
   {
     if(!AddChild((*it)))
       output = -(it - children.begin());
@@ -125,7 +125,7 @@ bool CGameObject::RemoveChild(string str)
 
 void CGameObject::RemoveChildren()
 {
-  for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+  for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
     it->second->UnParent();
 
   children.clear();
@@ -149,7 +149,7 @@ CGameObject* CGameObject::GetChild(uint index)
   return it->second;
 //  map<string, CGameObject*>::iterator it = children.begin();
 //  for(uint i = 0; i < index; i++)
-//    it++;
+//    ++it;
 //
 //  if(it == children.end())
 //    return NULL;
@@ -221,7 +221,7 @@ void CGameObject::OnEvent()
 
   CallEventFunction();
 
-  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
+  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); ++it)
     it->second->OnEvent();
 }
 
@@ -232,7 +232,7 @@ void CGameObject::OnKeyEvent()
 
   CallKeyEventFunction();
 
-  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
+  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); ++it)
     it->second->OnKeyEvent();
 }
 
@@ -243,7 +243,7 @@ void CGameObject::OnLoop()
 
   CallBehaviourFunction();
 
-  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
+  for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); ++it)
     it->second->OnLoop();
 }
 
@@ -253,7 +253,7 @@ void CGameObject::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
     return;
 
   //if(flags & gof_render)
-  //for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); it++)
+  //for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); ++it)
     //it->second->OnRender();
   if(GetComponent<CComponent_Mesh_Render>())
     GetComponent<CComponent_Mesh_Render>()->OnRender(projMatrix, modelViewMatrix);
@@ -279,7 +279,7 @@ void CGameObject::Enable(bool recursive)
   enabled = true;
 
   if(recursive)
-    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
       it->second->Enable(true);
 }
 
@@ -288,7 +288,7 @@ void CGameObject::Disable(bool recursive)
   enabled = false;
 
   if(recursive)
-    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
       it->second->Disable(true);
 }
 
@@ -297,7 +297,7 @@ void CGameObject::SetState(bool state, bool recursive)
   enabled = state;
 
   if(recursive)
-    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
       it->second->SetState(state, true);
 }
 
@@ -306,7 +306,7 @@ void CGameObject::Preserve(bool recursive)
   preserve = true;
 
   if(recursive)
-    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
       it->second->Preserve(true);
 }
 
@@ -315,7 +315,7 @@ void CGameObject::UnPreserve(bool recursive)
   preserve = false;
 
   if(recursive)
-    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
       it->second->UnPreserve(true);
 }
 
@@ -324,7 +324,7 @@ void CGameObject::SetPreserve(bool state, bool recursive)
   preserve = state;
 
   if(recursive)
-    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
       it->second->SetPreserve(state, true);
 }
 
@@ -347,7 +347,7 @@ bool CGameObject::NearBy(CGameObject* go, double distance)
 
 /*void CGameObject::SetAuxStrings()
 {
-  for(map<string, callfunc_ptr>::iterator it = functions.begin(); it != functions.end(); it++)
+  for(map<string, callfunc_ptr>::iterator it = functions.begin(); it != functions.end(); ++it)
     functions_str.push_back(it->first);
 
   if(Parent)
@@ -355,13 +355,13 @@ bool CGameObject::NearBy(CGameObject* go, double distance)
   else
     Parent_str = __OBJECT_NO_PARENT;
 
-  for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+  for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); ++it)
     children_str.push_back(it->first);
 }
 
 void CGameObject::UnSetAuxStrings()
 {
-  for(vector<string>::iterator it = functions_str.begin(); it != functions_str.end(); it++)
+  for(vector<string>::iterator it = functions_str.begin(); it != functions_str.end(); ++it)
      it->clear();
 
   functions_str.clear();

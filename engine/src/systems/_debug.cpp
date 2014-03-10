@@ -41,7 +41,7 @@ void CSystem_Debug::ParseInput()
 void CSystem_Debug::ParseAppArguments()
 {
   vector<string>& args = gEngine.Arguments();
-  for(vector<string>::iterator it = args.begin(); it != args.end(); it++)
+  for(vector<string>::iterator it = args.begin(); it != args.end(); ++it)
   {
     // Command case
     if((*it)[0] == '-')
@@ -755,7 +755,7 @@ void CSystem_Debug::Console_command__LOG(string arguments)
   raw_log("\n---------------------------------- CONSOLE BEGIN ----------------------------------\n\n");
 
   //    vector<string_console_t> console_buffer;
-  for(vector<string_console_t>::reverse_iterator it = console_buffer.rbegin(); it != console_buffer.rend(); it++)
+  for(vector<string_console_t>::reverse_iterator it = console_buffer.rbegin(); it != console_buffer.rend(); ++it)
   {
     raw_log("%s\n", it->str.c_str());
   }
@@ -859,7 +859,7 @@ void CSystem_Debug::Console_command__GET_INT(string arguments)
   else
   {
     //console_warning_msg("Format is: get_int <identifier>");
-    for(map<string, int>::iterator it = gSystem_Data_Storage.ints.begin(); it != gSystem_Data_Storage.ints.end(); it++)
+    for(map<string, int>::iterator it = gSystem_Data_Storage.ints.begin(); it != gSystem_Data_Storage.ints.end(); ++it)
       console_msg("%s = %i", it->first.c_str(), it->second);
   }
 }
@@ -888,7 +888,7 @@ void CSystem_Debug::Console_command__GET_FLOAT(string arguments)
   else
   {
     //console_warning_msg("Format is: get_float <identifier>");
-    for(map<string, float>::iterator it = gSystem_Data_Storage.floats.begin(); it != gSystem_Data_Storage.floats.end(); it++)
+    for(map<string, float>::iterator it = gSystem_Data_Storage.floats.begin(); it != gSystem_Data_Storage.floats.end(); ++it)
       console_msg("%s = %f", it->first.c_str(), it->second);
   }
 }
@@ -917,7 +917,7 @@ void CSystem_Debug::Console_command__GET_STRING(string arguments)
   else
   {
     //console_warning_msg("Format is: get_string <identifier>");
-    for(map<string, string>::iterator it = gSystem_Data_Storage.strings.begin(); it != gSystem_Data_Storage.strings.end(); it++)
+    for(map<string, string>::iterator it = gSystem_Data_Storage.strings.begin(); it != gSystem_Data_Storage.strings.end(); ++it)
       console_msg("%s = \"%s\"", it->first.c_str(), it->second.c_str());
   }
 }
@@ -1217,7 +1217,7 @@ void CSystem_Debug::Console_command__SYSTEM_USERINPUT_SHOW_JOYSTICKS(string argu
   gSystem_Debug.console_custom_msg(0.75f, 0.75f, 0.75f, 1.f, " <id>- <Name> - <Num axes>/<Num balls>/<Num buttons>/<Num povs>");
 
   vector<GO_InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
-  for(vector<GO_InputClasses::CJoystick>::iterator it = joys.begin(); it != joys.end(); it++)
+  for(vector<GO_InputClasses::CJoystick>::iterator it = joys.begin(); it != joys.end(); ++it)
   {
     gSystem_Debug.console_msg(" %d- %s - %d/%d/%d/%d", it - joys.begin(), (*it).GetName().c_str(), (*it).axes.size(), (*it).balls.size(), (*it).buttons.size(), (*it).povs.size());
   }
@@ -1252,7 +1252,7 @@ void CSystem_Debug::Console_command__AUX__GO_SHOW_TREE_print_element(CGameObject
   /*uint num_child = go->GetNumChildren();
   for(uint i = 0; i < num_child && num_child != 0; i++)
     print_element(go->GetChild(i), list, level+1);*/
-  for(map<string, CGameObject*>::iterator it = go->children.begin(); it != go->children.end(); it++)
+  for(map<string, CGameObject*>::iterator it = go->children.begin(); it != go->children.end(); ++it)
     Console_command__AUX__GO_SHOW_TREE_print_element(it->second, list, level+1);
 }
 
@@ -1275,7 +1275,7 @@ void CSystem_Debug::Console_command__GO_SHOW_TREE(string arguments)
     gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "Hierarchy of current game objects");
     gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "---------------------------------");
 
-    for(map<string, CGameObject*>::iterator it = gSystem_GameObject_Manager.gameObjects.begin(); it != gSystem_GameObject_Manager.gameObjects.end(); it++)
+    for(map<string, CGameObject*>::iterator it = gSystem_GameObject_Manager.gameObjects.begin(); it != gSystem_GameObject_Manager.gameObjects.end(); ++it)
       if(game_objects.find(it->first) == game_objects.end() && it->second->GetParent() == NULL)
         Console_command__AUX__GO_SHOW_TREE_print_element(it->second, game_objects);
   }
@@ -1462,7 +1462,7 @@ void CSystem_Debug::Console_command__GO_SEARCH(string arguments)
   if(!v_go.size())
     console_error_msg("Could not find game object prefixed with \"%s\"", prefix.c_str());
   else
-    for(vector<CGameObject*>::iterator it = v_go.begin(); it != v_go.end(); it++)
+    for(vector<CGameObject*>::iterator it = v_go.begin(); it != v_go.end(); ++it)
       gDebug.console_msg("%s", (*it)->GetName().c_str());
 }
 
