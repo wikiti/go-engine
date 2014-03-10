@@ -16,6 +16,5 @@ bool User_Instance_Loader()
   gEngine.AddInstance(&SetGameObjects_Instance1, "data/resources/test1.rc", "level1");
   gEngine.AddInstance(&SetGameObjects_Instance2, "data/resources/test2.rc", "level2");
 
-
   return true;
 }

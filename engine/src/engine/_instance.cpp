@@ -69,6 +69,7 @@ string CInstance::OnExecute()
 
   return next_instance;
 }
+
 void CInstance::OnLoop()
 {
   gSystem_UserInput.OnLoop();

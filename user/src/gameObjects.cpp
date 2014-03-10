@@ -19,6 +19,9 @@ bool SetGameObjects_Instance1()
   //SetGameObjects_Instance1_Shaders();
   //SetGameObjects_Instance1_RandomStuff();
 
+  CGameObject* next_instancer = gGameObjects.AddGameObject("next_instancer");
+  next_instancer->SetKeyEventFunction(&Next_instancer_button);
+
   gDebug.command("run script_scene1_setup", true);
 
   return true;
@@ -145,4 +148,11 @@ void Camara_Joystick_movimiento(CGameObject* gameObject)
       gameObject->Transform()->LTranslate(0.f, 0.f,  (joys[0].axes[5].value + 1)/2 * boost * 3.f * gTime.deltaTime_s());
     }
   }
+}
+
+
+void Next_instancer_button(CGameObject* gameObject)
+{
+  if(gUserInput.Keyboard("K"))
+    gEngine.NextInstance("level2");
 }

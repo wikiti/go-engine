@@ -80,6 +80,27 @@ class CEngine
       if(instances.find(current_instance) != instances.end())
         instances[current_instance]->i_running = false;
     }
+
+    string GetCurrentInstance()
+    {
+      return current_instance;
+    }
+
+    string GetNextInstance()
+    {
+      if(instances.find(current_instance) != instances.end())
+        return instances[current_instance]->next_instance;
+
+      return "";
+    }
+
+    void NextInstance(string instance)
+    {
+      if(instances.find(current_instance) != instances.end())
+      {
+        instances[current_instance]->NextInstance(instance);
+      }
+    }
 };
 
 extern CEngine gEngine;
