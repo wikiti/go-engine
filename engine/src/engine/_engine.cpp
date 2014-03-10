@@ -19,6 +19,9 @@ bool CEngine::Init(int argc, char* argv[])
   for(int i = 0; i < argc; i++)
     arguments.push_back(string(argv[i]));
 
+  current_instance = "";
+  running = true;
+
   if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
   {
     gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load SDL module");
@@ -44,10 +47,6 @@ bool CEngine::Init(int argc, char* argv[])
     return false;
   }
 
-  current_instance = 0;
-  running = true;
-
-
   return true;
 }
 
@@ -64,29 +63,46 @@ int CEngine::OnExecute(int argc, char* argv[])
 {
   Init(argc, argv);
 
-  while(current_instance >= 0 && running)
+  while(current_instance != "" && running)
   {
-    current_instance = instances[current_instance]->OnExecute();
+    if(instances.find(current_instance) != instances.end())
+      current_instance = instances[current_instance]->OnExecute();
+    else  { // Error y salir
+      gSystem_Debug.error("From CEngine::OnExecute: Error, instance \"%s\" not defined.", current_instance.c_str());
+      Quit();
+    }
     // Resetear contenido de los sistemas.
   }
 
   Close();
 
-  return current_instance;
+  return 0;
 }
 
-void CEngine::AddInstance(fboolpointer load_gameObject_function, string resource_file)
+void CEngine::AddInstance(fboolpointer load_gameObject_function, string resource_file, string instance_name)
 {
-  CInstance* new_instance = new CInstance(load_gameObject_function, resource_file);
-  instances.push_back(new_instance);
+  if(instances.find(instance_name) == instances.end()) {
+    CInstance* new_instance = new CInstance(load_gameObject_function, resource_file);
+    instances[instance_name] = new_instance;
+
+    if(current_instance == "")
+      current_instance = instance_name;
+  }
+  else {
+    gSystem_Debug.error("From CEngine::AddInstance: Cannot add instance with name \"%s\" (existing name).", instance_name.c_str());
+  }
+
+  //instances.push_back(new_instance);
 }
 
 void CEngine::RemoveAllInstances()
 {
-  for(vector<CInstance*>::iterator it = instances.begin(); it != instances.end(); it++)
+  for(map<string, CInstance*>::iterator it = instances.begin(); it != instances.end(); ++it)
   {
-    delete *it;
+    delete it->second;
   }
+
+  instances.clear();
 }
 
 void CEngine::SetIcon(string icon_dir)

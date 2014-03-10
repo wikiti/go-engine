@@ -4,7 +4,7 @@
 
 #include "gameObjects.h"
 
-CInstance::CInstance(fboolpointer f, string r): i_running(true), next_instance(0), gameObjects_loader(f), resource_file(r)
+CInstance::CInstance(fboolpointer f, string r): i_running(true), next_instance(""), gameObjects_loader(f), resource_file(r)
 {
 
 }
@@ -25,6 +25,8 @@ bool CInstance::Init()
 
   FPS = frames = 0;
   current_time = previous_time = 0;
+
+  next_instance = "";
 
   return true;
 }
@@ -49,7 +51,7 @@ void CInstance::UnLoadResources()
 
 }
 
-int CInstance::OnExecute()
+string CInstance::OnExecute()
 {
   Init();
 
@@ -83,7 +85,7 @@ void CInstance::OnEvent()
     if(event.type == SDL_QUIT)
     {
       i_running = false;
-      next_instance = -1;
+      next_instance = "";
 
       SDL_StopTextInput();
     }
@@ -123,3 +125,20 @@ void CInstance::CalculateFPS()
     frames = 0;
   }
 }
+
+void CInstance::NextInstance(string next_instance_name)
+{
+  SetNextInstance(next_instance_name);
+  EndInstance();
+}
+
+void CInstance::SetNextInstance(string next_instance_name)
+{
+  next_instance = next_instance_name;
+}
+
+void CInstance::EndInstance()
+{
+  i_running = false;
+}
+

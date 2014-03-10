@@ -6,6 +6,7 @@ bool SetGameObjects_Instance1()
   camara_main->Camera()->skybox_texture = "skybox1";
   camara_main->Transform()->position.y += 3.f;
   camara_main->Transform()->position.z -= 10.f;
+  camara_main->Preserve(); // Preservar entre instancias!!
 
   camara_main->SetKeyEventFunction(&Camara_main_movimiento);
 
@@ -19,6 +20,24 @@ bool SetGameObjects_Instance1()
   //SetGameObjects_Instance1_RandomStuff();
 
   gDebug.command("run script_scene1_setup", true);
+
+  return true;
+}
+
+bool SetGameObjects_Instance2()
+{
+  CGameObject* camara_main = gGameObjects["camara_main"];
+  camara_main->Camera()->skybox_texture = "skybox2";
+
+  CGameObject* hada1 = gGameObjects.AddGameObject("hada1");
+
+  hada1->Transform()->SetScale(0.1f, 0.1f, 0.1f);
+  hada1->Transform()->Translate(0.f, 0.f, 10.f);
+  hada1->Transform()->Rotate(0.f, 90.f, 0.f);
+
+  hada1->MeshRender()->mesh_name = "mdl_hada1";
+  hada1->MeshRender()->material_name = "texture_mdl_hada1";
+  hada1->MeshRender()->color(1.0, 0.9f, 0.9f, 1.f);
 
   return true;
 }

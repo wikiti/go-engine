@@ -12,14 +12,18 @@
 class CEngine
 {
   protected:
-    vector<CInstance*> instances;
+    //vector<CInstance*> instances;
+    map<string, CInstance*> instances;
     string title;
     bool running;
 
-    int current_instance;
+    string current_instance;
 
     // Arguments
     vector<string> arguments;
+
+  protected:
+    void RemoveAllInstances();
 
   public:
     CEngine();
@@ -46,8 +50,7 @@ class CEngine
       SDL_SetWindowTitle(gSystem_Render.window, title.c_str());
     }
 
-    void AddInstance(fboolpointer load_gameObject_function, string resource_file);
-    void RemoveAllInstances();
+    void AddInstance(fboolpointer load_gameObject_function, string resource_file, string instance_name);
 
     GLdouble fps()
     {
@@ -74,7 +77,8 @@ class CEngine
     void Quit()
     {
       running = false;
-      instances[current_instance]->i_running = false;
+      if(instances.find(current_instance) != instances.end())
+        instances[current_instance]->i_running = false;
     }
 };
 

@@ -22,4 +22,6 @@ void Camara_main_movimiento(CGameObject* gameObject);
   void Camara_mouse_movimiento(CGameObject* gameObject);
   void Camara_Joystick_movimiento(CGameObject* gameObject);
 
+bool SetGameObjects_Instance2();
+
 #endif /* GAMEOBJECTS_H_ */

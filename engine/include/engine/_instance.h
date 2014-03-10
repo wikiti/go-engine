@@ -9,7 +9,7 @@ class CInstance
     friend class CEngine;
 
     bool i_running;
-    int next_instance;
+    string next_instance;
 
     fboolpointer gameObjects_loader;
     string resource_file;
@@ -29,7 +29,7 @@ class CInstance
     void Close();
       void UnLoadResources(); // se descargarán los archivos cuando, al cargar los archivos de la proxima estancia, se demuestre que solo se descartaran los que no necesitan seguir en el motor
 
-    int OnExecute();
+    string OnExecute();
     void OnLoop();
     void OnEvent();
     void OnRender();
@@ -39,6 +39,10 @@ class CInstance
     {
       return FPS;
     }
+
+    void NextInstance(string next_instance_name);
+      void SetNextInstance(string next_instance_name);
+      void EndInstance();
 
     //virtual void OnDebug(){};
 };
