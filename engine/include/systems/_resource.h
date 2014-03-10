@@ -7,7 +7,7 @@
 namespace resources
 {
   enum types_t {base, mesh, texture, sound, font};
-  enum enum_loadgltexture {texture_mipmap = 0x00, texture_linear = 0x01, texture_nearest = 0x02 }; // metodos para cargar la textura
+  enum enum_loadgltexture {texture_none = 0x00, texture_mipmap = 0x01, texture_linear = 0x02, texture_nearest = 0x04 }; // metodos para cargar la textura
 }
 
 class CResource

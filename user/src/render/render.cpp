@@ -18,15 +18,15 @@ bool SetGameObjects_Instance1_Render()
 
   hada1->MeshRender()->mesh_name = "mdl_hada1";
   hada1->MeshRender()->material_name = "texture_mdl_hada1";
-  hada1->MeshRender()->color(1.0, 0.9f, 0.9f, 0.25f);
+  hada1->MeshRender()->color(1.0, 0.9f, 0.9f, 1.f);
 
   hada2->Transform()->SetScale(0.1f, 0.1f, 0.1f);
   hada2->Transform()->Translate(0.f, 0.f, 8.f);
   hada2->Transform()->Rotate(0.f, 90.f, 0.f);
 
   hada2->MeshRender()->mesh_name = "mdl_hada1";
-  hada2->MeshRender()->material_name = "texture_mdl_hada1";
-  hada2->MeshRender()->color(1.0, 0.9f, 0.9f, 0.25f);
+  hada2->MeshRender()->material_name = "__WHITE_TEXTURE";
+  hada2->MeshRender()->color(1.0, 1.0f, 1.f, 1.f);
 
   /*CGameObject* gui_example = gGameObjects.AddGameObject("gui_example");
   gui_example->GUITexture()->texture_name = "textura1";

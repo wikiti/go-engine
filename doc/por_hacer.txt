@@ -1,7 +1,7 @@
 - Añadir la posibilidad de renderizar solo líneas (glPolygonMode).
-- Añadir textura "__BLACK" y textura "__WHITE".
+x- Añadir textura "__BLACK" y textura "__WHITE".
 - Mejorar la carga de meshes para una mayor variedad de aplicaciones.
-- Hay que mover los archivos log.txt y user.cfg a otras carpetas, para que quede todo más ordenado.
+x- Hay que mover los archivos log.txt y user.cfg a otras carpetas, para que quede todo más ordenado.
 - Pasar los shaders a una versión mas "simple" y apta para todas las versiones de glsl (Dropbox).
 - Estaría bien hacer que, para el componente emisor de partículas, se dibujen solo las partículas "vivas".
   - Para ello, se cuentan las partículas vivas, y se ordenan todas según dicho atributo.

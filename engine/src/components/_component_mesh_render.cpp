@@ -44,11 +44,23 @@ void CComponent_Mesh_Render::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
 
   if(before_render) before_render(gameObject);
 
-  glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+  if(color.a != 1.0)
+  {
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    glDepthMask(GL_FALSE);
+    //glEnable(GL_BLEND);
+  }
+
+
   CResource_Mesh* mesh = gSystem_Resources.GetMesh(mesh_name);
   if(mesh) mesh->Render();
 
+  glDepthMask(GL_TRUE);
+  //glDisable(GL_BLEND);
+
   if(after_render) after_render(gameObject);
+
+
 
   //glUseProgram(0);
 }

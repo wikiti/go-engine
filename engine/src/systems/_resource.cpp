@@ -197,7 +197,9 @@ bool CResource_Texture::LoadFile(string file, string arguments)
 
   uint soil_flags = 0;
   uint flags = texture_linear;
-  if(arguments == "mipmap")
+  if(arguments == "none")
+    flags = texture_none;
+  else if(arguments == "mipmap")
     flags = texture_mipmap;
   else if(arguments == "linear")
     flags = texture_linear;
@@ -231,6 +233,9 @@ bool CResource_Texture::LoadFile(string file, string arguments)
     case texture_mipmap:
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+    break;
+    case texture_none:
+
     break;
     default: break;
   }
@@ -271,6 +276,9 @@ bool CResource_Texture::LoadFromMemory(GLuint* data, uint w, uint h, uint n_ch, 
     case texture_mipmap:
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+    break;
+    case texture_none:
+
     break;
     default: break;
   }
@@ -381,9 +389,9 @@ bool CSystem_Resources::InitEngineResources()
 {
   using namespace resources;
 
-  /** Texturas **/
+  // -- Texturas
+  // - Error
   CResource_Texture* texture_error = new CResource_Texture;
-
   GLuint texture_error_data[128*128];
 
   for(uint i = 0; i < 128*128; i++ )
@@ -401,14 +409,36 @@ bool CSystem_Resources::InitEngineResources()
       colors[0] = 0x00;
       colors[1] = 0x00;
       colors[2] = 0x00;
-      colors[3] = 0x00;
+      colors[3] = 0xFF;
     }
   }
 
   texture_error->LoadFromMemory(texture_error_data, 128, 128, 4, texture_linear);
   resource_list.insert(pair<string, CResource*>("__NO_TEXTURE", texture_error));
 
-  /** Modelos **/
+  // - Black
+  CResource_Texture* texture_black = new CResource_Texture;
+  GLuint texture_black_data[1];
+  GLubyte* colors = (GLubyte*)texture_black_data;
+
+  colors[0] =  colors[1] = colors[2] = 0x00;
+  colors[3] = 0xFF;
+
+  texture_black->LoadFromMemory(texture_black_data, 1, 1, 4, texture_nearest);
+  resource_list.insert(pair<string, CResource*>("__BLACK_TEXTURE", texture_black));
+
+  // - White
+  CResource_Texture* texture_white = new CResource_Texture;
+  GLuint texture_white_data[1];
+
+  colors = (GLubyte*)texture_white_data;
+  colors[0] = colors[1] = colors[2] = 0xFF;
+  colors[3] = 0xFF;
+
+  texture_white->LoadFromMemory(texture_white_data, 1, 1, 4, texture_nearest);
+  resource_list.insert(pair<string, CResource*>("__WHITE_TEXTURE", texture_white));
+
+  // -- Modelos
   // ¿?
 
   return true;
