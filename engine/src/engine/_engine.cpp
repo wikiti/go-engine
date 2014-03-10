@@ -72,6 +72,7 @@ int CEngine::OnExecute(int argc, char* argv[])
       Quit();
     }
     // Resetear contenido de los sistemas.
+    Systems_Reset();
   }
 
   Close();

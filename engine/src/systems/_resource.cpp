@@ -565,7 +565,7 @@ void CSystem_Resources::ClearNonEngineResources()
     if(it->first.size() >= 2 and !(it->first[0] == '_' and it->first[1] == '_'))
     {
       delete it->second;
-      resource_list.erase(it);
+      resource_list.erase(it++);
     }
     else
     {

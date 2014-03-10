@@ -383,14 +383,15 @@ void CSystem_GameObject_Manager::DeleteGameObjects()
 
 void CSystem_GameObject_Manager::DeleteGameObjects_NonPreserved()
 {
-  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); )
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end();)
   {
     if(!it->second->IsPreserved())
     {
       it->second->Close();
       delete it->second;
 
-      gameObjects.erase(it);
+      gameObjects.erase(it++);
+      //it--;
     }
     else
     {

@@ -172,6 +172,7 @@ bool CSystem_Render::Init()
   GUI_Camera->Camera()->clear = false;
   GUI_Camera->Camera()->viewmode = viewmode::ortho;
   GUI_Camera->Camera()->ApplyChanges();
+  GUI_Camera->Preserve();
 
   /*if(!glewIsSupported("GL_EXT_texture_env_combine"))
   {
@@ -395,7 +396,6 @@ void CSystem_Render::Close()
 
 // En principio, solo hay que liberar las cámaras.
 // ->PorHacer estaría bien añadir una opción para que CSystem_Render::Reset() reiniciase la ventana, no solo las cámaras.
-// ->PorHacer hay que probar CSystem_Render::Reset()
 bool CSystem_Render::Reset() {
   for(vector<CGameObject*>::iterator it = camera_list.begin(); it != camera_list.end(); ) {
     if(!(*it)->IsPreserved())

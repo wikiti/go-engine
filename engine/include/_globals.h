@@ -103,6 +103,7 @@ extern SDL_Event event;
 const char ERROR_RENDER[] = "Render error";
 const char ERROR_INIT[] = "Init error";
 const char ERROR_FATAL_INIT[] = "Init fatal error";
+const char ERROR_FATAL[] = "Fatal error";
 const char ERROR_FILE[] = "File error";
 
 

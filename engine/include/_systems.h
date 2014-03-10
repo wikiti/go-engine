@@ -20,6 +20,7 @@
 
 bool Systems_Init();
 void Systems_Close();
+bool Systems_Reset();
 
 void Systems_OnEvent();
 void Systems_OnKeyEvent();
