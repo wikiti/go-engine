@@ -51,8 +51,41 @@ Se definirán 3 partes en el proyecto bien claras y definidas:
 - [GLM](http://glm.g-truc.net/ "GL Maths") (Matemática de gráficos 3D)
 - Otras menores (ya se mencionarán cuando se decidan)
 
+## 5. Construcción del proyecto ##
+El usuario debe programar en el directorio *user/*, que será usado para compilar el proyecto en conjunto.
 
-## 5. Autores ##
+En un futuro, se hará que el motor gráfico sea un ejecutable, y los ficheros del usuario sean unas librerías dll (*shared libs*), que será una solución algo mas limpia, pero más problemática.
+
+Para construir el proyecto, se utilizará la herramienta [CMake](http://www.cmake.org/) para el preparado de las dependencias y la compilación (módulos cmake *Find&lt;módulo&gt;.cmake*).
+
+Simplemente, basta con usar la herramienta cmake dentro del directorio ***build/***, junto con la *toolchain* deseada, y luego ejecutar la herramienta make.
+
+	> cd build/
+	> cmake .. -G "<Toolchain aquí>"
+	... Corregir errores, relanzar cmake, etc.
+	> make
+
+
+Y se generá el ejecutable ***goengine***, que deberá ser ejecutado:
+
+	> cd ..
+	> ./build/goengine
+
+Básicamente, el ejecutable se debe lanzar desde la **carpeta raíz del proyecto**, si no, no encontrará los archivos en la carpeta **data/**.
+Por comodidad, se puede copiar el ejecutable a la carpeta raíz, o crear una carpeta bin y poner el ejecutable dentro, además de crear un acceso directo para ejecutarlo desde la raíz.
+
+
+Para saber la lista de *toolchains* disponibles, basta con usar:
+
+	> cmake --help
+
+Por defecto, si no se usa la opción *-G*, se usará la *toolchain* predeterminada.
+
+Recomiendo commpilar el proyecto en ***Windows***, con ***MiNGW Makefiles***
+
+<span style="color: red; font-weight: bold;">Nota:</span> ***MSYS Makefiles*** para *Windows* dará problemas, ya que no enlazará correctamente la librería *libSDL2main.a*. 
+
+## 6. Autores ##
 
 Este proyecto ha sido desarrollado, en conjunto, por:
 

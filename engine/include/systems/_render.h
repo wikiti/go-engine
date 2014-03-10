@@ -141,6 +141,7 @@ class CSystem_Render: public CSystem
       bool InitGridVBO();
         void UpdateGridVBO(int ncols, int nrows);
     virtual void Close();
+    bool Reset();
 
     inline void ResizeWindow(int w, int h)
     {

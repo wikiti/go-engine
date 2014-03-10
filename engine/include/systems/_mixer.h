@@ -37,6 +37,7 @@ class CSystem_Mixer: public CSystem
 
     bool Init();
     void Close();
+    bool Reset();
 
     void ResetSources();
 

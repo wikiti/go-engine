@@ -9,6 +9,8 @@ CGameObject::CGameObject(string str)
   name = str;
   id = -1;
 
+  preserve = false;
+
   Parent = NULL;
   start = behaviour = event_behaviour = keyevent_behaviour = render = NULL;
 }
@@ -299,6 +301,33 @@ void CGameObject::SetState(bool state, bool recursive)
   if(recursive)
     for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
       it->second->SetState(state, true);
+}
+
+void CGameObject::Preserve(bool recursive)
+{
+  preserve = true;
+
+  if(recursive)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+      it->second->Preserve(true);
+}
+
+void CGameObject::UnPreserve(bool recursive)
+{
+  preserve = false;
+
+  if(recursive)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+      it->second->UnPreserve(true);
+}
+
+void CGameObject::SetPreserve(bool state, bool recursive)
+{
+  preserve = state;
+
+  if(recursive)
+    for(map<string, CGameObject*>::iterator it = children.begin(); it != children.end(); it++)
+      it->second->SetPreserve(state, true);
 }
 
 bool CGameObject::NearBy(CGameObject* go, double distance)

@@ -17,6 +17,7 @@ class CSystem_Time: public CSystem
 
     bool Init();
     void Close();
+    //bool Reset();
 
     void OnLoop();
 

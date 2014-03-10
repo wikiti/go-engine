@@ -70,6 +70,8 @@ class CSystem_Data_Storage: public CSystem
     bool Init();
     void Close();
 
+    bool Reset();
+
     // Cargar y guardar encriptados?
     bool Save(const char* file = __CSYSTEM_DATA_STORAGE_SAVEFILE);
     bool Load(const char* file = __CSYSTEM_DATA_STORAGE_SAVEFILE);

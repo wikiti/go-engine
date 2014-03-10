@@ -63,6 +63,7 @@ class CSystem_Shader_Manager: public CSystem
     bool Init();
       bool InitMainShaders();
     void Close();
+    bool Reset();
 
     //void OnLoop();
 

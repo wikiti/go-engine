@@ -76,6 +76,14 @@ void CSystem_UserInput::Close()
   joysticks.clear();
 }
 
+bool CSystem_UserInput::Reset()
+{
+  // Un poco brusco, pero es lo ideal
+  Close();
+
+  return Init();
+}
+
 void CSystem_UserInput::OnKeyEvent()
 {
   // ---- Para los ejes, usamos máquinas de estado para alternar entre los estados unpressed, keydown, key_pressed y keyup.

@@ -31,6 +31,7 @@ class CGameObject
     flags_t flags;
     bool inited;
     bool enabled;
+    bool preserve;
     //bool DontDeleteOnLoad y void DontDeleteOnLoad();
 
     string name;
@@ -191,6 +192,10 @@ class CGameObject
     void Disable(bool recursive = false);
     void SetState(bool state, bool recursive = false);
 
+    void Preserve(bool recursive = false);
+    void UnPreserve(bool recursive = false);
+    void SetPreserve(bool state, bool recursive = false);
+
     inline bool IsEnabled()
     {
       return enabled;
@@ -199,6 +204,11 @@ class CGameObject
     inline bool IsInited()
     {
       return inited;
+    }
+
+    inline bool IsPreserved()
+    {
+      return preserve;
     }
 
     bool NearBy(CGameObject* go, double distance);

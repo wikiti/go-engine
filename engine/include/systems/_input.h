@@ -218,6 +218,7 @@ class CSystem_UserInput: public CSystem
 
     bool Init();
     void Close();
+    bool Reset();
 
     void OnLoop();
     void OnEvent();

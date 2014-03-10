@@ -91,6 +91,13 @@ void CSystem_GameObject_Manager::Close()
   DeleteGameObjects();
 }
 
+bool CSystem_GameObject_Manager::Reset()
+{
+  DeleteGameObjects_NonPreserved();
+
+  return true;
+}
+
 void CSystem_GameObject_Manager::InitGameObjects()
 {
   for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
@@ -324,6 +331,7 @@ bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
 
 bool CSystem_GameObject_Manager::RenameGameObject(CGameObject* go, string new_name)
 {
+  // Debería llamar a la función anterior, o al revés
   if(!GO_Utils::validateIdentifier(new_name))
   {
     gSystem_Debug.console_error_msg("Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", new_name.c_str());
@@ -371,6 +379,24 @@ void CSystem_GameObject_Manager::DeleteGameObjects()
   }
 
   gameObjects.clear();
+}
+
+void CSystem_GameObject_Manager::DeleteGameObjects_NonPreserved()
+{
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); )
+  {
+    if(!it->second->IsPreserved())
+    {
+      it->second->Close();
+      delete it->second;
+
+      gameObjects.erase(it);
+    }
+    else
+    {
+      it++;
+    }
+  }
 }
 
 CGameObject* CSystem_GameObject_Manager::GetGameObject(string nombre)
