@@ -626,6 +626,23 @@ void CSystem_Debug::console_warning_msg(const char* fmt, ...)
   if(console_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES) console_buffer.pop_back();
 }
 
+void CSystem_Debug::console_info_msg(const char* fmt, ...)
+{
+  if(!fmt)
+    return;
+
+  char text[1024];
+
+  va_list ap;
+  va_start(ap, fmt);
+    vsprintf(text, fmt, ap);
+  va_end(ap);
+
+  string_console_t t(text, 0.34f, 0.72f, 0.85f, 1.f);
+  console_buffer.insert(console_buffer.begin(), t);
+  if(console_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES) console_buffer.pop_back();
+}
+
 void CSystem_Debug::console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat a, const char* fmt, ...)
 {
   if(!fmt)

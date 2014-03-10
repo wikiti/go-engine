@@ -53,6 +53,8 @@ void CInstance::UnLoadResources()
 
 string CInstance::OnExecute()
 {
+  gDebug.console_info_msg("Running instance: \"%s\"", gEngine.GetCurrentInstance().c_str());
+
   Init();
 
   while(i_running)
@@ -141,5 +143,6 @@ void CInstance::SetNextInstance(string next_instance_name)
 void CInstance::EndInstance()
 {
   i_running = false;
+  gDebug.console_info_msg("Preparing to run next instance: \"%s\"", next_instance.c_str());
 }
 

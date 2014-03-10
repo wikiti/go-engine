@@ -119,6 +119,7 @@ class CSystem_Debug: public CSystem
     void console_msg(const char* fmt, ...);
     void console_error_msg(const char* fmt, ...);
     void console_warning_msg(const char* fmt, ...);
+    void console_info_msg(const char* fmt, ...);
     void console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat a, const char* fmt, ...);
 
     void OnEvent();

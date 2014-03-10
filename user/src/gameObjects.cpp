@@ -2,15 +2,25 @@
 
 bool SetGameObjects_Instance1()
 {
-  CGameObject* camara_main = gGameObjects.AddGameObject("camara_main");
-  camara_main->Camera()->skybox_texture = "skybox1";
-  camara_main->Transform()->position.y += 3.f;
-  camara_main->Transform()->position.z -= 10.f;
-  camara_main->Preserve(); // Preservar entre instancias!!
+  CGameObject* camara_main = gGameObjects["camara_main"];
 
-  camara_main->SetKeyEventFunction(&Camara_main_movimiento);
+  if(!camara_main)
+  {
+    camara_main = gGameObjects.AddGameObject("camara_main");
+    camara_main->Camera()->skybox_texture = "skybox1";
+    camara_main->Transform()->position.y += 3.f;
+    camara_main->Transform()->position.z -= 10.f;
+    camara_main->Preserve(); // Preservar entre instancias!!
 
-  gRender.AddCamera(camara_main);
+    camara_main->SetKeyEventFunction(&Camara_main_movimiento);
+
+    gRender.AddCamera(camara_main);
+  }
+
+  CGameObject* next_instancer = gGameObjects.AddGameObject("next_instancer");
+  next_instancer->Preserve();
+  next_instancer->SetKeyEventFunction(&Next_instancer_button);
+
 
   SetGameObjects_Instance1_Fireworks();
   SetGameObjects_Instance1_Rainbow();
@@ -18,9 +28,6 @@ bool SetGameObjects_Instance1()
   SetGameObjects_Instance1_Other_Particles();
   //SetGameObjects_Instance1_Shaders();
   //SetGameObjects_Instance1_RandomStuff();
-
-  CGameObject* next_instancer = gGameObjects.AddGameObject("next_instancer");
-  next_instancer->SetKeyEventFunction(&Next_instancer_button);
 
   gDebug.command("run script_scene1_setup", true);
 
