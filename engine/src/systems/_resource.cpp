@@ -39,7 +39,9 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
 
   float *vertexArray, *normalArray, *uvArray;
 
-  numTriangles = mesh->mNumFaces*3;
+  // ->BUG Problema aquí. (numTriangles = mesh->nNumFaces*3).
+  // Hay que usar una mejor estructura para cargar modelos. Esta es BASURA.
+  numTriangles = mesh->mNumFaces;
   numUvCoords = mesh->GetNumUVChannels();
 
   /*if (mesh->HasPositions())      vertexArray.resize(mesh->mNumFaces*3*3);
@@ -141,7 +143,9 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
 
   glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBONormals );
   glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), normalArray, GL_STATIC_DRAW );
+  // ->BUG el fallo aparenta estar aquí, y tiene que ver con la carga de modelos de assimp. Voy a tener que meterle mano...
   glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
 
   if(vertexArray) delete vertexArray;
   if(normalArray) delete normalArray;
@@ -466,7 +470,6 @@ bool CSystem_Resources::Reset() {
 bool CSystem_Resources::LoadResourceFile(string rc_file)
 {
   // Parse txt (or binary) file
-
   ifstream is(rc_file.c_str());
   string line;
 

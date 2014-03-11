@@ -1,6 +1,7 @@
 .settings/
 bin/
 Debug/
+Release/
 log.txt
 user.cfg
 .project
