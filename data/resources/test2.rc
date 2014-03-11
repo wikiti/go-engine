@@ -7,6 +7,4 @@
 texture: texture_mdl_hada1 data/resources/textures/faerie2.bmp: mipmap
 texture: skybox2 data/resources/textures/skybox2.tga: mipmap
 
-mesh: mdl_hada1 data/resources/models/minigun_mdl5.mdl:
-
 # Fin de fichero

@@ -4,7 +4,7 @@
 # Formato de resource:
 # tipo: nombre_rc ruta_al_fichero: [argumentos]
 
-mesh: mdl_hada1 data/resources/models/minigun_mdl5.mdl:
+mesh: mdl_hada1 data/resources/models/faerie.md2:
 
 texture: textura1 data/resources/textures/textura1.tga: mipmap
 texture: textura2 data/resources/textures/textura2.tga: mipmap
@@ -16,7 +16,6 @@ texture: fire1 data/resources/textures/particles/fire1.tga: nearest
 texture: skybox1 data/resources/textures/skybox_example.tga: mipmap
 # texture: skybox_example data/resources/textures/skybox_example.tga: mipmap
 
-sound: leroy data/resources/sound/leroy.wav:
 sound: firework_explosion data/resources/sound/firework_explosion.wav:
 sound: firework_trail data/resources/sound/firework_trail.wav:
 sound: fireworks data/resources/sound/fireworks.wav:
