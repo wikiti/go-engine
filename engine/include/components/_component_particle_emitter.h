@@ -33,12 +33,12 @@ class CComponent_Particle_Emitter: public CComponent
         ~CParticle();
     };
 
-    vector<CParticle*> particles;
+    vector<CParticle> particles;
 
     static bool InitRenderVBO();
     static void CloseRenderVBO();
 
-    void NewParticle(CParticle* p, vector3f go_pos);
+    void NewParticle(CParticle& p, vector3f go_pos);
 
     // Aux
     float new_particles;

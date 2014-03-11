@@ -151,18 +151,19 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
   start_min_color(1.f, 1.f, 1.f, 1.f);
   color_adder(0.f, 0.f, 0.f, 0.f);
 
-  //for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
+  //for(vector<CParticle>::iterator it = particles.begin(); it != particles.end(); ++it)
     //(*it) = new CParticle;
   new_particles = 0;
 }
 
 CComponent_Particle_Emitter::~CComponent_Particle_Emitter()
 {
-  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
+  /*for(vector<CParticle>::iterator it = particles.begin(); it != particles.end(); ++it)
   {
     delete (*it);
-    // ->BUG Tiempos demasiado largos a la hora de borrar partículas. Normal, son demasiadas, y parece que "delete" es lento.
-  }
+    // ->xBUG Tiempos demasiado largos a la hora de borrar partículas. Normal, son demasiadas, y parece que "delete" es lento.
+    // Parece arreglado, ya que no da problemas. Ahora no se usan punteros, sino que se utilizan objetos. Tal vez, en un futuro, se usen punteros por simplicidad.
+  }*/
 
   particles.clear();
   v_ParticlePosition_data.clear();
@@ -191,8 +192,8 @@ void CComponent_Particle_Emitter::Start()
   // If it's already started, we must kill (delete) the old particles.
   if(particles.size())
   {
-    for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
-      delete (*it);
+    //for(vector<CParticle>::iterator it = particles.begin(); it != particles.end(); ++it)
+      //delete (*it);
 
     particles.clear();
   }
@@ -209,9 +210,10 @@ void CComponent_Particle_Emitter::Start()
       new_particles = particles_per_second * gSystem_Time.GetTicks_s();
   }
 
-  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
+  for(vector<CParticle>::iterator it = particles.begin(); it != particles.end(); ++it)
   {
-    (*it) = new CParticle;
+    //(*it) = new CParticle;
+    //(*it) = CParticle();
 
     if((int)new_particles and (it - particles.begin()) < new_particles)  // Even if new_particles is bigger that max_particles, there will be up to max_particles updates (particles.size())
       NewParticle(*it, pos_difference);
@@ -246,33 +248,33 @@ void CComponent_Particle_Emitter::UpdateVBO()
   //glBindVertexArray(0);
 }
 
-void CComponent_Particle_Emitter::NewParticle(CParticle* p, vector3f pos_difference)
+void CComponent_Particle_Emitter::NewParticle(CParticle& p, vector3f pos_difference)
 {
-  p->active = true;
-  p->life = gMath.random(start_min_life_time, start_max_life_time);
-  //p->color = color;
-  p->color.r = gMath.random(start_min_color.r, start_max_color.r);
-  p->color.g = gMath.random(start_min_color.g, start_max_color.g);
-  p->color.b = gMath.random(start_min_color.b, start_max_color.b);
-  p->color.a = gMath.random(start_min_color.a, start_max_color.a);
+  p.active = true;
+  p.life = gMath.random(start_min_life_time, start_max_life_time);
+  //p.color = color;
+  p.color.r = gMath.random(start_min_color.r, start_max_color.r);
+  p.color.g = gMath.random(start_min_color.g, start_max_color.g);
+  p.color.b = gMath.random(start_min_color.b, start_max_color.b);
+  p.color.a = gMath.random(start_min_color.a, start_max_color.a);
 
   vector3f random_vector = gMath.random_vector(direction, angle_spread/2);                // Dirección
   vector3f random_vector_XZ = vector3f(random_vector.x, 0, random_vector.z).normalize();  // Separación del origen
 
-  p->position = random_vector * gMath.random(start_min_distance, start_max_distance) + pos_difference;
-  p->position += random_vector_XZ * gMath.random(start_max_base_radius, start_min_base_radius);
+  p.position = random_vector * gMath.random(start_min_distance, start_max_distance) + pos_difference;
+  p.position += random_vector_XZ * gMath.random(start_max_base_radius, start_min_base_radius);
 
-  p->velocity = random_vector * gMath.random(start_min_vel, start_max_vel);
-  p->acceleration = gravity;
+  p.velocity = random_vector * gMath.random(start_min_vel, start_max_vel);
+  p.acceleration = gravity;
 
-  p->angle = gMath.random(start_min_angle, start_max_angle);
-  p->angle_velocity = gMath.random(start_min_angle_vel, start_max_angle_vel);
+  p.angle = gMath.random(start_min_angle, start_max_angle);
+  p.angle_velocity = gMath.random(start_min_angle_vel, start_max_angle_vel);
   //angle_aceleration;
 
-  gMath.NormalizeAngle(p->angle);
+  gMath.NormalizeAngle(p.angle);
 
-  p->scale = gMath.random(start_min_scale, start_max_scale);
-  p->scale_factor = gMath.random(start_min_scale_factor, start_max_scale_factor);
+  p.scale = gMath.random(start_min_scale, start_max_scale);
+  p.scale_factor = gMath.random(start_min_scale_factor, start_max_scale_factor);
 
   //p->material_name = material_name;
 }
@@ -395,69 +397,69 @@ void CComponent_Particle_Emitter::OnLoop()
   }
 
   int added_particles = 0;
-  for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
+  for(vector<CParticle>::iterator it = particles.begin(); it != particles.end(); ++it)
   {
-    if((*it)->life >= 0 and (*it)->active)
+    if((*it).life >= 0 and (*it).active)
     {
         // Update values
-      (*it)->position += (*it)->velocity * gTime.deltaTime_s() + pos_difference;
-      (*it)->velocity += (*it)->acceleration * gTime.deltaTime_s();
-      (*it)->color += (color_adder * gTime.deltaTime_s());
-      gMath.NormalizeColor((*it)->color);
+      (*it).position += (*it).velocity * gTime.deltaTime_s() + pos_difference;
+      (*it).velocity += (*it).acceleration * gTime.deltaTime_s();
+      (*it).color += (color_adder * gTime.deltaTime_s());
+      gMath.NormalizeColor((*it).color);
 
-      (*it)->angle += (*it)->angle_velocity * gTime.deltaTime_s();
-      gMath.NormalizeAngle((*it)->angle);
+      (*it).angle += (*it).angle_velocity * gTime.deltaTime_s();
+      gMath.NormalizeAngle((*it).angle);
 
-      (*it)->scale += (*it)->scale_factor * gTime.deltaTime_s();
-      //(*it)->scale.y += (*it)->scale_factor * gTime.deltaTime_s();
-      //(*it)->scale.z += (*it)->scale_factor * gTime.deltaTime_s(); // <-- useless
+      (*it).scale += (*it).scale_factor * gTime.deltaTime_s();
+      //(*it).scale.y += (*it).scale_factor * gTime.deltaTime_s();
+      //(*it).scale.z += (*it).scale_factor * gTime.deltaTime_s(); // <-- useless
 
-      (*it)->life -= gTime.deltaTime_s();
-      //if((*it)->life < 0 ) (*it)->life = 0.f;
+      (*it).life -= gTime.deltaTime_s();
+      //if((*it).life < 0 ) (*it).life = 0.f;
 
         // Control values
       // Speed
       // Angle
       // Scale
-      if((*it)->scale < min_scale) (*it)->scale = min_scale;
-      if((*it)->scale > max_scale) (*it)->scale = max_scale;
+      if((*it).scale < min_scale) (*it).scale = min_scale;
+      if((*it).scale > max_scale) (*it).scale = max_scale;
       // Position
       // etc
       // Color
-      if((*it)->color.r < min_color.r) (*it)->color.r = min_color.r;
-      if((*it)->color.g < min_color.g) (*it)->color.g = min_color.g;
-      if((*it)->color.b < min_color.b) (*it)->color.b = min_color.b;
-      if((*it)->color.a < min_color.a) (*it)->color.a = min_color.a;
+      if((*it).color.r < min_color.r) (*it).color.r = min_color.r;
+      if((*it).color.g < min_color.g) (*it).color.g = min_color.g;
+      if((*it).color.b < min_color.b) (*it).color.b = min_color.b;
+      if((*it).color.a < min_color.a) (*it).color.a = min_color.a;
 
-      if((*it)->color.r > max_color.r) (*it)->color.r = max_color.r;
-      if((*it)->color.g > max_color.g) (*it)->color.g = max_color.g;
-      if((*it)->color.b > max_color.b) (*it)->color.b = max_color.b;
-      if((*it)->color.a > max_color.a) (*it)->color.a = max_color.a;
+      if((*it).color.r > max_color.r) (*it).color.r = max_color.r;
+      if((*it).color.g > max_color.g) (*it).color.g = max_color.g;
+      if((*it).color.b > max_color.b) (*it).color.b = max_color.b;
+      if((*it).color.a > max_color.a) (*it).color.a = max_color.a;
 
 
       // Update VBO aux variables
       int index = it - particles.begin();
 
       // Position
-      v_ParticlePosition_data[3*index + 0] = (*it)->position.x;
-      v_ParticlePosition_data[3*index + 1] = (*it)->position.y;
-      v_ParticlePosition_data[3*index + 2] = (*it)->position.z;
+      v_ParticlePosition_data[3*index + 0] = (*it).position.x;
+      v_ParticlePosition_data[3*index + 1] = (*it).position.y;
+      v_ParticlePosition_data[3*index + 2] = (*it).position.z;
 
       // Angle and scale
-      v_ParticlesAngleScale_data[2*index + 0] = (*it)->angle;
-      v_ParticlesAngleScale_data[2*index + 1] = (*it)->scale;
+      v_ParticlesAngleScale_data[2*index + 0] = (*it).angle;
+      v_ParticlesAngleScale_data[2*index + 1] = (*it).scale;
 
       // Color
-      float alpha = (*it)->color.a;
-      if((*it)->life < 1.f)
-        alpha *= (*it)->life;
+      float alpha = (*it).color.a;
+      if((*it).life < 1.f)
+        alpha *= (*it).life;
 
-      v_ParticlesColor_data[4*index + 0] = (*it)->color.r;
-      v_ParticlesColor_data[4*index + 1] = (*it)->color.g;
-      v_ParticlesColor_data[4*index + 2] = (*it)->color.b;
+      v_ParticlesColor_data[4*index + 0] = (*it).color.r;
+      v_ParticlesColor_data[4*index + 1] = (*it).color.g;
+      v_ParticlesColor_data[4*index + 2] = (*it).color.b;
       v_ParticlesColor_data[4*index + 3] = alpha;
     }
-    else if((*it)->life < 0 and !stop and (int)new_particles and added_particles < (int)new_particles)
+    else if((*it).life < 0 and !stop and (int)new_particles and added_particles < (int)new_particles)
     {
       NewParticle(*it, pos_difference);
       added_particles++;
