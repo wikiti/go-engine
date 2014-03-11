@@ -7,29 +7,33 @@ bool SetGameObjects_Instance1()
   if(!camara_main)
   {
     camara_main = gGameObjects.AddGameObject("camara_main");
-    camara_main->Camera()->skybox_texture = "skybox1";
-    camara_main->Transform()->position.y += 3.f;
-    camara_main->Transform()->position.z -= 10.f;
-    camara_main->Preserve(); // Preservar entre instancias!!
-
+    camara_main->Transform()->position.y = -3.f;
+    camara_main->Transform()->position.z = -10.f;
+    camara_main->Preserve();
     camara_main->SetKeyEventFunction(&Camara_main_movimiento);
-
     gRender.AddCamera(camara_main);
   }
+  camara_main->Camera()->skybox_texture = "skybox1";
 
-  CGameObject* next_instancer = gGameObjects.AddGameObject("next_instancer");
-  next_instancer->Preserve();
-  next_instancer->SetKeyEventFunction(&Next_instancer_button);
 
+  CGameObject* next_instancer = gGameObjects["next_instancer"];
+  if(!next_instancer)
+  {
+    next_instancer = gGameObjects.AddGameObject("next_instancer");
+    next_instancer->Preserve();
+    next_instancer->SetKeyEventFunction(&Next_instancer_button);
+  }
 
   SetGameObjects_Instance1_Fireworks();
   SetGameObjects_Instance1_Rainbow();
   SetGameObjects_Instance1_Render();
-  SetGameObjects_Instance1_Other_Particles();
+  //SetGameObjects_Instance1_Other_Particles();
   //SetGameObjects_Instance1_Shaders();
   //SetGameObjects_Instance1_RandomStuff();
 
   gDebug.command("run script_scene1_setup", true);
+
+  gEngine.SetNextInstance("level2");
 
   return true;
 }
@@ -48,6 +52,8 @@ bool SetGameObjects_Instance2()
   hada1->MeshRender()->mesh_name = "mdl_hada1";
   hada1->MeshRender()->material_name = "texture_mdl_hada1";
   hada1->MeshRender()->color(1.0, 0.9f, 0.9f, 1.f);
+
+  gEngine.SetNextInstance("level1");
 
   return true;
 }
@@ -161,5 +167,5 @@ void Camara_Joystick_movimiento(CGameObject* gameObject)
 void Next_instancer_button(CGameObject* gameObject)
 {
   if(gUserInput.Keyboard("K"))
-    gEngine.NextInstance("level2");
+    gEngine.EndInstance();
 }

@@ -101,6 +101,17 @@ class CEngine
         instances[current_instance]->NextInstance(instance);
       }
     }
+
+    void SetNextInstance(string instance)
+    {
+      if(instances.find(current_instance) != instances.end())
+        instances[current_instance]->SetNextInstance(instance);
+    }
+
+    void EndInstance()
+    {
+      instances[current_instance]->EndInstance();
+    }
 };
 
 extern CEngine gEngine;

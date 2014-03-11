@@ -101,6 +101,11 @@ CComponent_Particle_Emitter::CParticle::CParticle()
   angle = angle_velocity = angle_acceleration = scale = scale_factor = 0.f;
 }
 
+CComponent_Particle_Emitter::CParticle::~CParticle()
+{
+
+}
+
 CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject): CComponent(gameObject)
 {
   material_name = "";
@@ -154,12 +159,15 @@ CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject* gameObject
 CComponent_Particle_Emitter::~CComponent_Particle_Emitter()
 {
   for(vector<CParticle*>::iterator it = particles.begin(); it != particles.end(); ++it)
+  {
     delete (*it);
+    // ->BUG Tiempos demasiado largos a la hora de borrar partículas. Normal, son demasiadas, y parece que "delete" es lento.
+  }
 
+  particles.clear();
   v_ParticlePosition_data.clear();
   v_ParticlesAngleScale_data.clear();
   v_ParticlesColor_data.clear();
-
 
 }
 

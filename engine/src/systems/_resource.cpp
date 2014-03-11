@@ -41,7 +41,7 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
 
   // ->BUG Problema aquí. (numTriangles = mesh->nNumFaces*3).
   // Hay que usar una mejor estructura para cargar modelos. Esta es BASURA.
-  numTriangles = mesh->mNumFaces;
+  numTriangles = mesh->mNumFaces*3;
   numUvCoords = mesh->GetNumUVChannels();
 
   /*if (mesh->HasPositions())      vertexArray.resize(mesh->mNumFaces*3*3);

@@ -30,6 +30,7 @@ class CComponent_Particle_Emitter: public CComponent
         //string material_name;
       public:
         CParticle();
+        ~CParticle();
     };
 
     vector<CParticle*> particles;

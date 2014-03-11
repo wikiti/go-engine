@@ -113,15 +113,16 @@ void Firework_Manager_KeyEvent(CGameObject* gameObject)
 
 void Firework_Manager_Behaviour(CGameObject* gameObject)
 {
-  for(vector<CGameObject*>::iterator it = fireworks.begin(); it != fireworks.end(); it++)
-  {
-    int i = it - fireworks.begin();
+  if(!fireworks.size())
+    return;
 
+  for(int i = 0; i < fireworks.size(); i++)
+  {
     ostringstream oss;
     oss << fireworks_value[i];
     string value = oss.str();
 
-    CGameObject* current_firework = (*it);
+    CGameObject* current_firework = fireworks[i];
 
     float startTime = gSystem_Data_Storage.GetFloat("firework_timer_"+value);
     float timeout = gSystem_Data_Storage.GetFloat("firework_timeout_"+value);
@@ -147,10 +148,14 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
 
       // Clear vectors
       gGameObjects.DeleteGameObject(current_firework->GetName(), true);
-      exploded.erase(exploded.begin() + (it - fireworks.begin()));
-      fireworks_value.erase(fireworks_value.begin() + (it - fireworks.begin()));
-      fireworks.erase(it);
-      it--;
+
+      exploded.erase(exploded.begin() + i);
+      fireworks_value.erase(fireworks_value.begin() + i);
+      fireworks.erase(fireworks.begin() + i);
+
+      i--;
+
+
     }
     //Firework_Behaviour(gGameObjects["firework_"+value]);
   }

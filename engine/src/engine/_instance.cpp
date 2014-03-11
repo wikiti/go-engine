@@ -16,6 +16,8 @@ bool CInstance::Init()
     return false;
   }
 
+  next_instance = "";
+
   if(!gameObjects_loader)
   {
     return false;
@@ -26,7 +28,7 @@ bool CInstance::Init()
   FPS = frames = 0;
   current_time = previous_time = 0;
 
-  next_instance = "";
+  i_running = true;
 
   return true;
 }
@@ -42,6 +44,8 @@ bool CInstance::LoadResources()
 void CInstance::Close()
 {
   UnLoadResources();
+
+  i_running = false;
 
   // Aquí habría que borrar objetos y tal
 
