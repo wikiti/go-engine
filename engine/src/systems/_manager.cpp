@@ -95,6 +95,15 @@ bool CSystem_GameObject_Manager::Reset()
 {
   DeleteGameObjects_NonPreserved();
 
+  for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
+  {
+    CComponent_Audio_Source* c_go = it->second->GetComponent<CComponent_Audio_Source>();
+    if(c_go)
+    {
+      c_go->UnBind();
+    }
+  }
+
   return true;
 }
 

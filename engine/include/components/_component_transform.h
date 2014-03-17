@@ -7,15 +7,18 @@
 
 class CComponent_Transform: public CComponent
 {
+  friend class CGameObject;
+  friend class CSystem_Render;
+  friend class CSystem_Debug;
+
+  friend const char* components::component_to_string(components c);
+  friend int components::string_to_component(const string& c);
+
   public:
     vector3f position, scale;
     glm::quat angle;
 
     //glm::mat4 transformMatrix;
-
-  public:
-    friend class CGameObject;
-    friend class CSystem_Render;
 
   private:
     //vector3f angle_vector;
@@ -24,6 +27,8 @@ class CComponent_Transform: public CComponent
     static GLuint m_TransformVAO;
 
     static int GetID() { return components::transform; }
+
+    void parseDebug(string command);
 
     /*friend class boost::serialization::access;
     template<class Archive>
@@ -36,6 +41,8 @@ class CComponent_Transform: public CComponent
   protected:
     //component_transform_t data;
     void ApplyParentTransform(CGameObject* parent, glm::mat4& transformMatrix);
+
+
 
     //inline virtual bool AddFuncs(CGameObject* obj);
     //inline virtual bool RemoveFuncs(CGameObject* obj);

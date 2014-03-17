@@ -1,3 +1,4 @@
+- Añadir un comando por consola para cambiar de estancia.
 - Añadir la posibilidad de renderizar solo líneas (glPolygonMode).
 x- Añadir textura "__BLACK" y textura "__WHITE".
 - Mejorar la carga de meshes para una mayor variedad de aplicaciones.

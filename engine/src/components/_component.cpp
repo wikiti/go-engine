@@ -1,8 +1,9 @@
 #include "components/_component.h"
+#include "systems/_debug.h"
 
 //BOOST_CLASS_EXPORT_IMPLEMENT(CComponent);
 
-const char* components::components_s[] = {"base", "camera", "mesh_render", "particle_emitter", "gui_texture", "audio_source", "dummy1", "dummy2", "transform", "not_defined"};
+const char* components::components_s[] = {"base", "camera", "mesh_render", "particle_emitter", "gui_texture", "audio_source", "transform", "dummy1", "dummy2", "dummy3", "not_defined"};
 
 const char* components::component_to_string(components c)
 {
@@ -12,7 +13,7 @@ const char* components::component_to_string(components c)
   return components_s[c];
 }
 
-int components::string_to_component(string c)
+int components::string_to_component(const string& c)
 {
   for(uint i = 0; i < components::__not_defined; i++)
     if(c == components_s[i])
@@ -31,4 +32,9 @@ CComponent::CComponent(CGameObject* go)
 CComponent::~CComponent()
 {
 
+}
+
+void CComponent::parseDebug(string command)
+{
+  gSystem_Debug.console_error_msg("From component %s - %s: Unhandheld \"parseDebug\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)this->GetID()) );
 }

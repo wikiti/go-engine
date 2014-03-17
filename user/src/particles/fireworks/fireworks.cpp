@@ -3,9 +3,17 @@
 
 bool SetGameObjects_Instance1_Fireworks()
 {
-  CGameObject* firework_manager = gGameObjects.AddGameObject("firework_manager");
-  firework_manager->SetKeyEventFunction(&Firework_Manager_KeyEvent);
-  firework_manager->SetBehaviourFunction(&Firework_Manager_Behaviour);
+  CGameObject* firework_manager = gGameObjects["firework_manager"];
+  if(!firework_manager)
+  {
+    firework_manager = gGameObjects.AddGameObject("firework_manager");
+    firework_manager->Preserve();
+    firework_manager->SetKeyEventFunction(&Firework_Manager_KeyEvent);
+    firework_manager->SetBehaviourFunction(&Firework_Manager_Behaviour);
+
+    if(gData.GetInt("firework_explosion_particles") == __CSYSTEM_DATA_STORAGE_NOINT)
+      gData.SetInt("firework_explosion_particles", 500);
+  }
 
   firework_manager->AudioSource()->music = true;
   firework_manager->AudioSource()->loop = true;
@@ -13,9 +21,6 @@ bool SetGameObjects_Instance1_Fireworks()
   firework_manager->AudioSource()->start_playing = true;
   firework_manager->AudioSource()->SetSound("fireworks");
   firework_manager->AudioSource()->Bind();
-
-  if(gData.GetInt("firework_explosion_particles") == __CSYSTEM_DATA_STORAGE_NOINT)
-    gData.SetInt("firework_explosion_particles", 500);
 
   return true;
 }
@@ -45,6 +50,8 @@ void Firework_Manager_KeyEvent(CGameObject* gameObject)
 
     firework->AddChild(explosion);
     firework->AddChild(trail);
+
+    firework->Preserve(true);
 
     firework->Transform()->position = gMath.random_point(vector3f(50, 0, 0), vector3f(-25, 0, 0));
 

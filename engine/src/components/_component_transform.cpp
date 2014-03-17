@@ -628,3 +628,52 @@ vector3f CComponent_Transform::LRotation()
     parent = parent->GetParent();
   }
 }*/
+
+
+void CComponent_Transform::parseDebug(string command)
+{
+  stringstream ss(command);
+  string attrib;
+  vector3f data;
+
+  ss >> attrib;
+
+  if(attrib == "help" or attrib == "?")
+  {
+    gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
+    gSystem_Debug.console_warning_msg("Attribute      Type");
+    gSystem_Debug.console_warning_msg("------------------------");
+    gSystem_Debug.console_warning_msg("position       vector3f");
+    gSystem_Debug.console_warning_msg("scale          vector3f");
+    gSystem_Debug.console_warning_msg("angle          vector3f(degrees)");
+
+    return;
+  }
+
+  ss >> data;
+
+  if(ss.fail())
+  {
+    gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+    return;
+  }
+
+  if(attrib == "position")
+  {
+    position = data;
+  }
+  else if(attrib == "scale")
+  {
+    scale = data;
+  }
+  else if(attrib == "angle")
+  {
+    angle = glm::quat(data.to_glm());
+  }
+  else
+  {
+    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str() );
+  }
+
+  gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.str().c_str() );
+}

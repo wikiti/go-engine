@@ -436,6 +436,14 @@ typedef struct vector3f_t
     return ((*this) - v).length();
   }
 
+  string str()
+  {
+    stringstream ss;
+    ss >> x >> y >> z;
+
+    return ss.str();
+  }
+
 } vector3f;
 
 

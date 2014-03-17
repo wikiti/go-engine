@@ -215,6 +215,7 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("go_show_tree", &CSystem_Debug::Console_command__GO_SHOW_TREE));
   console_commands.insert(pair<string, command_p>("go_enable", &CSystem_Debug::Console_command__GO_ENABLE));
   console_commands.insert(pair<string, command_p>("go_component_enable", &CSystem_Debug::Console_command__GO_COMPONENT_ENABLE));
+  console_commands.insert(pair<string, command_p>("go_component_set", &CSystem_Debug::Console_command__GO_COMPONENT_SET));
   console_commands.insert(pair<string, command_p>("go_search", &CSystem_Debug::Console_command__GO_SEARCH));
 
     // Sound
@@ -686,7 +687,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("General commands:");
     console_msg("-----------------------------------------------------------------------");
     console_msg("help:                           Display help.");
-    console_msg("logs:                           Saves console content to log.txt file.");
+    console_msg("logs:                           Saves console content to %s file.", __CSYSTEM_DEBUG_STORAGE_SAVEFILE);
 
     console_msg("set_int:                        Sets a variable to a int.");
     console_msg("set_float:                      Sets a variable to a float.");
@@ -722,6 +723,7 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("-----------------------------------------------------------------------");
 
     console_msg("go_component_enable:      Enables or disables a game object's component.");
+    console_msg("go_component_set:         Changes properties of a game object's component.");
     console_msg("go_enable:                Enables or disables a game object and/or its children.");
     console_msg("go_show_tree:             Displays current game object's tree stored in the manager.");
     console_msg("go_search:                Searches game objects by prefix.");
@@ -1426,7 +1428,7 @@ void CSystem_Debug::Console_command__GO_COMPONENT_ENABLE(string arguments)
   int component_i = components::string_to_component(component);
   if(component_i == components::__not_defined)
   {
-    console_error_msg("Component type \"%s\" does not exists", component.c_str());
+    console_error_msg("Component type \"%s\" does not exists.", component.c_str());
     return;
   }
 
@@ -1434,7 +1436,7 @@ void CSystem_Debug::Console_command__GO_COMPONENT_ENABLE(string arguments)
 
   if(!c_go)
   {
-    console_error_msg("Game object \"%s\" does not have the component \"%s\"", obj_name.c_str(), component.c_str());
+    console_error_msg("Game object \"%s\" does not have the component \"%s\".", obj_name.c_str(), component.c_str());
     return;
   }
 
@@ -1454,6 +1456,62 @@ void CSystem_Debug::Console_command__GO_COMPONENT_ENABLE(string arguments)
   {
     console_warning_msg("Format is: go_component_enable <game_object_name> <component_name> <1 | enable | 0 | disable>");
   }
+}
+
+void CSystem_Debug::Console_command__GO_COMPONENT_SET(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: go_component_set <game_object_name> <component_name> <atrib> <value>");
+    return;
+  }
+
+  stringstream ss(arguments);
+  string obj_name;
+  ss >> obj_name;
+
+  if(obj_name == "")
+  {
+    console_warning_msg("Format is: go_component_set <game_object_name> <component_name> <atrib> <value>");
+    return;
+  }
+
+  CGameObject* go = gSystem_GameObject_Manager[obj_name];
+
+  if(!go)
+  {
+    console_error_msg("Could not find game object named \"%s\"", obj_name.c_str());
+    return;
+  }
+
+  string component;
+  ss >> component;
+
+  if(component == "")
+  {
+    console_warning_msg("Format is: go_component_set <game_object_name> <component_name> <atrib> <value>");
+    return;
+  }
+
+  int component_i = components::string_to_component(component);
+  if(component_i == components::__not_defined)
+  {
+    console_error_msg("Component type \"%s\" does not exists.", component.c_str());
+    return;
+  }
+
+  CComponent* c_go = go->GetComponent((components::components)component_i);
+
+  if(!c_go)
+  {
+    console_error_msg("Game object \"%s\" does not have the component \"%s\".", obj_name.c_str(), component.c_str());
+    return;
+  }
+
+  string data;
+  getline(ss, data);
+
+  c_go->parseDebug(data);
 }
 
 void CSystem_Debug::Console_command__GO_SEARCH(string arguments)
@@ -1649,7 +1707,7 @@ void CSystem_Debug::Console_command__R_DRAW_GRID(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: r_draw_transform_grid <0 | 1>");
+    console_warning_msg("Format is: r_draw_grid <0 | 1>");
     return;
   }
 
@@ -1658,7 +1716,7 @@ void CSystem_Debug::Console_command__R_DRAW_GRID(string arguments)
   ss >> val;
 
   if(val < 0 or val > 1)
-    console_warning_msg("Format is: r_draw_transform_grid <0 | 1>");
+    console_warning_msg("Format is: r_draw_grid <0 | 1>");
   else
   {
     gSystem_Data_Storage.SetInt("__RENDER_TRANSFORM_GRID", val);
