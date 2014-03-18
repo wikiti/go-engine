@@ -152,6 +152,26 @@ class CSystem_Math: public CSystem
       return _DEG_TO_RAD(deg);
     }
 
+    vector3f rad_to_deg(vector3f v3_rad)
+    {
+      vector3f out;
+      out.x = rad_to_deg(v3_rad.x);
+      out.y = rad_to_deg(v3_rad.y);
+      out.z = rad_to_deg(v3_rad.z);
+
+      return out;
+    }
+
+    vector3f deg_to_rad(vector3f v3_deg)
+    {
+      vector3f out;
+      out.x = deg_to_rad(v3_deg.x);
+      out.y = deg_to_rad(v3_deg.y);
+      out.z = deg_to_rad(v3_deg.z);
+
+      return out;
+    }
+
     float cos(float degrees)
     {
       return std::cos(_DEG_TO_RAD(degrees));

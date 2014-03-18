@@ -644,8 +644,8 @@ void CComponent_Transform::parseDebug(string command)
     gSystem_Debug.console_warning_msg("Attribute      Type");
     gSystem_Debug.console_warning_msg("------------------------");
     gSystem_Debug.console_warning_msg("position       vector3f            %s", position.str().c_str());
-    gSystem_Debug.console_warning_msg("scale          vector3f            %s", position.str().c_str());
-    gSystem_Debug.console_warning_msg("angle          vector3f(degrees)   %s", position.str().c_str());
+    gSystem_Debug.console_warning_msg("scale          vector3f            %s", scale.str().c_str());
+    gSystem_Debug.console_warning_msg("angle          vector3f(degrees)   %s", EulerAngles().str().c_str());
 
     return;
   }
@@ -668,6 +668,7 @@ void CComponent_Transform::parseDebug(string command)
   }
   else if(attrib == "angle")
   {
+    data = gSystem_Math.deg_to_rad(data);
     angle = glm::quat(data.to_glm());
   }
   else
