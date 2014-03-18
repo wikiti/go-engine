@@ -1,0 +1,14 @@
+[18/03/2014 10:54] **ERROR** From CSystem_Data_Storage: Could not load vars from file data/cfg/user.cfg
+[18/03/2014 10:54] From CSystem_Data_Storage: Created config file data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save vars in file data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save options in data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save vars in file data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save options in data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not load vars from file data/cfg/user.cfg
+[18/03/2014 10:55] From CSystem_Data_Storage: Created config file data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save vars in file data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save options in data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save vars in file data/cfg/user.cfg
+[18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save options in data/cfg/user.cfg
+[18/03/2014 10:58] **ERROR** From CSystem_Data_Storage: Could not load vars from file data/cfg/user.cfg
+[18/03/2014 10:58] From CSystem_Data_Storage: Created config file data/cfg/user.cfg

@@ -65,6 +65,9 @@ class CComponent_Particle_Emitter: public CComponent
 
     vector3f last_pos;
 
+  protected:
+    void parseDebug(string command);
+
   public:
     // GameObject stuff
 

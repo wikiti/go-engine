@@ -492,3 +492,73 @@ void CComponent_Particle_Emitter::OnLoop()
   // Now, update VBOs
   // ...
 };
+
+void CComponent_Particle_Emitter::parseDebug(string command)
+{
+  stringstream ss(command);
+  string attrib;
+  ss >> attrib;
+
+  if(attrib == "help" or attrib == "?")
+  {
+    gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
+    gSystem_Debug.console_warning_msg("Attribute             Type");
+    gSystem_Debug.console_warning_msg("------------------------------------");
+    gSystem_Debug.console_warning_msg("max_particles         unsigned int");
+    gSystem_Debug.console_warning_msg("particles_per_second  float");
+    gSystem_Debug.console_warning_msg("material_name         string");
+    gSystem_Debug.console_warning_msg("stop                  bool");
+    gSystem_Debug.console_warning_msg("freeze                bool");
+    gSystem_Debug.console_warning_msg("direction             vector3f");
+    gSystem_Debug.console_warning_msg("angle_spread          float");
+    gSystem_Debug.console_warning_msg("[max|min]_vel         float");
+    gSystem_Debug.console_warning_msg("[max|min]_angle_vel   float");
+    gSystem_Debug.console_warning_msg("[max|min]_scale       float");
+    gSystem_Debug.console_warning_msg("[max|min]_color       colorf_t");
+    gSystem_Debug.console_warning_msg("start_[max|min]_life_time       float");
+    gSystem_Debug.console_warning_msg("start_[max|min]_angle      float");
+    gSystem_Debug.console_warning_msg("start_[max|min]_angle_vel       float");
+    gSystem_Debug.console_warning_msg("start_[max|min]_vel       float");
+    gSystem_Debug.console_warning_msg("start_[max|min]_scale       float");
+    gSystem_Debug.console_warning_msg("start_[max|min]_scale_factor       float");
+
+
+    return;
+  }
+ /*
+
+    colorf_t start_max_color, start_min_color;
+    colorf_t color_adder;
+
+    vector3f gravity;
+
+    GLfloat start_max_base_radius;
+    GLfloat start_min_base_radius;
+   */
+
+  if(attrib == "position")
+  {
+    position = data;
+  }
+  else if(attrib == "scale")
+  {
+    scale = data;
+  }
+  else if(attrib == "angle")
+  {
+    angle = glm::quat(data.to_glm());
+  }
+  else
+  {
+    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str() );
+  }
+
+  if(ss.fail())
+  {
+    gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+    return;
+  }
+
+
+  gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.str().c_str() );
+}
