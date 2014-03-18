@@ -9,6 +9,7 @@ bool SetGameObjects_Instance1()
     camara_main = gGameObjects.AddGameObject("camara_main");
     camara_main->Transform()->position.y = -3.f;
     camara_main->Transform()->position.z = -10.f;
+    camara_main->Camera()->far_clip = 500.f;
     camara_main->Preserve();
     camara_main->SetKeyEventFunction(&Camara_main_movimiento);
     gRender.AddCamera(camara_main);
@@ -52,6 +53,24 @@ bool SetGameObjects_Instance2()
   hada1->MeshRender()->mesh_name = "mdl_hada1";
   hada1->MeshRender()->material_name = "texture_mdl_hada1";
   hada1->MeshRender()->color(1.0, 0.9f, 0.9f, 1.f);
+
+
+  // Efecto sencillo de lluvia.
+  CGameObject* lluvia = gGameObjects.AddGameObject("lluvia");
+  lluvia->Transform()->Translate(0.f, 50.f, 0.f);
+  lluvia->ParticleEmitter()->direction(0.2f, -1.f, 0.f);
+  lluvia->ParticleEmitter()->angle_spread = 360.f;
+  lluvia->ParticleEmitter()->max_particles = 6000;
+  lluvia->ParticleEmitter()->particles_per_second = 500;
+  lluvia->ParticleEmitter()->start_max_life_time = 20.f;
+  lluvia->ParticleEmitter()->start_max_life_time = 10.f;
+  lluvia->ParticleEmitter()->start_max_scale = 0.1f;
+  lluvia->ParticleEmitter()->start_min_scale = 0.05f;
+  lluvia->ParticleEmitter()->start_max_vel = lluvia->ParticleEmitter()->start_min_vel = 1.f;
+  lluvia->ParticleEmitter()->start_max_base_radius = 50.f;
+  lluvia->ParticleEmitter()->start_min_base_radius = 0.f;
+  lluvia->ParticleEmitter()->material_name = "raindrop";
+  lluvia->ParticleEmitter()->Start();
 
   gEngine.SetNextInstance("level1");
 

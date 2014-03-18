@@ -1,3 +1,4 @@
+- Añadir un sistema para que el usuario pueda crear "prefabs" a partir de una determinada jerarquía de objetos.
 - Añadir un comando por consola para cambiar de estancia.
 - Añadir la posibilidad de renderizar solo líneas (glPolygonMode).
 x- Añadir textura "__BLACK" y textura "__WHITE".

@@ -9,6 +9,7 @@
 texture: texture_mdl_hada1 data/resources/textures/faerie2.bmp: mipmap
 texture: skybox2 data/resources/textures/skybox2.tga: mipmap
 texture: smoke1 data/resources/textures/particles/smoke1.tga: nearest
+texture: raindrop data/resources/textures/particles/raindrop.tga: nearest
 texture: sprite1 data/resources/textures/particles/sprite1.tga: nearest
 
 sound: firework_explosion data/resources/sound/firework_explosion.wav:

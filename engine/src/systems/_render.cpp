@@ -566,19 +566,9 @@ void CSystem_Render::OnRender()
       {
         if(it2->second->GetComponent<CComponent_Audio_Source>())
         {
-          glPushMatrix();
-
-          it2->second->Transform()->ApplyTransform(cam->modelViewMatrix);
-
-          GLfloat modelViewMatrixf[16];
-          glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrixf);
-          glm::mat4 local_modelViewMatrix = glm::make_mat4(modelViewMatrixf);
-
+          glm::mat4 local_modelViewMatrix = it2->second->Transform()->ApplyTransform(cam->modelViewMatrix);
           glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(local_modelViewMatrix));
-
           it2->second->AudioSource()->OnRender(cam->projMatrix, cam->modelViewMatrix);
-
-          glPopMatrix();
         }
       }
 
@@ -602,19 +592,10 @@ void CSystem_Render::OnRender()
 
 	    for(map<string, CGameObject*>::iterator it2 = gSystem_GameObject_Manager.gameObjects.begin(); it2 != gSystem_GameObject_Manager.gameObjects.end(); it2++)
 	    {
-	       glPushMatrix();
+        glm::mat4 local_modelViewMatrix = it2->second->Transform()->ApplyTransform(cam->modelViewMatrix);
+	      glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(local_modelViewMatrix));
 
-	       it2->second->Transform()->ApplyTransform(cam->modelViewMatrix);
-
-	       GLfloat modelViewMatrixf[16];
-	       glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrixf);
-	       glm::mat4 local_modelViewMatrix = glm::make_mat4(modelViewMatrixf);
-
-	       glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(local_modelViewMatrix));
-
-	       it2->second->Transform()->OnRender(local_modelViewMatrix, cam->projMatrix);
-
-	       glPopMatrix();
+	      it2->second->Transform()->OnRender(local_modelViewMatrix, cam->projMatrix);
 	    }
 
       glDisableVertexAttribArray(0);
