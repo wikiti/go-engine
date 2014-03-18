@@ -504,61 +504,181 @@ void CComponent_Particle_Emitter::parseDebug(string command)
     gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
     gSystem_Debug.console_warning_msg("Attribute             Type");
     gSystem_Debug.console_warning_msg("------------------------------------");
-    gSystem_Debug.console_warning_msg("max_particles         unsigned int");
-    gSystem_Debug.console_warning_msg("particles_per_second  float");
-    gSystem_Debug.console_warning_msg("material_name         string");
-    gSystem_Debug.console_warning_msg("stop                  bool");
-    gSystem_Debug.console_warning_msg("freeze                bool");
-    gSystem_Debug.console_warning_msg("direction             vector3f");
-    gSystem_Debug.console_warning_msg("angle_spread          float");
-    gSystem_Debug.console_warning_msg("[max|min]_vel         float");
-    gSystem_Debug.console_warning_msg("[max|min]_angle_vel   float");
-    gSystem_Debug.console_warning_msg("[max|min]_scale       float");
-    gSystem_Debug.console_warning_msg("[max|min]_color       colorf_t");
-    gSystem_Debug.console_warning_msg("start_[max|min]_life_time       float");
-    gSystem_Debug.console_warning_msg("start_[max|min]_angle      float");
-    gSystem_Debug.console_warning_msg("start_[max|min]_angle_vel       float");
-    gSystem_Debug.console_warning_msg("start_[max|min]_vel       float");
-    gSystem_Debug.console_warning_msg("start_[max|min]_scale       float");
-    gSystem_Debug.console_warning_msg("start_[max|min]_scale_factor       float");
-
+    gSystem_Debug.console_warning_msg("max_particles                  unsigned int  %d", max_particles);
+    gSystem_Debug.console_warning_msg("material_name                  string        %s", material_name.c_str());
+    gSystem_Debug.console_warning_msg("stop                           bool          %d", (int)stop);
+    gSystem_Debug.console_warning_msg("freeze                         bool          %d", (int)freeze);
+    gSystem_Debug.console_warning_msg("gravity                        vector3f      %s", gravity.str().c_str());
+    gSystem_Debug.console_warning_msg("direction                      vector3f      %s", direction.str().c_str());
+    gSystem_Debug.console_warning_msg("angle_spread                   float         %f", angle_spread);
+    gSystem_Debug.console_warning_msg("particles_per_second           float         %f", particles_per_second);
+    gSystem_Debug.console_warning_msg("[max|min]_vel                  float         %f / %f", max_vel, min_vel);
+    gSystem_Debug.console_warning_msg("[max|min]_angle_vel            float         %f / %f", max_angle_vel, min_vel);
+    gSystem_Debug.console_warning_msg("[max|min]_scale                float         %f / %f", max_scale, min_scale);
+    gSystem_Debug.console_warning_msg("start_[max|min]_life_time      float         %f / %f", start_max_life_time, start_min_life_time);
+    gSystem_Debug.console_warning_msg("start_[max|min]_angle          float         %f / %f", start_max_angle, start_min_angle);
+    gSystem_Debug.console_warning_msg("start_[max|min]_angle_vel      float         %f / %f", start_max_angle_vel, start_min_angle_vel);
+    gSystem_Debug.console_warning_msg("start_[max|min]_vel            float         %f / %f", start_max_vel, start_min_vel);
+    gSystem_Debug.console_warning_msg("start_[max|min]_scale          float         %f / %f", start_max_scale, start_min_scale);
+    gSystem_Debug.console_warning_msg("start_[max|min]_scale_factor   float         %f / %f", start_max_scale_factor, start_min_scale_factor);
+    gSystem_Debug.console_warning_msg("start_[max|min]_base_radius    float         %f / %f", start_max_base_radius, start_min_base_radius);
+    gSystem_Debug.console_warning_msg("start_[max|min]_color          colorf_t      %s / %s", start_max_color.str().c_str(), start_min_color.str().c_str());
+    gSystem_Debug.console_warning_msg("[max|min]_color                colorf_t      %s / %s", max_color.str().c_str(), min_color.str().c_str());
+    gSystem_Debug.console_warning_msg("color_adder                    colorf_t      %s", color_adder.str().c_str());
 
     return;
   }
- /*
 
-    colorf_t start_max_color, start_min_color;
-    colorf_t color_adder;
+  if(attrib == "angle_spread" or attrib == "particles_per_second" or attrib == "max_vel" or attrib == "min_vel"
+      or attrib == "max_angle_vel"  or attrib == "min_angle_vel" or attrib == "max_scale" or attrib == "min_scale"
+      or attrib == "start_max_life_time" or attrib == "start_min_life_time" or attrib == "start_max_angle" or attrib == "start_min_angle"
+      or attrib == "start_max_angle_vel" or attrib == "start_min_angle_vel" or attrib == "start_max_vel"
+      or attrib == "start_min_vel" or attrib == "start_max_scale" or attrib == "start_min_scale" or attrib == "start_max_scale_factor"
+      or attrib == "start_min_scale_factor" or attrib == "start_max_base_radius" or attrib == "start_min_base_radius")
+  {
+    GLfloat data;
+    ss >> data;
 
-    vector3f gravity;
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      return;
+    }
 
-    GLfloat start_max_base_radius;
-    GLfloat start_min_base_radius;
+    if(attrib == "angle_spread")
+      angle_spread = data;
+    else if(attrib == "particles_per_second")
+      particles_per_second = data;
+    else if(attrib == "max_vel")
+      max_vel = data;
+    else if(attrib == "min_vel")
+      min_vel = data;
+    else if(attrib == "max_angle_vel")
+      max_angle_vel = data;
+    else if(attrib == "min_angle_vel")
+      min_angle_vel = data;
+    else if(attrib == "max_scale")
+      max_scale = data;
+    else if(attrib == "min_scale")
+      min_scale = data;
+    else if(attrib == "start_max_life_time")
+      start_max_life_time = data;
+    else if(attrib == "start_min_life_time")
+      start_min_life_time = data;
+    else if(attrib == "start_max_angle")
+      start_max_angle = data;
+    else if(attrib == "start_min_angle")
+      start_min_angle = data;
+    else if(attrib == "start_max_angle_vel")
+      start_max_angle_vel = data;
+    else if(attrib == "start_min_angle_vel")
+      start_min_angle_vel = data;
+    else if(attrib == "start_max_vel")
+      start_max_vel = data;
+    else if(attrib == "start_min_vel")
+      start_min_vel = data;
+    else if(attrib == "start_max_scale")
+      start_max_scale = data;
+    else if(attrib == "start_min_scale")
+      start_min_scale = data;
+    else if(attrib == "start_max_scale_factor")
+      start_max_scale_factor = data;
+    else if(attrib == "start_min_scale_factor")
+      start_min_scale_factor = data;
+    else if(attrib == "start_max_base_radius")
+      start_max_base_radius = data;
+    else if(attrib == "start_min_base_radius")
+      start_min_base_radius = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%f\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data );
+  }
+  else if(attrib == "stop" or attrib == "freeze")
+  {
+    bool data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      return;
+    }
+
+    if(attrib == "stop")
+      stop = data;
+    else if(attrib == "freeze")
+      freeze = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), (int)data );
+  }
+  else if(attrib == "direction" or attrib == "gravity")
+  {
+    vector3f data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      return;
+    }
+
+    if(attrib == "direction")
+      direction = data;
+    else if(attrib == "gravity")
+      gravity = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.str().c_str() );
+  }
+  else if(attrib == "max_particles")
+  {
+    uint data;
+    ss >> data;
+    if(ss.fail() or data < 0)
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      return;
+    }
+  }
+  else if(attrib == "material_name")
+  {
+    string data;
+    ss >> data;
+
+    material_name = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.c_str() );
+  }
+  /*
+   *     gSystem_Debug.console_warning_msg("start_[max|min]_color          colorf_t      %s/%s", start_max_color.str().c_str(), start_min_color.str().c_str());
+    gSystem_Debug.console_warning_msg("[max|min]_color                colorf_t      %s%s", max_color.str().c_str(), min_color.str().c_str());
+    gSystem_Debug.console_warning_msg("color_adder                    colorf_t      %s", color_adder.str().c_str());
    */
+  else if(attrib == "start_max_color" or attrib ==  "start_min_color" or attrib == "max_color" or attrib == "min_color" or attrib == "color_adder")
+  {
+    colorf_t data;
+    ss >> data;
 
-  if(attrib == "position")
-  {
-    position = data;
-  }
-  else if(attrib == "scale")
-  {
-    scale = data;
-  }
-  else if(attrib == "angle")
-  {
-    angle = glm::quat(data.to_glm());
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      return;
+    }
+
+    if(attrib == "start_max_color")
+      start_max_color = data;
+    else if(attrib == "start_min_color")
+      start_min_color = data;
+    else if(attrib == "max_color")
+      max_color = data;
+    else if(attrib == "min_color")
+      min_color = data;
+    else if(attrib == "color_adder")
+      color_adder = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.str().c_str() );
   }
   else
   {
     gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str() );
   }
 
-  if(ss.fail())
-  {
-    gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
-    return;
-  }
-
-
-  gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.str().c_str() );
 }

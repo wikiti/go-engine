@@ -643,9 +643,9 @@ void CComponent_Transform::parseDebug(string command)
     gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
     gSystem_Debug.console_warning_msg("Attribute      Type");
     gSystem_Debug.console_warning_msg("------------------------");
-    gSystem_Debug.console_warning_msg("position       vector3f");
-    gSystem_Debug.console_warning_msg("scale          vector3f");
-    gSystem_Debug.console_warning_msg("angle          vector3f(degrees)");
+    gSystem_Debug.console_warning_msg("position       vector3f            %s", position.str().c_str());
+    gSystem_Debug.console_warning_msg("scale          vector3f            %s", position.str().c_str());
+    gSystem_Debug.console_warning_msg("angle          vector3f(degrees)   %s", position.str().c_str());
 
     return;
   }

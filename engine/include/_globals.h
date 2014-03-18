@@ -183,6 +183,26 @@ typedef struct colorf_t
     return (float*)this;
   }
 
+  string str()
+  {
+    stringstream ss;
+    ss << r << " " << g << " " << b << " " << a;
+
+    return ss.str();
+  }
+
+  friend ostream& operator<<(ostream& os, colorf_t c)
+  {
+    os << c.r << " " << c.g << " " << c.b << " " << c.a;
+    return os;
+  }
+
+  friend istream& operator>>(istream& is, colorf_t& c)
+  {
+    is >> c.r >> c.g >> c.b >> c.a;
+    return is;
+  }
+
 } colorf_t;
 
 typedef struct viewport_t
@@ -439,7 +459,7 @@ typedef struct vector3f_t
   string str()
   {
     stringstream ss;
-    ss >> x >> y >> z;
+    ss << x << " " << y << " " << z;
 
     return ss.str();
   }
