@@ -414,12 +414,36 @@ typedef struct vector3f_t
     return vector3f_t(1.f, 0.f, 0.f);
   }
 
+  static GLfloat precision;
+
+  vector3f_t abs()
+  {
+    vector3f_t out;
+
+    out.x = std::abs(x);
+    out.y = std::abs(y);
+    out.z = std::abs(z);
+
+    return out;
+  }
+
   bool operator==(vector3f_t other)
   {
-    if(x != other.y or y != other.y or z != other.z)
+    //if(x != other.y or y != other.y or z != other.z)
+    if(std::abs(x - other.x) >= std::abs(precision) or std::abs(y - other.y) >= std::abs(precision) or std::abs(z - other.z) >= std::abs(precision))
       return false;
 
     return true;
+  }
+
+  bool operator<(vector3f_t other)
+  {
+    return length() < other.length();
+  }
+
+  bool operator <=(vector3f_t other)
+  {
+    return *this < other or *this == other;
   }
 
   bool operator!=(vector3f_t other)
