@@ -482,10 +482,10 @@ void CSystem_GameObject_Manager::OnEvent()
     it->second->OnEvent();
 }
 
-void CSystem_GameObject_Manager::OnKeyEvent()
+void CSystem_GameObject_Manager::OnInput()
 {
   for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
-    it->second->OnKeyEvent();
+    it->second->OnInput();
 }
 
 void CSystem_GameObject_Manager::OnLoop()

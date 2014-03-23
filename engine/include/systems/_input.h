@@ -222,7 +222,7 @@ class CSystem_UserInput: public CSystem
 
     void OnLoop();
     void OnEvent();
-    void OnKeyEvent();
+    void OnInput();
 
     Uint8 Keyboard(string keyname);
     Uint8 Keyboard(SDL_Scancode key);

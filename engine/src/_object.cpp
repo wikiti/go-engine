@@ -12,7 +12,7 @@ CGameObject::CGameObject(string str)
   preserve = false;
 
   Parent = NULL;
-  start = behaviour = event_behaviour = keyevent_behaviour = render = NULL;
+  start = behaviour = event_behaviour = input_behaviour = render = NULL;
 }
 
 CGameObject::CGameObject(): CGameObject("")
@@ -225,7 +225,7 @@ void CGameObject::OnEvent()
     it->second->OnEvent();
 }
 
-void CGameObject::OnKeyEvent()
+void CGameObject::OnInput()
 {
   if(!enabled)
     return;
@@ -233,7 +233,7 @@ void CGameObject::OnKeyEvent()
   CallKeyEventFunction();
 
   for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); ++it)
-    it->second->OnKeyEvent();
+    it->second->OnInput();
 }
 
 void CGameObject::OnLoop()

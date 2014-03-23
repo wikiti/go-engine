@@ -45,7 +45,7 @@ class CGameObject
     function_t start;
     function_t behaviour;
     function_t event_behaviour;
-    function_t keyevent_behaviour;
+    function_t input_behaviour;
     function_t render;
 
   private:
@@ -126,9 +126,9 @@ class CGameObject
       event_behaviour = f;
     }
 
-    inline void SetKeyEventFunction(function_t f)
+    inline void SetInputFunction(function_t f)
     {
-      keyevent_behaviour = f;
+      input_behaviour = f;
     }
 
     inline void SetRenderFunction(function_t f)
@@ -153,7 +153,7 @@ class CGameObject
 
     inline void CallKeyEventFunction()
     {
-      if(keyevent_behaviour) keyevent_behaviour(this);
+      if(input_behaviour) input_behaviour(this);
     }
 
     inline void CallRenderFunction()
@@ -166,7 +166,7 @@ class CGameObject
     bool RemoveFromSystem();
 
     void OnEvent();
-    void OnKeyEvent();
+    void OnInput();
     void OnLoop();
     void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
     //void OnRenderDebug();

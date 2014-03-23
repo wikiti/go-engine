@@ -11,7 +11,7 @@ bool SetGameObjects_Instance1()
     camara_main->Transform()->position.z = -10.f;
     camara_main->Camera()->far_clip = 500.f;
     camara_main->Preserve();
-    camara_main->SetKeyEventFunction(&Camara_main_movimiento);
+    camara_main->SetInputFunction(&Camara_main_movimiento);
     gRender.AddCamera(camara_main);
   }
   camara_main->Camera()->skybox_texture = "skybox1";
@@ -22,7 +22,7 @@ bool SetGameObjects_Instance1()
   {
     next_instancer = gGameObjects.AddGameObject("next_instancer");
     next_instancer->Preserve();
-    next_instancer->SetKeyEventFunction(&Next_instancer_button);
+    next_instancer->SetInputFunction(&Next_instancer_button);
   }
 
   SetGameObjects_Instance1_Fireworks();

@@ -84,7 +84,7 @@ bool CSystem_UserInput::Reset()
   return Init();
 }
 
-void CSystem_UserInput::OnKeyEvent()
+void CSystem_UserInput::OnInput()
 {
   // ---- Para los ejes, usamos máquinas de estado para alternar entre los estados unpressed, keydown, key_pressed y keyup.
   // -- Axis1

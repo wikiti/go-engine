@@ -20,7 +20,7 @@ class CSystem
     virtual void OnRender(){};
     virtual void OnLoop(){};
     virtual void OnEvent(){};
-    virtual void OnKeyEvent(){};
+    virtual void OnInput(){};
 
     void Enable()
     {

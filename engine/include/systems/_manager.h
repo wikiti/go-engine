@@ -57,7 +57,7 @@ class CSystem_GameObject_Manager: public CSystem
     void SetGameObjects(bool state = true);
 
     void OnEvent();
-    void OnKeyEvent();
+    void OnInput();
     void OnLoop();
 };
 

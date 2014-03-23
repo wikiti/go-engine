@@ -57,7 +57,7 @@ class CComponent
     inline virtual void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix){};
     inline virtual void OnLoop(){};
     inline virtual void OnEvent(){};
-    inline virtual void OnKeyEvent(){};
+    inline virtual void OnInput(){};
 
     //virtual bool AddFuncs(CGameObject* obj){return true;};
     //virtual bool RemoveFuncs(CGameObject* obj){return true;};

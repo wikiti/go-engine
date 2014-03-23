@@ -88,8 +88,8 @@ bool SetGameObjects_Instance1_RandomStuff()
   camara_second->Camera()->background_color(0, 0.5f, 0.75f, 1.f);
   camara_second->Camera()->skybox_texture = "skybox1";
 
-  cubo_main->SetKeyEventFunction(&Cubo_main_movimiento);
-  cubo_second->SetKeyEventFunction(&Cubo_second_movimiento);
+  cubo_main->SetInputFunction(&Cubo_main_movimiento);
+  cubo_second->SetInputFunction(&Cubo_second_movimiento);
   cubo_third->SetBehaviourFunction(&Cubo_third_behaviour);
 
   hada->SetBehaviourFunction(&Hada_movimiento);

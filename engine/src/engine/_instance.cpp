@@ -101,8 +101,8 @@ void CInstance::OnEvent()
     if(!gSystem_Debug.IsConsole()) gSystem_GameObject_Manager.OnEvent();
   }
 
-  gSystem_UserInput.OnKeyEvent();
-  if(!gSystem_Debug.IsConsole()) gSystem_GameObject_Manager.OnKeyEvent();
+  gSystem_UserInput.OnInput();
+  if(!gSystem_Debug.IsConsole()) gSystem_GameObject_Manager.OnInput();
 }
 
 void CInstance::OnRender()

@@ -8,7 +8,7 @@ bool SetGameObjects_Instance1_Fireworks()
   {
     firework_manager = gGameObjects.AddGameObject("firework_manager");
     firework_manager->Preserve();
-    firework_manager->SetKeyEventFunction(&Firework_Manager_KeyEvent);
+    firework_manager->SetInputFunction(&Firework_Manager_KeyEvent);
     firework_manager->SetBehaviourFunction(&Firework_Manager_Behaviour);
 
     if(gData.GetInt("firework_explosion_particles") == __CSYSTEM_DATA_STORAGE_NOINT)
