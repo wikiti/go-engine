@@ -641,8 +641,8 @@ void CComponent_Transform::parseDebug(string command)
   if(attrib == "help" or attrib == "?")
   {
     gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
-    gSystem_Debug.console_warning_msg("Attribute      Type");
-    gSystem_Debug.console_warning_msg("------------------------");
+    gSystem_Debug.console_warning_msg("Attribute      Type                Value");
+    gSystem_Debug.console_warning_msg("----------------------------------------");
     gSystem_Debug.console_warning_msg("position       vector3f            %s", position.str().c_str());
     gSystem_Debug.console_warning_msg("scale          vector3f            %s", scale.str().c_str());
     gSystem_Debug.console_warning_msg("angle          vector3f(degrees)   %s", EulerAngles().str().c_str());

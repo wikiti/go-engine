@@ -23,6 +23,8 @@ class CComponent_Mesh_Render: public CComponent
   private:
     static int GetID() { return components::mesh_render; }
 
+    void parseDebug(string command);
+
     /*friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)

@@ -503,8 +503,8 @@ void CComponent_Particle_Emitter::parseDebug(string command)
   if(attrib == "help" or attrib == "?")
   {
     gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
-    gSystem_Debug.console_warning_msg("Attribute             Type");
-    gSystem_Debug.console_warning_msg("------------------------------------");
+    gSystem_Debug.console_warning_msg("Attribute             Type                   Value");
+    gSystem_Debug.console_warning_msg("--------------------------------------------------");
     gSystem_Debug.console_warning_msg("max_particles                  unsigned int  %d", max_particles);
     gSystem_Debug.console_warning_msg("material_name                  string        %s", material_name.c_str());
     gSystem_Debug.console_warning_msg("stop                           bool          %d", (int)stop);
