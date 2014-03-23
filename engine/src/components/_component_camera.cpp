@@ -115,9 +115,9 @@ void CComponent_Camera::SetUp()
 {
   //if(!enabled) return; // ¿?
 
-  vector3f p = gameObject->Transform()->Position();       // Camera position
-  vector3f up(0, 1, 0);                                   // Up vector (for "screen rotation")
-  vector3f tp(0, 0, 1);                                   // Target point
+  vector3f p =  gameObject->Transform()->Position();       // Camera position
+  vector3f up = gameObject->Transform()->up();             // Up vector (for "screen rotation")
+  vector3f tp(0, 0, 1);                                    // Target point
 
   if(viewmode == viewmode::ortho) // Añadir rotaciones o algo
     return;
@@ -130,8 +130,6 @@ void CComponent_Camera::SetUp()
   //   puede resultar pesado si la cámara está anidada a otros objetos. Sería conveniente declarar un
   //   previous_pos y un pos para evitar recalcular si son iguales (ganamos GPU y CPU a cambio de 48 bytes).
 
-  // Por cierto, falta recalcular el vector UP, que dependerá del ángulo de la cámara (Eje local Z).
-
   CGameObject* target_p = gSystem_GameObject_Manager[target];
 
   if(!target_p) // Añadir pivote y calcular su posición global:
@@ -139,12 +137,9 @@ void CComponent_Camera::SetUp()
   else        // O coger la posición global del objeto.
     tp = target_p->Transform()->Position();
 
-  //p = p.normalize();
-  //tp = tp.normalize();
-
-  // ->BUG En CComponent_Camera::Setup() Caso fatal; hay que tomar un valor válido del vector "up"
-  if((p - tp).normalize() == up or (p - tp).normalize() == vector3f())
-    up.x += 0.05f;
+  // ->xBUG En CComponent_Camera::Setup() Caso fatal; hay que tomar un valor válido del vector "up"
+  //if((p - tp).normalize() == up or (p - tp).normalize() == vector3f())
+    //up.x += 0.05f;
 
   modelViewMatrix = glm::lookAt(p.to_glm(), tp.to_glm(), up.to_glm());
 }

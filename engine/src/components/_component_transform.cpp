@@ -165,10 +165,10 @@ void CComponent_Transform::OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMat
 
 }
 
-// ->PORHACER Habría que echarle un vistazo a la función CComponent_Transform::EulerAngles(), ya que no devuelve los valores de rotación "deseados", o mejor dicho, esperados
+// ->xPORHACER Habría que echarle un vistazo a la función CComponent_Transform::EulerAngles(), ya que no devuelve los valores de rotación "deseados", o mejor dicho, esperados
 vector3f CComponent_Transform::EulerAngles()
 {
-  return vector3f(pitch(), yaw(), roll());
+  //return vector3f(pitch(), yaw(), roll());
 
   /*glm::vec3 ea = glm::eulerAngles(angle);
   // Pasar a grados
@@ -543,41 +543,23 @@ vector3f CComponent_Transform::forward()
 
 GLfloat CComponent_Transform::pitch()
 {
-  vector3f new_z_axis = forward();
-  new_z_axis.x = 0;
-
-  GLfloat output = gMath.acos((new_z_axis.dot_product(gMath.Z_AXIS))/(new_z_axis.length()));
-  if(new_z_axis.y < 0)
-    output *= -1;
-
-  gMath.NormalizeAngle(output);
-  return output;
+  float pitch = _RAD_TO_DEG(atan2(2*angle.x*angle.w - 2*angle.y*angle.z, 1 - 2*angle.x*angle.x - 2*angle.z*angle.z));
+  gMath.NormalizeAngle(pitch);
+  return  pitch;
 }
 
 GLfloat CComponent_Transform::yaw()
 {
-  vector3f new_x_axis = left();
-  new_x_axis.y = 0;
-
-  GLfloat output = gMath.acos((new_x_axis.dot_product(gMath.X_AXIS))/(new_x_axis.length()));
-  if(new_x_axis.z < 0)
-    output *= -1;
-
-  gMath.NormalizeAngle(output);
-  return output;
+  float yaw = _RAD_TO_DEG(atan2(2*angle.y*angle.w - 2*angle.x*angle.z, 1 - 2*angle.y*angle.y - 2*angle.z*angle.z));
+  gMath.NormalizeAngle(yaw);
+  return yaw;
 }
 
 GLfloat CComponent_Transform::roll()
 {
-  vector3f new_y_axis = forward();
-  new_y_axis.z = 0;
-
-  GLfloat output = gMath.acos((new_y_axis.dot_product(gMath.Y_AXIS))/(new_y_axis.length()));
-  if(new_y_axis.x < 0)
-    output *= -1;
-
-  gMath.NormalizeAngle(output);
-  return output;
+  float roll = _RAD_TO_DEG(asin(2*angle.x*angle.y + 2*angle.z*angle.w));
+  gMath.NormalizeAngle(roll);
+  return roll;
 }
 
 void rotate_by_parent(glm::quat& angle, CGameObject* self)
@@ -649,7 +631,7 @@ void CComponent_Transform::parseDebug(string command)
     gSystem_Debug.console_warning_msg("----------------------------------------");
     gSystem_Debug.console_warning_msg("position       vector3f            %s", position.str().c_str());
     gSystem_Debug.console_warning_msg("scale          vector3f            %s", scale.str().c_str());
-    gSystem_Debug.console_warning_msg("angle          vector3f(degrees)   %s", EulerAngles().str().c_str());
+    gSystem_Debug.console_warning_msg("angle          vector3f(degrees)   %s", LRotation().str().c_str());
 
     return;
   }
@@ -672,10 +654,12 @@ void CComponent_Transform::parseDebug(string command)
   }
   else if(attrib == "angle")
   {
-    //data = gSystem_Math.deg_to_rad(data);
-    //angle = glm::quat(data.to_glm());
-    angle = glm::quat();
-    LRotate(data.x, data.y, data.z);
+    gSystem_Math.NormalizeAngles(data);
+    vector3f rads = gSystem_Math.deg_to_rad(data);
+    angle = glm::quat(rads.to_glm());
+    //gSystem_Math.NormalizeAngles(data);
+    //angle = glm::quat();
+    //LRotate(data.x, data.y, data.z);
   }
   else
   {

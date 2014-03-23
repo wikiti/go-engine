@@ -127,19 +127,37 @@ class CSystem_Math: public CSystem
     inline void NormalizeAngles(GLfloat &deg_x, GLfloat &deg_y, GLfloat &deg_z)
     {
       if(deg_x < 0 ) deg_x = 360 + deg_x;
-      else if(deg_x >= 360 ) deg_x = deg_x - 360;
+      if(deg_x >= 360 ) deg_x = deg_x - 360;
 
       if(deg_y < 0 ) deg_y = 360 + deg_y;
-      else if(deg_y >= 360 ) deg_y = deg_y - 360;
+      if(deg_y >= 360 ) deg_y = deg_y - 360;
 
       if(deg_z < 0 ) deg_z = 360 + deg_z;
-      else if(deg_z >= 360 ) deg_z = deg_z - 360;
+      if(deg_z >= 360 ) deg_z = deg_z - 360;
+    }
+
+    inline void NormalizeAngles(vector3f& angles_deg)
+    {
+      if(angles_deg.x < 0)
+        angles_deg.x = 360 + angles_deg.x;
+      if(angles_deg.x >= 360)
+        angles_deg.x = angles_deg.x - 360;
+
+      if(angles_deg.y < 0)
+        angles_deg.y = 360 + angles_deg.y;
+      if(angles_deg.y >= 360)
+        angles_deg.y = angles_deg.y - 360;
+
+      if(angles_deg.z < 0)
+        angles_deg.z = 360 + angles_deg.z;
+      if(angles_deg.z >= 360)
+        angles_deg.z = angles_deg.z - 360;
     }
 
     inline void NormalizeAngle(GLfloat &deg)
     {
       if(deg < 0 ) deg = 360 + deg;
-      else if(deg >= 360 ) deg = deg - 360;
+      if(deg >= 360 ) deg = deg - 360;
     }
 
     float rad_to_deg(float rad)
