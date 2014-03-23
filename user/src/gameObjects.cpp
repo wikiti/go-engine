@@ -197,6 +197,7 @@ void Camara_Joystick_movimiento(CGameObject* gameObject)
     if(joys[0].buttons.size() > 11 and joys[0].buttons[10].State() == Input::button_pressed)
       boost = 3.f;
 
+    // Translation
     if(joys[0].axes.size() >= 2)
     {
       if(joys[0].buttons.size() > 12 and joys[0].buttons[11].State() == Input::button_pressed)
@@ -204,11 +205,17 @@ void Camara_Joystick_movimiento(CGameObject* gameObject)
       else
         gameObject->Transform()->LTranslate(joys[0].axes[0].value * -3.f * boost * gTime.deltaTime_s(), 0.f, joys[0].axes[1].value * -3.f * boost * gTime.deltaTime_s());
     }
+    // Rotation
     if(joys[0].axes.size() >= 4)
     {
-      gameObject->Transform()->LRotate(joys[0].axes[3].value * 60.f * gTime.deltaTime_s(), 0, 0);
+      vector3f rotation = gameObject->Transform()->LRotation();
+      float x = joys[0].axes[3].value * 60.f * gTime.deltaTime_s();
+      if(rotation.x + x < 90 or rotation.x + x > 270)
+        gameObject->Transform()->LRotate(x, 0, 0);
+
       gameObject->Transform()->Rotate(0, joys[0].axes[2].value * -60.f * gTime.deltaTime_s(), 0);
     }
+    // More Translation
     if(joys[0].axes.size() >= 6)
     {
       gameObject->Transform()->LTranslate(0.f, 0.f, -(joys[0].axes[4].value + 1)/2 * boost * 3.f * gTime.deltaTime_s());
