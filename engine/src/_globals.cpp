@@ -53,6 +53,8 @@ bool GO_Utils::validateIdentifier(string identifier)
   return true;
 }
 
+GLfloat vector3f_t::precision = 0.01f;
+
 /* NO FUNCIONA!
 void GO_Utils::glhLookAtf2(glm::mat4& matrix, vector3f& eyePosition3D, vector3f& center3D, vector3f& upVector3D )
 {
