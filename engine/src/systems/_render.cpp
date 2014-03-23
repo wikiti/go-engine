@@ -82,11 +82,11 @@ bool CSystem_Render::Init()
   videomode = GO_Utils::string_to_lower(videomode);
 
   if (videomode == "fullscreen")
-    gSystem_Render.SetFullScreenWindow(GO_Render::fullscreen);
+    gSystem_Render.SetFullScreenWindow(Render::fullscreen);
   else if (videomode == "fullwindowed")
-    gSystem_Render.SetFullScreenWindow(GO_Render::fullwindowed);
+    gSystem_Render.SetFullScreenWindow(Render::fullwindowed);
   else
-    gSystem_Render.SetFullScreenWindow(GO_Render::windowed);
+    gSystem_Render.SetFullScreenWindow(Render::windowed);
 
   GLcontext = SDL_GL_CreateContext(window);
 

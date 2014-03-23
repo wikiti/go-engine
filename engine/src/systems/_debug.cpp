@@ -1653,11 +1653,11 @@ void CSystem_Debug::Console_command__R_RESIZE_WINDOW(string arguments)
   if(videomode != "")
   {
     if(videomode == "windowed")
-      gSystem_Render.SetFullScreenWindow(GO_Render::windowed);
+      gSystem_Render.SetFullScreenWindow(Render::windowed);
     else if (videomode == "fullscreen")
-      gSystem_Render.SetFullScreenWindow(GO_Render::fullscreen);
+      gSystem_Render.SetFullScreenWindow(Render::fullscreen);
     else if (videomode == "fullwindowed")
-      gSystem_Render.SetFullScreenWindow(GO_Render::fullwindowed);
+      gSystem_Render.SetFullScreenWindow(Render::fullwindowed);
     else
       console_error_msg("Invalid video mode: %s", videomode.c_str());
   }

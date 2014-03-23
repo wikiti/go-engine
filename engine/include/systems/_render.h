@@ -21,7 +21,7 @@
  *     dibujar objetos de atrás hacia delante
  */
 
-namespace GO_Render
+namespace Render
 {
   enum window_display_t {windowed = 0, fullscreen = SDL_WINDOW_FULLSCREEN, fullwindowed = SDL_WINDOW_FULLSCREEN_DESKTOP};
   enum opengl_core_support_t { not_supported = 0, in_core, arb_extension };
@@ -153,9 +153,9 @@ class CSystem_Render: public CSystem
       }
     }
 
-    inline void SetFullScreenWindow(GO_Render::window_display_t mode)
+    inline void SetFullScreenWindow(Render::window_display_t mode)
     {
-      if(mode == GO_Render::windowed or mode == GO_Render::fullscreen or mode == GO_Render::fullwindowed)
+      if(mode == Render::windowed or mode == Render::fullscreen or mode == Render::fullwindowed)
       {
         SDL_SetWindowFullscreen(window, mode);
         SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);

@@ -8,7 +8,7 @@ CSystem_UserInput& gUserInput = gSystem_UserInput;
 
 //const Uint8* CSystem_UserInput::keyboard = SDL_GetKeyboardState(NULL);
 
-using namespace GO_Input;
+using namespace Input;
 
 bool CSystem_UserInput::Init()
 {

@@ -7,7 +7,7 @@
 
 #define __CSYSTEM_USERINPUT_JOYSTICK_REBUILD_TIMEOUT 500.0f
 
-namespace GO_Input
+namespace Input
 {
   enum keystate_t {key_keyup = -2, key_unpressed = -1, key_keydown = 1, key_pressed = 2};
   /*
@@ -43,13 +43,13 @@ class CSystem_UserInput: public CSystem
       friend class CJoystick;
 
       protected:
-        GO_Input::keystate_t state;
+        Input::keystate_t state;
         Uint8 button;
         string button_name;
 
       public:
-        GO_Input::keystate_t operator()(){return state;}
-        GO_Input::keystate_t State(){return state;}
+        Input::keystate_t operator()(){return state;}
+        Input::keystate_t State(){return state;}
         Uint8 Button(){return button;}
         string ButtonName(){return button_name;}
     };
@@ -61,13 +61,13 @@ class CSystem_UserInput: public CSystem
       friend class CJoystick;
 
       protected:
-        GO_Input::button_t state;
+        Input::button_t state;
         Uint8 button;
         string button_name;
 
       public:
-        GO_Input::button_t operator()(){return state;}
-        GO_Input::button_t State(){return state;}
+        Input::button_t operator()(){return state;}
+        Input::button_t State(){return state;}
         Uint8 Button(){return button;}
         string ButtonName(){return button_name;}
     };
@@ -77,12 +77,12 @@ class CSystem_UserInput: public CSystem
       friend class CSystem_UserInput;
 
       protected:
-        GO_Input::keystate_t state; // Estado (presionado, no presionado, siendo presionado, siendo des-presionado)
+        Input::keystate_t state; // Estado (presionado, no presionado, siendo presionado, siendo des-presionado)
         SDL_Scancode key;
 
       public:
-        GO_Input::keystate_t operator()() {return state;}
-        GO_Input::keystate_t State(){return state;}
+        Input::keystate_t operator()() {return state;}
+        Input::keystate_t State(){return state;}
         SDL_Scancode Key() {return key;}
         const char* KeyName() {return SDL_GetScancodeName(key);}
     };

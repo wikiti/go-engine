@@ -92,6 +92,10 @@ void Camara_main_movimiento(CGameObject* gameObject)
     }
 
     gameObject->Transform()->LookAt(finalPos);
+
+    vector3f rotation = gameObject->Transform()->LRotation();
+    gameObject->Transform()->SetAngle(rotation.x, rotation.y, 0.f);
+
     gameObject->Transform()->position =  gameObject->Transform()->position + (finalPos - gameObject->Transform()->position) * 0.6f * gTime.deltaTime_s();
 
     return;
@@ -156,9 +160,9 @@ void Camara_mouse_movimiento(CGameObject* gameObject)
 {
   gameObject->Transform()->LTranslate(0.f, 0.f, gUserInput.mouse.wheel_y * 20.f * gTime.deltaTime_s());
 
-  if(gUserInput.mouse.mouse1() == GO_Input::key_keydown or gUserInput.mouse.mouse3() == GO_Input::key_keydown)
+  if(gUserInput.mouse.mouse1() == Input::key_keydown or gUserInput.mouse.mouse2() == Input::key_keydown  or gUserInput.mouse.mouse3() == Input::key_keydown)
     gUserInput.SetMouseTrap(true);
-  else if(gUserInput.mouse.mouse1() == GO_Input::key_keyup or gUserInput.mouse.mouse3() == GO_Input::key_keyup)
+  else if(gUserInput.mouse.mouse1() == Input::key_keyup or gUserInput.mouse.mouse2() == Input::key_keyup or gUserInput.mouse.mouse3() == Input::key_keyup)
     gUserInput.SetMouseTrap(false);
 
   // Rotate
@@ -166,6 +170,11 @@ void Camara_mouse_movimiento(CGameObject* gameObject)
   {
     gameObject->Transform()->LRotate(gUserInput.mouse.y_vel * 20.f * gTime.deltaTime_s(), 0, 0);
     gameObject->Transform()->Rotate(0, gUserInput.mouse.x_vel * -20.f * gTime.deltaTime_s(), 0);
+  }
+  // Screen Rotation
+  else if(gUserInput.mouse.mouse2() > 0)
+  {
+    gameObject->Transform()->LRotate(0, 0, gUserInput.mouse.x_vel * 10.f * gTime.deltaTime_s());
   }
   // Pan
   else if(gUserInput.mouse.mouse3() > 0)
@@ -181,12 +190,12 @@ void Camara_Joystick_movimiento(CGameObject* gameObject)
   if(joys.size() > 0)
   {
     float boost = 1.f;
-    if(joys[0].buttons.size() > 11 and joys[0].buttons[10].State() == GO_Input::button_pressed)
+    if(joys[0].buttons.size() > 11 and joys[0].buttons[10].State() == Input::button_pressed)
       boost = 3.f;
 
     if(joys[0].axes.size() >= 2)
     {
-      if(joys[0].buttons.size() > 12 and joys[0].buttons[11].State() == GO_Input::button_pressed)
+      if(joys[0].buttons.size() > 12 and joys[0].buttons[11].State() == Input::button_pressed)
         gameObject->Transform()->LTranslate(- joys[0].axes[0].value * boost * 3.f * gTime.deltaTime_s(), - joys[0].axes[1].value * boost * 3.f * gTime.deltaTime_s(), 0.f);
       else
         gameObject->Transform()->LTranslate(joys[0].axes[0].value * -3.f * boost * gTime.deltaTime_s(), 0.f, joys[0].axes[1].value * -3.f * boost * gTime.deltaTime_s());
