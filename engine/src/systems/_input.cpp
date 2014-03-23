@@ -317,7 +317,7 @@ void CSystem_UserInput::CheckJoysticks()
 
     gSystem_Debug.console_warning_msg("Rebuilding joystick list...");
     RebuildJoysticks();
-    gSystem_Debug.console_msg("Joystick rebuild done!");
+    gSystem_Debug.console_info_msg("Joystick rebuild done!");
 
     rebuild_joysticks = false;
   }
@@ -325,9 +325,12 @@ void CSystem_UserInput::CheckJoysticks()
   // New joystick?
   if((unsigned int)SDL_NumJoysticks() > joysticks.size())
   {
-    gSystem_Debug.console_msg("New joystick detected!");
+    gSystem_Debug.console_info_msg("New joystick detected!");
     rebuild_joysticks = true;
     rebuild_joysticks_timeout = gSystem_Time.GetTicks();
+
+    // Clear joysticks to avoid errors.
+    joysticks.clear();
 
     return;
   }

@@ -12,3 +12,4 @@
 [18/03/2014 10:55] **ERROR** From CSystem_Data_Storage: Could not save options in data/cfg/user.cfg
 [18/03/2014 10:58] **ERROR** From CSystem_Data_Storage: Could not load vars from file data/cfg/user.cfg
 [18/03/2014 10:58] From CSystem_Data_Storage: Created config file data/cfg/user.cfg
+[23/03/2014 23:43] **ERROR** Exception ocurred: vector::_M_default_append
