@@ -168,7 +168,11 @@ void Camara_mouse_movimiento(CGameObject* gameObject)
   // Rotate
   if(gUserInput.mouse.mouse1() > 0)
   {
-    gameObject->Transform()->LRotate(gUserInput.mouse.y_vel * 20.f * gTime.deltaTime_s(), 0, 0);
+    vector3f rotation = gameObject->Transform()->LRotation();
+    float x = gUserInput.mouse.y_vel * 20.f * gTime.deltaTime_s();
+    if(rotation.x + x < 90 or rotation.x + x > 270)
+      gameObject->Transform()->LRotate(x, 0, 0);
+
     gameObject->Transform()->Rotate(0, gUserInput.mouse.x_vel * -20.f * gTime.deltaTime_s(), 0);
   }
   // Screen Rotation
