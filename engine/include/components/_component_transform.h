@@ -75,6 +75,7 @@ class CComponent_Transform: public CComponent
     void LRotate(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0); // <- ANGULOS DE EULER Y CUATERNIONES!!!
     //void LScale(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
 
+    //vector3f AxisAngles();
     vector3f EulerAngles();
 
     // Problemática: Rotaciones locales y globales: las rotaciones "globales" funcionan como pseudolocales

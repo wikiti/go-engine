@@ -139,5 +139,12 @@ void CComponent_Camera::SetUp()
   else        // O coger la posición global del objeto.
     tp = target_p->Transform()->Position();
 
+  //p = p.normalize();
+  //tp = tp.normalize();
+
+  // ->BUG En CComponent_Camera::Setup() Caso fatal; hay que tomar un valor válido del vector "up"
+  if((p - tp).normalize() == up or (p - tp).normalize() == vector3f())
+    up.x += 0.05f;
+
   modelViewMatrix = glm::lookAt(p.to_glm(), tp.to_glm(), up.to_glm());
 }

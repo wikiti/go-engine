@@ -165,25 +165,28 @@ void CComponent_Transform::OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMat
 
 }
 
+// ->PORHACER Habría que echarle un vistazo a la función CComponent_Transform::EulerAngles(), ya que no devuelve los valores de rotación "deseados", o mejor dicho, esperados
 vector3f CComponent_Transform::EulerAngles()
 {
+  return vector3f(pitch(), yaw(), roll());
+
   /*glm::vec3 ea = glm::eulerAngles(angle);
   // Pasar a grados
   return vector3f(_RAD_TO_DEG(ea.x), _RAD_TO_DEG(ea.y), _RAD_TO_DEG(ea.z));*/
-  /*glm::vec3 ea = glm::eulerAngles(angle);
+  glm::vec3 ea = glm::eulerAngles(angle);
 
   GLfloat nx = _RAD_TO_DEG(ea.x);
   GLfloat ny = _RAD_TO_DEG(ea.y);
   GLfloat nz = _RAD_TO_DEG(ea.z);
 
   gMath.NormalizeAngles(nx, ny, nz);
-  return vector3f(nx, ny, nz);*/
-  float x = _RAD_TO_DEG(atan2(2*(angle.y*angle.z + angle.w*angle.x), angle.w*angle.w - angle.x*angle.x - angle.y*angle.y + angle.z*angle.z));
-  float y = _RAD_TO_DEG(asin(-2*(angle.x*angle.z - angle.w*angle.y)));
-  float z = _RAD_TO_DEG(atan2(2*(angle.x*angle.y + angle.w*angle.z), angle.w*angle.w + angle.x*angle.x - angle.y*angle.y - angle.z*angle.z));
+  return vector3f(nx, ny, nz);
+//  float x = _RAD_TO_DEG(atan2(2*(angle.y*angle.z + angle.w*angle.x), angle.w*angle.w - angle.x*angle.x - angle.y*angle.y + angle.z*angle.z));
+//  float y = _RAD_TO_DEG(asin(-2*(angle.x*angle.z - angle.w*angle.y)));
+//  float z = _RAD_TO_DEG(atan2(2*(angle.x*angle.y + angle.w*angle.z), angle.w*angle.w + angle.x*angle.x - angle.y*angle.y - angle.z*angle.z));
 
-  gMath.NormalizeAngles(x, y, z);
-  return vector3f(x, y, z);
+  //gMath.NormalizeAngles(x, y, z);
+  //return vector3f(x, y, z);
   // Necesario?
 }
 
@@ -417,6 +420,7 @@ void CComponent_Transform::LookAt(GLfloat x, GLfloat y, GLfloat z, vector3f up_v
   LookAt(vector3f(x, y, z), up_vector, forward_vector);
 }
 
+// ->BUG La función CComponent_Transform::LookAt() no funciona como debería, ya que se carga completamente la orientación del vector. Esto es, jode ejes de la cámara.
 void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward)
 {
   //http://stackoverflow.com/questions/12435671/quaternion-lookat-function
@@ -668,8 +672,10 @@ void CComponent_Transform::parseDebug(string command)
   }
   else if(attrib == "angle")
   {
-    data = gSystem_Math.deg_to_rad(data);
-    angle = glm::quat(data.to_glm());
+    //data = gSystem_Math.deg_to_rad(data);
+    //angle = glm::quat(data.to_glm());
+    angle = glm::quat();
+    LRotate(data.x, data.y, data.z);
   }
   else
   {
