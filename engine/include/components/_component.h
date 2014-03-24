@@ -34,6 +34,7 @@ class CComponent
     CGameObject* gameObject;
 
     virtual void parseDebug(string command);
+    virtual void printDebug();
 
   private:
     static int GetID() { return components::base; }

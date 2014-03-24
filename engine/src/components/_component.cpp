@@ -38,3 +38,8 @@ void CComponent::parseDebug(string command)
 {
   gSystem_Debug.console_error_msg("From component %s - %s: Unhandheld \"parseDebug\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)this->GetID()) );
 }
+
+void CComponent::printDebug()
+{
+  gSystem_Debug.console_error_msg("From component %s - %s: Unhandheld \"printDebug\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)this->GetID()) );
+}

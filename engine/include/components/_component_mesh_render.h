@@ -24,6 +24,7 @@ class CComponent_Mesh_Render: public CComponent
     static int GetID() { return components::mesh_render; }
 
     void parseDebug(string command);
+    void printDebug();
 
     /*friend class boost::serialization::access;
     template<class Archive>

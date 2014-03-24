@@ -631,14 +631,9 @@ void CComponent_Transform::parseDebug(string command)
 
   ss >> attrib;
 
-  if(attrib == "help" or attrib == "?")
+  if(attrib == "help" or attrib == "?" or attrib == "")
   {
-    gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
-    gSystem_Debug.console_warning_msg("Attribute      Type                Value");
-    gSystem_Debug.console_warning_msg("----------------------------------------");
-    gSystem_Debug.console_warning_msg("position       vector3f            %s", position.str().c_str());
-    gSystem_Debug.console_warning_msg("scale          vector3f            %s", scale.str().c_str());
-    gSystem_Debug.console_warning_msg("angle          vector3f(degrees)   %s", LRotation().str().c_str());
+    printDebug();
 
     return;
   }
@@ -674,4 +669,14 @@ void CComponent_Transform::parseDebug(string command)
   }
 
   gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.str().c_str() );
+}
+
+void CComponent_Transform::printDebug()
+{
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
+  gSystem_Debug.console_warning_msg("Attribute      Type                Value");
+  gSystem_Debug.console_warning_msg("----------------------------------------");
+  gSystem_Debug.console_warning_msg("position       vector3f            %s", position.str().c_str());
+  gSystem_Debug.console_warning_msg("scale          vector3f            %s", scale.str().c_str());
+  gSystem_Debug.console_warning_msg("angle          vector3f(degrees)   %s", LRotation().str().c_str());
 }

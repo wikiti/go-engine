@@ -164,3 +164,142 @@ void CComponent_GUI_Texture::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
   glEnd();*/
 }
 
+
+void CComponent_GUI_Texture::parseDebug(string command)
+{
+  stringstream ss(command);
+  string attrib;
+
+  ss >> attrib;
+
+  /*
+   string texture_name;
+
+   GLuint pixel_offset_x, pixel_offset_y;
+   GLfloat width, height;
+
+   colorf_t color;
+   */
+
+  if(attrib == "help" or attrib == "?" or attrib == "")
+  {
+    printDebug();
+
+    return;
+  }
+
+  if(attrib == "texture_name")
+  {
+    string data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg(
+          "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
+          gameObject->GetName().c_str(),
+          components::component_to_string((components::components) GetID()));
+
+      return;
+    }
+
+    texture_name = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".",
+        gameObject->GetName().c_str(),
+        components::component_to_string((components::components) GetID()), attrib.c_str(),
+        data.c_str());
+  }
+  else if(attrib == "pixel_offset_x" or attrib == "pixel_offset_y")
+  {
+    unsigned int data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg(
+          "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
+          gameObject->GetName().c_str(),
+          components::component_to_string((components::components) GetID()));
+
+      return;
+    }
+
+    if(attrib == "pixel_offset_x")
+      pixel_offset_x = data;
+    else if(attrib == "pixel_offset_y")
+      pixel_offset_y = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".",
+        gameObject->GetName().c_str(),
+        components::component_to_string((components::components) GetID()), attrib.c_str(),
+        data);
+  }
+  else if(attrib == "width" or attrib == "height")
+  {
+    float data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg(
+          "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
+          gameObject->GetName().c_str(),
+          components::component_to_string((components::components) GetID()));
+
+      return;
+    }
+
+    if(attrib == "width")
+      width = data;
+    else if(attrib == "height")
+      height = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%f\".",
+        gameObject->GetName().c_str(),
+        components::component_to_string((components::components) GetID()), attrib.c_str(),
+        data);
+  }
+  else if(attrib == "color")
+  {
+    colorf_t data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg(
+          "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
+          gameObject->GetName().c_str(),
+          components::component_to_string((components::components) GetID()));
+
+      return;
+    }
+
+    color = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".",
+        gameObject->GetName().c_str(),
+        components::component_to_string((components::components) GetID()), attrib.c_str(),
+        data.str().c_str());
+  }
+  else
+  {
+    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".",
+        gameObject->GetName().c_str(),
+        components::component_to_string((components::components) GetID()), attrib.c_str());
+  }
+}
+
+void CComponent_GUI_Texture::printDebug()
+{
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:",
+      components::component_to_string((components::components) GetID()));
+  gSystem_Debug.console_warning_msg("Attribute      Type                Value");
+  gSystem_Debug.console_warning_msg("----------------------------------------");
+  gSystem_Debug.console_warning_msg("texture_name        string         %s", texture_name.c_str());
+  gSystem_Debug.console_warning_msg("pixel_offset_x      unsigned int   %d", pixel_offset_x);
+  gSystem_Debug.console_warning_msg("pixel_offset_y      unsigned int   %d", pixel_offset_y);
+  gSystem_Debug.console_warning_msg("width               float          %f", width);
+  gSystem_Debug.console_warning_msg("height              float          %f", height);
+  gSystem_Debug.console_warning_msg("color               colorf_t       %s", color.str().c_str());
+}

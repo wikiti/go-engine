@@ -28,6 +28,9 @@ class CComponent_GUI_Texture: public CComponent
 
     void UpdateVBO();
 
+    void parseDebug(string command);
+    void printDebug();
+
   public:
     CComponent_GUI_Texture(){};
     CComponent_GUI_Texture(CGameObject* gameObject);
@@ -35,6 +38,8 @@ class CComponent_GUI_Texture: public CComponent
 
     bool HitTest(GLfloat pixel_x, GLfloat pixel_y);
     void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
+
+
 };
 
 #endif /* __COMPONENT_GUI_TEXTURE_H_ */

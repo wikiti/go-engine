@@ -67,6 +67,7 @@ class CComponent_Particle_Emitter: public CComponent
 
   protected:
     void parseDebug(string command);
+    void printDebug();
 
   public:
     // GameObject stuff

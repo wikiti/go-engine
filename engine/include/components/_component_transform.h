@@ -29,6 +29,7 @@ class CComponent_Transform: public CComponent
     static int GetID() { return components::transform; }
 
     void parseDebug(string command);
+    void printDebug();
 
     /*friend class boost::serialization::access;
     template<class Archive>

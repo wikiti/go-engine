@@ -82,17 +82,9 @@ void CComponent_Mesh_Render::parseDebug(string command)
 
   ss >> attrib;
 
-  if(attrib == "help" or attrib == "?")
+  if(attrib == "help" or attrib == "?" or attrib == "")
   {
-    gSystem_Debug.console_warning_msg("Component %s uses the following attributes:",
-        components::component_to_string((components::components) GetID()));
-    gSystem_Debug.console_warning_msg("Attribute      Type");
-    gSystem_Debug.console_warning_msg("------------------------");
-    gSystem_Debug.console_warning_msg("mesh_name           string      %s", mesh_name.c_str());
-    gSystem_Debug.console_warning_msg("material_name       string      %s", material_name.c_str());
-    gSystem_Debug.console_warning_msg("shader_name         string      %s", shader_name.c_str());
-    gSystem_Debug.console_warning_msg("color               colorf_t    %s", color.str().c_str());
-    gSystem_Debug.console_warning_msg("color_apply_force   float       %f", color_apply_force);
+    printDebug();
 
     return;
   }
@@ -172,4 +164,18 @@ void CComponent_Mesh_Render::parseDebug(string command)
         gameObject->GetName().c_str(),
         components::component_to_string((components::components) GetID()), attrib.c_str());
   }
+}
+
+
+void CComponent_Mesh_Render::printDebug()
+{
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:",
+      components::component_to_string((components::components) GetID()));
+  gSystem_Debug.console_warning_msg("Attribute      Type             Value");
+  gSystem_Debug.console_warning_msg("-------------------------------------");
+  gSystem_Debug.console_warning_msg("mesh_name           string      %s", mesh_name.c_str());
+  gSystem_Debug.console_warning_msg("material_name       string      %s", material_name.c_str());
+  gSystem_Debug.console_warning_msg("shader_name         string      %s", shader_name.c_str());
+  gSystem_Debug.console_warning_msg("color               colorf_t    %s", color.str().c_str());
+  gSystem_Debug.console_warning_msg("color_apply_force   float       %f", color_apply_force);
 }

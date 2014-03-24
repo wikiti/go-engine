@@ -500,32 +500,9 @@ void CComponent_Particle_Emitter::parseDebug(string command)
   string attrib;
   ss >> attrib;
 
-  if(attrib == "help" or attrib == "?")
+  if(attrib == "help" or attrib == "?" or attrib == "")
   {
-    gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
-    gSystem_Debug.console_warning_msg("Attribute             Type                   Value");
-    gSystem_Debug.console_warning_msg("--------------------------------------------------");
-    gSystem_Debug.console_warning_msg("max_particles                  unsigned int  %d", max_particles);
-    gSystem_Debug.console_warning_msg("material_name                  string        %s", material_name.c_str());
-    gSystem_Debug.console_warning_msg("stop                           bool          %d", (int)stop);
-    gSystem_Debug.console_warning_msg("freeze                         bool          %d", (int)freeze);
-    gSystem_Debug.console_warning_msg("gravity                        vector3f      %s", gravity.str().c_str());
-    gSystem_Debug.console_warning_msg("direction                      vector3f      %s", direction.str().c_str());
-    gSystem_Debug.console_warning_msg("angle_spread                   float         %f", angle_spread);
-    gSystem_Debug.console_warning_msg("particles_per_second           float         %f", particles_per_second);
-    gSystem_Debug.console_warning_msg("[max|min]_vel                  float         %f / %f", max_vel, min_vel);
-    gSystem_Debug.console_warning_msg("[max|min]_angle_vel            float         %f / %f", max_angle_vel, min_vel);
-    gSystem_Debug.console_warning_msg("[max|min]_scale                float         %f / %f", max_scale, min_scale);
-    gSystem_Debug.console_warning_msg("start_[max|min]_life_time      float         %f / %f", start_max_life_time, start_min_life_time);
-    gSystem_Debug.console_warning_msg("start_[max|min]_angle          float         %f / %f", start_max_angle, start_min_angle);
-    gSystem_Debug.console_warning_msg("start_[max|min]_angle_vel      float         %f / %f", start_max_angle_vel, start_min_angle_vel);
-    gSystem_Debug.console_warning_msg("start_[max|min]_vel            float         %f / %f", start_max_vel, start_min_vel);
-    gSystem_Debug.console_warning_msg("start_[max|min]_scale          float         %f / %f", start_max_scale, start_min_scale);
-    gSystem_Debug.console_warning_msg("start_[max|min]_scale_factor   float         %f / %f", start_max_scale_factor, start_min_scale_factor);
-    gSystem_Debug.console_warning_msg("start_[max|min]_base_radius    float         %f / %f", start_max_base_radius, start_min_base_radius);
-    gSystem_Debug.console_warning_msg("start_[max|min]_color          colorf_t      %s / %s", start_max_color.str().c_str(), start_min_color.str().c_str());
-    gSystem_Debug.console_warning_msg("[max|min]_color                colorf_t      %s / %s", max_color.str().c_str(), min_color.str().c_str());
-    gSystem_Debug.console_warning_msg("color_adder                    colorf_t      %s", color_adder.str().c_str());
+    printDebug();
 
     return;
   }
@@ -681,5 +658,34 @@ void CComponent_Particle_Emitter::parseDebug(string command)
   {
     gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str() );
   }
+
+}
+
+void CComponent_Particle_Emitter::printDebug()
+{
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
+  gSystem_Debug.console_warning_msg("Attribute             Type                   Value");
+  gSystem_Debug.console_warning_msg("--------------------------------------------------");
+  gSystem_Debug.console_warning_msg("max_particles                  unsigned int  %d", max_particles);
+  gSystem_Debug.console_warning_msg("material_name                  string        %s", material_name.c_str());
+  gSystem_Debug.console_warning_msg("stop                           bool          %d", (int)stop);
+  gSystem_Debug.console_warning_msg("freeze                         bool          %d", (int)freeze);
+  gSystem_Debug.console_warning_msg("gravity                        vector3f      %s", gravity.str().c_str());
+  gSystem_Debug.console_warning_msg("direction                      vector3f      %s", direction.str().c_str());
+  gSystem_Debug.console_warning_msg("angle_spread                   float         %f", angle_spread);
+  gSystem_Debug.console_warning_msg("particles_per_second           float         %f", particles_per_second);
+  gSystem_Debug.console_warning_msg("[max|min]_vel                  float         %f / %f", max_vel, min_vel);
+  gSystem_Debug.console_warning_msg("[max|min]_angle_vel            float         %f / %f", max_angle_vel, min_vel);
+  gSystem_Debug.console_warning_msg("[max|min]_scale                float         %f / %f", max_scale, min_scale);
+  gSystem_Debug.console_warning_msg("start_[max|min]_life_time      float         %f / %f", start_max_life_time, start_min_life_time);
+  gSystem_Debug.console_warning_msg("start_[max|min]_angle          float         %f / %f", start_max_angle, start_min_angle);
+  gSystem_Debug.console_warning_msg("start_[max|min]_angle_vel      float         %f / %f", start_max_angle_vel, start_min_angle_vel);
+  gSystem_Debug.console_warning_msg("start_[max|min]_vel            float         %f / %f", start_max_vel, start_min_vel);
+  gSystem_Debug.console_warning_msg("start_[max|min]_scale          float         %f / %f", start_max_scale, start_min_scale);
+  gSystem_Debug.console_warning_msg("start_[max|min]_scale_factor   float         %f / %f", start_max_scale_factor, start_min_scale_factor);
+  gSystem_Debug.console_warning_msg("start_[max|min]_base_radius    float         %f / %f", start_max_base_radius, start_min_base_radius);
+  gSystem_Debug.console_warning_msg("start_[max|min]_color          colorf_t      %s / %s", start_max_color.str().c_str(), start_min_color.str().c_str());
+  gSystem_Debug.console_warning_msg("[max|min]_color                colorf_t      %s / %s", max_color.str().c_str(), min_color.str().c_str());
+  gSystem_Debug.console_warning_msg("color_adder                    colorf_t      %s", color_adder.str().c_str());
 
 }
