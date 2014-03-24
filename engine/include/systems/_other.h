@@ -353,6 +353,14 @@ class CSystem_Math: public CSystem
     vector3f slerp(vector3f from, vector3f to, float alpha = 0.5f);
 
     float lerpAngle(float from, float to, float alpha = 0.5f);
+
+    vector3f lerpAngles(vector3f from, vector3f to, float alpha = 0.5f);
+
+    template <typename T>
+    T Clamp(T in, T min, T max)
+    {
+        return std::min(std::max(in, min), max);
+    }
 };
 
 extern CSystem_Math gSystem_Math;

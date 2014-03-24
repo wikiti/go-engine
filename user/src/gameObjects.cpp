@@ -86,19 +86,15 @@ void Camara_main_movimiento(CGameObject* gameObject)
   {
     // Interpolate Y axis to angle "0"
     vector3f initialAngles = gameObject->Transform()->LRotation();
-    float initialAngleY = initialAngles.y;
-    float initialAngleX = initialAngles.x;
-    float finalAngle = 0;
+    vector3f finalAngle(0.f, 0.f, 45.f);
 
-    float current_alpha = (gTime.GetTicks_s() - initial_fixed_rotation_time)/50.f; // 50 -> Arbotrary value
-
-    float currentAngleY = gMath.lerpAngle(initialAngleY, finalAngle, current_alpha);
-    float currentAngleX = gMath.lerpAngle(initialAngleX, finalAngle, current_alpha);
-    gameObject->Transform()->SetAngle(currentAngleX, currentAngleY, 0.f);
+    float current_alpha = (gTime.GetTicks_s() - initial_fixed_rotation_time)/50.f; // 50 -> Arbitrary value
+    gameObject->Transform()->SetAngle(gMath.lerpAngles(initialAngles, finalAngle, current_alpha));
 
     float epsilon = 1.f;
-    if((gMath.abs(finalAngle - initialAngleY) <= epsilon or gMath.abs(finalAngle - initialAngleY) >= 360 - epsilon)
-        and (gMath.abs(finalAngle - initialAngleX) <= epsilon or gMath.abs(finalAngle - initialAngleX) >= 360 - epsilon))
+    if((gMath.abs(finalAngle.x - initialAngles.x) <= epsilon or gMath.abs(finalAngle.x - initialAngles.x) >= 360 - epsilon)
+        and (gMath.abs(finalAngle.y - initialAngles.y) <= epsilon or gMath.abs(finalAngle.y - initialAngles.y) >= 360 - epsilon)
+        and (gMath.abs(finalAngle.z - initialAngles.z) <= epsilon or gMath.abs(finalAngle.z - initialAngles.z) >= 360 - epsilon))
     {
       initial_fixed_rotation_time = 0.f;
       return;

@@ -78,3 +78,8 @@ float CSystem_Math::lerpAngle(float from, float to, float alpha)
 
   return NormalizeAngle(from + ((to - from) * alpha));
 }
+
+vector3f CSystem_Math::lerpAngles(vector3f from, vector3f to, float alpha)
+{
+  return vector3f(lerpAngle(from.x, to.x, alpha), lerpAngle(from.y, to.y, alpha), lerpAngle(from.z, to.z, alpha));
+}
