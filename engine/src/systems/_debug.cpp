@@ -216,6 +216,7 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("go_enable", &CSystem_Debug::Console_command__GO_ENABLE));
   console_commands.insert(pair<string, command_p>("go_component_enable", &CSystem_Debug::Console_command__GO_COMPONENT_ENABLE));
   console_commands.insert(pair<string, command_p>("go_component_set", &CSystem_Debug::Console_command__GO_COMPONENT_SET));
+  console_commands.insert(pair<string, command_p>("go_component_get", &CSystem_Debug::Console_command__GO_COMPONENT_GET));
   console_commands.insert(pair<string, command_p>("go_search", &CSystem_Debug::Console_command__GO_SEARCH));
 
     // Sound
@@ -1512,6 +1513,64 @@ void CSystem_Debug::Console_command__GO_COMPONENT_SET(string arguments)
   getline(ss, data);
 
   c_go->parseDebug(data);
+}
+
+void CSystem_Debug::Console_command__GO_COMPONENT_GET(string arguments)
+{
+  if(arguments == "?")
+  {
+    console_warning_msg("Format is: go_component_get <game_object_name> [component_name]");
+    return;
+  }
+
+  stringstream ss(arguments);
+  string obj_name;
+  ss >> obj_name;
+
+  if(obj_name == "")
+  {
+    console_warning_msg("Format is: go_component_get <game_object_name> [component_name]");
+    return;
+  }
+
+  CGameObject* go = gSystem_GameObject_Manager[obj_name];
+
+  if(!go)
+  {
+    console_error_msg("Could not find game object named \"%s\"", obj_name.c_str());
+    return;
+  }
+
+  string component;
+  ss >> component;
+
+  if(component == "")
+  {
+    for(map<int, CComponent*>::iterator it = go->components.begin(); it != go->components.end(); ++it)
+    {
+      it->second->printDebug();
+      console_warning_msg("");
+    }
+
+    return;
+  }
+
+  int component_i = components::string_to_component(component);
+  if(component_i == components::__not_defined)
+  {
+    console_error_msg("Component type \"%s\" does not exists.", component.c_str());
+    return;
+  }
+
+  CComponent* c_go = go->GetComponent((components::components)component_i);
+
+  if(!c_go)
+  {
+    console_error_msg("Game object \"%s\" does not have the component \"%s\".", obj_name.c_str(), component.c_str());
+    return;
+  }
+
+  c_go->printDebug();
 }
 
 void CSystem_Debug::Console_command__GO_SEARCH(string arguments)

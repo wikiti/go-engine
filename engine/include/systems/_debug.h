@@ -168,6 +168,7 @@ class CSystem_Debug: public CSystem
     void Console_command__GO_ENABLE(string arguments);
     void Console_command__GO_COMPONENT_ENABLE(string arguments);
     void Console_command__GO_COMPONENT_SET(string arguments);
+    void Console_command__GO_COMPONENT_GET(string arguments);
     void Console_command__GO_SEARCH(string arguments);
     //void Console_command__ENABLE_SYSTEM(string arguments);
 

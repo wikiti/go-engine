@@ -30,7 +30,7 @@ bool SetGameObjects_Instance1()
   SetGameObjects_Instance1_Render();
   //SetGameObjects_Instance1_Other_Particles();
   //SetGameObjects_Instance1_Shaders();
-  SetGameObjects_Instance1_RandomStuff();
+  //SetGameObjects_Instance1_RandomStuff();
 
   gDebug.command("run script_scene1_setup", true);
 
@@ -86,7 +86,7 @@ void Camara_main_movimiento(CGameObject* gameObject)
   {
     // Interpolate Y axis to angle "0"
     vector3f initialAngles = gameObject->Transform()->LRotation();
-    vector3f finalAngle(0.f, 0.f, 45.f);
+    vector3f finalAngle(0.f, 0.f, 0.f);
 
     float current_alpha = (gTime.GetTicks_s() - initial_fixed_rotation_time)/50.f; // 50 -> Arbitrary value
     gameObject->Transform()->SetAngle(gMath.lerpAngles(initialAngles, finalAngle, current_alpha));

@@ -7,7 +7,7 @@
 
 //BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Camera);
 
-using namespace viewmode;
+using namespace Viewmode;
 
 CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameObject),
  viewmode(perspective), field_of_view(45.f), near_clip(0.1f), far_clip(200.f), clear(true), target("")
@@ -67,12 +67,19 @@ void CComponent_Camera::ApplyChanges()
 {
   //if(!enabled) return;
 
-  if(viewmode == viewmode::ortho)
+  if(viewmode == Viewmode::ortho)
   {
     //glOrtho(0.f, 1.f, 0.f, 1.f, -1.f, 0.f);
     projMatrix = glm::ortho(0.f, 1.f, 0.f, 1.f, -1.f, 0.f);
   }
-  else if(viewmode == viewmode::perspective)
+  if(viewmode == Viewmode::ortho_screen)
+  {
+    const float r_w = gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH");
+    const float r_h = gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT");
+
+    projMatrix = glm::ortho(0.f, r_w, 0.f, r_h, -1.f, 0.f);
+  }
+  else if(viewmode == Viewmode::perspective)
   {
     //gluPerspective(field_of_view, (GLfloat)viewport.width/(GLfloat)viewport.height, near_clip, far_clip);
     //gluPerspective(field_of_view,
@@ -119,7 +126,7 @@ void CComponent_Camera::SetUp()
   vector3f up = gameObject->Transform()->up();             // Up vector (for "screen rotation")
   vector3f tp(0, 0, 1);                                    // Target point
 
-  if(viewmode == viewmode::ortho) // Añadir rotaciones o algo
+  if(viewmode == Viewmode::ortho or viewmode == Viewmode::ortho_screen) // Añadir rotaciones o algo
     return;
 
   // Solución temporal: usar un pivote anclado al objeto que manipule la cámara como un hijo.

@@ -4,9 +4,9 @@
 #include "_globals.h"
 #include "components/_component.h"
 
-namespace viewmode
+namespace Viewmode
 {
-  enum viewmode_t { perspective = 0, ortho };
+  enum viewmode_t { perspective = 0, ortho, ortho_screen };
 }
 
 class CComponent_Camera: public CComponent
@@ -22,7 +22,7 @@ class CComponent_Camera: public CComponent
   public:
     bool disable_gui;
 
-    viewmode::viewmode_t viewmode;
+    Viewmode::viewmode_t viewmode;
     //viewport_t viewport;
     viewportf_t viewport;
 

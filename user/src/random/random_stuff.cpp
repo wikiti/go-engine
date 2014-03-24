@@ -17,10 +17,9 @@ bool SetGameObjects_Instance1_RandomStuff()
 
   CGameObject* gui_example = gGameObjects.AddGameObject("gui_example");
   gui_example->GUITexture()->texture_name = "textura1";
-  gui_example->GUITexture()->width = gui_example->GUITexture()->height = 0.5f;
+  gui_example->GUITexture()->width = gui_example->GUITexture()->height = 100.f;
   //gui_example->Transform()->scale(2.f, 2.f, 2.f);
-  gui_example->Transform()->position(0.5f, 0.5f, 0.f);
-  gui_example->Transform()->Rotate(0.f, 0.f, 45.f);
+  gui_example->Transform()->position(100.f, 100.f, 0.f);
   gui_example->GUITexture()->pixel_offset_x = 2;
   gui_example->GUITexture()->color.a = 0.5f;
   gui_example->GUITexture()->color.g = gui_example->GUITexture()->color.b = 0.f;
