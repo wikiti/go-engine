@@ -240,7 +240,8 @@ typedef struct vector3f_t
   vector3f_t(): x(0), y(0), z(0) { };
   vector3f_t(float a, float b, float c): x(a), y(b), z(c) { };
   vector3f_t(const vector3f_t& v): x(v.x), y(v.y), z(v.z) { };
-  vector3f_t(glm::vec3& v): x(v.x), y(v.y), z(v.z) { };
+  //vector3f_t(const glm::vec3& v): x(v.x), y(v.y), z(v.z) { };
+  vector3f_t(glm::vec3 v): x(v.x), y(v.y), z(v.z) { };
 
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version)

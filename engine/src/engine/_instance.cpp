@@ -29,6 +29,7 @@ bool CInstance::Init()
   current_time = previous_time = 0;
 
   i_running = true;
+  first_frame = true;
 
   return true;
 }
@@ -62,11 +63,13 @@ string CInstance::OnExecute()
 
   while(i_running)
   {
-    OnEvent();
+    // Disable user input on first iteration
+    if(!first_frame) OnEvent();
     OnLoop();
     OnRender();
 
     CalculateFPS();
+    first_frame = false;
     //cout << "FPS: " << fps() << endl;
   }
 

@@ -19,6 +19,8 @@ class CInstance
     uint frames;
     Uint32 current_time, previous_time;
 
+    bool first_frame;
+
   public:
     CInstance(fboolpointer load_gameObject_function, string resource_file);
     //~CInstance();

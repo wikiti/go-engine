@@ -136,28 +136,36 @@ class CSystem_Math: public CSystem
       if(deg_z >= 360 ) deg_z = deg_z - 360;
     }
 
-    inline void NormalizeAngles(vector3f& angles_deg)
+    inline vector3f NormalizeAngles(const vector3f& angles_deg)
     {
-      if(angles_deg.x < 0)
-        angles_deg.x = 360 + angles_deg.x;
-      if(angles_deg.x >= 360)
-        angles_deg.x = angles_deg.x - 360;
+      vector3f output = angles_deg;
 
-      if(angles_deg.y < 0)
-        angles_deg.y = 360 + angles_deg.y;
-      if(angles_deg.y >= 360)
-        angles_deg.y = angles_deg.y - 360;
+      if(output.x < 0)
+        output.x = 360 + output.x;
+      if(output.x >= 360)
+        output.x = output.x - 360;
 
-      if(angles_deg.z < 0)
-        angles_deg.z = 360 + angles_deg.z;
-      if(angles_deg.z >= 360)
-        angles_deg.z = angles_deg.z - 360;
+      if(output.y < 0)
+        output.y = 360 + output.y;
+      if(output.y >= 360)
+        output.y = output.y - 360;
+
+      if(output.z < 0)
+        output.z = 360 + output.z;
+      if(output.z >= 360)
+        output.z = output.z - 360;
+
+      return output;
     }
 
-    inline void NormalizeAngle(GLfloat &deg)
+    inline float NormalizeAngle(const GLfloat &deg)
     {
-      if(deg < 0 ) deg = 360 + deg;
-      if(deg >= 360 ) deg = deg - 360;
+      float output = deg;
+
+      if(output < 0 ) output = 360 + output;
+      if(output >= 360 ) output = output - 360;
+
+      return output;
     }
 
     float rad_to_deg(float rad)
@@ -246,12 +254,10 @@ class CSystem_Math: public CSystem
 
   public:
 
-    void normalize(vector3f& v)
+    vector3f normalize(vector3f& v)
     {
       float len = v.length();
-      v.x /= len;
-      v.y /= len;
-      v.z /= len;
+      return vector3f(v.x/len, v.y/len, v.z/len);
     }
 
     vector3f_t cross_product(vector3f v1, vector3f_t v2)
@@ -285,7 +291,7 @@ class CSystem_Math: public CSystem
 
       float rotAngle = (float)acos(dot);
       vector3f rotAxis = forward % forwardVector;
-      normalize(rotAxis);
+      rotAxis = normalize(rotAxis);
 
       return glm::angleAxis(rotAngle, rotAxis.to_glm());
     }
@@ -311,7 +317,7 @@ class CSystem_Math: public CSystem
     inline vector3f random_vector(vector3f direction, GLfloat angle_degrees)
     {
       // http://stackoverflow.com/questions/2659257/perturb-vector-by-some-angle
-      NormalizeAngle(angle_degrees);
+      angle_degrees = NormalizeAngle(angle_degrees);
 
       vector3f rand_vector = random_vector();
       vector3f cross_vector = (direction % rand_vector).normalize();
@@ -343,6 +349,10 @@ class CSystem_Math: public CSystem
       return vector3f(origin.x + random()*dimensions.x, origin.y + random()*dimensions.y, origin.z + random()*dimensions.z);
     }
 
+    // Spherical linear interpolation
+    vector3f slerp(vector3f from, vector3f to, float alpha = 0.5f);
+
+    float lerpAngle(float from, float to, float alpha = 0.5f);
 };
 
 extern CSystem_Math gSystem_Math;

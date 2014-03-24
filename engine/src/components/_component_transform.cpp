@@ -275,17 +275,24 @@ void CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)
 
 void CComponent_Transform::SetAngle(vector3f v)
 {
-  SetAngle(v.x, v.y, v.z);
+  /* SetAngle(v.x, v.y, v.z) */
+  if(!enabled) return;
+
+  v = gSystem_Math.NormalizeAngles(v);
+  v = gSystem_Math.deg_to_rad(v);
+  angle = glm::quat(v.to_glm());
 }
 
 void CComponent_Transform::SetAngle(GLfloat x, GLfloat y, GLfloat z)
 {
-  if(!enabled) return;
+  SetAngle(vector3f(x, y, z));
+
+  /*if(!enabled) return;
 
   gMath.NormalizeAngles(x, y, z);
 
   glm::vec3 EulerAngles(_DEG_TO_RAD(x), _DEG_TO_RAD(y), _DEG_TO_RAD(z));
-  angle = glm::quat(EulerAngles);
+  angle = glm::quat(EulerAngles);*/
 
 }
 
@@ -440,7 +447,7 @@ void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward
 
   float rotAngle = (float)acos(dot);
   vector3f rotAxis = forward % forwardVector;
-  gMath.normalize(rotAxis);
+  rotAxis = gMath.normalize(rotAxis);
 
   angle = (glm::angleAxis(rotAngle, rotAxis.to_glm()));
 
@@ -544,21 +551,21 @@ vector3f CComponent_Transform::forward()
 GLfloat CComponent_Transform::pitch()
 {
   float pitch = _RAD_TO_DEG(atan2(2*angle.x*angle.w - 2*angle.y*angle.z, 1 - 2*angle.x*angle.x - 2*angle.z*angle.z));
-  gMath.NormalizeAngle(pitch);
+  pitch = gMath.NormalizeAngle(pitch);
   return  pitch;
 }
 
 GLfloat CComponent_Transform::yaw()
 {
   float yaw = _RAD_TO_DEG(atan2(2*angle.y*angle.w - 2*angle.x*angle.z, 1 - 2*angle.y*angle.y - 2*angle.z*angle.z));
-  gMath.NormalizeAngle(yaw);
+  yaw = gMath.NormalizeAngle(yaw);
   return yaw;
 }
 
 GLfloat CComponent_Transform::roll()
 {
   float roll = _RAD_TO_DEG(asin(2*angle.x*angle.y + 2*angle.z*angle.w));
-  gMath.NormalizeAngle(roll);
+  roll = gMath.NormalizeAngle(roll);
   return roll;
 }
 
@@ -654,7 +661,7 @@ void CComponent_Transform::parseDebug(string command)
   }
   else if(attrib == "angle")
   {
-    gSystem_Math.NormalizeAngles(data);
+    data = gSystem_Math.NormalizeAngles(data);
     vector3f rads = gSystem_Math.deg_to_rad(data);
     angle = glm::quat(rads.to_glm());
     //gSystem_Math.NormalizeAngles(data);

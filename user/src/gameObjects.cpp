@@ -80,25 +80,36 @@ bool SetGameObjects_Instance2()
 
 void Camara_main_movimiento(CGameObject* gameObject)
 {
-  static bool train_move = false;
+  static float initial_fixed_rotation_time = 0.f;
 
-  if(train_move)
+  if(initial_fixed_rotation_time != 0.f)
   {
-    vector3f finalPos = vector3f(0, 0, 0);
-    if(gameObject->Transform()->position == finalPos)
+    // Interpolate Y axis to angle "0"
+    vector3f initialAngles = gameObject->Transform()->LRotation();
+    float initialAngleY = initialAngles.y;
+    float initialAngleX = initialAngles.x;
+    float finalAngle = 0;
+
+    float current_alpha = (gTime.GetTicks_s() - initial_fixed_rotation_time)/50.f; // 50 -> Arbotrary value
+
+    float currentAngleY = gMath.lerpAngle(initialAngleY, finalAngle, current_alpha);
+    float currentAngleX = gMath.lerpAngle(initialAngleX, finalAngle, current_alpha);
+    gameObject->Transform()->SetAngle(currentAngleX, currentAngleY, 0.f);
+
+    float epsilon = 1.f;
+    if((gMath.abs(finalAngle - initialAngleY) <= epsilon or gMath.abs(finalAngle - initialAngleY) >= 360 - epsilon)
+        and (gMath.abs(finalAngle - initialAngleX) <= epsilon or gMath.abs(finalAngle - initialAngleX) >= 360 - epsilon))
     {
-      train_move = false;
+      initial_fixed_rotation_time = 0.f;
       return;
     }
 
-    gameObject->Transform()->LookAt(finalPos);
-
-    vector3f rotation = gameObject->Transform()->LRotation();
-    gameObject->Transform()->SetAngle(rotation.x, rotation.y, 0.f);
-
-    gameObject->Transform()->position =  gameObject->Transform()->position + (finalPos - gameObject->Transform()->position) * 0.6f * gTime.deltaTime_s();
-
     return;
+  }
+
+  if (gUserInput.Keyboard("T"))
+  {
+    initial_fixed_rotation_time = gTime.GetTicks_s();
   }
 
 
@@ -115,10 +126,6 @@ void Camara_main_movimiento(CGameObject* gameObject)
   if (gUserInput.Keyboard("Q"))
   {
     gameObject->Transform()->Translate(0.f, boost * 3.f * gTime.deltaTime_s(), 0.f);
-  }
-  if (gUserInput.Keyboard("T"))
-  {
-    train_move = true;
   }
 
   // Viewport
@@ -147,10 +154,10 @@ void Camara_main_movimiento(CGameObject* gameObject)
       gameObject->Camera()->viewport.width = 1.f;
   }
 
-  if (gUserInput.Keyboard("T"))
+  /*if (gUserInput.Keyboard("T"))
   {
     gameObject->Transform()->LookAt(vector3f(0.f, 0.f, 0.f));
-  }
+  }*/
 
   Camara_mouse_movimiento(gameObject);
   Camara_Joystick_movimiento(gameObject);
