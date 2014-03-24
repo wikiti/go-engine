@@ -125,7 +125,7 @@ class CSystem_UserInput: public CSystem
 
         void OnLoop();
         void OnEvent();
-        void OnKeyEvent();
+        void OnInput();
 
       public:
         int x, y;
@@ -161,7 +161,7 @@ class CSystem_UserInput: public CSystem
         void Close();
 
         //void OnEvent();
-        void OnKeyEvent();
+        void OnInput();
         //void OnLoop(); // Debería usarse para comprobar si un joystick ha sido desconectado :L <- medianamente necesario
 
       public:

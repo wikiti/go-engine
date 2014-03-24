@@ -291,9 +291,12 @@ void CSystem_UserInput::OnInput()
     jump.state = key_unpressed;
 
 
-  mouse.OnKeyEvent();
+  mouse.OnInput();
+
+  // Comprobar estado antes de actualizar, por seguridad
+  //CheckJoysticks();
   for(vector<CJoystick>::iterator it = joysticks.begin(); it != joysticks.end(); ++it)
-      (*it).OnKeyEvent();
+    (*it).OnInput();
 }
 
 void CSystem_UserInput::OnEvent()
@@ -342,6 +345,9 @@ void CSystem_UserInput::CheckJoysticks()
     {
       rebuild_joysticks = true;
       rebuild_joysticks_timeout = gSystem_Time.GetTicks();
+
+      // Clear joysticks to avoid errors.
+      joysticks.clear();
 
       return;
     }
@@ -475,7 +481,7 @@ void CSystem_UserInput::CMouse::OnEvent()
   }
 }
 
-void CSystem_UserInput::CMouse::OnKeyEvent()
+void CSystem_UserInput::CMouse::OnInput()
 {
   if(!mouse1_key)
   {
@@ -572,6 +578,7 @@ void CSystem_UserInput::CJoystick::Close()
   balls.clear();
   povs.clear();
 
+  SDL_JoystickUpdate();
   if(SDL_JoystickGetAttached(joystick))
     SDL_JoystickClose(joystick);
 }
@@ -581,22 +588,31 @@ void CSystem_UserInput::CJoystick::Close()
 
 }*/
 
-void CSystem_UserInput::CJoystick::OnKeyEvent()
+// ->NOTA Al parecer, la estructura de joysticks de SDL2 es un poco inestable, por lo que desconectar un mando en medio de la ejecución puede hacer que la aplicación crashee. Tal vez lo arreglen con el tiempo...
+void CSystem_UserInput::CJoystick::OnInput()
 {
+  // Evitar problemas, o algo
+  //SDL_JoystickUpdate();
+
+  // Suponemos operaciones atómicas, por lo que solo comprobamos al principio.
+  if(SDL_JoystickGetAttached(joystick) == SDL_FALSE)
+    return;
+
   for(vector<CAxis>::iterator it = axes.begin(); it != axes.end(); ++it)
-    (*it).value = SDL_JoystickGetAxis(joystick, (it - axes.begin()))/32768.f;
+    if(SDL_JoystickGetAttached(joystick) == SDL_TRUE)
+      (*it).value = SDL_JoystickGetAxis(joystick, (it - axes.begin()))/32768.f;
 
   for(vector<Uint8>::iterator it = povs.begin(); it != povs.end(); ++it)
-    (*it) = SDL_JoystickGetHat(joystick, it - povs.begin());
+    if(SDL_JoystickGetAttached(joystick) == SDL_TRUE)
+      (*it) = SDL_JoystickGetHat(joystick, it - povs.begin());
 
   for(vector<CBall>::iterator it = balls.begin(); it != balls.end(); ++it)
-    if(SDL_JoystickGetBall(joystick, it - balls.begin(), &(*it).dx, &(*it).dy) < 0)
+    if(SDL_JoystickGetAttached(joystick) == SDL_TRUE and SDL_JoystickGetBall(joystick, it - balls.begin(), &(*it).dx, &(*it).dy) < 0)
       gSystem_Debug.console_error_msg("Error reading Ball%d from joystick %s: %s", it - balls.begin(), joystick_name.c_str(), SDL_GetError());
 
   for(vector<CJoyButton>::iterator it = buttons.begin(); it != buttons.end(); ++it)
-  {
-    (*it).state = static_cast<button_t>((int)SDL_JoystickGetButton(joystick, it - buttons.begin())); // 1 -> pressed, 0 -> unpressed
-  }
+    if(SDL_JoystickGetAttached(joystick) == SDL_TRUE)
+      (*it).state = static_cast<button_t>((int)SDL_JoystickGetButton(joystick, it - buttons.begin())); // 1 -> pressed, 0 -> unpressed
 }
 
 /*void CSystem_UserInput::CJoystick::OnLoop()

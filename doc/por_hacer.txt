@@ -1,4 +1,8 @@
 - Añadir un sistema para que el usuario pueda crear "prefabs" a partir de una determinada jerarquía de objetos.
+  - Tal vez un sistema gestor de prefabs haga más sencillo el trabajo de manipularlos (ya que, principalmente, no tienen que ver con ningún otro sistema (manager, render, etc).
+    - Definitivamenete, parece la mejor opción.
+  - Quizás complique un poco, ya que habría que clonar las estructuras de "componentes", entre otros. Mientras no haya punteros en los componentes, no debería dar muchos problemas.
+    - Nota: los punteros a funciones no cuentan, ya que, durante la ejecución, son estáticos.
 - Añadir un comando por consola para cambiar de estancia.
 - Añadir la posibilidad de renderizar solo líneas (glPolygonMode).
 x- Añadir textura "__BLACK" y textura "__WHITE".
@@ -11,13 +15,13 @@ x- Hay que mover los archivos log.txt y user.cfg a otras carpetas, para que qued
   - ¿Problema? Vectores auxiliares para guardar la posición de todas las partículas. ¿Cuándo se actualiza? ¿De manera dinámica? Eso es muy chapuza, ¿no?
 
 - Estaría bien probar un VBO static para los CResource_Mesh, ya que muchos de este tipo podrían bloquear el sistema.
-- Hacer una especie de "interfaz" para cada componente para poder modificar atributos (se le pasa un string a una funcion "ParseInput" o algo y se analiza).
-- Cambiar nombres de las funciones "OnEvent" por algo más intuitivo, como "OnUserInput" o "OnInput".
+-/- Hacer una especie de "interfaz" para cada componente para poder modificar atributos (se le pasa un string a una funcion "ParseInput" o algo y se analiza).
+x- Cambiar nombres de las funciones "OnEvent" por algo más intuitivo, como "OnUserInput" o "OnInput".
 - Añadir un función al sistema Debug para prestar una opción de autocompletado de comandos (sencillo, comandos almacenados en un map).
 x- Crear skybox
 x- Recompilar glew
 - Añadir threads o hilos distintos para el render y para la lógica.
--/- Definir correctamente el estado "enabled" o "disabled" para los objetos, los componentes y los sistemas.
+x- Definir correctamente el estado "enabled" o "disabled" para los objetos, los componentes y los sistemas.
 x- Posicion del viewport en función del tamaño de pantalla (por ejemplo, 0-100 en vez de 0-__RESOLUTION_WIDTH para el ancho).
 x- Billboards para sistema de particulas:
 
