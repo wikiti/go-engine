@@ -55,7 +55,7 @@ vector3f CSystem_Math::slerp(vector3f from, vector3f to, float alpha)
   from = this->deg_to_rad(from);
   to = this->deg_to_rad(to);
 
-  vector3f output(glm::mix(from.to_glm(), to.to_glm(), alpha));
+  vector3f output(glm::mix(((vector3f)from).to_glm(), ((vector3f)to).to_glm(), alpha));
   output = this->rad_to_deg(output);
   output = this->NormalizeAngles(output);
 
@@ -63,10 +63,10 @@ vector3f CSystem_Math::slerp(vector3f from, vector3f to, float alpha)
 }
 
 // http://stackoverflow.com/questions/2708476/rotation-interpolation
-float CSystem_Math::lerpAngle(float from, float to, float alpha)
+float CSystem_Math::lerpAngle(float from, float to, float t)
 {
-  if(alpha < 0.f or alpha > 1.f)
-    alpha = 1.f;
+  if(t < 0.f or t > 1.f)
+    t = 1.f;
 
   if(abs(to - from) > 180)
   {
@@ -76,10 +76,20 @@ float CSystem_Math::lerpAngle(float from, float to, float alpha)
       to += 360;
   }
 
-  return NormalizeAngle(from + ((to - from) * alpha));
+  return NormalizeAngle(from + ((to - from) * t));
 }
 
-vector3f CSystem_Math::lerpAngles(vector3f from, vector3f to, float alpha)
+vector3f CSystem_Math::lerpAngles(vector3f from, vector3f to, float t)
 {
-  return vector3f(lerpAngle(from.x, to.x, alpha), lerpAngle(from.y, to.y, alpha), lerpAngle(from.z, to.z, alpha));
+  return vector3f(lerpAngle(from.x, to.x, t), lerpAngle(from.y, to.y, t), lerpAngle(from.z, to.z, t));
+}
+
+float CSystem_Math::lerp(float from, float to, float t)
+{
+  return from + (to - from)*t;
+}
+
+vector3f CSystem_Math::lerp(vector3f from, vector3f to, float t)
+{
+  return from + (to - from)*t;
 }

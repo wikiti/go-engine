@@ -349,13 +349,24 @@ class CSystem_Math: public CSystem
       return vector3f(origin.x + random()*dimensions.x, origin.y + random()*dimensions.y, origin.z + random()*dimensions.z);
     }
 
+    // Random point - World
+    // Range: [-RAND_MAX/2, RAND_MAX/2]
+    vector3f random_point()
+    {
+      return vector3f(rand() - RAND_MAX/2, rand() - RAND_MAX/2, rand() - RAND_MAX/2);
+    }
+
     // Spherical linear interpolation
-    vector3f slerp(vector3f from, vector3f to, float alpha = 0.5f);
+    vector3f slerp(vector3f from, vector3f to, float t = 0.5f);
 
-    float lerpAngle(float from, float to, float alpha = 0.5f);
+    // Linear interpolations
+    float lerpAngle(float from, float to, float t= 0.5f);
+    vector3f lerpAngles(vector3f from, vector3f to, float t = 0.5f);
 
-    vector3f lerpAngles(vector3f from, vector3f to, float alpha = 0.5f);
+    float lerp(float from, float to, float t = 0.5f);
+    vector3f lerp(vector3f from, vector3f to, float t = 0.5f);
 
+    // Clamper
     template <typename T>
     T Clamp(T in, T min, T max)
     {

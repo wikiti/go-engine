@@ -80,7 +80,9 @@ bool SetGameObjects_Instance2()
 
 void Camara_main_movimiento(CGameObject* gameObject)
 {
+  // lerp
   static float initial_fixed_rotation_time = 0.f;
+  static bool train_move = false;
 
   if(initial_fixed_rotation_time != 0.f)
   {
@@ -103,9 +105,27 @@ void Camara_main_movimiento(CGameObject* gameObject)
     return;
   }
 
+  if(train_move)
+  {
+    vector3f initialPos = gameObject->Transform()->Position();
+    vector3f finalPos(0.f, 0.f, 0.f);
+
+    gameObject->Transform()->SetPosition(gMath.lerp(initialPos, finalPos, 0.05f));
+
+    if(initialPos == finalPos)
+      train_move = false;
+
+    return;
+  }
+
   if (gUserInput.Keyboard("T"))
   {
     initial_fixed_rotation_time = gTime.GetTicks_s();
+  }
+
+  if (gUserInput.Keyboard("Y"))
+  {
+    train_move = true;
   }
 
 
