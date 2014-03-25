@@ -40,6 +40,9 @@ class CComponent_Audio_Source: public CComponent
   private:
     static int GetID() { return Components::audio_source; }
 
+    void parseDebug(string command);
+    void printDebug();
+
   public:
     CComponent_Audio_Source(){};
     CComponent_Audio_Source(CGameObject* gameObject);

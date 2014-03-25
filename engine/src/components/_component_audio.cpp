@@ -36,8 +36,8 @@ CComponent_Audio_Source::~CComponent_Audio_Source()
 void CComponent_Audio_Source::OnLoop()
 {
   if(!sound || !enabled || !source_attached) return;
-  if(mute && playing)
-    alSourceStop(source_attached);
+  //if(mute && playing)
+    //alSourceStop(source_attached);
 
   if(playing && !paused)
     Setup();
@@ -82,7 +82,7 @@ void CComponent_Audio_Source::Setup()
   else
     gVolume = gSystem_Data_Storage.GetFloat("__SOUND_VOLUME");
 
-  alSourcef(source_attached, AL_GAIN, volume*gVolume);
+  alSourcef(source_attached, AL_GAIN, (mute)? 0.f : volume*gVolume);
 
   alSourcef(source_attached, AL_MAX_DISTANCE, max_distance);
   alSourcef(source_attached, AL_REFERENCE_DISTANCE, min_distance);
@@ -92,7 +92,7 @@ void CComponent_Audio_Source::Setup()
 
 void CComponent_Audio_Source::Play()
 {
-  if(!enabled || mute) return;
+  if(!enabled/* || mute*/) return;
 
   if(!sound)
   {
@@ -239,4 +239,89 @@ void CComponent_Audio_Source::UnBind()
 
     source_attached = 0;
   }
+}
+
+void CComponent_Audio_Source::parseDebug(string command)
+{
+  stringstream ss(command);
+  string attrib;
+  ss >> attrib;
+
+  if(attrib == "help" or attrib == "?" or attrib == "")
+  {
+    printDebug();
+
+    return;
+  }
+
+  if(attrib == "mute" or attrib == "music" or attrib == "loop" or attrib == "start_playing"  or attrib == "affected_by_time"  or attrib == "everywhere")
+  {
+    bool data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
+      return;
+    }
+
+    if(attrib == "mute")
+      mute = data;
+    else if(attrib == "music")
+      music = data;
+    else if(attrib == "loop")
+      loop = data;
+    else if(attrib == "start_playing")
+      start_playing = data;
+    else if(attrib == "affected_by_time")
+      affected_by_time = data;
+    else if(attrib == "everywhere")
+      everywhere = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), (int)data );
+  }
+  else if(attrib == "pitch" or attrib == "volume" or attrib == "max_distance" or attrib == "min_distance")
+  {
+    float data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
+      return;
+    }
+
+    if(attrib == "pitch")
+      pitch = data;
+    else if(attrib == "volume")
+      volume = data;
+    else if(attrib == "max_distance")
+      max_distance = data;
+    else if(attrib == "min_distance")
+      min_distance = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%f\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data );
+  }
+  else
+  {
+    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str() );
+  }
+
+}
+
+void CComponent_Audio_Source::printDebug()
+{
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", Components::component_to_string( (Components::components_t)GetID()));
+  gSystem_Debug.console_warning_msg("Attribute            Type          Value");
+  gSystem_Debug.console_warning_msg("-----------------------------------------");
+  gSystem_Debug.console_warning_msg("mute                 bool          %d", (int)mute);
+  gSystem_Debug.console_warning_msg("music                bool          %d", (int)music);
+  gSystem_Debug.console_warning_msg("loop                 bool          %d", (int)loop);
+  gSystem_Debug.console_warning_msg("start_playing        bool          %d", (int)start_playing);
+  gSystem_Debug.console_warning_msg("affected_by_time     bool          %d", (int)affected_by_time);
+  gSystem_Debug.console_warning_msg("everywhere           bool          %d", (int)everywhere);
+  gSystem_Debug.console_warning_msg("pitch                float         %f", pitch);
+  gSystem_Debug.console_warning_msg("volume               float         %f", volume);
+  gSystem_Debug.console_warning_msg("max_distance         float         %f", max_distance);
+  gSystem_Debug.console_warning_msg("min_distance         float         %f", min_distance);
 }

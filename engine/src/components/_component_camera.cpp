@@ -183,20 +183,6 @@ void CComponent_Camera::parseDebug(string command)
     return;
   }
 
-  /*
-    Viewmode::viewmode_t viewmode;
-    viewportf_t viewport;
-
-    GLfloat field_of_view;
-    GLfloat near_clip;
-    GLfloat far_clip;
-
-    colorf_t background_color;
-
-    string skybox_texture;
-    string target;
-   */
-
   if(attrib == "disable_gui" or attrib == "clear")
   {
     bool data;
@@ -273,21 +259,6 @@ void CComponent_Camera::parseDebug(string command)
     ApplyChanges();
 
     gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%f\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data );
-  }
-  else if(attrib == "background_color")
-  {
-    colorf_t data;
-    ss >> data;
-
-    if(ss.fail())
-    {
-      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
-      return;
-    }
-
-    background_color = data;
-
-    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );
   }
   else if(attrib == "background_color")
   {
