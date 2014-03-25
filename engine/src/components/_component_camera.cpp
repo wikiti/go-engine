@@ -9,6 +9,25 @@
 
 using namespace Viewmode;
 
+const char* Viewmode::viewmode_s[] = {"perspective", "ortho", "ortho_screen"};
+
+const char* Viewmode::viewmode_to_string(viewmode_t c)
+{
+  if(c < 0 or c >= __viewmode_not_defined)
+    c = __viewmode_not_defined;
+
+  return viewmode_s[c];
+}
+
+int Viewmode::string_to_viewmode(const string& c)
+{
+  for(uint i = 0; i < Viewmode::__viewmode_not_defined; i++)
+    if(c == viewmode_s[i])
+      return i;
+
+  return __viewmode_not_defined;
+}
+
 CComponent_Camera::CComponent_Camera(CGameObject* gameObject): CComponent(gameObject),
  viewmode(perspective), field_of_view(45.f), near_clip(0.1f), far_clip(200.f), clear(true), target("")
 {
@@ -149,4 +168,74 @@ void CComponent_Camera::SetUp()
     //up.x += 0.05f;
 
   modelViewMatrix = glm::lookAt(p.to_glm(), tp.to_glm(), up.to_glm());
+}
+
+void CComponent_Camera::parseDebug(string command)
+{
+  stringstream ss(command);
+  string attrib;
+  ss >> attrib;
+
+  if(attrib == "help" or attrib == "?" or attrib == "")
+  {
+    printDebug();
+
+    return;
+  }
+
+  /*
+    Viewmode::viewmode_t viewmode;
+    viewportf_t viewport;
+
+    GLfloat field_of_view;
+    GLfloat near_clip;
+    GLfloat far_clip;
+
+    colorf_t background_color;
+
+    string skybox_texture;
+    string target;
+   */
+
+  if(attrib == "disable_gui" or attrib == "clear")
+  {
+    bool data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()) );
+      return;
+    }
+
+    if(attrib == "disable_gui")
+      disable_gui = data; // ¿?
+    else if(attrib == "clear")
+      clear = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str(), (int)data );
+  }
+  // ...
+  else
+  {
+    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str() );
+  }
+
+}
+
+void CComponent_Camera::printDebug()
+{
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", Components::component_to_string( (Components::components)GetID()));
+  gSystem_Debug.console_warning_msg("Attribute             Type          Value");
+  gSystem_Debug.console_warning_msg("-----------------------------------------");
+  gSystem_Debug.console_warning_msg("disable_gui           bool          %d", (int)disable_gui);
+  gSystem_Debug.console_warning_msg("clear                 bool          %d", (int)clear);
+  gSystem_Debug.console_warning_msg("viewport              viewportf_t   %s", viewport.str().c_str());
+  gSystem_Debug.console_warning_msg("viewmode              viewmode_t    %s", viewmode_to_string(viewmode));
+  gSystem_Debug.console_warning_msg("field_of_view         float         %f", field_of_view);
+  gSystem_Debug.console_warning_msg("near_clip             float         %f", near_clip);
+  gSystem_Debug.console_warning_msg("far_clip              float         %f", far_clip);
+  gSystem_Debug.console_warning_msg("background_color      colorf_t      %s", background_color.str().c_str());
+  gSystem_Debug.console_warning_msg("skybox_texture        string        %s", skybox_texture.c_str());
+  gSystem_Debug.console_warning_msg("target                string        %s", skybox_texture.c_str());
 }

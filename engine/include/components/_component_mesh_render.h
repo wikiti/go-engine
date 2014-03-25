@@ -21,7 +21,7 @@ class CComponent_Mesh_Render: public CComponent
     // Modo difuso, etc etc
 
   private:
-    static int GetID() { return components::mesh_render; }
+    static int GetID() { return Components::mesh_render; }
 
     void parseDebug(string command);
     void printDebug();

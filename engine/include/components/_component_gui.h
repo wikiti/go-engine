@@ -22,7 +22,7 @@ class CComponent_GUI_Texture: public CComponent
     static GLuint m_GUITextureVBOTexCoords;
     static GLuint m_GUITextureVAO;
 
-    static int GetID() { return components::gui_texture; }
+    static int GetID() { return Components::gui_texture; }
     static bool InitRenderVBO();
     static void CloseRenderVBO();
 

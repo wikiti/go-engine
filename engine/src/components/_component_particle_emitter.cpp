@@ -519,7 +519,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
 
     if(ss.fail())
     {
-      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()) );
       return;
     }
 
@@ -568,7 +568,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
     else if(attrib == "start_min_base_radius")
       start_min_base_radius = data;
 
-    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%f\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data );
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%f\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str(), data );
   }
   else if(attrib == "stop" or attrib == "freeze")
   {
@@ -577,7 +577,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
 
     if(ss.fail())
     {
-      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()) );
       return;
     }
 
@@ -586,7 +586,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
     else if(attrib == "freeze")
       freeze = data;
 
-    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), (int)data );
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str(), (int)data );
   }
   else if(attrib == "direction" or attrib == "gravity")
   {
@@ -595,7 +595,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
 
     if(ss.fail())
     {
-      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()) );
       return;
     }
 
@@ -604,7 +604,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
     else if(attrib == "gravity")
       gravity = data;
 
-    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.str().c_str() );
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str(), data.str().c_str() );
   }
   else if(attrib == "max_particles")
   {
@@ -612,7 +612,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
     ss >> data;
     if(ss.fail() or data < 0)
     {
-      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()) );
       return;
     }
   }
@@ -623,7 +623,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
 
     material_name = data;
 
-    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.c_str() );
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str(), data.c_str() );
   }
   /*
    *     gSystem_Debug.console_warning_msg("start_[max|min]_color          colorf_t      %s/%s", start_max_color.str().c_str(), start_min_color.str().c_str());
@@ -637,7 +637,7 @@ void CComponent_Particle_Emitter::parseDebug(string command)
 
     if(ss.fail())
     {
-      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()) );
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()) );
       return;
     }
 
@@ -652,18 +652,18 @@ void CComponent_Particle_Emitter::parseDebug(string command)
     else if(attrib == "color_adder")
       color_adder = data;
 
-    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str(), data.str().c_str() );
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str(), data.str().c_str() );
   }
   else
   {
-    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), components::component_to_string( (components::components)GetID()), attrib.c_str() );
+    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str() );
   }
 
 }
 
 void CComponent_Particle_Emitter::printDebug()
 {
-  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", components::component_to_string( (components::components)GetID()));
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", Components::component_to_string( (Components::components)GetID()));
   gSystem_Debug.console_warning_msg("Attribute             Type                   Value");
   gSystem_Debug.console_warning_msg("--------------------------------------------------");
   gSystem_Debug.console_warning_msg("max_particles                  unsigned int  %d", max_particles);

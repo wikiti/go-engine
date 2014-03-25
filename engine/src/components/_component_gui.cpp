@@ -198,7 +198,7 @@ void CComponent_GUI_Texture::parseDebug(string command)
       gSystem_Debug.console_error_msg(
           "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
           gameObject->GetName().c_str(),
-          components::component_to_string((components::components) GetID()));
+          Components::component_to_string((Components::components) GetID()));
 
       return;
     }
@@ -207,7 +207,7 @@ void CComponent_GUI_Texture::parseDebug(string command)
 
     gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".",
         gameObject->GetName().c_str(),
-        components::component_to_string((components::components) GetID()), attrib.c_str(),
+        Components::component_to_string((Components::components) GetID()), attrib.c_str(),
         data.c_str());
   }
   else if(attrib == "pixel_offset_x" or attrib == "pixel_offset_y")
@@ -220,7 +220,7 @@ void CComponent_GUI_Texture::parseDebug(string command)
       gSystem_Debug.console_error_msg(
           "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
           gameObject->GetName().c_str(),
-          components::component_to_string((components::components) GetID()));
+          Components::component_to_string((Components::components) GetID()));
 
       return;
     }
@@ -232,7 +232,7 @@ void CComponent_GUI_Texture::parseDebug(string command)
 
     gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".",
         gameObject->GetName().c_str(),
-        components::component_to_string((components::components) GetID()), attrib.c_str(),
+        Components::component_to_string((Components::components) GetID()), attrib.c_str(),
         data);
   }
   else if(attrib == "width" or attrib == "height")
@@ -245,7 +245,7 @@ void CComponent_GUI_Texture::parseDebug(string command)
       gSystem_Debug.console_error_msg(
           "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
           gameObject->GetName().c_str(),
-          components::component_to_string((components::components) GetID()));
+          Components::component_to_string((Components::components) GetID()));
 
       return;
     }
@@ -257,7 +257,7 @@ void CComponent_GUI_Texture::parseDebug(string command)
 
     gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%f\".",
         gameObject->GetName().c_str(),
-        components::component_to_string((components::components) GetID()), attrib.c_str(),
+        Components::component_to_string((Components::components) GetID()), attrib.c_str(),
         data);
   }
   else if(attrib == "color")
@@ -270,7 +270,7 @@ void CComponent_GUI_Texture::parseDebug(string command)
       gSystem_Debug.console_error_msg(
           "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
           gameObject->GetName().c_str(),
-          components::component_to_string((components::components) GetID()));
+          Components::component_to_string((Components::components) GetID()));
 
       return;
     }
@@ -279,21 +279,21 @@ void CComponent_GUI_Texture::parseDebug(string command)
 
     gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".",
         gameObject->GetName().c_str(),
-        components::component_to_string((components::components) GetID()), attrib.c_str(),
+        Components::component_to_string((Components::components) GetID()), attrib.c_str(),
         data.str().c_str());
   }
   else
   {
     gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".",
         gameObject->GetName().c_str(),
-        components::component_to_string((components::components) GetID()), attrib.c_str());
+        Components::component_to_string((Components::components) GetID()), attrib.c_str());
   }
 }
 
 void CComponent_GUI_Texture::printDebug()
 {
   gSystem_Debug.console_warning_msg("Component %s uses the following attributes:",
-      components::component_to_string((components::components) GetID()));
+      Components::component_to_string((Components::components) GetID()));
   gSystem_Debug.console_warning_msg("Attribute      Type                Value");
   gSystem_Debug.console_warning_msg("----------------------------------------");
   gSystem_Debug.console_warning_msg("texture_name        string         %s", texture_name.c_str());

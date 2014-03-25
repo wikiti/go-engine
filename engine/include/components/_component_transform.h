@@ -11,8 +11,8 @@ class CComponent_Transform: public CComponent
   friend class CSystem_Render;
   friend class CSystem_Debug;
 
-  friend const char* components::component_to_string(components c);
-  friend int components::string_to_component(const string& c);
+  friend const char* Components::component_to_string(components c);
+  friend int Components::string_to_component(const string& c);
 
   public:
     vector3f position, scale;
@@ -26,7 +26,7 @@ class CComponent_Transform: public CComponent
     static GLuint m_TransformVBOColors;
     static GLuint m_TransformVAO;
 
-    static int GetID() { return components::transform; }
+    static int GetID() { return Components::transform; }
 
     void parseDebug(string command);
     void printDebug();

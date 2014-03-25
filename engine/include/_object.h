@@ -217,7 +217,7 @@ class CGameObject
     template <class Type>
     Type* GetComponent();
 
-    CComponent* GetComponent(components::components c)
+    CComponent* GetComponent(Components::components c)
     {
       if(components.find(c) != components.end())
         return components[c];
@@ -253,47 +253,47 @@ class CGameObject
     inline CComponent_Transform* Transform()
     {
       // Siempre existe un componente Transform
-      return (CComponent_Transform*)components[components::transform];
+      return (CComponent_Transform*)components[Components::transform];
     }
 
     inline CComponent_Camera* Camera()
     {
-      if(components.find(components::camera) == components.end())
-        components.insert(pair<int, CComponent*>(components::camera, new CComponent_Camera(this)));
+      if(components.find(Components::camera) == components.end())
+        components.insert(pair<int, CComponent*>(Components::camera, new CComponent_Camera(this)));
 
-      return (CComponent_Camera*)components[components::camera];
+      return (CComponent_Camera*)components[Components::camera];
     }
 
     inline CComponent_Mesh_Render* MeshRender()
     {
-      if(components.find(components::mesh_render) == components.end())
-        components.insert(pair<int, CComponent*>(components::mesh_render, new CComponent_Mesh_Render(this)));
+      if(components.find(Components::mesh_render) == components.end())
+        components.insert(pair<int, CComponent*>(Components::mesh_render, new CComponent_Mesh_Render(this)));
 
-      return (CComponent_Mesh_Render*)components[components::mesh_render];
+      return (CComponent_Mesh_Render*)components[Components::mesh_render];
     }
 
     inline CComponent_Particle_Emitter* ParticleEmitter()
     {
-      if(components.find(components::particle_emitter) == components.end())
-        components.insert(pair<int, CComponent*>(components::particle_emitter, new CComponent_Particle_Emitter(this)));
+      if(components.find(Components::particle_emitter) == components.end())
+        components.insert(pair<int, CComponent*>(Components::particle_emitter, new CComponent_Particle_Emitter(this)));
 
-      return (CComponent_Particle_Emitter*)components[components::particle_emitter];
+      return (CComponent_Particle_Emitter*)components[Components::particle_emitter];
     }
 
     inline CComponent_GUI_Texture* GUITexture()
     {
-      if(components.find(components::gui_texture) == components.end())
-        components.insert(pair<int, CComponent*>(components::gui_texture, new CComponent_GUI_Texture(this)));
+      if(components.find(Components::gui_texture) == components.end())
+        components.insert(pair<int, CComponent*>(Components::gui_texture, new CComponent_GUI_Texture(this)));
 
-      return (CComponent_GUI_Texture*)components[components::gui_texture];
+      return (CComponent_GUI_Texture*)components[Components::gui_texture];
     }
 
     inline CComponent_Audio_Source* AudioSource()
     {
-      if(components.find(components::audio_source) == components.end())
-        components.insert(pair<int, CComponent*>(components::audio_source, new CComponent_Audio_Source(this)));
+      if(components.find(Components::audio_source) == components.end())
+        components.insert(pair<int, CComponent*>(Components::audio_source, new CComponent_Audio_Source(this)));
 
-      return (CComponent_Audio_Source*)components[components::audio_source];
+      return (CComponent_Audio_Source*)components[Components::audio_source];
     }
 };
 
@@ -323,7 +323,7 @@ template <class Type>
 bool CGameObject::RemoveComponent()
 {
   int id = Type::GetID();
-  if(id == components::transform)
+  if(id == Components::transform)
 	  return false;
 	
   map<int, CComponent*>::iterator it = components.find(id);

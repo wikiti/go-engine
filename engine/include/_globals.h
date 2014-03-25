@@ -210,10 +210,24 @@ typedef struct viewport_t
     int x, y;
     int width, height;
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    friend ostream& operator<<(ostream& os, viewport_t v)
     {
-      ar & x & y & width & height;
+      os << v.x << " " << v.y << " " << v.width << " " << v.height;
+      return os;
+    }
+
+    friend istream& operator>>(istream& is, viewport_t& v)
+    {
+      is >> v.x >> v.y >> v.width >> v.height;
+      return is;
+    }
+
+    string str()
+    {
+      stringstream ss;
+      ss << x << " " << y << " " << width << " " << height;
+
+      return ss.str();
     }
 
 } viewport_t;
@@ -224,10 +238,24 @@ typedef struct viewportf_t
     GLfloat x, y;
     GLfloat width, height;
 
-    template<class Archive>
-    void serialize(Archive & ar, const unsigned int version)
+    friend ostream& operator<<(ostream& os, viewportf_t v)
     {
-      ar & x & y & width & height;
+      os << v.x << " " << v.y << " " << v.width << " " << v.height;
+      return os;
+    }
+
+    friend istream& operator>>(istream& is, viewportf_t& v)
+    {
+      is >> v.x >> v.y >> v.width >> v.height;
+      return is;
+    }
+
+    string str()
+    {
+      stringstream ss;
+      ss << x << " " << y << " " << width << " " << height;
+
+      return ss.str();
     }
 
 } viewportf_t;

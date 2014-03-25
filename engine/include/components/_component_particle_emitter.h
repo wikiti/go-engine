@@ -115,7 +115,7 @@ class CComponent_Particle_Emitter: public CComponent
     GLfloat start_min_base_radius;
 
   private:
-    static int GetID() { return components::particle_emitter; }
+    static int GetID() { return Components::particle_emitter; }
 
     /*friend class boost::serialization::access;
     template<class Archive>

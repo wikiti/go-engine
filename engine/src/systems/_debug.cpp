@@ -1426,14 +1426,14 @@ void CSystem_Debug::Console_command__GO_COMPONENT_ENABLE(string arguments)
     return;
   }
 
-  int component_i = components::string_to_component(component);
-  if(component_i == components::__not_defined)
+  int component_i = Components::string_to_component(component);
+  if(component_i == Components::__component_not_defined)
   {
     console_error_msg("Component type \"%s\" does not exists.", component.c_str());
     return;
   }
 
-  CComponent* c_go = go->GetComponent((components::components)component_i);
+  CComponent* c_go = go->GetComponent((Components::components)component_i);
 
   if(!c_go)
   {
@@ -1494,14 +1494,14 @@ void CSystem_Debug::Console_command__GO_COMPONENT_SET(string arguments)
     return;
   }
 
-  int component_i = components::string_to_component(component);
-  if(component_i == components::__not_defined)
+  int component_i = Components::string_to_component(component);
+  if(component_i == Components::__component_not_defined)
   {
     console_error_msg("Component type \"%s\" does not exists.", component.c_str());
     return;
   }
 
-  CComponent* c_go = go->GetComponent((components::components)component_i);
+  CComponent* c_go = go->GetComponent((Components::components)component_i);
 
   if(!c_go)
   {
@@ -1555,14 +1555,14 @@ void CSystem_Debug::Console_command__GO_COMPONENT_GET(string arguments)
     return;
   }
 
-  int component_i = components::string_to_component(component);
-  if(component_i == components::__not_defined)
+  int component_i = Components::string_to_component(component);
+  if(component_i == Components::__component_not_defined)
   {
     console_error_msg("Component type \"%s\" does not exists.", component.c_str());
     return;
   }
 
-  CComponent* c_go = go->GetComponent((components::components)component_i);
+  CComponent* c_go = go->GetComponent((Components::components)component_i);
 
   if(!c_go)
   {

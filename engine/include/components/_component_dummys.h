@@ -18,7 +18,7 @@ class CComponent_Dummy1: public CComponent
     GLfloat cube_side;
 
   private:
-    static int GetID() { return components::dummy1; }
+    static int GetID() { return Components::dummy1; }
 
   protected:
 
@@ -38,7 +38,7 @@ class CComponent_Dummy2: public CComponent
     friend class CGameObject;
 
   private:
-    static int GetID() { return components::dummy2; }
+    static int GetID() { return Components::dummy2; }
 
   protected:
 
@@ -58,7 +58,7 @@ class CComponent_Dummy3: public CComponent
     friend class CGameObject;
 
   private:
-    static int GetID() { return components::dummy3; }
+    static int GetID() { return Components::dummy3; }
 
     vector3f direction;
     vector3f current_random;

@@ -38,7 +38,7 @@ class CComponent_Audio_Source: public CComponent
     If the parameters don't make sense, attenuation is turned off. If the sound is stereo, likewise (stereo is just that... stereo -- only mono sounds are 3D). */
 
   private:
-    static int GetID() { return components::audio_source; }
+    static int GetID() { return Components::audio_source; }
 
   public:
     CComponent_Audio_Source(){};

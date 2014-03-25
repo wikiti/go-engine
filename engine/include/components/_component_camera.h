@@ -6,7 +6,12 @@
 
 namespace Viewmode
 {
-  enum viewmode_t { perspective = 0, ortho, ortho_screen };
+  enum viewmode_t { perspective = 0, ortho, ortho_screen, __viewmode_not_defined };
+
+  extern const char* viewmode_s[];
+
+  const char* viewmode_to_string(viewmode_t c);
+  int string_to_viewmode(const string& c);
 }
 
 class CComponent_Camera: public CComponent
@@ -20,6 +25,7 @@ class CComponent_Camera: public CComponent
     CGameObject* pivot;  // Si no, se usará un pivote en la posición local (0, 0, -1)
 
   public:
+    // ->PORHACER ¿Qué se supone que hace CComponent_Camera::disable_gui?
     bool disable_gui;
 
     Viewmode::viewmode_t viewmode;
@@ -57,7 +63,10 @@ class CComponent_Camera: public CComponent
     friend class CGameObject;
 
   private:
-    static int GetID() { return components::camera; }
+    static int GetID() { return Components::camera; }
+
+    void parseDebug(string command);
+    void printDebug();
 
     /*friend class boost::serialization::access;
     template<class Archive>
