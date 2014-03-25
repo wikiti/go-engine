@@ -1433,7 +1433,7 @@ void CSystem_Debug::Console_command__GO_COMPONENT_ENABLE(string arguments)
     return;
   }
 
-  CComponent* c_go = go->GetComponent((Components::components)component_i);
+  CComponent* c_go = go->GetComponent((Components::components_t)component_i);
 
   if(!c_go)
   {
@@ -1501,7 +1501,7 @@ void CSystem_Debug::Console_command__GO_COMPONENT_SET(string arguments)
     return;
   }
 
-  CComponent* c_go = go->GetComponent((Components::components)component_i);
+  CComponent* c_go = go->GetComponent((Components::components_t)component_i);
 
   if(!c_go)
   {
@@ -1562,7 +1562,7 @@ void CSystem_Debug::Console_command__GO_COMPONENT_GET(string arguments)
     return;
   }
 
-  CComponent* c_go = go->GetComponent((Components::components)component_i);
+  CComponent* c_go = go->GetComponent((Components::components_t)component_i);
 
   if(!c_go)
   {

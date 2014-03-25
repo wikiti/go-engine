@@ -99,7 +99,7 @@ void CComponent_Mesh_Render::parseDebug(string command)
       gSystem_Debug.console_error_msg(
           "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
           gameObject->GetName().c_str(),
-          Components::component_to_string((Components::components) GetID()));
+          Components::component_to_string((Components::components_t) GetID()));
 
       return;
     }
@@ -113,7 +113,7 @@ void CComponent_Mesh_Render::parseDebug(string command)
 
     gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".",
         gameObject->GetName().c_str(),
-        Components::component_to_string((Components::components) GetID()), attrib.c_str(),
+        Components::component_to_string((Components::components_t) GetID()), attrib.c_str(),
         data.c_str());
   }
   else if(attrib == "color")
@@ -126,7 +126,7 @@ void CComponent_Mesh_Render::parseDebug(string command)
       gSystem_Debug.console_error_msg(
           "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
           gameObject->GetName().c_str(),
-          Components::component_to_string((Components::components) GetID()));
+          Components::component_to_string((Components::components_t) GetID()));
 
       return;
     }
@@ -135,7 +135,7 @@ void CComponent_Mesh_Render::parseDebug(string command)
 
     gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".",
         gameObject->GetName().c_str(),
-        Components::component_to_string((Components::components) GetID()), attrib.c_str(),
+        Components::component_to_string((Components::components_t) GetID()), attrib.c_str(),
         data.str().c_str());
   }
   else if(attrib == "apply_force")
@@ -148,7 +148,7 @@ void CComponent_Mesh_Render::parseDebug(string command)
       gSystem_Debug.console_error_msg(
           "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
           gameObject->GetName().c_str(),
-          Components::component_to_string((Components::components) GetID()));
+          Components::component_to_string((Components::components_t) GetID()));
 
       return;
     }
@@ -156,13 +156,13 @@ void CComponent_Mesh_Render::parseDebug(string command)
     color_apply_force = data;
     gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".",
         gameObject->GetName().c_str(),
-        Components::component_to_string((Components::components) GetID()), attrib.c_str(), data);
+        Components::component_to_string((Components::components_t) GetID()), attrib.c_str(), data);
   }
   else
   {
     gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".",
         gameObject->GetName().c_str(),
-        Components::component_to_string((Components::components) GetID()), attrib.c_str());
+        Components::component_to_string((Components::components_t) GetID()), attrib.c_str());
   }
 }
 
@@ -170,7 +170,7 @@ void CComponent_Mesh_Render::parseDebug(string command)
 void CComponent_Mesh_Render::printDebug()
 {
   gSystem_Debug.console_warning_msg("Component %s uses the following attributes:",
-      Components::component_to_string((Components::components) GetID()));
+      Components::component_to_string((Components::components_t) GetID()));
   gSystem_Debug.console_warning_msg("Attribute      Type             Value");
   gSystem_Debug.console_warning_msg("-------------------------------------");
   gSystem_Debug.console_warning_msg("mesh_name           string      %s", mesh_name.c_str());

@@ -13,8 +13,9 @@ texture: smoke1 data/resources/textures/particles/smoke1.tga: nearest
 texture: sprite1 data/resources/textures/particles/sprite1.tga: nearest
 texture: penis1 data/resources/textures/particles/penis.tga: nearest
 texture: fire1 data/resources/textures/particles/fire1.tga: nearest
-texture: skybox1 data/resources/textures/skybox_example.tga: mipmap
-# texture: skybox_example data/resources/textures/skybox_example.tga: mipmap
+texture: skybox_example data/resources/textures/skybox_example.tga: mipmap
+texture: skybox1 data/resources/textures/skybox1.tga: mipmap
+texture: skybox2 data/resources/textures/skybox2.tga: mipmap
 
 sound: firework_explosion data/resources/sound/firework_explosion.wav:
 sound: firework_trail data/resources/sound/firework_trail.wav:

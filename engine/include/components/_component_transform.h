@@ -11,8 +11,8 @@ class CComponent_Transform: public CComponent
   friend class CSystem_Render;
   friend class CSystem_Debug;
 
-  friend const char* Components::component_to_string(components c);
-  friend int Components::string_to_component(const string& c);
+  friend const char* Components::component_to_string(components_t c);
+  friend Components::components_t Components::string_to_component(const string& c);
 
   public:
     vector3f position, scale;

@@ -5,7 +5,7 @@
 
 const char* Components::components_s[] = {"base", "camera", "mesh_render", "particle_emitter", "gui_texture", "audio_source", "transform", "dummy1", "dummy2", "dummy3", "not_defined"};
 
-const char* Components::component_to_string(components c)
+const char* Components::component_to_string(components_t c)
 {
   if(c < base or c >= __component_not_defined)
     c = __component_not_defined;
@@ -13,11 +13,11 @@ const char* Components::component_to_string(components c)
   return components_s[c];
 }
 
-int Components::string_to_component(const string& c)
+Components::components_t Components::string_to_component(const string& c)
 {
   for(uint i = 0; i < Components::__component_not_defined; i++)
     if(c == components_s[i])
-      return i;
+      return (Components::components_t)i;
 
   return __component_not_defined;
 }
@@ -36,10 +36,10 @@ CComponent::~CComponent()
 
 void CComponent::parseDebug(string command)
 {
-  gSystem_Debug.console_error_msg("From component %s - %s: Unhandheld \"parseDebug\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)this->GetID()) );
+  gSystem_Debug.console_error_msg("From component %s - %s: Unhandheld \"parseDebug\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)this->GetID()) );
 }
 
 void CComponent::printDebug()
 {
-  gSystem_Debug.console_error_msg("From component %s - %s: Unhandheld \"printDebug\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)this->GetID()) );
+  gSystem_Debug.console_error_msg("From component %s - %s: Unhandheld \"printDebug\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)this->GetID()) );
 }

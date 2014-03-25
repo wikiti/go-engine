@@ -11,7 +11,7 @@ namespace Viewmode
   extern const char* viewmode_s[];
 
   const char* viewmode_to_string(viewmode_t c);
-  int string_to_viewmode(const string& c);
+  viewmode_t string_to_viewmode(const string& c);
 }
 
 class CComponent_Camera: public CComponent
@@ -32,7 +32,7 @@ class CComponent_Camera: public CComponent
     //viewport_t viewport;
     viewportf_t viewport;
 
-    GLfloat field_of_view;
+    GLfloat field_of_view;  // expressed in degrees.
     GLfloat near_clip, far_clip;
 
     colorf_t background_color;

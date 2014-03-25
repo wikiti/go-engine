@@ -677,7 +677,7 @@ bool CSystem_Render::RenderSkybox(CComponent_Camera* cam)
   // Todo lo demás se dibujará encima, por lo que creará un efecto de "tamaño inmenso".
   // http://content.gpwiki.org/index.php/Sky_Box
 
-  glColor3f(1.f, 1.f, 1.f);
+  //glColor3f(1.f, 1.f, 1.f);
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(cam->skybox_texture )->GetID());
 

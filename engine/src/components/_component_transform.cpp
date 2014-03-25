@@ -642,7 +642,7 @@ void CComponent_Transform::parseDebug(string command)
 
   if(ss.fail())
   {
-    gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()) );
+    gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
     return;
   }
 
@@ -665,15 +665,15 @@ void CComponent_Transform::parseDebug(string command)
   }
   else
   {
-    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str() );
+    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str() );
   }
 
-  gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str(), data.str().c_str() );
+  gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );
 }
 
 void CComponent_Transform::printDebug()
 {
-  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", Components::component_to_string( (Components::components)GetID()));
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", Components::component_to_string( (Components::components_t)GetID()));
   gSystem_Debug.console_warning_msg("Attribute      Type                Value");
   gSystem_Debug.console_warning_msg("----------------------------------------");
   gSystem_Debug.console_warning_msg("position       vector3f            %s", position.str().c_str());

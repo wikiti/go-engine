@@ -217,7 +217,7 @@ class CGameObject
     template <class Type>
     Type* GetComponent();
 
-    CComponent* GetComponent(Components::components c)
+    CComponent* GetComponent(Components::components_t c)
     {
       if(components.find(c) != components.end())
         return components[c];

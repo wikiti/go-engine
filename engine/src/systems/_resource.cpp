@@ -457,18 +457,20 @@ void CSystem_Resources::Close()
   ClearResources();
 }
 
-bool CSystem_Resources::Reset() {
-  // Un poco brusco, pero funciona.
-  //Close();
+bool CSystem_Resources::Reset()
+{
   ClearNonEngineResources();
   enabled = true;
 
   return true;
-  //return Init();
 }
 
 bool CSystem_Resources::LoadResourceFile(string rc_file)
 {
+  // Lets say, a non specified resource file means that the user doesn't need resources.
+  if(rc_file == "")
+    return true;
+
   // Parse txt (or binary) file
   ifstream is(rc_file.c_str());
   string line;

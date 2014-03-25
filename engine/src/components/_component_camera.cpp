@@ -19,11 +19,11 @@ const char* Viewmode::viewmode_to_string(viewmode_t c)
   return viewmode_s[c];
 }
 
-int Viewmode::string_to_viewmode(const string& c)
+viewmode_t Viewmode::string_to_viewmode(const string& c)
 {
   for(uint i = 0; i < Viewmode::__viewmode_not_defined; i++)
     if(c == viewmode_s[i])
-      return i;
+      return (viewmode_t)i;
 
   return __viewmode_not_defined;
 }
@@ -104,7 +104,7 @@ void CComponent_Camera::ApplyChanges()
     //gluPerspective(field_of_view,
         //(viewport.width*gSystem_Data_Storage.GetInt("__RESOLUTION_WIDTH")) / (viewport.height*gSystem_Data_Storage.GetInt("__RESOLUTION_HEIGHT")),
         //near_clip, far_clip);
-    projMatrix = glm::perspective(field_of_view,
+    projMatrix = glm::perspective(gSystem_Math.deg_to_rad(field_of_view),
         (viewport.width*gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_WIDTH")) / (viewport.height*gSystem_Data_Storage.GetInt("__RENDER_RESOLUTION_HEIGHT")),
         near_clip, far_clip);
   }
@@ -204,7 +204,7 @@ void CComponent_Camera::parseDebug(string command)
 
     if(ss.fail())
     {
-      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()) );
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
       return;
     }
 
@@ -213,19 +213,131 @@ void CComponent_Camera::parseDebug(string command)
     else if(attrib == "clear")
       clear = data;
 
-    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str(), (int)data );
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%d\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), (int)data );
   }
-  // ...
+  else if(attrib == "viewport")
+  {
+    viewportf_t data;
+
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
+      return;
+    }
+
+    viewport = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );
+  }
+  else if(attrib == "viewmode")
+  {
+    string data_s;
+    ss >> data_s;
+
+    viewmode_t data = (viewmode_t)string_to_viewmode(data_s);
+
+    if(ss.fail() or data == __viewmode_not_defined)
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
+      return;
+    }
+
+    viewmode= data;
+
+    // Necesary
+    ApplyChanges();
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data_s.c_str() );
+  }
+  else if(attrib == "field_of_view" or attrib == "near_clip" or attrib == "far_clip")
+  {
+    float data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
+      return;
+    }
+
+    if(attrib == "field_of_view")
+      field_of_view = data;
+    else if(attrib == "near_clip")
+      near_clip = data;
+    else if(attrib == "far_clip")
+      far_clip = data;
+
+    // Necesary
+    ApplyChanges();
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%f\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data );
+  }
+  else if(attrib == "background_color")
+  {
+    colorf_t data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
+      return;
+    }
+
+    background_color = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );
+  }
+  else if(attrib == "background_color")
+  {
+    colorf_t data;
+    ss >> data;
+
+    if(ss.fail())
+    {
+      gSystem_Debug.console_error_msg("From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );
+      return;
+    }
+
+    background_color = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );
+  }
+  else if(attrib == "target" or attrib == "skybox_texture")
+  {
+    string data;
+    ss >> data;
+
+    if(ss.fail() and data != "")
+    {
+      gSystem_Debug.console_error_msg(
+          "From component %s - %s: Invalid format. Data format is: \"<atribute> <attriube type value>\"",
+          gameObject->GetName().c_str(),
+          Components::component_to_string((Components::components_t) GetID()));
+      return;
+    }
+
+    if(attrib == "target")
+      target = data;
+    else if(attrib == "skybox_texture")
+      skybox_texture = data;
+
+    gSystem_Debug.console_msg("From component %s - %s: Set variable \"%s\" to value \"%s\".",
+        gameObject->GetName().c_str(),
+        Components::component_to_string((Components::components_t) GetID()), attrib.c_str(),
+        data.c_str());
+  }
   else
   {
-    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components)GetID()), attrib.c_str() );
+    gSystem_Debug.console_error_msg("From component %s - %s: Unknow attribute \"%s\".", gameObject->GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str() );
   }
 
 }
 
 void CComponent_Camera::printDebug()
 {
-  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", Components::component_to_string( (Components::components)GetID()));
+  gSystem_Debug.console_warning_msg("Component %s uses the following attributes:", Components::component_to_string( (Components::components_t)GetID()));
   gSystem_Debug.console_warning_msg("Attribute             Type          Value");
   gSystem_Debug.console_warning_msg("-----------------------------------------");
   gSystem_Debug.console_warning_msg("disable_gui           bool          %d", (int)disable_gui);
