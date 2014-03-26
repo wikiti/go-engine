@@ -14,7 +14,7 @@ namespace Components
   // Añadiendo pues una variable tipo "num_scripts" dentro del gameObject
 
   const char* component_to_string(components_t c);
-  components_t string_to_component(const string& c);
+  components_t string_to_component(const std::string& c);
 }
 
 class CGameObject;
@@ -27,13 +27,13 @@ class CComponent
   friend class CSystem_Debug;
 
   friend const char* Components::component_to_string(components_t c);
-  friend Components::components_t  Components::string_to_component(const string& c);
+  friend Components::components_t  Components::string_to_component(const std::string& c);
 
   protected:
     bool enabled;
     CGameObject* gameObject;
 
-    virtual void parseDebug(string command);
+    virtual void parseDebug(std::string command);
     virtual void printDebug();
 
   private:

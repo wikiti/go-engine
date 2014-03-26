@@ -8,6 +8,8 @@
 CSystem_Mixer gSystem_Mixer;
 CSystem_Mixer& gMixer = gSystem_Mixer;
 
+using namespace std;
+
 //const uint CSystem_Mixer::NUMBER_SOURCES = 225;
 //const uint CSystem_Mixer::NUMBER_SOURCES_ONESHOT = 30;
 

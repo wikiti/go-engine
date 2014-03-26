@@ -4,6 +4,8 @@
 #include "systems/_render.h"
 #include "systems/_shader.h"
 
+using namespace std;
+
 GLuint CComponent_GUI_Texture::m_GUITextureVBOVertices = 0;
 GLuint CComponent_GUI_Texture::m_GUITextureVBOTexCoords = 0;
 GLuint CComponent_GUI_Texture::m_GUITextureVAO = 0;

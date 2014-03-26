@@ -45,13 +45,13 @@ class CSystem_UserInput: public CSystem
       protected:
         Input::keystate_t state;
         Uint8 button;
-        string button_name;
+        std::string button_name;
 
       public:
         Input::keystate_t operator()(){return state;}
         Input::keystate_t State(){return state;}
         Uint8 Button(){return button;}
-        string ButtonName(){return button_name;}
+        std::string ButtonName(){return button_name;}
     };
 
     class CJoyButton
@@ -63,13 +63,13 @@ class CSystem_UserInput: public CSystem
       protected:
         Input::button_t state;
         Uint8 button;
-        string button_name;
+        std::string button_name;
 
       public:
         Input::button_t operator()(){return state;}
         Input::button_t State(){return state;}
         Uint8 Button(){return button;}
-        string ButtonName(){return button_name;}
+        std::string ButtonName(){return button_name;}
     };
 
     class CKey
@@ -142,13 +142,13 @@ class CSystem_UserInput: public CSystem
 
       protected:
         SDL_Joystick* joystick;
-        string joystick_name;
+        std::string joystick_name;
 
       public:
-        vector<CAxis> axes;         // -- read only
-        vector<CBall> balls;        // -- read only
-        vector<CJoyButton> buttons; // -- read only
-        vector<Uint8> povs;         // -- read only
+        std::vector<CAxis> axes;         // -- read only
+        std::vector<CBall> balls;        // -- read only
+        std::vector<CJoyButton> buttons; // -- read only
+        std::vector<Uint8> povs;         // -- read only
         /*
          * See http://wiki.libsdl.org/SDL_JoystickGetHat?highlight=%28%5CbCategoryJoystick%5Cb%29%7C%28CategoryEnum%29%7C%28CategoryStruct%29
          * pov_leftup     pov_up         pov_rightup
@@ -170,7 +170,7 @@ class CSystem_UserInput: public CSystem
         vector<CJoyButton> GetButtons() {return buttons;}
         vector<Uint8> GetPovs(){return povs;}*/
 
-        inline string GetName(){return joystick_name;}
+        inline std::string GetName(){return joystick_name;}
         inline bool CheckStatus()
         {
           if(SDL_JoystickGetAttached(joystick) == SDL_FALSE)
@@ -187,7 +187,7 @@ class CSystem_UserInput: public CSystem
     const Uint8 *keyboard = SDL_GetKeyboardState(NULL);
 
     // joysticks
-    vector<CJoystick> joysticks;
+    std::vector<CJoystick> joysticks;
 
     bool rebuild_joysticks;
     float rebuild_joysticks_timeout;
@@ -224,10 +224,10 @@ class CSystem_UserInput: public CSystem
     void OnEvent();
     void OnInput();
 
-    Uint8 Keyboard(string keyname);
+    Uint8 Keyboard(std::string keyname);
     Uint8 Keyboard(SDL_Scancode key);
 
-    vector<CJoystick> GetJoysticks() {return joysticks;}
+    std::vector<CJoystick> GetJoysticks() {return joysticks;}
     /*unsigned int GetNumJoysticks() {return joysticks.size();}
     CJoystick* GetJoystick(int index)
     {

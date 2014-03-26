@@ -1,7 +1,7 @@
 #ifndef __GLOBALS_H_
 #define __GLOBALS_H_
 
-/**_______C++ STL________**/
+/*______C++ STL_______*/
 
 #include <algorithm>
 #include <array>
@@ -21,19 +21,38 @@
 #include <ctime>
 #include <vector>
 
-
+/**
+ * Definición de excepción para devolver una excepción en una determinada línea.
+ */
 #define THROW(exceptionClass, message) throw exceptionClass(__FILE__, __LINE__, (message) )
 
+/**
+ * Tipo personalizado de excepción. Se caracteriza por almacenar el fichero y la línea desde el lugar en el que se lanzó la excepción.
+ */
 class general_exception: public std::exception
 {
   private:
-    int line;
-    std::string file, reason;
+    int line; /**< Línea del lanzamiento de la excepción.*/
+    std::string file; /**< Fichero de código fuente del lanzamiento de la excepción." */
+    std::string reason; /**< Razón del lanzamiento de la excepción. */
 
   public:
+    /**
+     * Constructor principal de la excepción.
+     * @param FILE Fichero descriptor del lugar del error.
+     * @param LINE Línea descriptora del lugar error.
+     * @param REASON Razón descriptora del error.
+     */
     general_exception(const char* FILE, int LINE, const char* REASON): line(LINE), file(FILE), reason(REASON){ }
+    /**
+     * Destructor. No hace nada por defecto.
+     */
     ~general_exception() throw(){};
 
+    /**
+     * Chivato de la excepción. Nos indica un mensaje descriptivo del error.
+     * @return Devuelve una descripción en una string del error generado.
+     */
     virtual const char* what() const throw()
     {
       static char output[1024];
@@ -43,10 +62,17 @@ class general_exception: public std::exception
 };
 
 #define _USE_MATH_DEFINES
+/**
+ * Macro para pasar de radianes a grados.
+ */
 #define _RAD_TO_DEG(x) x * ( 180  / M_PI )
+
+/**
+ * Macro para pasar de grados a radianes.
+ */
 #define _DEG_TO_RAD(x) x * ( M_PI / 180  )
 
-/**_________BOOST________**/
+/*________BOOST_______*/
 
 /*#include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
@@ -61,7 +87,7 @@ class general_exception: public std::exception
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/utility.hpp>*/
 
-/**__________SDL_________**/
+/*_________SDL________*/
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -69,11 +95,18 @@ class general_exception: public std::exception
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_net.h>
 
+/**
+ * Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace:
+ *
+ * <ol><li>http://wiki.libsdl.org/SDL_Event</ol>
+ *
+ *
+ */
 extern SDL_Event event;
 //extern const Uint8 *gKeyboardState;
 
 
-/**________OpenGL________**/
+/*_______OpenGL_______*/
 
 #include <GL/glew.h>
 #include <SDL2/SDL_opengl.h>
@@ -93,68 +126,103 @@ extern SDL_Event event;
 #include <assimp/scene.h>           // Output data structure
 #include <assimp/postprocess.h>     // Post processing fla
 
-/**________OpenAL________**/
+/*_______OpenAL_______*/
 
 #include <AL/al.h>
 #include <AL/alc.h>
 
-/**______ERRORS_CHARS_____**/
+/*_____ERRORS_CHARS____*/
 
+/**
+ * Título de error de renderizado para "message boxes". Véase CSystem_Debug::msg_box.
+ */
 const char ERROR_RENDER[] = "Render error";
+/**
+ * Título de error de inicialización para "message boxes". Véase CSystem_Debug::msg_box.
+ */
 const char ERROR_INIT[] = "Init error";
+/**
+ * Título de error fatal de inicialización para "message boxes". Véase CSystem_Debug::msg_box.
+ */
 const char ERROR_FATAL_INIT[] = "Init fatal error";
+/**
+ * Título de error fatal para "message boxes". Véase CSystem_Debug::msg_box.
+ */
 const char ERROR_FATAL[] = "Fatal error";
+/**
+ * Título de error de fichero para "message boxes". Véase CSystem_Debug::msg_box.
+ */
 const char ERROR_FILE[] = "File error";
 
 
-/**_____GENERAL_CONST_____**/
+/*____GENERAL_CONST____*/
 
-/**_______Typedef________**/
+/*______Typedef_______*/
 
-typedef void* input_t;
-typedef void* output_t;
+typedef void* input_t;  /**< Tipo para representar una entrada genérica.*/
+typedef void* output_t; /**< Tipo para representar una salida genérica.*/
 
-typedef unsigned int flags_t;
-typedef unsigned int uint;
-typedef unsigned char ubyte;
+typedef unsigned int flags_t;  /**< Tipo para representar flags u opciones.*/
+typedef unsigned int uint;     /**< Tipo para representar un entero sin signo.*/
+typedef unsigned char ubyte;   /**< Tipo para representar un byte sin signo.*/
 
-typedef void (*fpointer)(void);
-typedef bool (*fboolpointer)(void);
+typedef void (*fpointer)(void);     /**< Tipo para representar un puntero a función del tipo "void f()".*/
+typedef bool (*fboolpointer)(void); /**< Tipo para representar un puntero a función del tipo "bool f()".*/
 
-/**______Namespaces______**/
+/*_____Namespaces_____*/
 
-using namespace std;
+//using namespace std;
 
-/**_______Structs________**/
+/*______Structs_______*/
 
 // Estaría muy bien definir un tipo de excepción propia
 // Causante, objetivo, razón, instancia, etc...
 
+/**
+ * Estructura de datos para representar un color.<br>
+ *
+ * El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un byte sin signo (0...255).
+ */
 typedef struct color_t
 {
-  ubyte r, g, b, a;
-
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int version)
-  {
-    ar & r & g & b & a;
-  }
+  ubyte r; /**< Componente roja del color. Valor entre 0 y 255. */
+  ubyte g; /**< Componente verde del color. Valor entre 0 y 255. */
+  ubyte b; /**< Componente azul del color. Valor entre 0 y 255. */
+  ubyte a; /**< Componente alpha del color. Valor entre 0 y 255. */
 
 } color_t;
 
+/**
+ * Estructura de datos para representar un color.<br>
+ *
+ * El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un flotante sin signo (0...1).
+ *
+ * No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+ */
 typedef struct colorf_t
 {
-  GLfloat r, g, b, a;
+  GLfloat r; /**< Componente roja del color. Valor flotante entre 0 y 1. */
+  GLfloat g; /**< Componente verde del color. Valor flotante entre 0 y 1. */
+  GLfloat b; /**< Componente azul del color. Valor flotante entre 0 y 1. */
+  GLfloat a; /**< Componente alpha del color. Valor flotante entre 0 y 1. */
 
   //colorf_t(): r(1.f), g(1.f), b(1.f), a(1.f){};
+  /**
+   * Constructor principal del color. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+   * @param R Componente roja del color.
+   * @param G Componente verde del color.
+   * @param B Componente azul del color.
+   * @param A Componente alpha del color.
+   */
   colorf_t(GLfloat R = 1.f, GLfloat G = 1.f, GLfloat B = 1.f, GLfloat A = 1.f): r(R), g(G), b(B), a(A){};
 
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int version)
-  {
-    ar & r & g & b & a;
-  }
-
+  /**
+   * Operador paréntesis. Se usa para cambiar el contenido del color (estética). No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+   * @param _r Componente roja del color.
+   * @param _g Componente verde del color.
+   * @param _b Componente azul del color.
+   * @param _a Componente alpha del color.
+   */
   void operator()(GLfloat _r  = 1.f, GLfloat _g = 1.f, GLfloat _b = 1.f, GLfloat _a = 1.f)
   {
     r = _r;
@@ -163,11 +231,21 @@ typedef struct colorf_t
     a = _a;
   }
 
+  /**
+   * Multiplicador de un color. Multiplica el color por un valor flotante dado, multiplicando todas las componentes por el valor. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+   * @param c
+   * @return
+   */
   colorf_t operator*(GLfloat c)
   {
     return colorf_t(r*c, g*c, b*c, a*c);
   }
 
+  /**
+   * Operador asignación-suma. Suma y asigna al color el valor c, sumando a todas las componentes el valor "c".  No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+   * @param c Valor flotante a sumar.
+   * @return Devuelve el color en sí (referencia).
+   */
   colorf_t& operator+=(colorf_t c)
   {
     r += c.r;
@@ -178,26 +256,61 @@ typedef struct colorf_t
     return *this;
   }
 
+  /**
+   * Transforma el color en un array de tamaño 4 de valores flotantes.
+   *
+   * Se podrán acceder a los elementos de la siguiente manera:
+   *
+   * @code
+   * colorf_t color(1.0, 1.0, 1.0, 1.0);
+   * color.to_a()[0] = 0.5f; // Componente roja
+   * color.to_a()[1] = 0.2f; // Componente verde
+   * color.to_a()[2] = 0.3f; // Componente azul
+   * color.to_a()[2] = 1.0f; // Componente alpha
+   * @endcode
+   *
+   * @return float* de tamaño 4, siendo una referencia al color.
+   */
   float* to_a()
   {
     return (float*)this;
   }
 
-  string str()
+  /**
+   * Devuelve una representación en forma de std::string del color.
+   * @return std::string que almacena el color con el formato "r g b a", con cada elemento como un valor flotante.
+   */
+  std::string str()
   {
-    stringstream ss;
+    std::stringstream ss;
     ss << r << " " << g << " " << b << " " << a;
 
     return ss.str();
   }
 
-  friend ostream& operator<<(ostream& os, colorf_t c)
+  /**
+   * Operador de redirección de salida.
+   *
+   * Escribirá el color de la misma manera que en la función colorf_t::str()
+   * @param os Flujo de salida.
+   * @param c Color.
+   * @return Referencia al flujo de salida.
+   */
+  friend std::ostream& operator<<(std::ostream& os, colorf_t c)
   {
     os << c.r << " " << c.g << " " << c.b << " " << c.a;
     return os;
   }
 
-  friend istream& operator>>(istream& is, colorf_t& c)
+  /**
+   * Operador de redirección de entrada.
+   *
+   * leerá el color de la misma manera que en la función colorf_t::str()
+   * @param is Flujo de entrada.
+   * @param c Color.
+   * @return Referencia al flujo de entrada.
+   */
+  friend std::istream& operator>>(std::istream& is, colorf_t& c)
   {
     is >> c.r >> c.g >> c.b >> c.a;
     return is;
@@ -205,26 +318,71 @@ typedef struct colorf_t
 
 } colorf_t;
 
+/**
+ * Estructura para representar un "viewport" o una fracción de pantalla.
+ *
+ * http://en.wikipedia.org/wiki/Viewport
+ *
+ * Un viewport no es más que una abstracción de una "ventana" o portal desde la ventana de nuestro programa hasta el mundo en 3D de la aplicación.
+ * Básicamente, es una porción de pantalla (definida por una posición y un tamaño) en la que se dibujarán ciertos elementos del juego.
+ *
+ * En una ventana, un viewport se define más o menos así:
+ *
+ * <pre>
+ *  ______________________________
+ * |                              |
+ * |      x,y_____________        |
+ * |        |             |       |
+ * |        |             |height |
+ * |        |_____________|       |
+ * |             width            |
+ * |______________________________|
+ * </pre>
+ *
+ * Para más información, véase CComponent_Camera y CSystem_Render.
+ */
 typedef struct viewport_t
 {
-    int x, y;
-    int width, height;
+    int x;      /**< Posición en el eje x de la pantalla del viewport. */
+    int y;      /**< Posición en el eje y de la pantalla del viewport. */
+    int width;  /**< Ancho del viewport, expresado en píxeles. */
+    int height; /**< Alto del viewport, expresado en píxeles. */
 
-    friend ostream& operator<<(ostream& os, viewport_t v)
+    /**
+     * Operador de redirección de salida.
+     *
+     * Escribirá el viewport de la misma manera que en la función viewport_t::str()
+     * @param os Flujo de salida.
+     * @param v Viewport.
+     * @return Referencia al flujo de salida.
+     */
+    friend std::ostream& operator<<(std::ostream& os, viewport_t v)
     {
       os << v.x << " " << v.y << " " << v.width << " " << v.height;
       return os;
     }
 
-    friend istream& operator>>(istream& is, viewport_t& v)
+    /**
+     * Operador de redirección de salida.
+     *
+     * Leerá el viewport de la misma manera que en la función viewport_t::str()
+     * @param is Flujo de entrada.
+     * @param v Viewport.
+     * @return Referencia al flujo de entrada.
+     */
+    friend std::istream& operator>>(std::istream& is, viewport_t& v)
     {
       is >> v.x >> v.y >> v.width >> v.height;
       return is;
     }
 
-    string str()
+    /**
+     * Devuelve una representación en forma de std::string del viewport.
+     * @return std::string que almacena el los datos del viewport con el formato "x y width height", manteniendo su tipo original.
+     */
+    std::string str()
     {
-      stringstream ss;
+      std::stringstream ss;
       ss << x << " " << y << " " << width << " " << height;
 
       return ss.str();
@@ -238,21 +396,21 @@ typedef struct viewportf_t
     GLfloat x, y;
     GLfloat width, height;
 
-    friend ostream& operator<<(ostream& os, viewportf_t v)
+    friend std::ostream& operator<<(std::ostream& os, viewportf_t v)
     {
       os << v.x << " " << v.y << " " << v.width << " " << v.height;
       return os;
     }
 
-    friend istream& operator>>(istream& is, viewportf_t& v)
+    friend std::istream& operator>>(std::istream& is, viewportf_t& v)
     {
       is >> v.x >> v.y >> v.width >> v.height;
       return is;
     }
 
-    string str()
+    std::string str()
     {
-      stringstream ss;
+      std::stringstream ss;
       ss << x << " " << y << " " << width << " " << height;
 
       return ss.str();
@@ -410,13 +568,13 @@ typedef struct vector3f_t
     return sqrt(x*x + y*y + z*z);
   }
 
-  friend ostream& operator<<(ostream& os, vector3f_t v)
+  friend std::ostream& operator<<(std::ostream& os, vector3f_t v)
   {
     os << v.x << " " << v.y << " " << v.z;
     return os;
   }
 
-  friend istream& operator>>(istream& is, vector3f_t& v)
+  friend std::istream& operator>>(std::istream& is, vector3f_t& v)
   {
     is >> v.x >> v.y >> v.z;
     return is;
@@ -509,9 +667,9 @@ typedef struct vector3f_t
     return ((*this) - v).length();
   }
 
-  string str()
+  std::string str()
   {
-    stringstream ss;
+    std::stringstream ss;
     ss << x << " " << y << " " << z;
 
     return ss.str();
@@ -520,16 +678,16 @@ typedef struct vector3f_t
 } vector3f;
 
 
-/**______Functions_______**/
+/*_____Functions______*/
 
 namespace GO_Utils
 {
-  string string_generate_random_alphanumeric(uint n = 4);
-  string string_to_lower(string& str);
-  string string_to_upper(string& str);
+  std::string string_generate_random_alphanumeric(uint n = 4);
+  std::string string_to_lower(std::string& str);
+  std::string string_to_upper(std::string& str);
 
   SDL_Surface* sdl_cargar_img(std::string s);
-  bool validateIdentifier(string identifier);
+  bool validateIdentifier(std::string identifier);
 
   //void glhLookAtf2(glm::mat4& matrix, vector3f& eyePosition3D, vector3f& center3D, vector3f& upVector3D ); // http://www.opengl.org/wiki/GluLookAt_code
   //vector3f glComputeNormalOfPlane( vector3f& vec1, vector3f& vec2); // https://code.google.com/p/lightsimulator/source/browse/trunk/src/glutshadowmap.cpp?spec=svn133&r=133

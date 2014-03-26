@@ -11,7 +11,7 @@ namespace Viewmode
   extern const char* viewmode_s[];
 
   const char* viewmode_to_string(viewmode_t c);
-  viewmode_t string_to_viewmode(const string& c);
+  viewmode_t string_to_viewmode(const std::string& c);
 }
 
 class CComponent_Camera: public CComponent
@@ -38,11 +38,11 @@ class CComponent_Camera: public CComponent
     colorf_t background_color;
     bool clear;
 
-    string skybox_texture;
+    std::string skybox_texture;
 
     // Fallo: no apunta correctamente a hijos de padres
     // ¿solución? calcular la nueva posición o quitar esta opción
-    string target;  // Si hay target, se usará la posición del objetivo como pivote.
+    std::string target;  // Si hay target, se usará la posición del objetivo como pivote.
     //string target_texture;
 
     function_t before_render, after_render;
@@ -65,7 +65,7 @@ class CComponent_Camera: public CComponent
   private:
     static int GetID() { return Components::camera; }
 
-    void parseDebug(string command);
+    void parseDebug(std::string command);
     void printDebug();
 
     /*friend class boost::serialization::access;
@@ -84,7 +84,7 @@ class CComponent_Camera: public CComponent
     inline virtual void Set(input_t data);
     inline virtual output_t Get();
 
-	  void SetTarget(string t)
+	  void SetTarget(std::string t)
 	  {
 	    target = t;
 	  }

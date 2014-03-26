@@ -13,14 +13,14 @@ class CEngine
 {
   protected:
     //vector<CInstance*> instances;
-    map<string, CInstance*> instances;
-    string title;
+    std::map<std::string, CInstance*> instances;
+    std::string title;
     bool running;
 
-    string current_instance;
+    std::string current_instance;
 
     // Arguments
-    vector<string> arguments;
+    std::vector<std::string> arguments;
 
   protected:
     void RemoveAllInstances();
@@ -35,9 +35,9 @@ class CEngine
     virtual int OnExecute(int argc, char* argv[]);
 
     // Should be 32x32 RGBA format
-    void SetIcon(string icon_name);
+    void SetIcon(std::string icon_name);
 
-    string GetTitle()
+    std::string GetTitle()
     {
       return title;
     }
@@ -50,7 +50,7 @@ class CEngine
       SDL_SetWindowTitle(gSystem_Render.window, title.c_str());
     }
 
-    void AddInstance(fboolpointer load_gameObject_function, string resource_file, string instance_name);
+    void AddInstance(fboolpointer load_gameObject_function, std::string resource_file, std::string instance_name);
 
     GLdouble fps()
     {
@@ -62,7 +62,7 @@ class CEngine
       return instances[current_instance];
     }
 
-    vector<string>& Arguments()
+    std::vector<std::string>& Arguments()
     {
       return arguments;
     }
@@ -81,12 +81,12 @@ class CEngine
         instances[current_instance]->i_running = false;
     }
 
-    string GetCurrentInstance()
+    std::string GetCurrentInstance()
     {
       return current_instance;
     }
 
-    string GetNextInstance()
+    std::string GetNextInstance()
     {
       if(instances.find(current_instance) != instances.end())
         return instances[current_instance]->next_instance;
@@ -94,7 +94,7 @@ class CEngine
       return "";
     }
 
-    void NextInstance(string instance)
+    void NextInstance(std::string instance)
     {
       if(instances.find(current_instance) != instances.end())
       {
@@ -102,7 +102,7 @@ class CEngine
       }
     }
 
-    void SetNextInstance(string instance)
+    void SetNextInstance(std::string instance)
     {
       if(instances.find(current_instance) != instances.end())
         instances[current_instance]->SetNextInstance(instance);

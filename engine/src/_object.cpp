@@ -2,6 +2,8 @@
 #include "_components.h"
 #include "systems/_manager.h"
 
+using namespace std;
+
 CGameObject::CGameObject(string str)
 {
   inited = false;

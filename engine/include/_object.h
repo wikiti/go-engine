@@ -34,11 +34,11 @@ class CGameObject
     bool preserve;
     //bool DontDeleteOnLoad y void DontDeleteOnLoad();
 
-    string name;
+    std::string name;
     int id;
 
-    map<int, CComponent*> components;
-    map<string, CGameObject*> children;
+    std::map<int, CComponent*> components;
+    std::map<std::string, CGameObject*> children;
 
     CGameObject* Parent;
 
@@ -66,7 +66,7 @@ class CGameObject
     }*/
 
   public:
-    CGameObject(string name);
+    CGameObject(std::string name);
     CGameObject();
 
     virtual ~CGameObject()
@@ -82,13 +82,13 @@ class CGameObject
     flags_t Get_flags() {return flags; } // Los flags sólo deberían ser maniplados por el objeto, no por el usuario
 
     bool AddChild(CGameObject* child);
-    short int AddChildren(const vector<CGameObject*>& children); // Returns 1 on succes. Otherwise, returns the negative index of the last element which failed at AddChild (0, -1, -2, ..., -N)
+    short int AddChildren(const std::vector<CGameObject*>& children); // Returns 1 on succes. Otherwise, returns the negative index of the last element which failed at AddChild (0, -1, -2, ..., -N)
     //bool AddChildren(const std::initializer_list<CGameObject*>& init) { return }
 
 
-    bool RemoveChild(string name);
+    bool RemoveChild(std::string name);
     void RemoveChildren();
-    CGameObject* GetChild(string name);
+    CGameObject* GetChild(std::string name);
     CGameObject* GetChild(uint index);
     inline uint GetNumChildren(){return children.size();}
 
@@ -179,7 +179,7 @@ class CGameObject
 
   public:
 
-    inline string GetName()
+    inline std::string GetName()
     {
       return name;
     }
@@ -259,7 +259,7 @@ class CGameObject
     inline CComponent_Camera* Camera()
     {
       if(components.find(Components::camera) == components.end())
-        components.insert(pair<int, CComponent*>(Components::camera, new CComponent_Camera(this)));
+        components.insert(std::pair<int, CComponent*>(Components::camera, new CComponent_Camera(this)));
 
       return (CComponent_Camera*)components[Components::camera];
     }
@@ -267,7 +267,7 @@ class CGameObject
     inline CComponent_Mesh_Render* MeshRender()
     {
       if(components.find(Components::mesh_render) == components.end())
-        components.insert(pair<int, CComponent*>(Components::mesh_render, new CComponent_Mesh_Render(this)));
+        components.insert(std::pair<int, CComponent*>(Components::mesh_render, new CComponent_Mesh_Render(this)));
 
       return (CComponent_Mesh_Render*)components[Components::mesh_render];
     }
@@ -275,7 +275,7 @@ class CGameObject
     inline CComponent_Particle_Emitter* ParticleEmitter()
     {
       if(components.find(Components::particle_emitter) == components.end())
-        components.insert(pair<int, CComponent*>(Components::particle_emitter, new CComponent_Particle_Emitter(this)));
+        components.insert(std::pair<int, CComponent*>(Components::particle_emitter, new CComponent_Particle_Emitter(this)));
 
       return (CComponent_Particle_Emitter*)components[Components::particle_emitter];
     }
@@ -283,7 +283,7 @@ class CGameObject
     inline CComponent_GUI_Texture* GUITexture()
     {
       if(components.find(Components::gui_texture) == components.end())
-        components.insert(pair<int, CComponent*>(Components::gui_texture, new CComponent_GUI_Texture(this)));
+        components.insert(std::pair<int, CComponent*>(Components::gui_texture, new CComponent_GUI_Texture(this)));
 
       return (CComponent_GUI_Texture*)components[Components::gui_texture];
     }
@@ -291,7 +291,7 @@ class CGameObject
     inline CComponent_Audio_Source* AudioSource()
     {
       if(components.find(Components::audio_source) == components.end())
-        components.insert(pair<int, CComponent*>(Components::audio_source, new CComponent_Audio_Source(this)));
+        components.insert(std::pair<int, CComponent*>(Components::audio_source, new CComponent_Audio_Source(this)));
 
       return (CComponent_Audio_Source*)components[Components::audio_source];
     }
@@ -315,7 +315,7 @@ bool CGameObject::AddComponent()
   if(components.find(id) != components.end())
     return false;
 
-  components.insert(pair<int, CComponent*>(id, new Type(this)));
+  components.insert(std::pair<int, CComponent*>(id, new Type(this)));
   return true;
 }
 
@@ -326,7 +326,7 @@ bool CGameObject::RemoveComponent()
   if(id == Components::transform)
 	  return false;
 	
-  map<int, CComponent*>::iterator it = components.find(id);
+  std::map<int, CComponent*>::iterator it = components.find(id);
   if(it != components.end())
   {
     delete it->second;

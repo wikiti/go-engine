@@ -6,6 +6,8 @@
 CSystem_UserInput gSystem_UserInput;
 CSystem_UserInput& gUserInput = gSystem_UserInput;
 
+using namespace std;
+
 //const Uint8* CSystem_UserInput::keyboard = SDL_GetKeyboardState(NULL);
 
 using namespace Input;

@@ -4,6 +4,8 @@
 #include "systems/_shader.h"
 #include "components/_component_particle_emitter.h"
 
+using namespace std;
+
 //BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Particle_Emitter);
 GLuint CComponent_Particle_Emitter::m_ParticlesVAO = 0;
 GLuint CComponent_Particle_Emitter::m_ParticlesVBOVertices = 0;

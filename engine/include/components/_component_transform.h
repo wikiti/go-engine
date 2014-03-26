@@ -12,7 +12,7 @@ class CComponent_Transform: public CComponent
   friend class CSystem_Debug;
 
   friend const char* Components::component_to_string(components_t c);
-  friend Components::components_t Components::string_to_component(const string& c);
+  friend Components::components_t Components::string_to_component(const std::string& c);
 
   public:
     vector3f position, scale;
@@ -28,7 +28,7 @@ class CComponent_Transform: public CComponent
 
     static int GetID() { return Components::transform; }
 
-    void parseDebug(string command);
+    void parseDebug(std::string command);
     void printDebug();
 
     /*friend class boost::serialization::access;

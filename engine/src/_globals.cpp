@@ -3,6 +3,8 @@
 SDL_Event event;
 //const Uint8 *gKeyboardState = SDL_GetKeyboardState(NULL);
 
+using namespace std;
+
 string GO_Utils::string_generate_random_alphanumeric(uint n)
 {
   static const char alphanum[] =

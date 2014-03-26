@@ -12,6 +12,8 @@
 
 #include "engine/_engine.h"
 
+using namespace std;
+
 CSystem_Render gSystem_Render;
 CSystem_Render& gRender = gSystem_Render;
 

@@ -14,12 +14,12 @@ class CSystem_Mixer: public CSystem
 
   private:
     // Buffers reservados "one shots"...
-    vector< ALuint > oneshot_used;
-    vector< ALuint > oneshot_unused;
+    std::vector< ALuint > oneshot_used;
+    std::vector< ALuint > oneshot_unused;
 
     // Buffers normales
-    vector< ALuint > sources_used;
-    vector< ALuint > sources_unused;
+    std::vector< ALuint > sources_used;
+    std::vector< ALuint > sources_unused;
 
     /*static const */uint NUMBER_SOURCES;
     /*static const */uint NUMBER_SOURCES_ONESHOT;

@@ -3,6 +3,8 @@
 #include "components/_component_transform.h"
 
 //BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Dummy1);
+using namespace std;
+
 
 CComponent_Dummy1::CComponent_Dummy1(CGameObject* go): CComponent(go)
 {

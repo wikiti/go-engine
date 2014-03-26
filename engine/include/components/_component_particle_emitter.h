@@ -33,7 +33,7 @@ class CComponent_Particle_Emitter: public CComponent
         ~CParticle();
     };
 
-    vector<CParticle> particles;
+    std::vector<CParticle> particles;
 
     static bool InitRenderVBO();
     static void CloseRenderVBO();
@@ -57,16 +57,16 @@ class CComponent_Particle_Emitter: public CComponent
     static GLuint m_ParticlesVBOColor;      // vec4
 
       // Used to store update info.
-    vector<GLfloat> v_ParticlePosition_data;
-    vector<GLfloat> v_ParticlesAngleScale_data;
-    vector<GLfloat> v_ParticlesColor_data;
+    std::vector<GLfloat> v_ParticlePosition_data;
+    std::vector<GLfloat> v_ParticlesAngleScale_data;
+    std::vector<GLfloat> v_ParticlesColor_data;
 
     void UpdateVBO();
 
     vector3f last_pos;
 
   protected:
-    void parseDebug(string command);
+    void parseDebug(std::string command);
     void printDebug();
 
   public:
@@ -75,7 +75,7 @@ class CComponent_Particle_Emitter: public CComponent
     // Se podrían usar varios materiales, con una probabilidad P(X)c[0.f, 1.f] de que una particula use el material X
     uint max_particles;
     GLfloat particles_per_second;
-    string material_name;
+    std::string material_name;
     //vector<string> materials; // random materials, pero esto se podría conseguir con 2 emisores de partículas...
 
     // Usado para CSystem_Math::random_vector(direction, angle_spreed);

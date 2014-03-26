@@ -8,6 +8,8 @@
 //BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Camera);
 
 using namespace Viewmode;
+using namespace std;
+
 
 const char* Viewmode::viewmode_s[] = {"perspective", "ortho", "ortho_screen"};
 

@@ -1,5 +1,7 @@
 #include "_systems.h"
 
+using namespace std;
+
 bool Systems_Init()
 {
   if(!gSystem_Debug.Init())

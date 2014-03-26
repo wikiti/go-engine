@@ -16,7 +16,7 @@ class CShader
 {
   friend class CSystem_Shader_Manager;
   protected:
-    map<string, int> shader_variables;
+    std::map<std::string, int> shader_variables;
 
     uint VertexShader;
     uint GeometricShader;
@@ -41,20 +41,20 @@ class CShader
     inline void SetFragShader(uint value) { FragmentShader = value; }
     inline void SetProgram(uint value) { Program = value; }
 
-    int GetAttributeIndex(const string& varname);
-    int GetUniformIndex(const string& varname);
+    int GetAttributeIndex(const std::string& varname);
+    int GetUniformIndex(const std::string& varname);
 
   protected:
-    int GetVariableIndex(const string& varname, bool isUniform);
+    int GetVariableIndex(const std::string& varname, bool isUniform);
 };
 
 class CSystem_Shader_Manager: public CSystem
 {
   private:
-    map<string, CShader*> shaders;
+    std::map<std::string, CShader*> shaders;
     static const char* DEFAULT_SHADER;
 
-    string last_shader_used;
+    std::string last_shader_used;
 
   public:
     CSystem_Shader_Manager(): CSystem() {};
@@ -67,21 +67,21 @@ class CSystem_Shader_Manager: public CSystem
 
     //void OnLoop();
 
-    CShader* LoadShader(const string& name, const string& vertFile, const string& fragFile = "", const string& geomFile = "");
-    CShader* LinkShader(const string& name);
-    CShader* GetShader(const string& name);
+    CShader* LoadShader(const std::string& name, const std::string& vertFile, const std::string& fragFile = "", const std::string& geomFile = "");
+    CShader* LinkShader(const std::string& name);
+    CShader* GetShader(const std::string& name);
 
-    CShader* UseShader(const string& name = "");
+    CShader* UseShader(const std::string& name = "");
 
   private:
-    CShader* Load(const string& name, const string& vertexFile, const string& fragmentFile, const string& geometryFile = "");
+    CShader* Load(const std::string& name, const std::string& vertexFile, const std::string& fragmentFile, const std::string& geometryFile = "");
     void Clear(CShader* inShader);
 
-    bool LoadShader(const string& name, uint inShaderType, const std::string& inFileName, uint& inOutShader);
+    bool LoadShader(const std::string& name, uint inShaderType, const std::string& inFileName, uint& inOutShader);
       char** LoadSource(int& outLineCount, const std::string& inFileName);
 
-    CShader* LoadShaderStr(const string& name, const char** inVertCode, const char** inFragCode, const char** inGeomCode = NULL);
-    bool LoadStr(const string& name, uint inShaderType, const char** inShaderCode, uint& inOutShader);
+    CShader* LoadShaderStr(const std::string& name, const char** inVertCode, const char** inFragCode, const char** inGeomCode = NULL);
+    bool LoadStr(const std::string& name, uint inShaderType, const char** inShaderCode, uint& inOutShader);
     // ¿?
 };
 

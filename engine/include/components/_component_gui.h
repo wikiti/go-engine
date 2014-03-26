@@ -10,7 +10,7 @@ class CComponent_GUI_Texture: public CComponent
   friend class CGameObject;
 
   public:
-    string texture_name;
+    std::string texture_name;
 
     GLuint pixel_offset_x, pixel_offset_y;
     GLfloat width, height;
@@ -28,7 +28,7 @@ class CComponent_GUI_Texture: public CComponent
 
     void UpdateVBO();
 
-    void parseDebug(string command);
+    void parseDebug(std::string command);
     void printDebug();
 
   public:

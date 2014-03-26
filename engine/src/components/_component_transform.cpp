@@ -4,6 +4,8 @@
 
 #include "_object.h"
 
+using namespace std;
+
 //BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Transform);
 
 GLuint CComponent_Transform::m_TransformVBOVertices = 0;

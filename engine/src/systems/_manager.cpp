@@ -1,6 +1,8 @@
 #include "systems/_manager.h"
 #include "systems/_debug.h"
 
+using namespace std;
+
 CSystem_GameObject_Manager gSystem_GameObject_Manager;
 CSystem_GameObject_Manager& gGameObjects = gSystem_GameObject_Manager;
 

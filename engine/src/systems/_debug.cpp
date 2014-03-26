@@ -10,8 +10,12 @@
 
 #include "engine/_engine.h"
 
+using namespace std;
+
 CSystem_Debug gSystem_Debug;
 CSystem_Debug& gDebug = gSystem_Debug;
+
+using namespace Debug;
 
 void CSystem_Debug::ParseInput()
 {

@@ -9,7 +9,7 @@ class CComponent_Mesh_Render: public CComponent
   public:
     friend class CGameObject;
 
-    string mesh_name, material_name, shader_name;
+    std::string mesh_name, material_name, shader_name;
     //vector<string> materials;
     // Guardar colores en un vector, o algo por el estilo...
     colorf_t color;
@@ -23,7 +23,7 @@ class CComponent_Mesh_Render: public CComponent
   private:
     static int GetID() { return Components::mesh_render; }
 
-    void parseDebug(string command);
+    void parseDebug(std::string command);
     void printDebug();
 
     /*friend class boost::serialization::access;

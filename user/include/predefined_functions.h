@@ -4,6 +4,8 @@
 #include "_globals.h"
 #include "_systems.h"
 
+using namespace std;
+
 void SetTransformByVar(CGameObject* go, string var_name);
 void DefineTramsformByVar(string var_name);
 

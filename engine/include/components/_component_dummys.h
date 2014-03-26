@@ -64,7 +64,7 @@ class CComponent_Dummy3: public CComponent
     vector3f current_random;
     vector3f another_random;
 
-    vector<vector3f> random_array;
+    std::vector<vector3f> random_array;
 
     float angle;
 

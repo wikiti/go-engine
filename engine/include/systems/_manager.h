@@ -12,7 +12,7 @@ class CSystem_GameObject_Manager: public CSystem
     friend class CSystem_Render;
     friend class CSystem_Debug;
 
-    map<string, CGameObject*> gameObjects;
+    std::map<std::string, CGameObject*> gameObjects;
     //map<string, function_t> gameObjects_functions;
     int last_ID;
 
@@ -29,28 +29,28 @@ class CSystem_GameObject_Manager: public CSystem
     void InitGameObjects();
     void CloseGameObjects();
 
-    void InitGameObject(string name);
-    void CloseGameObject(string name);
+    void InitGameObject(std::string name);
+    void CloseGameObject(std::string name);
 
-    CGameObject* AddGameObject(string name, gameObject_type type = gameObject_empty, bool init = true); // cambiar con un enum
+    CGameObject* AddGameObject(std::string name, gameObject_type type = gameObject_empty, bool init = true); // cambiar con un enum
     CGameObject* AddGameObject(CGameObject* go, bool init = true);
-    bool DeleteGameObject(string name, bool remove_children = true);
+    bool DeleteGameObject(std::string name, bool remove_children = true);
     void DeleteGameObjects();
     void DeleteGameObjects_NonPreserved();
-    bool RemoveGameObject(string name);
+    bool RemoveGameObject(std::string name);
       bool RebuildIndex(); // <- Mecanismo insano, pero puesto por si acaso (quien coño llega a 4 mil millones de objetos?)
 
-    vector<CGameObject*> SearchGameObjects(string prefix);
+    std::vector<CGameObject*> SearchGameObjects(std::string prefix);
 
-    bool RenameGameObject(string name, string new_name);
-    bool RenameGameObject(CGameObject* go, string new_name);
+    bool RenameGameObject(std::string name, std::string new_name);
+    bool RenameGameObject(CGameObject* go, std::string new_name);
 
-    CGameObject* GetGameObject(string name);
-    CGameObject* operator[](string name);
+    CGameObject* GetGameObject(std::string name);
+    CGameObject* operator[](std::string name);
 
-    void DisableGameObject(string name);
-    void EnableGameObject(string name);
-    void SetGameObject(string name, bool state = true);
+    void DisableGameObject(std::string name);
+    void EnableGameObject(std::string name);
+    void SetGameObject(std::string name, bool state = true);
 
     void EnableGameObjects();
     void DisableGameObjects();

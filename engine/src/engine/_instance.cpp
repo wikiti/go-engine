@@ -4,6 +4,8 @@
 
 #include "gameObjects.h"
 
+using namespace std;
+
 CInstance::CInstance(fboolpointer f, string r): i_running(true), next_instance(""), gameObjects_loader(f), resource_file(r)
 {
 

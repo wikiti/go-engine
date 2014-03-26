@@ -23,29 +23,29 @@
 #include "_object.h"
 #include "systems/_system.h"
 
-typedef struct string_console_t
-{
-  colorf_t line_color;
-  string str;
-
-  string_console_t(): str("")
-  {
-    line_color.r = line_color.g = line_color.b = line_color.a = 1.f;
-  }
-
-  string_console_t(string msg, GLfloat r = 1.f, GLfloat g = 1.f, GLfloat b = 1.f, GLfloat a = 1.f): str(msg)
-  {
-    line_color.r = r;
-    line_color.g = g;
-    line_color.b = b;
-    line_color.a = a;
-  }
-
-} string_console_t;
-
 namespace Debug
 {
   enum flags_t {error = SDL_MESSAGEBOX_ERROR, warning = SDL_MESSAGEBOX_WARNING, information = SDL_MESSAGEBOX_INFORMATION};
+
+  typedef struct string_console_t
+  {
+    colorf_t line_color;
+    std::string str;
+
+    string_console_t(): str("")
+    {
+      line_color.r = line_color.g = line_color.b = line_color.a = 1.f;
+    }
+
+    string_console_t(std::string msg, GLfloat r = 1.f, GLfloat g = 1.f, GLfloat b = 1.f, GLfloat a = 1.f): str(msg)
+    {
+      line_color.r = r;
+      line_color.g = g;
+      line_color.b = b;
+      line_color.a = a;
+    }
+
+  } string_console_t;
 }
 
 class CSystem_Debug: public CSystem
@@ -59,17 +59,17 @@ class CSystem_Debug: public CSystem
     FILE* file;
 
     // Console
-    vector<string_console_t> console_buffer;
-    vector<string> command_buffer;
+    std::vector<Debug::string_console_t> console_buffer;
+    std::vector<std::string> command_buffer;
 
     int current_line_buffered;
     int current_last_command;
 
-    typedef void (CSystem_Debug::*command_p)(string);
-    map<string, command_p> console_commands;
+    typedef void (CSystem_Debug::*command_p)(std::string);
+    std::map<std::string, command_p> console_commands;
 
     bool console;
-    string input;
+    std::string input;
     void ParseInput();
     void ParseAppArguments();
 
@@ -103,7 +103,7 @@ class CSystem_Debug: public CSystem
     }
 
     // Commands
-    void command(const string& command, bool log = false);
+    void command(const std::string& command, bool log = false);
 
     // log.txt File
     void log(const char* fmt, ...);
@@ -130,61 +130,61 @@ class CSystem_Debug: public CSystem
     // Test
 
     // General
-    void Console_command__UNKNOWN_COMMAND(string arguments);
-    void Console_command__HELP(string arguments);
-    void Console_command__LOG(string arguments);
+    void Console_command__UNKNOWN_COMMAND(std::string arguments);
+    void Console_command__HELP(std::string arguments);
+    void Console_command__LOG(std::string arguments);
 
-    void Console_command__SET_INT(string arguments);
-    void Console_command__SET_FLOAT(string arguments);
-    void Console_command__SET_STRING(string arguments);
+    void Console_command__SET_INT(std::string arguments);
+    void Console_command__SET_FLOAT(std::string arguments);
+    void Console_command__SET_STRING(std::string arguments);
 
-    void Console_command__GET_INT(string arguments);
-    void Console_command__GET_FLOAT(string arguments);
-    void Console_command__GET_STRING(string arguments);
-    void Console_command__GET_VAR(string arguments);
+    void Console_command__GET_INT(std::string arguments);
+    void Console_command__GET_FLOAT(std::string arguments);
+    void Console_command__GET_STRING(std::string arguments);
+    void Console_command__GET_VAR(std::string arguments);
 
-    void Console_command__REMOVE_INT(string arguments);
-    void Console_command__REMOVE_FLOAT(string arguments);
-    void Console_command__REMOVE_STRING(string arguments);
-    void Console_command__REMOVE_USER_VARS(string arguments);
+    void Console_command__REMOVE_INT(std::string arguments);
+    void Console_command__REMOVE_FLOAT(std::string arguments);
+    void Console_command__REMOVE_STRING(std::string arguments);
+    void Console_command__REMOVE_USER_VARS(std::string arguments);
 
-    void Console_command__QUIT(string arguments);
-    void Console_command__CLEAR(string arguments);
-    void Console_command__EXIT(string arguments);
-    void Console_command__RUN(string arguments);
+    void Console_command__QUIT(std::string arguments);
+    void Console_command__CLEAR(std::string arguments);
+    void Console_command__EXIT(std::string arguments);
+    void Console_command__RUN(std::string arguments);
 
-    void Console_command__SECRET_PLZ(string arguments);
+    void Console_command__SECRET_PLZ(std::string arguments);
 
-    //void Console_command__SAVE_STATE(string arguments);
-    //void Console_command__LOAD_STATE(string arguments);
+    //void Console_command__SAVE_STATE(std::string arguments);
+    //void Console_command__LOAD_STATE(std::string arguments);
 
     // Systems
-    void Console_command__SYSTEM_TIME_SETSCALE(string arguments);
-    void Console_command__SYSTEM_USERINPUT_SHOW_JOYSTICKS(string arguments);
+    void Console_command__SYSTEM_TIME_SETSCALE(std::string arguments);
+    void Console_command__SYSTEM_USERINPUT_SHOW_JOYSTICKS(std::string arguments);
 
     // Game Objects
-    void Console_command__GO_SHOW_TREE(string arguments);
-      void Console_command__AUX__GO_SHOW_TREE_print_element(CGameObject* go, map<string, void*>& list, int level = 1);
-    void Console_command__GO_ENABLE(string arguments);
-    void Console_command__GO_COMPONENT_ENABLE(string arguments);
-    void Console_command__GO_COMPONENT_SET(string arguments);
-    void Console_command__GO_COMPONENT_GET(string arguments);
-    void Console_command__GO_SEARCH(string arguments);
-    //void Console_command__ENABLE_SYSTEM(string arguments);
+    void Console_command__GO_SHOW_TREE(std::string arguments);
+      void Console_command__AUX__GO_SHOW_TREE_print_element(CGameObject* go, std::map<std::string, void*>& list, int level = 1);
+    void Console_command__GO_ENABLE(std::string arguments);
+    void Console_command__GO_COMPONENT_ENABLE(std::string arguments);
+    void Console_command__GO_COMPONENT_SET(std::string arguments);
+    void Console_command__GO_COMPONENT_GET(std::string arguments);
+    void Console_command__GO_SEARCH(std::string arguments);
+    //void Console_command__ENABLE_SYSTEM(std::string arguments);
 
     // Sound
-    void Console_command__SND_VOLUME(string arguments);
-    void Console_command__SND_MUSIC_VOLUME(string arguments);
-    void Console_command__SND_CHECKSOURCES(string arguments);
+    void Console_command__SND_VOLUME(std::string arguments);
+    void Console_command__SND_MUSIC_VOLUME(std::string arguments);
+    void Console_command__SND_CHECKSOURCES(std::string arguments);
 
     // Render
-    void Console_command__R_UPDATE_WINDOW(string arguments);
-    void Console_command__R_RESIZE_WINDOW(string arguments);
-    void Console_command__R_DRAW_TRANSFORM(string arguments);
-    void Console_command__R_DRAW_GRID(string arguments);
-    void Console_command__R_FPS(string arguments);
-    void Console_command__R_DRAW_SOUND(string arguments);
-    void Console_command__R_GLINFO(string arguments);
+    void Console_command__R_UPDATE_WINDOW(std::string arguments);
+    void Console_command__R_RESIZE_WINDOW(std::string arguments);
+    void Console_command__R_DRAW_TRANSFORM(std::string arguments);
+    void Console_command__R_DRAW_GRID(std::string arguments);
+    void Console_command__R_FPS(std::string arguments);
+    void Console_command__R_DRAW_SOUND(std::string arguments);
+    void Console_command__R_GLINFO(std::string arguments);
 };
 
 extern CSystem_Debug gSystem_Debug;

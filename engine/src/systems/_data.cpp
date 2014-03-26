@@ -1,6 +1,8 @@
 #include "systems/_data.h"
 #include "systems/_debug.h"
 
+using namespace std;
+
 CSystem_Data_Storage gSystem_Data_Storage;
 CSystem_Data_Storage& gData = gSystem_Data_Storage;
 

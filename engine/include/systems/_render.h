@@ -35,7 +35,7 @@ class CSystem_Render: public CSystem
     friend class CInstance;
 
     // OpenGL info
-    vector<string> GLInfo;
+    std::vector<std::string> GLInfo;
     void SetGLInfo();
 
     // Draw primitives
@@ -43,7 +43,7 @@ class CSystem_Render: public CSystem
 
     SDL_Window* window;
     SDL_GLContext GLcontext;
-    vector<CGameObject*> camera_list;
+    std::vector<CGameObject*> camera_list;
     CGameObject* GUI_Camera;
 
     int current_camera;
@@ -125,7 +125,7 @@ class CSystem_Render: public CSystem
 
     inline void ApplyCameraChanges()
     {
-      for(vector<CGameObject*>::iterator it = camera_list.begin(); it != camera_list.end(); it++)
+      for(std::vector<CGameObject*>::iterator it = camera_list.begin(); it != camera_list.end(); it++)
       {
         (*it)->Camera()->ApplyChanges();
       }
@@ -162,7 +162,7 @@ class CSystem_Render: public CSystem
       }
     }
 
-    vector<string> GetGLInfo()
+    std::vector<std::string> GetGLInfo()
     {
       return GLInfo;
     }
@@ -195,19 +195,19 @@ class CSystem_Render: public CSystem
     }
 
     void SetMainCamera(CGameObject* camera);
-    void SetMainCamera(const string& camera);
+    void SetMainCamera(const std::string& camera);
 
-    void UnSetMainCamera(const string& camera); // si la lista de camaras esta vacia, no se renderiza nada
+    void UnSetMainCamera(const std::string& camera); // si la lista de camaras esta vacia, no se renderiza nada
     // camera_list se usa como una cola
 
     //void SetFullscreenMode(bool state = true);
 
     void AddCamera(CGameObject* camera);
-    void AddCamera(const string& camera);
+    void AddCamera(const std::string& camera);
     void AddCameraPrior(CGameObject* camera);
-    void AddCameraPrior(const string& camera); // ?
+    void AddCameraPrior(const std::string& camera); // ?
 
-    void RemoveCamera(const string& camera);
+    void RemoveCamera(const std::string& camera);
 
     //inline void RenderGameObject(CGameObject* go);
   protected:

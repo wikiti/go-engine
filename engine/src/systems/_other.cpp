@@ -3,6 +3,8 @@
 CSystem_Time gSystem_Time;
 CSystem_Time& gTime = gSystem_Time;
 
+using namespace std;
+
 bool CSystem_Time::Init()
 {
   if(enabled) return true;

@@ -4,6 +4,8 @@
 CSystem_Shader_Manager gSystem_Shader_Manager;
 CSystem_Shader_Manager& gShader = gSystem_Shader_Manager;
 
+using namespace std;
+
 CShader::CShader()
 {
   shader_variables.clear();

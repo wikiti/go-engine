@@ -58,9 +58,9 @@ class CSystem_Data_Storage: public CSystem
   protected:
     friend class CSystem_Debug;
 
-    map<string, string> strings;
-    map<string, int> ints; //GLint
-    map<string, float> floats; //GLfloat
+    std::map<std::string, std::string> strings;
+    std::map<std::string, int> ints; //GLint
+    std::map<std::string, float> floats; //GLfloat
 
     //bool enabled
 
@@ -80,21 +80,21 @@ class CSystem_Data_Storage: public CSystem
     void LoadConfig();
     void SaveConfig();
 
-    void SetString(string name_id, string value);
-    void SetInt(string name_id, int value);
-    void SetFloat(string name_id, float value);
+    void SetString(std::string name_id, std::string value);
+    void SetInt(std::string name_id, int value);
+    void SetFloat(std::string name_id, float value);
 
-    string GetString(string name_id);
-    int GetInt(string name_id);
-    float GetFloat(string name_id);
+    std::string GetString(std::string name_id);
+    int GetInt(std::string name_id);
+    float GetFloat(std::string name_id);
 
-    bool RemoveString(string name_id);
-    bool RemoveInt(string name_id);
-    bool RemoveFloat(string name_id);
+    bool RemoveString(std::string name_id);
+    bool RemoveInt(std::string name_id);
+    bool RemoveFloat(std::string name_id);
 
-    bool ExistsInt(string name_id);
-    bool ExistsFloat(string name_id);
-    bool ExistsString(string name_id);
+    bool ExistsInt(std::string name_id);
+    bool ExistsFloat(std::string name_id);
+    bool ExistsString(std::string name_id);
 
     void RemoveAll();
     void RemoveUserVars();

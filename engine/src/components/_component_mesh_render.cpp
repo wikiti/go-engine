@@ -3,6 +3,8 @@
 #include "systems/_shader.h"
 #include "systems/_debug.h"
 
+using namespace std;
+
 
 //BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Mesh_Render);
 

@@ -14,7 +14,7 @@ class CResource
 {
   protected:
     friend class CSystem_Resources;
-    string rc_file;
+    std::string rc_file;
 
     resources::types_t type;
 
@@ -22,12 +22,12 @@ class CResource
     CResource();
     virtual ~CResource();
 
-    virtual bool LoadFile(string file, string arguments = ""){return true;};
+    virtual bool LoadFile(std::string file, std::string arguments = ""){return true;};
     virtual void Clear(){};
 
     resources::types_t Type(){ return type; };
 
-    string File(){ return rc_file; }
+    std::string File(){ return rc_file; }
 };
 
 class CResource_Mesh: public CResource
@@ -48,7 +48,7 @@ class CResource_Mesh: public CResource
     CResource_Mesh(): CResource(){ numTriangles = numUvCoords = 0; m_ModelVBOVertices = m_ModelVBONormals = m_ModelVBOTexCoords = 0; type = resources::mesh; };
     ~CResource_Mesh(){ Clear(); }
 
-    bool LoadFile(string file, string arguments = "");
+    bool LoadFile(std::string file, std::string arguments = "");
     void Clear();
 
     void Render();
@@ -63,7 +63,7 @@ class CResource_Texture: public CResource
     CResource_Texture(): CResource(){ type = resources::texture; };
     ~CResource_Texture(){ Clear(); }
 
-    bool LoadFile(string file, string arguments = "mipmap");
+    bool LoadFile(std::string file, std::string arguments = "mipmap");
     bool LoadFromMemory(GLuint* data, uint w, uint h, uint ch, flags_t flags = 0x00);
     void Clear();
 
@@ -108,7 +108,7 @@ class CResource_Sound: public CResource
     void PauseSound();
     void RewindSound();*/
 
-    bool LoadFile(string file, string arguments);
+    bool LoadFile(std::string file, std::string arguments);
     void Clear();
 };
 
@@ -134,10 +134,10 @@ class CResource_Font: public CResource
 class CSystem_Resources: public CSystem
 {
   protected:
-    map<string, CResource*> resource_list;
+    std::map<std::string, CResource*> resource_list;
     bool InitEngineResources();
 
-    map<string, CResource*> GetList()
+    std::map<std::string, CResource*> GetList()
     {
       return resource_list;
     };
@@ -150,19 +150,19 @@ class CSystem_Resources: public CSystem
     void Close();
     bool Reset();
 
-    bool LoadResourceFile(string rc_file);
-      bool LoadResource(string name, string rc_file, resources::types_t type, string arguments = "");
-    void AddEmpty(string name);
+    bool LoadResourceFile(std::string rc_file);
+      bool LoadResource(std::string name, std::string rc_file, resources::types_t type, std::string arguments = "");
+    void AddEmpty(std::string name);
 
     void ClearNonEngineResources();
     void ClearResources();
-      void ClearResource(string name);
+      void ClearResource(std::string name);
 
-    CResource_Mesh* GetMesh(string id);
-    CResource_Texture* GetTexture(string id);
-    CResource_Sound* GetSound(string id);
+    CResource_Mesh* GetMesh(std::string id);
+    CResource_Texture* GetTexture(std::string id);
+    CResource_Sound* GetSound(std::string id);
 
-    //CResource* Get(string id);
+    //CResource* Get(std::string id);
 };
 
 extern CSystem_Resources gSystem_Resources;

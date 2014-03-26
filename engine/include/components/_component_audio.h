@@ -40,7 +40,7 @@ class CComponent_Audio_Source: public CComponent
   private:
     static int GetID() { return Components::audio_source; }
 
-    void parseDebug(string command);
+    void parseDebug(std::string command);
     void printDebug();
 
   public:
@@ -48,7 +48,7 @@ class CComponent_Audio_Source: public CComponent
     CComponent_Audio_Source(CGameObject* gameObject);
     ~CComponent_Audio_Source();
 
-    void SetSound(string name)
+    void SetSound(std::string name)
     {
       sound = gSystem_Resources.GetSound(name);
     }

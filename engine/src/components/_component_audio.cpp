@@ -9,6 +9,8 @@
 
 #include "_object.h"
 
+using namespace std;
+
 CComponent_Audio_Source::CComponent_Audio_Source(CGameObject* gameObject): CComponent(gameObject)
 {
   playing = paused = false;

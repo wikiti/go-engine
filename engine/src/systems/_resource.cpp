@@ -5,6 +5,8 @@
 
 CSystem_Resources gSystem_Resources;
 
+using namespace std;
+
 CResource::CResource(): rc_file(""), type(resources::base)
 {
 
