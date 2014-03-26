@@ -37,21 +37,25 @@ Se definirán 3 partes en el proyecto bien claras y definidas:
 
 ## 4. Librerías y dependencias ##
 - [OpenGL32](http://www.opengl.org/ "OpenGL32") (Gráficos) 
+- [SOIL](http://www.opengl.org/wiki/Image_Libraries "SOIL") (Carga de imágenes)
 - [Glew32](http://glew.sourceforge.net/ "glew32") (Extensión de gráficos) 
 - [OpenAL](http://kcat.strangesoft.net/openal.html "OpenAL") (Sonido)
-- [Qt](http://qt-project.org/ "Qt") (Interfaz gráfica del editor)
-- [SDL2](http://www.libsdl.org/ "SDL2")
-	- [SDL_image 2.0](http://www.libsdl.org/projects/SDL_image/ "SDL_image 2.0")
-	- [SDL_ttf 2.0](http://www.libsdl.org/projects/SDL_ttf/ "SDL_ttf 2.0")
-	- [SDL_mixer 2.0	](http://www.libsdl.org/projects/SDL_mixer/ "SDL_mixer 2.0")
-	- [SDL_net 2.0](	http://www.libsdl.org/projects/SDL_net/ "SDL_net 2.0")
-- [SOIL](http://www.opengl.org/wiki/Image_Libraries "SOIL") (Imágenes)
-- [Bullet Engine](http://bulletphysics.org/wordpress/ "Bullet Engine") (Física)
 - [ASSIMP 3.0.1270](http://assimp.sourceforge.net/ "ASSIMP") (Modelos 3D, etc)
 - [GLM](http://glm.g-truc.net/ "GL Maths") (Matemática de gráficos 3D)
-- Otras menores (ya se mencionarán cuando se decidan)
+- [SDL2](http://www.libsdl.org/ "SDL2")
+	- [SDL_image 2.0](http://www.libsdl.org/projects/SDL_image/ "SDL_image 2.0")
+	- [SDL_mixer 2.0	](http://www.libsdl.org/projects/SDL_mixer/ "SDL_mixer 2.0")
+	- [SDL_ttf 2.0](http://www.libsdl.org/projects/SDL_ttf/ "SDL_ttf 2.0") <span style="color: red; font-weight: bold;"><code>-- Sin usar</code></span>
+	- [SDL_net 2.0](	http://www.libsdl.org/projects/SDL_net/ "SDL_net 2.0") <span style="color: red; font-weight: bold;"><code>-- Sin usar</code></span>
+- [Qt](http://qt-project.org/ "Qt") (Interfaz gráfica del editor) <span style="color: red; font-weight: bold;"><code>-- Sin usar</code></span>
+- [Bullet Engine](http://bulletphysics.org/wordpress/ "Bullet Engine") (Física) <span style="color: red; font-weight: bold;"><code>-- Sin usar</code></span>
 
-## 5. Construcción del proyecto ##
+
+## 5. Documentación ##
+
+La página de documentación del proyecto puede encontrarse en la carpeta "/doc" del repositorio, o bien accediendo a [http://wikiti.github.io/go-engine](http://wikiti.github.io/go-engine).
+
+## 6. Construcción del proyecto ##
 El usuario debe programar en el directorio *user/*, que será usado para compilar el proyecto en conjunto.
 
 En un futuro, se hará que el motor gráfico sea un ejecutable, y los ficheros del usuario sean unas librerías dll (*shared libs*), que será una solución algo mas limpia, pero más problemática.
@@ -85,7 +89,7 @@ Recomiendo commpilar el proyecto en ***Windows***, con ***MiNGW Makefiles***
 
 <span style="color: red; font-weight: bold;">Nota:</span> ***MSYS Makefiles*** para *Windows* dará problemas, ya que no enlazará correctamente la librería *libSDL2main.a*. 
 
-## 6. Autores ##
+## 7. Autores ##
 
 Este proyecto ha sido desarrollado, en conjunto, por:
 
@@ -119,7 +123,7 @@ Este proyecto ha sido desarrollado, en conjunto, por:
 <!-- Fin tabla -->
 
 
-## 6. Enlaces de interés ##
+## 8. Enlaces de interés ##
 
 - Página VIII CUSL: [http://www.concursosoftwarelibre.org/1314/proyectos/20](http://www.concursosoftwarelibre.org/1314/proyectos/20)
 - Blog Wordpress: [http://goengine.wordpress.com/](http://goengine.wordpress.com/)
