@@ -564,7 +564,7 @@ void CSystem_Resources::AddEmpty(string name)
   resource_list.insert(pair<string, CResource*>(name, new_rc));
 }
 
-// ->PorHacer Hay que testear la función CSystem_Resources::ClearNonEngineResources().
+// ->xPorHacer Hay que testear la función CSystem_Resources::ClearNonEngineResources().
 void CSystem_Resources::ClearNonEngineResources()
 {
   for(map<string, CResource*>::iterator it = resource_list.begin(); it != resource_list.end(); )

@@ -397,7 +397,7 @@ void CSystem_Render::Close()
 }
 
 // En principio, solo hay que liberar las cámaras.
-// ->PorHacer estaría bien añadir una opción para que CSystem_Render::Reset() reiniciase la ventana, no solo las cámaras.
+// ->NOTA estaría bien añadir una opción para que CSystem_Render::Reset() reiniciase la ventana, no solo las cámaras.
 bool CSystem_Render::Reset() {
   for(vector<CGameObject*>::iterator it = camera_list.begin(); it != camera_list.end(); ) {
     if(!(*it)->IsPreserved())

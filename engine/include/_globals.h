@@ -489,7 +489,7 @@ typedef struct viewportf_t
  *
  * Con esta clase, se puede hace gran variedad de operaciones. Para una mayor variedad, véase la clase CSystem_Math.
  */
-typedef struct vector3f_t // ->PORHACER La clase vector3f_t debería ir en CSystem_Math, no en ámbito global. Difícil decisión...
+typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Math, no en ámbito global. Difícil decisión...
 {
   GLfloat x; /**< Componente "x" del vector, del tipo flotante, siendo la primera componente. */
   GLfloat y; /**< Componente "y" del vector, del tipo flotante, siendo la segunda componente. */

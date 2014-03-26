@@ -6,6 +6,7 @@
 #include "_object.h"
 #include "_system.h"
 
+// ->PORHACER Cambiar los nombres de los métodos de CSystem_GameObject_Manager por algo más sencillo (AddGameObject -> Add).
 class CSystem_GameObject_Manager: public CSystem
 {
   protected:
