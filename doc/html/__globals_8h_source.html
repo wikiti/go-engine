@@ -1,0 +1,809 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Go-Engine: Fichero Fuente C:/Dev/Proyectos/go-engine/engine/include/_globals.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Go-Engine
+   &#160;<span id="projectnumber">alpha</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_bafa501d493553e442f19f5f8dd7b29c.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">_globals.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="__globals_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef __GLOBALS_H_</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __GLOBALS_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/*______C++ STL_______*/</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;cfloat&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;climits&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;limits.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;stack&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="__globals_8h.html#a25cffc64bd967636d69d7c3c82af1030">   32</a></span>&#160;<span class="preprocessor">#define THROW(exceptionClass, message) throw exceptionClass(__FILE__, __LINE__, (message) )</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classgeneral__exception.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgeneral__exception.html">general_exception</a>: <span class="keyword">public</span> std::exception</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> line; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::string file; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::string reason; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classgeneral__exception.html#a81ac162261cdb50fb9e20ae9c7945741">   51</a></span>&#160;    <a class="code" href="classgeneral__exception.html#a81ac162261cdb50fb9e20ae9c7945741">general_exception</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* FILE, <span class="keywordtype">int</span> LINE, <span class="keyword">const</span> <span class="keywordtype">char</span>* REASON): line(LINE), file(FILE), reason(REASON){ }</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classgeneral__exception.html#a17d8cdca47f252c0365c4982538a93a6">   55</a></span>&#160;    <a class="code" href="classgeneral__exception.html#a17d8cdca47f252c0365c4982538a93a6">~general_exception</a>() throw(){};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classgeneral__exception.html#a94a11f479c950ebf385096aec6f6e8bf">   61</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classgeneral__exception.html#a94a11f479c950ebf385096aec6f6e8bf">what</a>() <span class="keyword">const</span> throw()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keyword">static</span> <span class="keywordtype">char</span> output[1024];</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      sprintf(output, <span class="stringliteral">&quot;General exception, on file \&quot;%s\&quot; at line %i. Reason: %s&quot;</span>, file.c_str(), line, reason.c_str());</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="keywordflow">return</span> output;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define _USE_MATH_DEFINES</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="__globals_8h.html#a306bd7f1837c18e24ba5a7ed1596dbe2">   73</a></span>&#160;<span class="preprocessor">#define _RAD_TO_DEG(x) x * ( 180  / M_PI )</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="__globals_8h.html#a808a7418bc50a1583e1d2a07db11ae6e">   78</a></span>&#160;<span class="preprocessor">#define _DEG_TO_RAD(x) x * ( M_PI / 180  )</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*________BOOST_______*/</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*#include &lt;boost/archive/text_oarchive.hpp&gt;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">#include &lt;boost/archive/text_iarchive.hpp&gt;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">#include &lt;boost/archive/binary_oarchive.hpp&gt;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">#include &lt;boost/archive/binary_iarchive.hpp&gt;</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">#include &lt;boost/serialization/assume_abstract.hpp&gt;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">#include &lt;boost/serialization/base_object.hpp&gt;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">#include &lt;boost/serialization/export.hpp&gt;</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">#include &lt;boost/serialization/map.hpp&gt;</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">#include &lt;boost/serialization/string.hpp&gt;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">#include &lt;boost/serialization/vector.hpp&gt;</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">#include &lt;boost/serialization/utility.hpp&gt;*/</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/*_________SDL________*/</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_image.h&gt;</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_ttf.h&gt;</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_mixer.h&gt;</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_net.h&gt;</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">extern</span> SDL_Event <a class="code" href="__globals_8h.html#a6b57f01d3c576db5368dd0efc2f435a4">event</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">//extern const Uint8 *gKeyboardState;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/*_______OpenGL_______*/</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#include &lt;GL/glew.h&gt;</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_opengl.h&gt;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">//#include &lt;GL/glext.h&gt;</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#include &lt;GL/SOIL.h&gt;</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#include &lt;GL/glu.h&gt;</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#define GLM_FORCE_RADIANS</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;glm/gtc/quaternion.hpp&gt;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#include &lt;glm/gtx/quaternion.hpp&gt;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#include &lt;glm/gtc/type_ptr.hpp&gt;</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#include &lt;glm/glm.hpp&gt;</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#include &lt;glm/gtx/norm.hpp&gt;</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#include &lt;glm/gtc/matrix_transform.hpp&gt;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#include &lt;assimp/Importer.hpp&gt;</span>      <span class="comment">// C++ importer interface</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#include &lt;assimp/scene.h&gt;</span>           <span class="comment">// Output data structure</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#include &lt;assimp/postprocess.h&gt;</span>     <span class="comment">// Post processing fla</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">/*_______OpenAL_______*/</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#include &lt;AL/al.h&gt;</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#include &lt;AL/alc.h&gt;</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">/*_____ERRORS_CHARS____*/</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="__globals_8h.html#adc07e5fd038fd64b08080064d80a3ed7">  144</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="__globals_8h.html#adc07e5fd038fd64b08080064d80a3ed7">ERROR_RENDER</a>[] = <span class="stringliteral">&quot;Render error&quot;</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="__globals_8h.html#a3d470c3e2db920debdd2f758bcc04dfa">  148</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="__globals_8h.html#a3d470c3e2db920debdd2f758bcc04dfa">ERROR_INIT</a>[] = <span class="stringliteral">&quot;Init error&quot;</span>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">  152</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a>[] = <span class="stringliteral">&quot;Init fatal error&quot;</span>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="__globals_8h.html#aeeb59a4d0721c8fdb5534ab519f650f3">  156</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="__globals_8h.html#aeeb59a4d0721c8fdb5534ab519f650f3">ERROR_FATAL</a>[] = <span class="stringliteral">&quot;Fatal error&quot;</span>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="__globals_8h.html#a31a7c4993d803b30b8f098497f7080b4">  160</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="__globals_8h.html#a31a7c4993d803b30b8f098497f7080b4">ERROR_FILE</a>[] = <span class="stringliteral">&quot;File error&quot;</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">/*____GENERAL_CONST____*/</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/*______Typedef_______*/</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">  167</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span>* <a class="code" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a>;  </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">  168</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span>* <a class="code" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a>; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">  170</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a>;  </div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">  171</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>;     </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">  172</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a>;   </div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="__globals_8h.html#a8dac3662b9da40f244308408f05c0e7e">  174</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="__globals_8h.html#a8dac3662b9da40f244308408f05c0e7e">fpointer</a>)(void);     </div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">  175</a></span>&#160;<span class="keyword">typedef</span> bool (*<a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a>)(void); </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">/*_____Namespaces_____*/</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">//using namespace std;</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">/*______Structs_______*/</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">// Estaría muy bien definir un tipo de excepción propia</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">// Causante, objetivo, razón, instancia, etc...</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="structcolor__t.html">  191</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structcolor__t.html">color_t</a></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="structcolor__t.html#acc956560696401e4924359d1b1377e57">  193</a></span>&#160;  <a class="code" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> <a class="code" href="structcolor__t.html#acc956560696401e4924359d1b1377e57">r</a>; </div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="structcolor__t.html#a4c1c7ebb8f54019eb6e2f56bd78f0464">  194</a></span>&#160;  <a class="code" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> <a class="code" href="structcolor__t.html#a4c1c7ebb8f54019eb6e2f56bd78f0464">g</a>; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="structcolor__t.html#a1782d6f8a4154c30a79612a97503edf4">  195</a></span>&#160;  <a class="code" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> <a class="code" href="structcolor__t.html#a1782d6f8a4154c30a79612a97503edf4">b</a>; </div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="structcolor__t.html#a34ba6f7c03b5596c954bbfd47ccc67e5">  196</a></span>&#160;  <a class="code" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> <a class="code" href="structcolor__t.html#a34ba6f7c03b5596c954bbfd47ccc67e5">a</a>; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;} <a class="code" href="__globals_8h.html#a0ab832cb1976fa552f7ae0b53abe157c">color_t</a>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="structcolorf__t.html">  207</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structcolorf__t.html">colorf_t</a></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;{</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">  209</a></span>&#160;  GLfloat <a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a>; </div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">  210</a></span>&#160;  GLfloat <a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a>; </div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">  211</a></span>&#160;  GLfloat <a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a>; </div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">  212</a></span>&#160;  GLfloat <a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <span class="comment">//colorf_t(): r(1.f), g(1.f), b(1.f), a(1.f){};</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="structcolorf__t.html#a4db9e60ed265a1c7e1f930b2eecb4357">  222</a></span>&#160;<span class="comment"></span>  <a class="code" href="structcolorf__t.html#a4db9e60ed265a1c7e1f930b2eecb4357">colorf_t</a>(GLfloat R = 1.f, GLfloat G = 1.f, GLfloat B = 1.f, GLfloat A = 1.f): <a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a>(R), <a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a>(G), <a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a>(B), <a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>(A){};</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="structcolorf__t.html#a2adf895965c84145be4866e69839e8c1">  231</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="structcolorf__t.html#a2adf895965c84145be4866e69839e8c1">operator()</a>(GLfloat _r  = 1.f, GLfloat _g = 1.f, GLfloat _b = 1.f, GLfloat _a = 1.f)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a> = _r;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a> = _g;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a> = _b;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a> = _a;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="structcolorf__t.html#afbde8c23e5102ac4761c0f7345f8b800">  244</a></span>&#160;  <a class="code" href="structcolorf__t.html">colorf_t</a> <a class="code" href="structcolorf__t.html#afbde8c23e5102ac4761c0f7345f8b800">operator*</a>(GLfloat c)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structcolorf__t.html#a4db9e60ed265a1c7e1f930b2eecb4357">colorf_t</a>(<a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a>*c, <a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a>*c, <a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a>*c, <a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>*c);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="structcolorf__t.html#a6f567256db7a7336bfaeffd4c4c970dc">  254</a></span>&#160;  <a class="code" href="structcolorf__t.html">colorf_t</a>&amp; <a class="code" href="structcolorf__t.html#a6f567256db7a7336bfaeffd4c4c970dc">operator+=</a>(<a class="code" href="structcolorf__t.html">colorf_t</a> c)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a> += c.<a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a> += c.<a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a> += c.<a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a> += c.<a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="structcolorf__t.html#abf808b699da16d26dd4a9f5c1b581bf1">  279</a></span>&#160;  <span class="keywordtype">float</span>* <a class="code" href="structcolorf__t.html#abf808b699da16d26dd4a9f5c1b581bf1">to_a</a>()</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">float</span>*)<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno"><a class="line" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">  290</a></span>&#160;  std::string <a class="code" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">str</a>()</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    std::stringstream ss;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    ss &lt;&lt; <a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="structcolorf__t.html#a7fad74474ec14604ade63b900d19eb9e">  306</a></span>&#160;  <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="structcolorf__t.html#a7fad74474ec14604ade63b900d19eb9e">operator&lt;&lt;</a>(std::ostream&amp; os, <a class="code" href="structcolorf__t.html">colorf_t</a> c)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    os &lt;&lt; c.<a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; c.<a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; c.<a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; c.<a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="structcolorf__t.html#a4ffa07861adf319d4fa890c0299bf79e">  320</a></span>&#160;  <span class="keyword">friend</span> std::istream&amp; <a class="code" href="structcolorf__t.html#a4ffa07861adf319d4fa890c0299bf79e">operator&gt;&gt;</a>(std::istream&amp; is, <a class="code" href="structcolorf__t.html">colorf_t</a>&amp; c)</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    is &gt;&gt; c.<a class="code" href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">r</a> &gt;&gt; c.<a class="code" href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">g</a> &gt;&gt; c.<a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a> &gt;&gt; c.<a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">return</span> is;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;} <a class="code" href="__globals_8h.html#a039a04605406728d342c96f5b4774df6">colorf_t</a>;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno"><a class="line" href="structviewport__t.html">  351</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structviewport__t.html">viewport_t</a></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;{</div>
+<div class="line"><a name="l00353"></a><span class="lineno"><a class="line" href="structviewport__t.html#a9b65c59eca8d384d26bb16d402c3bb4e">  353</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structviewport__t.html#a9b65c59eca8d384d26bb16d402c3bb4e">x</a>;      </div>
+<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="structviewport__t.html#a8c9531d816648328eeb90ae1f160f08e">  354</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structviewport__t.html#a8c9531d816648328eeb90ae1f160f08e">y</a>;      </div>
+<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="structviewport__t.html#af0c913172f7817bcf8ac41d7bd7fea48">  355</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structviewport__t.html#af0c913172f7817bcf8ac41d7bd7fea48">width</a>;  </div>
+<div class="line"><a name="l00356"></a><span class="lineno"><a class="line" href="structviewport__t.html#a714f9fcef528f17c9c777fc9e56c6557">  356</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structviewport__t.html#a714f9fcef528f17c9c777fc9e56c6557">height</a>; </div>
+<div class="line"><a name="l00366"></a><span class="lineno"><a class="line" href="structviewport__t.html#a3bf479ac69e1d113b04f8726b4807cb0">  366</a></span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="structviewport__t.html#a3bf479ac69e1d113b04f8726b4807cb0">operator&lt;&lt;</a>(std::ostream&amp; os, <a class="code" href="structviewport__t.html">viewport_t</a> v)</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;      os &lt;&lt; v.<a class="code" href="structviewport__t.html#a9b65c59eca8d384d26bb16d402c3bb4e">x</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; v.<a class="code" href="structviewport__t.html#a8c9531d816648328eeb90ae1f160f08e">y</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; v.<a class="code" href="structviewport__t.html#af0c913172f7817bcf8ac41d7bd7fea48">width</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; v.<a class="code" href="structviewport__t.html#a714f9fcef528f17c9c777fc9e56c6557">height</a>;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
+<div class="line"><a name="l00380"></a><span class="lineno"><a class="line" href="structviewport__t.html#abe63c44b450960a89032f2c73ae51b7b">  380</a></span>&#160;    <span class="keyword">friend</span> std::istream&amp; <a class="code" href="structviewport__t.html#abe63c44b450960a89032f2c73ae51b7b">operator&gt;&gt;</a>(std::istream&amp; is, <a class="code" href="structviewport__t.html">viewport_t</a>&amp; v)</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;      is &gt;&gt; v.<a class="code" href="structviewport__t.html#a9b65c59eca8d384d26bb16d402c3bb4e">x</a> &gt;&gt; v.<a class="code" href="structviewport__t.html#a8c9531d816648328eeb90ae1f160f08e">y</a> &gt;&gt; v.<a class="code" href="structviewport__t.html#af0c913172f7817bcf8ac41d7bd7fea48">width</a> &gt;&gt; v.<a class="code" href="structviewport__t.html#a714f9fcef528f17c9c777fc9e56c6557">height</a>;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;      <span class="keywordflow">return</span> is;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
+<div class="line"><a name="l00392"></a><span class="lineno"><a class="line" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057">  392</a></span>&#160;    std::string <a class="code" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057">str</a>()</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    {</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      std::stringstream ss;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;      ss &lt;&lt; <a class="code" href="structviewport__t.html#a9b65c59eca8d384d26bb16d402c3bb4e">x</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structviewport__t.html#a8c9531d816648328eeb90ae1f160f08e">y</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structviewport__t.html#af0c913172f7817bcf8ac41d7bd7fea48">width</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structviewport__t.html#a714f9fcef528f17c9c777fc9e56c6557">height</a>;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;      <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;} <a class="code" href="__globals_8h.html#af955708f63d26a82d9479842d4582558">viewport_t</a>;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div>
+<div class="line"><a name="l00427"></a><span class="lineno"><a class="line" href="structviewportf__t.html">  427</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structviewportf__t.html">viewportf_t</a></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;{</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="comment">// Values between 0.f and 1.f</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno"><a class="line" href="structviewportf__t.html#a3ffa3e9ca780fe7fd244744bf3d709b2">  430</a></span>&#160;    GLfloat <a class="code" href="structviewportf__t.html#a3ffa3e9ca780fe7fd244744bf3d709b2">x</a>;      </div>
+<div class="line"><a name="l00431"></a><span class="lineno"><a class="line" href="structviewportf__t.html#a8b6e011f98dd082691eceff55f1203cc">  431</a></span>&#160;    GLfloat <a class="code" href="structviewportf__t.html#a8b6e011f98dd082691eceff55f1203cc">y</a>;      </div>
+<div class="line"><a name="l00432"></a><span class="lineno"><a class="line" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">  432</a></span>&#160;    GLfloat <a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a>;  </div>
+<div class="line"><a name="l00433"></a><span class="lineno"><a class="line" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">  433</a></span>&#160;    GLfloat <a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a>; </div>
+<div class="line"><a name="l00443"></a><span class="lineno"><a class="line" href="structviewportf__t.html#a86a1b9b00e7a0337f404ed5f951bb8fa">  443</a></span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="structviewportf__t.html#a86a1b9b00e7a0337f404ed5f951bb8fa">operator&lt;&lt;</a>(std::ostream&amp; os, <a class="code" href="structviewportf__t.html">viewportf_t</a> v)</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    {</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;      os &lt;&lt; v.<a class="code" href="structviewportf__t.html#a3ffa3e9ca780fe7fd244744bf3d709b2">x</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; v.<a class="code" href="structviewportf__t.html#a8b6e011f98dd082691eceff55f1203cc">y</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; v.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; v.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a>;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;      <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
+<div class="line"><a name="l00457"></a><span class="lineno"><a class="line" href="structviewportf__t.html#af6695c68bb47777a2eeb750b2d1322d4">  457</a></span>&#160;    <span class="keyword">friend</span> std::istream&amp; <a class="code" href="structviewportf__t.html#af6695c68bb47777a2eeb750b2d1322d4">operator&gt;&gt;</a>(std::istream&amp; is, <a class="code" href="structviewportf__t.html">viewportf_t</a>&amp; v)</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    {</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;      is &gt;&gt; v.<a class="code" href="structviewportf__t.html#a3ffa3e9ca780fe7fd244744bf3d709b2">x</a> &gt;&gt; v.<a class="code" href="structviewportf__t.html#a8b6e011f98dd082691eceff55f1203cc">y</a> &gt;&gt; v.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &gt;&gt; v.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a>;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;      <span class="keywordflow">return</span> is;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    }</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;</div>
+<div class="line"><a name="l00469"></a><span class="lineno"><a class="line" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420">  469</a></span>&#160;    std::string <a class="code" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420">str</a>()</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    {</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;      std::stringstream ss;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;      ss &lt;&lt; <a class="code" href="structviewportf__t.html#a3ffa3e9ca780fe7fd244744bf3d709b2">x</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structviewportf__t.html#a8b6e011f98dd082691eceff55f1203cc">y</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a>;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;      <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    }</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;} <a class="code" href="__globals_8h.html#a48314186dae4d92f0d660fe3872a8bf1">viewportf_t</a>;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;</div>
+<div class="line"><a name="l00492"></a><span class="lineno"><a class="line" href="structvector3f__t.html">  492</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvector3f__t.html">vector3f_t</a> <span class="comment">// -&gt;PORHACER La clase vector3f_t debería ir en CSystem_Math, no en ámbito global. Difícil decisión...</span></div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;{</div>
+<div class="line"><a name="l00494"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">  494</a></span>&#160;  GLfloat <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>; </div>
+<div class="line"><a name="l00495"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">  495</a></span>&#160;  GLfloat <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>; </div>
+<div class="line"><a name="l00496"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">  496</a></span>&#160;  GLfloat <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>; </div>
+<div class="line"><a name="l00503"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">  503</a></span>&#160;  <a class="code" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t</a>(): <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>(0), <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>(0), <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>(0) { };</div>
+<div class="line"><a name="l00512"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a5e79d593fdabe16c2fb60122064e700e">  512</a></span>&#160;  <a class="code" href="structvector3f__t.html#a5e79d593fdabe16c2fb60122064e700e">vector3f_t</a>(<span class="keywordtype">float</span> a, <span class="keywordtype">float</span> b, <span class="keywordtype">float</span> c): <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>(a), <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>(b), <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>(c) { };</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;</div>
+<div class="line"><a name="l00520"></a><span class="lineno"><a class="line" href="structvector3f__t.html#ab7d95c7490cf231c794a52e213e31797">  520</a></span>&#160;  <a class="code" href="structvector3f__t.html#ab7d95c7490cf231c794a52e213e31797">vector3f_t</a>(<span class="keyword">const</span> <a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; v): <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>(v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>), <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>(v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>), <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>(v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>) { };</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;</div>
+<div class="line"><a name="l00528"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a93ca49650f14663b441d9d6497d40552">  528</a></span>&#160;  <a class="code" href="structvector3f__t.html#a93ca49650f14663b441d9d6497d40552">vector3f_t</a>(glm::vec3 v): <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>(v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>), <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>(v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>), <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>(v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>) { };</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;</div>
+<div class="line"><a name="l00536"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">  536</a></span>&#160;  <span class="keyword">inline</span> glm::vec3 <a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>()</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;  {</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    <span class="keywordflow">return</span> glm::vec3(<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  }</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;</div>
+<div class="line"><a name="l00548"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a19a473c7f01e4da65ada8799effd7361">  548</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a19a473c7f01e4da65ada8799effd7361">operator+</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;  {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f_t</a> out(<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>,  <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> + v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> + v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;  }</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;</div>
+<div class="line"><a name="l00563"></a><span class="lineno"><a class="line" href="structvector3f__t.html#ad491b0437b5cd2472fb184755f71dff5">  563</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; <a class="code" href="structvector3f__t.html#ad491b0437b5cd2472fb184755f71dff5">operator+=</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;  {</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> += v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> += v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> += v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;  }</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;</div>
+<div class="line"><a name="l00579"></a><span class="lineno"><a class="line" href="structvector3f__t.html#ab6dff8c08a82c850a81d49ddec725bb9">  579</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#ab6dff8c08a82c850a81d49ddec725bb9">operator-</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;  {</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f_t</a> out;</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    out.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> - v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    out.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> - v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    out.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> - v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;  }</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;</div>
+<div class="line"><a name="l00595"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a1064a393217564fb88ef70f653042cef">  595</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; <a class="code" href="structvector3f__t.html#a1064a393217564fb88ef70f653042cef">operator-=</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;  {</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> -= v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>;</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> -= v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>;</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> -= v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;  }</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;</div>
+<div class="line"><a name="l00610"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a200366b3583440fa99c25cbcf1659584">  610</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; <a class="code" href="structvector3f__t.html#a200366b3583440fa99c25cbcf1659584">operator=</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;  {</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;  }</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;</div>
+<div class="line"><a name="l00626"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a522f4868de03f0f150ca341f77eaefb8">  626</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a522f4868de03f0f150ca341f77eaefb8">operator*</a>(<span class="keywordtype">double</span> value)</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  {</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f_t</a> out;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    out.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> * value;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    out.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> * value;</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    out.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> * value;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  }</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;</div>
+<div class="line"><a name="l00643"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a01c45cd29778d8d14af48227d810a7ba">  643</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; <a class="code" href="structvector3f__t.html#a01c45cd29778d8d14af48227d810a7ba">operator*=</a>(<span class="keywordtype">double</span> value)</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  {</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> *= value;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> *= value;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> *= value;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  }</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;</div>
+<div class="line"><a name="l00659"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a49f7885ca87f48e5fed0200d381b8b26">  659</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structvector3f__t.html#a49f7885ca87f48e5fed0200d381b8b26">operator*</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; v)</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  {</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a5d285f91675fa9868f407f6e07802f9d">dot_product</a>(v);</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;  }</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;</div>
+<div class="line"><a name="l00671"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a4a42b1311a46cb677c9b585858ba27eb">  671</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a4a42b1311a46cb677c9b585858ba27eb">operator/</a>(<span class="keywordtype">double</span> value)</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  {</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f_t</a> out;</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;    out.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> / value;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    out.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> / value;</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    out.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> / value;</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  }</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;</div>
+<div class="line"><a name="l00688"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a032c646d6a310823f10782283a9a6d9f">  688</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; <a class="code" href="structvector3f__t.html#a032c646d6a310823f10782283a9a6d9f">operator/=</a>(<span class="keywordtype">double</span> value)</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;  {</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> /= value;</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> /= value;</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> /= value;</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;  }</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;</div>
+<div class="line"><a name="l00704"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a9dd36855f44c00ae1d85124fc35f7d41">  704</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a9dd36855f44c00ae1d85124fc35f7d41">operator%</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; v)</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;  {</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a8d88ab14d4c8ec5afeba684d8c9203ce">cross_product</a>(v);</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;  }</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;</div>
+<div class="line"><a name="l00723"></a><span class="lineno"><a class="line" href="structvector3f__t.html#aa567921e0e64bfe8cee844debf709108">  723</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="structvector3f__t.html#aa567921e0e64bfe8cee844debf709108">operator()</a>(GLfloat <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, GLfloat <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, GLfloat <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>)</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;  {</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    this-&gt;x = <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>;</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    this-&gt;y = <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>;</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    this-&gt;z = <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  }</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;</div>
+<div class="line"><a name="l00745"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a38be8cf9f6a19e729f03f1a3ccd2e014">  745</a></span>&#160;  <span class="keywordtype">float</span>&amp; <a class="code" href="structvector3f__t.html#a38be8cf9f6a19e729f03f1a3ccd2e014">operator[]</a>(<span class="keywordtype">int</span> pos)</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;  {</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;    <span class="keywordflow">switch</span>(pos)</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    {</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;      <span class="keywordflow">case</span> 0: <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>;</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;      <span class="keywordflow">case</span> 1: <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;      <span class="keywordflow">case</span> 2: <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;      <span class="keywordflow">default</span>: <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    }</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  }</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;</div>
+<div class="line"><a name="l00764"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a5d285f91675fa9868f407f6e07802f9d">  764</a></span>&#160;  <span class="keyword">inline</span> GLfloat <a class="code" href="structvector3f__t.html#a5d285f91675fa9868f407f6e07802f9d">dot_product</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;  {</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>*v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>*v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> + <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>*v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;  }</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;</div>
+<div class="line"><a name="l00776"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a8d88ab14d4c8ec5afeba684d8c9203ce">  776</a></span>&#160;  <span class="keyword">inline</span> <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a8d88ab14d4c8ec5afeba684d8c9203ce">cross_product</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;  {</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f_t</a> out;</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;    out.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>*v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> - <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>*v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>;</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;    out.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>*v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> - <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>*v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;    out.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>*v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> - <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>*v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>;</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;  }</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;</div>
+<div class="line"><a name="l00793"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a4c9654016c3504447aad0e17c5f3be79">  793</a></span>&#160;  GLfloat <a class="code" href="structvector3f__t.html#a4c9654016c3504447aad0e17c5f3be79">length</a>()</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;  {</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;    <span class="keywordflow">return</span> sqrt(<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>*<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>*<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> + <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>*<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;  }</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;</div>
+<div class="line"><a name="l00806"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a92ae06e05b37f072c4c5fbb260254d23">  806</a></span>&#160;  <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="structvector3f__t.html#a92ae06e05b37f072c4c5fbb260254d23">operator&lt;&lt;</a>(std::ostream&amp; os, <a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;  {</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;    os &lt;&lt; v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;    <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  }</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;</div>
+<div class="line"><a name="l00820"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a8981f0cc4aa497d171d8524825fc2e54">  820</a></span>&#160;  <span class="keyword">friend</span> std::istream&amp; <a class="code" href="structvector3f__t.html#a8981f0cc4aa497d171d8524825fc2e54">operator&gt;&gt;</a>(std::istream&amp; is, <a class="code" href="structvector3f__t.html">vector3f_t</a>&amp; v)</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;  {</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;    is &gt;&gt; v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> &gt;&gt; v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> &gt;&gt; v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    <span class="keywordflow">return</span> is;</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  }</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;</div>
+<div class="line"><a name="l00832"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a00a8a3a855eba9e03fb35f62a6f73cfa">  832</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a00a8a3a855eba9e03fb35f62a6f73cfa">normalize</a>()</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;  {</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    GLfloat v = <a class="code" href="structvector3f__t.html#a4c9654016c3504447aad0e17c5f3be79">length</a>();</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t</a>(<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>/v, <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>/v, <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>/v);</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;  }</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;</div>
+<div class="line"><a name="l00844"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a7d986a4c2fa63a415233b72acd17da27">  844</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a7d986a4c2fa63a415233b72acd17da27">up</a>()</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;  {</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t</a>(0.f, 1.f, 0.f);</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;  }</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;</div>
+<div class="line"><a name="l00855"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a67478a4b4bfbad7e84a59925f2066406">  855</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a67478a4b4bfbad7e84a59925f2066406">forward</a>()</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;  {</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t</a>(0.f, 0.f, 1.f);</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;  }</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;</div>
+<div class="line"><a name="l00866"></a><span class="lineno"><a class="line" href="structvector3f__t.html#ae862f39d5683e8f793c6557e30c1ace9">  866</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#ae862f39d5683e8f793c6557e30c1ace9">left</a>()</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;  {</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t</a>(1.f, 0.f, 0.f);</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;  }</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;</div>
+<div class="line"><a name="l00877"></a><span class="lineno"><a class="line" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">  877</a></span>&#160;  <span class="keyword">static</span> GLfloat <a class="code" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">precision</a>;</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;</div>
+<div class="line"><a name="l00885"></a><span class="lineno"><a class="line" href="structvector3f__t.html#ac936ec7e0f5758a7f2cd7ef75cde2f77">  885</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#ac936ec7e0f5758a7f2cd7ef75cde2f77">abs</a>()</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;  {</div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f_t</a> out;</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;</div>
+<div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;    out.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = std::abs(<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>);</div>
+<div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;    out.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = std::abs(<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>);</div>
+<div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;    out.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = std::abs(<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;</div>
+<div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00894"></a><span class="lineno">  894</span>&#160;  }</div>
+<div class="line"><a name="l00895"></a><span class="lineno">  895</span>&#160;</div>
+<div class="line"><a name="l00903"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a144d2a0138077963a5d6d56be07ee40c">  903</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="structvector3f__t.html#a144d2a0138077963a5d6d56be07ee40c">operator==</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> other)</div>
+<div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;  {</div>
+<div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;    <span class="comment">//if(x != other.y or y != other.y or z != other.z)</span></div>
+<div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160;    <span class="keywordflow">if</span>(std::abs(<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> - other.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>) &gt;= std::abs(<a class="code" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">precision</a>) or std::abs(<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> - other.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>) &gt;= std::abs(<a class="code" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">precision</a>) or std::abs(<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> - other.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>) &gt;= std::abs(<a class="code" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">precision</a>))</div>
+<div class="line"><a name="l00907"></a><span class="lineno">  907</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;</div>
+<div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;  }</div>
+<div class="line"><a name="l00911"></a><span class="lineno">  911</span>&#160;</div>
+<div class="line"><a name="l00919"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a6672829454068bbcb109b8ce25884ad0">  919</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="structvector3f__t.html#a6672829454068bbcb109b8ce25884ad0">operator!=</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> other)</div>
+<div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;  {</div>
+<div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;    <span class="keywordflow">return</span> !(*<span class="keyword">this</span> == other);</div>
+<div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;  }</div>
+<div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;</div>
+<div class="line"><a name="l00929"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a403bbcb3050db49c396094312c00ce90">  929</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="structvector3f__t.html#a403bbcb3050db49c396094312c00ce90">operator&lt;</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> other)</div>
+<div class="line"><a name="l00930"></a><span class="lineno">  930</span>&#160;  {</div>
+<div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a4c9654016c3504447aad0e17c5f3be79">length</a>() &lt; other.<a class="code" href="structvector3f__t.html#a4c9654016c3504447aad0e17c5f3be79">length</a>();</div>
+<div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;  }</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;</div>
+<div class="line"><a name="l00939"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a299b18e12df0a7036430f6c8e37601f8">  939</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="structvector3f__t.html#a299b18e12df0a7036430f6c8e37601f8">operator &lt;=</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> other)</div>
+<div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;  {</div>
+<div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span> &lt; other or *<span class="keyword">this</span> == other;</div>
+<div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;  }</div>
+<div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;</div>
+<div class="line"><a name="l00949"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a7e5265773cc9132affe2f5cba5598f75">  949</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="structvector3f__t.html#a7e5265773cc9132affe2f5cba5598f75">operator&gt;</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> other)</div>
+<div class="line"><a name="l00950"></a><span class="lineno">  950</span>&#160;  {</div>
+<div class="line"><a name="l00951"></a><span class="lineno">  951</span>&#160;    <span class="keywordflow">return</span> !(*<span class="keyword">this</span> &lt;= other);</div>
+<div class="line"><a name="l00952"></a><span class="lineno">  952</span>&#160;  }</div>
+<div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;</div>
+<div class="line"><a name="l00959"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a35b3a383e50091a114538c5d649d967c">  959</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="structvector3f__t.html#a35b3a383e50091a114538c5d649d967c">operator&gt;=</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> other)</div>
+<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;  {</div>
+<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;    <span class="keywordflow">return</span> !(*<span class="keyword">this</span> &lt; other);</div>
+<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;  }</div>
+<div class="line"><a name="l00963"></a><span class="lineno">  963</span>&#160;</div>
+<div class="line"><a name="l00973"></a><span class="lineno"><a class="line" href="structvector3f__t.html#aa8f0321736446f48346f0cb3c694a687">  973</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#aa8f0321736446f48346f0cb3c694a687">up</a>(glm::quat angle)</div>
+<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;  {</div>
+<div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;    glm::vec3 y_axis(0.f, 1.f, 0.f);</div>
+<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;</div>
+<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;    glm::vec3 out = glm::rotate(angle, y_axis);</div>
+<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t</a>(out.x, out.y, out.z);</div>
+<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;  }</div>
+<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;</div>
+<div class="line"><a name="l00990"></a><span class="lineno"><a class="line" href="structvector3f__t.html#aee5aa7b35f84d12c45bb4abf35463fb9">  990</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#aee5aa7b35f84d12c45bb4abf35463fb9">left</a>(glm::quat angle)</div>
+<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;  {</div>
+<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;    glm::vec3 x_axis(1.f, 0.f, 0.f);</div>
+<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;</div>
+<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;    glm::vec3 out = glm::rotate(angle, x_axis);</div>
+<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t</a>(out.x, out.y, out.z);</div>
+<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;  }</div>
+<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;</div>
+<div class="line"><a name="l01007"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a3eb20722ca2be08c6553f92e4a3bce23"> 1007</a></span>&#160;  <a class="code" href="structvector3f__t.html">vector3f_t</a> <a class="code" href="structvector3f__t.html#a3eb20722ca2be08c6553f92e4a3bce23">forward</a>(glm::quat angle)</div>
+<div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;  {</div>
+<div class="line"><a name="l01009"></a><span class="lineno"> 1009</span>&#160;    glm::vec3 z_axis(0.f, 0.f, 1.f);</div>
+<div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;</div>
+<div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;    glm::vec3 out = glm::rotate(angle, z_axis);</div>
+<div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t</a>(out.x, out.y, out.z);</div>
+<div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;  }</div>
+<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;</div>
+<div class="line"><a name="l01022"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a494eee10496629d6cd8cf28b8e142b9e"> 1022</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="structvector3f__t.html#a494eee10496629d6cd8cf28b8e142b9e">distance_to</a>(<a class="code" href="structvector3f__t.html">vector3f_t</a> v)</div>
+<div class="line"><a name="l01023"></a><span class="lineno"> 1023</span>&#160;  {</div>
+<div class="line"><a name="l01024"></a><span class="lineno"> 1024</span>&#160;    <span class="keywordflow">return</span> ((*<span class="keyword">this</span>) - v).length();</div>
+<div class="line"><a name="l01025"></a><span class="lineno"> 1025</span>&#160;  }</div>
+<div class="line"><a name="l01026"></a><span class="lineno"> 1026</span>&#160;</div>
+<div class="line"><a name="l01033"></a><span class="lineno"><a class="line" href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190"> 1033</a></span>&#160;  std::string <a class="code" href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">str</a>()</div>
+<div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;  {</div>
+<div class="line"><a name="l01035"></a><span class="lineno"> 1035</span>&#160;    std::stringstream ss;</div>
+<div class="line"><a name="l01036"></a><span class="lineno"> 1036</span>&#160;    ss &lt;&lt; <a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>;</div>
+<div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;</div>
+<div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;    <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;  }</div>
+<div class="line"><a name="l01040"></a><span class="lineno"> 1040</span>&#160;</div>
+<div class="line"><a name="l01041"></a><span class="lineno"> 1041</span>&#160;} <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>;</div>
+<div class="line"><a name="l01042"></a><span class="lineno"> 1042</span>&#160;</div>
+<div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;</div>
+<div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;<span class="comment">/*_____Functions______*/</span></div>
+<div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;</div>
+<div class="line"><a name="l01047"></a><span class="lineno"><a class="line" href="namespace_utils.html"> 1047</a></span>&#160;<span class="keyword">namespace </span>Utils</div>
+<div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;{</div>
+<div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;  std::string <a class="code" href="namespace_utils.html#a36a166e3ee3df3c74d173ec59c2faf77">string_generate_random_alphanumeric</a>(<a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> n = 4);</div>
+<div class="line"><a name="l01057"></a><span class="lineno"> 1057</span>&#160;</div>
+<div class="line"><a name="l01065"></a><span class="lineno"> 1065</span>&#160;  std::string <a class="code" href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">string_to_lower</a>(std::string&amp; str);</div>
+<div class="line"><a name="l01066"></a><span class="lineno"> 1066</span>&#160;</div>
+<div class="line"><a name="l01074"></a><span class="lineno"> 1074</span>&#160;  std::string <a class="code" href="namespace_utils.html#ab5e6a3d3b984a2994202d33010f8d9c7">string_to_upper</a>(std::string&amp; str);</div>
+<div class="line"><a name="l01075"></a><span class="lineno"> 1075</span>&#160;</div>
+<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;  SDL_Surface* <a class="code" href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">sdl_cargar_img</a>(std::string s);</div>
+<div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;</div>
+<div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespace_utils.html#a4957bab738ebb9b504f4abfe9ff6a7bb">validateIdentifier</a>(std::string identifier);</div>
+<div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;</div>
+<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;  <span class="comment">//void glhLookAtf2(glm::mat4&amp; matrix, vector3f&amp; eyePosition3D, vector3f&amp; center3D, vector3f&amp; upVector3D ); // http://www.opengl.org/wiki/GluLookAt_code</span></div>
+<div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;  <span class="comment">//vector3f glComputeNormalOfPlane( vector3f&amp; vec1, vector3f&amp; vec2); // https://code.google.com/p/lightsimulator/source/browse/trunk/src/glutshadowmap.cpp?spec=svn133&amp;r=133</span></div>
+<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;}</div>
+<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;</div>
+<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;</div>
+<div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;<span class="comment">/*typedef struct matrixf_t</span></div>
+<div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;<span class="comment">{</span></div>
+<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;<span class="comment">  vector&lt; vector&lt;GLfloat&gt; &gt; matrix;</span></div>
+<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;<span class="comment">  matrixf_t(uint n, uint m)</span></div>
+<div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;<span class="comment">  {</span></div>
+<div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;<span class="comment">    if(!n) n = 1;</span></div>
+<div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;<span class="comment">    if(!m) m = 1;</span></div>
+<div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;<span class="comment">    matrix.resize(n);</span></div>
+<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;<span class="comment">    for(uint i = 0; i &lt; n; i++)</span></div>
+<div class="line"><a name="l01110"></a><span class="lineno"> 1110</span>&#160;<span class="comment">      matrix[i].resize(m);</span></div>
+<div class="line"><a name="l01111"></a><span class="lineno"> 1111</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;<span class="comment">    for(uint i = 0; i &lt; n; i++)</span></div>
+<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;<span class="comment">      for(uint j = 0; j &lt; m; i++)</span></div>
+<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;<span class="comment">        matrix[i][j] = 0.f;</span></div>
+<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;<span class="comment">  matrixf_t()</span></div>
+<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;<span class="comment">  {</span></div>
+<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;<span class="comment">    matrixf_t(1, 1);</span></div>
+<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;<span class="comment">  uint N() { return matrix.size(); }</span></div>
+<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;<span class="comment">  uint M() { return matrix[0].size(); }</span></div>
+<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;<span class="comment">  vector&lt;GLfloat&gt; operator[](uint index)</span></div>
+<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;<span class="comment">  {</span></div>
+<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;<span class="comment">    return matrix[index];</span></div>
+<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;<span class="comment">  matrixf_t operator*(matrixf_t m)</span></div>
+<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;<span class="comment">  {</span></div>
+<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;<span class="comment">    matrixf_t out(M(), m.N());</span></div>
+<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;<span class="comment">    if(M() == m.N())</span></div>
+<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;<span class="comment">      for(uint i = 0; i &lt; N(); i++)</span></div>
+<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;<span class="comment">        for(uint j = 0; j &lt; m.M(); j++)</span></div>
+<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;<span class="comment">          for(uint k = 0; k &lt; M(); j++)</span></div>
+<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;<span class="comment">            out[i][j] = out[i][j] + matrix[i][k]* m[k][j];</span></div>
+<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;<span class="comment">    return out;</span></div>
+<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;<span class="comment">  matrixf_t&amp; operator=(matrixf_t m)</span></div>
+<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;<span class="comment">  {</span></div>
+<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;<span class="comment">    if(N() == m.N() &amp;&amp; M() == m.M())</span></div>
+<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;<span class="comment">      for(uint i = 0; i &lt; N(); i++)</span></div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;<span class="comment">        for(uint j = 0; j &lt; M(); j++)</span></div>
+<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;<span class="comment">          matrix[i][j] = m[i][j];</span></div>
+<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;<span class="comment">    return *this;</span></div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;<span class="comment">} matrixf;*/</span></div>
+<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;</div>
+<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __GLOBALS_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="structvector3f__t_html_a92ae06e05b37f072c4c5fbb260254d23"><div class="ttname"><a href="structvector3f__t.html#a92ae06e05b37f072c4c5fbb260254d23">vector3f_t::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00806">_globals.h:806</a></div></div>
+<div class="ttc" id="namespace_utils_html_a4957bab738ebb9b504f4abfe9ff6a7bb"><div class="ttname"><a href="namespace_utils.html#a4957bab738ebb9b504f4abfe9ff6a7bb">Utils::validateIdentifier</a></div><div class="ttdeci">bool validateIdentifier(std::string identifier)</div></div>
+<div class="ttc" id="__globals_8h_html_acb1903f2f2f7ed4502a5f53615cff8aa"><div class="ttname"><a href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a></div><div class="ttdeci">void * input_t</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00167">_globals.h:167</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a2adf895965c84145be4866e69839e8c1"><div class="ttname"><a href="structcolorf__t.html#a2adf895965c84145be4866e69839e8c1">colorf_t::operator()</a></div><div class="ttdeci">void operator()(GLfloat _r=1.f, GLfloat _g=1.f, GLfloat _b=1.f, GLfloat _a=1.f)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00231">_globals.h:231</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a299b18e12df0a7036430f6c8e37601f8"><div class="ttname"><a href="structvector3f__t.html#a299b18e12df0a7036430f6c8e37601f8">vector3f_t::operator&lt;=</a></div><div class="ttdeci">bool operator&lt;=(vector3f_t other)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00939">_globals.h:939</a></div></div>
+<div class="ttc" id="structcolorf__t_html_abf808b699da16d26dd4a9f5c1b581bf1"><div class="ttname"><a href="structcolorf__t.html#abf808b699da16d26dd4a9f5c1b581bf1">colorf_t::to_a</a></div><div class="ttdeci">float * to_a()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00279">_globals.h:279</a></div></div>
+<div class="ttc" id="__globals_8h_html_aeeb59a4d0721c8fdb5534ab519f650f3"><div class="ttname"><a href="__globals_8h.html#aeeb59a4d0721c8fdb5534ab519f650f3">ERROR_FATAL</a></div><div class="ttdeci">const char ERROR_FATAL[]</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00156">_globals.h:156</a></div></div>
+<div class="ttc" id="__globals_8h_html_a6db821b2b1332e8be7a662d075ede0b0"><div class="ttname"><a href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a></div><div class="ttdeci">void * output_t</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00168">_globals.h:168</a></div></div>
+<div class="ttc" id="structvector3f__t_html_aa8f0321736446f48346f0cb3c694a687"><div class="ttname"><a href="structvector3f__t.html#aa8f0321736446f48346f0cb3c694a687">vector3f_t::up</a></div><div class="ttdeci">vector3f_t up(glm::quat angle)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00973">_globals.h:973</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a4c9654016c3504447aad0e17c5f3be79"><div class="ttname"><a href="structvector3f__t.html#a4c9654016c3504447aad0e17c5f3be79">vector3f_t::length</a></div><div class="ttdeci">GLfloat length()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00793">_globals.h:793</a></div></div>
+<div class="ttc" id="structviewport__t_html_a746123c45eaa1ab17b3209343cb3d057"><div class="ttname"><a href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057">viewport_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00392">_globals.h:392</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a19a473c7f01e4da65ada8799effd7361"><div class="ttname"><a href="structvector3f__t.html#a19a473c7f01e4da65ada8799effd7361">vector3f_t::operator+</a></div><div class="ttdeci">vector3f_t operator+(vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00548">_globals.h:548</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a4db9e60ed265a1c7e1f930b2eecb4357"><div class="ttname"><a href="structcolorf__t.html#a4db9e60ed265a1c7e1f930b2eecb4357">colorf_t::colorf_t</a></div><div class="ttdeci">colorf_t(GLfloat R=1.f, GLfloat G=1.f, GLfloat B=1.f, GLfloat A=1.f)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00222">_globals.h:222</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a86a1b9b00e7a0337f404ed5f951bb8fa"><div class="ttname"><a href="structviewportf__t.html#a86a1b9b00e7a0337f404ed5f951bb8fa">viewportf_t::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, viewportf_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00443">_globals.h:443</a></div></div>
+<div class="ttc" id="structvector3f__t_html_ac936ec7e0f5758a7f2cd7ef75cde2f77"><div class="ttname"><a href="structvector3f__t.html#ac936ec7e0f5758a7f2cd7ef75cde2f77">vector3f_t::abs</a></div><div class="ttdeci">vector3f_t abs()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00885">_globals.h:885</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a7d986a4c2fa63a415233b72acd17da27"><div class="ttname"><a href="structvector3f__t.html#a7d986a4c2fa63a415233b72acd17da27">vector3f_t::up</a></div><div class="ttdeci">vector3f_t up()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00844">_globals.h:844</a></div></div>
+<div class="ttc" id="structvector3f__t_html_ab6dff8c08a82c850a81d49ddec725bb9"><div class="ttname"><a href="structvector3f__t.html#ab6dff8c08a82c850a81d49ddec725bb9">vector3f_t::operator-</a></div><div class="ttdeci">vector3f_t operator-(vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00579">_globals.h:579</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a3ffa3e9ca780fe7fd244744bf3d709b2"><div class="ttname"><a href="structviewportf__t.html#a3ffa3e9ca780fe7fd244744bf3d709b2">viewportf_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00430">_globals.h:430</a></div></div>
+<div class="ttc" id="__globals_8h_html_a48314186dae4d92f0d660fe3872a8bf1"><div class="ttname"><a href="__globals_8h.html#a48314186dae4d92f0d660fe3872a8bf1">viewportf_t</a></div><div class="ttdeci">struct viewportf_t viewportf_t</div></div>
+<div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00212">_globals.h:212</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a7e5265773cc9132affe2f5cba5598f75"><div class="ttname"><a href="structvector3f__t.html#a7e5265773cc9132affe2f5cba5598f75">vector3f_t::operator&gt;</a></div><div class="ttdeci">bool operator&gt;(vector3f_t other)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00949">_globals.h:949</a></div></div>
+<div class="ttc" id="namespace_utils_html_ad546bc517e486f5fd3a39eaa247935e8"><div class="ttname"><a href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a></div><div class="ttdeci">std::string string_to_lower(std::string &amp;str)</div></div>
+<div class="ttc" id="structcolorf__t_html_a7fad74474ec14604ade63b900d19eb9e"><div class="ttname"><a href="structcolorf__t.html#a7fad74474ec14604ade63b900d19eb9e">colorf_t::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, colorf_t c)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00306">_globals.h:306</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a403bbcb3050db49c396094312c00ce90"><div class="ttname"><a href="structvector3f__t.html#a403bbcb3050db49c396094312c00ce90">vector3f_t::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(vector3f_t other)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00929">_globals.h:929</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a6f9139cbfbecc67eea3f0e5a0df4f254"><div class="ttname"><a href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">viewportf_t::width</a></div><div class="ttdeci">GLfloat width</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00432">_globals.h:432</a></div></div>
+<div class="ttc" id="structvector3f__t_html_aee5aa7b35f84d12c45bb4abf35463fb9"><div class="ttname"><a href="structvector3f__t.html#aee5aa7b35f84d12c45bb4abf35463fb9">vector3f_t::left</a></div><div class="ttdeci">vector3f_t left(glm::quat angle)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00990">_globals.h:990</a></div></div>
+<div class="ttc" id="structviewport__t_html_abe63c44b450960a89032f2c73ae51b7b"><div class="ttname"><a href="structviewport__t.html#abe63c44b450960a89032f2c73ae51b7b">viewport_t::operator&gt;&gt;</a></div><div class="ttdeci">friend std::istream &amp; operator&gt;&gt;(std::istream &amp;is, viewport_t &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00380">_globals.h:380</a></div></div>
+<div class="ttc" id="structviewportf__t_html"><div class="ttname"><a href="structviewportf__t.html">viewportf_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00427">_globals.h:427</a></div></div>
+<div class="ttc" id="namespace_utils_html_ab5e6a3d3b984a2994202d33010f8d9c7"><div class="ttname"><a href="namespace_utils.html#ab5e6a3d3b984a2994202d33010f8d9c7">Utils::string_to_upper</a></div><div class="ttdeci">std::string string_to_upper(std::string &amp;str)</div></div>
+<div class="ttc" id="structcolorf__t_html_afbde8c23e5102ac4761c0f7345f8b800"><div class="ttname"><a href="structcolorf__t.html#afbde8c23e5102ac4761c0f7345f8b800">colorf_t::operator*</a></div><div class="ttdeci">colorf_t operator*(GLfloat c)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00244">_globals.h:244</a></div></div>
+<div class="ttc" id="structcolor__t_html_a1782d6f8a4154c30a79612a97503edf4"><div class="ttname"><a href="structcolor__t.html#a1782d6f8a4154c30a79612a97503edf4">color_t::b</a></div><div class="ttdeci">ubyte b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00195">_globals.h:195</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a494eee10496629d6cd8cf28b8e142b9e"><div class="ttname"><a href="structvector3f__t.html#a494eee10496629d6cd8cf28b8e142b9e">vector3f_t::distance_to</a></div><div class="ttdeci">double distance_to(vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l01022">_globals.h:1022</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a3eb20722ca2be08c6553f92e4a3bce23"><div class="ttname"><a href="structvector3f__t.html#a3eb20722ca2be08c6553f92e4a3bce23">vector3f_t::forward</a></div><div class="ttdeci">vector3f_t forward(glm::quat angle)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l01007">_globals.h:1007</a></div></div>
+<div class="ttc" id="structvector3f__t_html_ad491b0437b5cd2472fb184755f71dff5"><div class="ttname"><a href="structvector3f__t.html#ad491b0437b5cd2472fb184755f71dff5">vector3f_t::operator+=</a></div><div class="ttdeci">vector3f_t &amp; operator+=(vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00563">_globals.h:563</a></div></div>
+<div class="ttc" id="__globals_8h_html_aba655f18e0b894189a8bb3462ee7748e"><div class="ttname"><a href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a></div><div class="ttdeci">const char ERROR_FATAL_INIT[]</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00152">_globals.h:152</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a032c646d6a310823f10782283a9a6d9f"><div class="ttname"><a href="structvector3f__t.html#a032c646d6a310823f10782283a9a6d9f">vector3f_t::operator/=</a></div><div class="ttdeci">vector3f_t &amp; operator/=(double value)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00688">_globals.h:688</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a01c45cd29778d8d14af48227d810a7ba"><div class="ttname"><a href="structvector3f__t.html#a01c45cd29778d8d14af48227d810a7ba">vector3f_t::operator*=</a></div><div class="ttdeci">vector3f_t &amp; operator*=(double value)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00643">_globals.h:643</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00494">_globals.h:494</a></div></div>
+<div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00210">_globals.h:210</a></div></div>
+<div class="ttc" id="classgeneral__exception_html_a94a11f479c950ebf385096aec6f6e8bf"><div class="ttname"><a href="classgeneral__exception.html#a94a11f479c950ebf385096aec6f6e8bf">general_exception::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00061">_globals.h:61</a></div></div>
+<div class="ttc" id="structcolorf__t_html_af14da3dbc461fe04e993a5fb57a1bb25"><div class="ttname"><a href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">colorf_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00290">_globals.h:290</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a8981f0cc4aa497d171d8524825fc2e54"><div class="ttname"><a href="structvector3f__t.html#a8981f0cc4aa497d171d8524825fc2e54">vector3f_t::operator&gt;&gt;</a></div><div class="ttdeci">friend std::istream &amp; operator&gt;&gt;(std::istream &amp;is, vector3f_t &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00820">_globals.h:820</a></div></div>
+<div class="ttc" id="__globals_8h_html_af955708f63d26a82d9479842d4582558"><div class="ttname"><a href="__globals_8h.html#af955708f63d26a82d9479842d4582558">viewport_t</a></div><div class="ttdeci">struct viewport_t viewport_t</div></div>
+<div class="ttc" id="structvector3f__t_html_abd1c4940e10eec46d7d4410a2d78213a"><div class="ttname"><a href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">vector3f_t::precision</a></div><div class="ttdeci">static GLfloat precision</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00877">_globals.h:877</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a38be8cf9f6a19e729f03f1a3ccd2e014"><div class="ttname"><a href="structvector3f__t.html#a38be8cf9f6a19e729f03f1a3ccd2e014">vector3f_t::operator[]</a></div><div class="ttdeci">float &amp; operator[](int pos)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00745">_globals.h:745</a></div></div>
+<div class="ttc" id="structcolor__t_html_a34ba6f7c03b5596c954bbfd47ccc67e5"><div class="ttname"><a href="structcolor__t.html#a34ba6f7c03b5596c954bbfd47ccc67e5">color_t::a</a></div><div class="ttdeci">ubyte a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00196">_globals.h:196</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a7da999c7ce22a9054d5749ce2abc2160"><div class="ttname"><a href="structvector3f__t.html#a7da999c7ce22a9054d5749ce2abc2160">vector3f_t::vector3f_t</a></div><div class="ttdeci">vector3f_t()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00503">_globals.h:503</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a9dd36855f44c00ae1d85124fc35f7d41"><div class="ttname"><a href="structvector3f__t.html#a9dd36855f44c00ae1d85124fc35f7d41">vector3f_t::operator%</a></div><div class="ttdeci">vector3f_t operator%(vector3f_t &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00704">_globals.h:704</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a1064a393217564fb88ef70f653042cef"><div class="ttname"><a href="structvector3f__t.html#a1064a393217564fb88ef70f653042cef">vector3f_t::operator-=</a></div><div class="ttdeci">vector3f_t &amp; operator-=(vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00595">_globals.h:595</a></div></div>
+<div class="ttc" id="classgeneral__exception_html_a17d8cdca47f252c0365c4982538a93a6"><div class="ttname"><a href="classgeneral__exception.html#a17d8cdca47f252c0365c4982538a93a6">general_exception::~general_exception</a></div><div class="ttdeci">~general_exception()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00055">_globals.h:55</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a200366b3583440fa99c25cbcf1659584"><div class="ttname"><a href="structvector3f__t.html#a200366b3583440fa99c25cbcf1659584">vector3f_t::operator=</a></div><div class="ttdeci">vector3f_t &amp; operator=(vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00610">_globals.h:610</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a49f7885ca87f48e5fed0200d381b8b26"><div class="ttname"><a href="structvector3f__t.html#a49f7885ca87f48e5fed0200d381b8b26">vector3f_t::operator*</a></div><div class="ttdeci">float operator*(vector3f_t &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00659">_globals.h:659</a></div></div>
+<div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00211">_globals.h:211</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a6f567256db7a7336bfaeffd4c4c970dc"><div class="ttname"><a href="structcolorf__t.html#a6f567256db7a7336bfaeffd4c4c970dc">colorf_t::operator+=</a></div><div class="ttdeci">colorf_t &amp; operator+=(colorf_t c)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00254">_globals.h:254</a></div></div>
+<div class="ttc" id="structviewport__t_html_af0c913172f7817bcf8ac41d7bd7fea48"><div class="ttname"><a href="structviewport__t.html#af0c913172f7817bcf8ac41d7bd7fea48">viewport_t::width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00355">_globals.h:355</a></div></div>
+<div class="ttc" id="__globals_8h_html_a039a04605406728d342c96f5b4774df6"><div class="ttname"><a href="__globals_8h.html#a039a04605406728d342c96f5b4774df6">colorf_t</a></div><div class="ttdeci">struct colorf_t colorf_t</div></div>
+<div class="ttc" id="structcolor__t_html"><div class="ttname"><a href="structcolor__t.html">color_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00191">_globals.h:191</a></div></div>
+<div class="ttc" id="__globals_8h_html_aa250b1dedabea51e27f641d879926b0f"><div class="ttname"><a href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></div><div class="ttdeci">struct vector3f_t vector3f</div></div>
+<div class="ttc" id="structvector3f__t_html_a4a42b1311a46cb677c9b585858ba27eb"><div class="ttname"><a href="structvector3f__t.html#a4a42b1311a46cb677c9b585858ba27eb">vector3f_t::operator/</a></div><div class="ttdeci">vector3f_t operator/(double value)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00671">_globals.h:671</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a5e79d593fdabe16c2fb60122064e700e"><div class="ttname"><a href="structvector3f__t.html#a5e79d593fdabe16c2fb60122064e700e">vector3f_t::vector3f_t</a></div><div class="ttdeci">vector3f_t(float a, float b, float c)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00512">_globals.h:512</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a144d2a0138077963a5d6d56be07ee40c"><div class="ttname"><a href="structvector3f__t.html#a144d2a0138077963a5d6d56be07ee40c">vector3f_t::operator==</a></div><div class="ttdeci">bool operator==(vector3f_t other)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00903">_globals.h:903</a></div></div>
+<div class="ttc" id="structvector3f__t_html_ab7d95c7490cf231c794a52e213e31797"><div class="ttname"><a href="structvector3f__t.html#ab7d95c7490cf231c794a52e213e31797">vector3f_t::vector3f_t</a></div><div class="ttdeci">vector3f_t(const vector3f_t &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00520">_globals.h:520</a></div></div>
+<div class="ttc" id="classgeneral__exception_html"><div class="ttname"><a href="classgeneral__exception.html">general_exception</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00037">_globals.h:37</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a8c63b59e7429217822b200f5182beceb"><div class="ttname"><a href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">vector3f_t::to_glm</a></div><div class="ttdeci">glm::vec3 to_glm()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00536">_globals.h:536</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a6f1bc4933dcd7ece8ed3073cb4c1095b"><div class="ttname"><a href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">colorf_t::r</a></div><div class="ttdeci">GLfloat r</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00209">_globals.h:209</a></div></div>
+<div class="ttc" id="structcolor__t_html_a4c1c7ebb8f54019eb6e2f56bd78f0464"><div class="ttname"><a href="structcolor__t.html#a4c1c7ebb8f54019eb6e2f56bd78f0464">color_t::g</a></div><div class="ttdeci">ubyte g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00194">_globals.h:194</a></div></div>
+<div class="ttc" id="__globals_8h_html_a8dac3662b9da40f244308408f05c0e7e"><div class="ttname"><a href="__globals_8h.html#a8dac3662b9da40f244308408f05c0e7e">fpointer</a></div><div class="ttdeci">void(* fpointer)(void)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00174">_globals.h:174</a></div></div>
+<div class="ttc" id="structviewport__t_html_a3bf479ac69e1d113b04f8726b4807cb0"><div class="ttname"><a href="structviewport__t.html#a3bf479ac69e1d113b04f8726b4807cb0">viewport_t::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, viewport_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00366">_globals.h:366</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a4ffa07861adf319d4fa890c0299bf79e"><div class="ttname"><a href="structcolorf__t.html#a4ffa07861adf319d4fa890c0299bf79e">colorf_t::operator&gt;&gt;</a></div><div class="ttdeci">friend std::istream &amp; operator&gt;&gt;(std::istream &amp;is, colorf_t &amp;c)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00320">_globals.h:320</a></div></div>
+<div class="ttc" id="structviewport__t_html_a8c9531d816648328eeb90ae1f160f08e"><div class="ttname"><a href="structviewport__t.html#a8c9531d816648328eeb90ae1f160f08e">viewport_t::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00354">_globals.h:354</a></div></div>
+<div class="ttc" id="structviewportf__t_html_abe61175a5f57f5641f2904b73da4a420"><div class="ttname"><a href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420">viewportf_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00469">_globals.h:469</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00495">_globals.h:495</a></div></div>
+<div class="ttc" id="structvector3f__t_html_ae862f39d5683e8f793c6557e30c1ace9"><div class="ttname"><a href="structvector3f__t.html#ae862f39d5683e8f793c6557e30c1ace9">vector3f_t::left</a></div><div class="ttdeci">vector3f_t left()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00866">_globals.h:866</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a522f4868de03f0f150ca341f77eaefb8"><div class="ttname"><a href="structvector3f__t.html#a522f4868de03f0f150ca341f77eaefb8">vector3f_t::operator*</a></div><div class="ttdeci">vector3f_t operator*(double value)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00626">_globals.h:626</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a93ca49650f14663b441d9d6497d40552"><div class="ttname"><a href="structvector3f__t.html#a93ca49650f14663b441d9d6497d40552">vector3f_t::vector3f_t</a></div><div class="ttdeci">vector3f_t(glm::vec3 v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00528">_globals.h:528</a></div></div>
+<div class="ttc" id="__globals_8h_html_a02b593633ae68595bb0e96c8b0e06405"><div class="ttname"><a href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a></div><div class="ttdeci">unsigned int flags_t</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00170">_globals.h:170</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a6672829454068bbcb109b8ce25884ad0"><div class="ttname"><a href="structvector3f__t.html#a6672829454068bbcb109b8ce25884ad0">vector3f_t::operator!=</a></div><div class="ttdeci">bool operator!=(vector3f_t other)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00919">_globals.h:919</a></div></div>
+<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00492">_globals.h:492</a></div></div>
+<div class="ttc" id="__globals_8h_html_a5dd4f281954ce1405c92d62a427f839a"><div class="ttname"><a href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a></div><div class="ttdeci">unsigned char ubyte</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00172">_globals.h:172</a></div></div>
+<div class="ttc" id="structcolorf__t_html"><div class="ttname"><a href="structcolorf__t.html">colorf_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00207">_globals.h:207</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a546ecf374dc6d35c83953046855d0918"><div class="ttname"><a href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">viewportf_t::height</a></div><div class="ttdeci">GLfloat height</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00433">_globals.h:433</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a8d88ab14d4c8ec5afeba684d8c9203ce"><div class="ttname"><a href="structvector3f__t.html#a8d88ab14d4c8ec5afeba684d8c9203ce">vector3f_t::cross_product</a></div><div class="ttdeci">vector3f_t cross_product(vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00776">_globals.h:776</a></div></div>
+<div class="ttc" id="structviewport__t_html_a9b65c59eca8d384d26bb16d402c3bb4e"><div class="ttname"><a href="structviewport__t.html#a9b65c59eca8d384d26bb16d402c3bb4e">viewport_t::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00353">_globals.h:353</a></div></div>
+<div class="ttc" id="__globals_8h_html_a3d470c3e2db920debdd2f758bcc04dfa"><div class="ttname"><a href="__globals_8h.html#a3d470c3e2db920debdd2f758bcc04dfa">ERROR_INIT</a></div><div class="ttdeci">const char ERROR_INIT[]</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00148">_globals.h:148</a></div></div>
+<div class="ttc" id="__globals_8h_html_a0ab832cb1976fa552f7ae0b53abe157c"><div class="ttname"><a href="__globals_8h.html#a0ab832cb1976fa552f7ae0b53abe157c">color_t</a></div><div class="ttdeci">struct color_t color_t</div></div>
+<div class="ttc" id="structvector3f__t_html_a10985a86bfc0c487962037fa9bc66190"><div class="ttname"><a href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">vector3f_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l01033">_globals.h:1033</a></div></div>
+<div class="ttc" id="structviewport__t_html_a714f9fcef528f17c9c777fc9e56c6557"><div class="ttname"><a href="structviewport__t.html#a714f9fcef528f17c9c777fc9e56c6557">viewport_t::height</a></div><div class="ttdeci">int height</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00356">_globals.h:356</a></div></div>
+<div class="ttc" id="__globals_8h_html_adc07e5fd038fd64b08080064d80a3ed7"><div class="ttname"><a href="__globals_8h.html#adc07e5fd038fd64b08080064d80a3ed7">ERROR_RENDER</a></div><div class="ttdeci">const char ERROR_RENDER[]</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00144">_globals.h:144</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a5d285f91675fa9868f407f6e07802f9d"><div class="ttname"><a href="structvector3f__t.html#a5d285f91675fa9868f407f6e07802f9d">vector3f_t::dot_product</a></div><div class="ttdeci">GLfloat dot_product(vector3f_t v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00764">_globals.h:764</a></div></div>
+<div class="ttc" id="__globals_8h_html_a31a7c4993d803b30b8f098497f7080b4"><div class="ttname"><a href="__globals_8h.html#a31a7c4993d803b30b8f098497f7080b4">ERROR_FILE</a></div><div class="ttdeci">const char ERROR_FILE[]</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00160">_globals.h:160</a></div></div>
+<div class="ttc" id="__globals_8h_html_a6b57f01d3c576db5368dd0efc2f435a4"><div class="ttname"><a href="__globals_8h.html#a6b57f01d3c576db5368dd0efc2f435a4">event</a></div><div class="ttdeci">SDL_Event event</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00003">_globals.cpp:3</a></div></div>
+<div class="ttc" id="structcolor__t_html_acc956560696401e4924359d1b1377e57"><div class="ttname"><a href="structcolor__t.html#acc956560696401e4924359d1b1377e57">color_t::r</a></div><div class="ttdeci">ubyte r</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00193">_globals.h:193</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a35b3a383e50091a114538c5d649d967c"><div class="ttname"><a href="structvector3f__t.html#a35b3a383e50091a114538c5d649d967c">vector3f_t::operator&gt;=</a></div><div class="ttdeci">bool operator&gt;=(vector3f_t other)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00959">_globals.h:959</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a9fa9623b6af260eee1905b1620a78de0"><div class="ttname"><a href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">vector3f_t::z</a></div><div class="ttdeci">GLfloat z</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00496">_globals.h:496</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a00a8a3a855eba9e03fb35f62a6f73cfa"><div class="ttname"><a href="structvector3f__t.html#a00a8a3a855eba9e03fb35f62a6f73cfa">vector3f_t::normalize</a></div><div class="ttdeci">vector3f_t normalize()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00832">_globals.h:832</a></div></div>
+<div class="ttc" id="__globals_8h_html_a0e446f42da28aa4a1f2ff0ac14b8444b"><div class="ttname"><a href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a></div><div class="ttdeci">bool(* fboolpointer)(void)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00175">_globals.h:175</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a67478a4b4bfbad7e84a59925f2066406"><div class="ttname"><a href="structvector3f__t.html#a67478a4b4bfbad7e84a59925f2066406">vector3f_t::forward</a></div><div class="ttdeci">vector3f_t forward()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00855">_globals.h:855</a></div></div>
+<div class="ttc" id="structviewport__t_html"><div class="ttname"><a href="structviewport__t.html">viewport_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00351">_globals.h:351</a></div></div>
+<div class="ttc" id="namespace_utils_html_a36a166e3ee3df3c74d173ec59c2faf77"><div class="ttname"><a href="namespace_utils.html#a36a166e3ee3df3c74d173ec59c2faf77">Utils::string_generate_random_alphanumeric</a></div><div class="ttdeci">std::string string_generate_random_alphanumeric(uint n=4)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00008">_globals.cpp:8</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a8b6e011f98dd082691eceff55f1203cc"><div class="ttname"><a href="structviewportf__t.html#a8b6e011f98dd082691eceff55f1203cc">viewportf_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00431">_globals.h:431</a></div></div>
+<div class="ttc" id="__globals_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00171">_globals.h:171</a></div></div>
+<div class="ttc" id="structvector3f__t_html_aa567921e0e64bfe8cee844debf709108"><div class="ttname"><a href="structvector3f__t.html#aa567921e0e64bfe8cee844debf709108">vector3f_t::operator()</a></div><div class="ttdeci">void operator()(GLfloat x, GLfloat y, GLfloat z)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00723">_globals.h:723</a></div></div>
+<div class="ttc" id="structviewportf__t_html_af6695c68bb47777a2eeb750b2d1322d4"><div class="ttname"><a href="structviewportf__t.html#af6695c68bb47777a2eeb750b2d1322d4">viewportf_t::operator&gt;&gt;</a></div><div class="ttdeci">friend std::istream &amp; operator&gt;&gt;(std::istream &amp;is, viewportf_t &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00457">_globals.h:457</a></div></div>
+<div class="ttc" id="classgeneral__exception_html_a81ac162261cdb50fb9e20ae9c7945741"><div class="ttname"><a href="classgeneral__exception.html#a81ac162261cdb50fb9e20ae9c7945741">general_exception::general_exception</a></div><div class="ttdeci">general_exception(const char *FILE, int LINE, const char *REASON)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00051">_globals.h:51</a></div></div>
+<div class="ttc" id="namespace_utils_html_a84d2ba3906cdcbd0003ecbbac926563a"><div class="ttname"><a href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a></div><div class="ttdeci">SDL_Surface * sdl_cargar_img(std::string s)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00040">_globals.cpp:40</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 26 de Marzo de 2014 21:38:04 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>
