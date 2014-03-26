@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -116,7 +117,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  getline(ss, arguments);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">if</span>(arguments.size() &gt; 1) arguments = arguments.substr(1);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  command = GO_Utils::string_to_lower(command);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  command = <a class="code" href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a>(command);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  map&lt;string, command_p&gt;::iterator it = console_commands.find(command);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  console_msg(<span class="stringliteral">&quot;&gt; %s %s&quot;</span>, command.c_str(), arguments.c_str());</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
@@ -1984,18 +1985,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l01897"></a><span class="lineno"> 1897</span>&#160;}</div>
 <div class="ttc" id="class_c_game_object_html_a4b9498dcca22545a77e2d100885fa70f"><div class="ttname"><a href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a></div><div class="ttdeci">Type * GetComponent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00301">_object.h:301</a></div></div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
-<div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00213">_globals.h:213</a></div></div>
-<div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00211">_globals.h:211</a></div></div>
-<div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00212">_globals.h:212</a></div></div>
-<div class="ttc" id="structcolorf__t_html_a6f1bc4933dcd7ece8ed3073cb4c1095b"><div class="ttname"><a href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">colorf_t::r</a></div><div class="ttdeci">GLfloat r</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00210">_globals.h:210</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00207">_globals.h:207</a></div></div>
+<div class="ttc" id="namespace_utils_html_ad546bc517e486f5fd3a39eaa247935e8"><div class="ttname"><a href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a></div><div class="ttdeci">std::string string_to_lower(std::string &amp;str)</div></div>
+<div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00205">_globals.h:205</a></div></div>
+<div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00206">_globals.h:206</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a6f1bc4933dcd7ece8ed3073cb4c1095b"><div class="ttname"><a href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">colorf_t::r</a></div><div class="ttdeci">GLfloat r</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00204">_globals.h:204</a></div></div>
 <div class="ttc" id="class_c_system___debug_html"><div class="ttname"><a href="class_c_system___debug.html">CSystem_Debug</a></div><div class="ttdef"><b>Definition:</b> <a href="__debug_8h_source.html#l00051">_debug.h:51</a></div></div>
-<div class="ttc" id="structcolorf__t_html"><div class="ttname"><a href="structcolorf__t.html">colorf_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00208">_globals.h:208</a></div></div>
+<div class="ttc" id="structcolorf__t_html"><div class="ttname"><a href="structcolorf__t.html">colorf_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00202">_globals.h:202</a></div></div>
 <div class="ttc" id="struct_debug_1_1string__console__t_html"><div class="ttname"><a href="struct_debug_1_1string__console__t.html">Debug::string_console_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__debug_8h_source.html#l00030">_debug.h:30</a></div></div>
 <div class="ttc" id="class_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00024">_component.h:24</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:15 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:05 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,14 +104,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow&quot;</span>);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  rainbow-&gt;AddChildren({rainbow_violet, rainbow_dblue, rainbow_blue, rainbow_green, rainbow_yellow, rainbow_orange, rainbow_red});</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  rainbow-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.y += 3.f;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  rainbow-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> += 3.f;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.x = 3.f;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.x = 2.5f;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.x = 2.f;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.x = 1.5f;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.x = 1.f;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.x = 0.5f;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = 3.f;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = 2.5f;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = 2.f;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = 1.5f;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = 1.f;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = 0.5f;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">//rainbow_red-&gt;transform()-&gt;position.x -= 10.f;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// velocidades</span></div>
@@ -205,11 +206,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00489">_globals.h:489</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00490">_globals.h:490</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00253">_object.h:253</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:18 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:08 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

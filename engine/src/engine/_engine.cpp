@@ -108,7 +108,7 @@ void CEngine::RemoveAllInstances()
 
 void CEngine::SetIcon(string icon_dir)
 {
-  SDL_Surface* icon = GO_Utils::sdl_cargar_img(icon_dir);
+  SDL_Surface* icon = Utils::sdl_cargar_img(icon_dir);
   SDL_SetWindowIcon(gRender.window, icon);
   SDL_FreeSurface(icon);
 }

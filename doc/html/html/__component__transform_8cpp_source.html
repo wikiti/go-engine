@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -1286,7 +1287,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::Translate(<a class="code" href="structvector3f__t.html">vector3f</a> v)</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;{</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  Translate(v.x, v.y, v.z);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  Translate(v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::Translate(GLfloat x, GLfloat y, GLfloat z)</div>
@@ -1301,7 +1302,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::SetPosition(<a class="code" href="structvector3f__t.html">vector3f</a> v)</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;{</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  SetPosition(v.x, v.y, v.z);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  SetPosition(v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::SetPosition(GLfloat x, GLfloat y, GLfloat z)</div>
@@ -1315,7 +1316,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::Rotate(<a class="code" href="structvector3f__t.html">vector3f</a> v)</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;{</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  Rotate(v.x, v.y, v.z);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  Rotate(v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;}</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::Rotate(GLfloat x, GLfloat y, GLfloat z)</div>
@@ -1335,7 +1336,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  v = gSystem_Math.NormalizeAngles(v);</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  v = gSystem_Math.deg_to_rad(v);</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  angle = glm::quat(v.to_glm());</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  angle = glm::quat(v.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>());</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::SetAngle(GLfloat x, GLfloat y, GLfloat z)</div>
@@ -1353,7 +1354,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::Scale(<a class="code" href="structvector3f__t.html">vector3f</a> v)</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;{</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  Scale(v.x, v.y, v.z);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  Scale(v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::Scale(GLfloat x, GLfloat y, GLfloat z)</div>
@@ -1361,23 +1362,23 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  <span class="keywordflow">if</span>(!enabled or (x == 1 and y == 1 and z == 1)) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="comment">// Multiplicar en vez de sumar</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  scale.x *= x;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  scale.y *= y;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  scale.z *= z;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  scale.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> *= x;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  scale.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> *= y;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  scale.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> *= z;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;}</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::SetScale(<a class="code" href="structvector3f__t.html">vector3f</a> v)</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;{</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  SetScale(v.x, v.y, v.z);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  SetScale(v.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, v.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, v.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::SetScale(GLfloat x, GLfloat y, GLfloat z)</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;{</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <span class="keywordflow">if</span>(!enabled) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  scale.x = x;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  scale.y = y;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  scale.z = z;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  scale.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = x;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  scale.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = y;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  scale.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = z;</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;glm::mat4 CComponent_Transform::ApplyTransform(<span class="keyword">const</span> glm::mat4&amp; modelviewMatrix)</div>
@@ -2087,7 +2088,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <span class="comment">// -&gt; glScalef(scale.x, scale.y, scale.z);</span></div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  transformMatrix = glm::translate(transformMatrix, position.to_glm());</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  transformMatrix = transformMatrix * (glm::toMat4(angle));</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  transformMatrix = glm::scale(transformMatrix, scale.to_glm());</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  transformMatrix = glm::scale(transformMatrix, scale.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>());</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="comment">//glLoadMatrixf((const float*)glm::value_ptr(transformMatrix));</span></div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  <span class="keywordflow">return</span> transformMatrix;</div>
@@ -2750,9 +2751,9 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="comment">// Escala</span></div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  <span class="comment">//glScalef(parent-&gt;Transform()-&gt;scale.x, parent-&gt;Transform()-&gt;scale.y, parent-&gt;Transform()-&gt;scale.z);</span></div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  transformMatrix = glm::translate(transformMatrix, parent-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.to_glm());</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  transformMatrix = glm::translate(transformMatrix, parent-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>());</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  transformMatrix = transformMatrix * (glm::toMat4(parent-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;angle));</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  transformMatrix = glm::scale(transformMatrix, parent-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;scale.to_glm());</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  transformMatrix = glm::scale(transformMatrix, parent-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;scale.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>());</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  <span class="comment">//glLoadMatrixf((const float*)glm::value_ptr(transformMatrix));</span></div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
@@ -3368,7 +3369,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;  <span class="keywordflow">if</span> (gMath.abs(dot - (-1.0f)) &lt; 0.000001f)</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;  {</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    angle = glm::angleAxis(3.1415926535897932f, up.to_glm());</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    angle = glm::angleAxis(3.1415926535897932f, up.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>());</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  }</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  <span class="keywordflow">if</span> (gMath.abs(dot - (1.0f)) &lt; 0.000001f)</div>
@@ -3380,7 +3381,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;  <a class="code" href="structvector3f__t.html">vector3f</a> rotAxis = forward % forwardVector;</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  rotAxis = gMath.normalize(rotAxis);</div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  angle = (glm::angleAxis(rotAngle, rotAxis.to_glm()));</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  angle = (glm::angleAxis(rotAngle, rotAxis.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>()));</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;  <span class="comment">// http://gamedev.stackexchange.com/questions/53129/quaternion-look-at-with-up-vector</span></div>
 <div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;  <span class="comment">/*vector3f forward_l = (target - Position()).normalize();</span></div>
@@ -3589,7 +3590,7 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  {</div>
 <div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    data = gSystem_Math.NormalizeAngles(data);</div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> rads = gSystem_Math.deg_to_rad(data);</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    angle = glm::quat(rads.to_glm());</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    angle = glm::quat(rads.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>());</div>
 <div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="comment">//gSystem_Math.NormalizeAngles(data);</span></div>
 <div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="comment">//angle = glm::quat();</span></div>
 <div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    <span class="comment">//LRotate(data.x, data.y, data.z);</span></div>
@@ -3608,18 +3609,23 @@ void CComponent_Transform::printDebug()
 <div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;Attribute      Type                Value&quot;</span>);</div>
 <div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;----------------------------------------&quot;</span>);</div>
 <div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;position       vector3f            %s&quot;</span>, position.str().c_str());</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;scale          vector3f            %s&quot;</span>, scale.str().c_str());</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;scale          vector3f            %s&quot;</span>, scale.<a class="code" href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">str</a>().c_str());</div>
 <div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;angle          vector3f(degrees)   %s&quot;</span>, LRotation().str().c_str());</div>
 <div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;}</div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00489">_globals.h:489</a></div></div>
 <div class="ttc" id="class_c_component___transform_html"><div class="ttname"><a href="class_c_component___transform.html">CComponent_Transform</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__transform_8h_source.html#l00008">_component_transform.h:8</a></div></div>
-<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00434">_globals.h:434</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a8c63b59e7429217822b200f5182beceb"><div class="ttname"><a href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">vector3f_t::to_glm</a></div><div class="ttdeci">glm::vec3 to_glm()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00531">_globals.h:531</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00490">_globals.h:490</a></div></div>
+<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00487">_globals.h:487</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a10985a86bfc0c487962037fa9bc66190"><div class="ttname"><a href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">vector3f_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l01028">_globals.h:1028</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00253">_object.h:253</a></div></div>
 <div class="ttc" id="class_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00024">_component.h:24</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a9fa9623b6af260eee1905b1620a78de0"><div class="ttname"><a href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">vector3f_t::z</a></div><div class="ttdeci">GLfloat z</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00491">_globals.h:491</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:14 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:04 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -172,7 +173,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<a class="code" href="structvector3f__t.html">vector3f</a> CSystem_Math::lerpAngles(<a class="code" href="structvector3f__t.html">vector3f</a> from, <a class="code" href="structvector3f__t.html">vector3f</a> to, <span class="keywordtype">float</span> t)</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html">vector3f</a>(lerpAngle(from.x, to.x, t), lerpAngle(from.y, to.y, t), lerpAngle(from.z, to.z, t));</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="structvector3f__t.html">vector3f</a>(lerpAngle(from.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, to.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, t), lerpAngle(from.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, to.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, t), lerpAngle(from.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>, to.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>, t));</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">float</span> CSystem_Math::lerp(<span class="keywordtype">float</span> from, <span class="keywordtype">float</span> to, <span class="keywordtype">float</span> t)</div>
@@ -184,13 +185,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span> from + (to - from)*t;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00489">_globals.h:489</a></div></div>
 <div class="ttc" id="class_c_system___time_html"><div class="ttname"><a href="class_c_system___time.html">CSystem_Time</a></div><div class="ttdef"><b>Definition:</b> <a href="__other_8h_source.html#l00007">_other.h:7</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00490">_globals.h:490</a></div></div>
 <div class="ttc" id="class_c_system___math_html"><div class="ttname"><a href="class_c_system___math.html">CSystem_Math</a></div><div class="ttdef"><b>Definition:</b> <a href="__other_8h_source.html#l00065">_other.h:65</a></div></div>
-<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00434">_globals.h:434</a></div></div>
+<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00487">_globals.h:487</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a9fa9623b6af260eee1905b1620a78de0"><div class="ttname"><a href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">vector3f_t::z</a></div><div class="ttdeci">GLfloat z</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00491">_globals.h:491</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:17 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:06 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

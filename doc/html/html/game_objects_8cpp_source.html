@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,8 +97,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <span class="keywordflow">if</span>(!camara_main)</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    camara_main = gGameObjects.AddGameObject(<span class="stringliteral">&quot;camara_main&quot;</span>);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.y = -3.f;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.z = -10.f;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = -3.f;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = -10.f;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    camara_main-&gt;Camera()-&gt;far_clip = 500.f;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    camara_main-&gt;Preserve();</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    camara_main-&gt;SetInputFunction(&amp;Camara_main_movimiento);</div>
@@ -183,9 +184,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    gameObject-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;SetAngle(gMath.lerpAngles(initialAngles, finalAngle, current_alpha));</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">float</span> epsilon = 1.f;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span>((gMath.abs(finalAngle.x - initialAngles.x) &lt;= epsilon or gMath.abs(finalAngle.x - initialAngles.x) &gt;= 360 - epsilon)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        and (gMath.abs(finalAngle.y - initialAngles.y) &lt;= epsilon or gMath.abs(finalAngle.y - initialAngles.y) &gt;= 360 - epsilon)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        and (gMath.abs(finalAngle.z - initialAngles.z) &lt;= epsilon or gMath.abs(finalAngle.z - initialAngles.z) &gt;= 360 - epsilon))</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span>((gMath.abs(finalAngle.x - initialAngles.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>) &lt;= epsilon or gMath.abs(finalAngle.x - initialAngles.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>) &gt;= 360 - epsilon)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        and (gMath.abs(finalAngle.y - initialAngles.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>) &lt;= epsilon or gMath.abs(finalAngle.y - initialAngles.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>) &gt;= 360 - epsilon)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        and (gMath.abs(finalAngle.z - initialAngles.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>) &lt;= epsilon or gMath.abs(finalAngle.z - initialAngles.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>) &gt;= 360 - epsilon))</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      initial_fixed_rotation_time = 0.f;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="keywordflow">return</span>;</div>
@@ -236,27 +237,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="comment">// Viewport</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">if</span>(gUserInput.axis2.vertical &gt; 0)</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.height += 0.1f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.height &gt; 1.f)</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.height = 1.f;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> += 0.1f * gTime.deltaTime_s();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> &gt; 1.f)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> = 1.f;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gUserInput.axis2.vertical &lt; 0)</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.height -= 0.1f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.height &lt; 0.f)</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.height = 0.f;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> -= 0.1f * gTime.deltaTime_s();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> &lt; 0.f)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> = 0.f;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  }</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">if</span>(gUserInput.axis2.horizontal &lt; 0)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.width -= 0.1f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.width &lt; 0.f)</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.width = 0.f;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> -= 0.1f * gTime.deltaTime_s();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &lt; 0.f)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> = 0.f;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  }</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gUserInput.axis2.horizontal &gt; 0)</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.width += 0.1f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.width &gt; 1.f)</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.width = 1.f;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> += 0.1f * gTime.deltaTime_s();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &gt; 1.f)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> = 1.f;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="comment">/*if (gUserInput.Keyboard(&quot;T&quot;))</span></div>
@@ -282,7 +283,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  {</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> rotation = gameObject-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;LRotation();</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">float</span> x = gUserInput.mouse.y_vel * 20.f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span>(rotation.x + x &lt; 90 or rotation.x + x &gt; 270)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span>(rotation.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + x &lt; 90 or rotation.x + x &gt; 270)</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      gameObject-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;LRotate(x, 0, 0);</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    gameObject-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Rotate(0, gUserInput.mouse.x_vel * -20.f * gTime.deltaTime_s(), 0);</div>
@@ -322,7 +323,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    {</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> rotation = gameObject-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;LRotation();</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      <span class="keywordtype">float</span> x = joys[0].axes[3].value * 60.f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      <span class="keywordflow">if</span>(rotation.x + x &lt; 90 or rotation.x + x &gt; 270)</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      <span class="keywordflow">if</span>(rotation.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + x &lt; 90 or rotation.x + x &gt; 270)</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        gameObject-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;LRotate(x, 0, 0);</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      gameObject-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Rotate(0, joys[0].axes[2].value * -60.f * gTime.deltaTime_s(), 0);</div>
@@ -343,12 +344,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    gEngine.EndInstance();</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
-<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00434">_globals.h:434</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a6f9139cbfbecc67eea3f0e5a0df4f254"><div class="ttname"><a href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">viewportf_t::width</a></div><div class="ttdeci">GLfloat width</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00427">_globals.h:427</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00489">_globals.h:489</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00490">_globals.h:490</a></div></div>
+<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00487">_globals.h:487</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a546ecf374dc6d35c83953046855d0918"><div class="ttname"><a href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">viewportf_t::height</a></div><div class="ttdeci">GLfloat height</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00428">_globals.h:428</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00253">_object.h:253</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a9fa9623b6af260eee1905b1620a78de0"><div class="ttname"><a href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">vector3f_t::z</a></div><div class="ttdeci">GLfloat z</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00491">_globals.h:491</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:18 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:08 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

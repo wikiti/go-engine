@@ -27,7 +27,7 @@ void CSystem_Debug::ParseInput()
   getline(ss, arguments);
   if(arguments.size() > 1) arguments = arguments.substr(1);
 
-  command = GO_Utils::string_to_lower(command);
+  command = Utils::string_to_lower(command);
   map<string, command_p>::iterator it = console_commands.find(command);
   console_msg("> %s %s", command.c_str(), arguments.c_str());
 

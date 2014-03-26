@@ -497,7 +497,7 @@ bool CSystem_Resources::LoadResourceFile(string rc_file)
     getline(ss, file, ':');
     getline(ss, arguments);
 
-    if(!GO_Utils::validateIdentifier(name))
+    if(!Utils::validateIdentifier(name))
     {
       gSystem_Debug.console_warning_msg("Error from Resource Manager: Invalid resource name \"%s\" (%s): Can only contain alphanumerics or underscores.", name.c_str(), file.c_str());
       continue;

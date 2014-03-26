@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -162,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  cubo_main-&gt;AddChild(particle_emitter);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  cubo_second-&gt;AddChild(cubo_third);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  camara_second-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.y += 3.f;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  camara_second-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> += 3.f;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  cubo_second-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Translate(1.f, 0.f, 0.f);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  cubo_third-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Translate(0.f, 1.f, 0.f);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  cubo_main-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Translate(0.f, 0.f, 5.f);</div>
@@ -172,7 +173,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  hada-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Rotate(0.f, 90.f, 0.f);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  camara_second-&gt;Camera()-&gt;SetTarget(cubo_third-&gt;GetName());</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  camara_second-&gt;Camera()-&gt;viewport.height = camara_second-&gt;Camera()-&gt;viewport.width = 0.3f;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  camara_second-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> = camara_second-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> = 0.3f;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  camara_second-&gt;Camera()-&gt;background_color(0, 0.5f, 0.75f, 1.f);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  camara_second-&gt;Camera()-&gt;skybox_texture = <span class="stringliteral">&quot;skybox1&quot;</span>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
@@ -407,17 +408,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
-<div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00213">_globals.h:213</a></div></div>
-<div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00211">_globals.h:211</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00207">_globals.h:207</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a6f9139cbfbecc67eea3f0e5a0df4f254"><div class="ttname"><a href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">viewportf_t::width</a></div><div class="ttdeci">GLfloat width</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00427">_globals.h:427</a></div></div>
+<div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00205">_globals.h:205</a></div></div>
 <div class="ttc" id="class_c_component___dummy3_html"><div class="ttname"><a href="class_c_component___dummy3.html">CComponent_Dummy3</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__dummys_8h_source.html#l00054">_component_dummys.h:54</a></div></div>
 <div class="ttc" id="class_c_component___dummy1_html"><div class="ttname"><a href="class_c_component___dummy1.html">CComponent_Dummy1</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__dummys_8h_source.html#l00011">_component_dummys.h:11</a></div></div>
-<div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00212">_globals.h:212</a></div></div>
-<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00434">_globals.h:434</a></div></div>
+<div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00206">_globals.h:206</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00490">_globals.h:490</a></div></div>
+<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00487">_globals.h:487</a></div></div>
+<div class="ttc" id="structviewportf__t_html_a546ecf374dc6d35c83953046855d0918"><div class="ttname"><a href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">viewportf_t::height</a></div><div class="ttdeci">GLfloat height</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00428">_globals.h:428</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00253">_object.h:253</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:19 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:08 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

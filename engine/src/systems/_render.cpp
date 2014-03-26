@@ -81,7 +81,7 @@ bool CSystem_Render::Init()
   }
 
   string videomode = gSystem_Data_Storage.GetString("__RENDER_RESOLUTION_WINDOW_MODE");
-  videomode = GO_Utils::string_to_lower(videomode);
+  videomode = Utils::string_to_lower(videomode);
 
   if (videomode == "fullscreen")
     gSystem_Render.SetFullScreenWindow(Render::fullscreen);

@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -289,28 +290,28 @@ void CComponent_Dummy3::OnEvent()
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  glColor3f(1.f, 0.5f, 0.f); <span class="comment">// Naranja</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  glBegin(GL_LINES);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    glVertex3f(pos.x, pos.y, pos.z);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    glVertex3f(pos.x + direction.x, pos.y + direction.y, pos.z + direction.z);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    glVertex3f(pos.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, pos.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, pos.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    glVertex3f(pos.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + direction.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, pos.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> + direction.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, pos.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> + direction.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  glEnd();</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  glColor3f(1.f, 1.f, 0.f); <span class="comment">// Amarillo</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  glBegin(GL_LINES);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    glVertex3f(pos.x, pos.y, pos.z);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    glVertex3f(pos.x + current_random.x, pos.y + current_random.y, pos.z + current_random.z);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    glVertex3f(pos.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, pos.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, pos.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    glVertex3f(pos.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + current_random.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, pos.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> + current_random.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, pos.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> + current_random.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  glEnd();</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  glColor3f(1.f, 0.f, 1.f); <span class="comment">// Rosa</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  glBegin(GL_LINES);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    glVertex3f(pos.x, pos.y, pos.z);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    glVertex3f(pos.x + another_random.x, pos.y + another_random.y, pos.z + another_random.z);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    glVertex3f(pos.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, pos.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, pos.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    glVertex3f(pos.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + another_random.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, pos.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> + another_random.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, pos.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> + another_random.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  glEnd();</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  glColor3f(0.f, 1.f, 0.f); <span class="comment">// Verde</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">for</span>(uint i = 0; i &lt; __RANDOM_ARRAY_SIZE; i++)</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    glBegin(GL_LINES);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      glVertex3f(pos.x, pos.y, pos.z);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      glVertex3f(pos.x + random_array[i].x, pos.y + random_array[i].y, pos.z + random_array[i].z);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      glVertex3f(pos.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, pos.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, pos.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      glVertex3f(pos.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> + random_array[i].x, pos.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> + random_array[i].y, pos.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> + random_array[i].z);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    glEnd();</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  }</div>
@@ -355,12 +356,15 @@ void CComponent_Dummy3::OnEvent()
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
 <div class="ttc" id="class_c_resource___mesh_html"><div class="ttname"><a href="class_c_resource___mesh.html">CResource_Mesh</a></div><div class="ttdef"><b>Definition:</b> <a href="__resource_8h_source.html#l00033">_resource.h:33</a></div></div>
-<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00434">_globals.h:434</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00489">_globals.h:489</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00490">_globals.h:490</a></div></div>
+<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00487">_globals.h:487</a></div></div>
 <div class="ttc" id="class_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00024">_component.h:24</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a9fa9623b6af260eee1905b1620a78de0"><div class="ttname"><a href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">vector3f_t::z</a></div><div class="ttdeci">GLfloat z</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00491">_globals.h:491</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:13 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:03 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

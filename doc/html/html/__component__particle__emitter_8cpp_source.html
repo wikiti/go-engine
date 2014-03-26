@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -349,7 +350,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  p.color.b = gMath.random(start_min_color.<a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a>, start_max_color.<a class="code" href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">b</a>);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  p.color.a = gMath.random(start_min_color.<a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>, start_max_color.<a class="code" href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">a</a>);</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <a class="code" href="structvector3f__t.html">vector3f</a> random_vector = gMath.random_vector(direction.normalize(), angle_spread/2);                <span class="comment">// Dirección   vector3f random_vector_XZ = vector3f(random_vector.x, 0, random_vector.z).normalize();  // Separación del origen
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <a class="code" href="structvector3f__t.html">vector3f</a> random_vector = gMath.random_vector(direction.<a class="code" href="structvector3f__t.html#a00a8a3a855eba9e03fb35f62a6f73cfa">normalize</a>(), angle_spread/2);                <span class="comment">// Dirección   vector3f random_vector_XZ = vector3f(random_vector.x, 0, random_vector.z).normalize();  // Separación del origen
   // -&gt;POR-HACER Hay que hacer que el área de generación aleatoria de partículas sea perpendicular al vector de dirección.
 
   p.position = random_vector * gMath.random(start_min_distance, start_max_distance) + pos_difference;
@@ -780,7 +781,7 @@ void CComponent_Particle_Emitter::printDebug()
 
 }
 </span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  <a class="code" href="structvector3f__t.html">vector3f</a> random_vector_XZ = <a class="code" href="structvector3f__t.html">vector3f</a>(random_vector.x, 0, random_vector.z).normalize();  <span class="comment">// Separación del origen</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  <a class="code" href="structvector3f__t.html">vector3f</a> random_vector_XZ = <a class="code" href="structvector3f__t.html">vector3f</a>(random_vector.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, 0, random_vector.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>).<a class="code" href="structvector3f__t.html#a00a8a3a855eba9e03fb35f62a6f73cfa">normalize</a>();  <span class="comment">// Separación del origen</span></div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="comment">// -&gt;POR-HACER Hay que hacer que el área de generación aleatoria de partículas sea perpendicular al vector de dirección. 
   p.position = random_vector * gMath.random(start_min_distance, start_max_distance) + pos_difference;
   p.position += random_vector_XZ * gMath.random(start_max_base_radius, start_min_base_radius);
@@ -1619,8 +1620,8 @@ void CComponent_Particle_Emitter::printDebug()
 <div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;material_name                  string        %s&quot;</span>, material_name.c_str());</div>
 <div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;stop                           bool          %d&quot;</span>, (<span class="keywordtype">int</span>)stop);</div>
 <div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;freeze                         bool          %d&quot;</span>, (<span class="keywordtype">int</span>)freeze);</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;gravity                        vector3f      %s&quot;</span>, gravity.str().c_str());</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;direction                      vector3f      %s&quot;</span>, direction.str().c_str());</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;gravity                        vector3f      %s&quot;</span>, gravity.<a class="code" href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">str</a>().c_str());</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;direction                      vector3f      %s&quot;</span>, direction.<a class="code" href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">str</a>().c_str());</div>
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;angle_spread                   float         %f&quot;</span>, angle_spread);</div>
 <div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;particles_per_second           float         %f&quot;</span>, particles_per_second);</div>
 <div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;[max|min]_vel                  float         %f / %f&quot;</span>, max_vel, min_vel);</div>
@@ -1639,20 +1640,24 @@ void CComponent_Particle_Emitter::printDebug()
 <div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;</div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;}</div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
-<div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00213">_globals.h:213</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00207">_globals.h:207</a></div></div>
 <div class="ttc" id="class_c_shader_html"><div class="ttname"><a href="class_c_shader.html">CShader</a></div><div class="ttdef"><b>Definition:</b> <a href="__shader_8h_source.html#l00015">_shader.h:15</a></div></div>
-<div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00211">_globals.h:211</a></div></div>
-<div class="ttc" id="structcolorf__t_html_af14da3dbc461fe04e993a5fb57a1bb25"><div class="ttname"><a href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">colorf_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00295">_globals.h:295</a></div></div>
-<div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00212">_globals.h:212</a></div></div>
-<div class="ttc" id="structcolorf__t_html_a6f1bc4933dcd7ece8ed3073cb4c1095b"><div class="ttname"><a href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">colorf_t::r</a></div><div class="ttdeci">GLfloat r</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00210">_globals.h:210</a></div></div>
-<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00434">_globals.h:434</a></div></div>
-<div class="ttc" id="structcolorf__t_html"><div class="ttname"><a href="structcolorf__t.html">colorf_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00208">_globals.h:208</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00489">_globals.h:489</a></div></div>
+<div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00205">_globals.h:205</a></div></div>
+<div class="ttc" id="structcolorf__t_html_af14da3dbc461fe04e993a5fb57a1bb25"><div class="ttname"><a href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">colorf_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00285">_globals.h:285</a></div></div>
+<div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00206">_globals.h:206</a></div></div>
+<div class="ttc" id="structcolorf__t_html_a6f1bc4933dcd7ece8ed3073cb4c1095b"><div class="ttname"><a href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">colorf_t::r</a></div><div class="ttdeci">GLfloat r</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00204">_globals.h:204</a></div></div>
+<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00487">_globals.h:487</a></div></div>
+<div class="ttc" id="structcolorf__t_html"><div class="ttname"><a href="structcolorf__t.html">colorf_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00202">_globals.h:202</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a10985a86bfc0c487962037fa9bc66190"><div class="ttname"><a href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">vector3f_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l01028">_globals.h:1028</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00253">_object.h:253</a></div></div>
 <div class="ttc" id="class_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00024">_component.h:24</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a9fa9623b6af260eee1905b1620a78de0"><div class="ttname"><a href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">vector3f_t::z</a></div><div class="ttdeci">GLfloat z</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00491">_globals.h:491</a></div></div>
+<div class="ttc" id="structvector3f__t_html_a00a8a3a855eba9e03fb35f62a6f73cfa"><div class="ttname"><a href="structvector3f__t.html#a00a8a3a855eba9e03fb35f62a6f73cfa">vector3f_t::normalize</a></div><div class="ttdeci">vector3f_t normalize()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00827">_globals.h:827</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:14 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:03 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

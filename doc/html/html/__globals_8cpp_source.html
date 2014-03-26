@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,7 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">string</span> GO_Utils::string_generate_random_alphanumeric(uint n)</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespace_utils.html#a36a166e3ee3df3c74d173ec59c2faf77">    8</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="namespace_utils.html#a36a166e3ee3df3c74d173ec59c2faf77">Utils::string_generate_random_alphanumeric</a>(uint n)</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> alphanum[] =</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <span class="stringliteral">&quot;0123456789&quot;</span></div>
@@ -110,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordflow">return</span> s;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">string</span> GO_Utils::string_to_lower(<span class="keywordtype">string</span>&amp; str)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">string</span> <a class="code" href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a>(<span class="keywordtype">string</span>&amp; str)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">string</span> output = str;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  transform(str.begin(), str.end(), output.begin(), ::tolower);</div>
@@ -118,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordflow">return</span> output;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">string</span> GO_Utils::string_to_upper(<span class="keywordtype">string</span>&amp; str)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">string</span> <a class="code" href="namespace_utils.html#ab5e6a3d3b984a2994202d33010f8d9c7">Utils::string_to_upper</a>(<span class="keywordtype">string</span>&amp; str)</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">string</span> output = str;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  transform(str.begin(), str.end(), output.begin(), ::toupper);</div>
@@ -126,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">return</span> output;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;SDL_Surface* GO_Utils::sdl_cargar_img(std::string s)</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">   40</a></span>&#160;SDL_Surface* <a class="code" href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a>(std::string s)</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  SDL_Surface* img = NULL;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  img = IMG_Load(s.c_str());</div>
@@ -135,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">return</span> img;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">bool</span> GO_Utils::validateIdentifier(<span class="keywordtype">string</span> identifier)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="namespace_utils.html#a4957bab738ebb9b504f4abfe9ff6a7bb">Utils::validateIdentifier</a>(<span class="keywordtype">string</span> identifier)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordflow">for</span>(string::iterator it = identifier.begin(); it != identifier.end(); ++it)</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span>(!isalnum(*it) and (*it) != <span class="charliteral">&#39;_&#39;</span>)</div>
@@ -144,7 +145,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;GLfloat vector3f_t::precision = 0.01f;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;GLfloat <a class="code" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">vector3f_t::precision</a> = 0.01f;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/* NO FUNCIONA!</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">void GO_Utils::glhLookAtf2(glm::mat4&amp; matrix, vector3f&amp; eyePosition3D, vector3f&amp; center3D, vector3f&amp; upVector3D )</span></div>
@@ -202,10 +203,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">  return out;</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">}*/</span></div>
+<div class="ttc" id="namespace_utils_html_a4957bab738ebb9b504f4abfe9ff6a7bb"><div class="ttname"><a href="namespace_utils.html#a4957bab738ebb9b504f4abfe9ff6a7bb">Utils::validateIdentifier</a></div><div class="ttdeci">bool validateIdentifier(std::string identifier)</div></div>
+<div class="ttc" id="namespace_utils_html_ad546bc517e486f5fd3a39eaa247935e8"><div class="ttname"><a href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a></div><div class="ttdeci">std::string string_to_lower(std::string &amp;str)</div></div>
+<div class="ttc" id="namespace_utils_html_ab5e6a3d3b984a2994202d33010f8d9c7"><div class="ttname"><a href="namespace_utils.html#ab5e6a3d3b984a2994202d33010f8d9c7">Utils::string_to_upper</a></div><div class="ttdeci">std::string string_to_upper(std::string &amp;str)</div></div>
+<div class="ttc" id="structvector3f__t_html_abd1c4940e10eec46d7d4410a2d78213a"><div class="ttname"><a href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">vector3f_t::precision</a></div><div class="ttdeci">static GLfloat precision</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00872">_globals.h:872</a></div></div>
+<div class="ttc" id="namespace_utils_html_a36a166e3ee3df3c74d173ec59c2faf77"><div class="ttname"><a href="namespace_utils.html#a36a166e3ee3df3c74d173ec59c2faf77">Utils::string_generate_random_alphanumeric</a></div><div class="ttdeci">std::string string_generate_random_alphanumeric(uint n=4)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00008">_globals.cpp:8</a></div></div>
+<div class="ttc" id="namespace_utils_html_a84d2ba3906cdcbd0003ecbbac926563a"><div class="ttname"><a href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a></div><div class="ttdeci">SDL_Surface * sdl_cargar_img(std::string s)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00040">_globals.cpp:40</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:12 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:02 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -170,7 +171,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">string</span> videomode = gSystem_Data_Storage.GetString(<span class="stringliteral">&quot;__RENDER_RESOLUTION_WINDOW_MODE&quot;</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  videomode = GO_Utils::string_to_lower(videomode);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  videomode = <a class="code" href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a>(videomode);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">if</span> (videomode == <span class="stringliteral">&quot;fullscreen&quot;</span>)</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    gSystem_Render.SetFullScreenWindow(Render::fullscreen);</div>
@@ -1036,15 +1037,16 @@ void CSystem_Render::Clear()
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;</div>
 <div class="ttc" id="class_c_component___g_u_i___texture_html"><div class="ttname"><a href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__gui_8h_source.html#l00007">_component_gui.h:7</a></div></div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
+<div class="ttc" id="namespace_utils_html_ad546bc517e486f5fd3a39eaa247935e8"><div class="ttname"><a href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a></div><div class="ttdeci">std::string string_to_lower(std::string &amp;str)</div></div>
 <div class="ttc" id="class_c_shader_html"><div class="ttname"><a href="class_c_shader.html">CShader</a></div><div class="ttdef"><b>Definition:</b> <a href="__shader_8h_source.html#l00015">_shader.h:15</a></div></div>
 <div class="ttc" id="class_c_system___render_html"><div class="ttname"><a href="class_c_system___render.html">CSystem_Render</a></div><div class="ttdef"><b>Definition:</b> <a href="__render_8h_source.html#l00030">_render.h:30</a></div></div>
 <div class="ttc" id="class_c_component___camera_html"><div class="ttname"><a href="class_c_component___camera.html">CComponent_Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00017">_component_camera.h:17</a></div></div>
 <div class="ttc" id="class_c_component___audio___source_html"><div class="ttname"><a href="class_c_component___audio___source.html">CComponent_Audio_Source</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__audio_8h_source.html#l00010">_component_audio.h:10</a></div></div>
-<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00434">_globals.h:434</a></div></div>
+<div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00487">_globals.h:487</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 19:59:17 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Mar 26 2014 21:03:07 for Go-Engine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

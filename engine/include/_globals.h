@@ -277,6 +277,8 @@ typedef struct colorf_t
   }
 
   /**
+   * Color a cadena.
+   *
    * Devuelve una representación en forma de std::string del color.
    * @return std::string que almacena el color con el formato "r g b a", con cada elemento como un valor flotante.
    */
@@ -363,7 +365,7 @@ typedef struct viewport_t
     }
 
     /**
-     * Operador de redirección de salida.
+     * Operador de redirección de entrada.
      *
      * Leerá el viewport de la misma manera que en la función viewport_t::str()
      * @param is Flujo de entrada.
@@ -377,6 +379,8 @@ typedef struct viewport_t
     }
 
     /**
+     * Viewport a cadena.
+     *
      * Devuelve una representación en forma de std::string del viewport.
      * @return std::string que almacena el los datos del viewport con el formato "x y width height", manteniendo su tipo original.
      */
@@ -390,24 +394,73 @@ typedef struct viewport_t
 
 } viewport_t;
 
+/**
+ * Estructura para representar un "viewport" o una fracción de pantalla.
+ *
+ * http://en.wikipedia.org/wiki/Viewport
+ *
+ * Un viewport no es más que una abstracción de una "ventana" o portal desde la ventana de nuestro programa hasta el mundo en 3D de la aplicación.
+ * Básicamente, es una porción de pantalla (definida por una posición y un tamaño) en la que se dibujarán ciertos elementos del juego.
+ *
+ * En una ventana, un viewport se define más o menos así:
+ *
+ * <pre>
+ *  ______________________________
+ * |                              |
+ * |      x,y_____________        |
+ * |        |             |       |
+ * |        |             |height |
+ * |        |_____________|       |
+ * |             width            |
+ * |______________________________|
+ * </pre>
+ *
+ * Se diferencia de viewport_t en que esta no usa píxeles para el tamaño, sino un valor flotante entre 0 y 1, siendo, para el ancho, "1" el ancho de la ventana, y para el alto, "1" el alto de la ventana.
+ *
+ * Para más información, véase CComponent_Camera y CSystem_Render.
+ */
 typedef struct viewportf_t
 {
     // Values between 0.f and 1.f
-    GLfloat x, y;
-    GLfloat width, height;
+    GLfloat x;      /**< Posición en el eje x de la pantalla del viewport. Es de tipo "float" por conveniencia. */
+    GLfloat y;      /**< Posición en el eje y de la pantalla del viewport. Es de tipo "float" por conveniencia. */
+    GLfloat width;  /**< Ancho del viewport, expresado en un valor del rango [0,1], siendo "1" el ancho de la ventana (véase gSystem_Render.GetWindowSize()). */
+    GLfloat height; /**< Alto del viewport, expresado en un valor del rango [0,1], siendo "1" el alto de la ventana (véase gSystem_Render.GetWindowSize()). */
 
+    /**
+     * Operador de redirección de salida.
+     *
+     * Escribirá el viewport de la misma manera que en la función viewportf_t::str()
+     * @param os Flujo de salida.
+     * @param v Viewport.
+     * @return Referencia al flujo de salida.
+     */
     friend std::ostream& operator<<(std::ostream& os, viewportf_t v)
     {
       os << v.x << " " << v.y << " " << v.width << " " << v.height;
       return os;
     }
 
+    /**
+     * Operador de redirección de entrada.
+     *
+     * Leerá el viewport de la misma manera que en la función viewportf_t::str()
+     * @param is Flujo de entrada.
+     * @param v Viewport.
+     * @return Referencia al flujo de entrada.
+     */
     friend std::istream& operator>>(std::istream& is, viewportf_t& v)
     {
       is >> v.x >> v.y >> v.width >> v.height;
       return is;
     }
 
+    /**
+     * Viewport a cadena.
+     *
+     * Devuelve una representación en forma de std::string del viewport.
+     * @return std::string que almacena el los datos del viewport con el formato "x y width height", manteniendo su tipo original.
+     */
     std::string str()
     {
       std::stringstream ss;
@@ -418,36 +471,90 @@ typedef struct viewportf_t
 
 } viewportf_t;
 
-// Esto debería ir en Math...
-typedef struct vector3f_t
+/**
+ * Vector tridimensional.
+ *
+ * Estructura que representa un vector de flotantes con 3 componentes:
+ *
+ * @code
+ * (x, y, z)
+ * @endcode
+ *
+ * Véase http://es.wikipedia.org/wiki/Vector
+ *
+ * Con esta clase, se puede hace gran variedad de operaciones. Para una mayor variedad, véase la clase CSystem_Math.
+ */
+typedef struct vector3f_t // ->PORHACER La clase vector3f_t debería ir en CSystem_Math, no en ámbito global. Difícil decisión...
 {
-  GLfloat x, y, z;
+  GLfloat x; /**< Componente "x" del vector, del tipo flotante, siendo la primera componente. */
+  GLfloat y; /**< Componente "y" del vector, del tipo flotante, siendo la segunda componente. */
+  GLfloat z; /**< Componente "z" del vector, del tipo flotante, siendo la tercera componente. */
 
+  /**
+   * Constructor sencillo.
+   *
+   * Crea el vector (0, 0, 0).
+   */
   vector3f_t(): x(0), y(0), z(0) { };
+  /**
+   * Constructor completo.
+   *
+   * Crea un vector a partir de 3 componentes (a, b, c), dando como resultado (x = a, y = b, z = c)
+   * @param a Primera componente (x).
+   * @param b Segunda componente (y).
+   * @param c Tercera componente (z).
+   */
   vector3f_t(float a, float b, float c): x(a), y(b), z(c) { };
+
+  /**
+   * Constructor de copia.
+   *
+   * Copia un vector a partir de otro vector "v" del tipo vector3f_t, creando el vector (x = v.x, y = v.y, z = v.z).
+   * @param v Vector para hacer la copia.
+   */
   vector3f_t(const vector3f_t& v): x(v.x), y(v.y), z(v.z) { };
-  //vector3f_t(const glm::vec3& v): x(v.x), y(v.y), z(v.z) { };
+
+  /**
+   * Constructor de copia.
+   *
+   * Copia un vector a partir de otro vector "v" del tipo glm::vec3, creando el vector (x = v.x, y = v.y, z = v.z). Véase http://glm.g-truc.net/0.9.5/index.html
+   * @param v
+   */
   vector3f_t(glm::vec3 v): x(v.x), y(v.y), z(v.z) { };
 
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int version)
-  {
-    ar & x;
-    ar & y;
-    ar & z;
-  }
-
+  /**
+   * Transformación a formato glm.
+   *
+   * Transforma el vector al tipo glm::vec3 para que pueda ser procesado por la librería GLM.  Véase http://glm.g-truc.net/0.9.5/index.html
+   * @return Devuelve un vector tridimensional de tipo glm::vec3 con el mismo contenido que el vector.
+   */
   inline glm::vec3 to_glm()
   {
     return glm::vec3(x, y, z);
   }
 
+  /**
+   * Operador suma.
+   *
+   * Realiza la suma componente a componente del vector más el vector "v", dando como resultado (x + v.x, y + v.y, z + v.z).
+   * @param v Vector a sumar.
+   * @return Suma de los vectores.
+   */
   vector3f_t operator+(vector3f_t v)
   {
     vector3f_t out(x + v.x,  y + v.y, z + v.z);
 
     return out;
   }
+
+
+  /**
+   * Operador asignación-suma.
+   *
+   * Realiza la suma componente a componente del vector más el vector "v", dando como resultado (x + v.x, y + v.y, z + v.z), y le asigna el valor al vector.
+   * @param v Vector a sumar.
+   * @return Referencia al vector modificado.
+   */
   vector3f_t& operator+=(vector3f_t v)
   {
     x += v.x;
@@ -455,6 +562,15 @@ typedef struct vector3f_t
     z += v.z;
     return *this;
   }
+
+
+  /**
+   * Operador resta.
+   *
+   * Realiza la resta componente a componente del vector menos el vector "v", dando como resultado (x - v.x, y - v.y, z - v.z).
+   * @param v Vector a restar.
+   * @return Resta de los vectores.
+   */
   vector3f_t operator-(vector3f_t v)
   {
     vector3f_t out;
@@ -463,6 +579,14 @@ typedef struct vector3f_t
     out.z = z - v.z;
     return out;
   }
+
+  /**
+   * Operador asignación-resta.
+   *
+   * Realiza la resta componente a componente del vector menos el vector "v", dando como resultado (x + v.x, y + v.y, z + v.z), y le asigna el valor al vector.
+   * @param v Vector a restar.
+   * @return Referencia al vector modificado.
+   */
   vector3f_t& operator-=(vector3f_t v)
   {
     x -= v.x;
@@ -470,6 +594,14 @@ typedef struct vector3f_t
     z -= v.z;
     return *this;
   }
+
+  /**
+   * Operador de asignación.
+   *
+   * Le asigna al vector actual los valores del vector "v", dando como resultado (v.x, v.y, v.z).
+   * @param v Vector a copiar.
+   * @return Referencia al vector modificado.
+   */
   vector3f_t& operator=(vector3f_t v)
   {
     x = v.x;
@@ -479,6 +611,13 @@ typedef struct vector3f_t
     return *this;
   }
 
+  /**
+   * Operador producto (producto por un escalar).
+   *
+   * Realiza la multiplicación componente a componente del vector por el escalar "value", dando como resultado (x*value, y*value, z*value).
+   * @param value Escalar a multiplicar.
+   * @return Vector resultado.
+   */
   vector3f_t operator*(double value)
   {
     vector3f_t out;
@@ -489,6 +628,13 @@ typedef struct vector3f_t
     return out;
   }
 
+  /**
+   * Operador asingación-producto (producto por un escalar).
+   *
+   * Realiza la multiplicación componente a componente del vector por el escalar "value", dando como resultado (x*value, y*value, z*value), y le asigna el valor al vector.
+   * @param value Escalar a multiplicar.
+   * @return Referencia al vector modificado.
+   */
   vector3f_t& operator*=(double value)
   {
     x *= value;
@@ -498,11 +644,25 @@ typedef struct vector3f_t
     return *this;
   }
 
+  /**
+   * Operador de producto escalar.
+   *
+   * Véase http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar
+   * @param v Vector a multiplicar.
+   * @return Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v".
+   */
   float operator*(vector3f_t& v)
   {
-    return x*v.x + y*v.y + z*v.z;
+    return dot_product(v);
   }
 
+  /**
+   * Operador división (división por un escalar).
+   *
+   * Realiza la disivión componente a componente del vector entre el escalar "value", dando como resultado (x/value, y/value, z/value).
+   * @param value Escalar a dividir.
+   * @return Vector resultado.
+   */
   vector3f_t operator/(double value)
   {
     vector3f_t out;
@@ -513,6 +673,13 @@ typedef struct vector3f_t
     return out;
   }
 
+  /**
+   * Operador asingación-divisón (divisón por un escalar).
+   *
+   * Realiza la división componente a componente del vector por el escalar "value", dando como resultado (x/value, y/value, z/value), y le asigna el valor al vector.
+   * @param value Escalar a realizar la división.
+   * @return Referencia al vector modificado.
+   */
   vector3f_t& operator/=(double value)
   {
     x /= value;
@@ -522,11 +689,32 @@ typedef struct vector3f_t
     return *this;
   }
 
+ /**
+  * Operador de producto cartesiano.
+  *
+  * Véase http://es.wikipedia.org/wiki/Producto_cartesiano.
+  * @param v Vector a multiplicar.
+  * @return Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v".
+  */
   vector3f_t operator%(vector3f_t& v)
   {
     return cross_product(v);
   }
 
+  /**
+   * Operador paréntesis.
+   *
+   * Por estética, modifica los valores de un vector de manera sencilla, tal que:
+   *
+   * @code
+   * vector3f_t v1;
+   * v1(1.0f, 2.0f, 30.0f); // El vector pasa a ser (1.0, 2.0, 30.0).
+   * @endcode
+   *
+   * @param x Nueva componente x.
+   * @param y Nueva componente y.
+   * @param z Nueva componente z.
+   */
   void operator()(GLfloat x, GLfloat y, GLfloat z)
   {
     this->x = x;
@@ -534,7 +722,21 @@ typedef struct vector3f_t
     this->z = z;
   }
 
-
+  /**
+   * Operador de acceso.
+   *
+   * Sirve para acceder a las componentes por índice. La asignación es:
+   *
+   * <pre>
+   * 0:     x
+   * 1:     y
+   * 2:     z
+   * resto: x
+   * </pre>
+   *
+   * @param pos Posición o índice de la componente.
+   * @return Valor de la componente. Devuelve "x" en caso de error.
+   */
   float& operator[](int pos)
   {
     switch(pos)
@@ -547,11 +749,25 @@ typedef struct vector3f_t
     return x;
   }
 
+  /**
+   * Producto escalar.
+   *
+   * Véase http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar
+   * @param v Vector a multiplicar.
+   * @return Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v".
+   */
   inline GLfloat dot_product(vector3f_t v)
   {
     return x*v.x + y*v.y + z*v.z;
   }
 
+  /**
+   * Producto cartesiano.
+   *
+   * Véase http://es.wikipedia.org/wiki/Producto_cartesiano.
+   * @param v Vector a multiplicar.
+   * @return Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v".
+   */
   inline vector3f_t cross_product(vector3f_t v)
   {
     vector3f_t out;
@@ -563,46 +779,104 @@ typedef struct vector3f_t
     return out;
   }
 
+  /** Módulo del vector
+   *
+   * Devuelve el módulo del vector actual. Véase http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)
+   *
+   * @return Valor del módulo del vector. Si el valor es "1", se dice que el vector está <b>normalizado</b> o que es un vector <b>unitario</b>.
+   */
   GLfloat length()
   {
     return sqrt(x*x + y*y + z*z);
   }
 
+  /**
+   * Operador de redirección de salida.
+   *
+   * Escribirá el vector de la misma manera que en la función vector3f_t::str()
+   * @param os Flujo de salida.
+   * @param v Vector.
+   * @return Referencia al flujo de salida.
+   */
   friend std::ostream& operator<<(std::ostream& os, vector3f_t v)
   {
     os << v.x << " " << v.y << " " << v.z;
     return os;
   }
 
+  /**
+   * Operador de redirección de entrada.
+   *
+   * Leerá el vector de la misma manera que en la función vector3f_t::str()
+   * @param is Flujo de entrada.
+   * @param v Vector.
+   * @return Referencia al flujo de entrada.
+   */
   friend std::istream& operator>>(std::istream& is, vector3f_t& v)
   {
     is >> v.x >> v.y >> v.z;
     return is;
   }
 
+  /**
+   * Normalizar el vector
+   *
+   * Hace que el módulo del vector valga "1" modifcando sus componentes. Véase http://es.wikipedia.org/wiki/Vector_unitario
+   * @return Vector unitario del vector actual.
+   */
   vector3f_t normalize()
   {
     GLfloat v = length();
     return vector3f_t(x/v, y/v, z/v);
   }
 
+  /**
+   * Vector "arriba"
+   *
+   * Sencillamente, es el vector "Y" o (0, 1, 0). Véase CSystem_Math.Y_AXIS
+   * @return Devuelve el vector (0, 1, 0)
+   */
   vector3f_t up()
   {
     return vector3f_t(0.f, 1.f, 0.f);
   }
 
+  /**
+   * Vector "adelante"
+   *
+   * Sencillamente, es el vector "Z" o (0, 0, 10). Véase CSystem_Math.Z_AXIS
+   * @return Devuelve el vector (0, 0, 1)
+   */
   vector3f_t forward()
   {
     return vector3f_t(0.f, 0.f, 1.f);
   }
 
+  /**
+   * Vector "izquierda"
+   *
+   * Sencillamente, es el vector "Y" o (1, 01, 0). Véase CSystem_Math.X_AXIS
+   * @return Devuelve el vector (1, 0, 0)
+   */
   vector3f_t left()
   {
     return vector3f_t(1.f, 0.f, 0.f);
   }
 
+  /**
+   * Precisión.
+   *
+   * Se utiliza para comparar si 2 puntos son equivalentes, dada una precisión decimal para cada componente.
+   * Así, si el valor absoluto de la diferencia entre 2 vectores es menor que la precisión para cada componente, se dice que son iguales.
+   */
   static GLfloat precision;
 
+  /**
+   * Vector absoluto
+   *
+   * Transforma cada componente para que sea positiva (valor absoluto).
+   * @return Devuelve el vector transformado, tal que sea (|x|, |y|, |z|).
+   */
   vector3f_t abs()
   {
     vector3f_t out;
@@ -614,6 +888,13 @@ typedef struct vector3f_t
     return out;
   }
 
+  /**
+   * Operador de igualdad.
+   *
+   * Compara si dos vectores son iguales dada la precisión vector3f_t::precision
+   * @param other Otro vector a comparar.
+   * @return true si son iguales, false en otro caso.
+   */
   bool operator==(vector3f_t other)
   {
     //if(x != other.y or y != other.y or z != other.z)
@@ -623,21 +904,67 @@ typedef struct vector3f_t
     return true;
   }
 
-  bool operator<(vector3f_t other)
-  {
-    return length() < other.length();
-  }
-
-  bool operator <=(vector3f_t other)
-  {
-    return *this < other or *this == other;
-  }
-
+  /**
+    * Operador de desigualdad.
+    *
+    * Compara si dos vectores son distintos dada la precisión vector3f_t::precision
+    * @param other Otro vector a comparar.
+    * @return true si son dinstitos, false en otro caso.
+    */
   bool operator!=(vector3f_t other)
   {
     return !(*this == other);
   }
 
+  /**
+   * Comparados de módulo.
+   * @param other Vector a comparar.
+   * @return true si el módulo del vector actual es menor que el módulo de other. false en otro caso.
+   */
+  bool operator<(vector3f_t other)
+  {
+    return length() < other.length();
+  }
+
+  /**
+   * Comparados de módulo.
+   * @param other Vector a comparar.
+   * @return true si el módulo del vector actual es menor o igual que el módulo de other. false en otro caso.
+   */
+  bool operator <=(vector3f_t other)
+  {
+    return *this < other or *this == other;
+  }
+
+  /**
+   * Comparados de módulo.
+   * @param other Vector a comparar.
+   * @return true si el módulo del vector actual es mayor que el módulo de other. false en otro caso.
+   */
+  bool operator>(vector3f_t other)
+  {
+    return !(*this <= other);
+  }
+
+  /**
+   * Comparados de módulo.
+   * @param other Vector a comparar.
+   * @return true si el módulo del vector actual es mayor o igual que el módulo de other. false en otro caso.
+   */
+  bool operator>=(vector3f_t other)
+  {
+    return !(*this < other);
+  }
+
+  /**
+   * Vector "arriba" rotado.
+   *
+   * Data una rotación expresada por un cuaternión (véase), devuelve el vector "arriba" rotado por dicho cuaternión.
+   *
+   * Véase vector3f_t::up(), http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
+   * @param angle Cuaternión para aplicar la rotación.
+   * @return Vector "arriba" rotado.
+   */
   vector3f_t up(glm::quat angle)
   {
     glm::vec3 y_axis(0.f, 1.f, 0.f);
@@ -646,6 +973,15 @@ typedef struct vector3f_t
     return vector3f_t(out.x, out.y, out.z);
   }
 
+  /**
+   * Vector "izquierda" rotado.
+   *
+   * Data una rotación expresada por un cuaternión (véase), devuelve el vector "izquierda" rotado por dicho cuaternión.
+   *
+   * Véase vector3f_t::left(), http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
+   * @param angle Cuaternión para aplicar la rotación.
+   * @return Vector "izquierda" rotado.
+   */
   vector3f_t left(glm::quat angle)
   {
     glm::vec3 x_axis(1.f, 0.f, 0.f);
@@ -654,6 +990,15 @@ typedef struct vector3f_t
     return vector3f_t(out.x, out.y, out.z);
   }
 
+  /**
+   * Vector "adelante" rotado.
+   *
+   * Data una rotación expresada por un cuaternión (véase), devuelve el vector "adelante" rotado por dicho cuaternión.
+   *
+   * Véase vector3f_t::forward(), http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
+   * @param angle Cuaternión para aplicar la rotación.
+   * @return Vector "adelante" rotado.
+   */
   vector3f_t forward(glm::quat angle)
   {
     glm::vec3 z_axis(0.f, 0.f, 1.f);
@@ -662,11 +1007,24 @@ typedef struct vector3f_t
     return vector3f_t(out.x, out.y, out.z);
   }
 
+  /**
+   * Distancia entre 2 puntos.
+   *
+   * Dado el vector actual como un punto, calcula la distancia entre el punto actual y el punto "v".
+   * @param v Punto destino.
+   * @return Distancia desde el punto actual hasta "v".
+   */
   double distance_to(vector3f_t v)
   {
     return ((*this) - v).length();
   }
 
+  /**
+   * Vector a cadena
+   *
+   * Devuelve una representación en forma de std::string del vectorviewport.
+   * @return std::string que almacena el los datos del vector con el formato "x y z", manteniendo su tipo original.
+   */
   std::string str()
   {
     std::stringstream ss;
@@ -680,21 +1038,57 @@ typedef struct vector3f_t
 
 /*_____Functions______*/
 
-namespace GO_Utils
+//! Espacio de nombres de algunas utilidades del motor gráfico.
+namespace Utils
 {
+  /**
+   * Generador de cadenas aleatorias.
+   *
+   * Genera una cadena de caracteres alfanuméricos ([0-9a-zA-Z]) de tamaño "n".
+   * @param n Tamaño de la cadena a generar.
+   * @return Cadena generada.
+   */
   std::string string_generate_random_alphanumeric(uint n = 4);
+
+  /**
+   * Cadena a minúsculas.
+   *
+   * Transforma los caracteres de una cadena de mayúsculas a minúsculas.
+   * @param str Cadena a transformar.
+   * @return Cadena transformada.
+   */
   std::string string_to_lower(std::string& str);
+
+  /**
+   * Cadena a mayúsculas.
+   *
+   * Transforma los caracteres de una cadena de minúsculas a mayúsculas.
+   * @param str Cadena a transformar.
+   * @return Cadena transformada.
+   */
   std::string string_to_upper(std::string& str);
 
+  /**
+   * Carga de imágenes con SDL.
+   *
+   * Carga una imagen en formato SDL. Se usa solo para cargar el icono de la aplicación. Véase CEngine::SetIcon()
+   * @param s Fichero que contiene la imagen.
+   * @return Superficie de SDL con los datos de la imagen.
+   */
   SDL_Surface* sdl_cargar_img(std::string s);
+
+  /**
+   * Comprobador de validez de identificadores.
+   *
+   * Comprueba si un identificador es válido. Esto es, debe contener sólo caracteres alfanuméricos o guiones bajos ([0-9a-zA-Z_]).
+   * @param identifier Cadena que representa un identificador a valida.
+   * @return true si el identificador es válido, false en caso contrario.
+   */
   bool validateIdentifier(std::string identifier);
 
   //void glhLookAtf2(glm::mat4& matrix, vector3f& eyePosition3D, vector3f& center3D, vector3f& upVector3D ); // http://www.opengl.org/wiki/GluLookAt_code
   //vector3f glComputeNormalOfPlane( vector3f& vec1, vector3f& vec2); // https://code.google.com/p/lightsimulator/source/browse/trunk/src/glutshadowmap.cpp?spec=svn133&r=133
 }
-
-
-
 
 
 /*typedef struct matrixf_t

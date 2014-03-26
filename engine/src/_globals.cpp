@@ -5,7 +5,7 @@ SDL_Event event;
 
 using namespace std;
 
-string GO_Utils::string_generate_random_alphanumeric(uint n)
+string Utils::string_generate_random_alphanumeric(uint n)
 {
   static const char alphanum[] =
             "0123456789"
@@ -21,7 +21,7 @@ string GO_Utils::string_generate_random_alphanumeric(uint n)
   return s;
 }
 
-string GO_Utils::string_to_lower(string& str)
+string Utils::string_to_lower(string& str)
 {
   string output = str;
   transform(str.begin(), str.end(), output.begin(), ::tolower);
@@ -29,7 +29,7 @@ string GO_Utils::string_to_lower(string& str)
   return output;
 }
 
-string GO_Utils::string_to_upper(string& str)
+string Utils::string_to_upper(string& str)
 {
   string output = str;
   transform(str.begin(), str.end(), output.begin(), ::toupper);
@@ -37,7 +37,7 @@ string GO_Utils::string_to_upper(string& str)
   return output;
 }
 
-SDL_Surface* GO_Utils::sdl_cargar_img(std::string s)
+SDL_Surface* Utils::sdl_cargar_img(std::string s)
 {
   SDL_Surface* img = NULL;
   img = IMG_Load(s.c_str());
@@ -46,7 +46,7 @@ SDL_Surface* GO_Utils::sdl_cargar_img(std::string s)
   return img;
 }
 
-bool GO_Utils::validateIdentifier(string identifier)
+bool Utils::validateIdentifier(string identifier)
 {
   for(string::iterator it = identifier.begin(); it != identifier.end(); ++it)
     if(!isalnum(*it) and (*it) != '_')
