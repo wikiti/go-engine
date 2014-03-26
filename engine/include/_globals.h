@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Estructuras y métodos globales.
+ */
+
 #ifndef __GLOBALS_H_
 #define __GLOBALS_H_
 
@@ -262,11 +267,11 @@ typedef struct colorf_t
    * Se podrán acceder a los elementos de la siguiente manera:
    *
    * @code
-   * colorf_t color(1.0, 1.0, 1.0, 1.0);
-   * color.to_a()[0] = 0.5f; // Componente roja
-   * color.to_a()[1] = 0.2f; // Componente verde
-   * color.to_a()[2] = 0.3f; // Componente azul
-   * color.to_a()[2] = 1.0f; // Componente alpha
+    colorf_t color(1.0, 1.0, 1.0, 1.0);
+    color.to_a()[0] = 0.5f; // Componente roja
+    color.to_a()[1] = 0.2f; // Componente verde
+    color.to_a()[2] = 0.3f; // Componente azul
+    color.to_a()[2] = 1.0f; // Componente alpha
    * @endcode
    *
    * @return float* de tamaño 4, siendo una referencia al color.
@@ -477,7 +482,7 @@ typedef struct viewportf_t
  * Estructura que representa un vector de flotantes con 3 componentes:
  *
  * @code
- * (x, y, z)
+  (x, y, z)
  * @endcode
  *
  * Véase http://es.wikipedia.org/wiki/Vector
@@ -707,8 +712,8 @@ typedef struct vector3f_t // ->PORHACER La clase vector3f_t debería ir en CSyste
    * Por estética, modifica los valores de un vector de manera sencilla, tal que:
    *
    * @code
-   * vector3f_t v1;
-   * v1(1.0f, 2.0f, 30.0f); // El vector pasa a ser (1.0, 2.0, 30.0).
+    vector3f_t v1;
+    v1(1.0f, 2.0f, 30.0f); // El vector pasa a ser (1.0, 2.0, 30.0).
    * @endcode
    *
    * @param x Nueva componente x.

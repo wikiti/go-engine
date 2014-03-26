@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Go-Engine: Fichero Fuente C:/Dev/Proyectos/go-engine/user/src/particles/fireworks/fireworks.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Go-Engine
+   &#160;<span id="projectnumber">alpha</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_111cd2f11cffd6d6d28d89ee0389ee9e.html">user</a></li><li class="navelem"><a class="el" href="dir_d070f32a728a03cdee47adce6b71c59a.html">src</a></li><li class="navelem"><a class="el" href="dir_d545361c4cb0ec2bf58992f70a98c449.html">particles</a></li><li class="navelem"><a class="el" href="dir_599abcf071b86a116db0b2acdd6b2a8e.html">fireworks</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">fireworks.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;particles/fireworks/fireworks.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Firework manager</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">bool</span> SetGameObjects_Instance1_Fireworks()</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* firework_manager = gGameObjects[<span class="stringliteral">&quot;firework_manager&quot;</span>];</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <span class="keywordflow">if</span>(!firework_manager)</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    firework_manager = gGameObjects.AddGameObject(<span class="stringliteral">&quot;firework_manager&quot;</span>);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    firework_manager-&gt;Preserve();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    firework_manager-&gt;SetInputFunction(&amp;Firework_Manager_KeyEvent);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    firework_manager-&gt;SetBehaviourFunction(&amp;Firework_Manager_Behaviour);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">if</span>(gData.GetInt(<span class="stringliteral">&quot;firework_explosion_particles&quot;</span>) == __CSYSTEM_DATA_STORAGE_NOINT)</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      gData.SetInt(<span class="stringliteral">&quot;firework_explosion_particles&quot;</span>, 500);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  firework_manager-&gt;AudioSource()-&gt;music = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  firework_manager-&gt;AudioSource()-&gt;loop = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  firework_manager-&gt;AudioSource()-&gt;everywhere = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  firework_manager-&gt;AudioSource()-&gt;start_playing = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  firework_manager-&gt;AudioSource()-&gt;SetSound(<span class="stringliteral">&quot;fireworks&quot;</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  firework_manager-&gt;AudioSource()-&gt;Bind();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">int</span> number_of_fireworks = 0;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;vector&lt;bool&gt; exploded;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;vector&lt;CGameObject*&gt; fireworks;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;vector&lt;int&gt; fireworks_value;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> Firework_Manager_KeyEvent(<a class="code" href="class_c_game_object.html">CGameObject</a>* gameObject)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">//if(event.type == SDL_KEYDOWN &amp;&amp; event.key.keysym.scancode == SDL_SCANCODE_SPACE)</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">if</span>(gUserInput.jump() == Input::key_keydown)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//std::string random_string = generate_random_alphanumeric_string(5);</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ostringstream oss;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    oss &lt;&lt; number_of_fireworks;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">string</span> value = oss.str();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">float</span> timeout = gMath.random(1.f, 3.f);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    gSystem_Data_Storage.SetFloat(<span class="stringliteral">&quot;firework_timeout_&quot;</span>+value, timeout);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    gSystem_Data_Storage.SetFloat(<span class="stringliteral">&quot;firework_timer_&quot;</span>+value, gTime.GetTicks_s());</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* firework = gGameObjects.AddGameObject(<span class="stringliteral">&quot;firework_&quot;</span>+value);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* explosion = gGameObjects.AddGameObject(<span class="stringliteral">&quot;firework_explosion_&quot;</span>+value);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* trail = gGameObjects.AddGameObject(<span class="stringliteral">&quot;firework_trail_&quot;</span>+value);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    firework-&gt;AddChild(explosion);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    firework-&gt;AddChild(trail);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    firework-&gt;Preserve(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    firework-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position = gMath.random_point(<a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(50, 0, 0), <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(-25, 0, 0));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="comment">// Explosion</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;max_particles = gData.GetInt(<span class="stringliteral">&quot;firework_explosion_particles&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;particles_per_second = 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;angle_spread = 360;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;gravity(0, -5.f, 0);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;start_max_life_time = gMath.random(1.5f, 3.f);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;start_min_life_time = 1.f;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    GLfloat r = gMath.random(0.5, 1.f);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    GLfloat g = gMath.random(0.5, 1.f);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    GLfloat b = gMath.random(0.5, 1.f);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;start_min_color(r, g, b, 1.f);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    explosion-&gt;ParticleEmitter()-&gt;start_max_color(r, g, b, 1.f);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">//explosion-&gt;particleEmitter()-&gt;color_adder(0, 0, 0, -0.1f);</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    explosion-&gt;AudioSource()-&gt;SetSound(<span class="stringliteral">&quot;firework_explosion&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    explosion-&gt;AudioSource()-&gt;volume = 1.f;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">//explosion-&gt;AudioSource()-&gt;loop = true;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    explosion-&gt;AudioSource()-&gt;max_distance = 200.f;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">//explosion-&gt;AudioSource()-&gt;everywhere = false;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">//explosion-&gt;AudioSource()-&gt;Bind();</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="comment">// Trail</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    trail-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;smoke1&quot;</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    trail-&gt;ParticleEmitter()-&gt;max_particles = 100;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    trail-&gt;ParticleEmitter()-&gt;angle_spread = 10;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    trail-&gt;ParticleEmitter()-&gt;direction(0, -1.f, 0);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    trail-&gt;ParticleEmitter()-&gt;gravity(0, 0.f, 0);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    trail-&gt;ParticleEmitter()-&gt;start_max_vel = 0.f;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    trail-&gt;ParticleEmitter()-&gt;start_min_vel = 0.f;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    trail-&gt;ParticleEmitter()-&gt;start_min_color(1.f, 0.5f, 0.12f, 1.f);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    trail-&gt;ParticleEmitter()-&gt;start_max_color(1.f, 0.5f, 0.12f, 1.f);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    trail-&gt;ParticleEmitter()-&gt;min_color(0.12f, 0.12f, 0.12f, 0.f);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    trail-&gt;ParticleEmitter()-&gt;color_adder(-3.f, -1.5f, 0.f, 0.f);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    trail-&gt;ParticleEmitter()-&gt;start_max_vel = 0.5f;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    trail-&gt;ParticleEmitter()-&gt;start_min_vel = 0.f;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    trail-&gt;ParticleEmitter()-&gt;start_max_life_time = 0.05f;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    trail-&gt;ParticleEmitter()-&gt;start_min_life_time = 0.85f;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    trail-&gt;ParticleEmitter()-&gt;Start();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    trail-&gt;AudioSource()-&gt;SetSound(<span class="stringliteral">&quot;firework_trail&quot;</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    trail-&gt;AudioSource()-&gt;volume = 0.6f;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    trail-&gt;AudioSource()-&gt;max_distance = 100.f;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    trail-&gt;AudioSource()-&gt;Bind();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    trail-&gt;AudioSource()-&gt;Play();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    fireworks_value.push_back(number_of_fireworks);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    exploded.push_back(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    fireworks.push_back(firework);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    number_of_fireworks++;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">//exploded.resize(number_of_fireworks);</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="comment">//exploded[exploded.size()-1] = false;</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="comment">//gGameObjects[&quot;camara_main&quot;]-&gt;Camera()-&gt;SetTarget(firework-&gt;GetName());</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">void</span> Firework_Manager_Behaviour(<a class="code" href="class_c_game_object.html">CGameObject</a>* gameObject)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordflow">if</span>(!fireworks.size())</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; fireworks.size(); i++)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    ostringstream oss;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    oss &lt;&lt; fireworks_value[i];</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">string</span> value = oss.str();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* current_firework = fireworks[i];</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">float</span> startTime = gSystem_Data_Storage.GetFloat(<span class="stringliteral">&quot;firework_timer_&quot;</span>+value);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">float</span> timeout = gSystem_Data_Storage.GetFloat(<span class="stringliteral">&quot;firework_timeout_&quot;</span>+value);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">if</span>((gTime.GetTicks_s() - startTime) &lt; timeout/gTime.timeScale()) <span class="comment">// 1.5 segundos.</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      current_firework-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Translate(0.f, 20.f*gTime.deltaTime_s(), 0.f);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!exploded[i])</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      current_firework-&gt;GetChild(1)-&gt;ParticleEmitter()-&gt;Stop();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      current_firework-&gt;GetChild(0)-&gt;ParticleEmitter()-&gt;Start();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      current_firework-&gt;GetChild(0)-&gt;ParticleEmitter()-&gt;Stop();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      current_firework-&gt;GetChild(0)-&gt;AudioSource()-&gt;PlayOneShot();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      exploded[i] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((gTime.GetTicks_s() - startTime) &gt; 5/gTime.timeScale())</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="comment">// Clear float vars</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      gSystem_Data_Storage.RemoveFloat(<span class="stringliteral">&quot;firework_timer_&quot;</span>+value);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      gSystem_Data_Storage.RemoveFloat(<span class="stringliteral">&quot;firework_timeout_&quot;</span>+value);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      <span class="comment">// Clear vectors</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      gGameObjects.DeleteGameObject(current_firework-&gt;GetName(), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      exploded.erase(exploded.begin() + i);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      fireworks_value.erase(fireworks_value.begin() + i);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      fireworks.erase(fireworks.begin() + i);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      i--;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="comment">//Firework_Behaviour(gGameObjects[&quot;firework_&quot;+value]);</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">/*void Firework_Manager_Behaviour(CGameObject* gameObject)</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">{</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">  if(!number_of_fireworks)</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">    return;</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">  for(int i = 0; i &lt; number_of_fireworks; i++)</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">  {</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">    ostringstream oss;</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">    oss &lt;&lt; i;</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">    string value = oss.str();</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">    CGameObject* current_firework = gGameObjects[&quot;firework_&quot;+value];</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">    float startTime = gSystem_Data_Storage.GetFloat(&quot;firework_timer_&quot;+value);</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">    float timeout = gSystem_Data_Storage.GetFloat(&quot;firework_timeout_&quot;+value);</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">    if((gTime.GetTicks_s() - startTime) &lt; timeout/gTime.timeScale()) // 1.5 segundos.</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">      current_firework-&gt;Transform()-&gt;Translate(0.f, 20.f*gTime.deltaTime_s(), 0.f);</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">    else if(!exploded[i])</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">      current_firework-&gt;GetChild(&quot;firework_trail_&quot;+value)-&gt;ParticleEmitter()-&gt;Stop();</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">      current_firework-&gt;GetChild(&quot;firework_explosion_&quot;+value)-&gt;ParticleEmitter()-&gt;Start();</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">      current_firework-&gt;GetChild(&quot;firework_explosion_&quot;+value)-&gt;ParticleEmitter()-&gt;Stop();</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">      current_firework-&gt;GetChild(&quot;firework_explosion_&quot;+value)-&gt;AudioSource()-&gt;PlayOneShot();</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">      //gMixer.PlaySound(&quot;leroy&quot;, current_firework);</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">      //gMixer.PlaySound(&quot;explosion&quot;, current_firework);</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">      exploded[i] = true;</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">    //Firework_Behaviour(gGameObjects[&quot;firework_&quot;+value]);</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">}*/</span></div>
+<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
+<div class="ttc" id="__globals_8h_html_aa250b1dedabea51e27f641d879926b0f"><div class="ttname"><a href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></div><div class="ttdeci">struct vector3f_t vector3f</div></div>
+<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00253">_object.h:253</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Miércoles, 26 de Marzo de 2014 21:38:12 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>
