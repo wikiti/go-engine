@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -236,44 +237,6 @@ Variables</h2></td></tr>
 
 <p>Definición en el archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 </div><h2 class="groupheader">Documentación de los 'defines'</h2>
-<a class="anchor" id="a808a7418bc50a1583e1d2a07db11ae6e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _DEG_TO_RAD</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;x * ( M_PI / 180  )</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Macro para pasar de grados a radianes. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00078">78</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a306bd7f1837c18e24ba5a7ed1596dbe2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _RAD_TO_DEG</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;x * ( 180  / M_PI )</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Macro para pasar de radianes a grados. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00073">73</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a25cffc64bd967636d69d7c3c82af1030"></a>
 <div class="memitem">
 <div class="memproto">
@@ -303,83 +266,45 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a306bd7f1837c18e24ba5a7ed1596dbe2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _RAD_TO_DEG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;x * ( 180  / M_PI )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Macro para pasar de radianes a grados. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00073">73</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a808a7418bc50a1583e1d2a07db11ae6e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _DEG_TO_RAD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;x * ( M_PI / 180  )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Macro para pasar de grados a radianes. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00078">78</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Documentación de los 'typedefs'</h2>
-<a class="anchor" id="a0ab832cb1976fa552f7ae0b53abe157c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structcolor__t.html">color_t</a>  <a class="el" href="structcolor__t.html">color_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Estructura de datos para representar un color.<br/>
-</p>
-<p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un byte sin signo (0...255). </p>
-
-</div>
-</div>
-<a class="anchor" id="a039a04605406728d342c96f5b4774df6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structcolorf__t.html">colorf_t</a>  <a class="el" href="structcolorf__t.html">colorf_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Estructura de datos para representar un color.<br/>
-</p>
-<p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un flotante sin signo (0...1).</p>
-<p>No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
-
-</div>
-</div>
-<a class="anchor" id="a0e446f42da28aa4a1f2ff0ac14b8444b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef bool(* fboolpointer)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tipo para representar un puntero a función del tipo "bool f()". </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00175">175</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a02b593633ae68595bb0e96c8b0e06405"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef unsigned int <a class="el" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tipo para representar flags u opciones. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00170">170</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8dac3662b9da40f244308408f05c0e7e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* fpointer)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tipo para representar un puntero a función del tipo "void f()". </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00174">174</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="acb1903f2f2f7ed4502a5f53615cff8aa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -410,18 +335,18 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5dd4f281954ce1405c92d62a427f839a"></a>
+<a class="anchor" id="a02b593633ae68595bb0e96c8b0e06405"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef unsigned char <a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a></td>
+          <td class="memname">typedef unsigned int <a class="el" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Tipo para representar un byte sin signo. </p>
+<p>Tipo para representar flags u opciones. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00172">172</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00170">170</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -440,21 +365,79 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa250b1dedabea51e27f641d879926b0f"></a>
+<a class="anchor" id="a5dd4f281954ce1405c92d62a427f839a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structvector3f__t.html">vector3f_t</a>  <a class="el" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></td>
+          <td class="memname">typedef unsigned char <a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Vector tridimensional.</p>
-<p>Estructura que representa un vector de flotantes con 3 componentes:</p>
-<div class="fragment"><div class="line"> (x, y, z)</div>
-<div class="line">* </div>
-</div><!-- fragment --><p>Véase <a href="http://es.wikipedia.org/wiki/Vector">http://es.wikipedia.org/wiki/Vector</a></p>
-<p>Con esta clase, se puede hace gran variedad de operaciones. Para una mayor variedad, véase la clase <a class="el" href="class_c_system___math.html">CSystem_Math</a>. </p>
+<p>Tipo para representar un byte sin signo. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00172">172</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8dac3662b9da40f244308408f05c0e7e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* fpointer)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tipo para representar un puntero a función del tipo "void f()". </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00174">174</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0e446f42da28aa4a1f2ff0ac14b8444b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef bool(* fboolpointer)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tipo para representar un puntero a función del tipo "bool f()". </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00175">175</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ab832cb1976fa552f7ae0b53abe157c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structcolor__t.html">color_t</a>  <a class="el" href="structcolor__t.html">color_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Estructura de datos para representar un color.<br/>
+</p>
+<p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un byte sin signo (0...255). </p>
+
+</div>
+</div>
+<a class="anchor" id="a039a04605406728d342c96f5b4774df6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structcolorf__t.html">colorf_t</a>  <a class="el" href="structcolorf__t.html">colorf_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Estructura de datos para representar un color.<br/>
+</p>
+<p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un flotante sin signo (0...1).</p>
+<p>No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
 
 </div>
 </div>
@@ -511,19 +494,71 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Documentación de las variables</h2>
-<a class="anchor" id="aeeb59a4d0721c8fdb5534ab519f650f3"></a>
+<a class="anchor" id="aa250b1dedabea51e27f641d879926b0f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char ERROR_FATAL[] = &quot;Fatal error&quot;</td>
+          <td class="memname">typedef struct <a class="el" href="structvector3f__t.html">vector3f_t</a>  <a class="el" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Título de error fatal para "message boxes". Véase CSystem_Debug::msg_box. </p>
+<p>Vector tridimensional.</p>
+<p>Estructura que representa un vector de flotantes con 3 componentes:</p>
+<div class="fragment"><div class="line"> (x, y, z)</div>
+<div class="line">* </div>
+</div><!-- fragment --><p>Véase <a href="http://es.wikipedia.org/wiki/Vector">http://es.wikipedia.org/wiki/Vector</a></p>
+<p>Con esta clase, se puede hace gran variedad de operaciones. Para una mayor variedad, véase la clase <a class="el" href="class_c_system___math.html">CSystem_Math</a>. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00156">156</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+</div>
+</div>
+<h2 class="groupheader">Documentación de las variables</h2>
+<a class="anchor" id="a6b57f01d3c576db5368dd0efc2f435a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Event event</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace:</p>
+<ol>
+<li>
+<a href="http://wiki.libsdl.org/SDL_Event">http://wiki.libsdl.org/SDL_Event</a></li>
+</ol>
+
+<p>Definición en la línea <a class="el" href="__globals_8cpp_source.html#l00003">3</a> del archivo <a class="el" href="__globals_8cpp_source.html">_globals.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adc07e5fd038fd64b08080064d80a3ed7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char ERROR_RENDER[] = &quot;Render error&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Título de error de renderizado para "message boxes". Véase CSystem_Debug::msg_box. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00144">144</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3d470c3e2db920debdd2f758bcc04dfa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char ERROR_INIT[] = &quot;Init error&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Título de error de inicialización para "message boxes". Véase CSystem_Debug::msg_box. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00148">148</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -544,6 +579,21 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aeeb59a4d0721c8fdb5534ab519f650f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char ERROR_FATAL[] = &quot;Fatal error&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Título de error fatal para "message boxes". Véase CSystem_Debug::msg_box. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00156">156</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a31a7c4993d803b30b8f098497f7080b4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -559,59 +609,10 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3d470c3e2db920debdd2f758bcc04dfa"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char ERROR_INIT[] = &quot;Init error&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Título de error de inicialización para "message boxes". Véase CSystem_Debug::msg_box. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00148">148</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="adc07e5fd038fd64b08080064d80a3ed7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char ERROR_RENDER[] = &quot;Render error&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Título de error de renderizado para "message boxes". Véase CSystem_Debug::msg_box. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00144">144</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6b57f01d3c576db5368dd0efc2f435a4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_Event event</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace:</p>
-<ol>
-<li>
-<a href="http://wiki.libsdl.org/SDL_Event">http://wiki.libsdl.org/SDL_Event</a></li>
-</ol>
-
-<p>Definición en la línea <a class="el" href="__globals_8cpp_source.html#l00003">3</a> del archivo <a class="el" href="__globals_8cpp_source.html">_globals.cpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 10:30:31 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 20:28:54 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

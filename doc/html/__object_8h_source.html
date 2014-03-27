@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,378 +99,449 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;_components.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;systems/_debug.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// Inútil (de momento)</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="__object_8h.html#abc8e2fbdfa9775d0717d5a486312bade">   17</a></span>&#160;<span class="comment"></span><span class="keyword">enum</span> <a class="code" href="__object_8h.html#abc8e2fbdfa9775d0717d5a486312bade">gameObject_flags</a> { gof_none = 0x00, gof_render = 0x01, gof_event = 0x02, gof_kevent = 0x04, gof_loop = 0x08 };</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="__object_8h.html#abc32c5ef28f83ce5f6996e327f62a67a">   21</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="__object_8h.html#abc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a> {gameObject_empty = 0};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">   34</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a>)(<a class="code" href="class_c_game_object.html">CGameObject</a>* <span class="keyword">self</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// Nota: añadir &quot;CGameObject_NULL&quot; que no haga nada en sus operaciones. Así, si el manager devuelve un NULL, y se trata de acceder a un método de ese NULL, no se hará nada</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// -&gt; Ya que devolverá CGameObject_NULL, y no NULL</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// -&gt; Si no, crear una instancia de CGameObject llamado &quot;GAMEOBJECT_NULL&quot;, o algo por el estilo</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// -&gt; O un flag tipo &quot;null_object&quot; en los objetos actuales que no haga nada en las funciones si el objeto es nulo.</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_c_game_object.html">   82</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_game_object.html">CGameObject</a></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">//typedef void (CGameObject::*callfunc_ptr)(input_t, output_t);</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_component.html">CComponent</a>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_component___transform.html">CComponent_Transform</a>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_system___game_object___manager.html">CSystem_GameObject_Manager</a>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_system___debug.html">CSystem_Debug</a>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_system___render.html">CSystem_Render</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">//friend class boost::serialization::access;</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a> flags;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">bool</span> inited;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">bool</span> enabled;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">bool</span> preserve;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">//bool DontDeleteOnLoad y void DontDeleteOnLoad();</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">int</span> id;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::map&lt;int, CComponent*&gt; components;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::map&lt;std::string, CGameObject*&gt; children;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* Parent;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> start;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> behaviour;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> event_behaviour;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> input_behaviour;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> render;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">/*template&lt;class Archive&gt;</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">    void serialize(Archive &amp; ar, const unsigned int version)</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">    {</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">      ar &amp; flags;</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">      ar &amp; inited;</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">      ar &amp; enabled;</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">      ar &amp; name;</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">      ar &amp; id;</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">      ar &amp; components; // fallo al guardar objetos instanciados por punteros (boost::serialization)</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">      ar &amp; children;</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">      // Inservible</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">      //ar &amp; start &amp; behaviour &amp; event_behaviour &amp; keyevent_behaviour;</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">    }*/</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>(std::string name);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>();</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="class_c_game_object.html">CGameObject</a>()</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      Close();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">void</span> Init();</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      <span class="keyword">virtual</span> <span class="keywordtype">void</span> InitCustom(){};</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">void</span> Close();</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <span class="keyword">virtual</span> <span class="keywordtype">void</span> CloseCustom(){};</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <a class="code" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a> Get_flags() {<span class="keywordflow">return</span> flags; } <span class="comment">// Los flags sólo deberían ser maniplados por el objeto, no por el usuario</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordtype">bool</span> AddChild(<a class="code" href="class_c_game_object.html">CGameObject</a>* child);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">short</span> <span class="keywordtype">int</span> AddChildren(<span class="keyword">const</span> std::vector&lt;CGameObject*&gt;&amp; children); <span class="comment">// Returns 1 on succes. Otherwise, returns the negative index of the last element which failed at AddChild (0, -1, -2, ..., -N)</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="comment">//bool AddChildren(const std::initializer_list&lt;CGameObject*&gt;&amp; init) { return }</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">bool</span> RemoveChild(std::string name);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">void</span> RemoveChildren();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* GetChild(std::string name);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* GetChild(<a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">inline</span> <a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> GetNumChildren(){<span class="keywordflow">return</span> children.size();}</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_game_object.html">CGameObject</a>* GetParent()</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="keywordflow">return</span> Parent;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> SetParent(<a class="code" href="class_c_game_object.html">CGameObject</a>* parent)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="keywordflow">if</span>(parent != NULL)</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        Parent = parent;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> RemoveParent()</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      Parent-&gt;RemoveChild(name);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> UnParent() <span class="comment">// no usar nunca desde fuera</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      <span class="comment">//Parent-&gt;RemoveChild(name);</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      Parent = NULL;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> SetStartFunction(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      start = f;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> SetBehaviourFunction(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      behaviour = f;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> SetEventFunction(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      event_behaviour = f;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> SetInputFunction(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      input_behaviour = f;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> SetRenderFunction(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      render = f;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> CallStartFunction()</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      <span class="keywordflow">if</span>(start) start(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> CallBehaviourFunction()</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      <span class="keywordflow">if</span>(behaviour) behaviour(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> CallEventFunction()</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;      <span class="keywordflow">if</span>(event_behaviour) event_behaviour(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> CallKeyEventFunction()</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      <span class="keywordflow">if</span>(input_behaviour) input_behaviour(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> CallRenderFunction()</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    {</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      <span class="keywordflow">if</span>(render) render(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordtype">int</span> AddToSystem();</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordtype">bool</span> RemoveFromSystem();</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">void</span> OnEvent();</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordtype">void</span> OnInput();</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordtype">void</span> OnLoop();</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordtype">void</span> OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">//void OnRenderDebug();</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">void</span> Register(<a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ID)</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      <span class="keywordtype">id</span> = ID;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keyword">inline</span> std::string GetName()</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;      <span class="keywordflow">return</span> name;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">int</span> GetID()</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="keywordflow">return</span> id;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordtype">void</span> Enable(<span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordtype">void</span> Disable(<span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordtype">void</span> SetState(<span class="keywordtype">bool</span> state, <span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordtype">void</span> Preserve(<span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordtype">void</span> UnPreserve(<span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordtype">void</span> SetPreserve(<span class="keywordtype">bool</span> state, <span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> IsEnabled()</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      <span class="keywordflow">return</span> enabled;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> IsInited()</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      <span class="keywordflow">return</span> inited;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    }</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> IsPreserved()</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      <span class="keywordflow">return</span> preserve;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordtype">bool</span> NearBy(<a class="code" href="class_c_game_object.html">CGameObject</a>* go, <span class="keywordtype">double</span> distance);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//namespace GO {</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Inútil (de momento)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="__object_8h.html#abc8e2fbdfa9775d0717d5a486312bade">   19</a></span>&#160;<span class="comment"></span><span class="keyword">enum</span> <a class="code" href="__object_8h.html#abc8e2fbdfa9775d0717d5a486312bade">gameObject_flags</a> { gof_none = 0x00, gof_render = 0x01, gof_event = 0x02, gof_kevent = 0x04, gof_loop = 0x08 };</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="__object_8h.html#abc32c5ef28f83ce5f6996e327f62a67a">   23</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="__object_8h.html#abc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a> {gameObject_empty = 0};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">   36</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a>)(<a class="code" href="class_c_game_object.html">CGameObject</a>* <span class="keyword">self</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// Nota: añadir &quot;CGameObject_NULL&quot; que no haga nada en sus operaciones. Así, si el manager devuelve un NULL, y se trata de acceder a un método de ese NULL, no se hará nada</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// -&gt; Ya que devolverá CGameObject_NULL, y no NULL</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// -&gt; Si no, crear una instancia de CGameObject llamado &quot;GAMEOBJECT_NULL&quot;, o algo por el estilo</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// -&gt; O un flag tipo &quot;null_object&quot; en los objetos actuales que no haga nada en las funciones si el objeto es nulo.</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_c_game_object.html">   84</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_game_object.html">CGameObject</a></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_component.html">CComponent</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_component___transform.html">CComponent_Transform</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_system___game_object___manager.html">CSystem_GameObject_Manager</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_system___debug.html">CSystem_Debug</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_system___render.html">CSystem_Render</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a> flags;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> inited;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">bool</span> enabled;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">bool</span> preserve;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">//bool DontDeleteOnLoad y void DontDeleteOnLoad();</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    std::string name;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">int</span> id;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::map&lt;int, CComponent*&gt; components;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::map&lt;std::string, CGameObject*&gt; children;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* Parent;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> start;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> behaviour;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> event_behaviour;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> input_behaviour;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> render;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">/*template&lt;class Archive&gt;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">    void serialize(Archive &amp; ar, const unsigned int version)</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">      ar &amp; flags;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">      ar &amp; inited;</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">      ar &amp; enabled;</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">      ar &amp; name;</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">      ar &amp; id;</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">      ar &amp; components; // fallo al guardar objetos instanciados por punteros (boost::serialization)</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">      ar &amp; children;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">      // Inservible</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">      //ar &amp; start &amp; behaviour &amp; event_behaviour &amp; keyevent_behaviour;</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">    }*/</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject</a>(std::string name);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject</a>();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a4ae07118a44d09c2b5db2dd68e78b690">  154</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_c_game_object.html#a4ae07118a44d09c2b5db2dd68e78b690">~CGameObject</a>()</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      <a class="code" href="class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876">Close</a>();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#aee6586c144cdbe215dfcf4399abef3e9">Init</a>();</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a5ccece543dba3b12db40c900c8143f68">  167</a></span>&#160;      <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a5ccece543dba3b12db40c900c8143f68">InitCustom</a>(){};</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876">Close</a>();</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a1031d0372ed792b4f12998f3570882b3">  176</a></span>&#160;      <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a1031d0372ed792b4f12998f3570882b3">CloseCustom</a>(){};</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="class_c_game_object.html#af676d5745b8032198417080119bcab2a">  179</a></span>&#160;    <a class="code" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a> <a class="code" href="class_c_game_object.html#af676d5745b8032198417080119bcab2a">Get_flags</a>() {<span class="keywordflow">return</span> flags; } <span class="comment">// Los flags sólo deberían ser maniplados por el objeto, no por el usuario</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#a0bcbe65095667178fa1a61c4019e2c5c">AddChild</a>(<a class="code" href="class_c_game_object.html">CGameObject</a>* child);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordtype">short</span> <span class="keywordtype">int</span> <a class="code" href="class_c_game_object.html#aa39587c45dd82ac7931d8803dac5fcd1">AddChildren</a>(<span class="keyword">const</span> std::vector&lt;CGameObject*&gt;&amp; children); <span class="comment">// Returns 1 on succes. Otherwise, returns the negative index of the last element which failed at AddChild (0, -1, -2, ..., -N)</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment">//bool AddChildren(const std::initializer_list&lt;CGameObject*&gt;&amp; init) { return }</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#ade6f6d5d0ddbb31d34cf29f0dc13fef7">RemoveChild</a>(std::string name);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a77e6884d3eaf7d338c6ddb5021604f49">RemoveChildren</a>();</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* <a class="code" href="class_c_game_object.html#ac2286a7f7345a244cfaeffcef0b98cef">GetChild</a>(std::string name);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* <a class="code" href="class_c_game_object.html#ac2286a7f7345a244cfaeffcef0b98cef">GetChild</a>(<a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index);</div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a08acfca204d1c27aaf32ecc16a398a4f">  257</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_c_game_object.html#a08acfca204d1c27aaf32ecc16a398a4f">GetNumChildren</a>(){<span class="keywordflow">return</span> children.size();}</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a7d440a88fdaf5354975a4f1f27da60f4">  264</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_game_object.html">CGameObject</a>* <a class="code" href="class_c_game_object.html#a7d440a88fdaf5354975a4f1f27da60f4">GetParent</a>()</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      <span class="keywordflow">return</span> Parent;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="class_c_game_object.html#ae3647e2d26bc43f7217424df6ee2cda4">  274</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#ae3647e2d26bc43f7217424df6ee2cda4">RemoveParent</a>()</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      Parent-&gt;<a class="code" href="class_c_game_object.html#ade6f6d5d0ddbb31d34cf29f0dc13fef7">RemoveChild</a>(name);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    Type* <a class="code" href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">GetComponent</a>();</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <a class="code" href="class_c_component.html">CComponent</a>* <a class="code" href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">GetComponent</a>(Components::components_t c)</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      <span class="keywordflow">if</span>(components.find(c) != components.end())</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keywordflow">return</span> components[c];</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    }</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordtype">bool</span> AddComponent();</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordtype">bool</span> RemoveComponent();</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordtype">void</span> SetComponentStateComponent(<span class="keywordtype">bool</span> state);</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    </div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordtype">void</span> SetData(<a class="code" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <a class="code" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a> GetData();</div>
-<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">  316</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___transform.html">CComponent_Transform</a>* <a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      <span class="comment">// Siempre existe un componente Transform</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___transform.html">CComponent_Transform</a>*)components[Components::transform];</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___camera.html">CComponent_Camera</a>* Camera()</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::camera) == components.end())</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::camera, <span class="keyword">new</span> <a class="code" href="class_c_component___camera.html">CComponent_Camera</a>(<span class="keyword">this</span>)));</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>*)components[Components::camera];</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___mesh___render.html">CComponent_Mesh_Render</a>* MeshRender()</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::mesh_render) == components.end())</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::mesh_render, <span class="keyword">new</span> <a class="code" href="class_c_component___mesh___render.html">CComponent_Mesh_Render</a>(<span class="keyword">this</span>)));</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___mesh___render.html">CComponent_Mesh_Render</a>*)components[Components::mesh_render];</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    }</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___particle___emitter.html">CComponent_Particle_Emitter</a>* ParticleEmitter()</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::particle_emitter) == components.end())</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::particle_emitter, <span class="keyword">new</span> <a class="code" href="class_c_component___particle___emitter.html">CComponent_Particle_Emitter</a>(<span class="keyword">this</span>)));</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___particle___emitter.html">CComponent_Particle_Emitter</a>*)components[Components::particle_emitter];</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a>* GUITexture()</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::gui_texture) == components.end())</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::gui_texture, <span class="keyword">new</span> <a class="code" href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a>(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a810b361cfd7e9b47786fdf4c910a577b">  285</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a810b361cfd7e9b47786fdf4c910a577b">SetStartFunction</a>(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      start = f;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00296"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a75aa301df39af2435b9bc2e719f77197">  296</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a75aa301df39af2435b9bc2e719f77197">SetBehaviourFunction</a>(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;      behaviour = f;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a16ab505b47294ed813dd69d8579fbed9">  307</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a16ab505b47294ed813dd69d8579fbed9">SetEventFunction</a>(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      event_behaviour = f;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf">  318</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf">SetInputFunction</a>(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      input_behaviour = f;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="class_c_game_object.html#add37411eb688c5637312a90ec694e751">  329</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#add37411eb688c5637312a90ec694e751">SetRenderFunction</a>(<a class="code" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      render = f;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
+<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a51c906ddca1ff81886fdb096ed6e1694">  337</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a51c906ddca1ff81886fdb096ed6e1694">CallStartFunction</a>()</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordflow">if</span>(start) start(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;</div>
+<div class="line"><a name="l00345"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a29f0589886f3cb7b0913b9b39e4ad614">  345</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a29f0589886f3cb7b0913b9b39e4ad614">CallBehaviourFunction</a>()</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;      <span class="keywordflow">if</span>(behaviour) behaviour(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a>*)components[Components::gui_texture];</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___audio___source.html">CComponent_Audio_Source</a>* AudioSource()</div>
+<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a94260bdd908ddad447accbc75757bd8e">  354</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a94260bdd908ddad447accbc75757bd8e">CallEventFunction</a>()</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::audio_source) == components.end())</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::audio_source, <span class="keyword">new</span> <a class="code" href="class_c_component___audio___source.html">CComponent_Audio_Source</a>(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;      <span class="keywordflow">if</span>(event_behaviour) event_behaviour(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    }</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___audio___source.html">CComponent_Audio_Source</a>*)components[Components::audio_source];</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;};</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">  364</a></span>&#160;Type* <a class="code" href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a>()</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;{</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="keywordflow">if</span>(components.find(Type::GetID()) != components.end())</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  {</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">return</span> (Type*)components[Type::GetID()];</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  }</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  <span class="comment">//gSystem_Debug.console_error_msg(&quot;From CGameObject \&quot;%s\&quot;: Could not find component \&quot;%s\&quot;&quot;, name.c_str(), components::component_to_string((components::components)Type::GetID()));</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="keywordtype">bool</span> CGameObject::AddComponent()</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;{</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <span class="keywordtype">int</span> <span class="keywordtype">id</span> = Type::GetID();</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <span class="keywordflow">if</span>(components.find(<span class="keywordtype">id</span>) != components.end())</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  components.insert(std::pair&lt;int, CComponent*&gt;(<span class="keywordtype">id</span>, <span class="keyword">new</span> Type(<span class="keyword">this</span>)));</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;}</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="keywordtype">bool</span> CGameObject::RemoveComponent()</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;{</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <span class="keywordtype">int</span> <span class="keywordtype">id</span> = Type::GetID();</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <span class="keywordflow">if</span>(<span class="keywordtype">id</span> == Components::transform)</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    </div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  std::map&lt;int, CComponent*&gt;::iterator it = components.find(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="keywordflow">if</span>(it != components.end())</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keyword">delete</span> it-&gt;second;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    components.erase(it);</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;  }</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;}</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="keywordtype">void</span> CGameObject::SetComponentStateComponent(<span class="keywordtype">bool</span> state)</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;{</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <span class="keywordflow">if</span>(components.find(Type::GetID()) != components.end())</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    components[Type::GetID()]-&gt;SetState(state);</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;}</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="keywordtype">void</span> CGameObject::SetData(<a class="code" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data)</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;{</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  <span class="keywordtype">int</span> <span class="keywordtype">id</span> = Type::GetID();</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <span class="keywordflow">if</span>(components.find(<span class="keywordtype">id</span>) != components.end() &amp;&amp; data)</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    components[<span class="keywordtype">id</span>]-&gt;Set(data);</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;}</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<a class="code" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a> CGameObject::GetData()</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;{</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  <span class="keywordtype">int</span> <span class="keywordtype">id</span> = Type::GetID();</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  <span class="keywordflow">if</span>(components.find(<span class="keywordtype">id</span>) != components.end())</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">return</span> components[<span class="keywordtype">id</span>]-&gt;Get();</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __OBJECT_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
+<div class="line"><a name="l00363"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a489f8cc9a4200672dc4853ac82e81c30">  363</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a489f8cc9a4200672dc4853ac82e81c30">CallInputFunction</a>()</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;      <span class="keywordflow">if</span>(input_behaviour) input_behaviour(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
+<div class="line"><a name="l00371"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a43d856c05239e4f7d34ea8f815cbe6fd">  371</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a43d856c05239e4f7d34ea8f815cbe6fd">CallRenderFunction</a>()</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      <span class="keywordflow">if</span>(render) render(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_c_game_object.html#ad8e02d315ce61ba263dbe0fd83ff63e6">AddToSystem</a>();</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#ade4e139bdbb999cf0c080aee9eeee886">RemoveFromSystem</a>();</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a95ae4c569b748f198203019939e88994">OnEvent</a>();</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#ab4fd9dbe8e1713646bf3a46b867602f4">OnInput</a>();</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#accb893e0beb425e05a69d4b9b0da821b">OnLoop</a>();</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#abd0483aefe0cf5e54fdf1ded80645660">OnRender</a>(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="comment">//void OnRenderDebug();</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="keywordtype">void</span> Register(<a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> ID)</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    {</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;      <span class="keywordtype">id</span> = ID;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> SetParent(<a class="code" href="class_c_game_object.html">CGameObject</a>* parent)</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;      <span class="keywordflow">if</span>(parent != NULL)</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        Parent = parent;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    }</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> UnParent() <span class="comment">// no usar nunca desde fuera</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;      <span class="comment">//Parent-&gt;RemoveChild(name);</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;      Parent = NULL;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;</div>
+<div class="line"><a name="l00452"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">  452</a></span>&#160;    <span class="keyword">inline</span> std::string <a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>()</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    {</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;      <span class="keywordflow">return</span> name;</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    }</div>
+<div class="line"><a name="l00460"></a><span class="lineno"><a class="line" href="class_c_game_object.html#acd1c185ce9fc275ddafd326d312b841d">  460</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="class_c_game_object.html#acd1c185ce9fc275ddafd326d312b841d">GetID</a>()</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    {</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;      <span class="keywordflow">return</span> id;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    }</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#ab9f1d9d26366145a2a7c6b26295b33c8">Enable</a>(<span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a2f79f522ec7e0f793cb091f88d2db819">Disable</a>(<span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a7711c658f35cc6e9a7ee2bae195e19b6">SetState</a>(<span class="keywordtype">bool</span> state, <span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a2577d585eaee7fb363be54a36ba5a0c2">Preserve</a>(<span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a88c9f7a5ae1ca7a6b9ea8c4c266bae2e">UnPreserve</a>(<span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a3d9834399f17fd662b292909d5a0db20">SetPreserve</a>(<span class="keywordtype">bool</span> state, <span class="keywordtype">bool</span> recursive = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;</div>
+<div class="line"><a name="l00525"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a8b83e7d727878663dde49caae0da5299">  525</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#a8b83e7d727878663dde49caae0da5299">IsEnabled</a>()</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    {</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;      <span class="keywordflow">return</span> enabled;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    }</div>
+<div class="line"><a name="l00534"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a33388b7f1b76d544b4c0b176b1b381db">  534</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#a33388b7f1b76d544b4c0b176b1b381db">IsInited</a>()</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    {</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;      <span class="keywordflow">return</span> inited;</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    }</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;</div>
+<div class="line"><a name="l00544"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a0e579af12dbf083f92388c88b7e7d719">  544</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#a0e579af12dbf083f92388c88b7e7d719">IsPreserved</a>()</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;    {</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;      <span class="keywordflow">return</span> preserve;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    }</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#ac7def8f2b8ea27be73b3ab03209bc2b6">NearBy</a>(<a class="code" href="class_c_game_object.html">CGameObject</a>* go, <span class="keywordtype">double</span> distance);</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <span class="comment">/* PLANTILLAS */</span></div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    Type* <a class="code" href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">GetComponent</a>();</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;</div>
+<div class="line"><a name="l00586"></a><span class="lineno"><a class="line" href="class_c_game_object.html#ac4e4129ef965c9f6946fb90f6083a6fe">  586</a></span>&#160;    <a class="code" href="class_c_component.html">CComponent</a>* <a class="code" href="class_c_game_object.html#ac4e4129ef965c9f6946fb90f6083a6fe">GetComponent</a>(Components::components_t c)</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    {</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;      <span class="keywordflow">if</span>(components.find(c) != components.end())</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <span class="keywordflow">return</span> components[c];</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;      <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    }</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#a425c9d2f1035cad405db1606ea670669">AddComponent</a>();</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#a87b3e787edceeaa1b1036aaf1feb47df">RemoveComponent</a>();</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a14ddd228ab4e860feaa113e81019b6cd">SetComponentStateComponent</a>(<span class="keywordtype">bool</span> state);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    </div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a245c699aa9c56dd8f1cc902d5dbf1ddf">SetData</a>(<a class="code" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <a class="code" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a> <a class="code" href="class_c_game_object.html#aa5bbdc0cf105c8f6461009b65c59e204">GetData</a>();</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    <span class="comment">/* Funciones para acceso directo a los componentes aquí: */</span></div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    <span class="comment">/* CComponent_Transform* transform() {return (CComponent_Transform*) components[components::transform]; }</span></div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;<span class="comment">     * Y así para los componentes principales.</span></div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;<span class="comment">     * Si no existe un componente, se crea. A diferencia de GetComponent&lt;...&gt;(), si el componente no existe, devuelve NULL.</span></div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;</div>
+<div class="line"><a name="l00681"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">  681</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___transform.html">CComponent_Transform</a>* <a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    {</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;      <span class="comment">// Siempre existe un componente Transform</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___transform.html">CComponent_Transform</a>*)components[Components::transform];</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;    }</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;</div>
+<div class="line"><a name="l00705"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">  705</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___camera.html">CComponent_Camera</a>* <a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    {</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::camera) == components.end())</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::camera, <span class="keyword">new</span> <a class="code" href="class_c_component___camera.html">CComponent_Camera</a>(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>*)components[Components::camera];</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    }</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
+<div class="line"><a name="l00731"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">  731</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___mesh___render.html">CComponent_Mesh_Render</a>* <a class="code" href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">MeshRender</a>()</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;    {</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::mesh_render) == components.end())</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::mesh_render, <span class="keyword">new</span> <a class="code" href="class_c_component___mesh___render.html">CComponent_Mesh_Render</a>(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___mesh___render.html">CComponent_Mesh_Render</a>*)components[Components::mesh_render];</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    }</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;</div>
+<div class="line"><a name="l00757"></a><span class="lineno"><a class="line" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">  757</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___particle___emitter.html">CComponent_Particle_Emitter</a>* <a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;    {</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::particle_emitter) == components.end())</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::particle_emitter, <span class="keyword">new</span> <a class="code" href="class_c_component___particle___emitter.html">CComponent_Particle_Emitter</a>(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___particle___emitter.html">CComponent_Particle_Emitter</a>*)components[Components::particle_emitter];</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;    }</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;</div>
+<div class="line"><a name="l00783"></a><span class="lineno"><a class="line" href="class_c_game_object.html#ac3c5085a08e347e6d162a0cf3b92691e">  783</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a>* <a class="code" href="class_c_game_object.html#ac3c5085a08e347e6d162a0cf3b92691e">GUITexture</a>()</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;    {</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::gui_texture) == components.end())</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::gui_texture, <span class="keyword">new</span> <a class="code" href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a>(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a>*)components[Components::gui_texture];</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;    }</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;</div>
+<div class="line"><a name="l00809"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a5060aaabf3893fb7153b89ba264ec4d9">  809</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="class_c_component___audio___source.html">CComponent_Audio_Source</a>* <a class="code" href="class_c_game_object.html#a5060aaabf3893fb7153b89ba264ec4d9">AudioSource</a>()</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;    {</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;      <span class="keywordflow">if</span>(components.find(Components::audio_source) == components.end())</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;        components.insert(std::pair&lt;int, CComponent*&gt;(Components::audio_source, <span class="keyword">new</span> <a class="code" href="class_c_component___audio___source.html">CComponent_Audio_Source</a>(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;      <span class="keywordflow">return</span> (<a class="code" href="class_c_component___audio___source.html">CComponent_Audio_Source</a>*)components[Components::audio_source];</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;    }</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;};</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00819"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">  819</a></span>&#160;Type* <a class="code" href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a>()</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;{</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;  <span class="keywordflow">if</span>(components.find(Type::GetID()) != components.end())</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;  {</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;    <span class="keywordflow">return</span> (Type*)components[Type::GetID()];</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  }</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;  <span class="comment">//gSystem_Debug.console_error_msg(&quot;From CGameObject \&quot;%s\&quot;: Could not find component \&quot;%s\&quot;&quot;, name.c_str(), components::component_to_string((components::components)Type::GetID()));</span></div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;}</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00830"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a425c9d2f1035cad405db1606ea670669">  830</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#a425c9d2f1035cad405db1606ea670669">CGameObject::AddComponent</a>()</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;{</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;  <span class="keywordtype">int</span> <span class="keywordtype">id</span> = Type::GetID();</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;  <span class="keywordflow">if</span>(components.find(<span class="keywordtype">id</span>) != components.end())</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;  components.insert(std::pair&lt;int, CComponent*&gt;(<span class="keywordtype">id</span>, <span class="keyword">new</span> Type(<span class="keyword">this</span>)));</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;}</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00841"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a87b3e787edceeaa1b1036aaf1feb47df">  841</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#a87b3e787edceeaa1b1036aaf1feb47df">CGameObject::RemoveComponent</a>()</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;{</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;  <span class="keywordtype">int</span> <span class="keywordtype">id</span> = Type::GetID();</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  <span class="keywordflow">if</span>(<span class="keywordtype">id</span> == Components::transform)</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;    </div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;  std::map&lt;int, CComponent*&gt;::iterator it = components.find(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;  <span class="keywordflow">if</span>(it != components.end())</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;  {</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;    <span class="keyword">delete</span> it-&gt;second;</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;    components.erase(it);</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;  }</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;}</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00860"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a14ddd228ab4e860feaa113e81019b6cd">  860</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a14ddd228ab4e860feaa113e81019b6cd">CGameObject::SetComponentStateComponent</a>(<span class="keywordtype">bool</span> state)</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;{</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;  <span class="keywordflow">if</span>(components.find(Type::GetID()) != components.end())</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;    components[Type::GetID()]-&gt;SetState(state);</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;}</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00867"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a245c699aa9c56dd8f1cc902d5dbf1ddf">  867</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_game_object.html#a245c699aa9c56dd8f1cc902d5dbf1ddf">CGameObject::SetData</a>(<a class="code" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data)</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;{</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;  <span class="keywordtype">int</span> <span class="keywordtype">id</span> = Type::GetID();</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;  <span class="keywordflow">if</span>(components.find(<span class="keywordtype">id</span>) != components.end() &amp;&amp; data)</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;    components[<span class="keywordtype">id</span>]-&gt;Set(data);</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;}</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Type&gt;</div>
+<div class="line"><a name="l00875"></a><span class="lineno"><a class="line" href="class_c_game_object.html#aa5bbdc0cf105c8f6461009b65c59e204">  875</a></span>&#160;<a class="code" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a> <a class="code" href="class_c_game_object.html#aa5bbdc0cf105c8f6461009b65c59e204">CGameObject::GetData</a>()</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;{</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;  <span class="keywordtype">int</span> <span class="keywordtype">id</span> = Type::GetID();</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;  <span class="keywordflow">if</span>(components.find(<span class="keywordtype">id</span>) != components.end())</div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;    <span class="keywordflow">return</span> components[<span class="keywordtype">id</span>]-&gt;Get();</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;}</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;</div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;<span class="comment">//}</span></div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __OBJECT_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;<span class="comment">//using namespace GO;</span></div>
+<div class="ttc" id="class_c_game_object_html_af676d5745b8032198417080119bcab2a"><div class="ttname"><a href="class_c_game_object.html#af676d5745b8032198417080119bcab2a">CGameObject::Get_flags</a></div><div class="ttdeci">flags_t Get_flags()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00179">_object.h:179</a></div></div>
 <div class="ttc" id="__globals_8h_html_acb1903f2f2f7ed4502a5f53615cff8aa"><div class="ttname"><a href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a></div><div class="ttdeci">void * input_t</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00167">_globals.h:167</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a5060aaabf3893fb7153b89ba264ec4d9"><div class="ttname"><a href="class_c_game_object.html#a5060aaabf3893fb7153b89ba264ec4d9">CGameObject::AudioSource</a></div><div class="ttdeci">CComponent_Audio_Source * AudioSource()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00809">_object.h:809</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ac2286a7f7345a244cfaeffcef0b98cef"><div class="ttname"><a href="class_c_game_object.html#ac2286a7f7345a244cfaeffcef0b98cef">CGameObject::GetChild</a></div><div class="ttdeci">CGameObject * GetChild(std::string name)</div></div>
+<div class="ttc" id="class_c_game_object_html_a88c9f7a5ae1ca7a6b9ea8c4c266bae2e"><div class="ttname"><a href="class_c_game_object.html#a88c9f7a5ae1ca7a6b9ea8c4c266bae2e">CGameObject::UnPreserve</a></div><div class="ttdeci">void UnPreserve(bool recursive=false)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00320">_object.cpp:320</a></div></div>
 <div class="ttc" id="__globals_8h_html_a6db821b2b1332e8be7a662d075ede0b0"><div class="ttname"><a href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a></div><div class="ttdeci">void * output_t</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00168">_globals.h:168</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ad8e02d315ce61ba263dbe0fd83ff63e6"><div class="ttname"><a href="class_c_game_object.html#ad8e02d315ce61ba263dbe0fd83ff63e6">CGameObject::AddToSystem</a></div><div class="ttdeci">int AddToSystem()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00194">_object.cpp:194</a></div></div>
 <div class="ttc" id="class_c_component___g_u_i___texture_html"><div class="ttname"><a href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__gui_8h_source.html#l00007">_component_gui.h:7</a></div></div>
-<div class="ttc" id="class_c_game_object_html_a4b9498dcca22545a77e2d100885fa70f"><div class="ttname"><a href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a></div><div class="ttdeci">Type * GetComponent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00364">_object.h:364</a></div></div>
-<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00082">_object.h:82</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a4b9498dcca22545a77e2d100885fa70f"><div class="ttname"><a href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a></div><div class="ttdeci">Type * GetComponent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00819">_object.h:819</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a14ddd228ab4e860feaa113e81019b6cd"><div class="ttname"><a href="class_c_game_object.html#a14ddd228ab4e860feaa113e81019b6cd">CGameObject::SetComponentStateComponent</a></div><div class="ttdeci">void SetComponentStateComponent(bool state)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00860">_object.h:860</a></div></div>
+<div class="ttc" id="class_c_game_object_html_acd1c185ce9fc275ddafd326d312b841d"><div class="ttname"><a href="class_c_game_object.html#acd1c185ce9fc275ddafd326d312b841d">CGameObject::GetID</a></div><div class="ttdeci">int GetID()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00460">_object.h:460</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a33388b7f1b76d544b4c0b176b1b381db"><div class="ttname"><a href="class_c_game_object.html#a33388b7f1b76d544b4c0b176b1b381db">CGameObject::IsInited</a></div><div class="ttdeci">bool IsInited()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00534">_object.h:534</a></div></div>
+<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00084">_object.h:84</a></div></div>
 <div class="ttc" id="class_c_system___game_object___manager_html"><div class="ttname"><a href="class_c_system___game_object___manager.html">CSystem_GameObject_Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="__manager_8h_source.html#l00010">_manager.h:10</a></div></div>
-<div class="ttc" id="__object_8h_html_a61cbd31002da5cb26b8b993702c17cfe"><div class="ttname"><a href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a></div><div class="ttdeci">void(* function_t)(CGameObject *self)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00034">_object.h:34</a></div></div>
-<div class="ttc" id="__object_8h_html_abc8e2fbdfa9775d0717d5a486312bade"><div class="ttname"><a href="__object_8h.html#abc8e2fbdfa9775d0717d5a486312bade">gameObject_flags</a></div><div class="ttdeci">gameObject_flags</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00017">_object.h:17</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a95ae4c569b748f198203019939e88994"><div class="ttname"><a href="class_c_game_object.html#a95ae4c569b748f198203019939e88994">CGameObject::OnEvent</a></div><div class="ttdeci">void OnEvent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00220">_object.cpp:220</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a5ccece543dba3b12db40c900c8143f68"><div class="ttname"><a href="class_c_game_object.html#a5ccece543dba3b12db40c900c8143f68">CGameObject::InitCustom</a></div><div class="ttdeci">virtual void InitCustom()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00167">_object.h:167</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a77e6884d3eaf7d338c6ddb5021604f49"><div class="ttname"><a href="class_c_game_object.html#a77e6884d3eaf7d338c6ddb5021604f49">CGameObject::RemoveChildren</a></div><div class="ttdeci">void RemoveChildren()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00128">_object.cpp:128</a></div></div>
+<div class="ttc" id="__object_8h_html_a61cbd31002da5cb26b8b993702c17cfe"><div class="ttname"><a href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a></div><div class="ttdeci">void(* function_t)(CGameObject *self)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00036">_object.h:36</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a245c699aa9c56dd8f1cc902d5dbf1ddf"><div class="ttname"><a href="class_c_game_object.html#a245c699aa9c56dd8f1cc902d5dbf1ddf">CGameObject::SetData</a></div><div class="ttdeci">void SetData(input_t data)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00867">_object.h:867</a></div></div>
+<div class="ttc" id="__object_8h_html_abc8e2fbdfa9775d0717d5a486312bade"><div class="ttname"><a href="__object_8h.html#abc8e2fbdfa9775d0717d5a486312bade">gameObject_flags</a></div><div class="ttdeci">gameObject_flags</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00019">_object.h:19</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a0e579af12dbf083f92388c88b7e7d719"><div class="ttname"><a href="class_c_game_object.html#a0e579af12dbf083f92388c88b7e7d719">CGameObject::IsPreserved</a></div><div class="ttdeci">bool IsPreserved()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00544">_object.h:544</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a29f0589886f3cb7b0913b9b39e4ad614"><div class="ttname"><a href="class_c_game_object.html#a29f0589886f3cb7b0913b9b39e4ad614">CGameObject::CallBehaviourFunction</a></div><div class="ttdeci">void CallBehaviourFunction()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00345">_object.h:345</a></div></div>
+<div class="ttc" id="class_c_game_object_html_aa5bbdc0cf105c8f6461009b65c59e204"><div class="ttname"><a href="class_c_game_object.html#aa5bbdc0cf105c8f6461009b65c59e204">CGameObject::GetData</a></div><div class="ttdeci">output_t GetData()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00875">_object.h:875</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a2aeda25f9357fd3fdefbaadbad3b8dd2"><div class="ttname"><a href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">CGameObject::GetName</a></div><div class="ttdeci">std::string GetName()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00452">_object.h:452</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a87b3e787edceeaa1b1036aaf1feb47df"><div class="ttname"><a href="class_c_game_object.html#a87b3e787edceeaa1b1036aaf1feb47df">CGameObject::RemoveComponent</a></div><div class="ttdeci">bool RemoveComponent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00841">_object.h:841</a></div></div>
 <div class="ttc" id="class_c_component___transform_html"><div class="ttname"><a href="class_c_component___transform.html">CComponent_Transform</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__transform_8h_source.html#l00008">_component_transform.h:8</a></div></div>
 <div class="ttc" id="class_c_system___render_html"><div class="ttname"><a href="class_c_system___render.html">CSystem_Render</a></div><div class="ttdef"><b>Definition:</b> <a href="__render_8h_source.html#l00030">_render.h:30</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a7d440a88fdaf5354975a4f1f27da60f4"><div class="ttname"><a href="class_c_game_object.html#a7d440a88fdaf5354975a4f1f27da60f4">CGameObject::GetParent</a></div><div class="ttdeci">CGameObject * GetParent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00264">_object.h:264</a></div></div>
 <div class="ttc" id="class_c_component___camera_html"><div class="ttname"><a href="class_c_component___camera.html">CComponent_Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00017">_component_camera.h:17</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a4ae07118a44d09c2b5db2dd68e78b690"><div class="ttname"><a href="class_c_game_object.html#a4ae07118a44d09c2b5db2dd68e78b690">CGameObject::~CGameObject</a></div><div class="ttdeci">virtual ~CGameObject()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00154">_object.h:154</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ab4fd9dbe8e1713646bf3a46b867602f4"><div class="ttname"><a href="class_c_game_object.html#ab4fd9dbe8e1713646bf3a46b867602f4">CGameObject::OnInput</a></div><div class="ttdeci">void OnInput()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00231">_object.cpp:231</a></div></div>
+<div class="ttc" id="class_c_game_object_html_abd0483aefe0cf5e54fdf1ded80645660"><div class="ttname"><a href="class_c_game_object.html#abd0483aefe0cf5e54fdf1ded80645660">CGameObject::OnRender</a></div><div class="ttdeci">void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00253">_object.cpp:253</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a3d9834399f17fd662b292909d5a0db20"><div class="ttname"><a href="class_c_game_object.html#a3d9834399f17fd662b292909d5a0db20">CGameObject::SetPreserve</a></div><div class="ttdeci">void SetPreserve(bool state, bool recursive=false)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00329">_object.cpp:329</a></div></div>
 <div class="ttc" id="class_c_component___particle___emitter_html"><div class="ttname"><a href="class_c_component___particle___emitter.html">CComponent_Particle_Emitter</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__particle__emitter_8h_source.html#l00010">_component_particle_emitter.h:10</a></div></div>
+<div class="ttc" id="class_c_game_object_html_aea5a4c26ace6fb829bd08bdf1e237876"><div class="ttname"><a href="class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876">CGameObject::Close</a></div><div class="ttdeci">void Close()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00041">_object.cpp:41</a></div></div>
+<div class="ttc" id="class_c_game_object_html_add37411eb688c5637312a90ec694e751"><div class="ttname"><a href="class_c_game_object.html#add37411eb688c5637312a90ec694e751">CGameObject::SetRenderFunction</a></div><div class="ttdeci">void SetRenderFunction(function_t f)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00329">_object.h:329</a></div></div>
 <div class="ttc" id="__globals_8h_html"><div class="ttname"><a href="__globals_8h.html">_globals.h</a></div><div class="ttdoc">Estructuras y métodos globales. </div></div>
+<div class="ttc" id="class_c_game_object_html_a51c906ddca1ff81886fdb096ed6e1694"><div class="ttname"><a href="class_c_game_object.html#a51c906ddca1ff81886fdb096ed6e1694">CGameObject::CallStartFunction</a></div><div class="ttdeci">void CallStartFunction()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00337">_object.h:337</a></div></div>
 <div class="ttc" id="class_c_component___audio___source_html"><div class="ttname"><a href="class_c_component___audio___source.html">CComponent_Audio_Source</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__audio_8h_source.html#l00010">_component_audio.h:10</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a1031d0372ed792b4f12998f3570882b3"><div class="ttname"><a href="class_c_game_object.html#a1031d0372ed792b4f12998f3570882b3">CGameObject::CloseCustom</a></div><div class="ttdeci">virtual void CloseCustom()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00176">_object.h:176</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ac7def8f2b8ea27be73b3ab03209bc2b6"><div class="ttname"><a href="class_c_game_object.html#ac7def8f2b8ea27be73b3ab03209bc2b6">CGameObject::NearBy</a></div><div class="ttdeci">bool NearBy(CGameObject *go, double distance)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00338">_object.cpp:338</a></div></div>
 <div class="ttc" id="class_c_system___debug_html"><div class="ttname"><a href="class_c_system___debug.html">CSystem_Debug</a></div><div class="ttdef"><b>Definition:</b> <a href="__debug_8h_source.html#l00051">_debug.h:51</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a2f79f522ec7e0f793cb091f88d2db819"><div class="ttname"><a href="class_c_game_object.html#a2f79f522ec7e0f793cb091f88d2db819">CGameObject::Disable</a></div><div class="ttdeci">void Disable(bool recursive=false)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00291">_object.cpp:291</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a425c9d2f1035cad405db1606ea670669"><div class="ttname"><a href="class_c_game_object.html#a425c9d2f1035cad405db1606ea670669">CGameObject::AddComponent</a></div><div class="ttdeci">bool AddComponent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00830">_object.h:830</a></div></div>
 <div class="ttc" id="__globals_8h_html_a02b593633ae68595bb0e96c8b0e06405"><div class="ttname"><a href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a></div><div class="ttdeci">unsigned int flags_t</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00170">_globals.h:170</a></div></div>
-<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00316">_object.h:316</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a055661cb4f987643e335c1648ed0b2ea"><div class="ttname"><a href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject::CGameObject</a></div><div class="ttdeci">CGameObject()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00020">_object.cpp:20</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ae3647e2d26bc43f7217424df6ee2cda4"><div class="ttname"><a href="class_c_game_object.html#ae3647e2d26bc43f7217424df6ee2cda4">CGameObject::RemoveParent</a></div><div class="ttdeci">void RemoveParent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00274">_object.h:274</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a7711c658f35cc6e9a7ee2bae195e19b6"><div class="ttname"><a href="class_c_game_object.html#a7711c658f35cc6e9a7ee2bae195e19b6">CGameObject::SetState</a></div><div class="ttdeci">void SetState(bool state, bool recursive=false)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00300">_object.cpp:300</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ab34e4dc91498bee564cb4cb027aa7e6d"><div class="ttname"><a href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">CGameObject::ParticleEmitter</a></div><div class="ttdeci">CComponent_Particle_Emitter * ParticleEmitter()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00757">_object.h:757</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a43d856c05239e4f7d34ea8f815cbe6fd"><div class="ttname"><a href="class_c_game_object.html#a43d856c05239e4f7d34ea8f815cbe6fd">CGameObject::CallRenderFunction</a></div><div class="ttdeci">void CallRenderFunction()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00371">_object.h:371</a></div></div>
+<div class="ttc" id="class_c_game_object_html_accb893e0beb425e05a69d4b9b0da821b"><div class="ttname"><a href="class_c_game_object.html#accb893e0beb425e05a69d4b9b0da821b">CGameObject::OnLoop</a></div><div class="ttdeci">void OnLoop()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00242">_object.cpp:242</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a2577d585eaee7fb363be54a36ba5a0c2"><div class="ttname"><a href="class_c_game_object.html#a2577d585eaee7fb363be54a36ba5a0c2">CGameObject::Preserve</a></div><div class="ttdeci">void Preserve(bool recursive=false)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00309">_object.cpp:309</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ade6f6d5d0ddbb31d34cf29f0dc13fef7"><div class="ttname"><a href="class_c_game_object.html#ade6f6d5d0ddbb31d34cf29f0dc13fef7">CGameObject::RemoveChild</a></div><div class="ttdeci">bool RemoveChild(std::string name)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00116">_object.cpp:116</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a489f8cc9a4200672dc4853ac82e81c30"><div class="ttname"><a href="class_c_game_object.html#a489f8cc9a4200672dc4853ac82e81c30">CGameObject::CallInputFunction</a></div><div class="ttdeci">void CallInputFunction()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00363">_object.h:363</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a08acfca204d1c27aaf32ecc16a398a4f"><div class="ttname"><a href="class_c_game_object.html#a08acfca204d1c27aaf32ecc16a398a4f">CGameObject::GetNumChildren</a></div><div class="ttdeci">uint GetNumChildren()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00257">_object.h:257</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a75aa301df39af2435b9bc2e719f77197"><div class="ttname"><a href="class_c_game_object.html#a75aa301df39af2435b9bc2e719f77197">CGameObject::SetBehaviourFunction</a></div><div class="ttdeci">void SetBehaviourFunction(function_t f)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00296">_object.h:296</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a0bcbe65095667178fa1a61c4019e2c5c"><div class="ttname"><a href="class_c_game_object.html#a0bcbe65095667178fa1a61c4019e2c5c">CGameObject::AddChild</a></div><div class="ttdeci">bool AddChild(CGameObject *child)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00081">_object.cpp:81</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a4ac16621b259864bb40d1dfea282f712"><div class="ttname"><a href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">CGameObject::Camera</a></div><div class="ttdeci">CComponent_Camera * Camera()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00705">_object.h:705</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00681">_object.h:681</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a16ab505b47294ed813dd69d8579fbed9"><div class="ttname"><a href="class_c_game_object.html#a16ab505b47294ed813dd69d8579fbed9">CGameObject::SetEventFunction</a></div><div class="ttdeci">void SetEventFunction(function_t f)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00307">_object.h:307</a></div></div>
+<div class="ttc" id="class_c_game_object_html_aee6586c144cdbe215dfcf4399abef3e9"><div class="ttname"><a href="class_c_game_object.html#aee6586c144cdbe215dfcf4399abef3e9">CGameObject::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00025">_object.cpp:25</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a18b90071200859b71a3d032d715af2cd"><div class="ttname"><a href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">CGameObject::MeshRender</a></div><div class="ttdeci">CComponent_Mesh_Render * MeshRender()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00731">_object.h:731</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a6f99b0b50181b2b5cc152fe6ae960bbf"><div class="ttname"><a href="class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf">CGameObject::SetInputFunction</a></div><div class="ttdeci">void SetInputFunction(function_t f)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00318">_object.h:318</a></div></div>
 <div class="ttc" id="class_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00024">_component.h:24</a></div></div>
-<div class="ttc" id="__object_8h_html_abc32c5ef28f83ce5f6996e327f62a67a"><div class="ttname"><a href="__object_8h.html#abc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a></div><div class="ttdeci">gameObject_type</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00021">_object.h:21</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ac4e4129ef965c9f6946fb90f6083a6fe"><div class="ttname"><a href="class_c_game_object.html#ac4e4129ef965c9f6946fb90f6083a6fe">CGameObject::GetComponent</a></div><div class="ttdeci">CComponent * GetComponent(Components::components_t c)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00586">_object.h:586</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a8b83e7d727878663dde49caae0da5299"><div class="ttname"><a href="class_c_game_object.html#a8b83e7d727878663dde49caae0da5299">CGameObject::IsEnabled</a></div><div class="ttdeci">bool IsEnabled()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00525">_object.h:525</a></div></div>
+<div class="ttc" id="__object_8h_html_abc32c5ef28f83ce5f6996e327f62a67a"><div class="ttname"><a href="__object_8h.html#abc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a></div><div class="ttdeci">gameObject_type</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00023">_object.h:23</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ab9f1d9d26366145a2a7c6b26295b33c8"><div class="ttname"><a href="class_c_game_object.html#ab9f1d9d26366145a2a7c6b26295b33c8">CGameObject::Enable</a></div><div class="ttdeci">void Enable(bool recursive=false)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00282">_object.cpp:282</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ac3c5085a08e347e6d162a0cf3b92691e"><div class="ttname"><a href="class_c_game_object.html#ac3c5085a08e347e6d162a0cf3b92691e">CGameObject::GUITexture</a></div><div class="ttdeci">CComponent_GUI_Texture * GUITexture()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00783">_object.h:783</a></div></div>
 <div class="ttc" id="class_c_component___mesh___render_html"><div class="ttname"><a href="class_c_component___mesh___render.html">CComponent_Mesh_Render</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__mesh__render_8h_source.html#l00007">_component_mesh_render.h:7</a></div></div>
+<div class="ttc" id="class_c_game_object_html_aa39587c45dd82ac7931d8803dac5fcd1"><div class="ttname"><a href="class_c_game_object.html#aa39587c45dd82ac7931d8803dac5fcd1">CGameObject::AddChildren</a></div><div class="ttdeci">short int AddChildren(const std::vector&lt; CGameObject * &gt; &amp;children)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00104">_object.cpp:104</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ade4e139bdbb999cf0c080aee9eeee886"><div class="ttname"><a href="class_c_game_object.html#ade4e139bdbb999cf0c080aee9eeee886">CGameObject::RemoveFromSystem</a></div><div class="ttdeci">bool RemoveFromSystem()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00206">_object.cpp:206</a></div></div>
 <div class="ttc" id="__globals_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00171">_globals.h:171</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a810b361cfd7e9b47786fdf4c910a577b"><div class="ttname"><a href="class_c_game_object.html#a810b361cfd7e9b47786fdf4c910a577b">CGameObject::SetStartFunction</a></div><div class="ttdeci">void SetStartFunction(function_t f)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00285">_object.h:285</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a94260bdd908ddad447accbc75757bd8e"><div class="ttname"><a href="class_c_game_object.html#a94260bdd908ddad447accbc75757bd8e">CGameObject::CallEventFunction</a></div><div class="ttdeci">void CallEventFunction()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00354">_object.h:354</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 10:30:30 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 20:28:45 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

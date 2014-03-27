@@ -193,6 +193,7 @@ void CGameObject::CallFunc_HelloWorld(input_t data, output_t o_data)
 
 int CGameObject::AddToSystem()
 {
+  //id = -1;
   CGameObject* recv = gSystem_GameObject_Manager.GetGameObject(name);
   if(recv != NULL) // Si ya existe, devolvemos falso
     return -1;
@@ -218,7 +219,7 @@ bool CGameObject::RemoveFromSystem()
 
 void CGameObject::OnEvent()
 {
-  if(!enabled)
+  if(!enabled or !inited)
     return;
 
   CallEventFunction();
@@ -229,10 +230,10 @@ void CGameObject::OnEvent()
 
 void CGameObject::OnInput()
 {
-  if(!enabled)
+  if(!enabled or !inited)
     return;
 
-  CallKeyEventFunction();
+  CallInputFunction();
 
   for(map<int, CComponent*>::iterator it = components.begin(); it != components.end(); ++it)
     it->second->OnInput();
@@ -240,7 +241,7 @@ void CGameObject::OnInput()
 
 void CGameObject::OnLoop()
 {
-  if(!enabled)
+  if(!enabled or !inited)
     return;
 
   CallBehaviourFunction();
@@ -251,7 +252,7 @@ void CGameObject::OnLoop()
 
 void CGameObject::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
-  if(!enabled)
+  if(!enabled or !inited)
     return;
 
   //if(flags & gof_render)
@@ -307,6 +308,8 @@ void CGameObject::SetState(bool state, bool recursive)
 
 void CGameObject::Preserve(bool recursive)
 {
+  //if(!inited) return;
+
   preserve = true;
 
   if(recursive)

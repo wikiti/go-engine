@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -1341,7 +1342,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;<span class="comment">// Game Objects</span></div>
 <div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;<span class="keywordtype">void</span> CSystem_Debug::Console_command__AUX__GO_SHOW_TREE_print_element(<a class="code" href="class_c_game_object.html">CGameObject</a>* go, map&lt;string, void*&gt;&amp; list, <span class="keywordtype">int</span> level)</div>
 <div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;{</div>
-<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;  <span class="keywordflow">if</span>(list.find(go-&gt;GetName()) != list.end()) <span class="comment">// Ya dibujado :(</span></div>
+<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;  <span class="keywordflow">if</span>(list.find(go-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>()) != list.end()) <span class="comment">// Ya dibujado :(</span></div>
 <div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;</div>
 <div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;  <span class="keywordtype">string</span> c = <span class="stringliteral">&quot;&quot;</span>;</div>
@@ -1349,19 +1350,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;</div>
 <div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;  <span class="comment">// Se mostrarán hijos que no pertenezcan al manager de padres que sí pertenezca, recursivamente.</span></div>
 <div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;</div>
-<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;  <span class="keywordflow">if</span>(go-&gt;GetName()[0] != <span class="charliteral">&#39;_&#39;</span> &amp;&amp; go-&gt;GetName()[1] != <span class="charliteral">&#39;_&#39;</span>)</div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;  <span class="keywordflow">if</span>(go-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>()[0] != <span class="charliteral">&#39;_&#39;</span> &amp;&amp; go-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>()[1] != <span class="charliteral">&#39;_&#39;</span>)</div>
 <div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;  {</div>
 <div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;    <span class="keywordtype">char</span> visible = <span class="charliteral">&#39;*&#39;</span>;</div>
-<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;    <span class="keywordflow">if</span>(gSystem_GameObject_Manager[go-&gt;GetName()] != NULL)</div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;    <span class="keywordflow">if</span>(gSystem_GameObject_Manager[go-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>()] != NULL)</div>
 <div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;      visible = <span class="charliteral">&#39; &#39;</span>;</div>
 <div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;</div>
-<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;    <span class="keywordflow">if</span>(go-&gt;IsEnabled())</div>
-<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;      gSystem_Debug.console_msg(<span class="stringliteral">&quot;%s- %s&quot;</span>, c.c_str(), go-&gt;GetName().c_str());</div>
+<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;    <span class="keywordflow">if</span>(go-&gt;<a class="code" href="class_c_game_object.html#a8b83e7d727878663dde49caae0da5299">IsEnabled</a>())</div>
+<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;      gSystem_Debug.console_msg(<span class="stringliteral">&quot;%s- %s&quot;</span>, c.c_str(), go-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str());</div>
 <div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;      gSystem_Debug.console_custom_msg(0.5f, 0.5f, 0.5f, 1.f, <span class="stringliteral">&quot;%s- %s%c&quot;</span>, c.c_str(), go-&gt;GetName().c_str(), visible);</div>
+<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;      gSystem_Debug.console_custom_msg(0.5f, 0.5f, 0.5f, 1.f, <span class="stringliteral">&quot;%s- %s%c&quot;</span>, c.c_str(), go-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), visible);</div>
 <div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;  }</div>
 <div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;</div>
-<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;  list.insert(pair&lt;string, void*&gt;(go-&gt;GetName(), NULL));</div>
+<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;  list.insert(pair&lt;string, void*&gt;(go-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>(), NULL));</div>
 <div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;</div>
 <div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;  <span class="comment">/*uint num_child = go-&gt;GetNumChildren();</span></div>
 <div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;<span class="comment">  for(uint i = 0; i &lt; num_child &amp;&amp; num_child != 0; i++)</span></div>
@@ -1985,11 +1986,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l01895"></a><span class="lineno"> 1895</span>&#160;  }</div>
 <div class="line"><a name="l01896"></a><span class="lineno"> 1896</span>&#160;</div>
 <div class="line"><a name="l01897"></a><span class="lineno"> 1897</span>&#160;}</div>
-<div class="ttc" id="class_c_game_object_html_a4b9498dcca22545a77e2d100885fa70f"><div class="ttname"><a href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a></div><div class="ttdeci">Type * GetComponent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00364">_object.h:364</a></div></div>
-<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00082">_object.h:82</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a4b9498dcca22545a77e2d100885fa70f"><div class="ttname"><a href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a></div><div class="ttdeci">Type * GetComponent()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00819">_object.h:819</a></div></div>
+<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00084">_object.h:84</a></div></div>
 <div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00212">_globals.h:212</a></div></div>
 <div class="ttc" id="namespace_utils_html_ad546bc517e486f5fd3a39eaa247935e8"><div class="ttname"><a href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a></div><div class="ttdeci">std::string string_to_lower(std::string &amp;str)</div></div>
 <div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00210">_globals.h:210</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a2aeda25f9357fd3fdefbaadbad3b8dd2"><div class="ttname"><a href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">CGameObject::GetName</a></div><div class="ttdeci">std::string GetName()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00452">_object.h:452</a></div></div>
 <div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00211">_globals.h:211</a></div></div>
 <div class="ttc" id="structcolorf__t_html_a6f1bc4933dcd7ece8ed3073cb4c1095b"><div class="ttname"><a href="structcolorf__t.html#a6f1bc4933dcd7ece8ed3073cb4c1095b">colorf_t::r</a></div><div class="ttdeci">GLfloat r</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00209">_globals.h:209</a></div></div>
 <div class="ttc" id="class_c_system___debug_html"><div class="ttname"><a href="class_c_system___debug.html">CSystem_Debug</a></div><div class="ttdef"><b>Definition:</b> <a href="__debug_8h_source.html#l00051">_debug.h:51</a></div></div>
@@ -1997,11 +1999,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="__globals_8h_html_a6b57f01d3c576db5368dd0efc2f435a4"><div class="ttname"><a href="__globals_8h.html#a6b57f01d3c576db5368dd0efc2f435a4">event</a></div><div class="ttdeci">SDL_Event event</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00003">_globals.cpp:3</a></div></div>
 <div class="ttc" id="struct_debug_1_1string__console__t_html"><div class="ttname"><a href="struct_debug_1_1string__console__t.html">Debug::string_console_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__debug_8h_source.html#l00030">_debug.h:30</a></div></div>
 <div class="ttc" id="class_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00024">_component.h:24</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a8b83e7d727878663dde49caae0da5299"><div class="ttname"><a href="class_c_game_object.html#a8b83e7d727878663dde49caae0da5299">CGameObject::IsEnabled</a></div><div class="ttdeci">bool IsEnabled()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00525">_object.h:525</a></div></div>
 <div class="ttc" id="__globals_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00171">_globals.h:171</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 10:30:31 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 20:28:50 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

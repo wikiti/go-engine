@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_red = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow_red&quot;</span>);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow&quot;</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  rainbow-&gt;AddChildren({rainbow_violet, rainbow_dblue, rainbow_blue, rainbow_green, rainbow_yellow, rainbow_orange, rainbow_red});</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  rainbow-&gt;<a class="code" href="class_c_game_object.html#aa39587c45dd82ac7931d8803dac5fcd1">AddChildren</a>({rainbow_violet, rainbow_dblue, rainbow_blue, rainbow_green, rainbow_yellow, rainbow_orange, rainbow_red});</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  rainbow-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> += 3.f;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = 3.f;</div>
@@ -117,13 +118,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">//rainbow_red-&gt;transform()-&gt;position.x -= 10.f;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// velocidades</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  rainbow_violet-&gt;ParticleEmitter()-&gt;start_min_vel = rainbow_violet-&gt;ParticleEmitter()-&gt;start_max_vel = 8.8f;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  rainbow_dblue-&gt;ParticleEmitter()-&gt;start_min_vel = rainbow_dblue-&gt;ParticleEmitter()-&gt;start_max_vel = 8.1f;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  rainbow_blue-&gt;ParticleEmitter()-&gt;start_min_vel = rainbow_blue-&gt;ParticleEmitter()-&gt;start_max_vel = 7.5f;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  rainbow_green-&gt;ParticleEmitter()-&gt;start_min_vel = rainbow_green-&gt;ParticleEmitter()-&gt;start_max_vel = 6.8f;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  rainbow_yellow-&gt;ParticleEmitter()-&gt;start_min_vel = rainbow_yellow-&gt;ParticleEmitter()-&gt;start_max_vel = 6.f;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  rainbow_orange-&gt;ParticleEmitter()-&gt;start_min_vel = rainbow_orange-&gt;ParticleEmitter()-&gt;start_max_vel = 5.f;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  rainbow_red-&gt;ParticleEmitter()-&gt;start_min_vel = rainbow_red-&gt;ParticleEmitter()-&gt;start_max_vel = 4.f;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_vel = rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_vel = 8.8f;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_vel = rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_vel = 8.1f;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_vel = rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_vel = 7.5f;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_vel = rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_vel = 6.8f;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_vel = rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_vel = 6.f;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_vel = rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_vel = 5.f;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_vel = rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_vel = 4.f;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">//  rainbow_violet-&gt;particleEmitter()-&gt;start_max_base_radius = 2.f;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">//  rainbow_violet-&gt;particleEmitter()-&gt;start_min_base_radius = 2.f;</span></div>
@@ -134,87 +135,89 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//  rainbow_orange-&gt;particleEmitter()-&gt;start_max_base_radius = rainbow_orange-&gt;particleEmitter()-&gt;start_min_base_radius = 2.f;</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">//  rainbow_red-&gt;particleEmitter()-&gt;start_max_base_radius = rainbow_red-&gt;particleEmitter()-&gt;start_min_base_radius = 2.f;</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    rainbow_violet-&gt;ParticleEmitter()-&gt;max_particles = 200;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;   rainbow_dblue-&gt;ParticleEmitter()-&gt;max_particles = 200;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   rainbow_blue-&gt;ParticleEmitter()-&gt;max_particles = 200;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   rainbow_green-&gt;ParticleEmitter()-&gt;max_particles = 200;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;   rainbow_yellow-&gt;ParticleEmitter()-&gt;max_particles = 200;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;   rainbow_orange-&gt;ParticleEmitter()-&gt;max_particles = 200;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   rainbow_red-&gt;ParticleEmitter()-&gt;max_particles = 200;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;max_particles = 200;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;   rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;max_particles = 200;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;max_particles = 200;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;max_particles = 200;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;   rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;max_particles = 200;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;   rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;max_particles = 200;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;max_particles = 200;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  rainbow_violet-&gt;ParticleEmitter()-&gt;particles_per_second = 200;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  rainbow_dblue-&gt;ParticleEmitter()-&gt;particles_per_second = 200;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  rainbow_blue-&gt;ParticleEmitter()-&gt;particles_per_second = 200;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  rainbow_green-&gt;ParticleEmitter()-&gt;particles_per_second = 200;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  rainbow_yellow-&gt;ParticleEmitter()-&gt;particles_per_second = 200;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  rainbow_orange-&gt;ParticleEmitter()-&gt;particles_per_second = 200;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  rainbow_red-&gt;ParticleEmitter()-&gt;particles_per_second = 200;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;particles_per_second = 200;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;particles_per_second = 200;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;particles_per_second = 200;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;particles_per_second = 200;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;particles_per_second = 200;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;particles_per_second = 200;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;particles_per_second = 200;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  rainbow_violet-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  rainbow_dblue-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  rainbow_blue-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  rainbow_green-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  rainbow_yellow-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  rainbow_orange-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  rainbow_red-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;material_name = <span class="stringliteral">&quot;sprite1&quot;</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  rainbow_violet-&gt;ParticleEmitter()-&gt;direction(-1.f, 1.6f, 0.f);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  rainbow_dblue-&gt;ParticleEmitter()-&gt;direction(-1.f, 1.5f, 0.f);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  rainbow_blue-&gt;ParticleEmitter()-&gt;direction(-1.f, 1.4f, 0.f);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  rainbow_green-&gt;ParticleEmitter()-&gt;direction(-1.f, 1.3f, 0.f);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  rainbow_yellow-&gt;ParticleEmitter()-&gt;direction(-1.f, 1.2f, 0.f);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  rainbow_orange-&gt;ParticleEmitter()-&gt;direction(-1.f, 1.1f, 0.f);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  rainbow_red-&gt;ParticleEmitter()-&gt;direction(-1.f, 1.f, 0.f);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;direction(-1.f, 1.6f, 0.f);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;direction(-1.f, 1.5f, 0.f);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;direction(-1.f, 1.4f, 0.f);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;direction(-1.f, 1.3f, 0.f);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;direction(-1.f, 1.2f, 0.f);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;direction(-1.f, 1.1f, 0.f);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;direction(-1.f, 1.f, 0.f);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  rainbow_violet-&gt;ParticleEmitter()-&gt;angle_spread = 5.f;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  rainbow_dblue-&gt;ParticleEmitter()-&gt;angle_spread = 5.f;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  rainbow_blue-&gt;ParticleEmitter()-&gt;angle_spread = 5.f;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  rainbow_green-&gt;ParticleEmitter()-&gt;angle_spread = 5.f;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  rainbow_yellow-&gt;ParticleEmitter()-&gt;angle_spread = 5.f;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  rainbow_orange-&gt;ParticleEmitter()-&gt;angle_spread = 5.f;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  rainbow_red-&gt;ParticleEmitter()-&gt;angle_spread = 5.f;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;angle_spread = 5.f;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;angle_spread = 5.f;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;angle_spread = 5.f;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;angle_spread = 5.f;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;angle_spread = 5.f;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;angle_spread = 5.f;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;angle_spread = 5.f;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  rainbow_violet-&gt;ParticleEmitter()-&gt;start_min_color(0.6f, 0.f, 0.6f);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  rainbow_violet-&gt;ParticleEmitter()-&gt;start_max_color(0.6f, 0.f, 0.6f);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_color(0.6f, 0.f, 0.6f);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_color(0.6f, 0.f, 0.6f);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  rainbow_dblue-&gt;ParticleEmitter()-&gt;start_min_color(0, 0, 0.6f);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  rainbow_dblue-&gt;ParticleEmitter()-&gt;start_max_color(0, 0, 0.6f);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_color(0, 0, 0.6f);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_color(0, 0, 0.6f);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  rainbow_blue-&gt;ParticleEmitter()-&gt;start_min_color(0, 0, 1.f);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  rainbow_blue-&gt;ParticleEmitter()-&gt;start_max_color(0, 0, 1.f);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_color(0, 0, 1.f);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_color(0, 0, 1.f);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  rainbow_green-&gt;ParticleEmitter()-&gt;start_min_color(0.f, 1.f, 0.f);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  rainbow_green-&gt;ParticleEmitter()-&gt;start_max_color(0.f, 1.f, 0.f);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_color(0.f, 1.f, 0.f);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_color(0.f, 1.f, 0.f);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  rainbow_yellow-&gt;ParticleEmitter()-&gt;start_min_color(1.f, 1.f, 0.f);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  rainbow_yellow-&gt;ParticleEmitter()-&gt;start_max_color(1.f, 1.f, 0.f);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_color(1.f, 1.f, 0.f);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_color(1.f, 1.f, 0.f);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  rainbow_orange-&gt;ParticleEmitter()-&gt;start_min_color(1.f, 0.5f, 0.f);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  rainbow_orange-&gt;ParticleEmitter()-&gt;start_max_color(1.f, 0.5f, 0.f);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_color(1.f, 0.5f, 0.f);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_color(1.f, 0.5f, 0.f);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  rainbow_red-&gt;ParticleEmitter()-&gt;start_min_color(1.f, 0.f, 0.f);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  rainbow_red-&gt;ParticleEmitter()-&gt;start_max_color(1.f, 0.f, 0.f);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_color(1.f, 0.f, 0.f);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_color(1.f, 0.f, 0.f);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">//  rainbow_violet-&gt;particleEmitter()-&gt;gravity(0, 0, 0);</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  rainbow_violet-&gt;ParticleEmitter()-&gt;Start();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  rainbow_dblue-&gt;ParticleEmitter()-&gt;Start();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  rainbow_blue-&gt;ParticleEmitter()-&gt;Start();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  rainbow_green-&gt;ParticleEmitter()-&gt;Start();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  rainbow_yellow-&gt;ParticleEmitter()-&gt;Start();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  rainbow_orange-&gt;ParticleEmitter()-&gt;Start();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  rainbow_red-&gt;ParticleEmitter()-&gt;Start();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  rainbow_violet-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;Start();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  rainbow_dblue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;Start();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  rainbow_blue-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;Start();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  rainbow_green-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;Start();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  rainbow_yellow-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;Start();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  rainbow_orange-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;Start();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  rainbow_red-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;Start();</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
-<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00082">_object.h:82</a></div></div>
+<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00084">_object.h:84</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00494">_globals.h:494</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00495">_globals.h:495</a></div></div>
-<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00316">_object.h:316</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ab34e4dc91498bee564cb4cb027aa7e6d"><div class="ttname"><a href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">CGameObject::ParticleEmitter</a></div><div class="ttdeci">CComponent_Particle_Emitter * ParticleEmitter()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00757">_object.h:757</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00681">_object.h:681</a></div></div>
+<div class="ttc" id="class_c_game_object_html_aa39587c45dd82ac7931d8803dac5fcd1"><div class="ttname"><a href="class_c_game_object.html#aa39587c45dd82ac7931d8803dac5fcd1">CGameObject::AddChildren</a></div><div class="ttdeci">short int AddChildren(const std::vector&lt; CGameObject * &gt; &amp;children)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00104">_object.cpp:104</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 10:30:31 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 20:28:53 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

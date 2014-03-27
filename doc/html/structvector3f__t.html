@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
       <li><a href="files.html"><span>Archivos</span></a></li>
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -355,7 +356,7 @@ Amigas</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a class="anchor" id="ac936ec7e0f5758a7f2cd7ef75cde2f77"></a>
+<a class="anchor" id="a8c63b59e7429217822b200f5182beceb"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -363,7 +364,7 @@ Amigas</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::abs </td>
+          <td class="memname">glm::vec3 vector3f_t::to_glm </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -375,562 +376,11 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Vector absoluto</p>
-<p>Transforma cada componente para que sea positiva (valor absoluto). </p>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector transformado, tal que sea (|x|, |y|, |z|). </dd></dl>
+<p>Transformación a formato glm.</p>
+<p>Transforma el vector al tipo glm::vec3 para que pueda ser procesado por la librería GLM. Véase <a href="http://glm.g-truc.net/0.9.5/index.html">http://glm.g-truc.net/0.9.5/index.html</a> </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve un vector tridimensional de tipo glm::vec3 con el mismo contenido que el vector. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00885">885</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8d88ab14d4c8ec5afeba684d8c9203ce"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::cross_product </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Producto cartesiano.</p>
-<p>Véase <a href="http://es.wikipedia.org/wiki/Producto_cartesiano">http://es.wikipedia.org/wiki/Producto_cartesiano</a>. </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v". </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00776">776</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00704">operator%()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a494eee10496629d6cd8cf28b8e142b9e"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double vector3f_t::distance_to </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Distancia entre 2 puntos.</p>
-<p>Dado el vector actual como un punto, calcula la distancia entre el punto actual y el punto "v". </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td>Punto destino. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Distancia desde el punto actual hasta "v". </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01022">1022</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5d285f91675fa9868f407f6e07802f9d"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLfloat vector3f_t::dot_product </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Producto escalar.</p>
-<p>Véase <a href="http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar">http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar</a> </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v". </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00764">764</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00659">operator*()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a67478a4b4bfbad7e84a59925f2066406"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::forward </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Vector "adelante"</p>
-<p>Sencillamente, es el vector "Z" o (0, 0, 10). Véase CSystem_Math.Z_AXIS </p>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (0, 0, 1) </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00855">855</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a3eb20722ca2be08c6553f92e4a3bce23"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::forward </td>
-          <td>(</td>
-          <td class="paramtype">glm::quat&#160;</td>
-          <td class="paramname"><em>angle</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Vector "adelante" rotado.</p>
-<p>Data una rotación expresada por un cuaternión (véase), devuelve el vector "adelante" rotado por dicho cuaternión.</p>
-<p>Véase <a class="el" href="structvector3f__t.html#a67478a4b4bfbad7e84a59925f2066406">vector3f_t::forward()</a>, <a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">angle</td><td>Cuaternión para aplicar la rotación. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Vector "adelante" rotado. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01007">1007</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae862f39d5683e8f793c6557e30c1ace9"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::left </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Vector "izquierda"</p>
-<p>Sencillamente, es el vector "Y" o (1, 01, 0). Véase CSystem_Math.X_AXIS </p>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (1, 0, 0) </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00866">866</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aee5aa7b35f84d12c45bb4abf35463fb9"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::left </td>
-          <td>(</td>
-          <td class="paramtype">glm::quat&#160;</td>
-          <td class="paramname"><em>angle</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Vector "izquierda" rotado.</p>
-<p>Data una rotación expresada por un cuaternión (véase), devuelve el vector "izquierda" rotado por dicho cuaternión.</p>
-<p>Véase <a class="el" href="structvector3f__t.html#ae862f39d5683e8f793c6557e30c1ace9">vector3f_t::left()</a>, <a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">angle</td><td>Cuaternión para aplicar la rotación. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Vector "izquierda" rotado. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00990">990</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a4c9654016c3504447aad0e17c5f3be79"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLfloat vector3f_t::length </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Módulo del vector</p>
-<p>Devuelve el módulo del vector actual. Véase <a href="http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)">http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)</a></p>
-<dl class="section return"><dt>Devuelve</dt><dd>Valor del módulo del vector. Si el valor es "1", se dice que el vector está <b>normalizado</b> o que es un vector <b>unitario</b>. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00793">793</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00832">normalize()</a> y <a class="el" href="__globals_8h_source.html#l00929">operator&lt;()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a00a8a3a855eba9e03fb35f62a6f73cfa"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::normalize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Normalizar el vector</p>
-<p>Hace que el módulo del vector valga "1" modifcando sus componentes. Véase <a href="http://es.wikipedia.org/wiki/Vector_unitario">http://es.wikipedia.org/wiki/Vector_unitario</a> </p>
-<dl class="section return"><dt>Devuelve</dt><dd>Vector unitario del vector actual. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00832">832</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00793">length()</a>, <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>, <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6672829454068bbcb109b8ce25884ad0"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool vector3f_t::operator!= </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador de desigualdad.</p>
-<p>Compara si dos vectores son distintos dada la precisión <a class="el" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">vector3f_t::precision</a> </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>Otro vector a comparar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>true si son dinstitos, false en otro caso. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00919">919</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a9dd36855f44c00ae1d85124fc35f7d41"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::operator% </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador de producto cartesiano.</p>
-<p>Véase <a href="http://es.wikipedia.org/wiki/Producto_cartesiano">http://es.wikipedia.org/wiki/Producto_cartesiano</a>. </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v". </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00704">704</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00776">cross_product()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa567921e0e64bfe8cee844debf709108"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vector3f_t::operator() </td>
-          <td>(</td>
-          <td class="paramtype">GLfloat&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">GLfloat&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">GLfloat&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador paréntesis.</p>
-<p>Por estética, modifica los valores de un vector de manera sencilla, tal que:</p>
-<div class="fragment"><div class="line"> <a class="code" href="structvector3f__t.html">vector3f_t</a> v1;</div>
-<div class="line"> v1(1.0f, 2.0f, 30.0f); <span class="comment">// El vector pasa a ser (1.0, 2.0, 30.0).</span></div>
-<div class="line">* </div>
-</div><!-- fragment --><dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>Nueva componente x. </td></tr>
-    <tr><td class="paramname">y</td><td>Nueva componente y. </td></tr>
-    <tr><td class="paramname">z</td><td>Nueva componente z. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00723">723</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a522f4868de03f0f150ca341f77eaefb8"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::operator* </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador producto (producto por un escalar).</p>
-<p>Realiza la multiplicación componente a componente del vector por el escalar "value", dando como resultado (x*value, y*value, z*value). </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>Escalar a multiplicar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Vector resultado. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00626">626</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a49f7885ca87f48e5fed0200d381b8b26"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float vector3f_t::operator* </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador de producto escalar.</p>
-<p>Véase <a href="http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar">http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar</a> </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v". </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00659">659</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00764">dot_product()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a01c45cd29778d8d14af48227d810a7ba"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a>&amp; vector3f_t::operator*= </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador asingación-producto (producto por un escalar).</p>
-<p>Realiza la multiplicación componente a componente del vector por el escalar "value", dando como resultado (x*value, y*value, z*value), y le asigna el valor al vector. </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>Escalar a multiplicar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00643">643</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00536">536</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 <p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
 
@@ -1084,6 +534,154 @@ Amigas</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a200366b3583440fa99c25cbcf1659584"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a>&amp; vector3f_t::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador de asignación.</p>
+<p>Le asigna al vector actual los valores del vector "v", dando como resultado (v.x, v.y, v.z). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a copiar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00610">610</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a522f4868de03f0f150ca341f77eaefb8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::operator* </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador producto (producto por un escalar).</p>
+<p>Realiza la multiplicación componente a componente del vector por el escalar "value", dando como resultado (x*value, y*value, z*value). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Escalar a multiplicar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Vector resultado. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00626">626</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a01c45cd29778d8d14af48227d810a7ba"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a>&amp; vector3f_t::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador asingación-producto (producto por un escalar).</p>
+<p>Realiza la multiplicación componente a componente del vector por el escalar "value", dando como resultado (x*value, y*value, z*value), y le asigna el valor al vector. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Escalar a multiplicar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00643">643</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a49f7885ca87f48e5fed0200d381b8b26"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float vector3f_t::operator* </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador de producto escalar.</p>
+<p>Véase <a href="http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar">http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar</a> </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v". </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00659">659</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00764">dot_product()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a4a42b1311a46cb677c9b585858ba27eb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1158,6 +756,474 @@ Amigas</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a9dd36855f44c00ae1d85124fc35f7d41"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::operator% </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador de producto cartesiano.</p>
+<p>Véase <a href="http://es.wikipedia.org/wiki/Producto_cartesiano">http://es.wikipedia.org/wiki/Producto_cartesiano</a>. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v". </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00704">704</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00776">cross_product()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa567921e0e64bfe8cee844debf709108"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vector3f_t::operator() </td>
+          <td>(</td>
+          <td class="paramtype">GLfloat&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLfloat&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLfloat&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador paréntesis.</p>
+<p>Por estética, modifica los valores de un vector de manera sencilla, tal que:</p>
+<div class="fragment"><div class="line"> <a class="code" href="structvector3f__t.html">vector3f_t</a> v1;</div>
+<div class="line"> v1(1.0f, 2.0f, 30.0f); <span class="comment">// El vector pasa a ser (1.0, 2.0, 30.0).</span></div>
+<div class="line">* </div>
+</div><!-- fragment --><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Nueva componente x. </td></tr>
+    <tr><td class="paramname">y</td><td>Nueva componente y. </td></tr>
+    <tr><td class="paramname">z</td><td>Nueva componente z. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00723">723</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a38be8cf9f6a19e729f03f1a3ccd2e014"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float&amp; vector3f_t::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador de acceso.</p>
+<p>Sirve para acceder a las componentes por índice. La asignación es:</p>
+<pre>
+0:     x
+1:     y
+2:     z
+resto: x
+</pre><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>Posición o índice de la componente. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Valor de la componente. Devuelve "x" en caso de error. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00745">745</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5d285f91675fa9868f407f6e07802f9d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat vector3f_t::dot_product </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Producto escalar.</p>
+<p>Véase <a href="http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar">http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar</a> </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v". </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00764">764</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00659">operator*()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8d88ab14d4c8ec5afeba684d8c9203ce"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::cross_product </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Producto cartesiano.</p>
+<p>Véase <a href="http://es.wikipedia.org/wiki/Producto_cartesiano">http://es.wikipedia.org/wiki/Producto_cartesiano</a>. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v". </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00776">776</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00704">operator%()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4c9654016c3504447aad0e17c5f3be79"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat vector3f_t::length </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Módulo del vector</p>
+<p>Devuelve el módulo del vector actual. Véase <a href="http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)">http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)</a></p>
+<dl class="section return"><dt>Devuelve</dt><dd>Valor del módulo del vector. Si el valor es "1", se dice que el vector está <b>normalizado</b> o que es un vector <b>unitario</b>. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00793">793</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00832">normalize()</a> y <a class="el" href="__globals_8h_source.html#l00929">operator&lt;()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a00a8a3a855eba9e03fb35f62a6f73cfa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::normalize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Normalizar el vector</p>
+<p>Hace que el módulo del vector valga "1" modifcando sus componentes. Véase <a href="http://es.wikipedia.org/wiki/Vector_unitario">http://es.wikipedia.org/wiki/Vector_unitario</a> </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Vector unitario del vector actual. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00832">832</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00793">length()</a>, <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>, <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7d986a4c2fa63a415233b72acd17da27"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::up </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vector "arriba"</p>
+<p>Sencillamente, es el vector "Y" o (0, 1, 0). Véase CSystem_Math.Y_AXIS </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (0, 1, 0) </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00844">844</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a67478a4b4bfbad7e84a59925f2066406"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::forward </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vector "adelante"</p>
+<p>Sencillamente, es el vector "Z" o (0, 0, 10). Véase CSystem_Math.Z_AXIS </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (0, 0, 1) </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00855">855</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae862f39d5683e8f793c6557e30c1ace9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::left </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vector "izquierda"</p>
+<p>Sencillamente, es el vector "Y" o (1, 01, 0). Véase CSystem_Math.X_AXIS </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (1, 0, 0) </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00866">866</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac936ec7e0f5758a7f2cd7ef75cde2f77"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::abs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vector absoluto</p>
+<p>Transforma cada componente para que sea positiva (valor absoluto). </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector transformado, tal que sea (|x|, |y|, |z|). </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00885">885</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a144d2a0138077963a5d6d56be07ee40c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool vector3f_t::operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador de igualdad.</p>
+<p>Compara si dos vectores son iguales dada la precisión <a class="el" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">vector3f_t::precision</a> </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Otro vector a comparar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si son iguales, false en otro caso. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00903">903</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00877">precision</a>, <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6672829454068bbcb109b8ce25884ad0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool vector3f_t::operator!= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Operador de desigualdad.</p>
+<p>Compara si dos vectores son distintos dada la precisión <a class="el" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">vector3f_t::precision</a> </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Otro vector a comparar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si son dinstitos, false en otro caso. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00919">919</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a403bbcb3050db49c396094312c00ce90"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1225,80 +1291,6 @@ Amigas</h2></td></tr>
 <dl class="section return"><dt>Devuelve</dt><dd>true si el módulo del vector actual es menor o igual que el módulo de other. false en otro caso. </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00939">939</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a200366b3583440fa99c25cbcf1659584"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a>&amp; vector3f_t::operator= </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador de asignación.</p>
-<p>Le asigna al vector actual los valores del vector "v", dando como resultado (v.x, v.y, v.z). </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td>Vector a copiar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00610">610</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a144d2a0138077963a5d6d56be07ee40c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool vector3f_t::operator== </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador de igualdad.</p>
-<p>Compara si dos vectores son iguales dada la precisión <a class="el" href="structvector3f__t.html#abd1c4940e10eec46d7d4410a2d78213a">vector3f_t::precision</a> </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>Otro vector a comparar. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>true si son iguales, false en otro caso. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00903">903</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00877">precision</a>, <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
 
 </div>
 </div>
@@ -1370,138 +1362,6 @@ Amigas</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a38be8cf9f6a19e729f03f1a3ccd2e014"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float&amp; vector3f_t::operator[] </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pos</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Operador de acceso.</p>
-<p>Sirve para acceder a las componentes por índice. La asignación es:</p>
-<pre>
-0:     x
-1:     y
-2:     z
-resto: x
-</pre><dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pos</td><td>Posición o índice de la componente. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Valor de la componente. Devuelve "x" en caso de error. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00745">745</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a10985a86bfc0c487962037fa9bc66190"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string vector3f_t::str </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Vector a cadena</p>
-<p>Devuelve una representación en forma de std::string del vectorviewport. </p>
-<dl class="section return"><dt>Devuelve</dt><dd>std::string que almacena el los datos del vector con el formato "x y z", manteniendo su tipo original. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01033">1033</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8c63b59e7429217822b200f5182beceb"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">glm::vec3 vector3f_t::to_glm </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Transformación a formato glm.</p>
-<p>Transforma el vector al tipo glm::vec3 para que pueda ser procesado por la librería GLM. Véase <a href="http://glm.g-truc.net/0.9.5/index.html">http://glm.g-truc.net/0.9.5/index.html</a> </p>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve un vector tridimensional de tipo glm::vec3 con el mismo contenido que el vector. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00536">536</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7d986a4c2fa63a415233b72acd17da27"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::up </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Vector "arriba"</p>
-<p>Sencillamente, es el vector "Y" o (0, 1, 0). Véase CSystem_Math.Y_AXIS </p>
-<dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (0, 1, 0) </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00844">844</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="aa8f0321736446f48346f0cb3c694a687"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1537,6 +1397,149 @@ resto: x
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00973">973</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 <p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aee5aa7b35f84d12c45bb4abf35463fb9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::left </td>
+          <td>(</td>
+          <td class="paramtype">glm::quat&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vector "izquierda" rotado.</p>
+<p>Data una rotación expresada por un cuaternión (véase), devuelve el vector "izquierda" rotado por dicho cuaternión.</p>
+<p>Véase <a class="el" href="structvector3f__t.html#ae862f39d5683e8f793c6557e30c1ace9">vector3f_t::left()</a>, <a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>Cuaternión para aplicar la rotación. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Vector "izquierda" rotado. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00990">990</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3eb20722ca2be08c6553f92e4a3bce23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector3f__t.html">vector3f_t</a> vector3f_t::forward </td>
+          <td>(</td>
+          <td class="paramtype">glm::quat&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vector "adelante" rotado.</p>
+<p>Data una rotación expresada por un cuaternión (véase), devuelve el vector "adelante" rotado por dicho cuaternión.</p>
+<p>Véase <a class="el" href="structvector3f__t.html#a67478a4b4bfbad7e84a59925f2066406">vector3f_t::forward()</a>, <a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>Cuaternión para aplicar la rotación. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Vector "adelante" rotado. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01007">1007</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a494eee10496629d6cd8cf28b8e142b9e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double vector3f_t::distance_to </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Distancia entre 2 puntos.</p>
+<p>Dado el vector actual como un punto, calcula la distancia entre el punto actual y el punto "v". </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Punto destino. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Distancia desde el punto actual hasta "v". </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01022">1022</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__object_8cpp_source.html#l00338">CGameObject::NearBy()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a10985a86bfc0c487962037fa9bc66190"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string vector3f_t::str </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vector a cadena</p>
+<p>Devuelve una representación en forma de std::string del vectorviewport. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>std::string que almacena el los datos del vector con el formato "x y z", manteniendo su tipo original. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01033">1033</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
 
 </div>
 </div>
@@ -1634,32 +1637,6 @@ resto: x
 </div>
 </div>
 <h2 class="groupheader">Documentación de los datos miembro</h2>
-<a class="anchor" id="abd1c4940e10eec46d7d4410a2d78213a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLfloat vector3f_t::precision = 0.01f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Precisión.</p>
-<p>Se utiliza para comparar si 2 puntos son equivalentes, dada una precisión decimal para cada componente. Así, si el valor absoluto de la diferencia entre 2 vectores es menor que la precisión para cada componente, se dice que son iguales. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00877">877</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00903">operator==()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a712d554feb24730551a7d1aa6802c9e2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1711,6 +1688,32 @@ resto: x
 
 </div>
 </div>
+<a class="anchor" id="abd1c4940e10eec46d7d4410a2d78213a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat vector3f_t::precision = 0.01f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Precisión.</p>
+<p>Se utiliza para comparar si 2 puntos son equivalentes, dada una precisión decimal para cada componente. Así, si el valor absoluto de la diferencia entre 2 vectores es menor que la precisión para cada componente, se dice que son iguales. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00877">877</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00903">operator==()</a>.</p>
+
+</div>
+</div>
 <hr/>La documentación para esta estructura fue generada a partir de los siguientes ficheros:<ul>
 <li>C:/Dev/Proyectos/go-engine/engine/include/<a class="el" href="__globals_8h_source.html">_globals.h</a></li>
 <li>C:/Dev/Proyectos/go-engine/engine/src/<a class="el" href="__globals_8cpp_source.html">_globals.cpp</a></li>
@@ -1718,7 +1721,7 @@ resto: x
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 10:30:32 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 20:29:01 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

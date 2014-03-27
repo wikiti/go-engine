@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
       <li><a href="files.html"><span>Archivos</span></a></li>
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -330,36 +331,6 @@ Amigas</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af14da3dbc461fe04e993a5fb57a1bb25"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string colorf_t::str </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Color a cadena.</p>
-<p>Devuelve una representación en forma de std::string del color. </p>
-<dl class="section return"><dt>Devuelve</dt><dd>std::string que almacena el color con el formato "r g b a", con cada elemento como un valor flotante. </dd></dl>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00290">290</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00212">a</a>, <a class="el" href="__globals_8h_source.html#l00211">b</a>, <a class="el" href="__globals_8h_source.html#l00210">g</a> y <a class="el" href="__globals_8h_source.html#l00209">r</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="abf808b699da16d26dd4a9f5c1b581bf1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -391,6 +362,36 @@ Amigas</h2></td></tr>
 </div><!-- fragment --><dl class="section return"><dt>Devuelve</dt><dd>float* de tamaño 4, siendo una referencia al color. </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00279">279</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af14da3dbc461fe04e993a5fb57a1bb25"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string colorf_t::str </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Color a cadena.</p>
+<p>Devuelve una representación en forma de std::string del color. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>std::string que almacena el color con el formato "r g b a", con cada elemento como un valor flotante. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00290">290</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00212">a</a>, <a class="el" href="__globals_8h_source.html#l00211">b</a>, <a class="el" href="__globals_8h_source.html#l00210">g</a> y <a class="el" href="__globals_8h_source.html#l00209">r</a>.</p>
 
 </div>
 </div>
@@ -488,35 +489,18 @@ Amigas</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentación de los datos miembro</h2>
-<a class="anchor" id="a0cb4cb583a769543e1199c0c7c49b467"></a>
+<a class="anchor" id="a6f1bc4933dcd7ece8ed3073cb4c1095b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLfloat colorf_t::a</td>
+          <td class="memname">GLfloat colorf_t::r</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Componente alpha del color. Valor flotante entre 0 y 1. </p>
+<p>Componente roja del color. Valor flotante entre 0 y 1. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00212">212</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad1d1f2487ceca8794de5342e0c2da895"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLfloat colorf_t::b</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Componente azul del color. Valor flotante entre 0 y 1. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00211">211</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00209">209</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 <p>Referenciado por <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
 
@@ -539,18 +523,35 @@ Amigas</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6f1bc4933dcd7ece8ed3073cb4c1095b"></a>
+<a class="anchor" id="ad1d1f2487ceca8794de5342e0c2da895"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLfloat colorf_t::r</td>
+          <td class="memname">GLfloat colorf_t::b</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Componente roja del color. Valor flotante entre 0 y 1. </p>
+<p>Componente azul del color. Valor flotante entre 0 y 1. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00209">209</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00211">211</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0cb4cb583a769543e1199c0c7c49b467"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat colorf_t::a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Componente alpha del color. Valor flotante entre 0 y 1. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00212">212</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 <p>Referenciado por <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
 
@@ -562,7 +563,7 @@ Amigas</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 10:30:32 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 20:28:57 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

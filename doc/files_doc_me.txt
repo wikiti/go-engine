@@ -1,6 +1,6 @@
 engine\include\_components.h                                x
 engine\include\_globals.h                                   x
-engine\include\_object.h                                    
+engine\include\_object.h                                    x
 engine\include\_systems.h                                   
 engine\include\components\_component.h                      
 engine\include\components\_component_audio.h                

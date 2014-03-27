@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,20 +102,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    camara_main = gGameObjects.AddGameObject(<span class="stringliteral">&quot;camara_main&quot;</span>);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = -3.f;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = -10.f;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    camara_main-&gt;Camera()-&gt;far_clip = 500.f;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    camara_main-&gt;Preserve();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    camara_main-&gt;SetInputFunction(&amp;Camara_main_movimiento);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;far_clip = 500.f;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a2577d585eaee7fb363be54a36ba5a0c2">Preserve</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    camara_main-&gt;<a class="code" href="class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf">SetInputFunction</a>(&amp;Camara_main_movimiento);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    gRender.AddCamera(camara_main);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  camara_main-&gt;Camera()-&gt;skybox_texture = <span class="stringliteral">&quot;skybox1&quot;</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  camara_main-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;skybox_texture = <span class="stringliteral">&quot;skybox1&quot;</span>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* next_instancer = gGameObjects[<span class="stringliteral">&quot;next_instancer&quot;</span>];</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordflow">if</span>(!next_instancer)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    next_instancer = gGameObjects.AddGameObject(<span class="stringliteral">&quot;next_instancer&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    next_instancer-&gt;Preserve();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    next_instancer-&gt;SetInputFunction(&amp;Next_instancer_button);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    next_instancer-&gt;<a class="code" href="class_c_game_object.html#a2577d585eaee7fb363be54a36ba5a0c2">Preserve</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    next_instancer-&gt;<a class="code" href="class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf">SetInputFunction</a>(&amp;Next_instancer_button);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  }</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  SetGameObjects_Instance1_Fireworks();</div>
@@ -134,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">bool</span> SetGameObjects_Instance2()</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* camara_main = gGameObjects[<span class="stringliteral">&quot;camara_main&quot;</span>];</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  camara_main-&gt;Camera()-&gt;skybox_texture = <span class="stringliteral">&quot;skybox2&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  camara_main-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;skybox_texture = <span class="stringliteral">&quot;skybox2&quot;</span>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* hada1 = gGameObjects.AddGameObject(<span class="stringliteral">&quot;hada1&quot;</span>);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
@@ -142,27 +143,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  hada1-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Translate(0.f, 0.f, 10.f);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  hada1-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Rotate(0.f, 90.f, 0.f);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  hada1-&gt;MeshRender()-&gt;mesh_name = <span class="stringliteral">&quot;mdl_hada1&quot;</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  hada1-&gt;MeshRender()-&gt;material_name = <span class="stringliteral">&quot;texture_mdl_hada1&quot;</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  hada1-&gt;MeshRender()-&gt;color(1.0, 0.9f, 0.9f, 1.f);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  hada1-&gt;<a class="code" href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">MeshRender</a>()-&gt;mesh_name = <span class="stringliteral">&quot;mdl_hada1&quot;</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  hada1-&gt;<a class="code" href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">MeshRender</a>()-&gt;material_name = <span class="stringliteral">&quot;texture_mdl_hada1&quot;</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  hada1-&gt;<a class="code" href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">MeshRender</a>()-&gt;color(1.0, 0.9f, 0.9f, 1.f);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// Efecto sencillo de lluvia.</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* lluvia = gGameObjects.AddGameObject(<span class="stringliteral">&quot;lluvia&quot;</span>);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Translate(0.f, 50.f, 0.f);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;direction(0.2f, -1.f, 0.f);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;angle_spread = 360.f;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;max_particles = 6000;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;particles_per_second = 500;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;start_max_life_time = 20.f;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;start_max_life_time = 10.f;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;start_max_scale = 0.1f;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;start_min_scale = 0.05f;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;start_max_vel = lluvia-&gt;ParticleEmitter()-&gt;start_min_vel = 1.f;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;start_max_base_radius = 50.f;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;start_min_base_radius = 0.f;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;material_name = <span class="stringliteral">&quot;raindrop&quot;</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  lluvia-&gt;ParticleEmitter()-&gt;Start();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;direction(0.2f, -1.f, 0.f);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;angle_spread = 360.f;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;max_particles = 6000;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;particles_per_second = 500;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_life_time = 20.f;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_life_time = 10.f;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_scale = 0.1f;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_scale = 0.05f;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_vel = lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_vel = 1.f;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_max_base_radius = 50.f;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;start_min_base_radius = 0.f;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;material_name = <span class="stringliteral">&quot;raindrop&quot;</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  lluvia-&gt;<a class="code" href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">ParticleEmitter</a>()-&gt;Start();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  gEngine.SetNextInstance(<span class="stringliteral">&quot;level1&quot;</span>);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
@@ -239,27 +240,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="comment">// Viewport</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">if</span>(gUserInput.axis2.vertical &gt; 0)</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> += 0.1f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> &gt; 1.f)</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> = 1.f;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> += 0.1f * gTime.deltaTime_s();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> &gt; 1.f)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> = 1.f;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gUserInput.axis2.vertical &lt; 0)</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> -= 0.1f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> &lt; 0.f)</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> = 0.f;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> -= 0.1f * gTime.deltaTime_s();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> &lt; 0.f)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">height</a> = 0.f;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  }</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">if</span>(gUserInput.axis2.horizontal &lt; 0)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> -= 0.1f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &lt; 0.f)</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> = 0.f;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> -= 0.1f * gTime.deltaTime_s();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &lt; 0.f)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> = 0.f;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  }</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(gUserInput.axis2.horizontal &gt; 0)</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> += 0.1f * gTime.deltaTime_s();</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &gt; 1.f)</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      gameObject-&gt;Camera()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> = 1.f;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> += 0.1f * gTime.deltaTime_s();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">if</span>(gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> &gt; 1.f)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      gameObject-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;viewport.<a class="code" href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">width</a> = 1.f;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="comment">/*if (gUserInput.Keyboard(&quot;T&quot;))</span></div>
@@ -345,18 +346,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keywordflow">if</span>(gUserInput.Keyboard(<span class="stringliteral">&quot;K&quot;</span>))</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    gEngine.EndInstance();</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
-<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00082">_object.h:82</a></div></div>
+<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00084">_object.h:84</a></div></div>
 <div class="ttc" id="structviewportf__t_html_a6f9139cbfbecc67eea3f0e5a0df4f254"><div class="ttname"><a href="structviewportf__t.html#a6f9139cbfbecc67eea3f0e5a0df4f254">viewportf_t::width</a></div><div class="ttdeci">GLfloat width</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00432">_globals.h:432</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00494">_globals.h:494</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00495">_globals.h:495</a></div></div>
 <div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00492">_globals.h:492</a></div></div>
+<div class="ttc" id="class_c_game_object_html_ab34e4dc91498bee564cb4cb027aa7e6d"><div class="ttname"><a href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">CGameObject::ParticleEmitter</a></div><div class="ttdeci">CComponent_Particle_Emitter * ParticleEmitter()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00757">_object.h:757</a></div></div>
 <div class="ttc" id="structviewportf__t_html_a546ecf374dc6d35c83953046855d0918"><div class="ttname"><a href="structviewportf__t.html#a546ecf374dc6d35c83953046855d0918">viewportf_t::height</a></div><div class="ttdeci">GLfloat height</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00433">_globals.h:433</a></div></div>
-<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00316">_object.h:316</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a2577d585eaee7fb363be54a36ba5a0c2"><div class="ttname"><a href="class_c_game_object.html#a2577d585eaee7fb363be54a36ba5a0c2">CGameObject::Preserve</a></div><div class="ttdeci">void Preserve(bool recursive=false)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00309">_object.cpp:309</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a4ac16621b259864bb40d1dfea282f712"><div class="ttname"><a href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">CGameObject::Camera</a></div><div class="ttdeci">CComponent_Camera * Camera()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00705">_object.h:705</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00681">_object.h:681</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a18b90071200859b71a3d032d715af2cd"><div class="ttname"><a href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">CGameObject::MeshRender</a></div><div class="ttdeci">CComponent_Mesh_Render * MeshRender()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00731">_object.h:731</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a6f99b0b50181b2b5cc152fe6ae960bbf"><div class="ttname"><a href="class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf">CGameObject::SetInputFunction</a></div><div class="ttdeci">void SetInputFunction(function_t f)</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00318">_object.h:318</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a9fa9623b6af260eee1905b1620a78de0"><div class="ttname"><a href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">vector3f_t::z</a></div><div class="ttdeci">GLfloat z</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00496">_globals.h:496</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 10:30:31 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 20:28:53 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

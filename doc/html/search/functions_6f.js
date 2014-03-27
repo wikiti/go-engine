@@ -1,5 +1,9 @@
 var searchData=
 [
+  ['onevent',['OnEvent',['../class_c_game_object.html#a95ae4c569b748f198203019939e88994',1,'CGameObject']]],
+  ['oninput',['OnInput',['../class_c_game_object.html#ab4fd9dbe8e1713646bf3a46b867602f4',1,'CGameObject']]],
+  ['onloop',['OnLoop',['../class_c_game_object.html#accb893e0beb425e05a69d4b9b0da821b',1,'CGameObject']]],
+  ['onrender',['OnRender',['../class_c_game_object.html#abd0483aefe0cf5e54fdf1ded80645660',1,'CGameObject']]],
   ['operator_21_3d',['operator!=',['../structvector3f__t.html#a6672829454068bbcb109b8ce25884ad0',1,'vector3f_t']]],
   ['operator_25',['operator%',['../structvector3f__t.html#a9dd36855f44c00ae1d85124fc35f7d41',1,'vector3f_t']]],
   ['operator_28_29',['operator()',['../structcolorf__t.html#a2adf895965c84145be4866e69839e8c1',1,'colorf_t::operator()()'],['../structvector3f__t.html#aa567921e0e64bfe8cee844debf709108',1,'vector3f_t::operator()()']]],

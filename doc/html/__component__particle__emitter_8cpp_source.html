@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -71,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -613,7 +614,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;</div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    <span class="keywordflow">if</span>(ss.fail())</div>
 <div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    {</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
 <div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;      <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    }</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;</div>
@@ -662,7 +663,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(attrib == <span class="stringliteral">&quot;start_min_base_radius&quot;</span>)</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;      start_min_base_radius = data;</div>
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%f\&quot;.&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data );</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%f\&quot;.&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data );</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  }</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(attrib == <span class="stringliteral">&quot;stop&quot;</span> or attrib == <span class="stringliteral">&quot;freeze&quot;</span>)</div>
 <div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  {</div>
@@ -671,7 +672,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <span class="keywordflow">if</span>(ss.fail())</div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    {</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;      <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    }</div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;</div>
@@ -680,7 +681,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(attrib == <span class="stringliteral">&quot;freeze&quot;</span>)</div>
 <div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;      freeze = data;</div>
 <div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%d\&quot;.&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), (int)data );</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%d\&quot;.&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), (int)data );</div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;  }</div>
 <div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(attrib == <span class="stringliteral">&quot;direction&quot;</span> or attrib == <span class="stringliteral">&quot;gravity&quot;</span>)</div>
 <div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;  {</div>
@@ -689,7 +690,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;</div>
 <div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    <span class="keywordflow">if</span>(ss.fail())</div>
 <div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    {</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;      <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    }</div>
 <div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;</div>
@@ -698,7 +699,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(attrib == <span class="stringliteral">&quot;gravity&quot;</span>)</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;      gravity = data;</div>
 <div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%s\&quot;.&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%s\&quot;.&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );</div>
 <div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;  }</div>
 <div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(attrib == <span class="stringliteral">&quot;max_particles&quot;</span>)</div>
 <div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;  {</div>
@@ -706,7 +707,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    ss &gt;&gt; data;</div>
 <div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    <span class="keywordflow">if</span>(ss.fail() or data &lt; 0)</div>
 <div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    {</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
 <div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;      <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    }</div>
 <div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  }</div>
@@ -717,7 +718,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;</div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    material_name = data;</div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%s\&quot;.&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.c_str() );</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%s\&quot;.&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.c_str() );</div>
 <div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;  }</div>
 <div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  <span class="comment">/*</span></div>
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;<span class="comment">   *     gSystem_Debug.console_warning_msg(&quot;start_[max|min]_color          colorf_t      %s/%s&quot;, start_max_color.str().c_str(), start_min_color.str().c_str());</span></div>
@@ -731,7 +732,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;</div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    <span class="keywordflow">if</span>(ss.fail())</div>
 <div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    {</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;      gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Invalid format. Data format is: \&quot;&lt;atribute&gt; &lt;attriube type value&gt;\&quot;&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()) );</div>
 <div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;      <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    }</div>
 <div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;</div>
@@ -746,11 +747,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(attrib == <span class="stringliteral">&quot;color_adder&quot;</span>)</div>
 <div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;      color_adder = data;</div>
 <div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%s\&quot;.&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    gSystem_Debug.console_msg(<span class="stringliteral">&quot;From component %s - %s: Set variable \&quot;%s\&quot; to value \&quot;%s\&quot;.&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str(), data.str().c_str() );</div>
 <div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  }</div>
 <div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  {</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Unknow attribute \&quot;%s\&quot;.&quot;</span>, gameObject-&gt;GetName().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str() );</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    gSystem_Debug.console_error_msg(<span class="stringliteral">&quot;From component %s - %s: Unknow attribute \&quot;%s\&quot;.&quot;</span>, gameObject-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>().c_str(), Components::component_to_string( (Components::components_t)GetID()), attrib.c_str() );</div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;  }</div>
 <div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;</div>
 <div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;}</div>
@@ -783,11 +784,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;  gSystem_Debug.console_warning_msg(<span class="stringliteral">&quot;color_adder                    colorf_t      %s&quot;</span>, color_adder.<a class="code" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">str</a>().c_str());</div>
 <div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;</div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;}</div>
-<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00082">_object.h:82</a></div></div>
+<div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00084">_object.h:84</a></div></div>
 <div class="ttc" id="structcolorf__t_html_a0cb4cb583a769543e1199c0c7c49b467"><div class="ttname"><a href="structcolorf__t.html#a0cb4cb583a769543e1199c0c7c49b467">colorf_t::a</a></div><div class="ttdeci">GLfloat a</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00212">_globals.h:212</a></div></div>
 <div class="ttc" id="class_c_shader_html"><div class="ttname"><a href="class_c_shader.html">CShader</a></div><div class="ttdef"><b>Definition:</b> <a href="__shader_8h_source.html#l00015">_shader.h:15</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00494">_globals.h:494</a></div></div>
 <div class="ttc" id="structcolorf__t_html_ac81f5037e2bb7fdea7b4b2e7e1a5a354"><div class="ttname"><a href="structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354">colorf_t::g</a></div><div class="ttdeci">GLfloat g</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00210">_globals.h:210</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a2aeda25f9357fd3fdefbaadbad3b8dd2"><div class="ttname"><a href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">CGameObject::GetName</a></div><div class="ttdeci">std::string GetName()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00452">_object.h:452</a></div></div>
 <div class="ttc" id="structcolorf__t_html_af14da3dbc461fe04e993a5fb57a1bb25"><div class="ttname"><a href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">colorf_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00290">_globals.h:290</a></div></div>
 <div class="ttc" id="structcolorf__t_html_ad1d1f2487ceca8794de5342e0c2da895"><div class="ttname"><a href="structcolorf__t.html#ad1d1f2487ceca8794de5342e0c2da895">colorf_t::b</a></div><div class="ttdeci">GLfloat b</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00211">_globals.h:211</a></div></div>
 <div class="ttc" id="__globals_8h_html_aa250b1dedabea51e27f641d879926b0f"><div class="ttname"><a href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></div><div class="ttdeci">struct vector3f_t vector3f</div></div>
@@ -795,7 +797,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00492">_globals.h:492</a></div></div>
 <div class="ttc" id="structcolorf__t_html"><div class="ttname"><a href="structcolorf__t.html">colorf_t</a></div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00207">_globals.h:207</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a10985a86bfc0c487962037fa9bc66190"><div class="ttname"><a href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">vector3f_t::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l01033">_globals.h:1033</a></div></div>
-<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00316">_object.h:316</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00681">_object.h:681</a></div></div>
 <div class="ttc" id="class_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00024">_component.h:24</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a9fa9623b6af260eee1905b1620a78de0"><div class="ttname"><a href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">vector3f_t::z</a></div><div class="ttdeci">GLfloat z</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00496">_globals.h:496</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a00a8a3a855eba9e03fb35f62a6f73cfa"><div class="ttname"><a href="structvector3f__t.html#a00a8a3a855eba9e03fb35f62a6f73cfa">vector3f_t::normalize</a></div><div class="ttdeci">vector3f_t normalize()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00832">_globals.h:832</a></div></div>
@@ -803,7 +805,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 10:30:31 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 20:28:48 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
