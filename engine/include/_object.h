@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Estructura de los objeto "GameObject".
+ */
+
 #ifndef __OBJECT_H_
 #define __OBJECT_H_
 
@@ -6,9 +11,26 @@
 #include "systems/_debug.h"
 
 // Inútil (de momento)
+/**
+ * Enum sin uso.
+ */
 enum gameObject_flags { gof_none = 0x00, gof_render = 0x01, gof_event = 0x02, gof_kevent = 0x04, gof_loop = 0x08 };
-enum gameObject_type {gameObject_empty = 0};
+/**
+ * Enum sin uso.
+ */
+enum gameObject_type {gameObject_empty = 0};//!< gameObject_empty
 
+/**
+ * Puntero a función miembro de un game object.
+ *
+ * El puntero se usará para funciones del tipo "void f(CGameObject* g)". Véase CGameObject::start,
+ * CGameObject:: behaviour, CGameObject:: event_behaviour, CGameObject:: input_behaviour, CGameObject:: render.
+ *
+ * Se usará para guardar en el game object una serie de punteros a funciones externas para ser llamadas en determinados momentos,
+ * usando como referencia al objeto el parámetro "self".
+ *
+ * @param self Referencia a un objeto dado.
+ */
 typedef void (*function_t)(CGameObject* self);
 
 // Nota: añadir "CGameObject_NULL" que no haga nada en sus operaciones. Así, si el manager devuelve un NULL, y se trata de acceder a un método de ese NULL, no se hará nada
@@ -16,16 +38,54 @@ typedef void (*function_t)(CGameObject* self);
 // -> Si no, crear una instancia de CGameObject llamado "GAMEOBJECT_NULL", o algo por el estilo
 // -> O un flag tipo "null_object" en los objetos actuales que no haga nada en las funciones si el objeto es nulo.
 
+/**
+ * Clase que representa a un objeto de juego.
+ *
+ * Para entender mejor esta parte que voy a explicar, recomiendo leer el artículo siguiente: http://www.genbetadev.com/programacion-de-videojuegos/diseno-de-videojuegos-orientado-a-entidades-y-componentes
+ *
+ * @image html diagrama1.png
+ *
+ * La unidad básica con la que trabajará nuestro motor gráfico de cara al usuario que desarrollará el juego será los objectos que realizarán una abstracción de cualquier cosa, a los que hemos llamado cariñosamente “Game Objects“. Un Game Object, por consiguiente, es la representación de una entidad en el mundo real. Cada objeto debe tener un nombre para referirnos a él ("coche1", "coche1_rueda1", etc.) y un identificador (que será usado de cara al sistema). Por ejemplo, un coche sería uno, y las ruedas que lo componen, también.
+ *
+ * Ahora bien, si el coche se mueve, se deben mover las ruedas, las luces, los ejes… por lo que diremos que esos objetos están emparentados (apartado 1 en la imagen adjunta). Creando esta jerarquía, conseguimos agrupar de forma lógica los objetos, dándose el caso de que los objetos puedan tener varios hijos (o children) y un único o ningún padre, creando una relación bidireccional entre el padre y sus hijos por medio de una lista de punteros y un único puntero, respectivamente. Evidentemente, no es posible que un padre sea padre de sí mismo, directa o indirectamente.
+ *
+ * De todas formas, no todos los objetos son iguales, ¿verdad?. Algunos están definidos con una serie de valores y propiedades distintas a los demás. Por ejemplo, una pelota tiene un modelo de una pelota 3D (una esfera), un material (plástico), una esfera de colisión… mientras que un temporizador sólo posee una parte lógica que determina si ha transcurrido un lapso de tiempo. ¿Cómo distinguimos pues unos objetos de otros? Lo haremos mediante componentes. Cada objeto puede tener, a lo sumo, un componente de cada tipo. Por ejemplo, podemos definir varios componentes:
+ * <ul>
+ * <li><b>Transformación:</b> Posición, rotación y escala de un objeto en el mundo 3D.
+ * <li><b>Cámara:</b> Define una cámara desde la cual se hará un renderizado de una escena.
+ * <li><b>Texto de interfaz gráfica de usuario</b> (GUI Text).
+ * <li><b>Luz estática:</b> Usada para iluminar el escenario…
+ * </ul>
+ * Y así, se puede crear una lista muy larga de componentes que nos servirá para personalizar nuestros componentes. En el apartado 2 se pueden ver algunas formas de invocar funciones desde el objeto para obtener o modificar datos de los componentes. Intentaré dedicar un post a ello.
+ *
+ * Por si fuera poco, vamos a definir 4 nuevos punteros para personalizar los objetos, que serán punteros a funciones que nos permitirán hacer llamadas a funciones dependiendo de su tipo:
+ * <ul>
+ * <li><b>start:</b> Se llama al inicio, cuando se crea el objeto y se añade al sistema.
+ * <li><b>behaviour:</b> Se llama en cada iteración, y determina el próximo estado del objeto.
+ * <li><b>event:</b> Se llama cada vez que se ejecute un evento (movimiento del ratón, reescalado de ventana, etc.).
+ * <li><b>input:</b> Se llama cada vez que se produce una entrada de teclado, joystick, ratón, etc. Usar antes que "event".
+ * <li><b>rener:</b> Se llama cada vez que se va a redenderizar  una tecla del teclado.
+ * </ul>
+ * Por ejemplo, se define una función “behaviour” para un objeto de la siguiente forma:
+ *
+ @code
+  void GO1_movimiento(CGameObject* gameObject)
+  {
+    // Operaciones para el objeto que vaya a usar esta función irán aquí.
+  }
+
+  CGameObject* GO1 = gSystem_GameObject_Manager.AddGameObject("GO1"); // Crear objeto
+  GO1->SetKeyEventBehaviourFunction(&GO1_movimiento);                 // Cargar función behaviour
+@endcode
+ * Que será llamada en cada iteración de la ejecución de nuestra aplicación, pasando como parámetro el puntero del objeto que apunta a sí mismo (this, básicamente). El objeto llamado gSystem_GameObject_Manager será el sistema que se encargará de gestionar nuestros objetos, del que me encargaré de explicar en el próximo post.
+ */
 class CGameObject
 {
-  public:
-    //typedef void (CGameObject::*callfunc_ptr)(input_t, output_t);
-    friend class CComponent;
-    friend class CComponent_Transform;
-    friend class CSystem_GameObject_Manager;
-    friend class CSystem_Debug;
-    friend class CSystem_Render;
-    //friend class boost::serialization::access;
+  friend class CComponent;
+  friend class CComponent_Transform;
+  friend class CSystem_GameObject_Manager;
+  friend class CSystem_Debug;
+  friend class CSystem_Render;
 
   protected:
     flags_t flags;
@@ -66,6 +126,15 @@ class CGameObject
     }*/
 
   public:
+    /**
+     * Constructor principal.
+     *
+     * Construye un objeto "vacío" dado un nombre. Crear un objeto no implica que se añada al sistema gestor de objetos CSystem_GameObject_Manager.
+     *
+     * El objeto
+     *
+     * @param name
+     */
     CGameObject(std::string name);
     CGameObject();
 

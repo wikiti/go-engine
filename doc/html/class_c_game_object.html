@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -72,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +92,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="title">Referencia de la Clase CGameObject</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="__object_8h_source.html">_object.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
@@ -146,19 +149,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveParent</b> ()</
 void&#160;</td><td class="memItemRight" valign="bottom"><b>UnParent</b> ()</td></tr>
 <tr class="separator:a8ed2bbfa1117641011595f89e00cef7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810b361cfd7e9b47786fdf4c910a577b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a810b361cfd7e9b47786fdf4c910a577b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetStartFunction</b> (function_t f)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetStartFunction</b> (<a class="el" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</td></tr>
 <tr class="separator:a810b361cfd7e9b47786fdf4c910a577b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75aa301df39af2435b9bc2e719f77197"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75aa301df39af2435b9bc2e719f77197"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBehaviourFunction</b> (function_t f)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBehaviourFunction</b> (<a class="el" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</td></tr>
 <tr class="separator:a75aa301df39af2435b9bc2e719f77197"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16ab505b47294ed813dd69d8579fbed9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16ab505b47294ed813dd69d8579fbed9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetEventFunction</b> (function_t f)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetEventFunction</b> (<a class="el" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</td></tr>
 <tr class="separator:a16ab505b47294ed813dd69d8579fbed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f99b0b50181b2b5cc152fe6ae960bbf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f99b0b50181b2b5cc152fe6ae960bbf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetInputFunction</b> (function_t f)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetInputFunction</b> (<a class="el" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</td></tr>
 <tr class="separator:a6f99b0b50181b2b5cc152fe6ae960bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add37411eb688c5637312a90ec694e751"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add37411eb688c5637312a90ec694e751"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRenderFunction</b> (function_t f)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRenderFunction</b> (<a class="el" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> f)</td></tr>
 <tr class="separator:add37411eb688c5637312a90ec694e751"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51c906ddca1ff81886fdb096ed6e1694"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51c906ddca1ff81886fdb096ed6e1694"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CallStartFunction</b> ()</td></tr>
@@ -292,8 +295,49 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CSystem_Render</b></
 <tr class="separator:a1de191016958c7b6d70936fb0428ce22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock">
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00019">19</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<div class="textblock"><p>Clase que representa a un objeto de juego.</p>
+<p>Para entender mejor esta parte que voy a explicar, recomiendo leer el artículo siguiente: <a href="http://www.genbetadev.com/programacion-de-videojuegos/diseno-de-videojuegos-orientado-a-entidades-y-componentes">http://www.genbetadev.com/programacion-de-videojuegos/diseno-de-videojuegos-orientado-a-entidades-y-componentes</a></p>
+<div class="image">
+<img src="diagrama1.png" alt="diagrama1.png"/>
+</div>
+<p>La unidad básica con la que trabajará nuestro motor gráfico de cara al usuario que desarrollará el juego será los objectos que realizarán una abstracción de cualquier cosa, a los que hemos llamado cariñosamente “Game Objects“. Un Game Object, por consiguiente, es la representación de una entidad en el mundo real. Cada objeto debe tener un nombre para referirnos a él ("coche1", "coche1_rueda1", etc.) y un identificador (que será usado de cara al sistema). Por ejemplo, un coche sería uno, y las ruedas que lo componen, también.</p>
+<p>Ahora bien, si el coche se mueve, se deben mover las ruedas, las luces, los ejes… por lo que diremos que esos objetos están emparentados (apartado 1 en la imagen adjunta). Creando esta jerarquía, conseguimos agrupar de forma lógica los objetos, dándose el caso de que los objetos puedan tener varios hijos (o children) y un único o ningún padre, creando una relación bidireccional entre el padre y sus hijos por medio de una lista de punteros y un único puntero, respectivamente. Evidentemente, no es posible que un padre sea padre de sí mismo, directa o indirectamente.</p>
+<p>De todas formas, no todos los objetos son iguales, ¿verdad?. Algunos están definidos con una serie de valores y propiedades distintas a los demás. Por ejemplo, una pelota tiene un modelo de una pelota 3D (una esfera), un material (plástico), una esfera de colisión… mientras que un temporizador sólo posee una parte lógica que determina si ha transcurrido un lapso de tiempo. ¿Cómo distinguimos pues unos objetos de otros? Lo haremos mediante componentes. Cada objeto puede tener, a lo sumo, un componente de cada tipo. Por ejemplo, podemos definir varios componentes: </p>
+<ul>
+<li>
+<b>Transformación:</b> Posición, rotación y escala de un objeto en el mundo 3D. </li>
+<li>
+<b>Cámara:</b> Define una cámara desde la cual se hará un renderizado de una escena. </li>
+<li>
+<b>Texto de interfaz gráfica de usuario</b> (GUI Text). </li>
+<li>
+<b>Luz estática:</b> Usada para iluminar el escenario… </li>
+</ul>
+<p>Y así, se puede crear una lista muy larga de componentes que nos servirá para personalizar nuestros componentes. En el apartado 2 se pueden ver algunas formas de invocar funciones desde el objeto para obtener o modificar datos de los componentes. Intentaré dedicar un post a ello.</p>
+<p>Por si fuera poco, vamos a definir 4 nuevos punteros para personalizar los objetos, que serán punteros a funciones que nos permitirán hacer llamadas a funciones dependiendo de su tipo: </p>
+<ul>
+<li>
+<b>start:</b> Se llama al inicio, cuando se crea el objeto y se añade al sistema. </li>
+<li>
+<b>behaviour:</b> Se llama en cada iteración, y determina el próximo estado del objeto. </li>
+<li>
+<b>event:</b> Se llama cada vez que se ejecute un evento (movimiento del ratón, reescalado de ventana, etc.). </li>
+<li>
+<b>input:</b> Se llama cada vez que se produce una entrada de teclado, joystick, ratón, etc. Usar antes que "event". </li>
+<li>
+<b>rener:</b> Se llama cada vez que se va a redenderizar una tecla del teclado. </li>
+</ul>
+<p>Por ejemplo, se define una función “behaviour” para un objeto de la siguiente forma:</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> GO1_movimiento(<a class="code" href="class_c_game_object.html">CGameObject</a>* gameObject)</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// Operaciones para el objeto que vaya a usar esta función irán aquí.</span></div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><a class="code" href="class_c_game_object.html">CGameObject</a>* GO1 = gSystem_GameObject_Manager.AddGameObject(<span class="stringliteral">&quot;GO1&quot;</span>); <span class="comment">// Crear objeto</span></div>
+<div class="line">GO1-&gt;SetKeyEventBehaviourFunction(&amp;GO1_movimiento);                 <span class="comment">// Cargar función behaviour</span></div>
+</div><!-- fragment --><p> Que será llamada en cada iteración de la ejecución de nuestra aplicación, pasando como parámetro el puntero del objeto que apunta a sí mismo (this, básicamente). El objeto llamado gSystem_GameObject_Manager será el sistema que se encargará de gestionar nuestros objetos, del que me encargaré de explicar en el próximo post. </p>
+
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00082">82</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a class="anchor" id="a4b9498dcca22545a77e2d100885fa70f"></a>
 <div class="memitem">
@@ -311,7 +355,7 @@ template&lt;class Type &gt; </div>
 </div><div class="memdoc">
 <p>PLANTILLAS </p>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00301">301</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00364">364</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +382,7 @@ template&lt;class Type &gt; </div>
 <p>Funciones para acceso directo a los componentes aquí: CComponent_Transform* transform() {return (CComponent_Transform*) components[components::transform]; }</p>
 <p>Y así para los componentes principales. Si no existe un componente, se crea. A diferencia de <a class="el" href="class_c_game_object.html#a4b9498dcca22545a77e2d100885fa70f">GetComponent&lt;...&gt;()</a>, si el componente no existe, devuelve NULL. </p>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00253">253</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00316">316</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
@@ -349,7 +393,7 @@ template&lt;class Type &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 26 de Marzo de 2014 21:38:14 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 27 de Marzo de 2014 10:30:32 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
