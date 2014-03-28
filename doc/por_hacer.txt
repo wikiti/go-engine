@@ -1,3 +1,4 @@
+- Cambiar el encoding de todos los fuentes a "utf-8" para una mayor simplicidad (la codificación de ahora es la que usa windows por defecto, y es pura basura).
 - Añadir un sistema para que el usuario pueda crear "prefabs" a partir de una determinada jerarquía de objetos.
   - Tal vez un sistema gestor de prefabs haga más sencillo el trabajo de manipularlos (ya que, principalmente, no tienen que ver con ningún otro sistema (manager, render, etc).
     - Definitivamenete, parece la mejor opción.

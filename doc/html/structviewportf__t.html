@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,6 +39,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
       <li><a href="files.html"><span>Archivos</span></a></li>
@@ -72,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,11 +96,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!--header-->
 <div class="contents">
 
+<p>Estructura para representar un "viewport" o una fracción de pantalla.  
+ <a href="structviewportf__t.html#details">Más...</a></p>
+
 <p><code>#include &lt;<a class="el" href="__globals_8h_source.html">_globals.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:abe61175a5f57f5641f2904b73da4a420"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420">str</a> ()</td></tr>
+<tr class="memdesc:abe61175a5f57f5641f2904b73da4a420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Viewport a cadena.  <a href="#abe61175a5f57f5641f2904b73da4a420">Más...</a><br/></td></tr>
 <tr class="separator:abe61175a5f57f5641f2904b73da4a420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -114,13 +121,15 @@ Atributos públicos</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Amigas</h2></td></tr>
 <tr class="memitem:a86a1b9b00e7a0337f404ed5f951bb8fa"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviewportf__t.html#a86a1b9b00e7a0337f404ed5f951bb8fa">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="structviewportf__t.html">viewportf_t</a> v)</td></tr>
+<tr class="memdesc:a86a1b9b00e7a0337f404ed5f951bb8fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de redirección de salida.  <a href="#a86a1b9b00e7a0337f404ed5f951bb8fa">Más...</a><br/></td></tr>
 <tr class="separator:a86a1b9b00e7a0337f404ed5f951bb8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6695c68bb47777a2eeb750b2d1322d4"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviewportf__t.html#af6695c68bb47777a2eeb750b2d1322d4">operator&gt;&gt;</a> (std::istream &amp;is, <a class="el" href="structviewportf__t.html">viewportf_t</a> &amp;v)</td></tr>
+<tr class="memdesc:af6695c68bb47777a2eeb750b2d1322d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de redirección de entrada.  <a href="#af6695c68bb47777a2eeb750b2d1322d4">Más...</a><br/></td></tr>
 <tr class="separator:af6695c68bb47777a2eeb750b2d1322d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Estructura para representar un "viewport" o una fracción de pantalla.</p>
-<p><a href="http://en.wikipedia.org/wiki/Viewport">http://en.wikipedia.org/wiki/Viewport</a></p>
+<div class="textblock"><p>Estructura para representar un "viewport" o una fracción de pantalla. </p>
+<p>Véase <a href="http://en.wikipedia.org/wiki/Viewport">http://en.wikipedia.org/wiki/Viewport</a></p>
 <p>Un viewport no es más que una abstracción de una "ventana" o portal desde la ventana de nuestro programa hasta el mundo en 3D de la aplicación. Básicamente, es una porción de pantalla (definida por una posición y un tamaño) en la que se dibujarán ciertos elementos del juego.</p>
 <p>En una ventana, un viewport se define más o menos así:</p>
 <pre>
@@ -132,7 +141,7 @@ Amigas</h2></td></tr>
 |        |_____________|       |
 |             width            |
 |______________________________|
-</pre><p>Se diferencia de <a class="el" href="structviewport__t.html">viewport_t</a> en que esta no usa píxeles para el tamaño, sino un valor flotante entre 0 y 1, siendo, para el ancho, "1" el ancho de la ventana, y para el alto, "1" el alto de la ventana.</p>
+</pre><p>Se diferencia de <a class="el" href="structviewport__t.html" title="Estructura para representar un &quot;viewport&quot; o una fracción de pantalla. ">viewport_t</a> en que esta no usa píxeles para el tamaño, sino un valor flotante entre 0 y 1, siendo, para el ancho, "1" el ancho de la ventana, y para el alto, "1" el alto de la ventana.</p>
 <p>Para más información, véase <a class="el" href="class_c_component___camera.html">CComponent_Camera</a> y <a class="el" href="class_c_system___render.html">CSystem_Render</a>. </p>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00427">427</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
@@ -157,7 +166,8 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Viewport a cadena.</p>
+
+<p>Viewport a cadena. </p>
 <p>Devuelve una representación en forma de std::string del viewport. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>std::string que almacena el los datos del viewport con el formato "x y width height", manteniendo su tipo original. </dd></dl>
 
@@ -199,8 +209,9 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Operador de redirección de salida.</p>
-<p>Escribirá el viewport de la misma manera que en la función <a class="el" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420">viewportf_t::str()</a> </p>
+
+<p>Operador de redirección de salida. </p>
+<p>Escribirá el viewport de la misma manera que en la función <a class="el" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420" title="Viewport a cadena. ">viewportf_t::str()</a> </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">os</td><td>Flujo de salida. </td></tr>
@@ -245,8 +256,9 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Operador de redirección de entrada.</p>
-<p>Leerá el viewport de la misma manera que en la función <a class="el" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420">viewportf_t::str()</a> </p>
+
+<p>Operador de redirección de entrada. </p>
+<p>Leerá el viewport de la misma manera que en la función <a class="el" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420" title="Viewport a cadena. ">viewportf_t::str()</a> </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">is</td><td>Flujo de entrada. </td></tr>
@@ -261,40 +273,6 @@ Amigas</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentación de los datos miembro</h2>
-<a class="anchor" id="a546ecf374dc6d35c83953046855d0918"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLfloat viewportf_t::height</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Alto del viewport, expresado en un valor del rango [0,1], siendo "1" el alto de la ventana (véase gSystem_Render.GetWindowSize()). </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00433">433</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00469">str()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6f9139cbfbecc67eea3f0e5a0df4f254"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">GLfloat viewportf_t::width</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Ancho del viewport, expresado en un valor del rango [0,1], siendo "1" el ancho de la ventana (véase gSystem_Render.GetWindowSize()). </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00432">432</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00469">str()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a3ffa3e9ca780fe7fd244744bf3d709b2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -329,13 +307,47 @@ Amigas</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6f9139cbfbecc67eea3f0e5a0df4f254"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat viewportf_t::width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ancho del viewport, expresado en un valor del rango [0,1], siendo "1" el ancho de la ventana (véase gSystem_Render.GetWindowSize()). </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00432">432</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00469">str()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a546ecf374dc6d35c83953046855d0918"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLfloat viewportf_t::height</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Alto del viewport, expresado en un valor del rango [0,1], siendo "1" el alto de la ventana (véase gSystem_Render.GetWindowSize()). </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00433">433</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00469">str()</a>.</p>
+
+</div>
+</div>
 <hr/>La documentación para esta estructura fue generada a partir del siguiente fichero:<ul>
 <li>C:/Dev/Proyectos/go-engine/engine/include/<a class="el" href="__globals_8h_source.html">_globals.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 26 de Marzo de 2014 21:38:18 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:27 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

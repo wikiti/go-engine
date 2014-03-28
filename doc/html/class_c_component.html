@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,6 +39,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
       <li><a href="files.html"><span>Archivos</span></a></li>
@@ -72,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,9 +91,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <a href="#friends">Amigas</a> &#124;
 <a href="class_c_component-members.html">Lista de todos los miembros</a>  </div>
   <div class="headertitle">
-<div class="title">Referencia de la Clase CComponent</div>  </div>
+<div class="title">Referencia de la Clase CComponent<div class="ingroups"><a class="el" href="group___componentes.html">Componentes</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Clase abstracta de un componente.  
+ <a href="class_c_component.html#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="__component_8h_source.html">_component.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagrama de herencias de CComponent</div>
 <div class="dyncontent">
@@ -111,41 +119,46 @@ Diagrama de herencias de CComponent</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a26a0daf85e3fdc8f1194ad6370111ad2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26a0daf85e3fdc8f1194ad6370111ad2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CComponent</b> (<a class="el" href="class_c_game_object.html">CGameObject</a> *container)</td></tr>
+<tr class="memitem:ab87a6940be69962c3f4f5a8552643245"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab87a6940be69962c3f4f5a8552643245"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#ab87a6940be69962c3f4f5a8552643245">CComponent</a> ()</td></tr>
+<tr class="memdesc:ab87a6940be69962c3f4f5a8552643245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr class="separator:ab87a6940be69962c3f4f5a8552643245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26a0daf85e3fdc8f1194ad6370111ad2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a26a0daf85e3fdc8f1194ad6370111ad2">CComponent</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *container)</td></tr>
 <tr class="separator:a26a0daf85e3fdc8f1194ad6370111ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa33cf0ed3f0848cf31d4d102bec40c1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa33cf0ed3f0848cf31d4d102bec40c1a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Set</b> (<a class="el" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data)</td></tr>
+<tr class="memitem:a29bac312efea3e13a92aaa7213081fa8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29bac312efea3e13a92aaa7213081fa8"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a29bac312efea3e13a92aaa7213081fa8">~CComponent</a> ()</td></tr>
+<tr class="memdesc:a29bac312efea3e13a92aaa7213081fa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
+<tr class="separator:a29bac312efea3e13a92aaa7213081fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa33cf0ed3f0848cf31d4d102bec40c1a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aa33cf0ed3f0848cf31d4d102bec40c1a">Set</a> (<a class="el" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data)</td></tr>
 <tr class="separator:aa33cf0ed3f0848cf31d4d102bec40c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaed8083f66ef30e36f1d157feff4bb21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaed8083f66ef30e36f1d157feff4bb21"></a>
-virtual <a class="el" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Get</b> ()</td></tr>
+<tr class="memitem:aaed8083f66ef30e36f1d157feff4bb21"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aaed8083f66ef30e36f1d157feff4bb21">Get</a> ()</td></tr>
 <tr class="separator:aaed8083f66ef30e36f1d157feff4bb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d622bece105a5c40eef862254e8e812"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d622bece105a5c40eef862254e8e812"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnRender</b> (glm::mat4 projMatrix, glm::mat4 modelViewMatrix)</td></tr>
+<tr class="memitem:a3d622bece105a5c40eef862254e8e812"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a3d622bece105a5c40eef862254e8e812">OnRender</a> (glm::mat4 projMatrix, glm::mat4 modelViewMatrix)</td></tr>
+<tr class="memdesc:a3d622bece105a5c40eef862254e8e812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renderizar el componente.  <a href="#a3d622bece105a5c40eef862254e8e812">Más...</a><br/></td></tr>
 <tr class="separator:a3d622bece105a5c40eef862254e8e812"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86071e4913c2bbfc08561972c7c9c639"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86071e4913c2bbfc08561972c7c9c639"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnLoop</b> ()</td></tr>
+<tr class="memitem:a86071e4913c2bbfc08561972c7c9c639"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a86071e4913c2bbfc08561972c7c9c639">OnLoop</a> ()</td></tr>
+<tr class="memdesc:a86071e4913c2bbfc08561972c7c9c639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestión del comportamiento.  <a href="#a86071e4913c2bbfc08561972c7c9c639">Más...</a><br/></td></tr>
 <tr class="separator:a86071e4913c2bbfc08561972c7c9c639"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cb7e6d8b48a19ee825e08d3fff29286"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cb7e6d8b48a19ee825e08d3fff29286"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnEvent</b> ()</td></tr>
+<tr class="memitem:a3cb7e6d8b48a19ee825e08d3fff29286"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a3cb7e6d8b48a19ee825e08d3fff29286">OnEvent</a> ()</td></tr>
+<tr class="memdesc:a3cb7e6d8b48a19ee825e08d3fff29286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestión de eventos.  <a href="#a3cb7e6d8b48a19ee825e08d3fff29286">Más...</a><br/></td></tr>
 <tr class="separator:a3cb7e6d8b48a19ee825e08d3fff29286"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a950e0b0199181b7697e1106ea627c7ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a950e0b0199181b7697e1106ea627c7ef"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnInput</b> ()</td></tr>
+<tr class="memitem:a950e0b0199181b7697e1106ea627c7ef"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a950e0b0199181b7697e1106ea627c7ef">OnInput</a> ()</td></tr>
+<tr class="memdesc:a950e0b0199181b7697e1106ea627c7ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestión de entrada.  <a href="#a950e0b0199181b7697e1106ea627c7ef">Más...</a><br/></td></tr>
 <tr class="separator:a950e0b0199181b7697e1106ea627c7ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a2bbd0e44da23267e07d1d610da1b02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a2bbd0e44da23267e07d1d610da1b02"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetState</b> ()</td></tr>
+<tr class="memitem:a8a2bbd0e44da23267e07d1d610da1b02"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a8a2bbd0e44da23267e07d1d610da1b02">GetState</a> ()</td></tr>
+<tr class="memdesc:a8a2bbd0e44da23267e07d1d610da1b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter del estado del componente.  <a href="#a8a2bbd0e44da23267e07d1d610da1b02">Más...</a><br/></td></tr>
 <tr class="separator:a8a2bbd0e44da23267e07d1d610da1b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72335b7a969dd7881e37aa54dbc4c4d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72335b7a969dd7881e37aa54dbc4c4d8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetState</b> (bool state=true)</td></tr>
+<tr class="memitem:a72335b7a969dd7881e37aa54dbc4c4d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a72335b7a969dd7881e37aa54dbc4c4d8">SetState</a> (bool state=true)</td></tr>
+<tr class="memdesc:a72335b7a969dd7881e37aa54dbc4c4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambiar el estado del componente.  <a href="#a72335b7a969dd7881e37aa54dbc4c4d8">Más...</a><br/></td></tr>
 <tr class="separator:a72335b7a969dd7881e37aa54dbc4c4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab52088bae52a5e17b51f1a932f08c5e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab52088bae52a5e17b51f1a932f08c5e0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Enable</b> ()</td></tr>
+<tr class="memitem:ab52088bae52a5e17b51f1a932f08c5e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#ab52088bae52a5e17b51f1a932f08c5e0">Enable</a> ()</td></tr>
+<tr class="memdesc:ab52088bae52a5e17b51f1a932f08c5e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activa el componente.  <a href="#ab52088bae52a5e17b51f1a932f08c5e0">Más...</a><br/></td></tr>
 <tr class="separator:ab52088bae52a5e17b51f1a932f08c5e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae17d31689ed9c5bc054b5849c8de7a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae17d31689ed9c5bc054b5849c8de7a8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Disable</b> ()</td></tr>
+<tr class="memitem:aae17d31689ed9c5bc054b5849c8de7a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aae17d31689ed9c5bc054b5849c8de7a8">Disable</a> ()</td></tr>
+<tr class="memdesc:aae17d31689ed9c5bc054b5849c8de7a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desactiva el componente.  <a href="#aae17d31689ed9c5bc054b5849c8de7a8">Más...</a><br/></td></tr>
 <tr class="separator:aae17d31689ed9c5bc054b5849c8de7a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec98c262998b67798451b56203e4a61b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec98c262998b67798451b56203e4a61b"></a>
-<a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetGameObject</b> ()</td></tr>
+<tr class="memitem:aec98c262998b67798451b56203e4a61b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aec98c262998b67798451b56203e4a61b">GetGameObject</a> ()</td></tr>
+<tr class="memdesc:aec98c262998b67798451b56203e4a61b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtener el gameObject que encapsula este componente.  <a href="#aec98c262998b67798451b56203e4a61b">Más...</a><br/></td></tr>
 <tr class="separator:aec98c262998b67798451b56203e4a61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -160,20 +173,445 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CSystem_Debug</b></t
 const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::component_to_string</b> (components_t c)</td></tr>
 <tr class="separator:a319e7b6480f0704407b30f1791c1720c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a986fb18b95598eaa68280a63ae76553b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a986fb18b95598eaa68280a63ae76553b"></a>
-Components::components_t&#160;</td><td class="memItemRight" valign="bottom"><b>Components::string_to_component</b> (const std::string &amp;c)</td></tr>
+<a class="el" href="namespace_components.html#aa89a2e84cfafd1da6f84c7edb84c1ce5">Components::components_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Components::string_to_component</b> (const std::string &amp;c)</td></tr>
 <tr class="separator:a986fb18b95598eaa68280a63ae76553b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock">
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00024">24</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
-</div><hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
+<div class="textblock"><p>Clase abstracta de un componente. </p>
+<p>Se usará para representar y hacer de base a la hora de definir un componente.</p>
+<p>Véase <a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>.</p>
+<p>Un componente estará asociado a un único objeto de juego, ignorando completamente componentes compartidos (imposible implementarlos por la asociación bidireccional entre objeto y componente).</p>
+<p>Con respecto a la asociación de los componentes con un objeto de juego, usamos polimorfimos para ello. De cara a poder tener una gran variedad de componentes, sería lógico usar un vector de “componentes” (o CComponentes) con el fin de almacenar nuestros componentes únicos en un Game Object.</p>
+<div class="image">
+<img src="componentes.png" alt="componentes.png"/>
+</div>
+<p>Como se puede apreciar, cada componente tiene 3 partes:</p>
+<ul>
+<li>Contenido o atributos del componente.</li>
+<li>Métodos del componente.</li>
+<li>Identificador único para ese componente.</li>
+</ul>
+<p>Para facilitar el acceso, puesto que un objeto de nuestro juego podría llegar a tener una cantidad elevada de componentes (dependiendo del número de componentes implementados), hemos decidido usar un std::map de la librería estándar de plantillas de C++. Además, como se ha mencionado en el post anterior, un objeto sólo puede tener un componente de cada tipo. En este caso, para nuestro mapa, las claves serían unos identificadores numéricos, mientras que el valor contenido serán punteros a dichos componentes, que a su vez guardan un objeto al puntero que los contiene, intentando garantizar que los componentes no puedan ser compartidos (tal vez interese implementar algo por el estilo más adelante). Por tanto, tendremos un std::map con una lista de punteros del tipo <a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a> que, por medio de polimorfismo y herencia, crearemos una gama de clases hijas con distintas propiedades y ejecuciones de métodos distintos. Se pueden realizar una serie de operaciones sobre los componentes desde los Game Objects, entre ellas, las siguientes:</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span></div>
+<div class="line">Type* GetComponent();</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">template</span></div>
+<div class="line"><span class="keywordtype">bool</span> AddComponent();</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">template</span></div>
+<div class="line"><span class="keywordtype">bool</span> RemoveComponent();</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">template</span></div>
+<div class="line"><span class="keywordtype">void</span> SetComponentStateComponent(<span class="keywordtype">bool</span> state);</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// Funciones para acceso directo a los componentes:</span></div>
+<div class="line"><span class="keyword">inline</span> <a class="code" href="class_c_component___transform.html">CComponent_Transform</a>* transform()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">// Siempre existe un componente Transform</span></div>
+<div class="line">  <span class="keywordflow">return</span> (<a class="code" href="class_c_component___transform.html">CComponent_Transform</a>*)components[components::transform];</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">inline</span> <a class="code" href="class_c_component___camera.html">CComponent_Camera</a>* camera()</div>
+<div class="line">{</div>
+<div class="line">  <span class="keywordflow">if</span>(components.find(components::camera) == components.end())</div>
+<div class="line">    components.insert(pair&lt;int, CComponent*&gt;(components::camera, <span class="keyword">new</span> <a class="code" href="class_c_component___camera.html">CComponent_Camera</a>(<span class="keyword">this</span>)));</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> (<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>*)components[components::camera];</div>
+<div class="line">}</div>
+</div><!-- fragment --><ul>
+<li>Obtener componente: Devuelve un puntero al componente del tipo seleccionado. Si no existe, devolverá NULL.</li>
+<li>Añadir componente: Intenta añadir un componente. Si no existe, se creará y devolverá true. Si existe, no se hará nada y devolverá false.</li>
+<li>Eliminar componente: Intenta eliminar un componente. Si existe, lo elimina y devuelve true. Si no existe, no se hará nada y devolverá false.</li>
+<li>Cambiar estado: Cambia el estado del componente (activado o desactivado) en función del argumento state.</li>
+<li>Accesos directos: Permiten acceder de forma rápida y cómoda al componente. Si el componente no existe, lo crea.</li>
+</ul>
+<p>Además, se creará un acceso directo en la clase GameObject (por ejemplo, CComponente_Transform* Transform() ) para cada componente, declarado, que actuará de la siguiente forma: si el componente existe, devuelve un puntero. Si no, crea el componente y lo devuelve. Así podemos garantizar que no se produzcan accesos indebidos a memoria por no comprobar la existencia de los componentes.</p>
+<dl class="section warning"><dt>Atención</dt><dd>Un componente debe crearse usando los métodos expuestos en la clase <a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>. En principio, no deberían usarse de manera explícita a la hora de operar (no hacemos un <em>new</em> de un componente). </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00143">143</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+</div><h2 class="groupheader">Documentación del constructor y destructor</h2>
+<a class="anchor" id="a26a0daf85e3fdc8f1194ad6370111ad2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CComponent::CComponent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>container</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructor con objeto asociado.</p>
+<p>Asocia al objeto pasado como argumento el componente creado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">container</td><td>Objeto que guardará el componente. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definición en la línea <a class="el" href="__component_8cpp_source.html#l00027">27</a> del archivo <a class="el" href="__component_8cpp_source.html">_component.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a class="anchor" id="aa33cf0ed3f0848cf31d4d102bec40c1a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CComponent::Set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p><span style="color: red; font-weight: bold;">Sin usar</span>. </p>
+
+<p>Reimplementado en <a class="el" href="class_c_component___camera.html#ade9da0ec5da5a07714022b9fef664d1f">CComponent_Camera</a> y <a class="el" href="class_c_component___transform.html#a59c8f52b15970b71119ac7dfd5bdb13f">CComponent_Transform</a>.</p>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00187">187</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaed8083f66ef30e36f1d157feff4bb21"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a> CComponent::Get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p><span style="color: red; font-weight: bold;">Sin usar</span>. </p>
+
+<p>Reimplementado en <a class="el" href="class_c_component___camera.html#ae400603475848984585f2fff79cf9a50">CComponent_Camera</a> y <a class="el" href="class_c_component___transform.html#a01323491eb763f4797c4c4b1d40147c7">CComponent_Transform</a>.</p>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00189">189</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3d622bece105a5c40eef862254e8e812"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CComponent::OnRender </td>
+          <td>(</td>
+          <td class="paramtype">glm::mat4&#160;</td>
+          <td class="paramname"><em>projMatrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::mat4&#160;</td>
+          <td class="paramname"><em>modelViewMatrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renderizar el componente. </p>
+<p>Función de renderizado. Renderiza el componente. Véase <a class="el" href="class_c_game_object.html#abd0483aefe0cf5e54fdf1ded80645660" title="Gestor de renderizado. ">CGameObject::OnRender()</a>. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projMatrix</td><td>Matriz de proyección. Interna al sistema. </td></tr>
+    <tr><td class="paramname">modelViewMatrix</td><td>Matriz de modelview. Interna al sistema.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
+
+<p>Reimplementado en <a class="el" href="class_c_component___particle___emitter.html#a510a4373566c593dc08a67b8f3824a04">CComponent_Particle_Emitter</a>, <a class="el" href="class_c_component___dummy3.html#a43f8886afb3ad9ea864050296990f8e4">CComponent_Dummy3</a>, <a class="el" href="class_c_component___transform.html#a35656e7b04d9d8d17f16757145f3e83e">CComponent_Transform</a>, <a class="el" href="class_c_component___audio___source.html#a5fc01a048b23aa182ae5711c811c9f8a">CComponent_Audio_Source</a>, <a class="el" href="class_c_component___dummy2.html#ad5dff16a0e5c2fc19bc9ff3113e1261d">CComponent_Dummy2</a>, <a class="el" href="class_c_component___mesh___render.html#ac9f201ee0f39191f2a263a6d7ebbc2c1">CComponent_Mesh_Render</a>, <a class="el" href="class_c_component___g_u_i___texture.html#a94c7bc5f16b0e0fcc788cc34c508fae4">CComponent_GUI_Texture</a> y <a class="el" href="class_c_component___dummy1.html#a2cd35c98bc79bc839d6994ed934338c2">CComponent_Dummy1</a>.</p>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00200">200</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a86071e4913c2bbfc08561972c7c9c639"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CComponent::OnLoop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gestión del comportamiento. </p>
+<p>Función de comportamiento. Actualiza el componente. Véase <a class="el" href="class_c_game_object.html#accb893e0beb425e05a69d4b9b0da821b" title="Gestor de comportamientos. ">CGameObject::OnLoop()</a>.</p>
+<dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
+
+<p>Reimplementado en <a class="el" href="class_c_component___particle___emitter.html#aed5be85de7dc442bfe74978e50c60ee3">CComponent_Particle_Emitter</a> y <a class="el" href="class_c_component___audio___source.html#a060e736bd5e0c7a9e7853dc26d82ac0d">CComponent_Audio_Source</a>.</p>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00208">208</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3cb7e6d8b48a19ee825e08d3fff29286"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CComponent::OnEvent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gestión de eventos. </p>
+<p>Función de gestión de eventos. Gestiona eventos de entrada importantes para el componente. Véase <a class="el" href="class_c_game_object.html#a95ae4c569b748f198203019939e88994" title="Gestor de eventos. ">CGameObject::OnEvent()</a>.</p>
+<dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
+
+<p>Reimplementado en <a class="el" href="class_c_component___dummy3.html#ac91cabb84dac24117b9f4730f97692d4">CComponent_Dummy3</a>.</p>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00216">216</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a950e0b0199181b7697e1106ea627c7ef"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void CComponent::OnInput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gestión de entrada. </p>
+<p>Función de gestión de entrada. Gestiona entradas importantes para el componente. Véase <a class="el" href="class_c_game_object.html#ab4fd9dbe8e1713646bf3a46b867602f4" title="Gestor de entrada. ">CGameObject::OnInput()</a>.</p>
+<dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00224">224</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8a2bbd0e44da23267e07d1d610da1b02"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CComponent::GetState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Getter del estado del componente. </p>
+<p>Un componente puede estar marcado como <b>activado</b> como <b>desactivado</b>. En el primer caso, el componente se tratará con normalidad, mientras que en el segundo caso, en la mayoría de componentes, se hará como que el componente no existe.</p>
+<dl class="section warning"><dt>Atención</dt><dd>En algunos componentes es necesario que se actualicen algunos valores, por lo que el componente seguirá ejecutando ciertas funciones aunque esté desactivado.</dd></dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Retorna true si está activado, false en caso contrario. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00239">239</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a72335b7a969dd7881e37aa54dbc4c4d8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CComponent::SetState </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>state</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cambiar el estado del componente. </p>
+<p>Cambia el estado del componente actual por el estado especificado por "state" (true -&gt; <b>activado</b>, false -&gt; <b>desactivado</b>.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>Nuevo estado del componente. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00251">251</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab52088bae52a5e17b51f1a932f08c5e0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CComponent::Enable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Activa el componente. </p>
+<p>Cambia el estado del componente actual por <b>activado</b>. </p>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00261">261</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae17d31689ed9c5bc054b5849c8de7a8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CComponent::Disable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Desactiva el componente. </p>
+<p>Cambia el estado del componente actual por <b>desactivado</b>. </p>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00271">271</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aec98c262998b67798451b56203e4a61b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_game_object.html">CGameObject</a>* CComponent::GetGameObject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtener el gameObject que encapsula este componente. </p>
+<p>Existe una relación bidireccional entre los gameObjects y los componentes que tienen. Por tanto, puede ser de utilidad obtener el objeto que tiene un componente actualmente, ya sea para acceder a algunos atributos del objeto en cuestión, o para acceder a otro componente. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve un puntero a un gameObject que tenga el componente. No debería ser NULL en ningún momento. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00283">283</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>C:/Dev/Proyectos/go-engine/engine/include/components/<a class="el" href="__component_8h_source.html">_component.h</a></li>
 <li>C:/Dev/Proyectos/go-engine/engine/src/components/<a class="el" href="__component_8cpp_source.html">_component.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 26 de Marzo de 2014 21:38:13 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:19 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

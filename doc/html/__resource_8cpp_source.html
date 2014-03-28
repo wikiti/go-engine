@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,6 +39,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -70,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -647,7 +650,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;  resource_list.insert(pair&lt;string, CResource*&gt;(name, new_rc));</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;}</div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;<span class="comment">// -&gt;PorHacer Hay que testear la función CSystem_Resources::ClearNonEngineResources().</span></div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;<span class="comment">// -&gt;xPorHacer Hay que testear la función CSystem_Resources::ClearNonEngineResources().</span></div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;<span class="keywordtype">void</span> CSystem_Resources::ClearNonEngineResources()</div>
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;{</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;  <span class="keywordflow">for</span>(map&lt;string, CResource*&gt;::iterator it = resource_list.begin(); it != resource_list.end(); )</div>
@@ -717,7 +720,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;}</div>
 <div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;</div>
-<div class="ttc" id="namespace_utils_html_a4957bab738ebb9b504f4abfe9ff6a7bb"><div class="ttname"><a href="namespace_utils.html#a4957bab738ebb9b504f4abfe9ff6a7bb">Utils::validateIdentifier</a></div><div class="ttdeci">bool validateIdentifier(std::string identifier)</div></div>
+<div class="ttc" id="namespace_utils_html_a4957bab738ebb9b504f4abfe9ff6a7bb"><div class="ttname"><a href="namespace_utils.html#a4957bab738ebb9b504f4abfe9ff6a7bb">Utils::validateIdentifier</a></div><div class="ttdeci">bool validateIdentifier(std::string identifier)</div><div class="ttdoc">Comprobador de validez de identificadores. </div></div>
 <div class="ttc" id="class_c_system_html"><div class="ttname"><a href="class_c_system.html">CSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="__system_8h_source.html#l00006">_system.h:6</a></div></div>
 <div class="ttc" id="class_c_resource___font_html"><div class="ttname"><a href="class_c_resource___font.html">CResource_Font</a></div><div class="ttdef"><b>Definition:</b> <a href="__resource_8h_source.html#l00115">_resource.h:115</a></div></div>
 <div class="ttc" id="class_c_resource___mesh_html"><div class="ttname"><a href="class_c_resource___mesh.html">CResource_Mesh</a></div><div class="ttdef"><b>Definition:</b> <a href="__resource_8h_source.html#l00033">_resource.h:33</a></div></div>
@@ -728,14 +731,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="__globals_8h_html_a02b593633ae68595bb0e96c8b0e06405"><div class="ttname"><a href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a></div><div class="ttdeci">unsigned int flags_t</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00170">_globals.h:170</a></div></div>
 <div class="ttc" id="class_c_resource___mesh_html_add984fdc57045713711e367c1bffe71f"><div class="ttname"><a href="class_c_resource___mesh.html#add984fdc57045713711e367c1bffe71f">CResource_Mesh::LoadFile</a></div><div class="ttdeci">bool LoadFile(std::string file, std::string arguments=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="__resource_8cpp_source.html#l00022">_resource.cpp:22</a></div></div>
 <div class="ttc" id="class_c_system___resources_html_ab1143207cc42a20b2d0a428979159e57"><div class="ttname"><a href="class_c_system___resources.html#ab1143207cc42a20b2d0a428979159e57">CSystem_Resources::CSystem_Resources</a></div><div class="ttdeci">CSystem_Resources()</div><div class="ttdef"><b>Definition:</b> <a href="__resource_8cpp_source.html#l00373">_resource.cpp:373</a></div></div>
-<div class="ttc" id="__globals_8h_html_a31a7c4993d803b30b8f098497f7080b4"><div class="ttname"><a href="__globals_8h.html#a31a7c4993d803b30b8f098497f7080b4">ERROR_FILE</a></div><div class="ttdeci">const char ERROR_FILE[]</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00160">_globals.h:160</a></div></div>
+<div class="ttc" id="__globals_8h_html_a31a7c4993d803b30b8f098497f7080b4"><div class="ttname"><a href="__globals_8h.html#a31a7c4993d803b30b8f098497f7080b4">ERROR_FILE</a></div><div class="ttdeci">const char ERROR_FILE[]</div><div class="ttdoc">Título de error de fichero para &amp;quot;message boxes&amp;quot;. Véase CSystem_Debug::msg_box. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00160">_globals.h:160</a></div></div>
 <div class="ttc" id="class_c_resource___sound_html"><div class="ttname"><a href="class_c_resource___sound.html">CResource_Sound</a></div><div class="ttdef"><b>Definition:</b> <a href="__resource_8h_source.html#l00090">_resource.h:90</a></div></div>
 <div class="ttc" id="__globals_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00171">_globals.h:171</a></div></div>
 <div class="ttc" id="class_c_resource___texture_html_a6cbaf312c8fd8639d7108d67775e39ff"><div class="ttname"><a href="class_c_resource___texture.html#a6cbaf312c8fd8639d7108d67775e39ff">CResource_Texture::LoadFile</a></div><div class="ttdeci">bool LoadFile(std::string file, std::string arguments=&quot;mipmap&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="__resource_8cpp_source.html#l00200">_resource.cpp:200</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 26 de Marzo de 2014 21:38:12 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:17 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

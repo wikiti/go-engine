@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,6 +39,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
       <li><a href="files.html"><span>Archivos</span></a></li>
@@ -72,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +94,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!--header-->
 <div class="contents">
 
+<p>Estructura de datos para representar un color.<br/>
+  
+ <a href="structcolor__t.html#details">Más...</a></p>
+
 <p><code>#include &lt;<a class="el" href="__globals_8h_source.html">_globals.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -106,38 +113,23 @@ Atributos públicos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Estructura de datos para representar un color.<br/>
-</p>
+ </p>
 <p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un byte sin signo (0...255). </p>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00191">191</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 </div><h2 class="groupheader">Documentación de los datos miembro</h2>
-<a class="anchor" id="a34ba6f7c03b5596c954bbfd47ccc67e5"></a>
+<a class="anchor" id="acc956560696401e4924359d1b1377e57"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> color_t::a</td>
+          <td class="memname"><a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> color_t::r</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Componente alpha del color. Valor entre 0 y 255. </p>
+<p>Componente roja del color. Valor entre 0 y 255. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00196">196</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a1782d6f8a4154c30a79612a97503edf4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> color_t::b</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Componente azul del color. Valor entre 0 y 255. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00195">195</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00193">193</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -156,18 +148,33 @@ Atributos públicos</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acc956560696401e4924359d1b1377e57"></a>
+<a class="anchor" id="a1782d6f8a4154c30a79612a97503edf4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> color_t::r</td>
+          <td class="memname"><a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> color_t::b</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Componente roja del color. Valor entre 0 y 255. </p>
+<p>Componente azul del color. Valor entre 0 y 255. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00193">193</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00195">195</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a34ba6f7c03b5596c954bbfd47ccc67e5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a> color_t::a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Componente alpha del color. Valor entre 0 y 255. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00196">196</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -177,7 +184,7 @@ Atributos públicos</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 26 de Marzo de 2014 21:38:15 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:23 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,6 +39,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -70,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -142,16 +145,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Clases</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeneral__exception.html">general_exception</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo personalizado de excepción. Se caracteriza por almacenar el fichero y la línea desde el lugar en el que se lanzó la excepción.  <a href="classgeneral__exception.html#details">Más...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolor__t.html">color_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura de datos para representar un color.<br/>
+  <a href="structcolor__t.html#details">Más...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html">colorf_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura de datos para representar un color.<br/>
+  <a href="structcolorf__t.html#details">Más...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviewport__t.html">viewport_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura para representar un "viewport" o una fracción de pantalla.  <a href="structviewport__t.html#details">Más...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviewportf__t.html">viewportf_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura para representar un "viewport" o una fracción de pantalla.  <a href="structviewportf__t.html#details">Más...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvector3f__t.html">vector3f_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector tridimensional.  <a href="structvector3f__t.html#details">Más...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -162,14 +173,20 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 'defines'</h2></td></tr>
-<tr class="memitem:a25cffc64bd967636d69d7c3c82af1030"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a25cffc64bd967636d69d7c3c82af1030">THROW</a>(exceptionClass, message)&#160;&#160;&#160;throw exceptionClass(__FILE__, __LINE__, (message) )</td></tr>
+<tr class="memitem:a25cffc64bd967636d69d7c3c82af1030"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25cffc64bd967636d69d7c3c82af1030"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a25cffc64bd967636d69d7c3c82af1030">THROW</a>(exceptionClass, message)&#160;&#160;&#160;throw exceptionClass(__FILE__, __LINE__, (message) )</td></tr>
+<tr class="memdesc:a25cffc64bd967636d69d7c3c82af1030"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definición de excepción para devolver una excepción en una determinada línea. <br/></td></tr>
 <tr class="separator:a25cffc64bd967636d69d7c3c82af1030"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a525335710b53cb064ca56b936120431e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a525335710b53cb064ca56b936120431e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>_USE_MATH_DEFINES</b></td></tr>
 <tr class="separator:a525335710b53cb064ca56b936120431e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a306bd7f1837c18e24ba5a7ed1596dbe2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a306bd7f1837c18e24ba5a7ed1596dbe2">_RAD_TO_DEG</a>(x)&#160;&#160;&#160;x * ( 180  / M_PI )</td></tr>
+<tr class="memitem:a306bd7f1837c18e24ba5a7ed1596dbe2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a306bd7f1837c18e24ba5a7ed1596dbe2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a306bd7f1837c18e24ba5a7ed1596dbe2">_RAD_TO_DEG</a>(x)&#160;&#160;&#160;x * ( 180  / M_PI )</td></tr>
+<tr class="memdesc:a306bd7f1837c18e24ba5a7ed1596dbe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro para pasar de radianes a grados. <br/></td></tr>
 <tr class="separator:a306bd7f1837c18e24ba5a7ed1596dbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a808a7418bc50a1583e1d2a07db11ae6e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a808a7418bc50a1583e1d2a07db11ae6e">_DEG_TO_RAD</a>(x)&#160;&#160;&#160;x * ( M_PI / 180  )</td></tr>
+<tr class="memitem:a808a7418bc50a1583e1d2a07db11ae6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a808a7418bc50a1583e1d2a07db11ae6e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a808a7418bc50a1583e1d2a07db11ae6e">_DEG_TO_RAD</a>(x)&#160;&#160;&#160;x * ( M_PI / 180  )</td></tr>
+<tr class="memdesc:a808a7418bc50a1583e1d2a07db11ae6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro para pasar de grados a radianes. <br/></td></tr>
 <tr class="separator:a808a7418bc50a1583e1d2a07db11ae6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a816ab7d5c2ce1f0a01216042837beb93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a816ab7d5c2ce1f0a01216042837beb93"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>GLM_FORCE_RADIANS</b></td></tr>
@@ -192,193 +209,72 @@ Namespaces</h2></td></tr>
 <tr class="memitem:a0e446f42da28aa4a1f2ff0ac14b8444b"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> )(void)</td></tr>
 <tr class="separator:a0e446f42da28aa4a1f2ff0ac14b8444b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ab832cb1976fa552f7ae0b53abe157c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structcolor__t.html">color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a0ab832cb1976fa552f7ae0b53abe157c">color_t</a></td></tr>
+<tr class="memdesc:a0ab832cb1976fa552f7ae0b53abe157c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura de datos para representar un color.<br/>
+  <a href="#a0ab832cb1976fa552f7ae0b53abe157c">Más...</a><br/></td></tr>
 <tr class="separator:a0ab832cb1976fa552f7ae0b53abe157c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a039a04605406728d342c96f5b4774df6"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structcolorf__t.html">colorf_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a039a04605406728d342c96f5b4774df6">colorf_t</a></td></tr>
+<tr class="memdesc:a039a04605406728d342c96f5b4774df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura de datos para representar un color.<br/>
+  <a href="#a039a04605406728d342c96f5b4774df6">Más...</a><br/></td></tr>
 <tr class="separator:a039a04605406728d342c96f5b4774df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af955708f63d26a82d9479842d4582558"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structviewport__t.html">viewport_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#af955708f63d26a82d9479842d4582558">viewport_t</a></td></tr>
+<tr class="memdesc:af955708f63d26a82d9479842d4582558"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura para representar un "viewport" o una fracción de pantalla.  <a href="#af955708f63d26a82d9479842d4582558">Más...</a><br/></td></tr>
 <tr class="separator:af955708f63d26a82d9479842d4582558"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48314186dae4d92f0d660fe3872a8bf1"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structviewportf__t.html">viewportf_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a48314186dae4d92f0d660fe3872a8bf1">viewportf_t</a></td></tr>
+<tr class="memdesc:a48314186dae4d92f0d660fe3872a8bf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura para representar un "viewport" o una fracción de pantalla.  <a href="#a48314186dae4d92f0d660fe3872a8bf1">Más...</a><br/></td></tr>
 <tr class="separator:a48314186dae4d92f0d660fe3872a8bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa250b1dedabea51e27f641d879926b0f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvector3f__t.html">vector3f_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></td></tr>
+<tr class="memdesc:aa250b1dedabea51e27f641d879926b0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector tridimensional.  <a href="#aa250b1dedabea51e27f641d879926b0f">Más...</a><br/></td></tr>
 <tr class="separator:aa250b1dedabea51e27f641d879926b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funciones</h2></td></tr>
 <tr class="memitem:a36a166e3ee3df3c74d173ec59c2faf77"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utils.html#a36a166e3ee3df3c74d173ec59c2faf77">Utils::string_generate_random_alphanumeric</a> (<a class="el" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> n=4)</td></tr>
+<tr class="memdesc:a36a166e3ee3df3c74d173ec59c2faf77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generador de cadenas aleatorias.  <a href="#a36a166e3ee3df3c74d173ec59c2faf77">Más...</a><br/></td></tr>
 <tr class="separator:a36a166e3ee3df3c74d173ec59c2faf77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad546bc517e486f5fd3a39eaa247935e8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a> (std::string &amp;str)</td></tr>
+<tr class="memdesc:ad546bc517e486f5fd3a39eaa247935e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cadena a minúsculas.  <a href="#ad546bc517e486f5fd3a39eaa247935e8">Más...</a><br/></td></tr>
 <tr class="separator:ad546bc517e486f5fd3a39eaa247935e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5e6a3d3b984a2994202d33010f8d9c7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utils.html#ab5e6a3d3b984a2994202d33010f8d9c7">Utils::string_to_upper</a> (std::string &amp;str)</td></tr>
+<tr class="memdesc:ab5e6a3d3b984a2994202d33010f8d9c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cadena a mayúsculas.  <a href="#ab5e6a3d3b984a2994202d33010f8d9c7">Más...</a><br/></td></tr>
 <tr class="separator:ab5e6a3d3b984a2994202d33010f8d9c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84d2ba3906cdcbd0003ecbbac926563a"><td class="memItemLeft" align="right" valign="top">SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a> (std::string s)</td></tr>
+<tr class="memdesc:a84d2ba3906cdcbd0003ecbbac926563a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga de imágenes con SDL.  <a href="#a84d2ba3906cdcbd0003ecbbac926563a">Más...</a><br/></td></tr>
 <tr class="separator:a84d2ba3906cdcbd0003ecbbac926563a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4957bab738ebb9b504f4abfe9ff6a7bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utils.html#a4957bab738ebb9b504f4abfe9ff6a7bb">Utils::validateIdentifier</a> (std::string identifier)</td></tr>
+<tr class="memdesc:a4957bab738ebb9b504f4abfe9ff6a7bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprobador de validez de identificadores.  <a href="#a4957bab738ebb9b504f4abfe9ff6a7bb">Más...</a><br/></td></tr>
 <tr class="separator:a4957bab738ebb9b504f4abfe9ff6a7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a6b57f01d3c576db5368dd0efc2f435a4"><td class="memItemLeft" align="right" valign="top">SDL_Event&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a6b57f01d3c576db5368dd0efc2f435a4">event</a></td></tr>
+<tr class="memdesc:a6b57f01d3c576db5368dd0efc2f435a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace:  <a href="#a6b57f01d3c576db5368dd0efc2f435a4">Más...</a><br/></td></tr>
 <tr class="separator:a6b57f01d3c576db5368dd0efc2f435a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc07e5fd038fd64b08080064d80a3ed7"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#adc07e5fd038fd64b08080064d80a3ed7">ERROR_RENDER</a> [] = &quot;Render error&quot;</td></tr>
+<tr class="memitem:adc07e5fd038fd64b08080064d80a3ed7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc07e5fd038fd64b08080064d80a3ed7"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#adc07e5fd038fd64b08080064d80a3ed7">ERROR_RENDER</a> [] = &quot;Render error&quot;</td></tr>
+<tr class="memdesc:adc07e5fd038fd64b08080064d80a3ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Título de error de renderizado para "message boxes". Véase CSystem_Debug::msg_box. <br/></td></tr>
 <tr class="separator:adc07e5fd038fd64b08080064d80a3ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d470c3e2db920debdd2f758bcc04dfa"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a3d470c3e2db920debdd2f758bcc04dfa">ERROR_INIT</a> [] = &quot;Init error&quot;</td></tr>
+<tr class="memitem:a3d470c3e2db920debdd2f758bcc04dfa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d470c3e2db920debdd2f758bcc04dfa"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a3d470c3e2db920debdd2f758bcc04dfa">ERROR_INIT</a> [] = &quot;Init error&quot;</td></tr>
+<tr class="memdesc:a3d470c3e2db920debdd2f758bcc04dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Título de error de inicialización para "message boxes". Véase CSystem_Debug::msg_box. <br/></td></tr>
 <tr class="separator:a3d470c3e2db920debdd2f758bcc04dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba655f18e0b894189a8bb3462ee7748e"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a> [] = &quot;Init fatal error&quot;</td></tr>
+<tr class="memitem:aba655f18e0b894189a8bb3462ee7748e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba655f18e0b894189a8bb3462ee7748e"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a> [] = &quot;Init fatal error&quot;</td></tr>
+<tr class="memdesc:aba655f18e0b894189a8bb3462ee7748e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Título de error fatal de inicialización para "message boxes". Véase CSystem_Debug::msg_box. <br/></td></tr>
 <tr class="separator:aba655f18e0b894189a8bb3462ee7748e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeeb59a4d0721c8fdb5534ab519f650f3"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#aeeb59a4d0721c8fdb5534ab519f650f3">ERROR_FATAL</a> [] = &quot;Fatal error&quot;</td></tr>
+<tr class="memitem:aeeb59a4d0721c8fdb5534ab519f650f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeeb59a4d0721c8fdb5534ab519f650f3"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#aeeb59a4d0721c8fdb5534ab519f650f3">ERROR_FATAL</a> [] = &quot;Fatal error&quot;</td></tr>
+<tr class="memdesc:aeeb59a4d0721c8fdb5534ab519f650f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Título de error fatal para "message boxes". Véase CSystem_Debug::msg_box. <br/></td></tr>
 <tr class="separator:aeeb59a4d0721c8fdb5534ab519f650f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31a7c4993d803b30b8f098497f7080b4"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a31a7c4993d803b30b8f098497f7080b4">ERROR_FILE</a> [] = &quot;File error&quot;</td></tr>
+<tr class="memitem:a31a7c4993d803b30b8f098497f7080b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31a7c4993d803b30b8f098497f7080b4"></a>
+const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__globals_8h.html#a31a7c4993d803b30b8f098497f7080b4">ERROR_FILE</a> [] = &quot;File error&quot;</td></tr>
+<tr class="memdesc:a31a7c4993d803b30b8f098497f7080b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Título de error de fichero para "message boxes". Véase CSystem_Debug::msg_box. <br/></td></tr>
 <tr class="separator:a31a7c4993d803b30b8f098497f7080b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Estructuras y métodos globales. </p>
 
 <p>Definición en el archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-</div><h2 class="groupheader">Documentación de los 'defines'</h2>
-<a class="anchor" id="a808a7418bc50a1583e1d2a07db11ae6e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _DEG_TO_RAD</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;x * ( M_PI / 180  )</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Macro para pasar de grados a radianes. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00078">78</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a306bd7f1837c18e24ba5a7ed1596dbe2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _RAD_TO_DEG</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;x * ( 180  / M_PI )</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Macro para pasar de radianes a grados. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00073">73</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a25cffc64bd967636d69d7c3c82af1030"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define THROW</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">exceptionClass, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">message&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;throw exceptionClass(__FILE__, __LINE__, (message) )</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Definición de excepción para devolver una excepción en una determinada línea. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00032">32</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Documentación de los 'typedefs'</h2>
-<a class="anchor" id="a0ab832cb1976fa552f7ae0b53abe157c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structcolor__t.html">color_t</a>  <a class="el" href="structcolor__t.html">color_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Estructura de datos para representar un color.<br/>
-</p>
-<p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un byte sin signo (0...255). </p>
-
-</div>
-</div>
-<a class="anchor" id="a039a04605406728d342c96f5b4774df6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structcolorf__t.html">colorf_t</a>  <a class="el" href="structcolorf__t.html">colorf_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Estructura de datos para representar un color.<br/>
-</p>
-<p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un flotante sin signo (0...1).</p>
-<p>No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
-
-</div>
-</div>
-<a class="anchor" id="a0e446f42da28aa4a1f2ff0ac14b8444b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef bool(* fboolpointer)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tipo para representar un puntero a función del tipo "bool f()". </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00175">175</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a02b593633ae68595bb0e96c8b0e06405"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef unsigned int <a class="el" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tipo para representar flags u opciones. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00170">170</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8dac3662b9da40f244308408f05c0e7e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* fpointer)(void)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tipo para representar un puntero a función del tipo "void f()". </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00174">174</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
+</div><h2 class="groupheader">Documentación de los 'typedefs'</h2>
 <a class="anchor" id="acb1903f2f2f7ed4502a5f53615cff8aa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -409,18 +305,18 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5dd4f281954ce1405c92d62a427f839a"></a>
+<a class="anchor" id="a02b593633ae68595bb0e96c8b0e06405"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef unsigned char <a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a></td>
+          <td class="memname">typedef unsigned int <a class="el" href="__globals_8h.html#a02b593633ae68595bb0e96c8b0e06405">flags_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Tipo para representar un byte sin signo. </p>
+<p>Tipo para representar flags u opciones. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00172">172</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00170">170</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -439,21 +335,81 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa250b1dedabea51e27f641d879926b0f"></a>
+<a class="anchor" id="a5dd4f281954ce1405c92d62a427f839a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structvector3f__t.html">vector3f_t</a>  <a class="el" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></td>
+          <td class="memname">typedef unsigned char <a class="el" href="__globals_8h.html#a5dd4f281954ce1405c92d62a427f839a">ubyte</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Vector tridimensional.</p>
-<p>Estructura que representa un vector de flotantes con 3 componentes:</p>
-<div class="fragment"><div class="line"> (x, y, z)</div>
-<div class="line">* </div>
-</div><!-- fragment --><p>Véase <a href="http://es.wikipedia.org/wiki/Vector">http://es.wikipedia.org/wiki/Vector</a></p>
-<p>Con esta clase, se puede hace gran variedad de operaciones. Para una mayor variedad, véase la clase <a class="el" href="class_c_system___math.html">CSystem_Math</a>. </p>
+<p>Tipo para representar un byte sin signo. </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00172">172</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8dac3662b9da40f244308408f05c0e7e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* fpointer)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tipo para representar un puntero a función del tipo "void f()". </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00174">174</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0e446f42da28aa4a1f2ff0ac14b8444b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef bool(* fboolpointer)(void)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Tipo para representar un puntero a función del tipo "bool f()". </p>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00175">175</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ab832cb1976fa552f7ae0b53abe157c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structcolor__t.html">color_t</a>  <a class="el" href="structcolor__t.html">color_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Estructura de datos para representar un color.<br/>
+ </p>
+<p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un byte sin signo (0...255). </p>
+
+</div>
+</div>
+<a class="anchor" id="a039a04605406728d342c96f5b4774df6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structcolorf__t.html">colorf_t</a>  <a class="el" href="structcolorf__t.html">colorf_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Estructura de datos para representar un color.<br/>
+ </p>
+<p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un flotante sin signo (0...1).</p>
+<p>No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
 
 </div>
 </div>
@@ -466,7 +422,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Estructura para representar un "viewport" o una fracción de pantalla.</p>
+
+<p>Estructura para representar un "viewport" o una fracción de pantalla. </p>
 <p><a href="http://en.wikipedia.org/wiki/Viewport">http://en.wikipedia.org/wiki/Viewport</a></p>
 <p>Un viewport no es más que una abstracción de una "ventana" o portal desde la ventana de nuestro programa hasta el mundo en 3D de la aplicación. Básicamente, es una porción de pantalla (definida por una posición y un tamaño) en la que se dibujarán ciertos elementos del juego.</p>
 <p>En una ventana, un viewport se define más o menos así:</p>
@@ -492,8 +449,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Estructura para representar un "viewport" o una fracción de pantalla.</p>
-<p><a href="http://en.wikipedia.org/wiki/Viewport">http://en.wikipedia.org/wiki/Viewport</a></p>
+
+<p>Estructura para representar un "viewport" o una fracción de pantalla. </p>
+<p>Véase <a href="http://en.wikipedia.org/wiki/Viewport">http://en.wikipedia.org/wiki/Viewport</a></p>
 <p>Un viewport no es más que una abstracción de una "ventana" o portal desde la ventana de nuestro programa hasta el mundo en 3D de la aplicación. Básicamente, es una porción de pantalla (definida por una posición y un tamaño) en la que se dibujarán ciertos elementos del juego.</p>
 <p>En una ventana, un viewport se define más o menos así:</p>
 <pre>
@@ -505,89 +463,31 @@ Variables</h2></td></tr>
 |        |_____________|       |
 |             width            |
 |______________________________|
-</pre><p>Se diferencia de <a class="el" href="structviewport__t.html">viewport_t</a> en que esta no usa píxeles para el tamaño, sino un valor flotante entre 0 y 1, siendo, para el ancho, "1" el ancho de la ventana, y para el alto, "1" el alto de la ventana.</p>
+</pre><p>Se diferencia de <a class="el" href="structviewport__t.html" title="Estructura para representar un &quot;viewport&quot; o una fracción de pantalla. ">viewport_t</a> en que esta no usa píxeles para el tamaño, sino un valor flotante entre 0 y 1, siendo, para el ancho, "1" el ancho de la ventana, y para el alto, "1" el alto de la ventana.</p>
 <p>Para más información, véase <a class="el" href="class_c_component___camera.html">CComponent_Camera</a> y <a class="el" href="class_c_system___render.html">CSystem_Render</a>. </p>
 
 </div>
 </div>
+<a class="anchor" id="aa250b1dedabea51e27f641d879926b0f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structvector3f__t.html">vector3f_t</a>  <a class="el" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vector tridimensional. </p>
+<p>Estructura que representa un vector de flotantes con 3 componentes:</p>
+<div class="fragment"><div class="line"> (x, y, z)</div>
+<div class="line">* </div>
+</div><!-- fragment --><p>Véase <a href="http://es.wikipedia.org/wiki/Vector">http://es.wikipedia.org/wiki/Vector</a></p>
+<p>Con esta clase, se puede hace gran variedad de operaciones. Para una mayor variedad, véase la clase <a class="el" href="class_c_system___math.html">CSystem_Math</a>. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Documentación de las variables</h2>
-<a class="anchor" id="aeeb59a4d0721c8fdb5534ab519f650f3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char ERROR_FATAL[] = &quot;Fatal error&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Título de error fatal para "message boxes". Véase CSystem_Debug::msg_box. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00156">156</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aba655f18e0b894189a8bb3462ee7748e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char ERROR_FATAL_INIT[] = &quot;Init fatal error&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Título de error fatal de inicialización para "message boxes". Véase CSystem_Debug::msg_box. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00152">152</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-<p>Referenciado por <a class="el" href="__engine_8cpp_source.html#l00017">CEngine::Init()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a31a7c4993d803b30b8f098497f7080b4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char ERROR_FILE[] = &quot;File error&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Título de error de fichero para "message boxes". Véase CSystem_Debug::msg_box. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00160">160</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a3d470c3e2db920debdd2f758bcc04dfa"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char ERROR_INIT[] = &quot;Init error&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Título de error de inicialización para "message boxes". Véase CSystem_Debug::msg_box. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00148">148</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="adc07e5fd038fd64b08080064d80a3ed7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char ERROR_RENDER[] = &quot;Render error&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Título de error de renderizado para "message boxes". Véase CSystem_Debug::msg_box. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00144">144</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a6b57f01d3c576db5368dd0efc2f435a4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -597,7 +497,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace:</p>
+
+<p>Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace: </p>
 <ol>
 <li>
 <a href="http://wiki.libsdl.org/SDL_Event">http://wiki.libsdl.org/SDL_Event</a></li>
@@ -605,12 +506,14 @@ Variables</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__globals_8cpp_source.html#l00003">3</a> del archivo <a class="el" href="__globals_8cpp_source.html">_globals.cpp</a>.</p>
 
+<p>Referenciado por <a class="el" href="__component__dummys_8cpp_source.html#l00111">CComponent_Dummy3::OnEvent()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 26 de Marzo de 2014 21:38:13 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:18 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

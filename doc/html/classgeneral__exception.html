@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -38,6 +39,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
       <li><a href="files.html"><span>Archivos</span></a></li>
@@ -72,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +94,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!--header-->
 <div class="contents">
 
+<p>Tipo personalizado de excepción. Se caracteriza por almacenar el fichero y la línea desde el lugar en el que se lanzó la excepción.  
+ <a href="classgeneral__exception.html#details">Más...</a></p>
+
 <p><code>#include &lt;<a class="el" href="__globals_8h_source.html">_globals.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagrama de herencias de general_exception</div>
@@ -104,10 +110,14 @@ Diagrama de herencias de general_exception</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:a81ac162261cdb50fb9e20ae9c7945741"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeneral__exception.html#a81ac162261cdb50fb9e20ae9c7945741">general_exception</a> (const char *FILE, int LINE, const char *REASON)</td></tr>
+<tr class="memdesc:a81ac162261cdb50fb9e20ae9c7945741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor principal de la excepción.  <a href="#a81ac162261cdb50fb9e20ae9c7945741">Más...</a><br/></td></tr>
 <tr class="separator:a81ac162261cdb50fb9e20ae9c7945741"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17d8cdca47f252c0365c4982538a93a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeneral__exception.html#a17d8cdca47f252c0365c4982538a93a6">~general_exception</a> ()  throw ()</td></tr>
+<tr class="memitem:a17d8cdca47f252c0365c4982538a93a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17d8cdca47f252c0365c4982538a93a6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeneral__exception.html#a17d8cdca47f252c0365c4982538a93a6">~general_exception</a> ()  throw ()</td></tr>
+<tr class="memdesc:a17d8cdca47f252c0365c4982538a93a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. No hace nada por defecto. <br/></td></tr>
 <tr class="separator:a17d8cdca47f252c0365c4982538a93a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94a11f479c950ebf385096aec6f6e8bf"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgeneral__exception.html#a94a11f479c950ebf385096aec6f6e8bf">what</a> () const   throw ()</td></tr>
+<tr class="memdesc:a94a11f479c950ebf385096aec6f6e8bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chivato de la excepción. Nos indica un mensaje descriptivo del error.  <a href="#a94a11f479c950ebf385096aec6f6e8bf">Más...</a><br/></td></tr>
 <tr class="separator:a94a11f479c950ebf385096aec6f6e8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
@@ -152,6 +162,7 @@ Métodos públicos</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Constructor principal de la excepción. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
@@ -163,38 +174,6 @@ Métodos públicos</h2></td></tr>
 </dl>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00051">51</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a17d8cdca47f252c0365c4982538a93a6"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">general_exception::~general_exception </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2"></td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Destructor. No hace nada por defecto. </p>
-
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00055">55</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -225,6 +204,7 @@ Métodos públicos</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Chivato de la excepción. Nos indica un mensaje descriptivo del error. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve una descripción en una string del error generado. </dd></dl>
 
@@ -238,7 +218,7 @@ Métodos públicos</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 26 de Marzo de 2014 21:38:17 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:25 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
