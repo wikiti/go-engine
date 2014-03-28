@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['enable',['Enable',['../class_c_game_object.html#ab9f1d9d26366145a2a7c6b26295b33c8',1,'CGameObject']]],
+  ['enable',['Enable',['../class_c_game_object.html#ab9f1d9d26366145a2a7c6b26295b33c8',1,'CGameObject::Enable()'],['../class_c_component.html#ab52088bae52a5e17b51f1a932f08c5e0',1,'CComponent::Enable()']]],
   ['error_5ffatal',['ERROR_FATAL',['../__globals_8h.html#aeeb59a4d0721c8fdb5534ab519f650f3',1,'_globals.h']]],
   ['error_5ffatal_5finit',['ERROR_FATAL_INIT',['../__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e',1,'_globals.h']]],
   ['error_5ffile',['ERROR_FILE',['../__globals_8h.html#a31a7c4993d803b30b8f098497f7080b4',1,'_globals.h']]],

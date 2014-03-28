@@ -1,5 +1,5 @@
 /**
- * @file
+ * @brief @file
  * @brief Estructura de los objeto "GameObject".
  */
 
@@ -10,20 +10,23 @@
 #include "_components.h"
 #include "systems/_debug.h"
 
+/** @addtogroup GameObjects */
+/*@{*/
+
 //namespace GO {
 
 // Inútil (de momento)
 /**
- * Enum sin uso.
+ * @brief Enum sin uso.
  */
 enum gameObject_flags { gof_none = 0x00, gof_render = 0x01, gof_event = 0x02, gof_kevent = 0x04, gof_loop = 0x08 };
 /**
- * Enum sin uso.
+ * @brief Enum sin uso.
  */
 enum gameObject_type {gameObject_empty = 0};//!< gameObject_empty
 
 /**
- * Puntero a función miembro de un game object.
+ * @brief Puntero a función miembro de un game object.
  *
  * El puntero se usará para funciones del tipo "void f(CGameObject* g)". Véase CGameObject::start,
  * CGameObject:: behaviour, CGameObject:: event_behaviour, CGameObject:: input_behaviour, CGameObject:: render.
@@ -41,11 +44,11 @@ typedef void (*function_t)(CGameObject* self);
 // -> O un flag tipo "null_object" en los objetos actuales que no haga nada en las funciones si el objeto es nulo.
 
 /**
- * Clase que representa a un objeto de juego.
+ * @brief Clase que representa a un objeto de juego.
  *
  * Para entender mejor esta parte que voy a explicar, recomiendo leer el artículo siguiente: http://www.genbetadev.com/programacion-de-videojuegos/diseno-de-videojuegos-orientado-a-entidades-y-componentes
  *
- * @image html diagrama1.png
+ * @image html gameObjects/diagrama1.png
  *
  * La unidad básica con la que trabajará nuestro motor gráfico de cara al usuario que desarrollará el juego será los objectos que realizarán una abstracción de cualquier cosa, a los que hemos llamado cariñosamente “Game Objects“. Un Game Object, por consiguiente, es la representación de una entidad en el mundo real. Cada objeto debe tener un nombre para referirnos a él ("coche1", "coche1_rueda1", etc.) y un identificador (que será usado de cara al sistema). Por ejemplo, un coche sería uno, y las ruedas que lo componen, también.
  *
@@ -129,7 +132,7 @@ class CGameObject
 
   public:
     /**
-     * Constructor principal.
+     * @brief Constructor principal.
      *
      * Construye un objeto "vacío" dado un nombre. Crear un objeto no implica que se añada al sistema gestor de objetos CSystem_GameObject_Manager.
      *
@@ -140,14 +143,14 @@ class CGameObject
     CGameObject(std::string name);
 
     /**
-     * Constructor vacío.
+     * @brief Constructor vacío.
      *
      * Crea un objeto vacío, sin propiedades y sin usar atributos. Usado principalmente para copias y pruebas.
      */
     CGameObject();
 
     /**
-     * Destructor principal.
+     * @brief Destructor principal.
      *
      * Desactiva por completo el objeto, además de eliminar todos sus componentes y atributos.
      */
@@ -157,7 +160,7 @@ class CGameObject
     }
 
     /**
-     * Iniciar el objeto.
+     * @brief Iniciar el objeto.
      *
      * Inicializa el gameObject, haciendo que pase a estar activado, además de añadir el componente CComponent_Transform (por si no ha sido añadido, claro).
      * Además, el objeto queda marcado como <b>iniciado</b> y como <b>activo.</b> Sólo podrá ser iniciado si no ha sido iniciado previamente, osi ha sido cerrado.
@@ -166,7 +169,7 @@ class CGameObject
       /** <span style="color: red; font-weight: bold;">Sin usar</span>. */
       virtual void InitCustom(){};
     /**
-     * Cerrar el objeto.
+     * @brief Cerrar el objeto.
      *
      * Una vez iniciado, el gameObject puede ser cerrado, eliminando todos sus <b>componentes</b> e <b>hijos</b>.  Además, el objeto es marcado como
      * <b>no iniciado</b> y como <b>desactivado</b>.
@@ -179,7 +182,7 @@ class CGameObject
     flags_t Get_flags() {return flags; } // Los flags sólo deberían ser maniplados por el objeto, no por el usuario
 
     /**
-     * Añadir un nuevo hijo.
+     * @brief Añadir un nuevo hijo.
      *
      * Añade un nuevo hijo al objeto actual dado otro objeto existente, siempre y cuando sea posible.
      * Sólo se podrá añadir un hijo si el padre no es hijo de alguno de los hijos del objeto a añadir, o si el onjeto no es idéntico al objeto a añadir.
@@ -192,7 +195,7 @@ class CGameObject
      */
     bool AddChild(CGameObject* child);
     /**
-     * Añadir una lista de hijos.
+     * @brief Añadir una lista de hijos.
      *
      * Dada una lista de hijos, se pueden añadir al objeto actual todos los hijos de la lista.
      * Se intentará añadir hijo a hijo todos los posibles que esten en la lista, siempre y cuando cumplan las condiciones de CGameObject::AddChild().
@@ -216,7 +219,7 @@ class CGameObject
     //bool AddChildren(const std::initializer_list<CGameObject*>& init) { return }
 
     /**
-     * Eliminar un hijo.
+     * @brief Eliminar un hijo.
      *
      * Elimina un hijo del objeto de juego.
      * @warning El hijo será eliminado de la lista de hijos, pero no será borrado del sistema. Esto es, no se llamará a CGameObject::Close() ni se hará un **delete**.
@@ -225,7 +228,7 @@ class CGameObject
      */
     bool RemoveChild(std::string name);
     /**
-     * Eliminar a todos los hijos.
+     * @brief Eliminar a todos los hijos.
      *
      * Elimina a todos los hijos del objeto actual.
      * @warning Los hijos serám eliminados de la lista de hijos, pero no serám borrados del sistema. Esto es, no se llamará a CGameObject::Close() ni se harán **delete**.
@@ -233,7 +236,7 @@ class CGameObject
     void RemoveChildren();
 
     /**
-     * Obtener un puntero a un hijo.
+     * @brief Obtener un puntero a un hijo.
      *
      * Dado un nombre de un hijo, retorna un puntero a la estructura de datos que representa a ese hijo.
      * @param name Nombre del objeto a obtener.
@@ -241,7 +244,7 @@ class CGameObject
      */
     CGameObject* GetChild(std::string name);
     /**
-     * Obtiene un puntero a un hijo.
+     * @brief Obtiene un puntero a un hijo.
      *
      * Dado un índice, se accederá a un hijo que ocupe dicho índice. Los hijos serán ordenados por orden alfabético (funcionamiento de un std::map).
      * @param index Valor entre 0 y el número de hijos actual. Véase CGameObject::GetNumChildren().
@@ -249,7 +252,7 @@ class CGameObject
      */
     CGameObject* GetChild(uint index);
     /**
-     * Número de hijos.
+     * @brief Número de hijos.
      *
      * Retorna el número de hijos del objeto actual.
      * @return Número de hijos del objeto actual (tamaño de la lista de hijos).
@@ -257,7 +260,7 @@ class CGameObject
     inline uint GetNumChildren(){return children.size();}
 
     /**
-     * Obtener el padre.
+     * @brief Obtener el padre.
      *
      * @return Retorna un puntero al padre que lleva a este hijo. Si es huérfano, devolverá NULL.
      */
@@ -267,7 +270,7 @@ class CGameObject
     }
 
     /**
-     * Elimina el padre.
+     * @brief Elimina el padre.
      *
      * Si el objeto tiene un padre, tratará de volverse huérfano, eliminando el puntero a su padre, y limpiando la referencia del padre al hijo en el padre.
      */
@@ -277,7 +280,7 @@ class CGameObject
     }
 
     /**
-     * Cambiar el callback "start".
+     * @brief Cambiar el callback "start".
      *
      * Cambia el puntero del callback **Start**, que será una función que se llamará al iniciar el objeto.
      * @param f Puntero a función externa. Si es NULL, suponemos que no se usará ningún callback.
@@ -288,7 +291,7 @@ class CGameObject
     }
 
     /**
-     * Cambiar el callback "behaviour".
+     * @brief Cambiar el callback "behaviour".
      *
      * Cambia el puntero del callback **Behaviour**, que será una función que se llamará en cada iteración del juego (actualización constante).
      * @param f Puntero a función externa. Si es NULL, suponemos que no se usará ningún callback.
@@ -299,7 +302,7 @@ class CGameObject
     }
 
     /**
-     * Cambiar el callback "event".
+     * @brief Cambiar el callback "event".
      *
      * Cambia el puntero del callback **Event**, que será una función que se llamará cada vez que se produzca un evento.
      * @param f Puntero a función externa. Si es NULL, suponemos que no se usará ningún callback.
@@ -310,7 +313,7 @@ class CGameObject
     }
 
     /**
-     * Cambiar el callback "input".
+     * @brief Cambiar el callback "input".
      *
      * Cambia el puntero del callback **Event**, que será una función que se llamará en cada iteración del juego, que procesará datos de entrada (teclado, retón, joystick...). Véase CSystem_UserInput.
      * @param f Puntero a función externa. Si es NULL, suponemos que no se usará ningún callback.
@@ -321,7 +324,7 @@ class CGameObject
     }
 
     /**
-     * Cambiar el callback "render".
+     * @brief Cambiar el callback "render".
      *
      * Cambia el puntero del callback **Render**, que será una función que se llamará en cada iteración del juego, a la hora de dibujar el objeto por pantalla.
      * @param f Puntero a función externa. Si es NULL, suponemos que no se usará ningún callback.
@@ -332,7 +335,7 @@ class CGameObject
     }
 
     /**
-     * LLama al callback **Start**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.Init().
+     * @brief LLama al callback **Start**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.Init().
      */
     inline void CallStartFunction()
     {
@@ -340,7 +343,7 @@ class CGameObject
     }
 
     /**
-     * LLama al callback **Behaviour**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.OnLoop().
+     * @brief LLama al callback **Behaviour**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.OnLoop().
      */
     inline void CallBehaviourFunction()
     {
@@ -349,7 +352,7 @@ class CGameObject
 
 
     /**
-     * LLama al callback *Event**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.OnEvent().
+     * @brief LLama al callback *Event**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.OnEvent().
      */
     inline void CallEventFunction()
     {
@@ -358,7 +361,7 @@ class CGameObject
 
 
     /**
-     * LLama al callback **Input**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.OnInput().
+     * @brief LLama al callback **Input**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.OnInput().
      */
     inline void CallInputFunction()
     {
@@ -366,7 +369,7 @@ class CGameObject
     }
 
     /**
-     * LLama al callback **Render**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.OnRender().
+     * @brief LLama al callback **Render**, siempre y cuando no sea NULL. Será llamado de manera automática desde CGameObject.OnRender().
      */
     inline void CallRenderFunction()
     {
@@ -375,7 +378,7 @@ class CGameObject
 
   public:
     /**
-     * Registrar un objeto en el sistema.
+     * @brief Registrar un objeto en el sistema.
      *
      * Registra un objeto de juego en la lista de objetos globales, administrado por el sistema CSystem_GameObject_Manager.
      * Un objeto no podrá ser añadido si ya existe un objeto con su nombre, o si su identificador es inválido (véase Utils::validateIdentifier).
@@ -383,7 +386,7 @@ class CGameObject
      */
     int AddToSystem();
     /**
-     * Elimina un objeto del sistema.
+     * @brief Elimina un objeto del sistema.
      *
      * Elimina un objeto de la lista de objetos globales, administrado por el sistema CSystem_GameObject_Manager.
      * Un objeto no podrá ser eliminado si no está registrado.
@@ -392,35 +395,46 @@ class CGameObject
     bool RemoveFromSystem();
 
     /**
-     * Gestor de eventos.
+     * @brief Gestor de eventos.
      *
      * Función para gestionar los eventos del objeto y de todos sus componentes. Será llamado desde CSystem_GameObject_Manager::OnEvent(), al principio de cada iteración.
      *
      * Si el objeto no está en modo **activo** e **iniciado**, no se llamará a esta función.
+     *
+     * @warning Esta función no debe ser llamada de manera explícita.
      */
     void OnEvent();
     /**
-     * Gestor de entrada.
+     * @brief Gestor de entrada.
      *
      * Función para gestionar la entrada (ratón, teclado, etc.) y de todos sus componentes. Será llamado desde CSystem_GameObject_Manager::OnInput(), después de CSystem_GameObject_Manager::OnEvent().
      *
      * Si el objeto no está en modo **activo** e **iniciado**, no se llamará a esta función.
+     *
+     * @warning Esta función no debe ser llamada de manera explícita.
      */
     void OnInput();
     /**
-     * Gestor de comportamientos.
+     * @brief Gestor de comportamientos.
      *
      * Función para gestionar el comportamiento del objeto y de todos sus componentesen cada iteración. Será llamado desde CSystem_GameObject_Manager::OnLoop(), después de CSystem_GameObject_Manager::OnInput().
      *
      * Si el objeto no está en modo **activo** e **iniciado**, no se llamará a esta función.
+     *
+     * @warning Esta función no debe ser llamada de manera explícita.
      */
     void OnLoop();
     /**
-     * Gestor de renderizado.
+     * @brief Gestor de renderizado.
      *
      * Función para gestionar el dibujado del objeto y de todos sus componentes. Será llamado desde CSystem_GameObject_Manager::OnRender(), después de CSystem_GameObject_Manager::OnLoop().
      *
      * Si el objeto no está en modo **activo** e **iniciado**, no se llamará a esta función.
+     *
+     * @param projMatrix       Matriz de proyección actual (interno al sistema).
+     * @param modelViewMatrix  Matriz de modelo-vista (modelview) actual (interno al sistema).
+     *
+     * @warning Esta función no debe ser llamada de manera explícita.
      */
     void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
     //void OnRenderDebug();
@@ -446,7 +460,7 @@ class CGameObject
   public:
 
     /**
-     * Getter del nombre del objeto.
+     * @brief Getter del nombre del objeto.
      * @return Nombre del objeto. Si está registrado en el sistema, se asegura de que es un identificador válido.
      */
     inline std::string GetName()
@@ -454,7 +468,7 @@ class CGameObject
       return name;
     }
     /**
-     * Getter del identificador del objeto en el sistema.
+     * @brief Getter del identificador del objeto en el sistema.
      * @return Si está registrado, el identificador tiene un valor mayor o igual que 0. En otro caso, vale -1.
      */
     inline int GetID()
@@ -463,21 +477,21 @@ class CGameObject
     }
 
     /**
-     * Activa el objeto.
+     * @brief Activa el objeto.
      *
      * Cambia el estado del objeto actual por **activo**.
      * @param recursive Si es true, se activarán todos sus hijos de manera recursiva. En caso contrario, sólo se activará el objeto actual.
      */
     void Enable(bool recursive = false);
     /**
-     * Desactiva el objeto.
+     * @brief Desactiva el objeto.
      *
      * Cambia el estado del objeto actual por **desactivado**.
      * @param recursive Si es true, se desactivarán todos sus hijos de manera recursiva. En caso contrario, sólo se desactivará el objeto actual.
      */
     void Disable(bool recursive = false);
     /**
-     * Cambiar el estado del objeto.
+     * @brief Cambiar el estado del objeto.
      *
      * Cambia el estado del objeto actual por el estado especificado por "state" (true -> **activo**, false -> **desactivado**.
      *
@@ -487,7 +501,7 @@ class CGameObject
     void SetState(bool state, bool recursive = false);
 
     /**
-     * Preservar el objeto entre estancias.
+     * @brief Preservar el objeto entre estancias.
      *
      * Un objeto se conoce como que está preservado si mantiene sus datos intactos entre los cambios de estancia. Básicamente, son objetos que
      * no será borrados al cambiar de estancia o nivel, y que permanecerá con el mismo nombre y el mismo contenido que en su última estancia.
@@ -497,7 +511,7 @@ class CGameObject
      */
     void Preserve(bool recursive = false);
     /**
-     * No preservar el objeto entre estancias.
+     * @brief No preservar el objeto entre estancias.
      *
      * Antónimo de CGameObject::Preserve().
      *
@@ -506,7 +520,7 @@ class CGameObject
      */
     void UnPreserve(bool recursive = false);
     /**
-     * Cambiar preservación del objeto entre estancias.
+     * @brief Cambiar preservación del objeto entre estancias.
      *
      * Combina CGameObject::Preserve() y CGameObject::UnPreserve().
      *
@@ -518,7 +532,7 @@ class CGameObject
     void SetPreserve(bool state, bool recursive = false);
 
     /**
-     * Preguntar si el objeto está **activado**.
+     * @brief Preguntar si el objeto está **activado**.
      *
      * @return Retorna true si el objeto está **activado**. false en caso contrario.
      */
@@ -527,7 +541,7 @@ class CGameObject
       return enabled;
     }
     /**
-     * Preguntar si el objeto está **iniciado**.
+     * @brief Preguntar si el objeto está **iniciado**.
      *
      * @return Retorna true si el objeto está **iniciado**. false en caso contrario.
      */
@@ -537,7 +551,7 @@ class CGameObject
     }
 
     /**
-     * Preguntar si el objeto está marcado como **preservado**.
+     * @brief Preguntar si el objeto está marcado como **preservado**.
      *
      * @return Retorna true si el objeto está marcado como **preservado**. false en caso contrario.
      */
@@ -547,7 +561,7 @@ class CGameObject
     }
 
     /**
-     * Comprobador de cercanía.
+     * @brief Comprobador de cercanía.
      *
      * Dado otro objeto, el objeto actual y una distancia, se comprobará si la distancia entre el origen de ambos objetos es menor a la distancia propuesta. Se usará la función de distancia euclídea.
      * @param go Otro objeto.
@@ -558,7 +572,7 @@ class CGameObject
 
     /* PLANTILLAS */
     /**
-     * Obtener componente.
+     * @brief Obtener componente.
      *
      * Dada la función plantilla actual, se podrá obtener un componente seleccionado, siempre y cuando exista.
      *
@@ -575,7 +589,7 @@ class CGameObject
     Type* GetComponent();
 
     /**
-     * Obtener componente (genérico).
+     * @brief Obtener componente (genérico).
      *
      * Obtiene un componente del tipo "CComponent*", siempre y cuando exista el identificador del componente asociado.
      *
@@ -592,7 +606,7 @@ class CGameObject
     }
 
     /**
-     * Añadir un componente.
+     * @brief Añadir un componente.
      *
      * Dada la función plantilla actual, se podrá añadir un componente del tipo indicado, siempre y cuando exista.
      *
@@ -611,7 +625,7 @@ class CGameObject
     bool AddComponent();
 
     /**
-     * Eliminar un componente.
+     * @brief Eliminar un componente.
      *
      * Dada la función plantilla actual, se podrá eliminar un componente seleccionado, siempre y cuando exista en el objeto. El componente será destruido por completo.
      *
@@ -630,7 +644,7 @@ class CGameObject
     bool RemoveComponent();
 
     /**
-     * Cambiar el estado de un componente.
+     * @brief Cambiar el estado de un componente.
      *
      * Dada la función plantilla actual, se podrá cambiar el estado de un componente seleccionado, siempre y cuando exista, por **activado** o **desactivado**.
      *
@@ -662,7 +676,7 @@ class CGameObject
      */
 
     /**
-     * Acceso directo para el componente **transform** (CComponent_Transform).
+     * @brief Acceso directo para el componente **transform** (CComponent_Transform).
      *
      * Accede de manera sencilla al componente **transform**.
      *
@@ -685,7 +699,7 @@ class CGameObject
     }
 
     /**
-     * Acceso directo para el componente **camera** (CComponent_Camera).
+     * @brief Acceso directo para el componente **camera** (CComponent_Camera).
      *
      * Accede de manera sencilla al componente **camera**.
      *
@@ -711,7 +725,7 @@ class CGameObject
     }
 
     /**
-     * Acceso directo para el componente **mesh render** (CComponent_Mesh_render).
+     * @brief Acceso directo para el componente **mesh render** (CComponent_Mesh_render).
      *
      * Accede de manera sencilla al componente **mesh render**.
      *
@@ -737,7 +751,7 @@ class CGameObject
     }
 
     /**
-     * Acceso directo para el componente particle emitter (CComponent_Particle_Emitter).
+     * @brief Acceso directo para el componente particle emitter (CComponent_Particle_Emitter).
      *
      * Accede de manera sencilla al componente **particle emitter**.
      *
@@ -763,7 +777,7 @@ class CGameObject
     }
 
     /**
-     * Acceso directo para el componente **gui texture** (CComponent_GUI_Texture).
+     * @brief Acceso directo para el componente **gui texture** (CComponent_GUI_Texture).
      *
      * Accede de manera sencilla al componente **gui texture**.
      *
@@ -789,7 +803,7 @@ class CGameObject
     }
 
     /**
-     * Acceso directo para el componente **audio source** (CComponent_Audio_Source).
+     * @brief Acceso directo para el componente **audio source** (CComponent_Audio_Source).
      *
      * Accede de manera sencilla al componente **audio source**.
      *
@@ -882,6 +896,8 @@ output_t CGameObject::GetData()
 }
 
 //}
+
+/*@}*/
 
 #endif /* __OBJECT_H_ */
 

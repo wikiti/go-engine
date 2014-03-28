@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
       <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -72,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <p>Estructura de los objeto "GameObject".  
 <a href="#details">Más...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="__globals_8h_source.html">_globals.h</a>&quot;</code><br/>
-<code>#include &quot;_components.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="__components_8h_source.html">_components.h</a>&quot;</code><br/>
 <code>#include &quot;systems/_debug.h&quot;</code><br/>
 </div>
 <p><a href="__object_8h_source.html">Ir al código fuente de este archivo.</a></p>
@@ -107,16 +108,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Clases</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_game_object.html">CGameObject</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clase que representa a un objeto de juego.  <a href="class_c_game_object.html#details">Más...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 'typedefs'</h2></td></tr>
-<tr class="memitem:a61cbd31002da5cb26b8b993702c17cfe"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__object_8h.html#a61cbd31002da5cb26b8b993702c17cfe">function_t</a> )(<a class="el" href="class_c_game_object.html">CGameObject</a> *self)</td></tr>
-<tr class="separator:a61cbd31002da5cb26b8b993702c17cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61cbd31002da5cb26b8b993702c17cfe"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___game_objects.html#ga61cbd31002da5cb26b8b993702c17cfe">function_t</a> )(<a class="el" href="class_c_game_object.html">CGameObject</a> *self)</td></tr>
+<tr class="memdesc:ga61cbd31002da5cb26b8b993702c17cfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puntero a función miembro de un game object.  <a href="group___game_objects.html#ga61cbd31002da5cb26b8b993702c17cfe">Más...</a><br/></td></tr>
+<tr class="separator:ga61cbd31002da5cb26b8b993702c17cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumeraciones</h2></td></tr>
-<tr class="memitem:abc8e2fbdfa9775d0717d5a486312bade"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__object_8h.html#abc8e2fbdfa9775d0717d5a486312bade">gameObject_flags</a> { <br/>
+<tr class="memitem:gabc8e2fbdfa9775d0717d5a486312bade"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___game_objects.html#gabc8e2fbdfa9775d0717d5a486312bade">gameObject_flags</a> { <br/>
 &#160;&#160;<b>gof_none</b> = 0x00, 
 <b>gof_render</b> = 0x01, 
 <b>gof_event</b> = 0x02, 
@@ -125,74 +128,21 @@ Enumeraciones</h2></td></tr>
 &#160;&#160;<b>gof_loop</b> = 0x08
 <br/>
  }</td></tr>
-<tr class="separator:abc8e2fbdfa9775d0717d5a486312bade"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc32c5ef28f83ce5f6996e327f62a67a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__object_8h.html#abc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a> { <b>gameObject_empty</b> = 0
+<tr class="memdesc:gabc8e2fbdfa9775d0717d5a486312bade"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum sin uso. <br/></td></tr>
+<tr class="separator:gabc8e2fbdfa9775d0717d5a486312bade"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc32c5ef28f83ce5f6996e327f62a67a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___game_objects.html#gabc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a> { <b>gameObject_empty</b> = 0
  }</td></tr>
-<tr class="separator:abc32c5ef28f83ce5f6996e327f62a67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gabc32c5ef28f83ce5f6996e327f62a67a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum sin uso. <br/></td></tr>
+<tr class="separator:gabc32c5ef28f83ce5f6996e327f62a67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Estructura de los objeto "GameObject". </p>
 
 <p>Definición en el archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
-</div><h2 class="groupheader">Documentación de los 'typedefs'</h2>
-<a class="anchor" id="a61cbd31002da5cb26b8b993702c17cfe"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* function_t)(<a class="el" href="class_c_game_object.html">CGameObject</a> *self)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Puntero a función miembro de un game object.</p>
-<p>El puntero se usará para funciones del tipo "void f(CGameObject* g)". Véase CGameObject::start, <a class="el" href="class_c_game_object.html">CGameObject</a>:: behaviour, <a class="el" href="class_c_game_object.html">CGameObject</a>:: event_behaviour, <a class="el" href="class_c_game_object.html">CGameObject</a>:: input_behaviour, <a class="el" href="class_c_game_object.html">CGameObject</a>:: render.</p>
-<p>Se usará para guardar en el game object una serie de punteros a funciones externas para ser llamadas en determinados momentos, usando como referencia al objeto el parámetro "self".</p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">self</td><td>Referencia a un objeto dado. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00036">36</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Documentación de las enumeraciones</h2>
-<a class="anchor" id="abc8e2fbdfa9775d0717d5a486312bade"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="__object_8h.html#abc8e2fbdfa9775d0717d5a486312bade">gameObject_flags</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Enum sin uso. </p>
-
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00019">19</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="abc32c5ef28f83ce5f6996e327f62a67a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="__object_8h.html#abc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Enum sin uso. </p>
-
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00023">23</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 20:28:54 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:18 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

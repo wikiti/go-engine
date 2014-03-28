@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
       <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
       <li><a href="files.html"><span>Archivos</span></a></li>
@@ -74,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,21 +96,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!--header-->
 <div class="contents">
 
+<p>Estructura de datos para representar un color.<br/>
+  
+ <a href="structcolorf__t.html#details">Más...</a></p>
+
 <p><code>#include &lt;<a class="el" href="__globals_8h_source.html">_globals.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:a4db9e60ed265a1c7e1f930b2eecb4357"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html#a4db9e60ed265a1c7e1f930b2eecb4357">colorf_t</a> (GLfloat R=1.f, GLfloat G=1.f, GLfloat B=1.f, GLfloat A=1.f)</td></tr>
+<tr class="memdesc:a4db9e60ed265a1c7e1f930b2eecb4357"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor principal del color. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).  <a href="#a4db9e60ed265a1c7e1f930b2eecb4357">Más...</a><br/></td></tr>
 <tr class="separator:a4db9e60ed265a1c7e1f930b2eecb4357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2adf895965c84145be4866e69839e8c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html#a2adf895965c84145be4866e69839e8c1">operator()</a> (GLfloat _r=1.f, GLfloat _g=1.f, GLfloat _b=1.f, GLfloat _a=1.f)</td></tr>
+<tr class="memdesc:a2adf895965c84145be4866e69839e8c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador paréntesis. Se usa para cambiar el contenido del color (estética). No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).  <a href="#a2adf895965c84145be4866e69839e8c1">Más...</a><br/></td></tr>
 <tr class="separator:a2adf895965c84145be4866e69839e8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbde8c23e5102ac4761c0f7345f8b800"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcolorf__t.html">colorf_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html#afbde8c23e5102ac4761c0f7345f8b800">operator*</a> (GLfloat c)</td></tr>
+<tr class="memdesc:afbde8c23e5102ac4761c0f7345f8b800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicador de un color. Multiplica el color por un valor flotante dado, multiplicando todas las componentes por el valor. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).  <a href="#afbde8c23e5102ac4761c0f7345f8b800">Más...</a><br/></td></tr>
 <tr class="separator:afbde8c23e5102ac4761c0f7345f8b800"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f567256db7a7336bfaeffd4c4c970dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcolorf__t.html">colorf_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html#a6f567256db7a7336bfaeffd4c4c970dc">operator+=</a> (<a class="el" href="structcolorf__t.html">colorf_t</a> c)</td></tr>
+<tr class="memdesc:a6f567256db7a7336bfaeffd4c4c970dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador asignación-suma. Suma y asigna al color el valor c, sumando a todas las componentes el valor "c". No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).  <a href="#a6f567256db7a7336bfaeffd4c4c970dc">Más...</a><br/></td></tr>
 <tr class="separator:a6f567256db7a7336bfaeffd4c4c970dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf808b699da16d26dd4a9f5c1b581bf1"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html#abf808b699da16d26dd4a9f5c1b581bf1">to_a</a> ()</td></tr>
+<tr class="memdesc:abf808b699da16d26dd4a9f5c1b581bf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforma el color en un array de tamaño 4 de valores flotantes.  <a href="#abf808b699da16d26dd4a9f5c1b581bf1">Más...</a><br/></td></tr>
 <tr class="separator:abf808b699da16d26dd4a9f5c1b581bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af14da3dbc461fe04e993a5fb57a1bb25"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">str</a> ()</td></tr>
+<tr class="memdesc:af14da3dbc461fe04e993a5fb57a1bb25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Color a cadena.  <a href="#af14da3dbc461fe04e993a5fb57a1bb25">Más...</a><br/></td></tr>
 <tr class="separator:af14da3dbc461fe04e993a5fb57a1bb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -126,13 +137,15 @@ Atributos públicos</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Amigas</h2></td></tr>
 <tr class="memitem:a7fad74474ec14604ade63b900d19eb9e"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html#a7fad74474ec14604ade63b900d19eb9e">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="structcolorf__t.html">colorf_t</a> c)</td></tr>
+<tr class="memdesc:a7fad74474ec14604ade63b900d19eb9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de redirección de salida.  <a href="#a7fad74474ec14604ade63b900d19eb9e">Más...</a><br/></td></tr>
 <tr class="separator:a7fad74474ec14604ade63b900d19eb9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ffa07861adf319d4fa890c0299bf79e"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcolorf__t.html#a4ffa07861adf319d4fa890c0299bf79e">operator&gt;&gt;</a> (std::istream &amp;is, <a class="el" href="structcolorf__t.html">colorf_t</a> &amp;c)</td></tr>
+<tr class="memdesc:a4ffa07861adf319d4fa890c0299bf79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de redirección de entrada.  <a href="#a4ffa07861adf319d4fa890c0299bf79e">Más...</a><br/></td></tr>
 <tr class="separator:a4ffa07861adf319d4fa890c0299bf79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Estructura de datos para representar un color.<br/>
-</p>
+ </p>
 <p>El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un flotante sin signo (0...1).</p>
 <p>No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
 
@@ -181,6 +194,7 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Constructor principal del color. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
@@ -242,6 +256,7 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Operador paréntesis. Se usa para cambiar el contenido del color (estética). No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
@@ -280,6 +295,7 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Multiplicador de un color. Multiplica el color por un valor flotante dado, multiplicando todas las componentes por el valor. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
@@ -316,6 +332,7 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Operador asignación-suma. Suma y asigna al color el valor c, sumando a todas las componentes el valor "c". No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1). </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
@@ -351,7 +368,8 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Transforma el color en un array de tamaño 4 de valores flotantes.</p>
+
+<p>Transforma el color en un array de tamaño 4 de valores flotantes. </p>
 <p>Se podrán acceder a los elementos de la siguiente manera:</p>
 <div class="fragment"><div class="line"> <a class="code" href="structcolorf__t.html">colorf_t</a> color(1.0, 1.0, 1.0, 1.0);</div>
 <div class="line"> color.to_a()[0] = 0.5f; <span class="comment">// Componente roja</span></div>
@@ -385,7 +403,8 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Color a cadena.</p>
+
+<p>Color a cadena. </p>
 <p>Devuelve una representación en forma de std::string del color. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>std::string que almacena el color con el formato "r g b a", con cada elemento como un valor flotante. </dd></dl>
 
@@ -427,8 +446,9 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Operador de redirección de salida.</p>
-<p>Escribirá el color de la misma manera que en la función <a class="el" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">colorf_t::str()</a> </p>
+
+<p>Operador de redirección de salida. </p>
+<p>Escribirá el color de la misma manera que en la función <a class="el" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25" title="Color a cadena. ">colorf_t::str()</a> </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">os</td><td>Flujo de salida. </td></tr>
@@ -473,8 +493,9 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Operador de redirección de entrada.</p>
-<p>leerá el color de la misma manera que en la función <a class="el" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">colorf_t::str()</a> </p>
+
+<p>Operador de redirección de entrada. </p>
+<p>leerá el color de la misma manera que en la función <a class="el" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25" title="Color a cadena. ">colorf_t::str()</a> </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">is</td><td>Flujo de entrada. </td></tr>
@@ -502,7 +523,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00209">209</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
+<p>Referenciado por <a class="el" href="__component__particle__emitter_8cpp_source.html#l00380">CComponent_Particle_Emitter::OnLoop()</a>, <a class="el" href="__component__gui_8cpp_source.html#l00120">CComponent_GUI_Texture::OnRender()</a>, <a class="el" href="__component__mesh__render_8cpp_source.html#l00028">CComponent_Mesh_Render::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
 
 </div>
 </div>
@@ -519,7 +540,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00210">210</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
+<p>Referenciado por <a class="el" href="__component__particle__emitter_8cpp_source.html#l00380">CComponent_Particle_Emitter::OnLoop()</a>, <a class="el" href="__component__gui_8cpp_source.html#l00120">CComponent_GUI_Texture::OnRender()</a>, <a class="el" href="__component__mesh__render_8cpp_source.html#l00028">CComponent_Mesh_Render::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
 
 </div>
 </div>
@@ -536,7 +557,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00211">211</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
+<p>Referenciado por <a class="el" href="__component__particle__emitter_8cpp_source.html#l00380">CComponent_Particle_Emitter::OnLoop()</a>, <a class="el" href="__component__gui_8cpp_source.html#l00120">CComponent_GUI_Texture::OnRender()</a>, <a class="el" href="__component__mesh__render_8cpp_source.html#l00028">CComponent_Mesh_Render::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
 
 </div>
 </div>
@@ -553,7 +574,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00212">212</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
+<p>Referenciado por <a class="el" href="__component__particle__emitter_8cpp_source.html#l00380">CComponent_Particle_Emitter::OnLoop()</a>, <a class="el" href="__component__gui_8cpp_source.html#l00120">CComponent_GUI_Texture::OnRender()</a>, <a class="el" href="__component__mesh__render_8cpp_source.html#l00028">CComponent_Mesh_Render::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00231">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00244">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00254">operator+=()</a> y <a class="el" href="__globals_8h_source.html#l00290">str()</a>.</p>
 
 </div>
 </div>
@@ -563,7 +584,7 @@ Amigas</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 20:28:57 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:23 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

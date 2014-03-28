@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
       <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
       <li><a href="files.html"><span>Archivos</span></a></li>
@@ -74,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,11 +96,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!--header-->
 <div class="contents">
 
+<p>Estructura para representar un "viewport" o una fracción de pantalla.  
+ <a href="structviewport__t.html#details">Más...</a></p>
+
 <p><code>#include &lt;<a class="el" href="__globals_8h_source.html">_globals.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:a746123c45eaa1ab17b3209343cb3d057"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057">str</a> ()</td></tr>
+<tr class="memdesc:a746123c45eaa1ab17b3209343cb3d057"><td class="mdescLeft">&#160;</td><td class="mdescRight">Viewport a cadena.  <a href="#a746123c45eaa1ab17b3209343cb3d057">Más...</a><br/></td></tr>
 <tr class="separator:a746123c45eaa1ab17b3209343cb3d057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -116,12 +121,14 @@ Atributos públicos</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Amigas</h2></td></tr>
 <tr class="memitem:a3bf479ac69e1d113b04f8726b4807cb0"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviewport__t.html#a3bf479ac69e1d113b04f8726b4807cb0">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="structviewport__t.html">viewport_t</a> v)</td></tr>
+<tr class="memdesc:a3bf479ac69e1d113b04f8726b4807cb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de redirección de salida.  <a href="#a3bf479ac69e1d113b04f8726b4807cb0">Más...</a><br/></td></tr>
 <tr class="separator:a3bf479ac69e1d113b04f8726b4807cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe63c44b450960a89032f2c73ae51b7b"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviewport__t.html#abe63c44b450960a89032f2c73ae51b7b">operator&gt;&gt;</a> (std::istream &amp;is, <a class="el" href="structviewport__t.html">viewport_t</a> &amp;v)</td></tr>
+<tr class="memdesc:abe63c44b450960a89032f2c73ae51b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de redirección de entrada.  <a href="#abe63c44b450960a89032f2c73ae51b7b">Más...</a><br/></td></tr>
 <tr class="separator:abe63c44b450960a89032f2c73ae51b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Estructura para representar un "viewport" o una fracción de pantalla.</p>
+<div class="textblock"><p>Estructura para representar un "viewport" o una fracción de pantalla. </p>
 <p><a href="http://en.wikipedia.org/wiki/Viewport">http://en.wikipedia.org/wiki/Viewport</a></p>
 <p>Un viewport no es más que una abstracción de una "ventana" o portal desde la ventana de nuestro programa hasta el mundo en 3D de la aplicación. Básicamente, es una porción de pantalla (definida por una posición y un tamaño) en la que se dibujarán ciertos elementos del juego.</p>
 <p>En una ventana, un viewport se define más o menos así:</p>
@@ -158,7 +165,8 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Viewport a cadena.</p>
+
+<p>Viewport a cadena. </p>
 <p>Devuelve una representación en forma de std::string del viewport. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>std::string que almacena el los datos del viewport con el formato "x y width height", manteniendo su tipo original. </dd></dl>
 
@@ -200,8 +208,9 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Operador de redirección de salida.</p>
-<p>Escribirá el viewport de la misma manera que en la función <a class="el" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057">viewport_t::str()</a> </p>
+
+<p>Operador de redirección de salida. </p>
+<p>Escribirá el viewport de la misma manera que en la función <a class="el" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057" title="Viewport a cadena. ">viewport_t::str()</a> </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">os</td><td>Flujo de salida. </td></tr>
@@ -246,8 +255,9 @@ Amigas</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Operador de redirección de entrada.</p>
-<p>Leerá el viewport de la misma manera que en la función <a class="el" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057">viewport_t::str()</a> </p>
+
+<p>Operador de redirección de entrada. </p>
+<p>Leerá el viewport de la misma manera que en la función <a class="el" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057" title="Viewport a cadena. ">viewport_t::str()</a> </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">is</td><td>Flujo de entrada. </td></tr>
@@ -336,7 +346,7 @@ Amigas</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 20:29:01 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:26 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

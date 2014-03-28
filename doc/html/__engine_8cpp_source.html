@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
     <ul class="tablist">
       <li><a href="index.html"><span>Página&#160;principal</span></a></li>
       <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Clases</span></a></li>
       <li class="current"><a href="files.html"><span>Archivos</span></a></li>
@@ -72,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;engine/_engine.h&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;engine/_instance.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;_systems.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__systems_8h.html">_systems.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// User</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;instances.h&quot;</span></div>
@@ -204,15 +205,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  SDL_FreeSurface(icon);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
 <div class="ttc" id="class_c_engine_html"><div class="ttname"><a href="class_c_engine.html">CEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00012">_engine.h:12</a></div></div>
-<div class="ttc" id="__globals_8h_html_aba655f18e0b894189a8bb3462ee7748e"><div class="ttname"><a href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a></div><div class="ttdeci">const char ERROR_FATAL_INIT[]</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00152">_globals.h:152</a></div></div>
+<div class="ttc" id="__globals_8h_html_aba655f18e0b894189a8bb3462ee7748e"><div class="ttname"><a href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a></div><div class="ttdeci">const char ERROR_FATAL_INIT[]</div><div class="ttdoc">Título de error fatal de inicialización para &amp;quot;message boxes&amp;quot;. Véase CSystem_Debug::msg_box. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00152">_globals.h:152</a></div></div>
 <div class="ttc" id="class_c_instance_html"><div class="ttname"><a href="class_c_instance.html">CInstance</a></div><div class="ttdef"><b>Definition:</b> <a href="__instance_8h_source.html#l00006">_instance.h:6</a></div></div>
 <div class="ttc" id="class_c_engine_html_aa7faa1ed70d8ea96cd0ff4115469e987"><div class="ttname"><a href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987">CEngine::Init</a></div><div class="ttdeci">virtual bool Init(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00017">_engine.cpp:17</a></div></div>
 <div class="ttc" id="__globals_8h_html_a0e446f42da28aa4a1f2ff0ac14b8444b"><div class="ttname"><a href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a></div><div class="ttdeci">bool(* fboolpointer)(void)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00175">_globals.h:175</a></div></div>
-<div class="ttc" id="namespace_utils_html_a84d2ba3906cdcbd0003ecbbac926563a"><div class="ttname"><a href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a></div><div class="ttdeci">SDL_Surface * sdl_cargar_img(std::string s)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00040">_globals.cpp:40</a></div></div>
+<div class="ttc" id="__systems_8h_html"><div class="ttname"><a href="__systems_8h.html">_systems.h</a></div><div class="ttdoc">Fichero que incluye todos los tipos de sistemas. </div></div>
+<div class="ttc" id="namespace_utils_html_a84d2ba3906cdcbd0003ecbbac926563a"><div class="ttname"><a href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a></div><div class="ttdeci">SDL_Surface * sdl_cargar_img(std::string s)</div><div class="ttdoc">Carga de imágenes con SDL. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00040">_globals.cpp:40</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 27 de Marzo de 2014 20:28:49 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 28 de Marzo de 2014 22:33:13 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

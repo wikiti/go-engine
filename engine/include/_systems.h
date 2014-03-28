@@ -1,8 +1,6 @@
-/*
- * systems.h
- *
- *  Created on: 22/08/2013
- *      Author: Dani
+/**
+ * @file
+ * @brief Fichero que incluye todos los tipos de sistemas.
  */
 
 #ifndef __SYSTEMS_H_

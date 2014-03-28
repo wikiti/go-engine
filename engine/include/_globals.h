@@ -27,12 +27,12 @@
 #include <vector>
 
 /**
- * Definición de excepción para devolver una excepción en una determinada línea.
+ * @brief Definición de excepción para devolver una excepción en una determinada línea.
  */
 #define THROW(exceptionClass, message) throw exceptionClass(__FILE__, __LINE__, (message) )
 
 /**
- * Tipo personalizado de excepción. Se caracteriza por almacenar el fichero y la línea desde el lugar en el que se lanzó la excepción.
+ * @brief Tipo personalizado de excepción. Se caracteriza por almacenar el fichero y la línea desde el lugar en el que se lanzó la excepción.
  */
 class general_exception: public std::exception
 {
@@ -43,19 +43,19 @@ class general_exception: public std::exception
 
   public:
     /**
-     * Constructor principal de la excepción.
+     * @brief Constructor principal de la excepción.
      * @param FILE Fichero descriptor del lugar del error.
      * @param LINE Línea descriptora del lugar error.
      * @param REASON Razón descriptora del error.
      */
     general_exception(const char* FILE, int LINE, const char* REASON): line(LINE), file(FILE), reason(REASON){ }
     /**
-     * Destructor. No hace nada por defecto.
+     * @brief Destructor. No hace nada por defecto.
      */
     ~general_exception() throw(){};
 
     /**
-     * Chivato de la excepción. Nos indica un mensaje descriptivo del error.
+     * @brief Chivato de la excepción. Nos indica un mensaje descriptivo del error.
      * @return Devuelve una descripción en una string del error generado.
      */
     virtual const char* what() const throw()
@@ -66,14 +66,15 @@ class general_exception: public std::exception
     }
 };
 
+/** Usar defines de la librería <cmath>.*/
 #define _USE_MATH_DEFINES
 /**
- * Macro para pasar de radianes a grados.
+ * @brief Macro para pasar de radianes a grados.
  */
 #define _RAD_TO_DEG(x) x * ( 180  / M_PI )
 
 /**
- * Macro para pasar de grados a radianes.
+ * @brief Macro para pasar de grados a radianes.
  */
 #define _DEG_TO_RAD(x) x * ( M_PI / 180  )
 
@@ -101,7 +102,7 @@ class general_exception: public std::exception
 #include <SDL2/SDL_net.h>
 
 /**
- * Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace:
+ * @brief Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace:
  *
  * <ol><li>http://wiki.libsdl.org/SDL_Event</ol>
  *
@@ -119,6 +120,7 @@ extern SDL_Event event;
 #include <GL/SOIL.h>
 #include <GL/glu.h>
 
+/** Forzar el uso de radianes para glm.*/
 #define GLM_FORCE_RADIANS
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
@@ -139,23 +141,23 @@ extern SDL_Event event;
 /*_____ERRORS_CHARS____*/
 
 /**
- * Título de error de renderizado para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error de renderizado para "message boxes". Véase CSystem_Debug::msg_box.
  */
 const char ERROR_RENDER[] = "Render error";
 /**
- * Título de error de inicialización para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error de inicialización para "message boxes". Véase CSystem_Debug::msg_box.
  */
 const char ERROR_INIT[] = "Init error";
 /**
- * Título de error fatal de inicialización para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error fatal de inicialización para "message boxes". Véase CSystem_Debug::msg_box.
  */
 const char ERROR_FATAL_INIT[] = "Init fatal error";
 /**
- * Título de error fatal para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error fatal para "message boxes". Véase CSystem_Debug::msg_box.
  */
 const char ERROR_FATAL[] = "Fatal error";
 /**
- * Título de error de fichero para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error de fichero para "message boxes". Véase CSystem_Debug::msg_box.
  */
 const char ERROR_FILE[] = "File error";
 
@@ -184,7 +186,7 @@ typedef bool (*fboolpointer)(void); /**< Tipo para representar un puntero a func
 // Causante, objetivo, razón, instancia, etc...
 
 /**
- * Estructura de datos para representar un color.<br>
+ * @brief Estructura de datos para representar un color.<br>
  *
  * El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un byte sin signo (0...255).
  */
@@ -198,7 +200,7 @@ typedef struct color_t
 } color_t;
 
 /**
- * Estructura de datos para representar un color.<br>
+ * @brief Estructura de datos para representar un color.<br>
  *
  * El contenido será representado como un color en el espacio RGB, con formato "RGBA", siendo cada componente un flotante sin signo (0...1).
  *
@@ -213,7 +215,7 @@ typedef struct colorf_t
 
   //colorf_t(): r(1.f), g(1.f), b(1.f), a(1.f){};
   /**
-   * Constructor principal del color. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+   * @brief Constructor principal del color. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
    * @param R Componente roja del color.
    * @param G Componente verde del color.
    * @param B Componente azul del color.
@@ -222,7 +224,7 @@ typedef struct colorf_t
   colorf_t(GLfloat R = 1.f, GLfloat G = 1.f, GLfloat B = 1.f, GLfloat A = 1.f): r(R), g(G), b(B), a(A){};
 
   /**
-   * Operador paréntesis. Se usa para cambiar el contenido del color (estética). No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+   * @brief Operador paréntesis. Se usa para cambiar el contenido del color (estética). No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
    * @param _r Componente roja del color.
    * @param _g Componente verde del color.
    * @param _b Componente azul del color.
@@ -237,7 +239,7 @@ typedef struct colorf_t
   }
 
   /**
-   * Multiplicador de un color. Multiplica el color por un valor flotante dado, multiplicando todas las componentes por el valor. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+   * @brief Multiplicador de un color. Multiplica el color por un valor flotante dado, multiplicando todas las componentes por el valor. No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
    * @param c
    * @return
    */
@@ -247,7 +249,7 @@ typedef struct colorf_t
   }
 
   /**
-   * Operador asignación-suma. Suma y asigna al color el valor c, sumando a todas las componentes el valor "c".  No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
+   * @brief Operador asignación-suma. Suma y asigna al color el valor c, sumando a todas las componentes el valor "c".  No se comprobarán valores de entrada, asumiendo que se colocan de manera correcta (0...1).
    * @param c Valor flotante a sumar.
    * @return Devuelve el color en sí (referencia).
    */
@@ -262,7 +264,7 @@ typedef struct colorf_t
   }
 
   /**
-   * Transforma el color en un array de tamaño 4 de valores flotantes.
+   * @brief Transforma el color en un array de tamaño 4 de valores flotantes.
    *
    * Se podrán acceder a los elementos de la siguiente manera:
    *
@@ -282,7 +284,7 @@ typedef struct colorf_t
   }
 
   /**
-   * Color a cadena.
+   * @brief Color a cadena.
    *
    * Devuelve una representación en forma de std::string del color.
    * @return std::string que almacena el color con el formato "r g b a", con cada elemento como un valor flotante.
@@ -296,7 +298,7 @@ typedef struct colorf_t
   }
 
   /**
-   * Operador de redirección de salida.
+   * @brief Operador de redirección de salida.
    *
    * Escribirá el color de la misma manera que en la función colorf_t::str()
    * @param os Flujo de salida.
@@ -310,7 +312,7 @@ typedef struct colorf_t
   }
 
   /**
-   * Operador de redirección de entrada.
+   * @brief Operador de redirección de entrada.
    *
    * leerá el color de la misma manera que en la función colorf_t::str()
    * @param is Flujo de entrada.
@@ -326,7 +328,7 @@ typedef struct colorf_t
 } colorf_t;
 
 /**
- * Estructura para representar un "viewport" o una fracción de pantalla.
+ * @brief Estructura para representar un "viewport" o una fracción de pantalla.
  *
  * http://en.wikipedia.org/wiki/Viewport
  *
@@ -356,7 +358,7 @@ typedef struct viewport_t
     int height; /**< Alto del viewport, expresado en píxeles. */
 
     /**
-     * Operador de redirección de salida.
+     * @brief Operador de redirección de salida.
      *
      * Escribirá el viewport de la misma manera que en la función viewport_t::str()
      * @param os Flujo de salida.
@@ -370,7 +372,7 @@ typedef struct viewport_t
     }
 
     /**
-     * Operador de redirección de entrada.
+     * @brief Operador de redirección de entrada.
      *
      * Leerá el viewport de la misma manera que en la función viewport_t::str()
      * @param is Flujo de entrada.
@@ -384,7 +386,7 @@ typedef struct viewport_t
     }
 
     /**
-     * Viewport a cadena.
+     * @brief Viewport a cadena.
      *
      * Devuelve una representación en forma de std::string del viewport.
      * @return std::string que almacena el los datos del viewport con el formato "x y width height", manteniendo su tipo original.
@@ -400,9 +402,9 @@ typedef struct viewport_t
 } viewport_t;
 
 /**
- * Estructura para representar un "viewport" o una fracción de pantalla.
+ * @brief Estructura para representar un "viewport" o una fracción de pantalla.
  *
- * http://en.wikipedia.org/wiki/Viewport
+ * Véase http://en.wikipedia.org/wiki/Viewport
  *
  * Un viewport no es más que una abstracción de una "ventana" o portal desde la ventana de nuestro programa hasta el mundo en 3D de la aplicación.
  * Básicamente, es una porción de pantalla (definida por una posición y un tamaño) en la que se dibujarán ciertos elementos del juego.
@@ -433,7 +435,7 @@ typedef struct viewportf_t
     GLfloat height; /**< Alto del viewport, expresado en un valor del rango [0,1], siendo "1" el alto de la ventana (véase gSystem_Render.GetWindowSize()). */
 
     /**
-     * Operador de redirección de salida.
+     * @brief Operador de redirección de salida.
      *
      * Escribirá el viewport de la misma manera que en la función viewportf_t::str()
      * @param os Flujo de salida.
@@ -447,7 +449,7 @@ typedef struct viewportf_t
     }
 
     /**
-     * Operador de redirección de entrada.
+     * @brief Operador de redirección de entrada.
      *
      * Leerá el viewport de la misma manera que en la función viewportf_t::str()
      * @param is Flujo de entrada.
@@ -461,7 +463,7 @@ typedef struct viewportf_t
     }
 
     /**
-     * Viewport a cadena.
+     * @brief Viewport a cadena.
      *
      * Devuelve una representación en forma de std::string del viewport.
      * @return std::string que almacena el los datos del viewport con el formato "x y width height", manteniendo su tipo original.
@@ -477,7 +479,7 @@ typedef struct viewportf_t
 } viewportf_t;
 
 /**
- * Vector tridimensional.
+ * @brief Vector tridimensional.
  *
  * Estructura que representa un vector de flotantes con 3 componentes:
  *
@@ -496,13 +498,13 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   GLfloat z; /**< Componente "z" del vector, del tipo flotante, siendo la tercera componente. */
 
   /**
-   * Constructor sencillo.
+   * @brief Constructor sencillo.
    *
    * Crea el vector (0, 0, 0).
    */
   vector3f_t(): x(0), y(0), z(0) { };
   /**
-   * Constructor completo.
+   * @brief Constructor completo.
    *
    * Crea un vector a partir de 3 componentes (a, b, c), dando como resultado (x = a, y = b, z = c)
    * @param a Primera componente (x).
@@ -512,7 +514,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   vector3f_t(float a, float b, float c): x(a), y(b), z(c) { };
 
   /**
-   * Constructor de copia.
+   * @brief Constructor de copia.
    *
    * Copia un vector a partir de otro vector "v" del tipo vector3f_t, creando el vector (x = v.x, y = v.y, z = v.z).
    * @param v Vector para hacer la copia.
@@ -520,7 +522,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   vector3f_t(const vector3f_t& v): x(v.x), y(v.y), z(v.z) { };
 
   /**
-   * Constructor de copia.
+   * @brief Constructor de copia.
    *
    * Copia un vector a partir de otro vector "v" del tipo glm::vec3, creando el vector (x = v.x, y = v.y, z = v.z). Véase http://glm.g-truc.net/0.9.5/index.html
    * @param v
@@ -528,7 +530,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   vector3f_t(glm::vec3 v): x(v.x), y(v.y), z(v.z) { };
 
   /**
-   * Transformación a formato glm.
+   * @brief Transformación a formato glm.
    *
    * Transforma el vector al tipo glm::vec3 para que pueda ser procesado por la librería GLM.  Véase http://glm.g-truc.net/0.9.5/index.html
    * @return Devuelve un vector tridimensional de tipo glm::vec3 con el mismo contenido que el vector.
@@ -539,7 +541,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador suma.
+   * @brief Operador suma.
    *
    * Realiza la suma componente a componente del vector más el vector "v", dando como resultado (x + v.x, y + v.y, z + v.z).
    * @param v Vector a sumar.
@@ -554,7 +556,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
 
 
   /**
-   * Operador asignación-suma.
+   * @brief Operador asignación-suma.
    *
    * Realiza la suma componente a componente del vector más el vector "v", dando como resultado (x + v.x, y + v.y, z + v.z), y le asigna el valor al vector.
    * @param v Vector a sumar.
@@ -570,7 +572,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
 
 
   /**
-   * Operador resta.
+   * @brief Operador resta.
    *
    * Realiza la resta componente a componente del vector menos el vector "v", dando como resultado (x - v.x, y - v.y, z - v.z).
    * @param v Vector a restar.
@@ -586,7 +588,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador asignación-resta.
+   * @brief Operador asignación-resta.
    *
    * Realiza la resta componente a componente del vector menos el vector "v", dando como resultado (x + v.x, y + v.y, z + v.z), y le asigna el valor al vector.
    * @param v Vector a restar.
@@ -601,7 +603,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador de asignación.
+   * @brief Operador de asignación.
    *
    * Le asigna al vector actual los valores del vector "v", dando como resultado (v.x, v.y, v.z).
    * @param v Vector a copiar.
@@ -617,7 +619,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador producto (producto por un escalar).
+   * @brief Operador producto (producto por un escalar).
    *
    * Realiza la multiplicación componente a componente del vector por el escalar "value", dando como resultado (x*value, y*value, z*value).
    * @param value Escalar a multiplicar.
@@ -634,7 +636,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador asingación-producto (producto por un escalar).
+   * @brief Operador asingación-producto (producto por un escalar).
    *
    * Realiza la multiplicación componente a componente del vector por el escalar "value", dando como resultado (x*value, y*value, z*value), y le asigna el valor al vector.
    * @param value Escalar a multiplicar.
@@ -650,7 +652,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador de producto escalar.
+   * @brief Operador de producto escalar.
    *
    * Véase http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar
    * @param v Vector a multiplicar.
@@ -662,7 +664,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador división (división por un escalar).
+   * @brief Operador división (división por un escalar).
    *
    * Realiza la disivión componente a componente del vector entre el escalar "value", dando como resultado (x/value, y/value, z/value).
    * @param value Escalar a dividir.
@@ -679,7 +681,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador asingación-divisón (divisón por un escalar).
+   * @brief Operador asingación-divisón (divisón por un escalar).
    *
    * Realiza la división componente a componente del vector por el escalar "value", dando como resultado (x/value, y/value, z/value), y le asigna el valor al vector.
    * @param value Escalar a realizar la división.
@@ -695,7 +697,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
  /**
-  * Operador de producto cartesiano.
+  * @brief Operador de producto cartesiano.
   *
   * Véase http://es.wikipedia.org/wiki/Producto_cartesiano.
   * @param v Vector a multiplicar.
@@ -707,7 +709,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador paréntesis.
+   * @brief Operador paréntesis.
    *
    * Por estética, modifica los valores de un vector de manera sencilla, tal que:
    *
@@ -728,7 +730,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador de acceso.
+   * @brief Operador de acceso.
    *
    * Sirve para acceder a las componentes por índice. La asignación es:
    *
@@ -755,7 +757,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Producto escalar.
+   * @brief Producto escalar.
    *
    * Véase http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar
    * @param v Vector a multiplicar.
@@ -767,7 +769,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Producto cartesiano.
+   * @brief Producto cartesiano.
    *
    * Véase http://es.wikipedia.org/wiki/Producto_cartesiano.
    * @param v Vector a multiplicar.
@@ -796,7 +798,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador de redirección de salida.
+   * @brief Operador de redirección de salida.
    *
    * Escribirá el vector de la misma manera que en la función vector3f_t::str()
    * @param os Flujo de salida.
@@ -810,7 +812,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador de redirección de entrada.
+   * @brief Operador de redirección de entrada.
    *
    * Leerá el vector de la misma manera que en la función vector3f_t::str()
    * @param is Flujo de entrada.
@@ -824,7 +826,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Normalizar el vector
+   * @brief Normalizar el vector
    *
    * Hace que el módulo del vector valga "1" modifcando sus componentes. Véase http://es.wikipedia.org/wiki/Vector_unitario
    * @return Vector unitario del vector actual.
@@ -836,7 +838,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Vector "arriba"
+   * @brief Vector "arriba"
    *
    * Sencillamente, es el vector "Y" o (0, 1, 0). Véase CSystem_Math.Y_AXIS
    * @return Devuelve el vector (0, 1, 0)
@@ -847,7 +849,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Vector "adelante"
+   * @brief Vector "adelante"
    *
    * Sencillamente, es el vector "Z" o (0, 0, 10). Véase CSystem_Math.Z_AXIS
    * @return Devuelve el vector (0, 0, 1)
@@ -858,7 +860,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Vector "izquierda"
+   * @brief Vector "izquierda"
    *
    * Sencillamente, es el vector "Y" o (1, 01, 0). Véase CSystem_Math.X_AXIS
    * @return Devuelve el vector (1, 0, 0)
@@ -869,7 +871,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Precisión.
+   * @brief Precisión.
    *
    * Se utiliza para comparar si 2 puntos son equivalentes, dada una precisión decimal para cada componente.
    * Así, si el valor absoluto de la diferencia entre 2 vectores es menor que la precisión para cada componente, se dice que son iguales.
@@ -877,7 +879,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   static GLfloat precision;
 
   /**
-   * Vector absoluto
+   * @brief Vector absoluto
    *
    * Transforma cada componente para que sea positiva (valor absoluto).
    * @return Devuelve el vector transformado, tal que sea (|x|, |y|, |z|).
@@ -894,7 +896,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Operador de igualdad.
+   * @brief Operador de igualdad.
    *
    * Compara si dos vectores son iguales dada la precisión vector3f_t::precision
    * @param other Otro vector a comparar.
@@ -910,7 +912,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-    * Operador de desigualdad.
+    * @brief Operador de desigualdad.
     *
     * Compara si dos vectores son distintos dada la precisión vector3f_t::precision
     * @param other Otro vector a comparar.
@@ -922,7 +924,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Comparados de módulo.
+   * @brief Comparador de módulo.
    * @param other Vector a comparar.
    * @return true si el módulo del vector actual es menor que el módulo de other. false en otro caso.
    */
@@ -932,7 +934,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Comparados de módulo.
+   * @brief Comparador de módulo.
    * @param other Vector a comparar.
    * @return true si el módulo del vector actual es menor o igual que el módulo de other. false en otro caso.
    */
@@ -942,7 +944,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Comparados de módulo.
+   * @brief Comparador de módulo.
    * @param other Vector a comparar.
    * @return true si el módulo del vector actual es mayor que el módulo de other. false en otro caso.
    */
@@ -952,7 +954,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Comparados de módulo.
+   * @brief Comparador de módulo.
    * @param other Vector a comparar.
    * @return true si el módulo del vector actual es mayor o igual que el módulo de other. false en otro caso.
    */
@@ -962,7 +964,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Vector "arriba" rotado.
+   * @brief Vector "arriba" rotado.
    *
    * Data una rotación expresada por un cuaternión (véase), devuelve el vector "arriba" rotado por dicho cuaternión.
    *
@@ -979,7 +981,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Vector "izquierda" rotado.
+   * @brief Vector "izquierda" rotado.
    *
    * Data una rotación expresada por un cuaternión (véase), devuelve el vector "izquierda" rotado por dicho cuaternión.
    *
@@ -996,7 +998,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Vector "adelante" rotado.
+   * @brief Vector "adelante" rotado.
    *
    * Data una rotación expresada por un cuaternión (véase), devuelve el vector "adelante" rotado por dicho cuaternión.
    *
@@ -1013,7 +1015,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Distancia entre 2 puntos.
+   * @brief Distancia entre 2 puntos.
    *
    * Dado el vector actual como un punto, calcula la distancia entre el punto actual y el punto "v".
    * @param v Punto destino.
@@ -1025,7 +1027,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   }
 
   /**
-   * Vector a cadena
+   * @brief Vector a cadena
    *
    * Devuelve una representación en forma de std::string del vectorviewport.
    * @return std::string que almacena el los datos del vector con el formato "x y z", manteniendo su tipo original.
@@ -1047,7 +1049,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
 namespace Utils
 {
   /**
-   * Generador de cadenas aleatorias.
+   * @brief Generador de cadenas aleatorias.
    *
    * Genera una cadena de caracteres alfanuméricos ([0-9a-zA-Z]) de tamaño "n".
    * @param n Tamaño de la cadena a generar.
@@ -1056,7 +1058,7 @@ namespace Utils
   std::string string_generate_random_alphanumeric(uint n = 4);
 
   /**
-   * Cadena a minúsculas.
+   * @brief Cadena a minúsculas.
    *
    * Transforma los caracteres de una cadena de mayúsculas a minúsculas.
    * @param str Cadena a transformar.
@@ -1065,7 +1067,7 @@ namespace Utils
   std::string string_to_lower(std::string& str);
 
   /**
-   * Cadena a mayúsculas.
+   * @brief Cadena a mayúsculas.
    *
    * Transforma los caracteres de una cadena de minúsculas a mayúsculas.
    * @param str Cadena a transformar.
@@ -1074,7 +1076,7 @@ namespace Utils
   std::string string_to_upper(std::string& str);
 
   /**
-   * Carga de imágenes con SDL.
+   * @brief Carga de imágenes con SDL.
    *
    * Carga una imagen en formato SDL. Se usa solo para cargar el icono de la aplicación. Véase CEngine::SetIcon()
    * @param s Fichero que contiene la imagen.
@@ -1083,7 +1085,7 @@ namespace Utils
   SDL_Surface* sdl_cargar_img(std::string s);
 
   /**
-   * Comprobador de validez de identificadores.
+   * @brief Comprobador de validez de identificadores.
    *
    * Comprueba si un identificador es válido. Esto es, debe contener sólo caracteres alfanuméricos o guiones bajos ([0-9a-zA-Z_]).
    * @param identifier Cadena que representa un identificador a valida.
@@ -1094,7 +1096,6 @@ namespace Utils
   //void glhLookAtf2(glm::mat4& matrix, vector3f& eyePosition3D, vector3f& center3D, vector3f& upVector3D ); // http://www.opengl.org/wiki/GluLookAt_code
   //vector3f glComputeNormalOfPlane( vector3f& vec1, vector3f& vec2); // https://code.google.com/p/lightsimulator/source/browse/trunk/src/glutshadowmap.cpp?spec=svn133&r=133
 }
-
 
 /*typedef struct matrixf_t
 {
@@ -1156,5 +1157,22 @@ namespace Utils
 
 
 } matrixf;*/
+
+/*___Módulos_Doxygen__*/
+
+/** @defgroup GameObjects GameObjects
+ *  @brief Módulo que engloba los gameObjects. */
+
+/** @defgroup Componentes Componentes
+ *  @brief Módulo que engloba todos los componentes del motor.
+ *  @addtogroup GameObjects */
+
+/** @defgroup Sistemas Sistemas
+ *  @brief Módulo que engloba todos los sistemas del motor. */
+
+/** @defgroup Otros Otros
+ *  @brief Módulo que engloba otros elementos del motor. */
+
+
 
 #endif /* __GLOBALS_H_ */
