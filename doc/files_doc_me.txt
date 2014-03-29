@@ -3,7 +3,7 @@ engine\include\_globals.h                                   x
 engine\include\_object.h                                    x
 engine\include\_systems.h                                   x
 engine\include\components\_component.h                      x
-engine\include\components\_component_audio.h                
+engine\include\components\_component_audio.h                x
 engine\include\components\_component_camera.h               
 engine\include\components\_component_dummys.h               
 engine\include\components\_component_gui.h                  
