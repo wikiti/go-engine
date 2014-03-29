@@ -102,11 +102,9 @@ class general_exception: public std::exception
 #include <SDL2/SDL_net.h>
 
 /**
- * @brief Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. Para más información, véase el siguiente enlace:
+ * @brief Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2.
  *
- * <ol><li>http://wiki.libsdl.org/SDL_Event</ol>
- *
- *
+ * @see http://wiki.libsdl.org/SDL_Event
  */
 extern SDL_Event event;
 //extern const Uint8 *gKeyboardState;
@@ -141,23 +139,33 @@ extern SDL_Event event;
 /*_____ERRORS_CHARS____*/
 
 /**
- * @brief Título de error de renderizado para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error de renderizado para "message boxes".
+ *
+ * @see CSystem_Debug::msg_box()
  */
 const char ERROR_RENDER[] = "Render error";
 /**
- * @brief Título de error de inicialización para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error de inicialización para "message boxes".
+ *
+ * @see CSystem_Debug::msg_box()
  */
 const char ERROR_INIT[] = "Init error";
 /**
- * @brief Título de error fatal de inicialización para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error fatal de inicialización para "message boxes".
+ *
+ * @see CSystem_Debug::msg_box()
  */
 const char ERROR_FATAL_INIT[] = "Init fatal error";
 /**
- * @brief Título de error fatal para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error fatal para "message boxes".
+ *
+ * @see CSystem_Debug::msg_box()
  */
 const char ERROR_FATAL[] = "Fatal error";
 /**
- * @brief Título de error de fichero para "message boxes". Véase CSystem_Debug::msg_box.
+ * @brief Título de error de fichero para "message boxes".
+ *
+ * @see CSystem_Debug::msg_box()
  */
 const char ERROR_FILE[] = "File error";
 
@@ -348,7 +356,8 @@ typedef struct colorf_t
  * |______________________________|
  * </pre>
  *
- * Para más información, véase CComponent_Camera y CSystem_Render.
+ * @see CComponent_Camera
+ * @see CSystem_Render.
  */
 typedef struct viewport_t
 {
@@ -404,7 +413,7 @@ typedef struct viewport_t
 /**
  * @brief Estructura para representar un "viewport" o una fracción de pantalla.
  *
- * Véase http://en.wikipedia.org/wiki/Viewport
+ * @see http://en.wikipedia.org/wiki/Viewport
  *
  * Un viewport no es más que una abstracción de una "ventana" o portal desde la ventana de nuestro programa hasta el mundo en 3D de la aplicación.
  * Básicamente, es una porción de pantalla (definida por una posición y un tamaño) en la que se dibujarán ciertos elementos del juego.
@@ -424,7 +433,8 @@ typedef struct viewport_t
  *
  * Se diferencia de viewport_t en que esta no usa píxeles para el tamaño, sino un valor flotante entre 0 y 1, siendo, para el ancho, "1" el ancho de la ventana, y para el alto, "1" el alto de la ventana.
  *
- * Para más información, véase CComponent_Camera y CSystem_Render.
+ * @see CComponent_Camera
+ * @see CSystem_Render.
  */
 typedef struct viewportf_t
 {
@@ -483,13 +493,14 @@ typedef struct viewportf_t
  *
  * Estructura que representa un vector de flotantes con 3 componentes:
  *
- * @code
+ @code
   (x, y, z)
- * @endcode
+ @endcode
  *
- * Véase http://es.wikipedia.org/wiki/Vector
+ * Con esta clase, se puede hace gran variedad de operaciones.
  *
- * Con esta clase, se puede hace gran variedad de operaciones. Para una mayor variedad, véase la clase CSystem_Math.
+ * @see http://es.wikipedia.org/wiki/Vector
+ * @see CSystem_Math
  */
 typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Math, no en ámbito global. Difícil decisión...
 {
@@ -524,15 +535,19 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   /**
    * @brief Constructor de copia.
    *
-   * Copia un vector a partir de otro vector "v" del tipo glm::vec3, creando el vector (x = v.x, y = v.y, z = v.z). Véase http://glm.g-truc.net/0.9.5/index.html
-   * @param v
+   * Copia un vector a partir de otro vector "v" del tipo glm::vec3, creando el vector (x = v.x, y = v.y, z = v.z).
+   *
+   * @see http://glm.g-truc.net/0.9.5/index.html
+   * @param v Vector a copiar.
    */
   vector3f_t(glm::vec3 v): x(v.x), y(v.y), z(v.z) { };
 
   /**
    * @brief Transformación a formato glm.
    *
-   * Transforma el vector al tipo glm::vec3 para que pueda ser procesado por la librería GLM.  Véase http://glm.g-truc.net/0.9.5/index.html
+   * Transforma el vector al tipo glm::vec3 para que pueda ser procesado por la librería GLM.
+   *
+   * @see http://glm.g-truc.net/0.9.5/index.html
    * @return Devuelve un vector tridimensional de tipo glm::vec3 con el mismo contenido que el vector.
    */
   inline glm::vec3 to_glm()
@@ -654,7 +669,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   /**
    * @brief Operador de producto escalar.
    *
-   * Véase http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar
+   * @see http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar
    * @param v Vector a multiplicar.
    * @return Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v".
    */
@@ -699,7 +714,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
  /**
   * @brief Operador de producto cartesiano.
   *
-  * Véase http://es.wikipedia.org/wiki/Producto_cartesiano.
+  * @see http://es.wikipedia.org/wiki/Producto_cartesiano.
   * @param v Vector a multiplicar.
   * @return Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v".
   */
@@ -759,7 +774,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   /**
    * @brief Producto escalar.
    *
-   * Véase http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar
+   * @see http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar
    * @param v Vector a multiplicar.
    * @return Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v".
    */
@@ -771,7 +786,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   /**
    * @brief Producto cartesiano.
    *
-   * Véase http://es.wikipedia.org/wiki/Producto_cartesiano.
+   * @see http://es.wikipedia.org/wiki/Producto_cartesiano.
    * @param v Vector a multiplicar.
    * @return Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v".
    */
@@ -788,7 +803,9 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
 
   /** Módulo del vector
    *
-   * Devuelve el módulo del vector actual. Véase http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)
+   * Devuelve el módulo del vector actual.
+   *
+   * @see http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)
    *
    * @return Valor del módulo del vector. Si el valor es "1", se dice que el vector está <b>normalizado</b> o que es un vector <b>unitario</b>.
    */
@@ -828,7 +845,9 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   /**
    * @brief Normalizar el vector
    *
-   * Hace que el módulo del vector valga "1" modifcando sus componentes. Véase http://es.wikipedia.org/wiki/Vector_unitario
+   * Hace que el módulo del vector valga "1" modifcando sus componentes.
+   *
+   * @see http://es.wikipedia.org/wiki/Vector_unitario
    * @return Vector unitario del vector actual.
    */
   vector3f_t normalize()
@@ -840,7 +859,8 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   /**
    * @brief Vector "arriba"
    *
-   * Sencillamente, es el vector "Y" o (0, 1, 0). Véase CSystem_Math.Y_AXIS
+   * Sencillamente, es el vector "Y" o (0, 1, 0).
+   * @see CSystem_Math.Y_AXIS
    * @return Devuelve el vector (0, 1, 0)
    */
   vector3f_t up()
@@ -851,7 +871,8 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   /**
    * @brief Vector "adelante"
    *
-   * Sencillamente, es el vector "Z" o (0, 0, 10). Véase CSystem_Math.Z_AXIS
+   * Sencillamente, es el vector "Z" o (0, 0, 10).
+   * @see CSystem_Math.Z_AXIS
    * @return Devuelve el vector (0, 0, 1)
    */
   vector3f_t forward()
@@ -862,7 +883,8 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
   /**
    * @brief Vector "izquierda"
    *
-   * Sencillamente, es el vector "Y" o (1, 01, 0). Véase CSystem_Math.X_AXIS
+   * Sencillamente, es el vector "Y" o (1, 01, 0).
+   * @see CSystem_Math.X_AXIS
    * @return Devuelve el vector (1, 0, 0)
    */
   vector3f_t left()
@@ -968,7 +990,8 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
    *
    * Data una rotación expresada por un cuaternión (véase), devuelve el vector "arriba" rotado por dicho cuaternión.
    *
-   * Véase vector3f_t::up(), http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
+   * @see vector3f_t::up()
+   * @see http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
    * @param angle Cuaternión para aplicar la rotación.
    * @return Vector "arriba" rotado.
    */
@@ -985,7 +1008,8 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
    *
    * Data una rotación expresada por un cuaternión (véase), devuelve el vector "izquierda" rotado por dicho cuaternión.
    *
-   * Véase vector3f_t::left(), http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
+   * @see vector3f_t::left()
+   * @see http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
    * @param angle Cuaternión para aplicar la rotación.
    * @return Vector "izquierda" rotado.
    */
@@ -1002,7 +1026,8 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
    *
    * Data una rotación expresada por un cuaternión (véase), devuelve el vector "adelante" rotado por dicho cuaternión.
    *
-   * Véase vector3f_t::forward(), http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
+   * @see vector3f_t::forward()
+   * @see http://es.wikipedia.org/wiki/Cuaterni%C3%B3n
    * @param angle Cuaternión para aplicar la rotación.
    * @return Vector "adelante" rotado.
    */
@@ -1038,6 +1063,25 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
     ss << x << " " << y << " " << z;
 
     return ss.str();
+  }
+
+  /**
+   * @brief Transforma el vector en un array de tamaño 3 de valores flotantes.
+   *
+   * Se podrán acceder a los elementos de la siguiente manera:
+   *
+   * @code
+    vector3f v(1.0, 1.0, 1.0, 1.0);
+    v.to_a()[0] = 0.5f; // Componente x
+    v.to_a()[1] = 0.2f; // Componente y
+    v.to_a()[2] = 0.3f; // Componente z
+   * @endcode
+   *
+   * @return float* de tamaño 3, siendo una referencia al vector.
+   */
+  float* to_a()
+  {
+    return (float*)this;
   }
 
 } vector3f;
@@ -1078,7 +1122,9 @@ namespace Utils
   /**
    * @brief Carga de imágenes con SDL.
    *
-   * Carga una imagen en formato SDL. Se usa solo para cargar el icono de la aplicación. Véase CEngine::SetIcon()
+   * Carga una imagen en formato SDL. Se usa solo para cargar el icono de la aplicación.
+   *
+   * @see CEngine::SetIcon()
    * @param s Fichero que contiene la imagen.
    * @return Superficie de SDL con los datos de la imagen.
    */

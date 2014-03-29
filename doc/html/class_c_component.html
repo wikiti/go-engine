@@ -105,7 +105,7 @@ Diagrama de herencias de CComponent</div>
  <div class="center">
   <img src="class_c_component.png" usemap="#CComponent_map" alt=""/>
   <map id="CComponent_map" name="CComponent_map">
-<area href="class_c_component___audio___source.html" alt="CComponent_Audio_Source" shape="rect" coords="189,56,368,80"/>
+<area href="class_c_component___audio___source.html" title="Componente de audio. " alt="CComponent_Audio_Source" shape="rect" coords="189,56,368,80"/>
 <area href="class_c_component___camera.html" alt="CComponent_Camera" shape="rect" coords="189,112,368,136"/>
 <area href="class_c_component___dummy1.html" alt="CComponent_Dummy1" shape="rect" coords="189,168,368,192"/>
 <area href="class_c_component___dummy2.html" alt="CComponent_Dummy2" shape="rect" coords="189,224,368,248"/>
@@ -179,7 +179,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase abstracta de un componente. </p>
 <p>Se usará para representar y hacer de base a la hora de definir un componente.</p>
-<p>Véase <a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>.</dd></dl>
 <p>Un componente estará asociado a un único objeto de juego, ignorando completamente componentes compartidos (imposible implementarlos por la asociación bidireccional entre objeto y componente).</p>
 <p>Con respecto a la asociación de los componentes con un objeto de juego, usamos polimorfimos para ello. De cara a poder tener una gran variedad de componentes, sería lógico usar un vector de “componentes” (o CComponentes) con el fin de almacenar nuestros componentes únicos en un Game Object.</p>
 <div class="image">
@@ -228,7 +228,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 <p>Además, se creará un acceso directo en la clase GameObject (por ejemplo, CComponente_Transform* Transform() ) para cada componente, declarado, que actuará de la siguiente forma: si el componente existe, devuelve un puntero. Si no, crea el componente y lo devuelve. Así podemos garantizar que no se produzcan accesos indebidos a memoria por no comprobar la existencia de los componentes.</p>
 <dl class="section warning"><dt>Atención</dt><dd>Un componente debe crearse usando los métodos expuestos en la clase <a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>. En principio, no deberían usarse de manera explícita a la hora de operar (no hacemos un <em>new</em> de un componente). </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00143">143</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00148">148</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
 <a class="anchor" id="a26a0daf85e3fdc8f1194ad6370111ad2"></a>
 <div class="memitem">
@@ -278,11 +278,11 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
   </tr>
 </table>
 </div><div class="memdoc">
-<p><span style="color: red; font-weight: bold;">Sin usar</span>. </p>
+<p><span style="color:red;font-weight:bold;">Sin usar</span>. </p>
 
 <p>Reimplementado en <a class="el" href="class_c_component___camera.html#ade9da0ec5da5a07714022b9fef664d1f">CComponent_Camera</a> y <a class="el" href="class_c_component___transform.html#a59c8f52b15970b71119ac7dfd5bdb13f">CComponent_Transform</a>.</p>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00187">187</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00192">192</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -306,11 +306,11 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
   </tr>
 </table>
 </div><div class="memdoc">
-<p><span style="color: red; font-weight: bold;">Sin usar</span>. </p>
+<p><span style="color:red;font-weight:bold;">Sin usar</span>. </p>
 
 <p>Reimplementado en <a class="el" href="class_c_component___camera.html#ae400603475848984585f2fff79cf9a50">CComponent_Camera</a> y <a class="el" href="class_c_component___transform.html#a01323491eb763f4797c4c4b1d40147c7">CComponent_Transform</a>.</p>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00189">189</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00194">194</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -347,7 +347,8 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 </div><div class="memdoc">
 
 <p>Renderizar el componente. </p>
-<p>Función de renderizado. Renderiza el componente. Véase <a class="el" href="class_c_game_object.html#abd0483aefe0cf5e54fdf1ded80645660" title="Gestor de renderizado. ">CGameObject::OnRender()</a>. </p>
+<p>Función de renderizado. Renderiza el componente.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_game_object.html#abd0483aefe0cf5e54fdf1ded80645660" title="Gestor de renderizado. ">CGameObject::OnRender()</a>. </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">projMatrix</td><td>Matriz de proyección. Interna al sistema. </td></tr>
@@ -357,9 +358,9 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 </dl>
 <dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
 
-<p>Reimplementado en <a class="el" href="class_c_component___particle___emitter.html#a510a4373566c593dc08a67b8f3824a04">CComponent_Particle_Emitter</a>, <a class="el" href="class_c_component___dummy3.html#a43f8886afb3ad9ea864050296990f8e4">CComponent_Dummy3</a>, <a class="el" href="class_c_component___transform.html#a35656e7b04d9d8d17f16757145f3e83e">CComponent_Transform</a>, <a class="el" href="class_c_component___audio___source.html#a5fc01a048b23aa182ae5711c811c9f8a">CComponent_Audio_Source</a>, <a class="el" href="class_c_component___dummy2.html#ad5dff16a0e5c2fc19bc9ff3113e1261d">CComponent_Dummy2</a>, <a class="el" href="class_c_component___mesh___render.html#ac9f201ee0f39191f2a263a6d7ebbc2c1">CComponent_Mesh_Render</a>, <a class="el" href="class_c_component___g_u_i___texture.html#a94c7bc5f16b0e0fcc788cc34c508fae4">CComponent_GUI_Texture</a> y <a class="el" href="class_c_component___dummy1.html#a2cd35c98bc79bc839d6994ed934338c2">CComponent_Dummy1</a>.</p>
+<p>Reimplementado en <a class="el" href="class_c_component___audio___source.html#a5fc01a048b23aa182ae5711c811c9f8a">CComponent_Audio_Source</a>, <a class="el" href="class_c_component___particle___emitter.html#a510a4373566c593dc08a67b8f3824a04">CComponent_Particle_Emitter</a>, <a class="el" href="class_c_component___dummy3.html#a43f8886afb3ad9ea864050296990f8e4">CComponent_Dummy3</a>, <a class="el" href="class_c_component___transform.html#a35656e7b04d9d8d17f16757145f3e83e">CComponent_Transform</a>, <a class="el" href="class_c_component___dummy2.html#ad5dff16a0e5c2fc19bc9ff3113e1261d">CComponent_Dummy2</a>, <a class="el" href="class_c_component___mesh___render.html#ac9f201ee0f39191f2a263a6d7ebbc2c1">CComponent_Mesh_Render</a>, <a class="el" href="class_c_component___g_u_i___texture.html#a94c7bc5f16b0e0fcc788cc34c508fae4">CComponent_GUI_Texture</a> y <a class="el" href="class_c_component___dummy1.html#a2cd35c98bc79bc839d6994ed934338c2">CComponent_Dummy1</a>.</p>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00200">200</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00207">207</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -385,12 +386,13 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 </div><div class="memdoc">
 
 <p>Gestión del comportamiento. </p>
-<p>Función de comportamiento. Actualiza el componente. Véase <a class="el" href="class_c_game_object.html#accb893e0beb425e05a69d4b9b0da821b" title="Gestor de comportamientos. ">CGameObject::OnLoop()</a>.</p>
+<p>Función de comportamiento. Actualiza el componente.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_game_object.html#accb893e0beb425e05a69d4b9b0da821b" title="Gestor de comportamientos. ">CGameObject::OnLoop()</a>.</dd></dl>
 <dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
 
-<p>Reimplementado en <a class="el" href="class_c_component___particle___emitter.html#aed5be85de7dc442bfe74978e50c60ee3">CComponent_Particle_Emitter</a> y <a class="el" href="class_c_component___audio___source.html#a060e736bd5e0c7a9e7853dc26d82ac0d">CComponent_Audio_Source</a>.</p>
+<p>Reimplementado en <a class="el" href="class_c_component___audio___source.html#a060e736bd5e0c7a9e7853dc26d82ac0d">CComponent_Audio_Source</a> y <a class="el" href="class_c_component___particle___emitter.html#aed5be85de7dc442bfe74978e50c60ee3">CComponent_Particle_Emitter</a>.</p>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00208">208</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00217">217</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -416,12 +418,13 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 </div><div class="memdoc">
 
 <p>Gestión de eventos. </p>
-<p>Función de gestión de eventos. Gestiona eventos de entrada importantes para el componente. Véase <a class="el" href="class_c_game_object.html#a95ae4c569b748f198203019939e88994" title="Gestor de eventos. ">CGameObject::OnEvent()</a>.</p>
+<p>Función de gestión de eventos. Gestiona eventos de entrada importantes para el componente.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_game_object.html#a95ae4c569b748f198203019939e88994" title="Gestor de eventos. ">CGameObject::OnEvent()</a>.</dd></dl>
 <dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
 
 <p>Reimplementado en <a class="el" href="class_c_component___dummy3.html#ac91cabb84dac24117b9f4730f97692d4">CComponent_Dummy3</a>.</p>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00216">216</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00227">227</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -447,10 +450,11 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 </div><div class="memdoc">
 
 <p>Gestión de entrada. </p>
-<p>Función de gestión de entrada. Gestiona entradas importantes para el componente. Véase <a class="el" href="class_c_game_object.html#ab4fd9dbe8e1713646bf3a46b867602f4" title="Gestor de entrada. ">CGameObject::OnInput()</a>.</p>
+<p>Función de gestión de entrada. Gestiona entradas importantes para el componente.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_game_object.html#ab4fd9dbe8e1713646bf3a46b867602f4" title="Gestor de entrada. ">CGameObject::OnInput()</a>.</dd></dl>
 <dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00224">224</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00237">237</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -480,7 +484,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 <dl class="section warning"><dt>Atención</dt><dd>En algunos componentes es necesario que se actualicen algunos valores, por lo que el componente seguirá ejecutando ciertas funciones aunque esté desactivado.</dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Retorna true si está activado, false en caso contrario. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00239">239</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00252">252</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -515,7 +519,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
   </dd>
 </dl>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00251">251</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00264">264</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -543,7 +547,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 <p>Activa el componente. </p>
 <p>Cambia el estado del componente actual por <b>activado</b>. </p>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00261">261</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00274">274</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -571,7 +575,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 <p>Desactiva el componente. </p>
 <p>Cambia el estado del componente actual por <b>desactivado</b>. </p>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00271">271</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00284">284</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -600,7 +604,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 <p>Existe una relación bidireccional entre los gameObjects y los componentes que tienen. Por tanto, puede ser de utilidad obtener el objeto que tiene un componente actualmente, ya sea para acceder a algunos atributos del objeto en cuestión, o para acceder a otro componente. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve un puntero a un gameObject que tenga el componente. No debería ser NULL en ningún momento. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00283">283</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__component_8h_source.html#l00296">296</a> del archivo <a class="el" href="__component_8h_source.html">_component.h</a>.</p>
 
 </div>
 </div>
@@ -611,7 +615,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Components::c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 28 de Marzo de 2014 22:33:19 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 29 de Marzo de 2014 16:34:37 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

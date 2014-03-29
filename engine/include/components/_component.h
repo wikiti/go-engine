@@ -59,8 +59,13 @@ class CGameObject;
 /**
  * @brief Puntero a función miembro de un game object.
  *
- * El puntero se usará para funciones del tipo "void f(CGameObject* g)". Véase CGameObject::start,
- * CGameObject:: behaviour, CGameObject:: event_behaviour, CGameObject:: input_behaviour, CGameObject:: render.
+ * El puntero se usará para funciones del tipo "void f(CGameObject* g)".
+ *
+ * @see CGameObject::start
+ * @see CGameObject::behaviour
+ * @see CGameObject::event_behaviour
+ * @see CGameObject::input_behaviour
+ * @see CGameObject::render
  *
  * Se usará para guardar en el game object una serie de punteros a funciones externas para ser llamadas en determinados momentos,
  * usando como referencia al objeto el parámetro "self".
@@ -74,7 +79,7 @@ typedef void (*function_t)(CGameObject* self);
  *
  * Se usará para representar y hacer de base a la hora de definir un componente.
  *
- * Véase CGameObject.
+ * @see CGameObject.
  *
  * Un componente estará asociado a un único objeto de juego, ignorando completamente componentes compartidos (imposible implementarlos por la asociación bidireccional entre objeto y componente).
  *
@@ -183,15 +188,17 @@ class CComponent
      */
     virtual ~CComponent();
 
-    /** <span style="color: red; font-weight: bold;">Sin usar</span>. */
+    /** @no_use */
     virtual void Set(input_t data){};
-    /** <span style="color: red; font-weight: bold;">Sin usar</span>. */
+    /** @no_use */
     virtual output_t Get(){return NULL;};
 
     /**
      * @brief Renderizar el componente.
      *
-     * Función de renderizado. Renderiza el componente.  Véase CGameObject::OnRender().
+     * Función de renderizado. Renderiza el componente.
+     *
+     * @see CGameObject::OnRender().
      * @param projMatrix       Matriz de proyección. Interna al sistema.
      * @param modelViewMatrix  Matriz de modelview. Interna al sistema.
      *
@@ -201,7 +208,9 @@ class CComponent
     /**
      * @brief Gestión del comportamiento.
      *
-     * Función de comportamiento. Actualiza el componente. Véase CGameObject::OnLoop().
+     * Función de comportamiento. Actualiza el componente.
+     *
+     * @see CGameObject::OnLoop().
      *
      * @warning Esta función no debe ser llamada de manera explícita.
      */
@@ -209,7 +218,9 @@ class CComponent
     /**
      * @brief Gestión de eventos.
      *
-     * Función de gestión de eventos. Gestiona eventos de entrada importantes para el componente. Véase CGameObject::OnEvent().
+     * Función de gestión de eventos. Gestiona eventos de entrada importantes para el componente.
+     *
+     * @see CGameObject::OnEvent().
      *
      * @warning Esta función no debe ser llamada de manera explícita.
      */
@@ -217,7 +228,9 @@ class CComponent
     /**
      * @brief Gestión de entrada.
      *
-     * Función de gestión de entrada. Gestiona entradas importantes para el componente. Véase CGameObject::OnInput().
+     * Función de gestión de entrada. Gestiona entradas importantes para el componente.
+     *
+     * @see CGameObject::OnInput().
      *
      * @warning Esta función no debe ser llamada de manera explícita.
      */

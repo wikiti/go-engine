@@ -6,5 +6,6 @@ var searchData=
   ['addchildren',['AddChildren',['../class_c_game_object.html#aa39587c45dd82ac7931d8803dac5fcd1',1,'CGameObject']]],
   ['addcomponent',['AddComponent',['../group___game_objects.html#ga425c9d2f1035cad405db1606ea670669',1,'CGameObject']]],
   ['addtosystem',['AddToSystem',['../class_c_game_object.html#ad8e02d315ce61ba263dbe0fd83ff63e6',1,'CGameObject']]],
+  ['affected_5fby_5ftime',['affected_by_time',['../class_c_component___audio___source.html#a1bc1ac565acfb17a58bf7d211d40d393',1,'CComponent_Audio_Source']]],
   ['audiosource',['AudioSource',['../class_c_game_object.html#a5060aaabf3893fb7153b89ba264ec4d9',1,'CGameObject']]]
 ];

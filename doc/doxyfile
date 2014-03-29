@@ -2300,3 +2300,4 @@ DOT_CLEANUP = YES
 
 # Custom
 
+ALIASES += no_use="<span style="color:red;font-weight:bold;">Sin usar</span>."

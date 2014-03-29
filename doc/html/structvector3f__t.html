@@ -214,6 +214,9 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a10985a86bfc0c487962037fa9bc66190"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">str</a> ()</td></tr>
 <tr class="memdesc:a10985a86bfc0c487962037fa9bc66190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector a cadena.  <a href="#a10985a86bfc0c487962037fa9bc66190">Más...</a><br/></td></tr>
 <tr class="separator:a10985a86bfc0c487962037fa9bc66190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48761f9ae794dba8b4a7bcbb2e18ac08"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvector3f__t.html#a48761f9ae794dba8b4a7bcbb2e18ac08">to_a</a> ()</td></tr>
+<tr class="memdesc:a48761f9ae794dba8b4a7bcbb2e18ac08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforma el vector en un array de tamaño 3 de valores flotantes.  <a href="#a48761f9ae794dba8b4a7bcbb2e18ac08">Más...</a><br/></td></tr>
+<tr class="separator:a48761f9ae794dba8b4a7bcbb2e18ac08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atributos públicos</h2></td></tr>
@@ -242,12 +245,13 @@ Amigas</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Vector tridimensional. </p>
 <p>Estructura que representa un vector de flotantes con 3 componentes:</p>
-<div class="fragment"><div class="line"> (<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>)</div>
-<div class="line">* </div>
-</div><!-- fragment --><p>Véase <a href="http://es.wikipedia.org/wiki/Vector">http://es.wikipedia.org/wiki/Vector</a></p>
-<p>Con esta clase, se puede hace gran variedad de operaciones. Para una mayor variedad, véase la clase <a class="el" href="class_c_system___math.html">CSystem_Math</a>. </p>
+<div class="fragment"><div class="line">(<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, <a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, <a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>)</div>
+</div><!-- fragment --><p>Con esta clase, se puede hace gran variedad de operaciones.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://es.wikipedia.org/wiki/Vector">http://es.wikipedia.org/wiki/Vector</a> </dd>
+<dd>
+<a class="el" href="class_c_system___math.html">CSystem_Math</a> </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00492">492</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00505">505</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
 <a class="anchor" id="a7da999c7ce22a9054d5749ce2abc2160"></a>
 <div class="memitem">
@@ -273,9 +277,9 @@ Amigas</h2></td></tr>
 <p>Constructor sencillo. </p>
 <p>Crea el vector (0, 0, 0). </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00503">503</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00516">516</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00855">forward()</a>, <a class="el" href="__globals_8h_source.html#l00866">left()</a>, <a class="el" href="__globals_8h_source.html#l00832">normalize()</a> y <a class="el" href="__globals_8h_source.html#l00844">up()</a>.</p>
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00878">forward()</a>, <a class="el" href="__globals_8h_source.html#l00890">left()</a>, <a class="el" href="__globals_8h_source.html#l00853">normalize()</a> y <a class="el" href="__globals_8h_source.html#l00866">up()</a>.</p>
 
 </div>
 </div>
@@ -328,7 +332,7 @@ Amigas</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00512">512</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00525">525</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -363,7 +367,7 @@ Amigas</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00520">520</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00533">533</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -390,15 +394,16 @@ Amigas</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor de copia. </p>
-<p>Copia un vector a partir de otro vector "v" del tipo glm::vec3, creando el vector (x = v.x, y = v.y, z = v.z). Véase <a href="http://glm.g-truc.net/0.9.5/index.html">http://glm.g-truc.net/0.9.5/index.html</a> </p>
+<p>Copia un vector a partir de otro vector "v" del tipo glm::vec3, creando el vector (x = v.x, y = v.y, z = v.z).</p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://glm.g-truc.net/0.9.5/index.html">http://glm.g-truc.net/0.9.5/index.html</a> </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">v</td><td></td></tr>
+    <tr><td class="paramname">v</td><td>Vector a copiar. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00528">528</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00543">543</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -425,12 +430,13 @@ Amigas</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Transformación a formato glm. </p>
-<p>Transforma el vector al tipo glm::vec3 para que pueda ser procesado por la librería GLM. Véase <a href="http://glm.g-truc.net/0.9.5/index.html">http://glm.g-truc.net/0.9.5/index.html</a> </p>
+<p>Transforma el vector al tipo glm::vec3 para que pueda ser procesado por la librería GLM.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://glm.g-truc.net/0.9.5/index.html">http://glm.g-truc.net/0.9.5/index.html</a> </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve un vector tridimensional de tipo glm::vec3 con el mismo contenido que el vector. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00536">536</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00553">553</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -466,9 +472,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Suma de los vectores. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00548">548</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00565">565</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -504,9 +510,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00563">563</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00580">580</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -542,9 +548,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Resta de los vectores. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00579">579</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00596">596</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -580,9 +586,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00595">595</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00612">612</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -618,9 +624,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00610">610</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00627">627</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -656,9 +662,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Vector resultado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00626">626</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00643">643</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -694,9 +700,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00643">643</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00660">660</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -723,7 +729,7 @@ Amigas</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Operador de producto escalar. </p>
-<p>Véase <a href="http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar">http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar</a> </p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar">http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar</a> </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
@@ -732,9 +738,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v". </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00659">659</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00676">676</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00764">dot_product()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00781">dot_product()</a>.</p>
 
 </div>
 </div>
@@ -770,9 +776,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Vector resultado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00671">671</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00688">688</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -808,9 +814,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Referencia al vector modificado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00688">688</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00705">705</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -837,7 +843,7 @@ Amigas</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Operador de producto cartesiano. </p>
-<p>Véase <a href="http://es.wikipedia.org/wiki/Producto_cartesiano">http://es.wikipedia.org/wiki/Producto_cartesiano</a>. </p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://es.wikipedia.org/wiki/Producto_cartesiano">http://es.wikipedia.org/wiki/Producto_cartesiano</a>. </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
@@ -846,9 +852,9 @@ Amigas</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v". </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00704">704</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00721">721</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00776">cross_product()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00793">cross_product()</a>.</p>
 
 </div>
 </div>
@@ -904,9 +910,9 @@ Amigas</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00723">723</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00740">740</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -947,9 +953,9 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Valor de la componente. Devuelve "x" en caso de error. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00745">745</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00762">762</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -976,7 +982,7 @@ resto: x
 </div><div class="memdoc">
 
 <p>Producto escalar. </p>
-<p>Véase <a href="http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar">http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar</a> </p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar">http://es.wikipedia.org/wiki/Vector#Producto_de_un_vector_por_un_escalar</a> </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
@@ -985,11 +991,11 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve el escalar resultado de realizar el producto escalar del vector actual por el vector "v". </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00764">764</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00781">781</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00659">operator*()</a>.</p>
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00676">operator*()</a>.</p>
 
 </div>
 </div>
@@ -1016,7 +1022,7 @@ resto: x
 </div><div class="memdoc">
 
 <p>Producto cartesiano. </p>
-<p>Véase <a href="http://es.wikipedia.org/wiki/Producto_cartesiano">http://es.wikipedia.org/wiki/Producto_cartesiano</a>. </p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://es.wikipedia.org/wiki/Producto_cartesiano">http://es.wikipedia.org/wiki/Producto_cartesiano</a>. </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>Vector a multiplicar. </td></tr>
@@ -1025,11 +1031,11 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector resultado de realizar el producto cartesiano del vector actual por el vector "v". </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00776">776</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00793">793</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00704">operator%()</a>.</p>
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00721">operator%()</a>.</p>
 
 </div>
 </div>
@@ -1054,14 +1060,15 @@ resto: x
 </table>
 </div><div class="memdoc">
 <p>Módulo del vector</p>
-<p>Devuelve el módulo del vector actual. Véase <a href="http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)">http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)</a></p>
+<p>Devuelve el módulo del vector actual.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)">http://es.wikipedia.org/wiki/M%C3%B3dulo_(vector)</a></dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Valor del módulo del vector. Si el valor es "1", se dice que el vector está <b>normalizado</b> o que es un vector <b>unitario</b>. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00793">793</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00812">812</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00832">normalize()</a> y <a class="el" href="__globals_8h_source.html#l00929">operator&lt;()</a>.</p>
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00853">normalize()</a> y <a class="el" href="__globals_8h_source.html#l00953">operator&lt;()</a>.</p>
 
 </div>
 </div>
@@ -1087,12 +1094,13 @@ resto: x
 </div><div class="memdoc">
 
 <p>Normalizar el vector. </p>
-<p>Hace que el módulo del vector valga "1" modifcando sus componentes. Véase <a href="http://es.wikipedia.org/wiki/Vector_unitario">http://es.wikipedia.org/wiki/Vector_unitario</a> </p>
+<p>Hace que el módulo del vector valga "1" modifcando sus componentes.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a href="http://es.wikipedia.org/wiki/Vector_unitario">http://es.wikipedia.org/wiki/Vector_unitario</a> </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Vector unitario del vector actual. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00832">832</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00853">853</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00793">length()</a>, <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>, <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00812">length()</a>, <a class="el" href="__globals_8h_source.html#l00516">vector3f_t()</a>, <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -1118,12 +1126,13 @@ resto: x
 </div><div class="memdoc">
 
 <p>Vector "arriba". </p>
-<p>Sencillamente, es el vector "Y" o (0, 1, 0). Véase CSystem_Math.Y_AXIS </p>
+<p>Sencillamente, es el vector "Y" o (0, 1, 0). </p>
+<dl class="section see"><dt>Ver también</dt><dd>CSystem_Math.Y_AXIS </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (0, 1, 0) </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00844">844</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00866">866</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00516">vector3f_t()</a>.</p>
 
 </div>
 </div>
@@ -1149,12 +1158,13 @@ resto: x
 </div><div class="memdoc">
 
 <p>Vector "adelante". </p>
-<p>Sencillamente, es el vector "Z" o (0, 0, 10). Véase CSystem_Math.Z_AXIS </p>
+<p>Sencillamente, es el vector "Z" o (0, 0, 10). </p>
+<dl class="section see"><dt>Ver también</dt><dd>CSystem_Math.Z_AXIS </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (0, 0, 1) </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00855">855</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00878">878</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00516">vector3f_t()</a>.</p>
 
 </div>
 </div>
@@ -1180,12 +1190,13 @@ resto: x
 </div><div class="memdoc">
 
 <p>Vector "izquierda". </p>
-<p>Sencillamente, es el vector "Y" o (1, 01, 0). Véase CSystem_Math.X_AXIS </p>
+<p>Sencillamente, es el vector "Y" o (1, 01, 0). </p>
+<dl class="section see"><dt>Ver también</dt><dd>CSystem_Math.X_AXIS </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector (1, 0, 0) </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00866">866</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00890">890</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00516">vector3f_t()</a>.</p>
 
 </div>
 </div>
@@ -1214,9 +1225,9 @@ resto: x
 <p>Transforma cada componente para que sea positiva (valor absoluto). </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve el vector transformado, tal que sea (|x|, |y|, |z|). </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00885">885</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00909">909</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -1252,9 +1263,9 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si son iguales, false en otro caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00903">903</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00927">927</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00877">precision</a>, <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00901">precision</a>, <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
 
 </div>
 </div>
@@ -1290,7 +1301,7 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si son dinstitos, false en otro caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00919">919</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00943">943</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -1325,9 +1336,9 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si el módulo del vector actual es menor que el módulo de other. false en otro caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00929">929</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00953">953</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00793">length()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00812">length()</a>.</p>
 
 </div>
 </div>
@@ -1362,7 +1373,7 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si el módulo del vector actual es menor o igual que el módulo de other. false en otro caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00939">939</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00963">963</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -1397,7 +1408,7 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si el módulo del vector actual es mayor que el módulo de other. false en otro caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00949">949</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00973">973</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -1432,7 +1443,7 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>true si el módulo del vector actual es mayor o igual que el módulo de other. false en otro caso. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00959">959</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00983">983</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -1460,7 +1471,9 @@ resto: x
 
 <p>Vector "arriba" rotado. </p>
 <p>Data una rotación expresada por un cuaternión (véase), devuelve el vector "arriba" rotado por dicho cuaternión.</p>
-<p>Véase <a class="el" href="structvector3f__t.html#a7d986a4c2fa63a415233b72acd17da27" title="Vector &quot;arriba&quot;. ">vector3f_t::up()</a>, <a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="structvector3f__t.html#a7d986a4c2fa63a415233b72acd17da27" title="Vector &quot;arriba&quot;. ">vector3f_t::up()</a> </dd>
+<dd>
+<a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">angle</td><td>Cuaternión para aplicar la rotación. </td></tr>
@@ -1469,9 +1482,9 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Vector "arriba" rotado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00973">973</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00998">998</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00516">vector3f_t()</a>.</p>
 
 </div>
 </div>
@@ -1499,7 +1512,9 @@ resto: x
 
 <p>Vector "izquierda" rotado. </p>
 <p>Data una rotación expresada por un cuaternión (véase), devuelve el vector "izquierda" rotado por dicho cuaternión.</p>
-<p>Véase <a class="el" href="structvector3f__t.html#ae862f39d5683e8f793c6557e30c1ace9" title="Vector &quot;izquierda&quot;. ">vector3f_t::left()</a>, <a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="structvector3f__t.html#ae862f39d5683e8f793c6557e30c1ace9" title="Vector &quot;izquierda&quot;. ">vector3f_t::left()</a> </dd>
+<dd>
+<a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">angle</td><td>Cuaternión para aplicar la rotación. </td></tr>
@@ -1508,9 +1523,9 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Vector "izquierda" rotado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00990">990</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01016">1016</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00516">vector3f_t()</a>.</p>
 
 </div>
 </div>
@@ -1538,7 +1553,9 @@ resto: x
 
 <p>Vector "adelante" rotado. </p>
 <p>Data una rotación expresada por un cuaternión (véase), devuelve el vector "adelante" rotado por dicho cuaternión.</p>
-<p>Véase <a class="el" href="structvector3f__t.html#a67478a4b4bfbad7e84a59925f2066406" title="Vector &quot;adelante&quot;. ">vector3f_t::forward()</a>, <a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="structvector3f__t.html#a67478a4b4bfbad7e84a59925f2066406" title="Vector &quot;adelante&quot;. ">vector3f_t::forward()</a> </dd>
+<dd>
+<a href="http://es.wikipedia.org/wiki/Cuaterni%C3%B3n">http://es.wikipedia.org/wiki/Cuaterni%C3%B3n</a> </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">angle</td><td>Cuaternión para aplicar la rotación. </td></tr>
@@ -1547,9 +1564,9 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Vector "adelante" rotado. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01007">1007</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01034">1034</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00503">vector3f_t()</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00516">vector3f_t()</a>.</p>
 
 </div>
 </div>
@@ -1585,7 +1602,7 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Distancia desde el punto actual hasta "v". </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01022">1022</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01049">1049</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 <p>Referenciado por <a class="el" href="__object_8cpp_source.html#l00338">CGameObject::NearBy()</a>.</p>
 
@@ -1616,9 +1633,45 @@ resto: x
 <p>Devuelve una representación en forma de std::string del vectorviewport. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>std::string que almacena el los datos del vector con el formato "x y z", manteniendo su tipo original. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01033">1033</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01060">1060</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00494">x</a>, <a class="el" href="__globals_8h_source.html#l00495">y</a> y <a class="el" href="__globals_8h_source.html#l00496">z</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00507">x</a>, <a class="el" href="__globals_8h_source.html#l00508">y</a> y <a class="el" href="__globals_8h_source.html#l00509">z</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a48761f9ae794dba8b4a7bcbb2e18ac08"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float* vector3f_t::to_a </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Transforma el vector en un array de tamaño 3 de valores flotantes. </p>
+<p>Se podrán acceder a los elementos de la siguiente manera:</p>
+<div class="fragment"><div class="line"> <a class="code" href="structvector3f__t.html">vector3f</a> v(1.0, 1.0, 1.0, 1.0);</div>
+<div class="line"> v.to_a()[0] = 0.5f; <span class="comment">// Componente x</span></div>
+<div class="line"> v.to_a()[1] = 0.2f; <span class="comment">// Componente y</span></div>
+<div class="line"> v.to_a()[2] = 0.3f; <span class="comment">// Componente z</span></div>
+<div class="line">* </div>
+</div><!-- fragment --><dl class="section return"><dt>Devuelve</dt><dd>float* de tamaño 3, siendo una referencia al vector. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l01082">1082</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__component__audio_8cpp_source.html#l00124">CComponent_Audio_Source::PlayOneShot()</a> y <a class="el" href="__component__audio_8cpp_source.html#l00169">CComponent_Audio_Source::PlayOneShotAt()</a>.</p>
 
 </div>
 </div>
@@ -1666,7 +1719,7 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Referencia al flujo de salida. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00806">806</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00825">825</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -1713,7 +1766,7 @@ resto: x
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Referencia al flujo de entrada. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00820">820</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00839">839</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
 </div>
 </div>
@@ -1729,9 +1782,9 @@ resto: x
 </div><div class="memdoc">
 <p>Componente "x" del vector, del tipo flotante, siendo la primera componente. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00494">494</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00507">507</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00885">abs()</a>, <a class="el" href="__globals_8h_source.html#l00776">cross_product()</a>, <a class="el" href="__globals_8h_source.html#l00764">dot_product()</a>, <a class="el" href="__globals_8h_source.html#l00793">length()</a>, <a class="el" href="__globals_8h_source.html#l00832">normalize()</a>, <a class="el" href="__component__dummys_8cpp_source.html#l00077">CComponent_Dummy3::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00723">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00626">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00643">operator*=()</a>, <a class="el" href="__globals_8h_source.html#l00548">operator+()</a>, <a class="el" href="__globals_8h_source.html#l00563">operator+=()</a>, <a class="el" href="__globals_8h_source.html#l00579">operator-()</a>, <a class="el" href="__globals_8h_source.html#l00595">operator-=()</a>, <a class="el" href="__globals_8h_source.html#l00671">operator/()</a>, <a class="el" href="__globals_8h_source.html#l00688">operator/=()</a>, <a class="el" href="__globals_8h_source.html#l00610">operator=()</a>, <a class="el" href="__globals_8h_source.html#l00903">operator==()</a>, <a class="el" href="__globals_8h_source.html#l00745">operator[]()</a>, <a class="el" href="__globals_8h_source.html#l01033">str()</a> y <a class="el" href="__globals_8h_source.html#l00536">to_glm()</a>.</p>
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00909">abs()</a>, <a class="el" href="__globals_8h_source.html#l00793">cross_product()</a>, <a class="el" href="__globals_8h_source.html#l00781">dot_product()</a>, <a class="el" href="__globals_8h_source.html#l00812">length()</a>, <a class="el" href="__globals_8h_source.html#l00853">normalize()</a>, <a class="el" href="__component__dummys_8cpp_source.html#l00077">CComponent_Dummy3::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00740">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00643">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00660">operator*=()</a>, <a class="el" href="__globals_8h_source.html#l00565">operator+()</a>, <a class="el" href="__globals_8h_source.html#l00580">operator+=()</a>, <a class="el" href="__globals_8h_source.html#l00596">operator-()</a>, <a class="el" href="__globals_8h_source.html#l00612">operator-=()</a>, <a class="el" href="__globals_8h_source.html#l00688">operator/()</a>, <a class="el" href="__globals_8h_source.html#l00705">operator/=()</a>, <a class="el" href="__globals_8h_source.html#l00627">operator=()</a>, <a class="el" href="__globals_8h_source.html#l00927">operator==()</a>, <a class="el" href="__globals_8h_source.html#l00762">operator[]()</a>, <a class="el" href="__globals_8h_source.html#l01060">str()</a> y <a class="el" href="__globals_8h_source.html#l00553">to_glm()</a>.</p>
 
 </div>
 </div>
@@ -1746,9 +1799,9 @@ resto: x
 </div><div class="memdoc">
 <p>Componente "y" del vector, del tipo flotante, siendo la segunda componente. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00495">495</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00508">508</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00885">abs()</a>, <a class="el" href="__globals_8h_source.html#l00776">cross_product()</a>, <a class="el" href="__globals_8h_source.html#l00764">dot_product()</a>, <a class="el" href="__globals_8h_source.html#l00793">length()</a>, <a class="el" href="__globals_8h_source.html#l00832">normalize()</a>, <a class="el" href="__component__dummys_8cpp_source.html#l00077">CComponent_Dummy3::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00723">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00626">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00643">operator*=()</a>, <a class="el" href="__globals_8h_source.html#l00548">operator+()</a>, <a class="el" href="__globals_8h_source.html#l00563">operator+=()</a>, <a class="el" href="__globals_8h_source.html#l00579">operator-()</a>, <a class="el" href="__globals_8h_source.html#l00595">operator-=()</a>, <a class="el" href="__globals_8h_source.html#l00671">operator/()</a>, <a class="el" href="__globals_8h_source.html#l00688">operator/=()</a>, <a class="el" href="__globals_8h_source.html#l00610">operator=()</a>, <a class="el" href="__globals_8h_source.html#l00903">operator==()</a>, <a class="el" href="__globals_8h_source.html#l00745">operator[]()</a>, <a class="el" href="__globals_8h_source.html#l01033">str()</a> y <a class="el" href="__globals_8h_source.html#l00536">to_glm()</a>.</p>
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00909">abs()</a>, <a class="el" href="__globals_8h_source.html#l00793">cross_product()</a>, <a class="el" href="__globals_8h_source.html#l00781">dot_product()</a>, <a class="el" href="__globals_8h_source.html#l00812">length()</a>, <a class="el" href="__globals_8h_source.html#l00853">normalize()</a>, <a class="el" href="__component__dummys_8cpp_source.html#l00077">CComponent_Dummy3::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00740">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00643">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00660">operator*=()</a>, <a class="el" href="__globals_8h_source.html#l00565">operator+()</a>, <a class="el" href="__globals_8h_source.html#l00580">operator+=()</a>, <a class="el" href="__globals_8h_source.html#l00596">operator-()</a>, <a class="el" href="__globals_8h_source.html#l00612">operator-=()</a>, <a class="el" href="__globals_8h_source.html#l00688">operator/()</a>, <a class="el" href="__globals_8h_source.html#l00705">operator/=()</a>, <a class="el" href="__globals_8h_source.html#l00627">operator=()</a>, <a class="el" href="__globals_8h_source.html#l00927">operator==()</a>, <a class="el" href="__globals_8h_source.html#l00762">operator[]()</a>, <a class="el" href="__globals_8h_source.html#l01060">str()</a> y <a class="el" href="__globals_8h_source.html#l00553">to_glm()</a>.</p>
 
 </div>
 </div>
@@ -1763,9 +1816,9 @@ resto: x
 </div><div class="memdoc">
 <p>Componente "z" del vector, del tipo flotante, siendo la tercera componente. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00496">496</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00509">509</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00885">abs()</a>, <a class="el" href="__globals_8h_source.html#l00776">cross_product()</a>, <a class="el" href="__globals_8h_source.html#l00764">dot_product()</a>, <a class="el" href="__globals_8h_source.html#l00793">length()</a>, <a class="el" href="__globals_8h_source.html#l00832">normalize()</a>, <a class="el" href="__component__dummys_8cpp_source.html#l00077">CComponent_Dummy3::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00723">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00626">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00643">operator*=()</a>, <a class="el" href="__globals_8h_source.html#l00548">operator+()</a>, <a class="el" href="__globals_8h_source.html#l00563">operator+=()</a>, <a class="el" href="__globals_8h_source.html#l00579">operator-()</a>, <a class="el" href="__globals_8h_source.html#l00595">operator-=()</a>, <a class="el" href="__globals_8h_source.html#l00671">operator/()</a>, <a class="el" href="__globals_8h_source.html#l00688">operator/=()</a>, <a class="el" href="__globals_8h_source.html#l00610">operator=()</a>, <a class="el" href="__globals_8h_source.html#l00903">operator==()</a>, <a class="el" href="__globals_8h_source.html#l00745">operator[]()</a>, <a class="el" href="__globals_8h_source.html#l01033">str()</a> y <a class="el" href="__globals_8h_source.html#l00536">to_glm()</a>.</p>
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00909">abs()</a>, <a class="el" href="__globals_8h_source.html#l00793">cross_product()</a>, <a class="el" href="__globals_8h_source.html#l00781">dot_product()</a>, <a class="el" href="__globals_8h_source.html#l00812">length()</a>, <a class="el" href="__globals_8h_source.html#l00853">normalize()</a>, <a class="el" href="__component__dummys_8cpp_source.html#l00077">CComponent_Dummy3::OnRender()</a>, <a class="el" href="__globals_8h_source.html#l00740">operator()()</a>, <a class="el" href="__globals_8h_source.html#l00643">operator*()</a>, <a class="el" href="__globals_8h_source.html#l00660">operator*=()</a>, <a class="el" href="__globals_8h_source.html#l00565">operator+()</a>, <a class="el" href="__globals_8h_source.html#l00580">operator+=()</a>, <a class="el" href="__globals_8h_source.html#l00596">operator-()</a>, <a class="el" href="__globals_8h_source.html#l00612">operator-=()</a>, <a class="el" href="__globals_8h_source.html#l00688">operator/()</a>, <a class="el" href="__globals_8h_source.html#l00705">operator/=()</a>, <a class="el" href="__globals_8h_source.html#l00627">operator=()</a>, <a class="el" href="__globals_8h_source.html#l00927">operator==()</a>, <a class="el" href="__globals_8h_source.html#l00762">operator[]()</a>, <a class="el" href="__globals_8h_source.html#l01060">str()</a> y <a class="el" href="__globals_8h_source.html#l00553">to_glm()</a>.</p>
 
 </div>
 </div>
@@ -1790,9 +1843,9 @@ resto: x
 <p>Precisión. </p>
 <p>Se utiliza para comparar si 2 puntos son equivalentes, dada una precisión decimal para cada componente. Así, si el valor absoluto de la diferencia entre 2 vectores es menor que la precisión para cada componente, se dice que son iguales. </p>
 
-<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00877">877</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__globals_8h_source.html#l00901">901</a> del archivo <a class="el" href="__globals_8h_source.html">_globals.h</a>.</p>
 
-<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00903">operator==()</a>.</p>
+<p>Referenciado por <a class="el" href="__globals_8h_source.html#l00927">operator==()</a>.</p>
 
 </div>
 </div>
@@ -1803,7 +1856,7 @@ resto: x
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 28 de Marzo de 2014 22:33:26 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 29 de Marzo de 2014 16:34:45 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

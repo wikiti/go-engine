@@ -28,11 +28,16 @@ enum gameObject_type {gameObject_empty = 0};//!< gameObject_empty
 /**
  * @brief Puntero a función miembro de un game object.
  *
- * El puntero se usará para funciones del tipo "void f(CGameObject* g)". Véase CGameObject::start,
- * CGameObject:: behaviour, CGameObject:: event_behaviour, CGameObject:: input_behaviour, CGameObject:: render.
+ * El puntero se usará para funciones del tipo "void f(CGameObject* g)".
  *
  * Se usará para guardar en el game object una serie de punteros a funciones externas para ser llamadas en determinados momentos,
  * usando como referencia al objeto el parámetro "self".
+ *
+ * @see CGameObject::start
+ * @see CGameObject::behaviour
+ * @see CGameObject::event_behaviour
+ * @see CGameObject::input_behaviour
+ * @see CGameObject::render.
  *
  * @param self Referencia a un objeto dado.
  */
@@ -166,7 +171,7 @@ class CGameObject
      * Además, el objeto queda marcado como <b>iniciado</b> y como <b>activo.</b> Sólo podrá ser iniciado si no ha sido iniciado previamente, osi ha sido cerrado.
      */
     void Init();
-      /** <span style="color: red; font-weight: bold;">Sin usar</span>. */
+      /** @no_use */
       virtual void InitCustom(){};
     /**
      * @brief Cerrar el objeto.
@@ -175,10 +180,10 @@ class CGameObject
      * <b>no iniciado</b> y como <b>desactivado</b>.
      */
     void Close();
-      /** <span style="color: red; font-weight: bold;">Sin usar</span>. */
+      /** @no_use */
       virtual void CloseCustom(){};
 
-    /** <span style="color: red; font-weight: bold;">Sin usar</span>. */
+    /** @no_use */
     flags_t Get_flags() {return flags; } // Los flags sólo deberían ser maniplados por el objeto, no por el usuario
 
     /**
@@ -247,6 +252,8 @@ class CGameObject
      * @brief Obtiene un puntero a un hijo.
      *
      * Dado un índice, se accederá a un hijo que ocupe dicho índice. Los hijos serán ordenados por orden alfabético (funcionamiento de un std::map).
+     *
+     * @see CGameObject::GetNumChildren()
      * @param index Valor entre 0 y el número de hijos actual. Véase CGameObject::GetNumChildren().
      * @return Devuelve el puntero al objeto si es un hijo del objeto actual. En otro caso, devuelve NULL.
      */
@@ -315,7 +322,8 @@ class CGameObject
     /**
      * @brief Cambiar el callback "input".
      *
-     * Cambia el puntero del callback **Event**, que será una función que se llamará en cada iteración del juego, que procesará datos de entrada (teclado, retón, joystick...). Véase CSystem_UserInput.
+     * Cambia el puntero del callback **Event**, que será una función que se llamará en cada iteración del juego, que procesará datos de entrada (teclado, retón, joystick...).
+     * @see CSystem_UserInput.
      * @param f Puntero a función externa. Si es NULL, suponemos que no se usará ningún callback.
      */
     inline void SetInputFunction(function_t f)
@@ -381,7 +389,9 @@ class CGameObject
      * @brief Registrar un objeto en el sistema.
      *
      * Registra un objeto de juego en la lista de objetos globales, administrado por el sistema CSystem_GameObject_Manager.
-     * Un objeto no podrá ser añadido si ya existe un objeto con su nombre, o si su identificador es inválido (véase Utils::validateIdentifier).
+     * Un objeto no podrá ser añadido si ya existe un objeto con su nombre, o si su identificador es inválido.
+     *
+     * @see Utils::validateIdentifier
      * @return Si se registra correctamente, devuelve un identificador numérico del objeto. En caso contrario, devuelve -1.
      */
     int AddToSystem();
@@ -506,7 +516,8 @@ class CGameObject
      * Un objeto se conoce como que está preservado si mantiene sus datos intactos entre los cambios de estancia. Básicamente, son objetos que
      * no será borrados al cambiar de estancia o nivel, y que permanecerá con el mismo nombre y el mismo contenido que en su última estancia.
      *
-     * Véase CEngine y CInstance.
+     * @see CEngine
+     * @see CInstance
      * @param recursive  Si es true, se marcarán como ***preservar*** todos sus hijos de manera recursiva. En caso contrario, sólo se cambiará el objeto actual.
      */
     void Preserve(bool recursive = false);
@@ -515,7 +526,8 @@ class CGameObject
      *
      * Antónimo de CGameObject::Preserve().
      *
-     * Véase CEngine y CInstance.
+     * @see CEngine
+     * @see CInstance
      * @param recursive  Si es true, se marcarán como ***no preservar*** todos sus hijos de manera recursiva. En caso contrario, sólo se cambiará el objeto actual.
      */
     void UnPreserve(bool recursive = false);
@@ -524,7 +536,8 @@ class CGameObject
      *
      * Combina CGameObject::Preserve() y CGameObject::UnPreserve().
      *
-     * Véase CEngine y CInstance.
+     * @see CEngine
+     * @see CInstance
      *
      * @param state Nuevo estado (true -> **preservar**, false -> **no preservar**)
      * @param recursive  Si es true, se marcarán como el estado indicado a todos sus hijos de manera recursiva. En caso contrario, sólo se cambiará el objeto actual.
@@ -582,7 +595,7 @@ class CGameObject
      go1->GetComponent<CComponent_Transform*>()->position.x = 0; // Acceder al componente "transform" y cambiar un atributo.
      @endcode
      *
-     * Véase CComponent.
+     * @see CComponent
      * @return Devuelve un puntero del tipo del componente solicitado. NULL si no existe el componente.
      */
     template <class Type>
@@ -593,7 +606,8 @@ class CGameObject
      *
      * Obtiene un componente del tipo "CComponent*", siempre y cuando exista el identificador del componente asociado.
      *
-     * Véase Components::components_t y CComponent.
+     * @see Components::components_t
+     * @see CComponent
      * @param c Tipo de componente (enum).
      * @return Puntero al componente, si existe. NULL en otro caso.
      */
@@ -618,7 +632,7 @@ class CGameObject
      go1->AddComponent<CComponent_Camera*>(); // Añade el componente "camera".
      @endcode
      *
-     * Véase CComponent.
+     * @see CComponent
      * @return Retorna true si se ha añadido el componente, false en caso contrario.
      */
     template <class Type>
@@ -637,7 +651,7 @@ class CGameObject
      go1->RemoveComponent<CComponent_Camera*>(); // Eliminar el componente "camera".
      @endcode
      *
-     * Véase CComponent.
+     * @see CComponent
      * @return Retorna true si se ha borrado correctamente, false en caso contrario.
      */
     template <class Type>
@@ -654,17 +668,17 @@ class CGameObject
      go1->SetComponentState<CComponent_Camera*>(true); // Activar el componente cámara.
      @endcode
      *
-     * Véase CComponent.
+     * @see CComponent
      * @return Devuelve un puntero del tipo del componente solicitado. NULL si no existe el componente.
      */
     template <class Type>
     void SetComponentStateComponent(bool state);
 	
-    /** <span style="color: red; font-weight: bold;">Sin usar</span>. **/
+    /** @no_use **/
     template <class Type>
     void SetData(input_t data);
 
-    /** <span style="color: red; font-weight: bold;">Sin usar</span>. **/
+    /** @no_use **/
     template <class Type>
     output_t GetData();
     /* Funciones para acceso directo a los componentes aquí: */
@@ -688,7 +702,7 @@ class CGameObject
      // go1->GetComponent<CComponent_Transform*>()->position.x;
      @endcode
      *
-     * Véase CComponent_Transform.
+     * @see CComponent_Transform
      *
      * @return Puntero al componente **transform**.
      */
@@ -712,7 +726,7 @@ class CGameObject
      *
      * Si el componente no existe, será creado, y luego será retornado.
      *
-     * Véase CComponent_Camera.
+     * @see CComponent_Camera
      *
      * @return Puntero al componente **camera**.
      */
@@ -738,7 +752,7 @@ class CGameObject
      *
      * Si el componente no existe, será creado, y luego será retornado.
      *
-     * Véase CComponent_Mesh_Render.
+     * @see CComponent_Mesh_Render
      *
      * @return Puntero al componente **mesh render**.
      */
@@ -764,7 +778,7 @@ class CGameObject
      *
      * Si el componente no existe, será creado, y luego será retornado.
      *
-     * Véase CComponent_Particle_Emitter.
+     * @see CComponent_Particle_Emitter
      *
      * @return Puntero al componente **particle emitter**.
      */
@@ -790,7 +804,7 @@ class CGameObject
      *
      * Si el componente no existe, será creado, y luego será retornado.
      *
-     * Véase CComponent_GUI_Texture.
+     * @see CComponent_GUI_Texture
      *
      * @return Puntero al componente **gui texture**.
      */
@@ -816,7 +830,7 @@ class CGameObject
      *
      * Si el componente no existe, será creado, y luego será retornado.
      *
-     * Véase CComponent_Audio_Source.
+     * @see CComponent_Audio_Source
      *
      * @return Puntero al componente **gui texture**.
      */

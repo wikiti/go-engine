@@ -144,9 +144,9 @@ void CComponent_Audio_Source::PlayOneShot()
     //alGetListenerfv(AL_ORIENTATION, ((float*) &euler) );
   }
 
-  alSourcefv(source_oneshot, AL_POSITION,  ((float*) &pos)   );
-  alSourcefv(source_oneshot, AL_VELOCITY,  ((float*) &vel)   );
-  alSourcefv(source_oneshot, AL_DIRECTION, ((float*) &euler) );
+  alSourcefv(source_oneshot, AL_POSITION, pos.to_a());
+  alSourcefv(source_oneshot, AL_VELOCITY, vel.to_a());
+  alSourcefv(source_oneshot, AL_DIRECTION, euler.to_a());
 
   if(affected_by_time) alSourcef(source_oneshot, AL_PITCH, pitch*gSystem_Time.timeScale());
   else                 alSourcef(source_oneshot, AL_PITCH, pitch);
@@ -166,16 +166,47 @@ void CComponent_Audio_Source::PlayOneShot()
   alSourcePlay(source_oneshot);
 }
 
-void CComponent_Audio_Source::PlayAt(vector3f pos)
-{
-  PlayAt(pos.x, pos.y, pos.z);
-}
-
-void CComponent_Audio_Source::PlayAt(ALfloat x, ALfloat y, ALfloat z)
+void CComponent_Audio_Source::PlayOneShotAt(vector3f pos)
 {
   if(!sound || !enabled || mute) return;
 
+  ALuint source_oneshot = gSystem_Mixer.GetFreeOneShot();
+  if(!source_oneshot)
+    return;
+
+  ALuint buffer = sound->BufferID();
+  alSourceQueueBuffers(source_oneshot, 1, &buffer);
+
+  // Vectores vacíos, de momento
+  vector3f vel, euler;
+
+  alSourcefv(source_oneshot, AL_POSITION, pos.to_a());
+  alSourcefv(source_oneshot, AL_VELOCITY, vel.to_a());
+  alSourcefv(source_oneshot, AL_DIRECTION, euler.to_a());
+
+  if(affected_by_time) alSourcef(source_oneshot, AL_PITCH, pitch * gSystem_Time.timeScale());
+  else                 alSourcef(source_oneshot, AL_PITCH, pitch);
+
+  float gVolume = 1.f;
+  if(music)
+    gVolume = gSystem_Data_Storage.GetFloat("__SOUND_MUSIC_VOLUME");
+  else
+    gVolume = gSystem_Data_Storage.GetFloat("__SOUND_VOLUME");
+
+  alSourcef(source_oneshot, AL_GAIN, volume * gVolume);
+
+  alSourcef(source_oneshot, AL_MAX_DISTANCE, max_distance);
+  alSourcef(source_oneshot, AL_REFERENCE_DISTANCE, min_distance);
+
+  //alSourcei(source_oneshot, AL_LOOPING, loop);
+  alSourcePlay(source_oneshot);
+
   // usar PlayOneShot() para esto, evitando que OnLoop() cambie los valores de volumne, pitch o posición
+}
+
+void CComponent_Audio_Source::PlayOneShotAt(ALfloat x, ALfloat y, ALfloat z)
+{
+  PlayOneShotAt(vector3f(x, y, z));
 }
 
 void CComponent_Audio_Source::Stop()
@@ -203,6 +234,22 @@ void CComponent_Audio_Source::Pause()
     playing = false;
     paused = true;
   }
+
+  ALenum error;
+  if ((error = alGetError()) != AL_NO_ERROR)
+    gSystem_Debug.console_error_msg("Error %d trying to pause sound \"%s\" from \"%s\"", error, sound->File().c_str(), gameObject->GetName().c_str());
+}
+
+void CComponent_Audio_Source::Resume()
+{
+  if(!sound || !enabled || !source_attached) return;
+
+  //if(paused)
+  //{
+    alSourcePlay(source_attached);
+    playing = true;
+    paused = false;
+  //}
 
   ALenum error;
   if ((error = alGetError()) != AL_NO_ERROR)

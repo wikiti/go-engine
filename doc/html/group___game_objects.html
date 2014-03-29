@@ -160,8 +160,17 @@ Funciones</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Puntero a función miembro de un game object. </p>
-<p>El puntero se usará para funciones del tipo "void f(CGameObject* g)". Véase CGameObject::start, <a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>:: behaviour, <a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>:: event_behaviour, <a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>:: input_behaviour, <a class="el" href="class_c_game_object.html" title="Clase que representa a un objeto de juego. ">CGameObject</a>:: render.</p>
+<p>El puntero se usará para funciones del tipo "void f(CGameObject* g)".</p>
 <p>Se usará para guardar en el game object una serie de punteros a funciones externas para ser llamadas en determinados momentos, usando como referencia al objeto el parámetro "self".</p>
+<dl class="section see"><dt>Ver también</dt><dd>CGameObject::start </dd>
+<dd>
+CGameObject::behaviour </dd>
+<dd>
+CGameObject::event_behaviour </dd>
+<dd>
+CGameObject::input_behaviour </dd>
+<dd>
+CGameObject::render.</dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Referencia a un objeto dado. </td></tr>
@@ -169,7 +178,7 @@ Funciones</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00039">39</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00044">44</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
@@ -194,10 +203,10 @@ template&lt;class Type &gt; </div>
 <p>Por ejemplo, podemos usar: </p>
 <div class="fragment"><div class="line"><a class="code" href="class_c_game_object.html">CGameObject</a> go1 = <span class="keyword">new</span> <a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject</a>(<span class="stringliteral">&quot;go1&quot;</span>);</div>
 <div class="line">go1-&gt;<a class="code" href="group___game_objects.html#ga4b9498dcca22545a77e2d100885fa70f">GetComponent</a>&lt;<a class="code" href="class_c_component___transform.html">CComponent_Transform</a>*&gt;()-&gt;position.x = 0; <span class="comment">// Acceder al componente &quot;transform&quot; y cambiar un atributo.</span></div>
-</div><!-- fragment --><p>Véase <a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a>. </p>
+</div><!-- fragment --><dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a> </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve un puntero del tipo del componente solicitado. NULL si no existe el componente. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00833">833</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00847">847</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
@@ -222,10 +231,10 @@ template&lt;class Type &gt; </div>
 <p>Por ejemplo, podemos usar: </p>
 <div class="fragment"><div class="line"><a class="code" href="class_c_game_object.html">CGameObject</a> go1 = <span class="keyword">new</span> <a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject</a>(<span class="stringliteral">&quot;go1&quot;</span>);</div>
 <div class="line">go1-&gt;<a class="code" href="group___game_objects.html#ga425c9d2f1035cad405db1606ea670669">AddComponent</a>&lt;<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>*&gt;(); <span class="comment">// Añade el componente &quot;camera&quot;.</span></div>
-</div><!-- fragment --><p>Véase <a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a>. </p>
+</div><!-- fragment --><dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a> </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Retorna true si se ha añadido el componente, false en caso contrario. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00844">844</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00858">858</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
@@ -250,10 +259,10 @@ template&lt;class Type &gt; </div>
 <p>Por ejemplo, podemos usar: </p>
 <div class="fragment"><div class="line"><a class="code" href="class_c_game_object.html">CGameObject</a> go1 = <span class="keyword">new</span> <a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject</a>(<span class="stringliteral">&quot;go1&quot;</span>);</div>
 <div class="line">go1-&gt;<a class="code" href="group___game_objects.html#ga87b3e787edceeaa1b1036aaf1feb47df">RemoveComponent</a>&lt;<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>*&gt;(); <span class="comment">// Eliminar el componente &quot;camera&quot;.</span></div>
-</div><!-- fragment --><p>Véase <a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a>. </p>
+</div><!-- fragment --><dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a> </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Retorna true si se ha borrado correctamente, false en caso contrario. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00855">855</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00869">869</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
@@ -278,10 +287,10 @@ template&lt;class Type &gt; </div>
 <p>Por ejemplo, podemos usar: </p>
 <div class="fragment"><div class="line"><a class="code" href="class_c_game_object.html">CGameObject</a> go1 = <span class="keyword">new</span> <a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject</a>(<span class="stringliteral">&quot;go1&quot;</span>);</div>
 <div class="line">go1-&gt;SetComponentState&lt;<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>*&gt;(<span class="keyword">true</span>); <span class="comment">// Activar el componente cámara.</span></div>
-</div><!-- fragment --><p>Véase <a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a>. </p>
+</div><!-- fragment --><dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_component.html" title="Clase abstracta de un componente. ">CComponent</a> </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Devuelve un puntero del tipo del componente solicitado. NULL si no existe el componente. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00874">874</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00888">888</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
@@ -300,9 +309,9 @@ template&lt;class Type &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><span style="color: red; font-weight: bold;">Sin usar</span>. </p>
+<p><span style="color:red;font-weight:bold;">Sin usar</span>. </p>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00881">881</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00895">895</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
@@ -320,16 +329,16 @@ template&lt;class Type &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><span style="color: red; font-weight: bold;">Sin usar</span>. </p>
+<p><span style="color:red;font-weight:bold;">Sin usar</span>. </p>
 
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00889">889</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00903">903</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 28 de Marzo de 2014 22:33:19 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 29 de Marzo de 2014 16:34:37 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
