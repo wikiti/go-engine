@@ -54,7 +54,7 @@ void CSystem_Debug::ParseAppArguments()
       input = input.substr(1);
       if(input.size())
       {
-        replace(input.begin(), input.end(), '#', ' ');
+        //replace(input.begin(), input.end(), '#', ' ');
 
         ParseInput();
         input = "";
@@ -1835,7 +1835,7 @@ void CSystem_Debug::Console_command__R_GLINFO(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: r_glinfo <show | log> [ext]");
+    console_warning_msg("Format is: r_glinfo <show | log> [ext[ension]]");
     return;
   }
 
@@ -1854,7 +1854,7 @@ void CSystem_Debug::Console_command__R_GLINFO(string arguments)
   }
   else
   {
-    console_warning_msg("Format is: r_glinfo <show | log> [ext]");
+    console_warning_msg("Format is: r_glinfo <show | log> [ext[ension]]");
     return;
   }
 
@@ -1873,7 +1873,7 @@ void CSystem_Debug::Console_command__R_GLINFO(string arguments)
     argument = "";
     ss >> argument;
 
-    if(argument == "ext")
+    if(argument == "ext" or argument == "extension")
     {
       (this->*display_function)("\n");
       (this->*display_function)("Extensions supported:\n");
