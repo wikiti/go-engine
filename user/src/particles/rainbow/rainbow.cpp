@@ -4,15 +4,15 @@
 
 bool SetGameObjects_Instance1_Rainbow()
 {
-  CGameObject* rainbow_violet = gGameObjects.AddGameObject("rainbow_violet");
-  CGameObject* rainbow_dblue = gGameObjects.AddGameObject("rainbow_dblue");
-  CGameObject* rainbow_blue = gGameObjects.AddGameObject("rainbow_blue");
-  CGameObject* rainbow_green = gGameObjects.AddGameObject("rainbow_green");
-  CGameObject* rainbow_yellow = gGameObjects.AddGameObject("rainbow_yellow");
-  CGameObject* rainbow_orange = gGameObjects.AddGameObject("rainbow_orange");
-  CGameObject* rainbow_red = gGameObjects.AddGameObject("rainbow_red");
+  CGameObject* rainbow_violet = gGameObjects.Add("rainbow_violet");
+  CGameObject* rainbow_dblue = gGameObjects.Add("rainbow_dblue");
+  CGameObject* rainbow_blue = gGameObjects.Add("rainbow_blue");
+  CGameObject* rainbow_green = gGameObjects.Add("rainbow_green");
+  CGameObject* rainbow_yellow = gGameObjects.Add("rainbow_yellow");
+  CGameObject* rainbow_orange = gGameObjects.Add("rainbow_orange");
+  CGameObject* rainbow_red = gGameObjects.Add("rainbow_red");
 
-  CGameObject* rainbow = gGameObjects.AddGameObject("rainbow");
+  CGameObject* rainbow = gGameObjects.Add("rainbow");
   rainbow->AddChildren({rainbow_violet, rainbow_dblue, rainbow_blue, rainbow_green, rainbow_yellow, rainbow_orange, rainbow_red});
   rainbow->Transform()->position.y += 3.f;
 

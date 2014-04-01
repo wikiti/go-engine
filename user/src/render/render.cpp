@@ -9,8 +9,8 @@
 
 bool SetGameObjects_Instance1_Render()
 {
-  CGameObject* hada1 = gGameObjects.AddGameObject("hada1");
-  CGameObject* hada2 = gGameObjects.AddGameObject("hada2");
+  CGameObject* hada1 = gGameObjects.Add("hada1");
+  CGameObject* hada2 = gGameObjects.Add("hada2");
 
   hada1->Transform()->SetScale(0.1f, 0.1f, 0.1f);
   hada1->Transform()->Translate(0.f, 0.f, 10.f);

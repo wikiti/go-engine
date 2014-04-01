@@ -10,12 +10,12 @@
 bool SetGameObjects_Instance1_RandomStuff()
 {
   CGameObject* INVALID = NULL;
-  INVALID = gGameObjects.AddGameObject("$invalid1");
-  INVALID = gGameObjects.AddGameObject("_inva lid1");
-  INVALID = gGameObjects.AddGameObject("inva%liAd1");
-  INVALID = gGameObjects.AddGameObject("_VALID_");
+  INVALID = gGameObjects.Add("$invalid1");
+  INVALID = gGameObjects.Add("_inva lid1");
+  INVALID = gGameObjects.Add("inva%liAd1");
+  INVALID = gGameObjects.Add("_VALID_");
 
-  CGameObject* gui_example = gGameObjects.AddGameObject("gui_example");
+  CGameObject* gui_example = gGameObjects.Add("gui_example");
   gui_example->GUITexture()->texture_name = "textura1";
   gui_example->GUITexture()->width = gui_example->GUITexture()->height = 100.f;
   //gui_example->Transform()->scale(2.f, 2.f, 2.f);
@@ -24,13 +24,13 @@ bool SetGameObjects_Instance1_RandomStuff()
   gui_example->GUITexture()->color.a = 0.5f;
   gui_example->GUITexture()->color.g = gui_example->GUITexture()->color.b = 0.f;
 
-  CGameObject* camara_second = gGameObjects.AddGameObject("camara_second");
-  CGameObject* cubo_main = gGameObjects.AddGameObject("cubo_main");
-  CGameObject* cubo_second = gGameObjects.AddGameObject("cubo_second");
-  CGameObject* cubo_third = gGameObjects.AddGameObject("cubo_third");
-  CGameObject* hada = gGameObjects.AddGameObject("hada");
+  CGameObject* camara_second = gGameObjects.Add("camara_second");
+  CGameObject* cubo_main = gGameObjects.Add("cubo_main");
+  CGameObject* cubo_second = gGameObjects.Add("cubo_second");
+  CGameObject* cubo_third = gGameObjects.Add("cubo_third");
+  CGameObject* hada = gGameObjects.Add("hada");
 
-  CGameObject* particle_emitter = gGameObjects.AddGameObject("particle_emitter");
+  CGameObject* particle_emitter = gGameObjects.Add("particle_emitter");
   particle_emitter->ParticleEmitter()->material_name = "smoke1";
   particle_emitter->ParticleEmitter()->max_particles = 250;
   particle_emitter->ParticleEmitter()->angle_spread = 90;
@@ -43,16 +43,16 @@ bool SetGameObjects_Instance1_RandomStuff()
   particle_emitter->Transform()->Translate(0.f, 0.f, 5.f);
   particle_emitter->SetEventFunction(&Particle_emitter_explosions);
 
-  CGameObject* random_vector = gGameObjects.AddGameObject("random_vector");
-  random_vector->AddComponent<CComponent_Dummy3>();
+  CGameObject* random_vector = gGameObjects.Add("random_vector");
+  random_vector->AddComponent<CComponent_Dummy>();
 
-  CGameObject* p1 = gGameObjects.AddGameObject("padre1");
-  CGameObject* h1 = gGameObjects.AddGameObject("hijo1");
-  CGameObject* h11 = gGameObjects.AddGameObject("hijo11");
-  CGameObject* h12 = gGameObjects.AddGameObject("hijo12");
-  CGameObject* h2 = gGameObjects.AddGameObject("hijo2");
-  CGameObject* h21 = gGameObjects.AddGameObject("hijo21");
-  CGameObject* h212 = gGameObjects.AddGameObject("hijo212");
+  CGameObject* p1 = gGameObjects.Add("padre1");
+  CGameObject* h1 = gGameObjects.Add("hijo1");
+  CGameObject* h11 = gGameObjects.Add("hijo11");
+  CGameObject* h12 = gGameObjects.Add("hijo12");
+  CGameObject* h2 = gGameObjects.Add("hijo2");
+  CGameObject* h21 = gGameObjects.Add("hijo21");
+  CGameObject* h212 = gGameObjects.Add("hijo212");
 
   p1->AddChild(h1);
   p1->AddChild(h2);
@@ -96,10 +96,9 @@ bool SetGameObjects_Instance1_RandomStuff()
 
   gSystem_Render.AddCamera(camara_second);
 
-  cubo_main->AddComponent<CComponent_Dummy1>();
-  cubo_second->AddComponent<CComponent_Dummy1>();
-  cubo_third->AddComponent<CComponent_Dummy1>();
-  //hada->AddComponent<CComponent_Dummy2>();
+  cubo_main->AddComponent<CComponent_Dummy>();
+  cubo_second->AddComponent<CComponent_Dummy>();
+  cubo_third->AddComponent<CComponent_Dummy>();
 
   hada->MeshRender()->mesh_name = "mdl_hada1";
   hada->MeshRender()->material_name = "texture_mdl_hada1";
@@ -107,8 +106,8 @@ bool SetGameObjects_Instance1_RandomStuff()
   camara_second->Camera()->before_render = &Camara_second_before_render;
   camara_second->Camera()->after_render = &Camara_second_after_render;
 
-  gGameObjects.RenameGameObject("cubo_main", "cubo_second");
-  gGameObjects.RenameGameObject("cubo_main", "cubo");
+  gGameObjects.Rename("cubo_main", "cubo_second");
+  gGameObjects.Rename("cubo_main", "cubo");
 
   return true;
 }

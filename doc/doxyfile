@@ -51,7 +51,7 @@ PROJECT_BRIEF =
 # and the maximum width should not exceed 200 pixels. Doxygen will copy the logo
 # to the output directory.
 
-PROJECT_LOGO = 
+PROJECT_LOGO = logo_small.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -218,7 +218,7 @@ TAB_SIZE = 4
 # "Side Effects:". You can put \n's in the value part of an alias to insert
 # newlines.
 
-ALIASES = 
+ALIASES = no_use="<span style="color:red;font-weight:bold;">Sin usar</span>."
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).
 # A mapping has the form "name=value". For example adding "class=itcl::class"
@@ -733,7 +733,7 @@ WARN_LOGFILE =
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT = ../engine ../user 
+INPUT = ../engine ../user
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1087,7 +1087,7 @@ HTML_EXTRA_STYLESHEET = custom_style.css
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES = 
+HTML_EXTRA_FILES = images/doxy/bc_s.png images/doxy/nav_f.png images/doxy/nav_g.png images/doxy/nav_h.png images/doxy/tab_a.png images/doxy/tab_b.png images/doxy/tab_h.png images/doxy/tab_s.png
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. Doxygen
 # will adjust the colors in the stylesheet and background images according to
@@ -2300,4 +2300,3 @@ DOT_CLEANUP = YES
 
 # Custom
 
-ALIASES += no_use="<span style="color:red;font-weight:bold;">Sin usar</span>."

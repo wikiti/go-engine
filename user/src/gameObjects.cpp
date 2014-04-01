@@ -6,7 +6,7 @@ bool SetGameObjects_Instance1()
 
   if(!camara_main)
   {
-    camara_main = gGameObjects.AddGameObject("camara_main");
+    camara_main = gGameObjects.Add("camara_main");
     camara_main->Transform()->position.y = -3.f;
     camara_main->Transform()->position.z = -10.f;
     camara_main->Camera()->far_clip = 500.f;
@@ -20,7 +20,7 @@ bool SetGameObjects_Instance1()
   CGameObject* next_instancer = gGameObjects["next_instancer"];
   if(!next_instancer)
   {
-    next_instancer = gGameObjects.AddGameObject("next_instancer");
+    next_instancer = gGameObjects.Add("next_instancer");
     next_instancer->Preserve();
     next_instancer->SetInputFunction(&Next_instancer_button);
   }
@@ -44,7 +44,7 @@ bool SetGameObjects_Instance2()
   CGameObject* camara_main = gGameObjects["camara_main"];
   camara_main->Camera()->skybox_texture = "skybox2";
 
-  CGameObject* hada1 = gGameObjects.AddGameObject("hada1");
+  CGameObject* hada1 = gGameObjects.Add("hada1");
 
   hada1->Transform()->SetScale(0.1f, 0.1f, 0.1f);
   hada1->Transform()->Translate(0.f, 0.f, 10.f);
@@ -56,7 +56,7 @@ bool SetGameObjects_Instance2()
 
 
   // Efecto sencillo de lluvia.
-  CGameObject* lluvia = gGameObjects.AddGameObject("lluvia");
+  CGameObject* lluvia = gGameObjects.Add("lluvia");
   lluvia->Transform()->Translate(0.f, 50.f, 0.f);
   lluvia->ParticleEmitter()->direction(0.2f, -1.f, 0.f);
   lluvia->ParticleEmitter()->angle_spread = 360.f;

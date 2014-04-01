@@ -25,13 +25,13 @@ namespace Components // ->Nota El namespace Components debería ir en un lugar má
    *
    * Enum para identificar a todos los tipos de componentes. Cada clase heredada de CComponent debe tener un valor en esta enumeración.
    */
-  enum components_t { base = 0, camera, mesh_render, particle_emitter, gui_texture, audio_source, transform, dummy1, dummy2, dummy3, __component_not_defined};
+  enum components_t { base = 0, camera, mesh_render, particle_emitter, gui_texture, audio_source, transform, dummy, __component_not_defined};
 
   /**
    * @brief Nombres de componentes.
    *
    * Array de strings que contienen, por cada enum de components_t, una representación con caracteres.
-   * La representación como cadena de caracteres será idéntica al nombre del valor del enum, salvo para el caso especial components_t.__component_not_defined, que será *"not_defined"*.
+   * La representación como cadena de caracteres será idéntica al nombre del valor del enum, salvo para el caso especial *__component_not_defined*, que será *"not_defined"*.
    */
   extern const char* components_s[];
 

@@ -22,6 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Go-Engine
    &#160;<span id="projectnumber">alpha</span>
@@ -107,11 +108,9 @@ Enumeraciones</h2></td></tr>
 &#160;&#160;<b>gui_texture</b>, 
 <b>audio_source</b>, 
 <b>transform</b>, 
-<b>dummy1</b>, 
+<b>dummy</b>, 
 <br/>
-&#160;&#160;<b>dummy2</b>, 
-<b>dummy3</b>, 
-<b>__component_not_defined</b>
+&#160;&#160;<b>__component_not_defined</b>
 <br/>
  }</td></tr>
 <tr class="memdesc:aa89a2e84cfafd1da6f84c7edb84c1ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeración o identificadores de componentes.  <a href="namespace_components.html#aa89a2e84cfafd1da6f84c7edb84c1ce5">Más...</a><br/></td></tr>
@@ -128,7 +127,7 @@ Funciones</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac28f6cd16864e6e47291996453a80066"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_components.html#ac28f6cd16864e6e47291996453a80066">components_s</a> [] = {&quot;base&quot;, &quot;camera&quot;, &quot;mesh_render&quot;, &quot;particle_emitter&quot;, &quot;gui_texture&quot;, &quot;audio_source&quot;, &quot;transform&quot;, &quot;dummy1&quot;, &quot;dummy2&quot;, &quot;dummy3&quot;, &quot;not_defined&quot;}</td></tr>
+<tr class="memitem:ac28f6cd16864e6e47291996453a80066"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_components.html#ac28f6cd16864e6e47291996453a80066">components_s</a> [] = {&quot;base&quot;, &quot;camera&quot;, &quot;mesh_render&quot;, &quot;particle_emitter&quot;, &quot;gui_texture&quot;, &quot;audio_source&quot;, &quot;transform&quot;, &quot;dummy&quot;, &quot;not_defined&quot;}</td></tr>
 <tr class="memdesc:ac28f6cd16864e6e47291996453a80066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombres de componentes.  <a href="#ac28f6cd16864e6e47291996453a80066">Más...</a><br/></td></tr>
 <tr class="separator:ac28f6cd16864e6e47291996453a80066"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -217,13 +216,13 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char * Components::components_s = {&quot;base&quot;, &quot;camera&quot;, &quot;mesh_render&quot;, &quot;particle_emitter&quot;, &quot;gui_texture&quot;, &quot;audio_source&quot;, &quot;transform&quot;, &quot;dummy1&quot;, &quot;dummy2&quot;, &quot;dummy3&quot;, &quot;not_defined&quot;}</td>
+          <td class="memname">const char * Components::components_s = {&quot;base&quot;, &quot;camera&quot;, &quot;mesh_render&quot;, &quot;particle_emitter&quot;, &quot;gui_texture&quot;, &quot;audio_source&quot;, &quot;transform&quot;, &quot;dummy&quot;, &quot;not_defined&quot;}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Nombres de componentes. </p>
-<p>Array de strings que contienen, por cada enum de components_t, una representación con caracteres. La representación como cadena de caracteres será idéntica al nombre del valor del enum, salvo para el caso especial components_t.__component_not_defined, que será *"not_defined"*. </p>
+<p>Array de strings que contienen, por cada enum de components_t, una representación con caracteres. La representación como cadena de caracteres será idéntica al nombre del valor del enum, salvo para el caso especial *__component_not_defined*, que será *"not_defined"*. </p>
 
 <p>Definición en la línea <a class="el" href="__component_8cpp_source.html#l00008">8</a> del archivo <a class="el" href="__component_8cpp_source.html">_component.cpp</a>.</p>
 
@@ -234,7 +233,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 29 de Marzo de 2014 16:34:45 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 19:33:16 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

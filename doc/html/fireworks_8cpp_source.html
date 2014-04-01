@@ -22,6 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Go-Engine
    &#160;<span id="projectnumber">alpha</span>
@@ -100,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* firework_manager = gGameObjects[<span class="stringliteral">&quot;firework_manager&quot;</span>];</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <span class="keywordflow">if</span>(!firework_manager)</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    firework_manager = gGameObjects.AddGameObject(<span class="stringliteral">&quot;firework_manager&quot;</span>);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    firework_manager = gGameObjects.Add(<span class="stringliteral">&quot;firework_manager&quot;</span>);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    firework_manager-&gt;<a class="code" href="class_c_game_object.html#a2577d585eaee7fb363be54a36ba5a0c2">Preserve</a>();</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    firework_manager-&gt;<a class="code" href="class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf">SetInputFunction</a>(&amp;Firework_Manager_KeyEvent);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    firework_manager-&gt;<a class="code" href="class_c_game_object.html#a75aa301df39af2435b9bc2e719f77197">SetBehaviourFunction</a>(&amp;Firework_Manager_Behaviour);</div>
@@ -138,9 +139,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    gSystem_Data_Storage.SetFloat(<span class="stringliteral">&quot;firework_timeout_&quot;</span>+value, timeout);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    gSystem_Data_Storage.SetFloat(<span class="stringliteral">&quot;firework_timer_&quot;</span>+value, gTime.GetTicks_s());</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* firework = gGameObjects.AddGameObject(<span class="stringliteral">&quot;firework_&quot;</span>+value);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* explosion = gGameObjects.AddGameObject(<span class="stringliteral">&quot;firework_explosion_&quot;</span>+value);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* trail = gGameObjects.AddGameObject(<span class="stringliteral">&quot;firework_trail_&quot;</span>+value);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* firework = gGameObjects.Add(<span class="stringliteral">&quot;firework_&quot;</span>+value);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* explosion = gGameObjects.Add(<span class="stringliteral">&quot;firework_explosion_&quot;</span>+value);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_c_game_object.html">CGameObject</a>* trail = gGameObjects.Add(<span class="stringliteral">&quot;firework_trail_&quot;</span>+value);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    firework-&gt;<a class="code" href="class_c_game_object.html#a0bcbe65095667178fa1a61c4019e2c5c">AddChild</a>(explosion);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    firework-&gt;<a class="code" href="class_c_game_object.html#a0bcbe65095667178fa1a61c4019e2c5c">AddChild</a>(trail);</div>
@@ -248,7 +249,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      gSystem_Data_Storage.RemoveFloat(<span class="stringliteral">&quot;firework_timeout_&quot;</span>+value);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      <span class="comment">// Clear vectors</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      gGameObjects.DeleteGameObject(current_firework-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>(), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      gGameObjects.Delete(current_firework-&gt;<a class="code" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">GetName</a>(), <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      exploded.erase(exploded.begin() + i);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      fireworks_value.erase(fireworks_value.begin() + i);</div>
@@ -310,7 +311,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="class_c_component___audio___source_html_aeac995c83bc61e59102dbdc18059aab0"><div class="ttname"><a href="class_c_component___audio___source.html#aeac995c83bc61e59102dbdc18059aab0">CComponent_Audio_Source::Bind</a></div><div class="ttdeci">void Bind()</div><div class="ttdef"><b>Definition:</b> <a href="__component__audio_8cpp_source.html#l00269">_component_audio.cpp:269</a></div></div>
 <div class="ttc" id="class_c_component___audio___source_html_abc02ebc45996b12a3a815c176901ae38"><div class="ttname"><a href="class_c_component___audio___source.html#abc02ebc45996b12a3a815c176901ae38">CComponent_Audio_Source::max_distance</a></div><div class="ttdeci">ALfloat max_distance</div><div class="ttdef"><b>Definition:</b> <a href="__component__audio_8h_source.html#l00119">_component_audio.h:119</a></div></div>
 <div class="ttc" id="class_c_game_object_html_ab34e4dc91498bee564cb4cb027aa7e6d"><div class="ttname"><a href="class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d">CGameObject::ParticleEmitter</a></div><div class="ttdeci">CComponent_Particle_Emitter * ParticleEmitter()</div><div class="ttdoc">Acceso directo para el componente particle emitter (CComponent_Particle_Emitter). ...</div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00785">_object.h:785</a></div></div>
-<div class="ttc" id="class_c_game_object_html_a2577d585eaee7fb363be54a36ba5a0c2"><div class="ttname"><a href="class_c_game_object.html#a2577d585eaee7fb363be54a36ba5a0c2">CGameObject::Preserve</a></div><div class="ttdeci">void Preserve(bool recursive=false)</div><div class="ttdoc">Preservar el objeto entre estancias. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00309">_object.cpp:309</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a2577d585eaee7fb363be54a36ba5a0c2"><div class="ttname"><a href="class_c_game_object.html#a2577d585eaee7fb363be54a36ba5a0c2">CGameObject::Preserve</a></div><div class="ttdeci">void Preserve(bool recursive=false)</div><div class="ttdoc">Preservar el objeto entre estancias. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00303">_object.cpp:303</a></div></div>
 <div class="ttc" id="class_c_component___audio___source_html_adeb64aa856c24d6f5dc0b80737626759"><div class="ttname"><a href="class_c_component___audio___source.html#adeb64aa856c24d6f5dc0b80737626759">CComponent_Audio_Source::music</a></div><div class="ttdeci">bool music</div><div class="ttdef"><b>Definition:</b> <a href="__component__audio_8h_source.html#l00113">_component_audio.h:113</a></div></div>
 <div class="ttc" id="class_c_component___audio___source_html_a2d5d68561b634daf928bc05b16d15acb"><div class="ttname"><a href="class_c_component___audio___source.html#a2d5d68561b634daf928bc05b16d15acb">CComponent_Audio_Source::volume</a></div><div class="ttdeci">ALfloat volume</div><div class="ttdef"><b>Definition:</b> <a href="__component__audio_8h_source.html#l00110">_component_audio.h:110</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a75aa301df39af2435b9bc2e719f77197"><div class="ttname"><a href="class_c_game_object.html#a75aa301df39af2435b9bc2e719f77197">CGameObject::SetBehaviourFunction</a></div><div class="ttdeci">void SetBehaviourFunction(function_t f)</div><div class="ttdoc">Cambiar el callback &amp;quot;behaviour&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00306">_object.h:306</a></div></div>
@@ -321,7 +322,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 29 de Marzo de 2014 16:34:35 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 19:33:06 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -11,9 +11,9 @@ using namespace Viewmode;
 using namespace std;
 
 
-const char* Viewmode::viewmode_s[] = {"perspective", "ortho", "ortho_screen"};
+const char* Viewmode::viewmode_s[] = {"perspective", "ortho", "ortho_screen", "not_defined"};
 
-const char* Viewmode::viewmode_to_string(viewmode_t c)
+const char* Viewmode::viewmode_to_string(viewmodes_t c)
 {
   if(c < 0 or c >= __viewmode_not_defined)
     c = __viewmode_not_defined;
@@ -21,11 +21,11 @@ const char* Viewmode::viewmode_to_string(viewmode_t c)
   return viewmode_s[c];
 }
 
-viewmode_t Viewmode::string_to_viewmode(const string& c)
+viewmodes_t Viewmode::string_to_viewmode(const string& c)
 {
   for(uint i = 0; i < Viewmode::__viewmode_not_defined; i++)
     if(c == viewmode_s[i])
-      return (viewmode_t)i;
+      return (viewmodes_t)i;
 
   return __viewmode_not_defined;
 }
@@ -224,7 +224,7 @@ void CComponent_Camera::parseDebug(string command)
     string data_s;
     ss >> data_s;
 
-    viewmode_t data = (viewmode_t)string_to_viewmode(data_s);
+    viewmodes_t data = (viewmodes_t)string_to_viewmode(data_s);
 
     if(ss.fail() or data == __viewmode_not_defined)
     {

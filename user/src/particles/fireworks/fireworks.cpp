@@ -6,7 +6,7 @@ bool SetGameObjects_Instance1_Fireworks()
   CGameObject* firework_manager = gGameObjects["firework_manager"];
   if(!firework_manager)
   {
-    firework_manager = gGameObjects.AddGameObject("firework_manager");
+    firework_manager = gGameObjects.Add("firework_manager");
     firework_manager->Preserve();
     firework_manager->SetInputFunction(&Firework_Manager_KeyEvent);
     firework_manager->SetBehaviourFunction(&Firework_Manager_Behaviour);
@@ -44,9 +44,9 @@ void Firework_Manager_KeyEvent(CGameObject* gameObject)
     gSystem_Data_Storage.SetFloat("firework_timeout_"+value, timeout);
     gSystem_Data_Storage.SetFloat("firework_timer_"+value, gTime.GetTicks_s());
 
-    CGameObject* firework = gGameObjects.AddGameObject("firework_"+value);
-    CGameObject* explosion = gGameObjects.AddGameObject("firework_explosion_"+value);
-    CGameObject* trail = gGameObjects.AddGameObject("firework_trail_"+value);
+    CGameObject* firework = gGameObjects.Add("firework_"+value);
+    CGameObject* explosion = gGameObjects.Add("firework_explosion_"+value);
+    CGameObject* trail = gGameObjects.Add("firework_trail_"+value);
 
     firework->AddChild(explosion);
     firework->AddChild(trail);
@@ -154,7 +154,7 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
       gSystem_Data_Storage.RemoveFloat("firework_timeout_"+value);
 
       // Clear vectors
-      gGameObjects.DeleteGameObject(current_firework->GetName(), true);
+      gGameObjects.Delete(current_firework->GetName(), true);
 
       exploded.erase(exploded.begin() + i);
       fireworks_value.erase(fireworks_value.begin() + i);

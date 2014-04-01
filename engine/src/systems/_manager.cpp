@@ -90,12 +90,12 @@ void CSystem_GameObject_Manager::Close()
   if(!enabled) return;
   CSystem::Close();
 
-  DeleteGameObjects();
+  DeleteAll();
 }
 
 bool CSystem_GameObject_Manager::Reset()
 {
-  DeleteGameObjects_NonPreserved();
+  DeleteAll_NonPreserved();
 
   for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
   {
@@ -139,7 +139,7 @@ void CSystem_GameObject_Manager::CloseGameObject(string name)
     gSystem_Debug.console_warning_msg("Error from Manager::CloseGameObject: Could not find objet \"%s\"", name.c_str());
 }
 
-CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject_type type, bool init)
+CGameObject* CSystem_GameObject_Manager::Add(string nombre, gameObject_type type, bool init)
 {
   if(!Utils::validateIdentifier(nombre))
   {
@@ -170,7 +170,7 @@ CGameObject* CSystem_GameObject_Manager::AddGameObject(string nombre, gameObject
   return NULL;//return -1;
 }
 
-CGameObject* CSystem_GameObject_Manager::AddGameObject(CGameObject* go, bool init)
+CGameObject* CSystem_GameObject_Manager::Add(CGameObject* go, bool init)
 {
   if(!Utils::validateIdentifier(go->GetName()))
   {
@@ -199,7 +199,7 @@ CGameObject* CSystem_GameObject_Manager::AddGameObject(CGameObject* go, bool ini
   return it->second;//return it->second->GetID();
 }
 
-bool CSystem_GameObject_Manager::DeleteGameObject(string nombre, bool remove_children)
+bool CSystem_GameObject_Manager::Delete(string nombre, bool remove_children)
 {
   // Borrar solo si se encuentra
   map<string, CGameObject*>::iterator it = gameObjects.find(nombre);
@@ -208,7 +208,7 @@ bool CSystem_GameObject_Manager::DeleteGameObject(string nombre, bool remove_chi
     int num_hijos = it->second->GetNumChildren();
     if(remove_children)
       for(int i = 0; i < num_hijos && num_hijos != 0; i++)
-        DeleteGameObject(it->second->GetChild(0)->GetName(), true);
+        Delete(it->second->GetChild(0)->GetName(), true);
     // num_hijos-1-i
     else
       for(int i = 0; i < num_hijos && num_hijos != 0; i++)
@@ -227,15 +227,19 @@ bool CSystem_GameObject_Manager::DeleteGameObject(string nombre, bool remove_chi
   return false;
 }
 
-bool CSystem_GameObject_Manager::RemoveGameObject(string str)
+bool CSystem_GameObject_Manager::Remove(string str, bool remove_children)
 {
   map<string, CGameObject*>::iterator it = gameObjects.find(str);
   if(it != gameObjects.end())
   {
     //¿Borrarlos? naa, muy hardcore
     int num_hijos = it->second->GetNumChildren();
-    for(int i = 0; i < num_hijos && num_hijos != 0; i++)
-      it->second->RemoveChild(it->second->GetChild(0)->GetName()); // Como se borran, accedemos siempre al primero hasta quedarnos sin ninguno
+    if(!remove_children)
+      for(int i = 0; i < num_hijos && num_hijos != 0; i++)
+        it->second->RemoveChild(it->second->GetChild(0)->GetName()); // Como se borran, accedemos siempre al primero hasta quedarnos sin ninguno
+    else
+      for(int i = 0; i < num_hijos && num_hijos != 0; i++)
+        Remove(it->second->GetChild(0)->GetName(), remove_children);
 
     it->second->Register(-1);
     it->second->UnParent();
@@ -264,7 +268,7 @@ bool CSystem_GameObject_Manager::RebuildIndex()
   return true;
 }
 
-vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObjects(string prefix)
+vector<CGameObject*> CSystem_GameObject_Manager::Search(string prefix)
 {
   vector<CGameObject*> output;
 
@@ -300,7 +304,7 @@ vector<CGameObject*> CSystem_GameObject_Manager::SearchGameObjects(string prefix
 
 
 
-bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
+bool CSystem_GameObject_Manager::Rename(string name, string new_name)
 {
   if(!Utils::validateIdentifier(new_name))
   {
@@ -340,7 +344,7 @@ bool CSystem_GameObject_Manager::RenameGameObject(string name, string new_name)
   return true;
 }
 
-bool CSystem_GameObject_Manager::RenameGameObject(CGameObject* go, string new_name)
+bool CSystem_GameObject_Manager::Rename(CGameObject* go, string new_name)
 {
   // Debería llamar a la función anterior, o al revés
   if(!Utils::validateIdentifier(new_name))
@@ -381,7 +385,7 @@ bool CSystem_GameObject_Manager::RenameGameObject(CGameObject* go, string new_na
   return true;
 }
 
-void CSystem_GameObject_Manager::DeleteGameObjects()
+void CSystem_GameObject_Manager::DeleteAll()
 {
   for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); ++it)
   {
@@ -392,7 +396,7 @@ void CSystem_GameObject_Manager::DeleteGameObjects()
   gameObjects.clear();
 }
 
-void CSystem_GameObject_Manager::DeleteGameObjects_NonPreserved()
+void CSystem_GameObject_Manager::DeleteAll_NonPreserved()
 {
   for(map<string, CGameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end();)
   {
@@ -411,7 +415,7 @@ void CSystem_GameObject_Manager::DeleteGameObjects_NonPreserved()
   }
 }
 
-CGameObject* CSystem_GameObject_Manager::GetGameObject(string nombre)
+CGameObject* CSystem_GameObject_Manager::Get(string nombre)
 {
   map<string, CGameObject*>::iterator it = gameObjects.find(nombre);
   if(it != gameObjects.end())
@@ -433,29 +437,29 @@ CGameObject* CSystem_GameObject_Manager::operator[](string nombre)
   return NULL;
 }
 
-void CSystem_GameObject_Manager::DisableGameObject(string name)
+void CSystem_GameObject_Manager::DisableGameObject(string name, bool recursive)
 {
   map<string, CGameObject*>::iterator it = gameObjects.find(name);
   if(it != gameObjects.end())
-    it->second->Disable();
+    it->second->Disable(recursive);
 //  else
 //    gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::DisableGameObject: Could not find objet \"%s\"", name.c_str());
 }
 
-void CSystem_GameObject_Manager::EnableGameObject(string name)
+void CSystem_GameObject_Manager::EnableGameObject(string name, bool recursive)
 {
   map<string, CGameObject*>::iterator it = gameObjects.find(name);
   if(it != gameObjects.end())
-    it->second->Enable();
+    it->second->Enable(recursive);
   else
     gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::EnableGameObject: Could not find objet \"%s\"", name.c_str());
 }
 
-void CSystem_GameObject_Manager::SetGameObject(string name, bool state)
+void CSystem_GameObject_Manager::SetGameObjectState(string name, bool state, bool recursive)
 {
   map<string, CGameObject*>::iterator it = gameObjects.find(name);
   if(it != gameObjects.end())
-    it->second->SetState(state);
+    it->second->SetState(state, recursive);
   else
     gSystem_Debug.console_warning_msg("From CSystem_GameObject_Manager::SetGameObject: Could not find objet \"%s\"", name.c_str());
 }

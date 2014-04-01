@@ -12,7 +12,9 @@ var searchData=
   ['setsound',['SetSound',['../class_c_component___audio___source.html#a58a226f05fe659ba97716524675ce2ad',1,'CComponent_Audio_Source']]],
   ['setstartfunction',['SetStartFunction',['../class_c_game_object.html#a810b361cfd7e9b47786fdf4c910a577b',1,'CGameObject']]],
   ['setstate',['SetState',['../class_c_game_object.html#a7711c658f35cc6e9a7ee2bae195e19b6',1,'CGameObject::SetState()'],['../class_c_component.html#a72335b7a969dd7881e37aa54dbc4c4d8',1,'CComponent::SetState()']]],
+  ['settarget',['SetTarget',['../class_c_component___camera.html#a21cccb527b56371e2701196cdf3f8323',1,'CComponent_Camera::SetTarget(std::string t)'],['../class_c_component___camera.html#adbadd8759351d0889d240346a3077d69',1,'CComponent_Camera::SetTarget(CGameObject *obj)']]],
   ['sistemas',['Sistemas',['../group___sistemas.html',1,'']]],
+  ['skybox_5ftexture',['skybox_texture',['../class_c_component___camera.html#a2ed22a4d9e377eaf8bc2e9cda01d45f7',1,'CComponent_Camera']]],
   ['start_5fplaying',['start_playing',['../class_c_component___audio___source.html#a3836c6d3a9cf3bf0e4a4cf95d9b24a83',1,'CComponent_Audio_Source']]],
   ['stop',['Stop',['../class_c_component___audio___source.html#ac46fdf5a422933963b8338d918bfbf8e',1,'CComponent_Audio_Source']]],
   ['str',['str',['../structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25',1,'colorf_t::str()'],['../structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057',1,'viewport_t::str()'],['../structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420',1,'viewportf_t::str()'],['../structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190',1,'vector3f_t::str()']]],
@@ -20,5 +22,6 @@ var searchData=
   ['string_5fgenerate_5frandom_5falphanumeric',['string_generate_random_alphanumeric',['../namespace_utils.html#a36a166e3ee3df3c74d173ec59c2faf77',1,'Utils']]],
   ['string_5fto_5fcomponent',['string_to_component',['../namespace_components.html#a743d5a93099902d50576b82d76181343',1,'Components']]],
   ['string_5fto_5flower',['string_to_lower',['../namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8',1,'Utils']]],
-  ['string_5fto_5fupper',['string_to_upper',['../namespace_utils.html#ab5e6a3d3b984a2994202d33010f8d9c7',1,'Utils']]]
+  ['string_5fto_5fupper',['string_to_upper',['../namespace_utils.html#ab5e6a3d3b984a2994202d33010f8d9c7',1,'Utils']]],
+  ['string_5fto_5fviewmode',['string_to_viewmode',['../namespace_viewmode.html#ab27f0f5204504bd0893d784c129dc0eb',1,'Viewmode']]]
 ];

@@ -170,7 +170,7 @@ bool CSystem_Render::Init()
 
   current_camera = -1;
 
-  GUI_Camera = gSystem_GameObject_Manager.AddGameObject("__RENDER_GUI_CAMERA");
+  GUI_Camera = gSystem_GameObject_Manager.Add("__RENDER_GUI_CAMERA");
   GUI_Camera->Camera()->clear = false;
   GUI_Camera->Camera()->viewmode = Viewmode::ortho_screen;
   GUI_Camera->Camera()->ApplyChanges();

@@ -22,6 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Go-Engine
    &#160;<span id="projectnumber">alpha</span>
@@ -136,6 +137,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <li>AddToSystem()
 : <a class="el" href="class_c_game_object.html#ad8e02d315ce61ba263dbe0fd83ff63e6">CGameObject</a>
 </li>
+<li>AfterRender()
+: <a class="el" href="class_c_component___camera.html#a72c07b8a22a71ab7ea40fd1cee6fc855">CComponent_Camera</a>
+</li>
 <li>AudioSource()
 : <a class="el" href="class_c_game_object.html#a5060aaabf3893fb7153b89ba264ec4d9">CGameObject</a>
 </li>
@@ -143,6 +147,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 
 
 <h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>BeforeRender()
+: <a class="el" href="class_c_component___camera.html#a9925d467efe91cbe187484474b23de03">CComponent_Camera</a>
+</li>
 <li>Bind()
 : <a class="el" href="class_c_component___audio___source.html#aeac995c83bc61e59102dbdc18059aab0">CComponent_Audio_Source</a>
 </li>
@@ -173,6 +180,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </li>
 <li>CComponent_Audio_Source()
 : <a class="el" href="class_c_component___audio___source.html#a348b20d6f2991537bf757f7d2d29d5ce">CComponent_Audio_Source</a>
+</li>
+<li>CComponent_Camera()
+: <a class="el" href="class_c_component___camera.html#a91c589afc8d1ab9a403df4ca41c68039">CComponent_Camera</a>
 </li>
 <li>CGameObject()
 : <a class="el" href="class_c_game_object.html#a48f1516784befb0062d1af2545327d15">CGameObject</a>
@@ -325,7 +335,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <li>OnEvent()
 : <a class="el" href="class_c_game_object.html#a95ae4c569b748f198203019939e88994">CGameObject</a>
 , <a class="el" href="class_c_component.html#a3cb7e6d8b48a19ee825e08d3fff29286">CComponent</a>
-, <a class="el" href="class_c_component___dummy3.html#ac91cabb84dac24117b9f4730f97692d4">CComponent_Dummy3</a>
+, <a class="el" href="class_c_component___dummy.html#acda32a9b892434af68b9252b05f33429">CComponent_Dummy</a>
 </li>
 <li>OnInput()
 : <a class="el" href="class_c_game_object.html#ab4fd9dbe8e1713646bf3a46b867602f4">CGameObject</a>
@@ -338,16 +348,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 , <a class="el" href="class_c_component.html#a86071e4913c2bbfc08561972c7c9c639">CComponent</a>
 </li>
 <li>OnRender()
-: <a class="el" href="class_c_component___g_u_i___texture.html#a94c7bc5f16b0e0fcc788cc34c508fae4">CComponent_GUI_Texture</a>
-, <a class="el" href="class_c_component___mesh___render.html#ac9f201ee0f39191f2a263a6d7ebbc2c1">CComponent_Mesh_Render</a>
-, <a class="el" href="class_c_component___particle___emitter.html#a510a4373566c593dc08a67b8f3824a04">CComponent_Particle_Emitter</a>
+: <a class="el" href="class_c_component___particle___emitter.html#a510a4373566c593dc08a67b8f3824a04">CComponent_Particle_Emitter</a>
 , <a class="el" href="class_c_component___transform.html#a35656e7b04d9d8d17f16757145f3e83e">CComponent_Transform</a>
 , <a class="el" href="class_c_game_object.html#abd0483aefe0cf5e54fdf1ded80645660">CGameObject</a>
 , <a class="el" href="class_c_component.html#a3d622bece105a5c40eef862254e8e812">CComponent</a>
 , <a class="el" href="class_c_component___audio___source.html#a5fc01a048b23aa182ae5711c811c9f8a">CComponent_Audio_Source</a>
-, <a class="el" href="class_c_component___dummy1.html#a2cd35c98bc79bc839d6994ed934338c2">CComponent_Dummy1</a>
-, <a class="el" href="class_c_component___dummy2.html#ad5dff16a0e5c2fc19bc9ff3113e1261d">CComponent_Dummy2</a>
-, <a class="el" href="class_c_component___dummy3.html#a43f8886afb3ad9ea864050296990f8e4">CComponent_Dummy3</a>
+, <a class="el" href="class_c_component___dummy.html#a2900552f187a746abb0367ded523a8f4">CComponent_Dummy</a>
+, <a class="el" href="class_c_component___g_u_i___texture.html#a94c7bc5f16b0e0fcc788cc34c508fae4">CComponent_GUI_Texture</a>
+, <a class="el" href="class_c_component___mesh___render.html#ac9f201ee0f39191f2a263a6d7ebbc2c1">CComponent_Mesh_Render</a>
 </li>
 <li>operator!=()
 : <a class="el" href="structvector3f__t.html#a6672829454068bbcb109b8ce25884ad0">vector3f_t</a>
@@ -356,12 +364,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 : <a class="el" href="structvector3f__t.html#a9dd36855f44c00ae1d85124fc35f7d41">vector3f_t</a>
 </li>
 <li>operator()()
-: <a class="el" href="structvector3f__t.html#aa567921e0e64bfe8cee844debf709108">vector3f_t</a>
-, <a class="el" href="structcolorf__t.html#a2adf895965c84145be4866e69839e8c1">colorf_t</a>
+: <a class="el" href="structcolorf__t.html#a2adf895965c84145be4866e69839e8c1">colorf_t</a>
+, <a class="el" href="structvector3f__t.html#aa567921e0e64bfe8cee844debf709108">vector3f_t</a>
 </li>
 <li>operator*()
-: <a class="el" href="structcolorf__t.html#afbde8c23e5102ac4761c0f7345f8b800">colorf_t</a>
-, <a class="el" href="structvector3f__t.html#a522f4868de03f0f150ca341f77eaefb8">vector3f_t</a>
+: <a class="el" href="structvector3f__t.html#a522f4868de03f0f150ca341f77eaefb8">vector3f_t</a>
+, <a class="el" href="structcolorf__t.html#afbde8c23e5102ac4761c0f7345f8b800">colorf_t</a>
+, <a class="el" href="structvector3f__t.html#a49f7885ca87f48e5fed0200d381b8b26">vector3f_t</a>
 </li>
 <li>operator*=()
 : <a class="el" href="structvector3f__t.html#a01c45cd29778d8d14af48227d810a7ba">vector3f_t</a>
@@ -493,14 +502,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 : <a class="el" href="class_c_game_object.html#a7711c658f35cc6e9a7ee2bae195e19b6">CGameObject</a>
 , <a class="el" href="class_c_component.html#a72335b7a969dd7881e37aa54dbc4c4d8">CComponent</a>
 </li>
+<li>SetTarget()
+: <a class="el" href="class_c_component___camera.html#a21cccb527b56371e2701196cdf3f8323">CComponent_Camera</a>
+</li>
 <li>Stop()
 : <a class="el" href="class_c_component___audio___source.html#ac46fdf5a422933963b8338d918bfbf8e">CComponent_Audio_Source</a>
 </li>
 <li>str()
-: <a class="el" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420">viewportf_t</a>
-, <a class="el" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057">viewport_t</a>
-, <a class="el" href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">vector3f_t</a>
+: <a class="el" href="structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057">viewport_t</a>
+, <a class="el" href="structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420">viewportf_t</a>
 , <a class="el" href="structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25">colorf_t</a>
+, <a class="el" href="structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190">vector3f_t</a>
 </li>
 </ul>
 
@@ -525,6 +537,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </li>
 <li>UnPreserve()
 : <a class="el" href="class_c_game_object.html#a88c9f7a5ae1ca7a6b9ea8c4c266bae2e">CGameObject</a>
+</li>
+<li>UnSetTarget()
+: <a class="el" href="class_c_component___camera.html#a2b10e3b84e252a12a1073fc6197fc61a">CComponent_Camera</a>
 </li>
 <li>up()
 : <a class="el" href="structvector3f__t.html#a7d986a4c2fa63a415233b72acd17da27">vector3f_t</a>
@@ -553,6 +568,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <li>~CComponent_Audio_Source()
 : <a class="el" href="class_c_component___audio___source.html#ad43f4a582c06e00de1dce16e3ed8eb6c">CComponent_Audio_Source</a>
 </li>
+<li>~CComponent_Camera()
+: <a class="el" href="class_c_component___camera.html#a6bdee12f6e4389afb78291eaa3b52ec5">CComponent_Camera</a>
+</li>
 <li>~CGameObject()
 : <a class="el" href="class_c_game_object.html#a4ae07118a44d09c2b5db2dd68e78b690">CGameObject</a>
 </li>
@@ -563,7 +581,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 29 de Marzo de 2014 16:34:46 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 19:33:18 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

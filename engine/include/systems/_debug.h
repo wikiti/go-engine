@@ -148,9 +148,9 @@ class CSystem_Debug: public CSystem
     void Console_command__REMOVE_STRING(std::string arguments);
     void Console_command__REMOVE_USER_VARS(std::string arguments);
 
-    void Console_command__QUIT(std::string arguments);
-    void Console_command__CLEAR(std::string arguments);
     void Console_command__EXIT(std::string arguments);
+    void Console_command__CLEAR(std::string arguments);
+    void Console_command__ABORT(std::string arguments);
     void Console_command__RUN(std::string arguments);
 
     void Console_command__SECRET_PLZ(std::string arguments);

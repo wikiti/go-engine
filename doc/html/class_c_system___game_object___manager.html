@@ -22,6 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Go-Engine
    &#160;<span id="projectnumber">alpha</span>
@@ -127,51 +128,51 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>InitGameObject</b> (s
 <tr class="memitem:a1b4eb483174ad72d738c97d74d5db3c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b4eb483174ad72d738c97d74d5db3c9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CloseGameObject</b> (std::string name)</td></tr>
 <tr class="separator:a1b4eb483174ad72d738c97d74d5db3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78a8cfb7cff8e7526c078b166e2c2ca4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78a8cfb7cff8e7526c078b166e2c2ca4"></a>
-<a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>AddGameObject</b> (std::string name, <a class="el" href="group___game_objects.html#gabc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a> type=gameObject_empty, bool init=true)</td></tr>
-<tr class="separator:a78a8cfb7cff8e7526c078b166e2c2ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed3bf1d2bbaa41be3275f3e324ed98e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed3bf1d2bbaa41be3275f3e324ed98e5"></a>
-<a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>AddGameObject</b> (<a class="el" href="class_c_game_object.html">CGameObject</a> *go, bool init=true)</td></tr>
-<tr class="separator:aed3bf1d2bbaa41be3275f3e324ed98e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97613c545db5c6883dac3ec4a6716134"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97613c545db5c6883dac3ec4a6716134"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteGameObject</b> (std::string name, bool remove_children=true)</td></tr>
-<tr class="separator:a97613c545db5c6883dac3ec4a6716134"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1b046f7f990e35691e64f3f4401a0cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1b046f7f990e35691e64f3f4401a0cd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteGameObjects</b> ()</td></tr>
-<tr class="separator:ab1b046f7f990e35691e64f3f4401a0cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa331aa62edc57c4f058f739b5435ba33"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa331aa62edc57c4f058f739b5435ba33"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteGameObjects_NonPreserved</b> ()</td></tr>
-<tr class="separator:aa331aa62edc57c4f058f739b5435ba33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30dc9d87ba6eba289403705567d5be89"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30dc9d87ba6eba289403705567d5be89"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveGameObject</b> (std::string name)</td></tr>
-<tr class="separator:a30dc9d87ba6eba289403705567d5be89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc2e8553efa1783fdc477e33210ba882"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc2e8553efa1783fdc477e33210ba882"></a>
+<a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Add</b> (std::string name, <a class="el" href="group___game_objects.html#gabc32c5ef28f83ce5f6996e327f62a67a">gameObject_type</a> type=gameObject_empty, bool init=true)</td></tr>
+<tr class="separator:adc2e8553efa1783fdc477e33210ba882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03c4101d5a196e6548cc7eaaa07a56bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03c4101d5a196e6548cc7eaaa07a56bf"></a>
+<a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Add</b> (<a class="el" href="class_c_game_object.html">CGameObject</a> *go, bool init=true)</td></tr>
+<tr class="separator:a03c4101d5a196e6548cc7eaaa07a56bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c464ff7ca7e5420d95bdb59dd2c9a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15c464ff7ca7e5420d95bdb59dd2c9a4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Delete</b> (std::string name, bool delete_children=true)</td></tr>
+<tr class="separator:a15c464ff7ca7e5420d95bdb59dd2c9a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a694db300bdfa4e7adcdaa14445fb6eab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a694db300bdfa4e7adcdaa14445fb6eab"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteAll</b> ()</td></tr>
+<tr class="separator:a694db300bdfa4e7adcdaa14445fb6eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12432b705ff4f594613be4117be032a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12432b705ff4f594613be4117be032a8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteAll_NonPreserved</b> ()</td></tr>
+<tr class="separator:a12432b705ff4f594613be4117be032a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef2702d43e54f0e429cb055fbb7eb2aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef2702d43e54f0e429cb055fbb7eb2aa"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Remove</b> (std::string name, bool remove_children=true)</td></tr>
+<tr class="separator:aef2702d43e54f0e429cb055fbb7eb2aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a776dd482b68e21587382bad605ecf959"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a776dd482b68e21587382bad605ecf959"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>RebuildIndex</b> ()</td></tr>
 <tr class="separator:a776dd482b68e21587382bad605ecf959"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78091341bb94bc36a67f5c97c1ff548a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78091341bb94bc36a67f5c97c1ff548a"></a>
-std::vector&lt; <a class="el" href="class_c_game_object.html">CGameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>SearchGameObjects</b> (std::string prefix)</td></tr>
-<tr class="separator:a78091341bb94bc36a67f5c97c1ff548a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05321280109786b520f357f41b93763a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05321280109786b520f357f41b93763a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>RenameGameObject</b> (std::string name, std::string new_name)</td></tr>
-<tr class="separator:a05321280109786b520f357f41b93763a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a345822e7f97c6e8f0cbc60bf91b097e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a345822e7f97c6e8f0cbc60bf91b097e8"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>RenameGameObject</b> (<a class="el" href="class_c_game_object.html">CGameObject</a> *go, std::string new_name)</td></tr>
-<tr class="separator:a345822e7f97c6e8f0cbc60bf91b097e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a968d9021e8af61603b4247e033de1ed6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a968d9021e8af61603b4247e033de1ed6"></a>
-<a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetGameObject</b> (std::string name)</td></tr>
-<tr class="separator:a968d9021e8af61603b4247e033de1ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68099c88db3c325061ccb2406163cd43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68099c88db3c325061ccb2406163cd43"></a>
+std::vector&lt; <a class="el" href="class_c_game_object.html">CGameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Search</b> (std::string prefix)</td></tr>
+<tr class="separator:a68099c88db3c325061ccb2406163cd43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73f1a53af00e94c7931a6ed802c4f403"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73f1a53af00e94c7931a6ed802c4f403"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Rename</b> (std::string name, std::string new_name)</td></tr>
+<tr class="separator:a73f1a53af00e94c7931a6ed802c4f403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0dd5a73455147983e9656f12d0ee844"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0dd5a73455147983e9656f12d0ee844"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Rename</b> (<a class="el" href="class_c_game_object.html">CGameObject</a> *go, std::string new_name)</td></tr>
+<tr class="separator:ad0dd5a73455147983e9656f12d0ee844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8958fc8534303673d5eae8ed098e6e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad8958fc8534303673d5eae8ed098e6e7"></a>
+<a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Get</b> (std::string name)</td></tr>
+<tr class="separator:ad8958fc8534303673d5eae8ed098e6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade4df10b56e7d1bbd04a259994fa301c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade4df10b56e7d1bbd04a259994fa301c"></a>
 <a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (std::string name)</td></tr>
 <tr class="separator:ade4df10b56e7d1bbd04a259994fa301c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc8138d7f40094526badd9fed5c11e9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc8138d7f40094526badd9fed5c11e9e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DisableGameObject</b> (std::string name)</td></tr>
-<tr class="separator:afc8138d7f40094526badd9fed5c11e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32133b0044e3aab55862a6c74acde02c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32133b0044e3aab55862a6c74acde02c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>EnableGameObject</b> (std::string name)</td></tr>
-<tr class="separator:a32133b0044e3aab55862a6c74acde02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2beb8f4c6f9e3c5bad9e5fc3011ef506"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2beb8f4c6f9e3c5bad9e5fc3011ef506"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetGameObject</b> (std::string name, bool state=true)</td></tr>
-<tr class="separator:a2beb8f4c6f9e3c5bad9e5fc3011ef506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd01b3f448b3bc0c147b736d47b05a59"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd01b3f448b3bc0c147b736d47b05a59"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DisableGameObject</b> (std::string name, bool recursive=true)</td></tr>
+<tr class="separator:abd01b3f448b3bc0c147b736d47b05a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e4599b8d21f755b0d5641950e225707"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e4599b8d21f755b0d5641950e225707"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>EnableGameObject</b> (std::string name, bool recursive=true)</td></tr>
+<tr class="separator:a3e4599b8d21f755b0d5641950e225707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a181ebc86544a39ea6e8dc35346552d4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a181ebc86544a39ea6e8dc35346552d4e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetGameObjectState</b> (std::string name, bool state=true, bool recursive=true)</td></tr>
+<tr class="separator:a181ebc86544a39ea6e8dc35346552d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a8ff32edf45ed66259cce0f92a4590f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a8ff32edf45ed66259cce0f92a4590f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>EnableGameObjects</b> ()</td></tr>
 <tr class="separator:a1a8ff32edf45ed66259cce0f92a4590f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,7 +224,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CSystem_Debug</b></t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 29 de Marzo de 2014 16:34:42 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 19:33:13 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

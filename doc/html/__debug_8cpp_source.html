@@ -22,6 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Go-Engine
    &#160;<span id="projectnumber">alpha</span>
@@ -148,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      input = input.substr(1);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordflow">if</span>(input.size())</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        replace(input.begin(), input.end(), <span class="charliteral">&#39;#&#39;</span>, <span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">//replace(input.begin(), input.end(), &#39;#&#39;, &#39; &#39;);</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        ParseInput();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        input = <span class="stringliteral">&quot;&quot;</span>;</div>
@@ -293,8 +294,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  console_commands.insert(pair&lt;string, command_p&gt;(<span class="stringliteral">&quot;remove_string&quot;</span>, &amp;CSystem_Debug::Console_command__REMOVE_STRING));</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  console_commands.insert(pair&lt;string, command_p&gt;(<span class="stringliteral">&quot;remove_user_vars&quot;</span>, &amp;CSystem_Debug::Console_command__REMOVE_USER_VARS));</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  console_commands.insert(pair&lt;string, command_p&gt;(<span class="stringliteral">&quot;exit&quot;</span>, &amp;CSystem_Debug::Console_command__EXIT));</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  console_commands.insert(pair&lt;string, command_p&gt;(<span class="stringliteral">&quot;quit&quot;</span>, &amp;CSystem_Debug::Console_command__QUIT));</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  console_commands.insert(pair&lt;string, command_p&gt;(<span class="stringliteral">&quot;abort&quot;</span>, &amp;CSystem_Debug::Console_command__ABORT));</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  console_commands.insert(pair&lt;string, command_p&gt;(<span class="stringliteral">&quot;exit&quot;</span>, &amp;CSystem_Debug::Console_command__EXIT));</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  console_commands.insert(pair&lt;string, command_p&gt;(<span class="stringliteral">&quot;clear&quot;</span>, &amp;CSystem_Debug::Console_command__CLEAR));</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  console_commands.insert(pair&lt;string, command_p&gt;(<span class="stringliteral">&quot;run&quot;</span>, &amp;CSystem_Debug::Console_command__RUN));</div>
@@ -800,8 +801,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    console_msg(<span class="stringliteral">&quot;remove_string:                  Remove a string variable.&quot;</span>);</div>
 <div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    console_msg(<span class="stringliteral">&quot;remove_user_vars:               Remove all user vars.&quot;</span>);</div>
 <div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    console_msg(<span class="stringliteral">&quot;quit:                           Quits the program and save current opened files.&quot;</span>);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    console_msg(<span class="stringliteral">&quot;exit:                           Aborts the program and exists.&quot;</span>);</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    console_msg(<span class="stringliteral">&quot;exit:                           Quits the program and save current opened files.&quot;</span>);</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;    console_msg(<span class="stringliteral">&quot;abort:                          Aborts the program execution.&quot;</span>);</div>
 <div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    console_msg(<span class="stringliteral">&quot;clear:                          Clears the console content.&quot;</span>);</div>
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    console_msg(<span class="stringliteral">&quot;run:                            Runs a console script file (batch file). Fil must be in data/resources/console_scripts.&quot;</span>);</div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  }</div>
@@ -1172,27 +1173,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;  current_line_buffered = 0;</div>
 <div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;}</div>
 <div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;</div>
-<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;<span class="keywordtype">void</span> CSystem_Debug::Console_command__EXIT(<span class="keywordtype">string</span> arguments)</div>
+<div class="line"><a name="l01083"></a><span class="lineno"> 1083</span>&#160;<span class="keywordtype">void</span> CSystem_Debug::Console_command__ABORT(<span class="keywordtype">string</span> arguments)</div>
 <div class="line"><a name="l01084"></a><span class="lineno"> 1084</span>&#160;{</div>
 <div class="line"><a name="l01085"></a><span class="lineno"> 1085</span>&#160;  <span class="keywordflow">if</span>(arguments == <span class="stringliteral">&quot;?&quot;</span>)</div>
 <div class="line"><a name="l01086"></a><span class="lineno"> 1086</span>&#160;  {</div>
-<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;    console_warning_msg(<span class="stringliteral">&quot;Format is: exit&quot;</span>);</div>
+<div class="line"><a name="l01087"></a><span class="lineno"> 1087</span>&#160;    console_warning_msg(<span class="stringliteral">&quot;Format is: abort&quot;</span>);</div>
 <div class="line"><a name="l01088"></a><span class="lineno"> 1088</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01089"></a><span class="lineno"> 1089</span>&#160;  }</div>
 <div class="line"><a name="l01090"></a><span class="lineno"> 1090</span>&#160;</div>
 <div class="line"><a name="l01091"></a><span class="lineno"> 1091</span>&#160;  gEngine.Exit();</div>
 <div class="line"><a name="l01092"></a><span class="lineno"> 1092</span>&#160;}</div>
 <div class="line"><a name="l01093"></a><span class="lineno"> 1093</span>&#160;</div>
-<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;<span class="keywordtype">void</span> CSystem_Debug::Console_command__QUIT(<span class="keywordtype">string</span> arguments)</div>
+<div class="line"><a name="l01094"></a><span class="lineno"> 1094</span>&#160;<span class="keywordtype">void</span> CSystem_Debug::Console_command__EXIT(<span class="keywordtype">string</span> arguments)</div>
 <div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;{</div>
 <div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;  <span class="keywordflow">if</span>(arguments == <span class="stringliteral">&quot;?&quot;</span>)</div>
 <div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;  {</div>
-<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;    console_warning_msg(<span class="stringliteral">&quot;Format is: quit [reason message]&quot;</span>);</div>
+<div class="line"><a name="l01098"></a><span class="lineno"> 1098</span>&#160;    console_warning_msg(<span class="stringliteral">&quot;Format is: exit [reason message]&quot;</span>);</div>
 <div class="line"><a name="l01099"></a><span class="lineno"> 1099</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;  }</div>
 <div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;</div>
 <div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;  <span class="keywordflow">if</span>(arguments != <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;    gSystem_Debug.log(<span class="stringliteral">&quot;Quit: \&quot;%s\&quot;&quot;</span>, arguments.c_str());</div>
+<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;    gSystem_Debug.log(<span class="stringliteral">&quot;Exit: \&quot;%s\&quot;&quot;</span>, arguments.c_str());</div>
 <div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;  gEngine.Quit();</div>
 <div class="line"><a name="l01105"></a><span class="lineno"> 1105</span>&#160;}</div>
 <div class="line"><a name="l01106"></a><span class="lineno"> 1106</span>&#160;</div>
@@ -1687,7 +1688,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;  }</div>
 <div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;</div>
-<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;  vector&lt;CGameObject*&gt; v_go = gSystem_GameObject_Manager.SearchGameObjects(prefix);</div>
+<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;  vector&lt;CGameObject*&gt; v_go = gSystem_GameObject_Manager.Search(prefix);</div>
 <div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;</div>
 <div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;  <span class="keywordflow">if</span>(!v_go.size())</div>
 <div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;    console_error_msg(<span class="stringliteral">&quot;Could not find game object prefixed with \&quot;%s\&quot;&quot;</span>, prefix.c_str());</div>
@@ -1927,7 +1928,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l01835"></a><span class="lineno"> 1835</span>&#160;{</div>
 <div class="line"><a name="l01836"></a><span class="lineno"> 1836</span>&#160;  <span class="keywordflow">if</span>(arguments == <span class="stringliteral">&quot;?&quot;</span>)</div>
 <div class="line"><a name="l01837"></a><span class="lineno"> 1837</span>&#160;  {</div>
-<div class="line"><a name="l01838"></a><span class="lineno"> 1838</span>&#160;    console_warning_msg(<span class="stringliteral">&quot;Format is: r_glinfo &lt;show | log&gt; [ext]&quot;</span>);</div>
+<div class="line"><a name="l01838"></a><span class="lineno"> 1838</span>&#160;    console_warning_msg(<span class="stringliteral">&quot;Format is: r_glinfo &lt;show | log&gt; [ext[ension]]&quot;</span>);</div>
 <div class="line"><a name="l01839"></a><span class="lineno"> 1839</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01840"></a><span class="lineno"> 1840</span>&#160;  }</div>
 <div class="line"><a name="l01841"></a><span class="lineno"> 1841</span>&#160;</div>
@@ -1946,7 +1947,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l01854"></a><span class="lineno"> 1854</span>&#160;  }</div>
 <div class="line"><a name="l01855"></a><span class="lineno"> 1855</span>&#160;  <span class="keywordflow">else</span></div>
 <div class="line"><a name="l01856"></a><span class="lineno"> 1856</span>&#160;  {</div>
-<div class="line"><a name="l01857"></a><span class="lineno"> 1857</span>&#160;    console_warning_msg(<span class="stringliteral">&quot;Format is: r_glinfo &lt;show | log&gt; [ext]&quot;</span>);</div>
+<div class="line"><a name="l01857"></a><span class="lineno"> 1857</span>&#160;    console_warning_msg(<span class="stringliteral">&quot;Format is: r_glinfo &lt;show | log&gt; [ext[ension]]&quot;</span>);</div>
 <div class="line"><a name="l01858"></a><span class="lineno"> 1858</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l01859"></a><span class="lineno"> 1859</span>&#160;  }</div>
 <div class="line"><a name="l01860"></a><span class="lineno"> 1860</span>&#160;</div>
@@ -1965,7 +1966,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l01873"></a><span class="lineno"> 1873</span>&#160;    argument = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l01874"></a><span class="lineno"> 1874</span>&#160;    ss &gt;&gt; argument;</div>
 <div class="line"><a name="l01875"></a><span class="lineno"> 1875</span>&#160;</div>
-<div class="line"><a name="l01876"></a><span class="lineno"> 1876</span>&#160;    <span class="keywordflow">if</span>(argument == <span class="stringliteral">&quot;ext&quot;</span>)</div>
+<div class="line"><a name="l01876"></a><span class="lineno"> 1876</span>&#160;    <span class="keywordflow">if</span>(argument == <span class="stringliteral">&quot;ext&quot;</span> or argument == <span class="stringliteral">&quot;extension&quot;</span>)</div>
 <div class="line"><a name="l01877"></a><span class="lineno"> 1877</span>&#160;    {</div>
 <div class="line"><a name="l01878"></a><span class="lineno"> 1878</span>&#160;      (this-&gt;*display_function)(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line"><a name="l01879"></a><span class="lineno"> 1879</span>&#160;      (this-&gt;*display_function)(<span class="stringliteral">&quot;Extensions supported:\n&quot;</span>);</div>
@@ -2009,7 +2010,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 29 de Marzo de 2014 16:34:33 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 19:33:03 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -2,79 +2,12 @@
 #include "components/_component_dummys.h"
 #include "components/_component_transform.h"
 
-//BOOST_CLASS_EXPORT_IMPLEMENT(CComponent_Dummy1);
 using namespace std;
-
-
-CComponent_Dummy1::CComponent_Dummy1(CGameObject* go): CComponent(go)
-{
-  cube_side = 0.1f;
-}
-
-void CComponent_Dummy1::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
-{
-  if(!enabled) return;
-
-  glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture("textura1")->GetID());
-  glColor3f(1.f, 1.f, 1.f);
-
-  glBegin(GL_QUADS);
-    // Delante
-    glNormal3f( 0.0f, 0.0f, 1.0f);
-    glTexCoord2f(1.f, 0.0f); glVertex3f(-cube_side, -cube_side,  cube_side);  // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( cube_side, -cube_side,  cube_side);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.f); glVertex3f( cube_side,  cube_side,  cube_side);  // Top Right Of The Texture and Quad
-    glTexCoord2f(1.f, 1.f); glVertex3f(-cube_side,  cube_side,  cube_side);  // Top Left Of The Texture and Quad
-    // Detrás
-    glNormal3f( 0.0f, 0.0f,-1.0f);
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-cube_side, -cube_side, -cube_side);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-cube_side,  cube_side, -cube_side);  // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( cube_side,  cube_side, -cube_side);  // Top Left Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( cube_side, -cube_side, -cube_side);  // Bottom Left Of The Texture and Quad
-    // Arriba
-    glNormal3f( 0.0f, 1.0f, 0.0f);
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-cube_side,  cube_side, -cube_side);  // Top Left Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-cube_side,  cube_side,  cube_side);  // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( cube_side,  cube_side,  cube_side);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( cube_side,  cube_side, -cube_side);  // Top Right Of The Texture and Quad
-    // Abajo
-    glNormal3f( 0.0f,-1.0f, 0.0f);
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-cube_side, -cube_side, -cube_side);  // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( cube_side, -cube_side, -cube_side);  // Top Left Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( cube_side, -cube_side,  cube_side);  // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-cube_side, -cube_side,  cube_side);  // Bottom Right Of The Texture and Quad
-    // Derecha
-    glNormal3f( 1.0f, 0.0f, 0.0f);
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( cube_side, -cube_side, -cube_side);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( cube_side,  cube_side, -cube_side);  // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( cube_side,  cube_side,  cube_side);  // Top Left Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( cube_side, -cube_side,  cube_side);  // Bottom Left Of The Texture and Quad
-    // Izquierda
-    glNormal3f(-1.0f, 0.0f, 0.0f);
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-cube_side, -cube_side, -cube_side);  // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-cube_side, -cube_side,  cube_side);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-cube_side,  cube_side,  cube_side);  // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-cube_side,  cube_side, -cube_side);  // Top Left Of The Texture and Quad
-  glEnd();
-}
-
-void CComponent_Dummy2::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
-{
-  if(!enabled) return;
-
-  glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture("mesh1_texture")->GetID());
-  glColor3f(1.f, 1.f, 1.f);
-
-  CResource_Mesh* mesh = gSystem_Resources.GetMesh("mesh1");
-  if(mesh) mesh->Render();
-}
-
-
 
 vector3f direction;
 float angle;
 
-void CComponent_Dummy3::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
+void CComponent_Dummy::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
 {
   vector3f pos = gameObject->Transform()->position;
   glBindTexture(GL_TEXTURE_2D, 0);
@@ -98,7 +31,7 @@ void CComponent_Dummy3::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix
   glEnd();
 
   glColor3f(0.f, 1.f, 0.f); // Verde
-  for(uint i = 0; i < __RANDOM_ARRAY_SIZE; i++)
+  for(uint i = 0; i < 1000; i++)
   {
     glBegin(GL_LINES);
       glVertex3f(pos.x, pos.y, pos.z);
@@ -108,7 +41,7 @@ void CComponent_Dummy3::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix
   }
 }
 
-void CComponent_Dummy3::OnEvent()
+void CComponent_Dummy::OnEvent()
 {
   if(event.type == SDL_KEYDOWN)
   {
@@ -124,8 +57,8 @@ void CComponent_Dummy3::OnEvent()
     }
     else if(event.key.keysym.sym == SDLK_F7)
     {
-      random_array.resize(__RANDOM_ARRAY_SIZE);
-      for(uint i = 0; i < __RANDOM_ARRAY_SIZE; i++)
+      random_array.resize(1000);
+      for(uint i = 0; i < 1000; i++)
       {
         random_array[i] = gMath.random_vector(direction, angle);
         //cout << random_array[i].length() << endl;

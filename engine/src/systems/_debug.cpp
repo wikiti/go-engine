@@ -199,8 +199,8 @@ bool CSystem_Debug::InitCommandMap()
   console_commands.insert(pair<string, command_p>("remove_string", &CSystem_Debug::Console_command__REMOVE_STRING));
   console_commands.insert(pair<string, command_p>("remove_user_vars", &CSystem_Debug::Console_command__REMOVE_USER_VARS));
 
+  console_commands.insert(pair<string, command_p>("abort", &CSystem_Debug::Console_command__ABORT));
   console_commands.insert(pair<string, command_p>("exit", &CSystem_Debug::Console_command__EXIT));
-  console_commands.insert(pair<string, command_p>("quit", &CSystem_Debug::Console_command__QUIT));
   console_commands.insert(pair<string, command_p>("clear", &CSystem_Debug::Console_command__CLEAR));
 
   console_commands.insert(pair<string, command_p>("run", &CSystem_Debug::Console_command__RUN));
@@ -708,8 +708,8 @@ void CSystem_Debug::Console_command__HELP(string arguments)
     console_msg("remove_string:                  Remove a string variable.");
     console_msg("remove_user_vars:               Remove all user vars.");
 
-    console_msg("quit:                           Quits the program and save current opened files.");
-    console_msg("exit:                           Aborts the program and exists.");
+    console_msg("exit:                           Quits the program and save current opened files.");
+    console_msg("abort:                          Aborts the program execution.");
     console_msg("clear:                          Clears the console content.");
     console_msg("run:                            Runs a console script file (batch file). Fil must be in data/resources/console_scripts.");
   }
@@ -1080,27 +1080,27 @@ void CSystem_Debug::Console_command__CLEAR(string arguments)
   current_line_buffered = 0;
 }
 
-void CSystem_Debug::Console_command__EXIT(string arguments)
+void CSystem_Debug::Console_command__ABORT(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: exit");
+    console_warning_msg("Format is: abort");
     return;
   }
 
   gEngine.Exit();
 }
 
-void CSystem_Debug::Console_command__QUIT(string arguments)
+void CSystem_Debug::Console_command__EXIT(string arguments)
 {
   if(arguments == "?")
   {
-    console_warning_msg("Format is: quit [reason message]");
+    console_warning_msg("Format is: exit [reason message]");
     return;
   }
 
   if(arguments != "")
-    gSystem_Debug.log("Quit: \"%s\"", arguments.c_str());
+    gSystem_Debug.log("Exit: \"%s\"", arguments.c_str());
   gEngine.Quit();
 }
 
@@ -1595,7 +1595,7 @@ void CSystem_Debug::Console_command__GO_SEARCH(string arguments)
     return;
   }
 
-  vector<CGameObject*> v_go = gSystem_GameObject_Manager.SearchGameObjects(prefix);
+  vector<CGameObject*> v_go = gSystem_GameObject_Manager.Search(prefix);
 
   if(!v_go.size())
     console_error_msg("Could not find game object prefixed with \"%s\"", prefix.c_str());

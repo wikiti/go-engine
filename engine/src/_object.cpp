@@ -194,18 +194,18 @@ void CGameObject::CallFunc_HelloWorld(input_t data, output_t o_data)
 int CGameObject::AddToSystem()
 {
   //id = -1;
-  CGameObject* recv = gSystem_GameObject_Manager.GetGameObject(name);
+  CGameObject* recv = gSystem_GameObject_Manager.Get(name);
   if(recv != NULL) // Si ya existe, devolvemos falso
     return -1;
 
-  gSystem_GameObject_Manager.AddGameObject(this);
+  gSystem_GameObject_Manager.Add(this);
 
   return id;
 }
 
 bool CGameObject::RemoveFromSystem()
 {
-  if(id != -1 && gSystem_GameObject_Manager.RemoveGameObject(name))
+  if(id != -1 && gSystem_GameObject_Manager.Remove(name))
   {
     id = -1;
     return true;
@@ -265,14 +265,8 @@ void CGameObject::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)
     GetComponent<CComponent_Particle_Emitter>()->OnRender(projMatrix, modelViewMatrix);
 
   // Dummys
-  if(GetComponent<CComponent_Dummy1>())
-    GetComponent<CComponent_Dummy1>()->OnRender(projMatrix, modelViewMatrix);
-
-  if(GetComponent<CComponent_Dummy2>())
-    GetComponent<CComponent_Dummy2>()->OnRender(projMatrix, modelViewMatrix);
-
-  if(GetComponent<CComponent_Dummy3>())
-    GetComponent<CComponent_Dummy3>()->OnRender(projMatrix, modelViewMatrix);
+  if(GetComponent<CComponent_Dummy>())
+    GetComponent<CComponent_Dummy>()->OnRender(projMatrix, modelViewMatrix);
 
   CallRenderFunction();
 }

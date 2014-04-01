@@ -22,6 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Go-Engine
    &#160;<span id="projectnumber">alpha</span>
@@ -98,15 +99,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> SetGameObjects_Instance1_Rainbow()</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_violet = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow_violet&quot;</span>);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_dblue = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow_dblue&quot;</span>);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_blue = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow_blue&quot;</span>);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_green = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow_green&quot;</span>);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_yellow = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow_yellow&quot;</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_orange = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow_orange&quot;</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_red = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow_red&quot;</span>);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_violet = gGameObjects.Add(<span class="stringliteral">&quot;rainbow_violet&quot;</span>);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_dblue = gGameObjects.Add(<span class="stringliteral">&quot;rainbow_dblue&quot;</span>);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_blue = gGameObjects.Add(<span class="stringliteral">&quot;rainbow_blue&quot;</span>);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_green = gGameObjects.Add(<span class="stringliteral">&quot;rainbow_green&quot;</span>);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_yellow = gGameObjects.Add(<span class="stringliteral">&quot;rainbow_yellow&quot;</span>);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_orange = gGameObjects.Add(<span class="stringliteral">&quot;rainbow_orange&quot;</span>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow_red = gGameObjects.Add(<span class="stringliteral">&quot;rainbow_red&quot;</span>);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow = gGameObjects.AddGameObject(<span class="stringliteral">&quot;rainbow&quot;</span>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* rainbow = gGameObjects.Add(<span class="stringliteral">&quot;rainbow&quot;</span>);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  rainbow-&gt;<a class="code" href="class_c_game_object.html#aa39587c45dd82ac7931d8803dac5fcd1">AddChildren</a>({rainbow_violet, rainbow_dblue, rainbow_blue, rainbow_green, rainbow_yellow, rainbow_orange, rainbow_red});</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  rainbow-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;position.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> += 3.f;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
@@ -218,7 +219,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 29 de Marzo de 2014 16:34:36 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 19:33:06 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

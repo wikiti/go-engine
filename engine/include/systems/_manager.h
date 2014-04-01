@@ -33,25 +33,25 @@ class CSystem_GameObject_Manager: public CSystem
     void InitGameObject(std::string name);
     void CloseGameObject(std::string name);
 
-    CGameObject* AddGameObject(std::string name, gameObject_type type = gameObject_empty, bool init = true); // cambiar con un enum
-    CGameObject* AddGameObject(CGameObject* go, bool init = true);
-    bool DeleteGameObject(std::string name, bool remove_children = true);
-    void DeleteGameObjects();
-    void DeleteGameObjects_NonPreserved();
-    bool RemoveGameObject(std::string name);
+    CGameObject* Add(std::string name, gameObject_type type = gameObject_empty, bool init = true); // cambiar con un enum
+    CGameObject* Add(CGameObject* go, bool init = true);
+    bool Delete(std::string name, bool delete_children = true);
+    void DeleteAll();
+    void DeleteAll_NonPreserved();
+    bool Remove(std::string name, bool remove_children = true); // ->PORHACER Hay que probar la función CSystem_GameObject_Manager::Remove().
       bool RebuildIndex(); // <- Mecanismo insano, pero puesto por si acaso (quien coño llega a 4 mil millones de objetos?)
 
-    std::vector<CGameObject*> SearchGameObjects(std::string prefix);
+    std::vector<CGameObject*> Search(std::string prefix);
 
-    bool RenameGameObject(std::string name, std::string new_name);
-    bool RenameGameObject(CGameObject* go, std::string new_name);
+    bool Rename(std::string name, std::string new_name);
+    bool Rename(CGameObject* go, std::string new_name);
 
-    CGameObject* GetGameObject(std::string name);
+    CGameObject* Get(std::string name);
     CGameObject* operator[](std::string name);
 
-    void DisableGameObject(std::string name);
-    void EnableGameObject(std::string name);
-    void SetGameObject(std::string name, bool state = true);
+    void DisableGameObject(std::string name, bool recursive = true);
+    void EnableGameObject(std::string name, bool recursive = true);
+    void SetGameObjectState(std::string name, bool state = true, bool recursive = true);
 
     void EnableGameObjects();
     void DisableGameObjects();

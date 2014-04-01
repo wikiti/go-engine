@@ -13,7 +13,7 @@ void particle_emitter1_behaviour(CGameObject* object)
 
 bool SetGameObjects_Instance1_Other_Particles()
 {
-  CGameObject* fire = gGameObjects.AddGameObject("fire1");
+  CGameObject* fire = gGameObjects.Add("fire1");
 
   //fire->transform()->position.x += 3.f;
   fire->ParticleEmitter()->direction(0.f, -1.f, 0.f);
@@ -50,7 +50,7 @@ bool SetGameObjects_Instance1_Other_Particles()
   fire->ParticleEmitter()->Start();
 
   // Huge test
-  CGameObject* particle_emitter1 = gGameObjects.AddGameObject("particle_emitter1");
+  CGameObject* particle_emitter1 = gGameObjects.Add("particle_emitter1");
   particle_emitter1->ParticleEmitter()->direction(0.f, 1.f, 0.f);
 
   // velocidades

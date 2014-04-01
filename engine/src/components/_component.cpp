@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const char* Components::components_s[] = {"base", "camera", "mesh_render", "particle_emitter", "gui_texture", "audio_source", "transform", "dummy1", "dummy2", "dummy3", "not_defined"};
+const char* Components::components_s[] = {"base", "camera", "mesh_render", "particle_emitter", "gui_texture", "audio_source", "transform", "dummy", "not_defined"};
 
 const char* Components::component_to_string(components_t c)
 {

@@ -5,7 +5,7 @@
 *Go Engine* es un motor gráfico multiplataforma para poder utilizar como base a la hora de realizar videojuegos. El nombre proviene de la orientación del proyecto (*GameObject Engine*), basado en entidades y componentes.
 
 <div align="center">
-![](assets/logo.png)
+![](doc/logo.png)
 <div align="left">
 
 

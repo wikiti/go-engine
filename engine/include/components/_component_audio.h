@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Fichero que incluye la clase abstracta CComponent para definir componentes.
+ * @brief Fichero que incluye la clase CComponent_Audio.
  */
 
 #ifndef __COMPONENT_AUDIO_H_

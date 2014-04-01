@@ -16,7 +16,7 @@ x- Hay que mover los archivos log.txt y user.cfg a otras carpetas, para que qued
   - ¿Problema? Vectores auxiliares para guardar la posición de todas las partículas. ¿Cuándo se actualiza? ¿De manera dinámica? Eso es muy chapuza, ¿no?
 
 - Estaría bien probar un VBO static para los CResource_Mesh, ya que muchos de este tipo podrían bloquear el sistema.
--/- Hacer una especie de "interfaz" para cada componente para poder modificar atributos (se le pasa un string a una funcion "ParseInput" o algo y se analiza).
+x- Hacer una especie de "interfaz" para cada componente para poder modificar atributos (se le pasa un string a una funcion "ParseInput" o algo y se analiza).
 x- Cambiar nombres de las funciones "OnEvent" por algo más intuitivo, como "OnUserInput" o "OnInput".
 - Añadir un función al sistema Debug para prestar una opción de autocompletado de comandos (sencillo, comandos almacenados en un map).
 x- Crear skybox

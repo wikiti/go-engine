@@ -427,8 +427,8 @@ typedef struct viewport_t
  * |        |             |       |
  * |        |             |height |
  * |        |_____________|       |
- * |             width            |
- * |______________________________|
+ * ^             width            |
+ * |__>___________________________|
  * </pre>
  *
  * Se diferencia de viewport_t en que esta no usa píxeles para el tamaño, sino un valor flotante entre 0 y 1, siendo, para el ancho, "1" el ancho de la ventana, y para el alto, "1" el alto de la ventana.
@@ -439,8 +439,8 @@ typedef struct viewport_t
 typedef struct viewportf_t
 {
     // Values between 0.f and 1.f
-    GLfloat x;      /**< Posición en el eje x de la pantalla del viewport. Es de tipo "float" por conveniencia. */
-    GLfloat y;      /**< Posición en el eje y de la pantalla del viewport. Es de tipo "float" por conveniencia. */
+    GLfloat x;      /**< Posición en el eje x de la pantalla del viewport. Varía entre 0 y 1. Para el valor 0, el punto empieza en la parte derecha de la ventana, y para 1, se encuentra en la parte izquierda. */
+    GLfloat y;      /**< Posición en el eje y de la pantalla del viewport. Varía entre 0 y 1. Para el valor 0, el punto empieza en la parte inferior de la ventana, y para 1, se encuentra en la parte superior. */
     GLfloat width;  /**< Ancho del viewport, expresado en un valor del rango [0,1], siendo "1" el ancho de la ventana (véase gSystem_Render.GetWindowSize()). */
     GLfloat height; /**< Alto del viewport, expresado en un valor del rango [0,1], siendo "1" el alto de la ventana (véase gSystem_Render.GetWindowSize()). */
 

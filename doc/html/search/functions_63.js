@@ -8,6 +8,7 @@ var searchData=
   ['camera',['Camera',['../class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712',1,'CGameObject']]],
   ['ccomponent',['CComponent',['../class_c_component.html#ab87a6940be69962c3f4f5a8552643245',1,'CComponent::CComponent()'],['../class_c_component.html#a26a0daf85e3fdc8f1194ad6370111ad2',1,'CComponent::CComponent(CGameObject *container)']]],
   ['ccomponent_5faudio_5fsource',['CComponent_Audio_Source',['../class_c_component___audio___source.html#a348b20d6f2991537bf757f7d2d29d5ce',1,'CComponent_Audio_Source::CComponent_Audio_Source()'],['../class_c_component___audio___source.html#a885063ad1d2c40ed84f0d57dbfa2dc79',1,'CComponent_Audio_Source::CComponent_Audio_Source(CGameObject *gameObject)']]],
+  ['ccomponent_5fcamera',['CComponent_Camera',['../class_c_component___camera.html#a91c589afc8d1ab9a403df4ca41c68039',1,'CComponent_Camera::CComponent_Camera()'],['../class_c_component___camera.html#a815882fd5f6cc97013851f7911ae74da',1,'CComponent_Camera::CComponent_Camera(CGameObject *gameObject)']]],
   ['cgameobject',['CGameObject',['../class_c_game_object.html#a48f1516784befb0062d1af2545327d15',1,'CGameObject::CGameObject(std::string name)'],['../class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea',1,'CGameObject::CGameObject()']]],
   ['close',['Close',['../class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876',1,'CGameObject']]],
   ['closecustom',['CloseCustom',['../class_c_game_object.html#a1031d0372ed792b4f12998f3570882b3',1,'CGameObject']]],

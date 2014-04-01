@@ -1,4 +1,7 @@
-// Componentes de prueba
+/**
+ * @file
+ * @brief Fichero para los componentes de pruebas.
+ */
 
 #ifndef __COMPONENT_CAMERA_DUMMYS_H_
 #define __COMPONENT_CAMERA_DUMMYS_H_
@@ -8,57 +11,22 @@
 
 #include "systems/_other.h"
 
-class CComponent_Dummy1: public CComponent
-{
-  private:
-    friend class CSystem_Render;
-    friend class CGameObject;
+/** @addtogroup Componentes */
+/*@{*/
 
-  public:
-    GLfloat cube_side;
-
-  private:
-    static int GetID() { return Components::dummy1; }
-
-  protected:
-
-  public:
-    CComponent_Dummy1(){};
-    CComponent_Dummy1(CGameObject* gameObject);
-
-    ~CComponent_Dummy1(){};
-
-    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
-};
-
-class CComponent_Dummy2: public CComponent
+/**
+ * @brief Componente de pruebas.
+ *
+ * Componente de pruebas. Usado para testear cosas rápidas sin necesidad de definir nuevos componentes.
+ */
+class CComponent_Dummy: public CComponent
 {
   private:
     friend class CSystem_Render;
     friend class CGameObject;
 
   private:
-    static int GetID() { return Components::dummy2; }
-
-  protected:
-
-  public:
-    CComponent_Dummy2(){};
-    CComponent_Dummy2(CGameObject* gameObject): CComponent(gameObject){ };
-
-    ~CComponent_Dummy2(){};
-
-    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
-};
-
-class CComponent_Dummy3: public CComponent
-{
-  private:
-    friend class CSystem_Render;
-    friend class CGameObject;
-
-  private:
-    static int GetID() { return Components::dummy3; }
+    static int GetID() { return Components::dummy; }
 
     vector3f direction;
     vector3f current_random;
@@ -70,36 +38,35 @@ class CComponent_Dummy3: public CComponent
 
   protected:
 
-#define __RANDOM_ARRAY_SIZE 1000
-
   public:
-    CComponent_Dummy3()
+    CComponent_Dummy()
     {
       angle = 45;
       direction = current_random = vector3f(0.f, 1.f, 0.f);
       another_random(1.f, 0.f, 0.f);
-      random_array.resize(__RANDOM_ARRAY_SIZE);
-      for(uint i = 0; i < __RANDOM_ARRAY_SIZE; i++)
+      random_array.resize(1000);
+      for(uint i = 0; i < 1000; i++)
         random_array[i] = gMath.random_vector(direction, angle);
     };
 
-    CComponent_Dummy3(CGameObject* gameObject): CComponent(gameObject)
+    CComponent_Dummy(CGameObject* gameObject): CComponent(gameObject)
     {
       angle = 45;
       direction = current_random = vector3f(0.f, 1.f, 0.f);
       another_random(1.f, 0.f, 0.f);
 
-      random_array.resize(__RANDOM_ARRAY_SIZE);
-      for(uint i = 0; i < __RANDOM_ARRAY_SIZE; i++)
+      random_array.resize(1000);
+      for(uint i = 0; i < 1000; i++)
         random_array[i] = gMath.random_vector(direction, angle);
     };
 
-    ~CComponent_Dummy3(){};
+    ~CComponent_Dummy(){};
 
     void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
     void OnEvent();
 };
 
-//BOOST_CLASS_EXPORT_KEY( CComponent_Dummy1 );
+/*@}*/
+
 
 #endif /* __COMPONENT_CAMERA_DUMMYS_H_ */
