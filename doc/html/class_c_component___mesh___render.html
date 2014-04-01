@@ -129,15 +129,6 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="separator:aa33cf0ed3f0848cf31d4d102bec40c1a inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaed8083f66ef30e36f1d157feff4bb21 inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aaed8083f66ef30e36f1d157feff4bb21">Get</a> ()</td></tr>
 <tr class="separator:aaed8083f66ef30e36f1d157feff4bb21 inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86071e4913c2bbfc08561972c7c9c639 inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a86071e4913c2bbfc08561972c7c9c639">OnLoop</a> ()</td></tr>
-<tr class="memdesc:a86071e4913c2bbfc08561972c7c9c639 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestión del comportamiento.  <a href="#a86071e4913c2bbfc08561972c7c9c639">Más...</a><br/></td></tr>
-<tr class="separator:a86071e4913c2bbfc08561972c7c9c639 inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cb7e6d8b48a19ee825e08d3fff29286 inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a3cb7e6d8b48a19ee825e08d3fff29286">OnEvent</a> ()</td></tr>
-<tr class="memdesc:a3cb7e6d8b48a19ee825e08d3fff29286 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestión de eventos.  <a href="#a3cb7e6d8b48a19ee825e08d3fff29286">Más...</a><br/></td></tr>
-<tr class="separator:a3cb7e6d8b48a19ee825e08d3fff29286 inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a950e0b0199181b7697e1106ea627c7ef inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a950e0b0199181b7697e1106ea627c7ef">OnInput</a> ()</td></tr>
-<tr class="memdesc:a950e0b0199181b7697e1106ea627c7ef inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestión de entrada.  <a href="#a950e0b0199181b7697e1106ea627c7ef">Más...</a><br/></td></tr>
-<tr class="separator:a950e0b0199181b7697e1106ea627c7ef inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a2bbd0e44da23267e07d1d610da1b02 inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a8a2bbd0e44da23267e07d1d610da1b02">GetState</a> ()</td></tr>
 <tr class="memdesc:a8a2bbd0e44da23267e07d1d610da1b02 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter del estado del componente.  <a href="#a8a2bbd0e44da23267e07d1d610da1b02">Más...</a><br/></td></tr>
 <tr class="separator:a8a2bbd0e44da23267e07d1d610da1b02 inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,6 +171,9 @@ GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>color_apply_force<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Amigas</h2></td></tr>
+<tr class="memitem:a1de191016958c7b6d70936fb0428ce22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1de191016958c7b6d70936fb0428ce22"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>CSystem_Render</b></td></tr>
+<tr class="separator:a1de191016958c7b6d70936fb0428ce22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4654c7cb9a577a043b2a9185eb88a240"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4654c7cb9a577a043b2a9185eb88a240"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>CGameObject</b></td></tr>
 <tr class="separator:a4654c7cb9a577a043b2a9185eb88a240"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -232,9 +226,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CGameObject</b></td>
 </dl>
 <dl class="section warning"><dt>Atención</dt><dd>Esta función no debe ser llamada de manera explícita. </dd></dl>
 
-<p>Reimplementado de <a class="el" href="class_c_component.html#a3d622bece105a5c40eef862254e8e812">CComponent</a>.</p>
+<p>Reimplementado de <a class="el" href="class_c_component.html">CComponent</a>.</p>
 
-<p>Definición en la línea <a class="el" href="__component__mesh__render_8cpp_source.html#l00028">28</a> del archivo <a class="el" href="__component__mesh__render_8cpp_source.html">_component_mesh_render.cpp</a>.</p>
+<p>Definición en la línea <a class="el" href="__component__mesh__render_8cpp_source.html#l00029">29</a> del archivo <a class="el" href="__component__mesh__render_8cpp_source.html">_component_mesh_render.cpp</a>.</p>
 
 <p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00222">colorf_t::a</a>, <a class="el" href="__globals_8h_source.html#l00221">colorf_t::b</a>, <a class="el" href="__globals_8h_source.html#l00220">colorf_t::g</a> y <a class="el" href="__globals_8h_source.html#l00219">colorf_t::r</a>.</p>
 
@@ -247,7 +241,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CGameObject</b></td>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Martes, 1 de Abril de 2014 19:33:10 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 21:38:22 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

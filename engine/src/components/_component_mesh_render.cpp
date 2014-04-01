@@ -2,6 +2,7 @@
 #include "systems/_resource.h"
 #include "systems/_shader.h"
 #include "systems/_debug.h"
+#include "systems/_other.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ CComponent_Mesh_Render::CComponent_Mesh_Render(CGameObject* gameObject) :
 
   //materials.resize(0);
   color(1.f, 1.f, 1.f, 1.f);
-  color_apply_force = 1.f;
+  color_apply_force = 0.f;
 }
 
 CComponent_Mesh_Render::~CComponent_Mesh_Render()
@@ -47,11 +48,10 @@ void CComponent_Mesh_Render::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix"), 1, GL_FALSE,
       glm::value_ptr(modelViewMatrix));
   glUniform1i(simpleShader->GetUniformIndex("texture"), 0);
-  if(color_apply_force > 1)
-    color_apply_force = 1.f;
-  if(color_apply_force < 0)
-    color_apply_force = 0.f;
-  glUniform1f(simpleShader->GetUniformIndex("textureFlag"), color_apply_force);
+
+  gSystem_Math.Clamp(color_apply_force, 0.f, 1.f);
+
+  glUniform1f(simpleShader->GetUniformIndex("textureFlag"), 1.0f - color_apply_force);
   glUniform4f(simpleShader->GetUniformIndex("in_Color"), color.r, color.g, color.b, color.a);
 
   if(before_render)

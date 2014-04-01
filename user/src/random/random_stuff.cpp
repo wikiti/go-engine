@@ -20,6 +20,7 @@ bool SetGameObjects_Instance1_RandomStuff()
   gui_example->GUITexture()->width = gui_example->GUITexture()->height = 100.f;
   //gui_example->Transform()->scale(2.f, 2.f, 2.f);
   gui_example->Transform()->position(100.f, 100.f, 0.f);
+  gui_example->GUITexture()->color_apply_force = 1.f;
   gui_example->GUITexture()->pixel_offset_x = 2;
   gui_example->GUITexture()->color.a = 0.5f;
   gui_example->GUITexture()->color.g = gui_example->GUITexture()->color.b = 0.f;
@@ -270,15 +271,7 @@ void Cubo_second_movimiento(CGameObject* gameObject)
     scale -= 1.f * gTime.deltaTime_s();
     gameObject->Transform()->SetScale(1.f, scale, 1.f);
   }
-  cout << " ROTATION: " << gameObject->Transform()->Rotation() << endl;
-  cout << "LROTATION: " << gameObject->Transform()->LRotation() << endl;
-}
 
-void Cubo_second_cout(CGameObject* gameObject)
-{
-  cout << "Cubo_second GPOS: " << gameObject->Transform()->Position() << endl;
-  cout << "Cubo_second LPOS: " << gameObject->Transform()->LPosition() << endl;
-  cout << "----------------------------------------------------" << endl;
 }
 
 void Cubo_third_behaviour(CGameObject* gameObject)

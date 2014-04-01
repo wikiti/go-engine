@@ -193,49 +193,6 @@ class CComponent
     /** @no_use */
     virtual output_t Get(){return NULL;};
 
-    /**
-     * @brief Renderizar el componente.
-     *
-     * Función de renderizado. Renderiza el componente.
-     *
-     * @see CGameObject::OnRender().
-     * @param projMatrix       Matriz de proyección. Interna al sistema.
-     * @param modelViewMatrix  Matriz de modelview. Interna al sistema.
-     *
-     * @warning Esta función no debe ser llamada de manera explícita.
-     */
-    inline virtual void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix){};
-    /**
-     * @brief Gestión del comportamiento.
-     *
-     * Función de comportamiento. Actualiza el componente.
-     *
-     * @see CGameObject::OnLoop().
-     *
-     * @warning Esta función no debe ser llamada de manera explícita.
-     */
-    inline virtual void OnLoop(){};
-    /**
-     * @brief Gestión de eventos.
-     *
-     * Función de gestión de eventos. Gestiona eventos de entrada importantes para el componente.
-     *
-     * @see CGameObject::OnEvent().
-     *
-     * @warning Esta función no debe ser llamada de manera explícita.
-     */
-    inline virtual void OnEvent(){};
-    /**
-     * @brief Gestión de entrada.
-     *
-     * Función de gestión de entrada. Gestiona entradas importantes para el componente.
-     *
-     * @see CGameObject::OnInput().
-     *
-     * @warning Esta función no debe ser llamada de manera explícita.
-     */
-    inline virtual void OnInput(){};
-
     //virtual bool AddFuncs(CGameObject* obj){return true;};
     //virtual bool RemoveFuncs(CGameObject* obj){return true;};
 
@@ -297,6 +254,50 @@ class CComponent
     {
       return gameObject;
     }
+
+  protected:
+    /**
+     * @brief Renderizar el componente.
+     *
+     * Función de renderizado. Renderiza el componente.
+     *
+     * @see CGameObject::OnRender().
+     * @param projMatrix       Matriz de proyección. Interna al sistema.
+     * @param modelViewMatrix  Matriz de modelview. Interna al sistema.
+     *
+     * @warning Esta función no debe ser llamada de manera explícita.
+     */
+    inline virtual void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix){};
+    /**
+     * @brief Gestión del comportamiento.
+     *
+     * Función de comportamiento. Actualiza el componente.
+     *
+     * @see CGameObject::OnLoop().
+     *
+     * @warning Esta función no debe ser llamada de manera explícita.
+     */
+    inline virtual void OnLoop(){};
+    /**
+     * @brief Gestión de eventos.
+     *
+     * Función de gestión de eventos. Gestiona eventos de entrada importantes para el componente.
+     *
+     * @see CGameObject::OnEvent().
+     *
+     * @warning Esta función no debe ser llamada de manera explícita.
+     */
+    inline virtual void OnEvent(){};
+    /**
+     * @brief Gestión de entrada.
+     *
+     * Función de gestión de entrada. Gestiona entradas importantes para el componente.
+     *
+     * @see CGameObject::OnInput().
+     *
+     * @warning Esta función no debe ser llamada de manera explícita.
+     */
+    inline virtual void OnInput(){};
 };
 
 /*@}*/

@@ -1,2 +1,6 @@
 [01/04/2014 18:42] WARNING!! From Render: Trying to set multisampling samples to 32, being the max value 16. Using 16.
 [01/04/2014 18:48] WARNING!! From Render: Trying to set multisampling samples to 32, being the max value 16. Using 16.
+[01/04/2014 21:19] WARNING!! From Render: Trying to set multisampling samples to 32, being the max value 16. Using 16.
+[01/04/2014 21:34] WARNING!! From Render: Trying to set multisampling samples to 32, being the max value 16. Using 16.
+[01/04/2014 21:36] WARNING!! From Render: Trying to set multisampling samples to 32, being the max value 16. Using 16.
+[01/04/2014 21:37] WARNING!! From Render: Trying to set multisampling samples to 32, being the max value 16. Using 16.

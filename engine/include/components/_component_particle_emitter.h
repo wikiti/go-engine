@@ -137,7 +137,7 @@ class CComponent_Particle_Emitter: public CComponent
     void Freeze();
     void UnFreeze();
 
-    // Usamos glBegin() y glEnd() en vez de VBOs, ya que
+  protected:
     void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
     void OnLoop();
 };

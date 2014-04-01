@@ -94,10 +94,11 @@
  */
 class CComponent_Audio_Source: public CComponent
 {
-  private:
-    friend class CSystem_Mixer;
-    friend class CGameObject;
+  friend class CSystem_Mixer;
+  friend class CGameObject;
+  friend class CSystem_Render;
 
+  protected:
     bool playing, paused;
     ALuint source_attached;
 
@@ -176,20 +177,6 @@ class CComponent_Audio_Source: public CComponent
     {
       sound = gSystem_Resources.GetSound(name);
     }
-
-    void OnLoop();
-    /**
-     * @brief Renderizar el componente.
-     *
-     * Si la variable del sistema __RENDER_SOUND_RADIUS dentro del juego es mayor que 1,
-     * se dibujarán esferas alrededor de los componentes para representar max_distance y min_distance.
-     *
-     * @see CComponent::OnLoop().
-     *
-     * @param projMatrix
-     * @param modelViewMatrix
-     */
-    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
 
     /**
      * Reproducir un sonido de manera estática.
@@ -293,6 +280,22 @@ class CComponent_Audio_Source: public CComponent
      * @warning Todo recurso bindeado, si se destruye el componente que lo tiene bindeado, será des-bindeado de manera automática con CComponent_Audio_Source::UnBind().
      */
     void UnBind();
+
+  protected:
+
+    void OnLoop();
+    /**
+     * @brief Renderizar el componente.
+     *
+     * Si la variable del sistema __RENDER_SOUND_RADIUS dentro del juego es mayor que 1,
+     * se dibujarán esferas alrededor de los componentes para representar max_distance y min_distance.
+     *
+     * @see CComponent::OnLoop().
+     *
+     * @param projMatrix
+     * @param modelViewMatrix
+     */
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
 };
 
 /*@}*/

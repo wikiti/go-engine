@@ -429,7 +429,7 @@ void CComponent_Transform::LookAt(GLfloat x, GLfloat y, GLfloat z, vector3f up_v
   LookAt(vector3f(x, y, z), up_vector, forward_vector);
 }
 
-// ->BUG La función CComponent_Transform::LookAt() no funciona como debería, ya que se carga completamente la orientación del vector. Esto es, jode ejes de la cámara.
+// ->NOTA La función CComponent_Transform::LookAt() no funciona como debería, ya que se carga completamente la orientación del vector. Esto es, jode ejes de la cámara.
 void CComponent_Transform::LookAt(vector3f target, vector3f up, vector3f forward)
 {
   //http://stackoverflow.com/questions/12435671/quaternion-lookat-function

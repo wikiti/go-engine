@@ -21,9 +21,8 @@
  */
 class CComponent_Dummy: public CComponent
 {
-  private:
-    friend class CSystem_Render;
-    friend class CGameObject;
+  friend class CSystem_Render;
+  friend class CGameObject;
 
   private:
     static int GetID() { return Components::dummy; }
@@ -37,6 +36,8 @@ class CComponent_Dummy: public CComponent
     float angle;
 
   protected:
+    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
+    void OnEvent();
 
   public:
     CComponent_Dummy()
@@ -61,9 +62,6 @@ class CComponent_Dummy: public CComponent
     };
 
     ~CComponent_Dummy(){};
-
-    void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);
-    void OnEvent();
 };
 
 /*@}*/

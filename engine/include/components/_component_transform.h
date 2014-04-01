@@ -56,9 +56,6 @@ class CComponent_Transform: public CComponent
     inline virtual void Set(input_t data);
     inline virtual output_t Get();
 
-    void OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMatrix);
-    static bool InitRenderVBO();
-    static void CloseRenderVBO();
 
   public:
     // Movimientos locales o globales al eje x,y,z
@@ -146,6 +143,11 @@ class CComponent_Transform: public CComponent
     }
 //    vector3f_t LAngle();
 //    vector3f_t LScale();
+
+  protected:
+    void OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMatrix);
+    static bool InitRenderVBO();
+    static void CloseRenderVBO();
 };
 
 //BOOST_CLASS_EXPORT_KEY( CComponent_Transform );

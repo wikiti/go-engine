@@ -232,7 +232,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)<span class="keyword">this</span>; <span class="comment">// ?</span></div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_c_component___transform.html#a35656e7b04d9d8d17f16757145f3e83e">  140</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_component___transform.html#a35656e7b04d9d8d17f16757145f3e83e">CComponent_Transform::OnRender</a>(glm::mat4 modelViewMatrix, glm::mat4 projMatrix)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMatrix)</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keywordflow">if</span>(!enabled) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
@@ -524,7 +524,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  LookAt(<a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(x, y, z), up_vector, forward_vector);</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;}</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="comment">// -&gt;BUG La función CComponent_Transform::LookAt() no funciona como debería, ya que se carga completamente la orientación del vector. Esto es, jode ejes de la cámara.</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="comment">// -&gt;NOTA La función CComponent_Transform::LookAt() no funciona como debería, ya que se carga completamente la orientación del vector. Esto es, jode ejes de la cámara.</span></div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="keywordtype">void</span> CComponent_Transform::LookAt(<a class="code" href="structvector3f__t.html">vector3f</a> target, <a class="code" href="structvector3f__t.html">vector3f</a> up, <a class="code" href="structvector3f__t.html">vector3f</a> forward)</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;{</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  <span class="comment">//http://stackoverflow.com/questions/12435671/quaternion-lookat-function</span></div>
@@ -787,7 +787,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="namespace_components_html_aa89a2e84cfafd1da6f84c7edb84c1ce5"><div class="ttname"><a href="namespace_components.html#aa89a2e84cfafd1da6f84c7edb84c1ce5">Components::components_t</a></div><div class="ttdeci">components_t</div><div class="ttdoc">Enumeración o identificadores de componentes. </div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00028">_component.h:28</a></div></div>
 <div class="ttc" id="__object_8h_html"><div class="ttname"><a href="__object_8h.html">_object.h</a></div><div class="ttdoc">Estructura de los objeto &amp;quot;GameObject&amp;quot;. </div></div>
 <div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00507">_globals.h:507</a></div></div>
-<div class="ttc" id="class_c_component___transform_html_a35656e7b04d9d8d17f16757145f3e83e"><div class="ttname"><a href="class_c_component___transform.html#a35656e7b04d9d8d17f16757145f3e83e">CComponent_Transform::OnRender</a></div><div class="ttdeci">void OnRender(glm::mat4 modelViewMatrix, glm::mat4 projMatrix)</div><div class="ttdoc">Renderizar el componente. </div><div class="ttdef"><b>Definition:</b> <a href="__component__transform_8cpp_source.html#l00140">_component_transform.cpp:140</a></div></div>
 <div class="ttc" id="class_c_component___transform_html"><div class="ttname"><a href="class_c_component___transform.html">CComponent_Transform</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__transform_8h_source.html#l00008">_component_transform.h:8</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a7d440a88fdaf5354975a4f1f27da60f4"><div class="ttname"><a href="class_c_game_object.html#a7d440a88fdaf5354975a4f1f27da60f4">CGameObject::GetParent</a></div><div class="ttdeci">CGameObject * GetParent()</div><div class="ttdoc">Obtener el padre. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00274">_object.h:274</a></div></div>
 <div class="ttc" id="__globals_8h_html_aa250b1dedabea51e27f641d879926b0f"><div class="ttname"><a href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a></div><div class="ttdeci">struct vector3f_t vector3f</div><div class="ttdoc">Vector tridimensional. </div></div>
@@ -802,7 +801,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Martes, 1 de Abril de 2014 19:33:01 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 21:38:14 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

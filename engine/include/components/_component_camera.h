@@ -104,8 +104,10 @@ namespace Viewmode
  */
 class CComponent_Camera: public CComponent
 {
+  friend class CSystem_Render;
+  friend class CGameObject;
+
   private:
-    friend class CSystem_Render;
     //GLdouble projMatrix[16];
     glm::mat4 projMatrix;
     glm::mat4 modelViewMatrix;
@@ -126,7 +128,7 @@ class CComponent_Camera: public CComponent
     colorf_t background_color; /**< Color con el que se recubrirá la ventana antes de dibujar. Si clear vale false, no se utilizará este valor, y no se "limpiará" el contenido de la ventana con nuevos valores. */
     bool clear;                /**< Saber si debe limpiarse la ventana antes de dibujar con el color de fondo. Si vale true, se limpiará con background_color. Si no, no se hará nada, pudiendo dibujar encima. Útil para un fondo transparente, pero puede darse el caso de dejar basura.*/
 
-    std::string skybox_texture; /**< Nombre de la imagen a mostrar como *skybox*. Si es "", no se usará ningún skybox. No es el nombre del fichero, sino del recurso. @see CSystem_Resources @see CResource_Sound @see http://en.wikipedia.org/wiki/Skybox_(video_games) */
+    std::string skybox_texture; /**< Nombre de la imagen a mostrar como *skybox*. Si es "", no se usará ningún skybox. No es el nombre del fichero, sino del recurso. @see CSystem_Resources @see CResource_Texture @see http://en.wikipedia.org/wiki/Skybox_(video_games) */
 
     // Fallo: no apunta correctamente a hijos de padres
     // ¿solución? calcular la nueva posición o quitar esta opción
@@ -156,9 +158,6 @@ class CComponent_Camera: public CComponent
     {
       if(after_render) after_render(gameObject);
     }
-
-  public:
-    friend class CGameObject;
 
   private:
     static int GetID() { return Components::camera; }

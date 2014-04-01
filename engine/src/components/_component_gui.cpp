@@ -3,6 +3,7 @@
 #include "systems/_resource.h"
 #include "systems/_render.h"
 #include "systems/_shader.h"
+#include "systems/_other.h"
 
 using namespace std;
 
@@ -16,6 +17,8 @@ CComponent_GUI_Texture::CComponent_GUI_Texture(CGameObject* gameObject): CCompon
 
   pixel_offset_x = pixel_offset_y = 0;
   width = height = 1.f;
+
+  color_apply_force = 0.f;
 
   color(1.f, 1.f, 1.f, 1.f);
 }
@@ -124,6 +127,8 @@ void CComponent_GUI_Texture::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(texture_name)->GetID());
 
+  gSystem_Math.Clamp(color_apply_force, 0.f, 1.f);
+
   modelViewMatrix = glm::translate(modelViewMatrix, gameObject->Transform()->position.to_glm());
   //modelViewMatrix = modelViewMatrix * gameObject->Transform()->angle; // ¿?
   modelViewMatrix = modelViewMatrix * glm::mat4_cast(gameObject->Transform()->angle);
@@ -132,7 +137,7 @@ void CComponent_GUI_Texture::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
   CShader* simpleShader = gSystem_Shader_Manager.UseShader("__textureShader");
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix") , 1, GL_FALSE, glm::value_ptr(projMatrix));
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix") , 1, GL_FALSE, glm::value_ptr(modelViewMatrix));
-  glUniform1f(simpleShader->GetUniformIndex("textureFlag"), 1.0f);
+  glUniform1f(simpleShader->GetUniformIndex("textureFlag"), 1.0f - color_apply_force);
   glUniform4f(simpleShader->GetUniformIndex("in_Color"), color.r, color.g, color.b, color.a);
 
   UpdateVBO();

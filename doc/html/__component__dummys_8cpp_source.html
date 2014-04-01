@@ -102,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="structvector3f__t.html">vector3f</a> direction;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">float</span> angle;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_c_component___dummy.html#a2900552f187a746abb0367ded523a8f4">   10</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_component___dummy.html#a2900552f187a746abb0367ded523a8f4">CComponent_Dummy::OnRender</a>(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> CComponent_Dummy::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="structvector3f__t.html">vector3f</a> pos = gameObject-&gt;Transform()-&gt;position;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  glBindTexture(GL_TEXTURE_2D, 0);</div>
@@ -136,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_c_component___dummy.html#acda32a9b892434af68b9252b05f33429">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_component___dummy.html#acda32a9b892434af68b9252b05f33429">CComponent_Dummy::OnEvent</a>()</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> CComponent_Dummy::OnEvent()</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="__globals_8h.html#a6b57f01d3c576db5368dd0efc2f435a4">event</a>.type == SDL_KEYDOWN)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  {</div>
@@ -173,9 +173,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  }</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="ttc" id="class_c_component___dummy_html_a2900552f187a746abb0367ded523a8f4"><div class="ttname"><a href="class_c_component___dummy.html#a2900552f187a746abb0367ded523a8f4">CComponent_Dummy::OnRender</a></div><div class="ttdeci">void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)</div><div class="ttdoc">Renderizar el componente. </div><div class="ttdef"><b>Definition:</b> <a href="__component__dummys_8cpp_source.html#l00010">_component_dummys.cpp:10</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a712d554feb24730551a7d1aa6802c9e2"><div class="ttname"><a href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">vector3f_t::x</a></div><div class="ttdeci">GLfloat x</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00507">_globals.h:507</a></div></div>
-<div class="ttc" id="class_c_component___dummy_html_acda32a9b892434af68b9252b05f33429"><div class="ttname"><a href="class_c_component___dummy.html#acda32a9b892434af68b9252b05f33429">CComponent_Dummy::OnEvent</a></div><div class="ttdeci">void OnEvent()</div><div class="ttdoc">Gestión de eventos. </div><div class="ttdef"><b>Definition:</b> <a href="__component__dummys_8cpp_source.html#l00044">_component_dummys.cpp:44</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a41957aafe2c0c3122fda3bd2d24311c5"><div class="ttname"><a href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">vector3f_t::y</a></div><div class="ttdeci">GLfloat y</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00508">_globals.h:508</a></div></div>
 <div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdoc">Vector tridimensional. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00505">_globals.h:505</a></div></div>
 <div class="ttc" id="__globals_8h_html_a6b57f01d3c576db5368dd0efc2f435a4"><div class="ttname"><a href="__globals_8h.html#a6b57f01d3c576db5368dd0efc2f435a4">event</a></div><div class="ttdeci">SDL_Event event</div><div class="ttdoc">Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00003">_globals.cpp:3</a></div></div>
@@ -186,7 +184,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Martes, 1 de Abril de 2014 19:33:00 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 21:38:13 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

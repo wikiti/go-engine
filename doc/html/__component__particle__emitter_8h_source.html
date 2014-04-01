@@ -232,9 +232,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">void</span> Freeze();</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">void</span> UnFreeze();</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">// Usamos glBegin() y glEnd() en vez de VBOs, ya que</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_component___particle___emitter.html#a510a4373566c593dc08a67b8f3824a04">OnRender</a>(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_component___particle___emitter.html#aed5be85de7dc442bfe74978e50c60ee3">OnLoop</a>();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordtype">void</span> OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">void</span> OnLoop();</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;};</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">//BOOST_CLASS_EXPORT_KEY( CComponent_Particle_Emitter );</span></div>
@@ -246,16 +246,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="class_c_system___render_html"><div class="ttname"><a href="class_c_system___render.html">CSystem_Render</a></div><div class="ttdef"><b>Definition:</b> <a href="__render_8h_source.html#l00030">_render.h:30</a></div></div>
 <div class="ttc" id="class_c_component___particle___emitter_html"><div class="ttname"><a href="class_c_component___particle___emitter.html">CComponent_Particle_Emitter</a></div><div class="ttdef"><b>Definition:</b> <a href="__component__particle__emitter_8h_source.html#l00010">_component_particle_emitter.h:10</a></div></div>
 <div class="ttc" id="__globals_8h_html"><div class="ttname"><a href="__globals_8h.html">_globals.h</a></div><div class="ttdoc">Estructuras y métodos globales. </div></div>
-<div class="ttc" id="class_c_component___particle___emitter_html_a510a4373566c593dc08a67b8f3824a04"><div class="ttname"><a href="class_c_component___particle___emitter.html#a510a4373566c593dc08a67b8f3824a04">CComponent_Particle_Emitter::OnRender</a></div><div class="ttdeci">void OnRender(glm::mat4 projMatrix, glm::mat4 modelViewMatrix)</div><div class="ttdoc">Renderizar el componente. </div><div class="ttdef"><b>Definition:</b> <a href="__component__particle__emitter_8cpp_source.html#l00338">_component_particle_emitter.cpp:338</a></div></div>
 <div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdoc">Vector tridimensional. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00505">_globals.h:505</a></div></div>
 <div class="ttc" id="structcolorf__t_html"><div class="ttname"><a href="structcolorf__t.html">colorf_t</a></div><div class="ttdoc">Estructura de datos para representar un color.  </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00217">_globals.h:217</a></div></div>
-<div class="ttc" id="class_c_component___particle___emitter_html_aed5be85de7dc442bfe74978e50c60ee3"><div class="ttname"><a href="class_c_component___particle___emitter.html#aed5be85de7dc442bfe74978e50c60ee3">CComponent_Particle_Emitter::OnLoop</a></div><div class="ttdeci">void OnLoop()</div><div class="ttdoc">Gestión del comportamiento. </div><div class="ttdef"><b>Definition:</b> <a href="__component__particle__emitter_8cpp_source.html#l00380">_component_particle_emitter.cpp:380</a></div></div>
 <div class="ttc" id="class_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdoc">Clase abstracta de un componente. </div><div class="ttdef"><b>Definition:</b> <a href="__component_8h_source.html#l00148">_component.h:148</a></div></div>
 <div class="ttc" id="__globals_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00181">_globals.h:181</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Martes, 1 de Abril de 2014 19:32:58 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 1 de Abril de 2014 21:38:11 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

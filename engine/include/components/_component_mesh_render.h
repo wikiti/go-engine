@@ -6,9 +6,10 @@
 
 class CComponent_Mesh_Render: public CComponent
 {
-  public:
-    friend class CGameObject;
+  friend class CSystem_Render;
+  friend class CGameObject;
 
+  public:
     std::string mesh_name, material_name, shader_name;
     //vector<string> materials;
     // Guardar colores en un vector, o algo por el estilo...
