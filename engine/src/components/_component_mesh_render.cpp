@@ -31,12 +31,11 @@ void CComponent_Mesh_Render::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
   if(!enabled)
     return;
 
-  //glColor3f(color.r, color.g, color.b); // <-- deprecated!
   glActiveTexture(GL_TEXTURE0);
-  if(material_name != "")
+  //if(material_name != "")
     glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(material_name)->GetID());
-  else
-    glBindTexture(GL_TEXTURE_2D, 0);
+  //else
+  //  glBindTexture(GL_TEXTURE_2D, 0);
 
   // Guardar el shader dentro del mesh render!
   //CShader* simpleShader = gSystem_Shader_Manager.GetShader(shader_name);

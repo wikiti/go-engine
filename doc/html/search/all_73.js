@@ -13,6 +13,7 @@ var searchData=
   ['setstartfunction',['SetStartFunction',['../class_c_game_object.html#a810b361cfd7e9b47786fdf4c910a577b',1,'CGameObject']]],
   ['setstate',['SetState',['../class_c_game_object.html#a7711c658f35cc6e9a7ee2bae195e19b6',1,'CGameObject::SetState()'],['../class_c_component.html#a72335b7a969dd7881e37aa54dbc4c4d8',1,'CComponent::SetState()']]],
   ['settarget',['SetTarget',['../class_c_component___camera.html#a21cccb527b56371e2701196cdf3f8323',1,'CComponent_Camera::SetTarget(std::string t)'],['../class_c_component___camera.html#adbadd8759351d0889d240346a3077d69',1,'CComponent_Camera::SetTarget(CGameObject *obj)']]],
+  ['shader_5fname',['shader_name',['../class_c_component___mesh___render.html#a6afd8106432078405c5c29c2aa595e3c',1,'CComponent_Mesh_Render']]],
   ['sistemas',['Sistemas',['../group___sistemas.html',1,'']]],
   ['skybox_5ftexture',['skybox_texture',['../class_c_component___camera.html#a2ed22a4d9e377eaf8bc2e9cda01d45f7',1,'CComponent_Camera']]],
   ['start_5fplaying',['start_playing',['../class_c_component___audio___source.html#a3836c6d3a9cf3bf0e4a4cf95d9b24a83',1,'CComponent_Audio_Source']]],
