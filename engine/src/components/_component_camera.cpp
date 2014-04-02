@@ -21,7 +21,7 @@ const char* Viewmode::viewmode_to_string(viewmodes_t c)
   return viewmode_s[c];
 }
 
-viewmodes_t Viewmode::string_to_viewmode(const string& c)
+viewmodes_t Viewmode::string_to_viewmode(const std::string& c)
 {
   for(uint i = 0; i < Viewmode::__viewmode_not_defined; i++)
     if(c == viewmode_s[i])

@@ -99,11 +99,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject::CGameObject</a>(<span class="keywordtype">string</span> str)</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a48f1516784befb0062d1af2545327d15">    7</a></span>&#160;<a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject::CGameObject</a>(std::string name)</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  inited = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  enabled = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  name = str;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  this-&gt;name = name;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">id</span> = -1;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  preserve = <span class="keyword">false</span>;</div>
@@ -167,7 +167,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> repetido;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">for</span>(<a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0; i &lt; father-&gt;<a class="code" href="class_c_game_object.html#a08acfca204d1c27aaf32ecc16a398a4f">GetNumChildren</a>(); i++)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span>((repetido = dfs_search_children_loops(father-&gt;<a class="code" href="class_c_game_object.html#ac2286a7f7345a244cfaeffcef0b98cef">GetChild</a>(i), new_go)) == <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span>((repetido = dfs_search_children_loops(father-&gt;<a class="code" href="class_c_game_object.html#a61cd52751898df4c6845c310d7cc00f1">GetChild</a>(i), new_go)) == <span class="keyword">true</span>)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">return</span> repetido;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">return</span> repetido;</div>
@@ -228,15 +228,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  children.clear();</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<a class="code" href="class_c_game_object.html">CGameObject</a>* <a class="code" href="class_c_game_object.html#ac2286a7f7345a244cfaeffcef0b98cef">CGameObject::GetChild</a>(<span class="keywordtype">string</span> str)</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="class_c_game_object.html#a61cd52751898df4c6845c310d7cc00f1">  136</a></span>&#160;<a class="code" href="class_c_game_object.html">CGameObject</a>* <a class="code" href="class_c_game_object.html#a61cd52751898df4c6845c310d7cc00f1">CGameObject::GetChild</a>(std::string name)</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;{</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">if</span>(children.find(str) != children.end())</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">return</span> children[str];</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">if</span>(children.find(name) != children.end())</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">return</span> children[name];</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_c_game_object.html#ab97eda35688ac5f1cadf834cbe235d87">  144</a></span>&#160;<a class="code" href="class_c_game_object.html">CGameObject</a>* <a class="code" href="class_c_game_object.html#ac2286a7f7345a244cfaeffcef0b98cef">CGameObject::GetChild</a>(<a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index)</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_c_game_object.html#ab97eda35688ac5f1cadf834cbe235d87">  144</a></span>&#160;<a class="code" href="class_c_game_object.html">CGameObject</a>* <a class="code" href="class_c_game_object.html#a61cd52751898df4c6845c310d7cc00f1">CGameObject::GetChild</a>(<a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index)</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;{</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0 or index &gt;= children.size())</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
@@ -426,7 +426,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
 <div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="class_c_game_object.html#ac7def8f2b8ea27be73b3ab03209bc2b6">  332</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_c_game_object.html#ac7def8f2b8ea27be73b3ab03209bc2b6">CGameObject::NearBy</a>(<a class="code" href="class_c_game_object.html">CGameObject</a>* go, <span class="keywordtype">double</span> distance)</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;{</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keywordflow">if</span>(go-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Position().<a class="code" href="structvector3f__t.html#a494eee10496629d6cd8cf28b8e142b9e">distance_to</a>(<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Position()) &lt; distance)</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keywordflow">if</span>(go-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;<a class="code" href="class_c_component___transform.html#a732e91640acc3eb7bebb7bae2d1b429d">Position</a>().<a class="code" href="structvector3f__t.html#a494eee10496629d6cd8cf28b8e142b9e">distance_to</a>(<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Position()) &lt; distance)</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -465,7 +465,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">  //Parent_str.clear();</span></div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">  //children_str.clear();</span></div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">}*/</span></div>
-<div class="ttc" id="class_c_game_object_html_ac2286a7f7345a244cfaeffcef0b98cef"><div class="ttname"><a href="class_c_game_object.html#ac2286a7f7345a244cfaeffcef0b98cef">CGameObject::GetChild</a></div><div class="ttdeci">CGameObject * GetChild(std::string name)</div><div class="ttdoc">Obtener un puntero a un hijo. </div></div>
+<div class="ttc" id="class_c_component___transform_html_a732e91640acc3eb7bebb7bae2d1b429d"><div class="ttname"><a href="class_c_component___transform.html#a732e91640acc3eb7bebb7bae2d1b429d">CComponent_Transform::Position</a></div><div class="ttdeci">vector3f_t Position()</div><div class="ttdoc">Posición global. </div><div class="ttdef"><b>Definition:</b> <a href="__component__transform_8cpp_source.html#l00399">_component_transform.cpp:399</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a88c9f7a5ae1ca7a6b9ea8c4c266bae2e"><div class="ttname"><a href="class_c_game_object.html#a88c9f7a5ae1ca7a6b9ea8c4c266bae2e">CGameObject::UnPreserve</a></div><div class="ttdeci">void UnPreserve(bool recursive=false)</div><div class="ttdoc">No preservar el objeto entre estancias. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00314">_object.cpp:314</a></div></div>
 <div class="ttc" id="class_c_game_object_html_ad8e02d315ce61ba263dbe0fd83ff63e6"><div class="ttname"><a href="class_c_game_object.html#ad8e02d315ce61ba263dbe0fd83ff63e6">CGameObject::AddToSystem</a></div><div class="ttdeci">int AddToSystem()</div><div class="ttdoc">Registrar un objeto en el sistema. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00194">_object.cpp:194</a></div></div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdoc">Clase que representa a un objeto de juego. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00092">_object.h:92</a></div></div>
@@ -493,6 +493,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="class_c_game_object_html_a08acfca204d1c27aaf32ecc16a398a4f"><div class="ttname"><a href="class_c_game_object.html#a08acfca204d1c27aaf32ecc16a398a4f">CGameObject::GetNumChildren</a></div><div class="ttdeci">uint GetNumChildren()</div><div class="ttdoc">Número de hijos. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00267">_object.h:267</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a0bcbe65095667178fa1a61c4019e2c5c"><div class="ttname"><a href="class_c_game_object.html#a0bcbe65095667178fa1a61c4019e2c5c">CGameObject::AddChild</a></div><div class="ttdeci">bool AddChild(CGameObject *child)</div><div class="ttdoc">Añadir un nuevo hijo. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00081">_object.cpp:81</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a0a894e72932bb5cc80bf2dc840eb0fec"><div class="ttname"><a href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">CGameObject::Transform</a></div><div class="ttdeci">CComponent_Transform * Transform()</div><div class="ttdoc">Acceso directo para el componente transform (CComponent_Transform). </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00709">_object.h:709</a></div></div>
+<div class="ttc" id="class_c_game_object_html_a61cd52751898df4c6845c310d7cc00f1"><div class="ttname"><a href="class_c_game_object.html#a61cd52751898df4c6845c310d7cc00f1">CGameObject::GetChild</a></div><div class="ttdeci">CGameObject * GetChild(std::string name)</div><div class="ttdoc">Obtener un puntero a un hijo. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00136">_object.cpp:136</a></div></div>
 <div class="ttc" id="class_c_game_object_html_aee6586c144cdbe215dfcf4399abef3e9"><div class="ttname"><a href="class_c_game_object.html#aee6586c144cdbe215dfcf4399abef3e9">CGameObject::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdoc">Iniciar el objeto. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00025">_object.cpp:25</a></div></div>
 <div class="ttc" id="class_c_game_object_html_ab9f1d9d26366145a2a7c6b26295b33c8"><div class="ttname"><a href="class_c_game_object.html#ab9f1d9d26366145a2a7c6b26295b33c8">CGameObject::Enable</a></div><div class="ttdeci">void Enable(bool recursive=false)</div><div class="ttdoc">Activa el objeto. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00276">_object.cpp:276</a></div></div>
 <div class="ttc" id="class_c_game_object_html_aa39587c45dd82ac7931d8803dac5fcd1"><div class="ttname"><a href="class_c_game_object.html#aa39587c45dd82ac7931d8803dac5fcd1">CGameObject::AddChildren</a></div><div class="ttdeci">short int AddChildren(const std::vector&lt; CGameObject * &gt; &amp;children)</div><div class="ttdoc">Añadir una lista de hijos. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8cpp_source.html#l00104">_object.cpp:104</a></div></div>
@@ -502,7 +503,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 2 de Abril de 2014 16:00:46 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 2 de Abril de 2014 18:27:43 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

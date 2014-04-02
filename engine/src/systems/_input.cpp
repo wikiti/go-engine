@@ -384,7 +384,7 @@ bool CSystem_UserInput::RebuildJoysticks()
 
 /**_______Keyboard_______**/
 
-Uint8 CSystem_UserInput::Keyboard(string keyname)
+Uint8 CSystem_UserInput::Keyboard(std::string keyname)
 {
   SDL_Scancode key = SDL_GetScancodeFromName(keyname.c_str());
   return Keyboard(key);

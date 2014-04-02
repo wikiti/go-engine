@@ -21,7 +21,7 @@ string Utils::string_generate_random_alphanumeric(uint n)
   return s;
 }
 
-string Utils::string_to_lower(string& str)
+string Utils::string_to_lower(std::string& str)
 {
   string output = str;
   transform(str.begin(), str.end(), output.begin(), ::tolower);
@@ -29,7 +29,7 @@ string Utils::string_to_lower(string& str)
   return output;
 }
 
-string Utils::string_to_upper(string& str)
+string Utils::string_to_upper(std::string& str)
 {
   string output = str;
   transform(str.begin(), str.end(), output.begin(), ::toupper);
@@ -46,7 +46,7 @@ SDL_Surface* Utils::sdl_cargar_img(std::string s)
   return img;
 }
 
-bool Utils::validateIdentifier(string identifier)
+bool Utils::validateIdentifier(std::string identifier)
 {
   for(string::iterator it = identifier.begin(); it != identifier.end(); ++it)
     if(!isalnum(*it) and (*it) != '_')

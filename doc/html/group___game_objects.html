@@ -140,11 +140,15 @@ Funciones</h2></td></tr>
 <tr class="memitem:ga14ddd228ab4e860feaa113e81019b6cd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group___game_objects.html#ga14ddd228ab4e860feaa113e81019b6cd">CGameObject::SetComponentStateComponent</a> (bool state)</td></tr>
 <tr class="memdesc:ga14ddd228ab4e860feaa113e81019b6cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambiar el estado de un componente.  <a href="#ga14ddd228ab4e860feaa113e81019b6cd">Más...</a><br/></td></tr>
 <tr class="separator:ga14ddd228ab4e860feaa113e81019b6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga245c699aa9c56dd8f1cc902d5dbf1ddf"><td class="memTemplParams" colspan="2">template&lt;class Type &gt; </td></tr>
+<tr class="memitem:ga245c699aa9c56dd8f1cc902d5dbf1ddf"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga245c699aa9c56dd8f1cc902d5dbf1ddf"></a>
+template&lt;class Type &gt; </td></tr>
 <tr class="memitem:ga245c699aa9c56dd8f1cc902d5dbf1ddf"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group___game_objects.html#ga245c699aa9c56dd8f1cc902d5dbf1ddf">CGameObject::SetData</a> (<a class="el" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data)</td></tr>
+<tr class="memdesc:ga245c699aa9c56dd8f1cc902d5dbf1ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span style="color:red;font-weight:bold;">Sin usar</span>. <br/></td></tr>
 <tr class="separator:ga245c699aa9c56dd8f1cc902d5dbf1ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa5bbdc0cf105c8f6461009b65c59e204"><td class="memTemplParams" colspan="2">template&lt;class Type &gt; </td></tr>
+<tr class="memitem:gaa5bbdc0cf105c8f6461009b65c59e204"><td class="memTemplParams" colspan="2"><a class="anchor" id="gaa5bbdc0cf105c8f6461009b65c59e204"></a>
+template&lt;class Type &gt; </td></tr>
 <tr class="memitem:gaa5bbdc0cf105c8f6461009b65c59e204"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group___game_objects.html#gaa5bbdc0cf105c8f6461009b65c59e204">CGameObject::GetData</a> ()</td></tr>
+<tr class="memdesc:gaa5bbdc0cf105c8f6461009b65c59e204"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span style="color:red;font-weight:bold;">Sin usar</span>. <br/></td></tr>
 <tr class="separator:gaa5bbdc0cf105c8f6461009b65c59e204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
@@ -256,7 +260,7 @@ template&lt;class Type &gt; </div>
 
 <p>Eliminar un componente. </p>
 <p>Dada la función plantilla actual, se podrá eliminar un componente seleccionado, siempre y cuando exista en el objeto. El componente será destruido por completo.</p>
-<dl class="section warning"><dt>Atención</dt><dd>No se puede eliminar el componente <a class="el" href="class_c_component___transform.html">CComponent_Transform</a>.</dd></dl>
+<dl class="section warning"><dt>Atención</dt><dd>No se puede eliminar el componente <a class="el" href="class_c_component___transform.html" title="Componente de transformación. ">CComponent_Transform</a>.</dd></dl>
 <p>Por ejemplo, podemos usar: </p>
 <div class="fragment"><div class="line"><a class="code" href="class_c_game_object.html">CGameObject</a> go1 = <span class="keyword">new</span> <a class="code" href="class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea">CGameObject</a>(<span class="stringliteral">&quot;go1&quot;</span>);</div>
 <div class="line">go1-&gt;<a class="code" href="group___game_objects.html#ga87b3e787edceeaa1b1036aaf1feb47df">RemoveComponent</a>&lt;<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>*&gt;(); <span class="comment">// Eliminar el componente &quot;camera&quot;.</span></div>
@@ -295,51 +299,10 @@ template&lt;class Type &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ga245c699aa9c56dd8f1cc902d5dbf1ddf"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Type &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void CGameObject::SetData </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a>&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p><span style="color:red;font-weight:bold;">Sin usar</span>. </p>
-
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00895">895</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="gaa5bbdc0cf105c8f6461009b65c59e204"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Type &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a> CGameObject::GetData </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p><span style="color:red;font-weight:bold;">Sin usar</span>. </p>
-
-<p>Definición en la línea <a class="el" href="__object_8h_source.html#l00903">903</a> del archivo <a class="el" href="__object_8h_source.html">_object.h</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 2 de Abril de 2014 16:00:53 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 2 de Abril de 2014 18:27:51 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

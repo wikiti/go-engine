@@ -1,14 +1,18 @@
 var searchData=
 [
+  ['scale',['Scale',['../class_c_component___transform.html#a73bfea884a6f6c5121da871e2306317e',1,'CComponent_Transform::Scale(vector3f v)'],['../class_c_component___transform.html#ae5276259205ba7905a5f08c04dd1c764',1,'CComponent_Transform::Scale(GLfloat x=1.f, GLfloat y=1.f, GLfloat z=1.f)']]],
   ['sdl_5fcargar_5fimg',['sdl_cargar_img',['../namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a',1,'Utils']]],
   ['set',['Set',['../class_c_component.html#aa33cf0ed3f0848cf31d4d102bec40c1a',1,'CComponent::Set()'],['../class_c_component___camera.html#ade9da0ec5da5a07714022b9fef664d1f',1,'CComponent_Camera::Set()'],['../class_c_component___transform.html#a59c8f52b15970b71119ac7dfd5bdb13f',1,'CComponent_Transform::Set()']]],
+  ['setangle',['SetAngle',['../class_c_component___transform.html#a50103f298bc351068fce12124c34cd15',1,'CComponent_Transform::SetAngle(vector3f v)'],['../class_c_component___transform.html#ace00423eec4782865ba088b907d91dc2',1,'CComponent_Transform::SetAngle(GLfloat x=0, GLfloat y=0, GLfloat z=0)']]],
   ['setbehaviourfunction',['SetBehaviourFunction',['../class_c_game_object.html#a75aa301df39af2435b9bc2e719f77197',1,'CGameObject']]],
   ['setcomponentstatecomponent',['SetComponentStateComponent',['../group___game_objects.html#ga14ddd228ab4e860feaa113e81019b6cd',1,'CGameObject']]],
   ['setdata',['SetData',['../group___game_objects.html#ga245c699aa9c56dd8f1cc902d5dbf1ddf',1,'CGameObject']]],
   ['seteventfunction',['SetEventFunction',['../class_c_game_object.html#a16ab505b47294ed813dd69d8579fbed9',1,'CGameObject']]],
   ['setinputfunction',['SetInputFunction',['../class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf',1,'CGameObject']]],
+  ['setposition',['SetPosition',['../class_c_component___transform.html#a9e65c005f1707cf4c076f74693e35243',1,'CComponent_Transform::SetPosition(vector3f v)'],['../class_c_component___transform.html#a560fbceb40b6429747e596aa457c9349',1,'CComponent_Transform::SetPosition(GLfloat x=0, GLfloat y=0, GLfloat z=0)']]],
   ['setpreserve',['SetPreserve',['../class_c_game_object.html#a3d9834399f17fd662b292909d5a0db20',1,'CGameObject']]],
   ['setrenderfunction',['SetRenderFunction',['../class_c_game_object.html#add37411eb688c5637312a90ec694e751',1,'CGameObject']]],
+  ['setscale',['SetScale',['../class_c_component___transform.html#a991f4e51a3f5028892b965ad66fd19db',1,'CComponent_Transform::SetScale(vector3f v)'],['../class_c_component___transform.html#ad3fde9d6b9686e9d3cb80a61df6148b8',1,'CComponent_Transform::SetScale(GLfloat x=1.f, GLfloat y=1.f, GLfloat z=1.f)']]],
   ['setsound',['SetSound',['../class_c_component___audio___source.html#a58a226f05fe659ba97716524675ce2ad',1,'CComponent_Audio_Source']]],
   ['setstartfunction',['SetStartFunction',['../class_c_game_object.html#a810b361cfd7e9b47786fdf4c910a577b',1,'CGameObject']]],
   ['setstate',['SetState',['../class_c_game_object.html#a7711c658f35cc6e9a7ee2bae195e19b6',1,'CGameObject::SetState()'],['../class_c_component.html#a72335b7a969dd7881e37aa54dbc4c4d8',1,'CComponent::SetState()']]],
@@ -17,8 +21,8 @@ var searchData=
   ['stop',['Stop',['../class_c_component___audio___source.html#ac46fdf5a422933963b8338d918bfbf8e',1,'CComponent_Audio_Source::Stop()'],['../class_c_component___particle___emitter.html#a17e5029838f9b5c3ea6c548b4443a0ba',1,'CComponent_Particle_Emitter::Stop()']]],
   ['str',['str',['../structcolorf__t.html#af14da3dbc461fe04e993a5fb57a1bb25',1,'colorf_t::str()'],['../structviewport__t.html#a746123c45eaa1ab17b3209343cb3d057',1,'viewport_t::str()'],['../structviewportf__t.html#abe61175a5f57f5641f2904b73da4a420',1,'viewportf_t::str()'],['../structvector3f__t.html#a10985a86bfc0c487962037fa9bc66190',1,'vector3f_t::str()']]],
   ['string_5fgenerate_5frandom_5falphanumeric',['string_generate_random_alphanumeric',['../namespace_utils.html#a36a166e3ee3df3c74d173ec59c2faf77',1,'Utils']]],
-  ['string_5fto_5fcomponent',['string_to_component',['../namespace_components.html#a743d5a93099902d50576b82d76181343',1,'Components']]],
-  ['string_5fto_5flower',['string_to_lower',['../namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8',1,'Utils']]],
-  ['string_5fto_5fupper',['string_to_upper',['../namespace_utils.html#ab5e6a3d3b984a2994202d33010f8d9c7',1,'Utils']]],
+  ['string_5fto_5fcomponent',['string_to_component',['../namespace_components.html#a61b9924318e362781f86ef41e01963f3',1,'Components']]],
+  ['string_5fto_5flower',['string_to_lower',['../namespace_utils.html#ad6a838fb5cf6f7721b7fc29c4bd52dca',1,'Utils']]],
+  ['string_5fto_5fupper',['string_to_upper',['../namespace_utils.html#a9920185abc35a6bdb3814a6a6fbb9db2',1,'Utils']]],
   ['string_5fto_5fviewmode',['string_to_viewmode',['../namespace_viewmode.html#ab27f0f5204504bd0893d784c129dc0eb',1,'Viewmode']]]
 ];

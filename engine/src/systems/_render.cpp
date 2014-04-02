@@ -420,16 +420,16 @@ void CSystem_Render::SetMainCamera(CGameObject* camera)
   camera->Camera()->ApplyChanges();
 }
 
-void CSystem_Render::SetMainCamera(const string& cam)
+void CSystem_Render::SetMainCamera(const std::string& camera)
 {
-  CGameObject* camera = gSystem_GameObject_Manager[cam];
+  CGameObject* cam = gSystem_GameObject_Manager[camera];
   if(!camera)
     return;
 
   // ¿?
   vector<CGameObject*>::iterator it = camera_list.begin();
-  camera_list.insert(it, camera);
-  camera->Camera()->ApplyChanges();
+  camera_list.insert(it, cam);
+  cam->Camera()->ApplyChanges();
 }
 
 void CSystem_Render::UnSetMainCamera(const string& camera)
@@ -447,13 +447,13 @@ void CSystem_Render::AddCamera(CGameObject* camera)
   }
 }
 
-void CSystem_Render::AddCamera(const string& name)
+void CSystem_Render::AddCamera(const std::string& camera)
 {
-  CGameObject* camera = gSystem_GameObject_Manager[name];
+  CGameObject* cam = gSystem_GameObject_Manager[camera];
   if(camera)
   {
-    camera_list.push_back(camera);
-    camera->Camera()->ApplyChanges();
+    camera_list.push_back(cam);
+    cam->Camera()->ApplyChanges();
   }
 }
 
@@ -468,15 +468,15 @@ void CSystem_Render::AddCameraPrior(CGameObject* camera)
   }
 }
 
-void CSystem_Render::AddCameraPrior(const string& name)
+void CSystem_Render::AddCameraPrior(const std::string& camera)
 {
-  CGameObject* camera = gSystem_GameObject_Manager[name];
+  CGameObject* cam = gSystem_GameObject_Manager[camera];
   if(camera_list.size() >= 1 && camera)
   {
     vector<CGameObject*>::iterator it = camera_list.begin();
     ++it;
-    camera_list.insert(it, camera);
-    camera->Camera()->ApplyChanges();
+    camera_list.insert(it, cam);
+    cam->Camera()->ApplyChanges();
   }
 }
 

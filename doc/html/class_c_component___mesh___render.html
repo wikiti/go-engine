@@ -135,9 +135,13 @@ Métodos públicos</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a29bac312efea3e13a92aaa7213081fa8">~CComponent</a> ()</td></tr>
 <tr class="memdesc:a29bac312efea3e13a92aaa7213081fa8 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br/></td></tr>
 <tr class="separator:a29bac312efea3e13a92aaa7213081fa8 inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa33cf0ed3f0848cf31d4d102bec40c1a inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aa33cf0ed3f0848cf31d4d102bec40c1a">Set</a> (<a class="el" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data)</td></tr>
+<tr class="memitem:aa33cf0ed3f0848cf31d4d102bec40c1a inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa33cf0ed3f0848cf31d4d102bec40c1a"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aa33cf0ed3f0848cf31d4d102bec40c1a">Set</a> (<a class="el" href="__globals_8h.html#acb1903f2f2f7ed4502a5f53615cff8aa">input_t</a> data)</td></tr>
+<tr class="memdesc:aa33cf0ed3f0848cf31d4d102bec40c1a inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span style="color:red;font-weight:bold;">Sin usar</span>. <br/></td></tr>
 <tr class="separator:aa33cf0ed3f0848cf31d4d102bec40c1a inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaed8083f66ef30e36f1d157feff4bb21 inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aaed8083f66ef30e36f1d157feff4bb21">Get</a> ()</td></tr>
+<tr class="memitem:aaed8083f66ef30e36f1d157feff4bb21 inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaed8083f66ef30e36f1d157feff4bb21"></a>
+virtual <a class="el" href="__globals_8h.html#a6db821b2b1332e8be7a662d075ede0b0">output_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#aaed8083f66ef30e36f1d157feff4bb21">Get</a> ()</td></tr>
+<tr class="memdesc:aaed8083f66ef30e36f1d157feff4bb21 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span style="color:red;font-weight:bold;">Sin usar</span>. <br/></td></tr>
 <tr class="separator:aaed8083f66ef30e36f1d157feff4bb21 inherit pub_methods_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a2bbd0e44da23267e07d1d610da1b02 inherit pub_methods_class_c_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a8a2bbd0e44da23267e07d1d610da1b02">GetState</a> ()</td></tr>
 <tr class="memdesc:a8a2bbd0e44da23267e07d1d610da1b02 inherit pub_methods_class_c_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter del estado del componente.  <a href="#a8a2bbd0e44da23267e07d1d610da1b02">Más...</a><br/></td></tr>
@@ -184,7 +188,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CGameObject</b></td>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Componente textura GUI. </p>
 <p>Un componente muy útil y necesario para la representación gráfica son los modelos o objetos gráficos.</p>
-<p>¡¡¡IMAGEN AQUÍ!!!</p>
+<div class="image">
+<img src="crate.png" alt="crate.png"/>
+</div>
 <p>Un modelo es un elemento externo (un objeto 3d de Blender, Maya, 3DMax...) que ha sido cargado en el motor gráfico como un recurso.</p>
 <p>Por ejemplo, supóngase que se ha creado un objeto desde un programa externo, en un formato soportado por la librería de <em>Assimp</em> (.3ds, .obj, etc.). Sencillamente, se deberá cargar el recurso con el sistema <a class="el" href="class_c_system___resources.html">CSystem_Resources</a>, y utilizando el nombre del recurso de modelo como el objetivo a dibujar (<a class="el" href="class_c_component___mesh___render.html#ae21c5cb499dab4d871e909408c22aae2">CComponent_Mesh_Render::mesh_name</a>). Se extraerá del componente de transformación la posición, orientación y escala para dibujar el modelo.</p>
 <p>Además, se debe añadir un nombre de una textura y un shader (se usará uno por defecto si no se especifica) para dibujar el modelo.</p>
@@ -207,9 +213,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>CGameObject</b></td>
 <div class="fragment"><div class="line"><a class="code" href="class_c_game_object.html">CGameObject</a>* hada1 = gGameObjects.Add(<span class="stringliteral">&quot;hada1&quot;</span>); <span class="comment">// Crear objeto</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Cambiar atributos de transformación.</span></div>
-<div class="line">hada1-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;SetScale(0.1f, 0.1f, 0.1f);            <span class="comment">// Reducir tamaño</span></div>
-<div class="line">hada1-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Translate(0.f, 0.f, 10.f);             <span class="comment">// Trasladar</span></div>
-<div class="line">hada1-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;Rotate(0.f, 90.f, 0.f);                <span class="comment">// Rotar sobre el eje Y (guiñada o *yaw*)</span></div>
+<div class="line">hada1-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;<a class="code" href="class_c_component___transform.html#a991f4e51a3f5028892b965ad66fd19db">SetScale</a>(0.1f, 0.1f, 0.1f);            <span class="comment">// Reducir tamaño</span></div>
+<div class="line">hada1-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;<a class="code" href="class_c_component___transform.html#a955bf7d48c8b57145cc2cdfea122f144">Translate</a>(0.f, 0.f, 10.f);             <span class="comment">// Trasladar</span></div>
+<div class="line">hada1-&gt;<a class="code" href="class_c_game_object.html#a0a894e72932bb5cc80bf2dc840eb0fec">Transform</a>()-&gt;<a class="code" href="class_c_component___transform.html#a1885c618316ce011837126ccf2b44ee9">Rotate</a>(0.f, 90.f, 0.f);                <span class="comment">// Rotar sobre el eje Y (guiñada o *yaw*)</span></div>
 <div class="line"></div>
 <div class="line">hada1-&gt;<a class="code" href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">MeshRender</a>()-&gt;<a class="code" href="class_c_component___mesh___render.html#ae21c5cb499dab4d871e909408c22aae2">mesh_name</a> = <span class="stringliteral">&quot;mdl_hada1&quot;</span>;              <span class="comment">// Especificar el modelo</span></div>
 <div class="line">hada1-&gt;<a class="code" href="class_c_game_object.html#a18b90071200859b71a3d032d715af2cd">MeshRender</a>()-&gt;<a class="code" href="class_c_component___mesh___render.html#a9405c8bf24c27c0e35b1aa360ba1950e">material_name</a> = <span class="stringliteral">&quot;texture_mdl_hada1&quot;</span>;  <span class="comment">// Especificar la textura</span></div>
@@ -398,7 +404,7 @@ CResource_Model </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 2 de Abril de 2014 16:00:56 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 2 de Abril de 2014 18:27:54 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

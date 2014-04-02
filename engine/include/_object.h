@@ -171,7 +171,7 @@ class CGameObject
      * Además, el objeto queda marcado como <b>iniciado</b> y como <b>activo.</b> Sólo podrá ser iniciado si no ha sido iniciado previamente, osi ha sido cerrado.
      */
     void Init();
-      /** @no_use */
+      /** @brief @no_use */
       virtual void InitCustom(){};
     /**
      * @brief Cerrar el objeto.
@@ -180,10 +180,10 @@ class CGameObject
      * <b>no iniciado</b> y como <b>desactivado</b>.
      */
     void Close();
-      /** @no_use */
+      /** @brief @no_use */
       virtual void CloseCustom(){};
 
-    /** @no_use */
+    /** @brief @no_use */
     flags_t Get_flags() {return flags; } // Los flags sólo deberían ser maniplados por el objeto, no por el usuario
 
     /**
@@ -674,11 +674,11 @@ class CGameObject
     template <class Type>
     void SetComponentStateComponent(bool state);
 	
-    /** @no_use **/
+    /** @brief @no_use **/
     template <class Type>
     void SetData(input_t data);
 
-    /** @no_use **/
+    /** @brief @no_use **/
     template <class Type>
     output_t GetData();
     /* Funciones para acceso directo a los componentes aquí: */

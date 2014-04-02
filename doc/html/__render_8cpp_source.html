@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__object_8h.html">_object.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__component__camera_8h.html">components/_component_camera.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;components/_component_transform.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__component__transform_8h.html">components/_component_transform.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;systems/_render.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;systems/_debug.h&quot;</span></div>
@@ -176,7 +176,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">string</span> videomode = gSystem_Data_Storage.GetString(<span class="stringliteral">&quot;__RENDER_RESOLUTION_WINDOW_MODE&quot;</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  videomode = <a class="code" href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a>(videomode);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  videomode = <a class="code" href="namespace_utils.html#ad6a838fb5cf6f7721b7fc29c4bd52dca">Utils::string_to_lower</a>(videomode);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">if</span> (videomode == <span class="stringliteral">&quot;fullscreen&quot;</span>)</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    gSystem_Render.SetFullScreenWindow(Render::fullscreen);</div>
@@ -512,19 +512,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  <span class="comment">// Control de repeticiones de objetos</span></div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  vector&lt;CGameObject*&gt;::iterator it = camera_list.begin();</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  camera_list.insert(it, camera);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;ApplyChanges();</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;<a class="code" href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">ApplyChanges</a>();</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;}</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="keywordtype">void</span> CSystem_Render::SetMainCamera(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; cam)</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="keywordtype">void</span> CSystem_Render::SetMainCamera(<span class="keyword">const</span> std::string&amp; camera)</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;{</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* camera = gSystem_GameObject_Manager[cam];</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* cam = gSystem_GameObject_Manager[camera];</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  <span class="keywordflow">if</span>(!camera)</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  <span class="comment">// ¿?</span></div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;  vector&lt;CGameObject*&gt;::iterator it = camera_list.begin();</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  camera_list.insert(it, camera);</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;ApplyChanges();</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  camera_list.insert(it, cam);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  cam-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;<a class="code" href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">ApplyChanges</a>();</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="keywordtype">void</span> CSystem_Render::UnSetMainCamera(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; camera)</div>
@@ -538,17 +538,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  <span class="keywordflow">if</span>(camera)</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  {</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    camera_list.push_back(camera);</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;ApplyChanges();</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;<a class="code" href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">ApplyChanges</a>();</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  }</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;}</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="keywordtype">void</span> CSystem_Render::AddCamera(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; name)</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="keywordtype">void</span> CSystem_Render::AddCamera(<span class="keyword">const</span> std::string&amp; camera)</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;{</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* camera = gSystem_GameObject_Manager[name];</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* cam = gSystem_GameObject_Manager[camera];</div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  <span class="keywordflow">if</span>(camera)</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  {</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    camera_list.push_back(camera);</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;ApplyChanges();</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    camera_list.push_back(cam);</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    cam-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;<a class="code" href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">ApplyChanges</a>();</div>
 <div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;  }</div>
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;}</div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;</div>
@@ -559,19 +559,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    vector&lt;CGameObject*&gt;::iterator it = camera_list.begin();</div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    ++it;</div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    camera_list.insert(it, camera);</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;ApplyChanges();</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;<a class="code" href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">ApplyChanges</a>();</div>
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;  }</div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;}</div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="keywordtype">void</span> CSystem_Render::AddCameraPrior(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; name)</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="keywordtype">void</span> CSystem_Render::AddCameraPrior(<span class="keyword">const</span> std::string&amp; camera)</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;{</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* camera = gSystem_GameObject_Manager[name];</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* cam = gSystem_GameObject_Manager[camera];</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;  <span class="keywordflow">if</span>(camera_list.size() &gt;= 1 &amp;&amp; camera)</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;  {</div>
 <div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    vector&lt;CGameObject*&gt;::iterator it = camera_list.begin();</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    ++it;</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    camera_list.insert(it, camera);</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    camera-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;ApplyChanges();</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    camera_list.insert(it, cam);</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    cam-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;<a class="code" href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">ApplyChanges</a>();</div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;  }</div>
 <div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;}</div>
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;</div>
@@ -611,7 +611,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    <span class="keywordflow">if</span>(!(*it)-&gt;IsEnabled())</div>
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;      <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <a class="code" href="class_c_component___camera.html">CComponent_Camera</a>* cam = (*it)-&gt;GetComponent&lt;<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>&gt;();</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <a class="code" href="class_c_component___camera.html">CComponent_Camera</a>* cam = (*it)-&gt;<a class="code" href="group___game_objects.html#ga4b9498dcca22545a77e2d100885fa70f">GetComponent</a>&lt;<a class="code" href="class_c_component___camera.html">CComponent_Camera</a>&gt;();</div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    cam-&gt;<a class="code" href="class_c_component___camera.html#a9925d467efe91cbe187484474b23de03">BeforeRender</a>();</div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    cam-&gt;SetViewport();</div>
@@ -821,27 +821,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;</div>
 <div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;</div>
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;</div>
-<div class="ttc" id="class_c_component___camera_html_a31ad28f8ca83d60048269d842a551960"><div class="ttname"><a href="class_c_component___camera.html#a31ad28f8ca83d60048269d842a551960">CComponent_Camera::clear</a></div><div class="ttdeci">bool clear</div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00129">_component_camera.h:129</a></div></div>
+<div class="ttc" id="class_c_component___camera_html_a31ad28f8ca83d60048269d842a551960"><div class="ttname"><a href="class_c_component___camera.html#a31ad28f8ca83d60048269d842a551960">CComponent_Camera::clear</a></div><div class="ttdeci">bool clear</div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00131">_component_camera.h:131</a></div></div>
+<div class="ttc" id="__component__transform_8h_html"><div class="ttname"><a href="__component__transform_8h.html">_component_transform.h</a></div><div class="ttdoc">Fichero que incluye la clase CComponent_Transform. </div></div>
 <div class="ttc" id="class_c_component___g_u_i___texture_html"><div class="ttname"><a href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a></div><div class="ttdoc">Componente textura GUI. </div><div class="ttdef"><b>Definition:</b> <a href="__component__gui_8h_source.html#l00074">_component_gui.h:74</a></div></div>
-<div class="ttc" id="class_c_component___camera_html_a2ed22a4d9e377eaf8bc2e9cda01d45f7"><div class="ttname"><a href="class_c_component___camera.html#a2ed22a4d9e377eaf8bc2e9cda01d45f7">CComponent_Camera::skybox_texture</a></div><div class="ttdeci">std::string skybox_texture</div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00131">_component_camera.h:131</a></div></div>
+<div class="ttc" id="class_c_component___camera_html_a2ed22a4d9e377eaf8bc2e9cda01d45f7"><div class="ttname"><a href="class_c_component___camera.html#a2ed22a4d9e377eaf8bc2e9cda01d45f7">CComponent_Camera::skybox_texture</a></div><div class="ttdeci">std::string skybox_texture</div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00133">_component_camera.h:133</a></div></div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdoc">Clase que representa a un objeto de juego. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00092">_object.h:92</a></div></div>
-<div class="ttc" id="namespace_utils_html_ad546bc517e486f5fd3a39eaa247935e8"><div class="ttname"><a href="namespace_utils.html#ad546bc517e486f5fd3a39eaa247935e8">Utils::string_to_lower</a></div><div class="ttdeci">std::string string_to_lower(std::string &amp;str)</div><div class="ttdoc">Cadena a minúsculas. </div></div>
 <div class="ttc" id="class_c_shader_html"><div class="ttname"><a href="class_c_shader.html">CShader</a></div><div class="ttdef"><b>Definition:</b> <a href="__shader_8h_source.html#l00015">_shader.h:15</a></div></div>
 <div class="ttc" id="__globals_8h_html_aba655f18e0b894189a8bb3462ee7748e"><div class="ttname"><a href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a></div><div class="ttdeci">const char ERROR_FATAL_INIT[]</div><div class="ttdoc">Título de error fatal de inicialización para &amp;quot;message boxes&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00158">_globals.h:158</a></div></div>
 <div class="ttc" id="__object_8h_html"><div class="ttname"><a href="__object_8h.html">_object.h</a></div><div class="ttdoc">Estructura de los objeto &amp;quot;GameObject&amp;quot;. </div></div>
+<div class="ttc" id="class_c_component___camera_html_ac1a140a991b402b3c649e67c8c10e99e"><div class="ttname"><a href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">CComponent_Camera::ApplyChanges</a></div><div class="ttdeci">void ApplyChanges()</div><div class="ttdoc">Aplicar cambios. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8cpp_source.html#l00087">_component_camera.cpp:87</a></div></div>
 <div class="ttc" id="class_c_system___render_html"><div class="ttname"><a href="class_c_system___render.html">CSystem_Render</a></div><div class="ttdef"><b>Definition:</b> <a href="__render_8h_source.html#l00030">_render.h:30</a></div></div>
-<div class="ttc" id="class_c_component___camera_html"><div class="ttname"><a href="class_c_component___camera.html">CComponent_Camera</a></div><div class="ttdoc">Componente cámara. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00105">_component_camera.h:105</a></div></div>
+<div class="ttc" id="class_c_component___camera_html"><div class="ttname"><a href="class_c_component___camera.html">CComponent_Camera</a></div><div class="ttdoc">Componente cámara. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00107">_component_camera.h:107</a></div></div>
 <div class="ttc" id="class_c_component___audio___source_html"><div class="ttname"><a href="class_c_component___audio___source.html">CComponent_Audio_Source</a></div><div class="ttdoc">Componente de audio. </div><div class="ttdef"><b>Definition:</b> <a href="__component__audio_8h_source.html#l00095">_component_audio.h:95</a></div></div>
+<div class="ttc" id="group___game_objects_html_ga4b9498dcca22545a77e2d100885fa70f"><div class="ttname"><a href="group___game_objects.html#ga4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a></div><div class="ttdeci">Type * GetComponent()</div><div class="ttdoc">Obtener componente. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00847">_object.h:847</a></div></div>
 <div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdoc">Vector tridimensional. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00505">_globals.h:505</a></div></div>
-<div class="ttc" id="class_c_component___camera_html_a72c07b8a22a71ab7ea40fd1cee6fc855"><div class="ttname"><a href="class_c_component___camera.html#a72c07b8a22a71ab7ea40fd1cee6fc855">CComponent_Camera::AfterRender</a></div><div class="ttdeci">void AfterRender()</div><div class="ttdoc">LLama al callback after_render, siempre y cuando no sea NULL. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00157">_component_camera.h:157</a></div></div>
+<div class="ttc" id="class_c_component___camera_html_a72c07b8a22a71ab7ea40fd1cee6fc855"><div class="ttname"><a href="class_c_component___camera.html#a72c07b8a22a71ab7ea40fd1cee6fc855">CComponent_Camera::AfterRender</a></div><div class="ttdeci">void AfterRender()</div><div class="ttdoc">LLama al callback after_render, siempre y cuando no sea NULL. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00159">_component_camera.h:159</a></div></div>
+<div class="ttc" id="namespace_utils_html_ad6a838fb5cf6f7721b7fc29c4bd52dca"><div class="ttname"><a href="namespace_utils.html#ad6a838fb5cf6f7721b7fc29c4bd52dca">Utils::string_to_lower</a></div><div class="ttdeci">std::string string_to_lower(std::string &amp;str)</div><div class="ttdoc">Cadena a minúsculas. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00024">_globals.cpp:24</a></div></div>
 <div class="ttc" id="class_c_game_object_html_a4ac16621b259864bb40d1dfea282f712"><div class="ttname"><a href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">CGameObject::Camera</a></div><div class="ttdeci">CComponent_Camera * Camera()</div><div class="ttdoc">Acceso directo para el componente camera (CComponent_Camera). </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00733">_object.h:733</a></div></div>
 <div class="ttc" id="__component__camera_8h_html"><div class="ttname"><a href="__component__camera_8h.html">_component_camera.h</a></div><div class="ttdoc">Fichero que incluye la clase CComponent_Camera. </div></div>
-<div class="ttc" id="class_c_component___camera_html_a9925d467efe91cbe187484474b23de03"><div class="ttname"><a href="class_c_component___camera.html#a9925d467efe91cbe187484474b23de03">CComponent_Camera::BeforeRender</a></div><div class="ttdeci">void BeforeRender()</div><div class="ttdoc">LLama al callback before_render, siempre y cuando no sea NULL. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00147">_component_camera.h:147</a></div></div>
+<div class="ttc" id="class_c_component___camera_html_a9925d467efe91cbe187484474b23de03"><div class="ttname"><a href="class_c_component___camera.html#a9925d467efe91cbe187484474b23de03">CComponent_Camera::BeforeRender</a></div><div class="ttdeci">void BeforeRender()</div><div class="ttdoc">LLama al callback before_render, siempre y cuando no sea NULL. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00149">_component_camera.h:149</a></div></div>
 <div class="ttc" id="__globals_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00181">_globals.h:181</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 2 de Abril de 2014 16:00:50 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 2 de Abril de 2014 18:27:48 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

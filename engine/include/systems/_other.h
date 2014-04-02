@@ -273,6 +273,20 @@ class CSystem_Math: public CSystem
 
     typedef glm::quat quat;
 
+    vector3f quat_to_angles(quat angle)
+    {
+      vector3f output;
+
+      // Pitch
+      output.x = _RAD_TO_DEG(atan2(2*angle.x*angle.w - 2*angle.y*angle.z, 1 - 2*angle.x*angle.x - 2*angle.z*angle.z));
+      // Yaw
+      output.y = _RAD_TO_DEG(atan2(2*angle.y*angle.w - 2*angle.x*angle.z, 1 - 2*angle.y*angle.y - 2*angle.z*angle.z));
+      // Roll
+      output.z = _RAD_TO_DEG(asin(2*angle.x*angle.y + 2*angle.z*angle.w));
+
+      return gMath.NormalizeAngles(output);
+    }
+
     quat LookAt(vector3f position, vector3f target, vector3f up = vector3f(0.f, 1.f, 0.f), vector3f forward = vector3f(0.f, 0.f, 1.f))
     {
       //http://stackoverflow.com/questions/12435671/quaternion-lookat-function

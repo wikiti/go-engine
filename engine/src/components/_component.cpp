@@ -15,7 +15,7 @@ const char* Components::component_to_string(components_t c)
   return components_s[c];
 }
 
-Components::components_t Components::string_to_component(const string& c)
+Components::components_t Components::string_to_component(const std::string& c)
 {
   for(uint i = 0; i < Components::__component_not_defined; i++)
     if(c == components_s[i])

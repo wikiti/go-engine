@@ -9,6 +9,9 @@ var searchData=
   ['affected_5fby_5ftime',['affected_by_time',['../class_c_component___audio___source.html#a1bc1ac565acfb17a58bf7d211d40d393',1,'CComponent_Audio_Source']]],
   ['after_5frender',['after_render',['../class_c_component___camera.html#a7980e41854635a91ad042204bd4d926a',1,'CComponent_Camera::after_render()'],['../class_c_component___mesh___render.html#a8beae8708b630cf10abc9dbd50095630',1,'CComponent_Mesh_Render::after_render()']]],
   ['afterrender',['AfterRender',['../class_c_component___camera.html#a72c07b8a22a71ab7ea40fd1cee6fc855',1,'CComponent_Camera']]],
+  ['angle',['angle',['../class_c_component___transform.html#a061c9529be12a9f3654fe2f3a535c5dd',1,'CComponent_Transform']]],
   ['angle_5fspread',['angle_spread',['../class_c_component___particle___emitter.html#a61c887de73d5f304670dd377e178a34b',1,'CComponent_Particle_Emitter']]],
+  ['applychanges',['ApplyChanges',['../class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e',1,'CComponent_Camera']]],
+  ['applytransform',['ApplyTransform',['../class_c_component___transform.html#ae566219936655599a2f152bc8b3a0fa4',1,'CComponent_Transform']]],
   ['audiosource',['AudioSource',['../class_c_game_object.html#a5060aaabf3893fb7153b89ba264ec4d9',1,'CGameObject']]]
 ];

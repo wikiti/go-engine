@@ -139,21 +139,21 @@ void CSystem_GameObject_Manager::CloseGameObject(string name)
     gSystem_Debug.console_warning_msg("Error from Manager::CloseGameObject: Could not find objet \"%s\"", name.c_str());
 }
 
-CGameObject* CSystem_GameObject_Manager::Add(string nombre, gameObject_type type, bool init)
+CGameObject* CSystem_GameObject_Manager::Add(std::string name, gameObject_type type, bool init)
 {
-  if(!Utils::validateIdentifier(nombre))
+  if(!Utils::validateIdentifier(name))
   {
-    gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", nombre.c_str());
+    gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", name.c_str());
     return NULL;
   }
 
-  map<string, CGameObject*>::iterator it = gameObjects.find(nombre);
+  map<string, CGameObject*>::iterator it = gameObjects.find(name);
   if(it == gameObjects.end())
   {
-    CGameObject* go =new CGameObject(nombre);
-    gameObjects.insert(pair<string, CGameObject*>(nombre, go));
+    CGameObject* go =new CGameObject(name);
+    gameObjects.insert(pair<string, CGameObject*>(name, go));
 
-    it = gameObjects.find(nombre);
+    it = gameObjects.find(name);
 
     it->second->Register(last_ID);
     last_ID++;
@@ -304,7 +304,7 @@ vector<CGameObject*> CSystem_GameObject_Manager::Search(string prefix)
 
 
 
-bool CSystem_GameObject_Manager::Rename(string name, string new_name)
+bool CSystem_GameObject_Manager::Rename(std::string name, std::string new_name)
 {
   if(!Utils::validateIdentifier(new_name))
   {
@@ -344,7 +344,7 @@ bool CSystem_GameObject_Manager::Rename(string name, string new_name)
   return true;
 }
 
-bool CSystem_GameObject_Manager::Rename(CGameObject* go, string new_name)
+bool CSystem_GameObject_Manager::Rename(CGameObject* go, std::string new_name)
 {
   // Debería llamar a la función anterior, o al revés
   if(!Utils::validateIdentifier(new_name))

@@ -188,9 +188,9 @@ class CComponent
      */
     virtual ~CComponent();
 
-    /** @no_use */
+    /** @brief @no_use */
     virtual void Set(input_t data){};
-    /** @no_use */
+    /** @brief @no_use */
     virtual output_t Get(){return NULL;};
 
     //virtual bool AddFuncs(CGameObject* obj){return true;};

@@ -66,7 +66,7 @@ class general_exception: public std::exception
     }
 };
 
-/** Usar defines de la librería <cmath>.*/
+/** Usar defines de la librería &lt;cmath&gt;.*/
 #define _USE_MATH_DEFINES
 /**
  * @brief Macro para pasar de radianes a grados.
@@ -1084,7 +1084,7 @@ typedef struct vector3f_t // ->NOTA La clase vector3f_t debería ir en CSystem_Ma
     return (float*)this;
   }
 
-} vector3f;
+} vector3f; /**< Sinónimo para vector3f_t */
 
 
 /*_____Functions______*/

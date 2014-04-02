@@ -477,13 +477,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;}</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;Uint8 CSystem_UserInput::Keyboard(<span class="keywordtype">string</span> keyname)</div>
+<div class="line"><a name="l00387"></a><span class="lineno"><a class="line" href="class_c_system___user_input.html#a6ebc4e2b067b9ebfef95ce058c079cf0">  387</a></span>&#160;Uint8 <a class="code" href="class_c_system___user_input.html#a6ebc4e2b067b9ebfef95ce058c079cf0">CSystem_UserInput::Keyboard</a>(std::string keyname)</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;{</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  SDL_Scancode key = SDL_GetScancodeFromName(keyname.c_str());</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="keywordflow">return</span> Keyboard(key);</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;Uint8 CSystem_UserInput::Keyboard(SDL_Scancode key)</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;Uint8 <a class="code" href="class_c_system___user_input.html#a6ebc4e2b067b9ebfef95ce058c079cf0">CSystem_UserInput::Keyboard</a>(SDL_Scancode key)</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;{</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  <span class="keywordflow">if</span>(key == SDL_SCANCODE_UNKNOWN)</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">return</span> 0; <span class="comment">// Simulamos que no se pulsa la tecla</span></div>
@@ -711,13 +711,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;<span class="comment">}*/</span></div>
 <div class="ttc" id="class_c_system___user_input_html"><div class="ttname"><a href="class_c_system___user_input.html">CSystem_UserInput</a></div><div class="ttdef"><b>Definition:</b> <a href="__input_8h_source.html#l00034">_input.h:34</a></div></div>
+<div class="ttc" id="class_c_system___user_input_html_a6ebc4e2b067b9ebfef95ce058c079cf0"><div class="ttname"><a href="class_c_system___user_input.html#a6ebc4e2b067b9ebfef95ce058c079cf0">CSystem_UserInput::Keyboard</a></div><div class="ttdeci">Uint8 Keyboard(std::string keyname)</div><div class="ttdef"><b>Definition:</b> <a href="__input_8cpp_source.html#l00387">_input.cpp:387</a></div></div>
 <div class="ttc" id="__globals_8h_html_a3d470c3e2db920debdd2f758bcc04dfa"><div class="ttname"><a href="__globals_8h.html#a3d470c3e2db920debdd2f758bcc04dfa">ERROR_INIT</a></div><div class="ttdeci">const char ERROR_INIT[]</div><div class="ttdoc">Título de error de inicialización para &amp;quot;message boxes&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00152">_globals.h:152</a></div></div>
 <div class="ttc" id="__globals_8h_html_a6b57f01d3c576db5368dd0efc2f435a4"><div class="ttname"><a href="__globals_8h.html#a6b57f01d3c576db5368dd0efc2f435a4">event</a></div><div class="ttdeci">SDL_Event event</div><div class="ttdoc">Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00003">_globals.cpp:3</a></div></div>
 <div class="ttc" id="__globals_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00181">_globals.h:181</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 2 de Abril de 2014 16:00:49 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 2 de Abril de 2014 18:27:47 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -4,11 +4,11 @@
 
 using namespace std;
 
-CGameObject::CGameObject(string str)
+CGameObject::CGameObject(std::string name)
 {
   inited = false;
   enabled = false;
-  name = str;
+  this->name = name;
   id = -1;
 
   preserve = false;
@@ -133,10 +133,10 @@ void CGameObject::RemoveChildren()
   children.clear();
 }
 
-CGameObject* CGameObject::GetChild(string str)
+CGameObject* CGameObject::GetChild(std::string name)
 {
-  if(children.find(str) != children.end())
-    return children[str];
+  if(children.find(name) != children.end())
+    return children[name];
 
   return NULL;
 }

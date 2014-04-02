@@ -100,6 +100,8 @@ namespace Viewmode
  *
  * Finalmente, cabe destacar que la cámara puede definir un color o un cielo (*skybox*) de fondo, que servirá para dibujar contenido en el fondo de nuestro escenario.
  *
+ * @warning Si se realizan cambios después de añadir la cámara al sistema CSystem_Render, se deberán aplicar los cambios con ApplyChanges(). Si no, no se mostrarán los cambios.
+ *
  * @see CSystem_Render
  */
 class CComponent_Camera: public CComponent
@@ -132,7 +134,7 @@ class CComponent_Camera: public CComponent
 
     // Fallo: no apunta correctamente a hijos de padres
     // ¿solución? calcular la nueva posición o quitar esta opción
-    std::string target;         /**< Nombre del objeto CGameObject al que apuntará la cámara. Debe estar registrado en el sistema CSystem_GameObject_Manager. Si es "" o no se encuentra, se usará la orientación de la cámara para calcular el punto al que se debe mirar. */
+    std::string target;         /**< Nombre del objeto CGameObject al que apuntará la cámara. Debe estar registrado en el sistema CSystem_GameObject_Manager. Si es "" o no se encuentra, se usará la orientación de la cámara para calcular el punto al que se debe mirar. Funciona incluso si el objetivo es hijo de algun objeto, ya que se coge su posición global. */
 
     function_t before_render;   /**< Callback antes de renderizar todos los objetos con la cámara actual. Si es null, no se hará nada. Puede ser útil para dibujar la misma escena de distintas maneras con varias cámaras. */
     function_t after_render;    /**< Callback posterior al renderizado de todos los objetos con la cámara actual. Si es null, no se hará nada. Puede ser útil para dibujar la misma escena de distintas maneras con varias cámaras, pudiendo variar los datos, o deshacer modificaciones hechas con el callback before_render.*/
@@ -209,10 +211,10 @@ class CComponent_Camera: public CComponent
      */
     ~CComponent_Camera();
 
-    /** @no_use */
+    /** @brief @no_use */
     inline virtual void Set(input_t data);
 
-    /** @no_use */
+    /** @brief @no_use */
     inline virtual output_t Get();
 
     /**
@@ -244,8 +246,14 @@ class CComponent_Camera: public CComponent
 	    SetTarget("");
 	  }
 
-  private:
+	  /**
+	   * @brief Aplicar cambios.
+	   *
+	   * Si se han realizado cambios importantes en la cámara, se deben aplicar los cambios con esta función.
+	   */
     void ApplyChanges();
+
+  private:
     void SetViewport();
     void SetUp();
     void Clear();

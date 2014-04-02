@@ -9,7 +9,7 @@ engine\include\components\_component_dummys.h               x
 engine\include\components\_component_gui.h                  x
 engine\include\components\_component_mesh_render.h          x
 engine\include\components\_component_particle_emitter.h     x
-engine\include\components\_component_transform.h            
+engine\include\components\_component_transform.h            x
 engine\include\engine\_engine.h                             
 engine\include\engine\_instance.h                           
 engine\include\systems\_data.h                              
@@ -26,18 +26,3 @@ engine\src\_main.cpp
 user\include\gameObjects.h                                  
 user\include\instances.h                                    
 user\include\predefined_functions.h                         
-user\include\particles\other_particles.h                    
-user\include\particles\fireworks\fireworks.h                
-user\include\particles\rainbow\rainbow.h                    
-user\include\random\random_stuff.h                          
-user\include\render\render.h                                
-user\include\shaders\shaders.h                              
-user\src\gameObjects.cpp                                    
-user\src\instances.cpp                                      
-user\src\predefined_functions.cpp                           
-user\src\particles\other_particles.cpp                      
-user\src\particles\fireworks\fireworks.cpp                  
-user\src\particles\rainbow\rainbow.cpp                      
-user\src\random\random_stuff.cpp                            
-user\src\render\render.cpp                                  
-user\src\shaders\shaders.cpp                                

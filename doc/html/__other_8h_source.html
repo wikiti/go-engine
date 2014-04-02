@@ -368,112 +368,126 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keyword">typedef</span> glm::quat quat;</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    quat LookAt(<a class="code" href="structvector3f__t.html">vector3f</a> position, <a class="code" href="structvector3f__t.html">vector3f</a> target, <a class="code" href="structvector3f__t.html">vector3f</a> up = <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(0.f, 1.f, 0.f), <a class="code" href="structvector3f__t.html">vector3f</a> forward = <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(0.f, 0.f, 1.f))</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> quat_to_angles(quat angle)</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <span class="comment">//http://stackoverflow.com/questions/12435671/quaternion-lookat-function</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> forwardVector = (target - position).normalize();</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      <span class="keywordtype">float</span> dot = forward * forwardVector;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      <span class="keywordflow">if</span> (abs(dot - (-1.0f)) &lt; 0.000001f)</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">return</span> glm::angleAxis(3.1415926535897932f, up.to_glm());</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      }</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      <span class="keywordflow">if</span> (abs(dot - (1.0f)) &lt; 0.000001f)</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">return</span> glm::quat();</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;      }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;      <span class="keywordtype">float</span> rotAngle = (float)acos(dot);</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> rotAxis = forward % forwardVector;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;      rotAxis = normalize(rotAxis);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      <span class="keywordflow">return</span> glm::angleAxis(rotAngle, rotAxis.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>());</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_vector()</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    {</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      <span class="comment">// http://www.gamedev.net/topic/499972-generate-a-random-unit-vector/</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      <span class="keywordtype">float</span> theta = random() * 2.0f * PI;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;      <span class="keywordtype">float</span> r = sqrt( random() );</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      <span class="keywordtype">float</span> random_value = 1.f;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      <span class="keywordflow">if</span>(rand() &lt; 0.5) random_value = -1.f;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      <span class="keywordtype">float</span> z = sqrt( 1.0f - r*r ) * random_value;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>( r * std::cos(theta), r * std::sin(theta), z );</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_vector(cone_t cone)</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      <span class="keywordflow">return</span> random_vector(cone.direction, cone.angle);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keyword">inline</span> <a class="code" href="structvector3f__t.html">vector3f</a> random_vector(<a class="code" href="structvector3f__t.html">vector3f</a> direction, GLfloat angle_degrees)</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      <span class="comment">// http://stackoverflow.com/questions/2659257/perturb-vector-by-some-angle</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      angle_degrees = NormalizeAngle(angle_degrees);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> output;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      <span class="comment">// Pitch</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      output.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a> = <a class="code" href="__globals_8h.html#a306bd7f1837c18e24ba5a7ed1596dbe2">_RAD_TO_DEG</a>(atan2(2*angle.x*angle.w - 2*angle.y*angle.z, 1 - 2*angle.x*angle.x - 2*angle.z*angle.z));</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      <span class="comment">// Yaw</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      output.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a> = <a class="code" href="__globals_8h.html#a306bd7f1837c18e24ba5a7ed1596dbe2">_RAD_TO_DEG</a>(atan2(2*angle.y*angle.w - 2*angle.x*angle.z, 1 - 2*angle.y*angle.y - 2*angle.z*angle.z));</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      <span class="comment">// Roll</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      output.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a> = <a class="code" href="__globals_8h.html#a306bd7f1837c18e24ba5a7ed1596dbe2">_RAD_TO_DEG</a>(asin(2*angle.x*angle.y + 2*angle.z*angle.w));</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      <span class="keywordflow">return</span> gMath.NormalizeAngles(output);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    quat LookAt(<a class="code" href="structvector3f__t.html">vector3f</a> position, <a class="code" href="structvector3f__t.html">vector3f</a> target, <a class="code" href="structvector3f__t.html">vector3f</a> up = <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(0.f, 1.f, 0.f), <a class="code" href="structvector3f__t.html">vector3f</a> forward = <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(0.f, 0.f, 1.f))</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;      <span class="comment">//http://stackoverflow.com/questions/12435671/quaternion-lookat-function</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> forwardVector = (target - position).normalize();</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;      <span class="keywordtype">float</span> dot = forward * forwardVector;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;      <span class="keywordflow">if</span> (abs(dot - (-1.0f)) &lt; 0.000001f)</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;      {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">return</span> glm::angleAxis(3.1415926535897932f, up.to_glm());</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      <span class="keywordflow">if</span> (abs(dot - (1.0f)) &lt; 0.000001f)</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">return</span> glm::quat();</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;      }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      <span class="keywordtype">float</span> rotAngle = (float)acos(dot);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> rotAxis = forward % forwardVector;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      rotAxis = normalize(rotAxis);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      <span class="keywordflow">return</span> glm::angleAxis(rotAngle, rotAxis.<a class="code" href="structvector3f__t.html#a8c63b59e7429217822b200f5182beceb">to_glm</a>());</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_vector()</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;      <span class="comment">// http://www.gamedev.net/topic/499972-generate-a-random-unit-vector/</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      <span class="keywordtype">float</span> theta = random() * 2.0f * PI;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      <span class="keywordtype">float</span> r = sqrt( random() );</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      <span class="keywordtype">float</span> random_value = 1.f;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      <span class="keywordflow">if</span>(rand() &lt; 0.5) random_value = -1.f;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> rand_vector = random_vector();</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> cross_vector = (direction % rand_vector).normalize();</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;      <span class="keywordtype">float</span> s = random();</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;      <span class="keywordtype">float</span> r = random();</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      <span class="keywordtype">float</span> h = cos( angle_degrees );</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      <span class="keywordtype">float</span> phi = 2 * PI * s;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      <span class="keywordtype">float</span> z = h + ( 1 - h ) * r;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <span class="keywordtype">float</span> sinT = sqrt( 1 - z * z );</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      <span class="keywordtype">float</span> x = std::cos( phi ) * sinT;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      <span class="keywordtype">float</span> y = std::sin( phi ) * sinT;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      <span class="keywordflow">return</span> (rand_vector * x + cross_vector * y + direction * z).normalize();</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    }</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="comment">// Random point - Sphere</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_point(GLfloat sphere_radius, <a class="code" href="structvector3f__t.html">vector3f</a> origin = ORIGIN)</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    {</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      <span class="keywordflow">return</span> origin + (random_vector(Y_AXIS, 180)*(random()*sphere_radius));</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="comment">// Random point - Cuboid</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_point(<a class="code" href="structvector3f__t.html">vector3f</a> dimensions, <a class="code" href="structvector3f__t.html">vector3f</a> origin = ORIGIN)</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    {</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(origin.x + random()*dimensions.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, origin.y + random()*dimensions.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, origin.z + random()*dimensions.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    }</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="comment">// Random point - World</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="comment">// Range: [-RAND_MAX/2, RAND_MAX/2]</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_point()</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(rand() - RAND_MAX/2, rand() - RAND_MAX/2, rand() - RAND_MAX/2);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    }</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="comment">// Spherical linear interpolation</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> slerp(<a class="code" href="structvector3f__t.html">vector3f</a> from, <a class="code" href="structvector3f__t.html">vector3f</a> to, <span class="keywordtype">float</span> t = 0.5f);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="comment">// Linear interpolations</span></div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordtype">float</span> lerpAngle(<span class="keywordtype">float</span> from, <span class="keywordtype">float</span> to, <span class="keywordtype">float</span> t= 0.5f);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> lerpAngles(<a class="code" href="structvector3f__t.html">vector3f</a> from, <a class="code" href="structvector3f__t.html">vector3f</a> to, <span class="keywordtype">float</span> t = 0.5f);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      <span class="keywordtype">float</span> z = sqrt( 1.0f - r*r ) * random_value;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>( r * std::cos(theta), r * std::sin(theta), z );</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_vector(cone_t cone)</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      <span class="keywordflow">return</span> random_vector(cone.direction, cone.angle);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keyword">inline</span> <a class="code" href="structvector3f__t.html">vector3f</a> random_vector(<a class="code" href="structvector3f__t.html">vector3f</a> direction, GLfloat angle_degrees)</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      <span class="comment">// http://stackoverflow.com/questions/2659257/perturb-vector-by-some-angle</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      angle_degrees = NormalizeAngle(angle_degrees);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> rand_vector = random_vector();</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      <a class="code" href="structvector3f__t.html">vector3f</a> cross_vector = (direction % rand_vector).normalize();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordtype">float</span> s = random();</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <span class="keywordtype">float</span> r = random();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;      <span class="keywordtype">float</span> h = cos( angle_degrees );</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      <span class="keywordtype">float</span> phi = 2 * PI * s;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      <span class="keywordtype">float</span> z = h + ( 1 - h ) * r;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      <span class="keywordtype">float</span> sinT = sqrt( 1 - z * z );</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;      <span class="keywordtype">float</span> x = std::cos( phi ) * sinT;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;      <span class="keywordtype">float</span> y = std::sin( phi ) * sinT;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;      <span class="keywordflow">return</span> (rand_vector * x + cross_vector * y + direction * z).normalize();</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="comment">// Random point - Sphere</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_point(GLfloat sphere_radius, <a class="code" href="structvector3f__t.html">vector3f</a> origin = ORIGIN)</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;      <span class="keywordflow">return</span> origin + (random_vector(Y_AXIS, 180)*(random()*sphere_radius));</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="comment">// Random point - Cuboid</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_point(<a class="code" href="structvector3f__t.html">vector3f</a> dimensions, <a class="code" href="structvector3f__t.html">vector3f</a> origin = ORIGIN)</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(origin.x + random()*dimensions.<a class="code" href="structvector3f__t.html#a712d554feb24730551a7d1aa6802c9e2">x</a>, origin.y + random()*dimensions.<a class="code" href="structvector3f__t.html#a41957aafe2c0c3122fda3bd2d24311c5">y</a>, origin.z + random()*dimensions.<a class="code" href="structvector3f__t.html#a9fa9623b6af260eee1905b1620a78de0">z</a>);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    }</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordtype">float</span> lerp(<span class="keywordtype">float</span> from, <span class="keywordtype">float</span> to, <span class="keywordtype">float</span> t = 0.5f);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> lerp(<a class="code" href="structvector3f__t.html">vector3f</a> from, <a class="code" href="structvector3f__t.html">vector3f</a> to, <span class="keywordtype">float</span> t = 0.5f);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="comment">// Clamper</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    T Clamp(T in, T min, T max)</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keywordflow">return</span> std::min(std::max(in, min), max);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;};</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_c_system___math.html">CSystem_Math</a> gSystem_Math;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_c_system___math.html">CSystem_Math</a>&amp; gMath;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="comment">// Random point - World</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="comment">// Range: [-RAND_MAX/2, RAND_MAX/2]</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> random_point()</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="__globals_8h.html#aa250b1dedabea51e27f641d879926b0f">vector3f</a>(rand() - RAND_MAX/2, rand() - RAND_MAX/2, rand() - RAND_MAX/2);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="comment">// Spherical linear interpolation</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> slerp(<a class="code" href="structvector3f__t.html">vector3f</a> from, <a class="code" href="structvector3f__t.html">vector3f</a> to, <span class="keywordtype">float</span> t = 0.5f);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="comment">// Linear interpolations</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordtype">float</span> lerpAngle(<span class="keywordtype">float</span> from, <span class="keywordtype">float</span> to, <span class="keywordtype">float</span> t= 0.5f);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> lerpAngles(<a class="code" href="structvector3f__t.html">vector3f</a> from, <a class="code" href="structvector3f__t.html">vector3f</a> to, <span class="keywordtype">float</span> t = 0.5f);</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __CSYSTEM_OTHER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordtype">float</span> lerp(<span class="keywordtype">float</span> from, <span class="keywordtype">float</span> to, <span class="keywordtype">float</span> t = 0.5f);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <a class="code" href="structvector3f__t.html">vector3f</a> lerp(<a class="code" href="structvector3f__t.html">vector3f</a> from, <a class="code" href="structvector3f__t.html">vector3f</a> to, <span class="keywordtype">float</span> t = 0.5f);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="comment">// Clamper</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    T Clamp(T in, T min, T max)</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">return</span> std::min(std::max(in, min), max);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;};</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_c_system___math.html">CSystem_Math</a> gSystem_Math;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_c_system___math.html">CSystem_Math</a>&amp; gMath;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __CSYSTEM_OTHER_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_system_html"><div class="ttname"><a href="class_c_system.html">CSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="__system_8h_source.html#l00006">_system.h:6</a></div></div>
 <div class="ttc" id="structvector3f__t_html_a4c9654016c3504447aad0e17c5f3be79"><div class="ttname"><a href="structvector3f__t.html#a4c9654016c3504447aad0e17c5f3be79">vector3f_t::length</a></div><div class="ttdeci">GLfloat length()</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00812">_globals.h:812</a></div></div>
 <div class="ttc" id="__globals_8h_html_a808a7418bc50a1583e1d2a07db11ae6e"><div class="ttname"><a href="__globals_8h.html#a808a7418bc50a1583e1d2a07db11ae6e">_DEG_TO_RAD</a></div><div class="ttdeci">#define _DEG_TO_RAD(x)</div><div class="ttdoc">Macro para pasar de grados a radianes. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00079">_globals.h:79</a></div></div>
@@ -496,7 +510,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 2 de Abril de 2014 16:00:45 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 2 de Abril de 2014 18:27:43 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

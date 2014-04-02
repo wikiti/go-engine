@@ -596,8 +596,7 @@ vector3f CComponent_Transform::Rotation()
 
   // ¿?¿?
 
-
-  //return langle;
+  return gSystem_Math.quat_to_angles(langle);
 }
 
 vector3f CComponent_Transform::LRotation()

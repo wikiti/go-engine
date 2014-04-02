@@ -438,8 +438,7 @@ CShader* CSystem_Shader_Manager::UseShader(const string& name)
   }
 }
 
-
-CShader* CSystem_Shader_Manager::LoadShader(const string& name, const string& vertFile, const string& fragFile, const string& geomFile)
+CShader* CSystem_Shader_Manager::LoadShader(const std::string& name, const std::string& vertFile, const std::string& fragFile, const std::string& geomFile)
 {
   CShader* r_shader = Load(name, vertFile, fragFile, geomFile);
   if (r_shader != NULL)
@@ -664,7 +663,7 @@ bool CSystem_Shader_Manager::LoadStr(const string& name, uint inShaderType, cons
   return true;
 }
 
-bool CSystem_Shader_Manager::LoadShader(const string& name, uint inShaderType,  const std::string& inFileName, uint& inOutShader)
+bool CSystem_Shader_Manager::LoadShader(const std::string& name, uint inShaderType, const std::string& inFileName, uint& inOutShader)
 {
   if (inFileName.empty())
   {

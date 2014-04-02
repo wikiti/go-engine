@@ -18,7 +18,7 @@
  * Un componente muy útil y necesario para la representación gráfica son los modelos o
  * objetos gráficos.
  *
- * ¡¡¡IMAGEN AQUÍ!!!
+ * @image html crate.png
  *
  * Un modelo es un elemento externo (un objeto 3d de Blender, Maya, 3DMax...)
  * que ha sido cargado en el motor gráfico como un recurso.
