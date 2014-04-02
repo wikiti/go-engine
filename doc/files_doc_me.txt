@@ -8,7 +8,7 @@ engine\include\components\_component_camera.h               x
 engine\include\components\_component_dummys.h               x
 engine\include\components\_component_gui.h                  x
 engine\include\components\_component_mesh_render.h          x
-engine\include\components\_component_particle_emitter.h     
+engine\include\components\_component_particle_emitter.h     x
 engine\include\components\_component_transform.h            
 engine\include\engine\_engine.h                             
 engine\include\engine\_instance.h                           

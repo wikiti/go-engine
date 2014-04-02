@@ -1,6 +1,7 @@
 var searchData=
 [
   ['particleemitter',['ParticleEmitter',['../class_c_game_object.html#ab34e4dc91498bee564cb4cb027aa7e6d',1,'CGameObject']]],
+  ['particles_5fper_5fsecond',['particles_per_second',['../class_c_component___particle___emitter.html#ab6446579508df836e19283e9f45c33e4',1,'CComponent_Particle_Emitter']]],
   ['pause',['Pause',['../class_c_component___audio___source.html#a48924c1cb67cceef9cabd595ad25986f',1,'CComponent_Audio_Source']]],
   ['pitch',['pitch',['../class_c_component___audio___source.html#ac11d1de73b5371384399e7f7f0ff5b81',1,'CComponent_Audio_Source']]],
   ['pixel_5foffset_5fx',['pixel_offset_x',['../class_c_component___g_u_i___texture.html#aefdd5ce39df8ea2c29614c298a0b6fee',1,'CComponent_GUI_Texture']]],

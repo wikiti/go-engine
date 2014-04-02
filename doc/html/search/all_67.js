@@ -17,5 +17,6 @@ var searchData=
   ['getparent',['GetParent',['../class_c_game_object.html#a7d440a88fdaf5354975a4f1f27da60f4',1,'CGameObject']]],
   ['getstate',['GetState',['../class_c_component.html#a8a2bbd0e44da23267e07d1d610da1b02',1,'CComponent']]],
   ['glm_5fforce_5fradians',['GLM_FORCE_RADIANS',['../__globals_8h.html#a816ab7d5c2ce1f0a01216042837beb93',1,'_globals.h']]],
+  ['gravity',['gravity',['../class_c_component___particle___emitter.html#a9cabad5f9b0bf9f7d962e10bcceb4d64',1,'CComponent_Particle_Emitter']]],
   ['guitexture',['GUITexture',['../class_c_game_object.html#ac3c5085a08e347e6d162a0cf3b92691e',1,'CGameObject']]]
 ];

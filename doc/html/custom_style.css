@@ -18,6 +18,10 @@ div.image img[src="gui.png"]{
     width: 900px;
 }
 
+div.image img[src="particle_emitter.png"]{ 
+    width: 900px;
+}
+
 /* Estilo doxygen personalizado. */
 
 .tabs, .tabs2, .tabs3 {
