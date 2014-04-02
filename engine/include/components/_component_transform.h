@@ -84,7 +84,7 @@ class CComponent_Transform: public CComponent
     //  -> Get: Cuaterniones a Euler
     //  -> Se trabaja internamente con cuaterniones. No se podrá modificar los ángulos de euler a mano (angle.x ...), ya que internamente no existen. Se usará el set y el get exclusivamente.
     //  -> http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-17-quaternions/
-    //     -> Nota: se puede usar glRotatef con un cuaternion?
+    //     - Nota: se puede usar glRotatef con un cuaternion?
     void Translate(vector3f v);
     void Translate(GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
     void SetPosition(vector3f v);

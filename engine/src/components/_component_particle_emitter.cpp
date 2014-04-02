@@ -377,6 +377,7 @@ void CComponent_Particle_Emitter::OnRender(glm::mat4 projMatrix, glm::mat4 model
   glDepthMask(GL_TRUE);
 };
 
+// ->PORHACER En CComponent_Particle_Emitter::OnLoop(), falta activar los valores "maximos" durante la emisión de la partícula. Se puede usar CSystem_Mat.Clamp()
 void CComponent_Particle_Emitter::OnLoop()
 {
   if(freeze || !enabled) return;
