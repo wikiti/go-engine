@@ -8,7 +8,7 @@ bool SetGameObjects_Instance1_Fireworks()
   {
     firework_manager = gGameObjects.Add("firework_manager");
     firework_manager->Preserve();
-    firework_manager->SetInputFunction(&Firework_Manager_KeyEvent);
+    firework_manager->SetInputFunction(&Firework_Manager_Input);
     firework_manager->SetBehaviourFunction(&Firework_Manager_Behaviour);
 
     if(gData.GetInt("firework_explosion_particles") == __CSYSTEM_DATA_STORAGE_NOINT)
@@ -26,15 +26,24 @@ bool SetGameObjects_Instance1_Fireworks()
 }
 
 int number_of_fireworks = 0;
+bool pressed = false;
 vector<bool> exploded;
 vector<CGameObject*> fireworks;
 vector<int> fireworks_value;
 
-void Firework_Manager_KeyEvent(CGameObject* gameObject)
+void Firework_Manager_Input(CGameObject* gameObject)
 {
   //if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_SPACE)
-  if(gUserInput.jump() == Input::key_keydown)
+  vector<GO_InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
+
+  if(pressed and (joys.size() > 0 and joys[0].buttons.size() > 9 and joys[0].buttons[9].State() == Input::button_unpressed))
   {
+    pressed = false;
+  }
+  if(gUserInput.jump() == Input::key_keydown or (joys.size() > 0 and joys[0].buttons.size() > 9 and joys[0].buttons[9].State() == Input::button_pressed and !pressed))
+  {
+    pressed = true; // joystick
+
     //std::string random_string = generate_random_alphanumeric_string(5);
     ostringstream oss;
     oss << number_of_fireworks;

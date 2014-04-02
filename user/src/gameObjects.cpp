@@ -217,13 +217,13 @@ void Camara_Joystick_movimiento(CGameObject* gameObject)
   if(joys.size() > 0)
   {
     float boost = 1.f;
-    if(joys[0].buttons.size() > 11 and joys[0].buttons[6].State() == Input::button_pressed)
+    if(joys[0].buttons.size() > 8 and joys[0].buttons[8].State() == Input::button_pressed)
       boost = 3.f;
 
     // Translation
     if(joys[0].axes.size() >= 2)
     {
-      if(joys[0].buttons.size() > 12 and joys[0].buttons[11].State() == Input::button_pressed)
+      if(joys[0].buttons.size() > 11 and joys[0].buttons[11].State() == Input::button_pressed)
         gameObject->Transform()->LTranslate(- joys[0].axes[0].value * boost * 3.f * gTime.deltaTime_s(), - joys[0].axes[1].value * boost * 3.f * gTime.deltaTime_s(), 0.f);
       else
         gameObject->Transform()->LTranslate(joys[0].axes[0].value * -3.f * boost * gTime.deltaTime_s(), 0.f, joys[0].axes[1].value * -3.f * boost * gTime.deltaTime_s());
