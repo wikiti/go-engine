@@ -284,7 +284,7 @@ class CSystem_Math: public CSystem
       // Roll
       output.z = _RAD_TO_DEG(asin(2*angle.x*angle.y + 2*angle.z*angle.w));
 
-      return gMath.NormalizeAngles(output);
+      return NormalizeAngles(output);
     }
 
     quat LookAt(vector3f position, vector3f target, vector3f up = vector3f(0.f, 1.f, 0.f), vector3f forward = vector3f(0.f, 0.f, 1.f))

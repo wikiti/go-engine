@@ -9,7 +9,7 @@ CEngine gEngine;
 
 using namespace std;
 
-CEngine::CEngine(): title(""), running(false)
+CEngine::CEngine(): title("GO-Engine"), running(false)
 {
 
 }

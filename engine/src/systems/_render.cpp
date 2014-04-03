@@ -423,7 +423,7 @@ void CSystem_Render::SetMainCamera(CGameObject* camera)
 void CSystem_Render::SetMainCamera(const std::string& camera)
 {
   CGameObject* cam = gSystem_GameObject_Manager[camera];
-  if(!camera)
+  if(!cam)
     return;
 
   // ¿?
@@ -450,7 +450,7 @@ void CSystem_Render::AddCamera(CGameObject* camera)
 void CSystem_Render::AddCamera(const std::string& camera)
 {
   CGameObject* cam = gSystem_GameObject_Manager[camera];
-  if(camera)
+  if(cam)
   {
     camera_list.push_back(cam);
     cam->Camera()->ApplyChanges();
@@ -471,7 +471,7 @@ void CSystem_Render::AddCameraPrior(CGameObject* camera)
 void CSystem_Render::AddCameraPrior(const std::string& camera)
 {
   CGameObject* cam = gSystem_GameObject_Manager[camera];
-  if(camera_list.size() >= 1 && camera)
+  if(camera_list.size() >= 1 && cam)
   {
     vector<CGameObject*>::iterator it = camera_list.begin();
     ++it;

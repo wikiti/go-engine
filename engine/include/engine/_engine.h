@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Fichero que incluye la clase CEngine, y su instancia global gEngine.
+ */
+
 #ifndef __ENGINE_H_
 #define __ENGINE_H_
 
@@ -6,9 +11,27 @@
 
 #include "systems/_render.h"
 
-// Engine resource files
-// icono, etc
+/** @addtogroup Otros */
+/*@{*/
 
+/**
+ * @brief Motor gráfico.
+ *
+ * Representa el conjunto de estancias del juego (los sistemas van aparte).
+ * En este caso, el motor gráfico se encargará de gestionar la ejecución y flujo principal del
+ * juego. En caso de un cambio de nivel o de estancia (CInstance), será esta clase la encargada de
+ * gestionar dicho cambio.
+ *
+ * El objeto de esta clase (gEngine), será el encargado de gestionar las estancias (CInstance) o niveles.
+ * Para ello, dispone de un mapa de estancias, cada una caracterizada por un nombre (string). Desde cualquier
+ * estancia, sabiendo el nombre de alguna otra, se podrá pedir un cambio de estancia, simulando un
+ * cambio de nivel, por lo que se cargarán nuevos recursos, nuevos objetos, se reiniciarán sistemas, etc.
+ *
+ * @note **Nota**: en caso de querer añadir soporte multihilo, solo bastaría con modificar parte e esta clase, y parte de CInstance,
+ * @note por lo que no debería de haber grandes cambios.
+ *
+ * @see CInstance
+ */
 class CEngine
 {
   protected:
@@ -26,10 +49,41 @@ class CEngine
     void RemoveAllInstances();
 
   public:
+    /**
+     * @brief Constructor.
+     *
+     * Construye el motor gráfico, y pone de título a la ventana "GO-Engine".
+     */
     CEngine();
+    /**
+     * @brief Destructor.
+     *
+     * Destruye el motor gráfico.
+     */
     virtual ~CEngine(){};
 
+    /**
+     * @brief Iniciar el motor.
+     *
+     * Inicia el motor gráfico, por lo que iniciará *SDL2*, los sistemas definidos e iniciará las funciones
+     * User_Engine_Loader() (icono, título, etc.) y User_Instance_Loader() (cargar estancias). Además, esta clase
+     * conservará los argumentos pasados al programa. Será llamado al iniciar OnExecute().
+     *
+     * @param argc Cantidad de argumentos del programa. Se corresponde por el argumento definido por la función main().
+     * @param argv Array de argumentos del programa. Se corresponde por el argumento definido por la función main().
+     * @return Retorna true si se inicia correctamente, false en caso contrario.
+     *
+     * @see CSystem
+     * @see User_Engine_Loader()
+     * @see User_Instance_Loader()
+     */
     virtual bool Init(int argc, char* argv[]);
+    /**
+     * @brief Cerrar el motor.
+     *
+     * Cierra el motor gráfico, cerrando la librería *SDL2*, cerrando los sitemas, y eliminando todas las estancias.
+     * Será llamado al acabar OnExecute().
+     */
     virtual void Close();
 
     virtual int OnExecute(int argc, char* argv[]);
@@ -116,5 +170,6 @@ class CEngine
 
 extern CEngine gEngine;
 
+/*@}*/
 
 #endif /* __ENGINE_H_ */
