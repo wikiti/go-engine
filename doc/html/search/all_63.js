@@ -17,7 +17,7 @@ var searchData=
   ['ccomponent_5fmesh_5frender',['CComponent_Mesh_Render',['../class_c_component___mesh___render.html',1,'CComponent_Mesh_Render'],['../class_c_component___mesh___render.html#aa608f1661c3f09fd2d83d4a96d393d63',1,'CComponent_Mesh_Render::CComponent_Mesh_Render()'],['../class_c_component___mesh___render.html#a0f63aa278678f55760635cc3b595e04c',1,'CComponent_Mesh_Render::CComponent_Mesh_Render(CGameObject *gameObject)']]],
   ['ccomponent_5fparticle_5femitter',['CComponent_Particle_Emitter',['../class_c_component___particle___emitter.html',1,'CComponent_Particle_Emitter'],['../class_c_component___particle___emitter.html#a7827a743d25a5c746fbe62d249b1e71e',1,'CComponent_Particle_Emitter::CComponent_Particle_Emitter()'],['../class_c_component___particle___emitter.html#ae58227a5e1b7f22a5b45b584e947e1fc',1,'CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject *gameObject)']]],
   ['ccomponent_5ftransform',['CComponent_Transform',['../class_c_component___transform.html',1,'CComponent_Transform'],['../class_c_component___transform.html#abf11e8d0332613e4f204a986b826efce',1,'CComponent_Transform::CComponent_Transform()'],['../class_c_component___transform.html#a4207a4fb21b1c4bf346ad37c30458f67',1,'CComponent_Transform::CComponent_Transform(CGameObject *gameObject)']]],
-  ['cengine',['CEngine',['../class_c_engine.html',1,'']]],
+  ['cengine',['CEngine',['../class_c_engine.html',1,'CEngine'],['../class_c_engine.html#ab3d84e8a1c8d4eb84b9f069090024990',1,'CEngine::CEngine()']]],
   ['cgameobject',['CGameObject',['../class_c_game_object.html',1,'CGameObject'],['../class_c_game_object.html#a48f1516784befb0062d1af2545327d15',1,'CGameObject::CGameObject(std::string name)'],['../class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea',1,'CGameObject::CGameObject()']]],
   ['cinstance',['CInstance',['../class_c_instance.html',1,'']]],
   ['cjoybutton',['CJoyButton',['../class_c_system___user_input_1_1_c_joy_button.html',1,'CSystem_UserInput']]],
@@ -25,7 +25,7 @@ var searchData=
   ['ckey',['CKey',['../class_c_system___user_input_1_1_c_key.html',1,'CSystem_UserInput']]],
   ['ckeyaxis',['CKeyAxis',['../class_c_system___user_input_1_1_c_key_axis.html',1,'CSystem_UserInput']]],
   ['clear',['clear',['../class_c_component___camera.html#a31ad28f8ca83d60048269d842a551960',1,'CComponent_Camera']]],
-  ['close',['Close',['../class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876',1,'CGameObject']]],
+  ['close',['Close',['../class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876',1,'CGameObject::Close()'],['../class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795',1,'CEngine::Close()']]],
   ['closecustom',['CloseCustom',['../class_c_game_object.html#a1031d0372ed792b4f12998f3570882b3',1,'CGameObject']]],
   ['cmouse',['CMouse',['../class_c_system___user_input_1_1_c_mouse.html',1,'CSystem_UserInput']]],
   ['color',['color',['../class_c_component___g_u_i___texture.html#a8e184597ef45b2354e5cef55af119fb4',1,'CComponent_GUI_Texture::color()'],['../class_c_component___mesh___render.html#a865ea6ac2e4075e3805c30e110b53bd3',1,'CComponent_Mesh_Render::color()']]],
@@ -56,5 +56,6 @@ var searchData=
   ['csystem_5fresources',['CSystem_Resources',['../class_c_system___resources.html',1,'CSystem_Resources'],['../class_c_system___resources.html#ab1143207cc42a20b2d0a428979159e57',1,'CSystem_Resources::CSystem_Resources()']]],
   ['csystem_5fshader_5fmanager',['CSystem_Shader_Manager',['../class_c_system___shader___manager.html',1,'']]],
   ['csystem_5ftime',['CSystem_Time',['../class_c_system___time.html',1,'']]],
-  ['csystem_5fuserinput',['CSystem_UserInput',['../class_c_system___user_input.html',1,'']]]
+  ['csystem_5fuserinput',['CSystem_UserInput',['../class_c_system___user_input.html',1,'']]],
+  ['currentinstance',['CurrentInstance',['../class_c_engine.html#a582c0314d17d394bb7fe6cd9a1fa7383',1,'CEngine']]]
 ];

@@ -105,7 +105,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;systems/_resource.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;systems/_shader.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;engine/_engine.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__engine_8h.html">engine/_engine.h</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
@@ -167,7 +167,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  window = SDL_CreateWindow( gEngine.GetTitle().c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gSystem_Data_Storage.GetInt(<span class="stringliteral">&quot;__RENDER_RESOLUTION_WIDTH&quot;</span>), gSystem_Data_Storage.GetInt(<span class="stringliteral">&quot;__RENDER_RESOLUTION_HEIGHT&quot;</span>), SDL_WINDOW_OPENGL);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  window = SDL_CreateWindow( <a class="code" href="group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da">gEngine</a>.<a class="code" href="class_c_engine.html#a5ce98774fc7d4a45cd6a14df2d8e2d75">GetTitle</a>().c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gSystem_Data_Storage.GetInt(<span class="stringliteral">&quot;__RENDER_RESOLUTION_WIDTH&quot;</span>), gSystem_Data_Storage.GetInt(<span class="stringliteral">&quot;__RENDER_RESOLUTION_HEIGHT&quot;</span>), SDL_WINDOW_OPENGL);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">if</span>(!window)</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    gSystem_Debug.error(<span class="stringliteral">&quot;From CSystem_Render: Could not create window: %s&quot;</span>, SDL_GetError());</div>
@@ -518,7 +518,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="keywordtype">void</span> CSystem_Render::SetMainCamera(<span class="keyword">const</span> std::string&amp; camera)</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;{</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* cam = gSystem_GameObject_Manager[camera];</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  <span class="keywordflow">if</span>(!camera)</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  <span class="keywordflow">if</span>(!cam)</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  <span class="comment">// ¿?</span></div>
@@ -545,7 +545,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="keywordtype">void</span> CSystem_Render::AddCamera(<span class="keyword">const</span> std::string&amp; camera)</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;{</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* cam = gSystem_GameObject_Manager[camera];</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  <span class="keywordflow">if</span>(camera)</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  <span class="keywordflow">if</span>(cam)</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  {</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    camera_list.push_back(cam);</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    cam-&gt;<a class="code" href="class_c_game_object.html#a4ac16621b259864bb40d1dfea282f712">Camera</a>()-&gt;<a class="code" href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">ApplyChanges</a>();</div>
@@ -566,7 +566,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="keywordtype">void</span> CSystem_Render::AddCameraPrior(<span class="keyword">const</span> std::string&amp; camera)</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;{</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;  <a class="code" href="class_c_game_object.html">CGameObject</a>* cam = gSystem_GameObject_Manager[camera];</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;  <span class="keywordflow">if</span>(camera_list.size() &gt;= 1 &amp;&amp; camera)</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;  <span class="keywordflow">if</span>(camera_list.size() &gt;= 1 &amp;&amp; cam)</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;  {</div>
 <div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    vector&lt;CGameObject*&gt;::iterator it = camera_list.begin();</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    ++it;</div>
@@ -825,13 +825,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="__component__transform_8h_html"><div class="ttname"><a href="__component__transform_8h.html">_component_transform.h</a></div><div class="ttdoc">Fichero que incluye la clase CComponent_Transform. </div></div>
 <div class="ttc" id="class_c_component___g_u_i___texture_html"><div class="ttname"><a href="class_c_component___g_u_i___texture.html">CComponent_GUI_Texture</a></div><div class="ttdoc">Componente textura GUI. </div><div class="ttdef"><b>Definition:</b> <a href="__component__gui_8h_source.html#l00074">_component_gui.h:74</a></div></div>
 <div class="ttc" id="class_c_component___camera_html_a2ed22a4d9e377eaf8bc2e9cda01d45f7"><div class="ttname"><a href="class_c_component___camera.html#a2ed22a4d9e377eaf8bc2e9cda01d45f7">CComponent_Camera::skybox_texture</a></div><div class="ttdeci">std::string skybox_texture</div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00133">_component_camera.h:133</a></div></div>
+<div class="ttc" id="__engine_8h_html"><div class="ttname"><a href="__engine_8h.html">_engine.h</a></div><div class="ttdoc">Fichero que incluye la clase CEngine, y su instancia global gEngine. </div></div>
 <div class="ttc" id="class_c_game_object_html"><div class="ttname"><a href="class_c_game_object.html">CGameObject</a></div><div class="ttdoc">Clase que representa a un objeto de juego. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00092">_object.h:92</a></div></div>
+<div class="ttc" id="group___otros_html_ga9d8512434b5cdd7fea6f4ed0912ad4da"><div class="ttname"><a href="group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da">gEngine</a></div><div class="ttdeci">CEngine gEngine</div><div class="ttdoc">Objeto global del motor gráfico. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00008">_engine.cpp:8</a></div></div>
 <div class="ttc" id="class_c_shader_html"><div class="ttname"><a href="class_c_shader.html">CShader</a></div><div class="ttdef"><b>Definition:</b> <a href="__shader_8h_source.html#l00015">_shader.h:15</a></div></div>
 <div class="ttc" id="__globals_8h_html_aba655f18e0b894189a8bb3462ee7748e"><div class="ttname"><a href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a></div><div class="ttdeci">const char ERROR_FATAL_INIT[]</div><div class="ttdoc">Título de error fatal de inicialización para &amp;quot;message boxes&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00158">_globals.h:158</a></div></div>
 <div class="ttc" id="__object_8h_html"><div class="ttname"><a href="__object_8h.html">_object.h</a></div><div class="ttdoc">Estructura de los objeto &amp;quot;GameObject&amp;quot;. </div></div>
 <div class="ttc" id="class_c_component___camera_html_ac1a140a991b402b3c649e67c8c10e99e"><div class="ttname"><a href="class_c_component___camera.html#ac1a140a991b402b3c649e67c8c10e99e">CComponent_Camera::ApplyChanges</a></div><div class="ttdeci">void ApplyChanges()</div><div class="ttdoc">Aplicar cambios. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8cpp_source.html#l00087">_component_camera.cpp:87</a></div></div>
 <div class="ttc" id="class_c_system___render_html"><div class="ttname"><a href="class_c_system___render.html">CSystem_Render</a></div><div class="ttdef"><b>Definition:</b> <a href="__render_8h_source.html#l00030">_render.h:30</a></div></div>
 <div class="ttc" id="class_c_component___camera_html"><div class="ttname"><a href="class_c_component___camera.html">CComponent_Camera</a></div><div class="ttdoc">Componente cámara. </div><div class="ttdef"><b>Definition:</b> <a href="__component__camera_8h_source.html#l00107">_component_camera.h:107</a></div></div>
+<div class="ttc" id="class_c_engine_html_a5ce98774fc7d4a45cd6a14df2d8e2d75"><div class="ttname"><a href="class_c_engine.html#a5ce98774fc7d4a45cd6a14df2d8e2d75">CEngine::GetTitle</a></div><div class="ttdeci">std::string GetTitle()</div><div class="ttdoc">Obtener título. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00122">_engine.h:122</a></div></div>
 <div class="ttc" id="class_c_component___audio___source_html"><div class="ttname"><a href="class_c_component___audio___source.html">CComponent_Audio_Source</a></div><div class="ttdoc">Componente de audio. </div><div class="ttdef"><b>Definition:</b> <a href="__component__audio_8h_source.html#l00095">_component_audio.h:95</a></div></div>
 <div class="ttc" id="group___game_objects_html_ga4b9498dcca22545a77e2d100885fa70f"><div class="ttname"><a href="group___game_objects.html#ga4b9498dcca22545a77e2d100885fa70f">CGameObject::GetComponent</a></div><div class="ttdeci">Type * GetComponent()</div><div class="ttdoc">Obtener componente. </div><div class="ttdef"><b>Definition:</b> <a href="__object_8h_source.html#l00847">_object.h:847</a></div></div>
 <div class="ttc" id="structvector3f__t_html"><div class="ttname"><a href="structvector3f__t.html">vector3f_t</a></div><div class="ttdoc">Vector tridimensional. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00505">_globals.h:505</a></div></div>
@@ -844,7 +847,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 2 de Abril de 2014 18:27:48 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 5 de Abril de 2014 21:51:13 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

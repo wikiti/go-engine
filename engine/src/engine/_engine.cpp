@@ -47,6 +47,12 @@ bool CEngine::Init(int argc, char* argv[])
     return false;
   }
 
+  if(instances.size() == 0)
+  {
+    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "There are no Instances to load! Add some in User_Instance_Loader().");
+        return false;
+  }
+
   return true;
 }
 
@@ -69,7 +75,7 @@ int CEngine::OnExecute(int argc, char* argv[])
       current_instance = instances[current_instance]->OnExecute();
     else  { // Error y salir
       gSystem_Debug.error("From CEngine::OnExecute: Error, instance \"%s\" not defined.", current_instance.c_str());
-      Quit();
+      Exit();
     }
     // Resetear contenido de los sistemas.
     Systems_Reset();

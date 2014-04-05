@@ -13,11 +13,13 @@ var searchData=
   ['ccomponent_5fmesh_5frender',['CComponent_Mesh_Render',['../class_c_component___mesh___render.html#aa608f1661c3f09fd2d83d4a96d393d63',1,'CComponent_Mesh_Render::CComponent_Mesh_Render()'],['../class_c_component___mesh___render.html#a0f63aa278678f55760635cc3b595e04c',1,'CComponent_Mesh_Render::CComponent_Mesh_Render(CGameObject *gameObject)']]],
   ['ccomponent_5fparticle_5femitter',['CComponent_Particle_Emitter',['../class_c_component___particle___emitter.html#a7827a743d25a5c746fbe62d249b1e71e',1,'CComponent_Particle_Emitter::CComponent_Particle_Emitter()'],['../class_c_component___particle___emitter.html#ae58227a5e1b7f22a5b45b584e947e1fc',1,'CComponent_Particle_Emitter::CComponent_Particle_Emitter(CGameObject *gameObject)']]],
   ['ccomponent_5ftransform',['CComponent_Transform',['../class_c_component___transform.html#abf11e8d0332613e4f204a986b826efce',1,'CComponent_Transform::CComponent_Transform()'],['../class_c_component___transform.html#a4207a4fb21b1c4bf346ad37c30458f67',1,'CComponent_Transform::CComponent_Transform(CGameObject *gameObject)']]],
+  ['cengine',['CEngine',['../class_c_engine.html#ab3d84e8a1c8d4eb84b9f069090024990',1,'CEngine']]],
   ['cgameobject',['CGameObject',['../class_c_game_object.html#a48f1516784befb0062d1af2545327d15',1,'CGameObject::CGameObject(std::string name)'],['../class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea',1,'CGameObject::CGameObject()']]],
-  ['close',['Close',['../class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876',1,'CGameObject']]],
+  ['close',['Close',['../class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876',1,'CGameObject::Close()'],['../class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795',1,'CEngine::Close()']]],
   ['closecustom',['CloseCustom',['../class_c_game_object.html#a1031d0372ed792b4f12998f3570882b3',1,'CGameObject']]],
   ['colorf_5ft',['colorf_t',['../structcolorf__t.html#a4db9e60ed265a1c7e1f930b2eecb4357',1,'colorf_t']]],
   ['component_5fto_5fstring',['component_to_string',['../namespace_components.html#abc8d121720a7d087347dbd2113f4c931',1,'Components']]],
   ['cross_5fproduct',['cross_product',['../structvector3f__t.html#a8d88ab14d4c8ec5afeba684d8c9203ce',1,'vector3f_t']]],
-  ['csystem_5fresources',['CSystem_Resources',['../class_c_system___resources.html#ab1143207cc42a20b2d0a428979159e57',1,'CSystem_Resources']]]
+  ['csystem_5fresources',['CSystem_Resources',['../class_c_system___resources.html#ab1143207cc42a20b2d0a428979159e57',1,'CSystem_Resources']]],
+  ['currentinstance',['CurrentInstance',['../class_c_engine.html#a582c0314d17d394bb7fe6cd9a1fa7383',1,'CEngine']]]
 ];

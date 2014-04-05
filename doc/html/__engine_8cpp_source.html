@@ -93,18 +93,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="title">_engine.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;engine/_engine.h&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__engine_8h.html">engine/_engine.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;engine/_instance.h&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__systems_8h.html">_systems.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// User</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;instances.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="class_c_engine.html">CEngine</a> gEngine;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da">    8</a></span>&#160;<a class="code" href="class_c_engine.html">CEngine</a> <a class="code" href="group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da">gEngine</a>;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;CEngine::CEngine(): title(<span class="stringliteral">&quot;&quot;</span>), running(false)</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_c_engine.html#ab3d84e8a1c8d4eb84b9f069090024990">   12</a></span>&#160;<a class="code" href="class_c_engine.html#ab3d84e8a1c8d4eb84b9f069090024990">CEngine::CEngine</a>(): title(<span class="stringliteral">&quot;GO-Engine&quot;</span>), running(false)</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
@@ -140,82 +140,96 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> CEngine::Close()</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  RemoveAllInstances();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  Systems_Close();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">if</span>(instances.size() == 0)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    gSystem_Debug.msg_box(<a class="code" href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a>, <span class="stringliteral">&quot;There are no Instances to load! Add some in User_Instance_Loader().&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  SDL_Quit();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">int</span> CEngine::OnExecute(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987">Init</a>(argc, argv);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">while</span>(current_instance != <span class="stringliteral">&quot;&quot;</span> &amp;&amp; running)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span>(instances.find(current_instance) != instances.end())</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      current_instance = instances[current_instance]-&gt;OnExecute();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">else</span>  { <span class="comment">// Error y salir</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      gSystem_Debug.error(<span class="stringliteral">&quot;From CEngine::OnExecute: Error, instance \&quot;%s\&quot; not defined.&quot;</span>, current_instance.c_str());</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      Quit();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Resetear contenido de los sistemas.</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    Systems_Reset();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  Close();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> CEngine::AddInstance(<a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> load_gameObject_function, <span class="keywordtype">string</span> resource_file, <span class="keywordtype">string</span> instance_name)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">if</span>(instances.find(instance_name) == instances.end()) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="class_c_instance.html">CInstance</a>* new_instance = <span class="keyword">new</span> <a class="code" href="class_c_instance.html">CInstance</a>(load_gameObject_function, resource_file);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    instances[instance_name] = new_instance;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795">CEngine::Close</a>()</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  RemoveAllInstances();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  Systems_Close();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  SDL_Quit();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94">   68</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94">CEngine::OnExecute</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987">Init</a>(argc, argv);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">while</span>(current_instance != <span class="stringliteral">&quot;&quot;</span> &amp;&amp; running)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span>(instances.find(current_instance) != instances.end())</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      current_instance = instances[current_instance]-&gt;<a class="code" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94">OnExecute</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">else</span>  { <span class="comment">// Error y salir</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      gSystem_Debug.error(<span class="stringliteral">&quot;From CEngine::OnExecute: Error, instance \&quot;%s\&quot; not defined.&quot;</span>, current_instance.c_str());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <a class="code" href="class_c_engine.html#aa9b57dee89e8c220597238c10ec527be">Exit</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Resetear contenido de los sistemas.</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    Systems_Reset();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <a class="code" href="class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795">Close</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">if</span>(current_instance == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      current_instance = instance_name;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    gSystem_Debug.error(<span class="stringliteral">&quot;From CEngine::AddInstance: Cannot add instance with name \&quot;%s\&quot; (existing name).&quot;</span>, instance_name.c_str());</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="comment">//instances.push_back(new_instance);</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span> CEngine::RemoveAllInstances()</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">for</span>(map&lt;string, CInstance*&gt;::iterator it = instances.begin(); it != instances.end(); ++it)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">delete</span> it-&gt;second;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  instances.clear();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> CEngine::SetIcon(<span class="keywordtype">string</span> icon_dir)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  SDL_Surface* icon = <a class="code" href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a>(icon_dir);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  SDL_SetWindowIcon(gRender.window, icon);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  SDL_FreeSurface(icon);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
-<div class="ttc" id="class_c_engine_html"><div class="ttname"><a href="class_c_engine.html">CEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00012">_engine.h:12</a></div></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_c_engine.html#a360a95321b65e730e701e9224c7ea325">   89</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_engine.html#a360a95321b65e730e701e9224c7ea325">CEngine::AddInstance</a>(<a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> load_gameObject_function, <span class="keywordtype">string</span> resource_file, <span class="keywordtype">string</span> instance_name)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">if</span>(instances.find(instance_name) == instances.end()) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="class_c_instance.html">CInstance</a>* new_instance = <span class="keyword">new</span> <a class="code" href="class_c_instance.html">CInstance</a>(load_gameObject_function, resource_file);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    instances[instance_name] = new_instance;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span>(current_instance == <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      current_instance = instance_name;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    gSystem_Debug.error(<span class="stringliteral">&quot;From CEngine::AddInstance: Cannot add instance with name \&quot;%s\&quot; (existing name).&quot;</span>, instance_name.c_str());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="comment">//instances.push_back(new_instance);</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">void</span> CEngine::RemoveAllInstances()</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">for</span>(map&lt;string, CInstance*&gt;::iterator it = instances.begin(); it != instances.end(); ++it)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">delete</span> it-&gt;second;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  instances.clear();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_c_engine.html#a2c5c6bf72f11f0ae19b82f9adf0a26b8">  115</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_engine.html#a2c5c6bf72f11f0ae19b82f9adf0a26b8">CEngine::SetIcon</a>(<span class="keywordtype">string</span> icon_dir)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  SDL_Surface* icon = <a class="code" href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a>(icon_dir);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  SDL_SetWindowIcon(gRender.window, icon);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  SDL_FreeSurface(icon);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="ttc" id="class_c_engine_html_a98d3dc54b6e2f506d8af9d0ab5853d94"><div class="ttname"><a href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94">CEngine::OnExecute</a></div><div class="ttdeci">virtual int OnExecute(int argc, char *argv[])</div><div class="ttdoc">Comenzar ejecución. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00068">_engine.cpp:68</a></div></div>
+<div class="ttc" id="class_c_engine_html_a0b8293df8a0ade517ef030b2dcfeb795"><div class="ttname"><a href="class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795">CEngine::Close</a></div><div class="ttdeci">virtual void Close()</div><div class="ttdoc">Cerrar el motor. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00060">_engine.cpp:60</a></div></div>
+<div class="ttc" id="__engine_8h_html"><div class="ttname"><a href="__engine_8h.html">_engine.h</a></div><div class="ttdoc">Fichero que incluye la clase CEngine, y su instancia global gEngine. </div></div>
+<div class="ttc" id="group___otros_html_ga9d8512434b5cdd7fea6f4ed0912ad4da"><div class="ttname"><a href="group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da">gEngine</a></div><div class="ttdeci">CEngine gEngine</div><div class="ttdoc">Objeto global del motor gráfico. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00008">_engine.cpp:8</a></div></div>
+<div class="ttc" id="class_c_engine_html"><div class="ttname"><a href="class_c_engine.html">CEngine</a></div><div class="ttdoc">Motor gráfico. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00038">_engine.h:38</a></div></div>
 <div class="ttc" id="__globals_8h_html_aba655f18e0b894189a8bb3462ee7748e"><div class="ttname"><a href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a></div><div class="ttdeci">const char ERROR_FATAL_INIT[]</div><div class="ttdoc">Título de error fatal de inicialización para &amp;quot;message boxes&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00158">_globals.h:158</a></div></div>
 <div class="ttc" id="class_c_instance_html"><div class="ttname"><a href="class_c_instance.html">CInstance</a></div><div class="ttdef"><b>Definition:</b> <a href="__instance_8h_source.html#l00006">_instance.h:6</a></div></div>
-<div class="ttc" id="class_c_engine_html_aa7faa1ed70d8ea96cd0ff4115469e987"><div class="ttname"><a href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987">CEngine::Init</a></div><div class="ttdeci">virtual bool Init(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00017">_engine.cpp:17</a></div></div>
+<div class="ttc" id="class_c_engine_html_ab3d84e8a1c8d4eb84b9f069090024990"><div class="ttname"><a href="class_c_engine.html#ab3d84e8a1c8d4eb84b9f069090024990">CEngine::CEngine</a></div><div class="ttdeci">CEngine()</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00012">_engine.cpp:12</a></div></div>
+<div class="ttc" id="class_c_engine_html_a2c5c6bf72f11f0ae19b82f9adf0a26b8"><div class="ttname"><a href="class_c_engine.html#a2c5c6bf72f11f0ae19b82f9adf0a26b8">CEngine::SetIcon</a></div><div class="ttdeci">void SetIcon(std::string icon_name)</div><div class="ttdoc">Cambiar icono del motor. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00115">_engine.cpp:115</a></div></div>
+<div class="ttc" id="class_c_engine_html_a360a95321b65e730e701e9224c7ea325"><div class="ttname"><a href="class_c_engine.html#a360a95321b65e730e701e9224c7ea325">CEngine::AddInstance</a></div><div class="ttdeci">void AddInstance(fboolpointer load_gameObject_function, std::string resource_file, std::string instance_name)</div><div class="ttdoc">Añadir una nueva estancia. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00089">_engine.cpp:89</a></div></div>
+<div class="ttc" id="class_c_engine_html_aa9b57dee89e8c220597238c10ec527be"><div class="ttname"><a href="class_c_engine.html#aa9b57dee89e8c220597238c10ec527be">CEngine::Exit</a></div><div class="ttdeci">void Exit()</div><div class="ttdoc">Termina la ejecución. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00231">_engine.h:231</a></div></div>
+<div class="ttc" id="class_c_engine_html_aa7faa1ed70d8ea96cd0ff4115469e987"><div class="ttname"><a href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987">CEngine::Init</a></div><div class="ttdeci">virtual bool Init(int argc, char *argv[])</div><div class="ttdoc">Iniciar el motor. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00017">_engine.cpp:17</a></div></div>
 <div class="ttc" id="__globals_8h_html_a0e446f42da28aa4a1f2ff0ac14b8444b"><div class="ttname"><a href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a></div><div class="ttdeci">bool(* fboolpointer)(void)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00185">_globals.h:185</a></div></div>
 <div class="ttc" id="__systems_8h_html"><div class="ttname"><a href="__systems_8h.html">_systems.h</a></div><div class="ttdoc">Fichero que incluye todos los tipos de sistemas. </div></div>
 <div class="ttc" id="namespace_utils_html_a84d2ba3906cdcbd0003ecbbac926563a"><div class="ttname"><a href="namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a">Utils::sdl_cargar_img</a></div><div class="ttdeci">SDL_Surface * sdl_cargar_img(std::string s)</div><div class="ttdoc">Carga de imágenes con SDL. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00040">_globals.cpp:40</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 2 de Abril de 2014 18:27:45 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 5 de Abril de 2014 21:51:10 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

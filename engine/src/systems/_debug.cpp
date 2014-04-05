@@ -69,9 +69,9 @@ bool CSystem_Debug::Init()
 {
   if(enabled) return true;
 
-  file = fopen (__CSYSTEM_DEBUG_STORAGE_SAVEFILE, __CSYSTEM_DEBUG_STORAGE_ACCESS);//file = fopen ("log.txt","w");
-  if(!file)
-    return false;
+  //file = fopen (__CSYSTEM_DEBUG_STORAGE_SAVEFILE, __CSYSTEM_DEBUG_STORAGE_ACCESS);//file = fopen ("log.txt","w");
+  //if(!file)
+  //  return false;
 
   if(!InitCommandMap())
     return false;
@@ -93,12 +93,12 @@ bool CSystem_Debug::Init()
 
 bool CSystem_Debug::Reset()
 {
-  if(file)
+  /*if(file)
     fclose(file);
 
   file = fopen (__CSYSTEM_DEBUG_STORAGE_SAVEFILE, __CSYSTEM_DEBUG_STORAGE_ACCESS);//file = fopen ("log.txt","w");
   if(!file)
-    return false;
+    return false;*/
 
   return true;
 }
@@ -245,7 +245,7 @@ void CSystem_Debug::Close()
   if(!enabled) return;
   CSystem::Close();
 
-  fclose(file);
+  //fclose(file);
   opened = false;
 
   gSystem_Resources.ClearResource(__CSYSTEM_DEBUG_CONSOLE_FONT);
@@ -278,6 +278,7 @@ void CSystem_Debug::command(const string& command, bool log)
 
 void CSystem_Debug::log(const char* fmt, ...)
 {
+  file = fopen (__CSYSTEM_DEBUG_STORAGE_SAVEFILE, __CSYSTEM_DEBUG_STORAGE_ACCESS);
   if(!file)
     return;
 
@@ -296,10 +297,13 @@ void CSystem_Debug::log(const char* fmt, ...)
     vfprintf(file, fmt, ap);
   va_end(ap);
   fprintf(file, "\n");
+
+  fclose(file);
 }
 
 void CSystem_Debug::error(const char* fmt, ...)
 {
+  file = fopen (__CSYSTEM_DEBUG_STORAGE_SAVEFILE, __CSYSTEM_DEBUG_STORAGE_ACCESS);
   if(!file)
     return;
 
@@ -318,10 +322,13 @@ void CSystem_Debug::error(const char* fmt, ...)
     vfprintf(file, fmt, ap);
   va_end(ap);
   fprintf(file, "\n");
+
+  fclose(file);
 }
 
 void CSystem_Debug::raw_log(const char* fmt, ...)
 {
+  file = fopen (__CSYSTEM_DEBUG_STORAGE_SAVEFILE, __CSYSTEM_DEBUG_STORAGE_ACCESS);
   if(!file)
     return;
 
@@ -329,6 +336,8 @@ void CSystem_Debug::raw_log(const char* fmt, ...)
   va_start(ap, fmt);
     vfprintf(file, fmt, ap);
   va_end(ap);
+
+  fclose(file);
 }
 
 void CSystem_Debug::msg_box(const char* title, const char* message, Uint32 flags)
@@ -1088,7 +1097,7 @@ void CSystem_Debug::Console_command__ABORT(string arguments)
     return;
   }
 
-  gEngine.Exit();
+  gEngine.Abort();
 }
 
 void CSystem_Debug::Console_command__EXIT(string arguments)
@@ -1101,7 +1110,7 @@ void CSystem_Debug::Console_command__EXIT(string arguments)
 
   if(arguments != "")
     gSystem_Debug.log("Exit: \"%s\"", arguments.c_str());
-  gEngine.Quit();
+  gEngine.Exit();
 }
 
 void CSystem_Debug::Console_command__RUN(string arguments)

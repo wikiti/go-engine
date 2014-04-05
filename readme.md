@@ -127,3 +127,4 @@ Este proyecto ha sido desarrollado, en conjunto, por:
 
 - Página VIII CUSL: [http://www.concursosoftwarelibre.org/1314/proyectos/20](http://www.concursosoftwarelibre.org/1314/proyectos/20)
 - Blog Wordpress: [http://goengine.wordpress.com/](http://goengine.wordpress.com/)
+- Página en ZehnGames: [http://www.zehngames.com/comunidad/tema/wip-motor-grafico-multiplataforma-go-engine/](http://www.zehngames.com/comunidad/tema/wip-motor-grafico-multiplataforma-go-engine/)

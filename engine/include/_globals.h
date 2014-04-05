@@ -97,9 +97,9 @@ class general_exception: public std::exception
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
+//#include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_net.h>
+//#include <SDL2/SDL_net.h>
 
 /**
  * @brief Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2.

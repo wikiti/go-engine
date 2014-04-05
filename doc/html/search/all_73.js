@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['scale',['scale',['../class_c_component___transform.html#aca025b1ba7f0203e4c29709513378aa2',1,'CComponent_Transform::scale()'],['../class_c_component___transform.html#a73bfea884a6f6c5121da871e2306317e',1,'CComponent_Transform::Scale(vector3f v)'],['../class_c_component___transform.html#ae5276259205ba7905a5f08c04dd1c764',1,'CComponent_Transform::Scale(GLfloat x=1.f, GLfloat y=1.f, GLfloat z=1.f)']]],
+  ['scale',['Scale',['../class_c_component___transform.html#a73bfea884a6f6c5121da871e2306317e',1,'CComponent_Transform::Scale(vector3f v)'],['../class_c_component___transform.html#ae5276259205ba7905a5f08c04dd1c764',1,'CComponent_Transform::Scale(GLfloat x=1.f, GLfloat y=1.f, GLfloat z=1.f)'],['../class_c_component___transform.html#aca025b1ba7f0203e4c29709513378aa2',1,'CComponent_Transform::scale()']]],
   ['sdl_5fcargar_5fimg',['sdl_cargar_img',['../namespace_utils.html#a84d2ba3906cdcbd0003ecbbac926563a',1,'Utils']]],
   ['set',['Set',['../class_c_component.html#aa33cf0ed3f0848cf31d4d102bec40c1a',1,'CComponent::Set()'],['../class_c_component___camera.html#ade9da0ec5da5a07714022b9fef664d1f',1,'CComponent_Camera::Set()'],['../class_c_component___transform.html#a59c8f52b15970b71119ac7dfd5bdb13f',1,'CComponent_Transform::Set()']]],
   ['setangle',['SetAngle',['../class_c_component___transform.html#a50103f298bc351068fce12124c34cd15',1,'CComponent_Transform::SetAngle(vector3f v)'],['../class_c_component___transform.html#ace00423eec4782865ba088b907d91dc2',1,'CComponent_Transform::SetAngle(GLfloat x=0, GLfloat y=0, GLfloat z=0)']]],
@@ -8,7 +8,9 @@ var searchData=
   ['setcomponentstatecomponent',['SetComponentStateComponent',['../group___game_objects.html#ga14ddd228ab4e860feaa113e81019b6cd',1,'CGameObject']]],
   ['setdata',['SetData',['../group___game_objects.html#ga245c699aa9c56dd8f1cc902d5dbf1ddf',1,'CGameObject']]],
   ['seteventfunction',['SetEventFunction',['../class_c_game_object.html#a16ab505b47294ed813dd69d8579fbed9',1,'CGameObject']]],
+  ['seticon',['SetIcon',['../class_c_engine.html#a2c5c6bf72f11f0ae19b82f9adf0a26b8',1,'CEngine']]],
   ['setinputfunction',['SetInputFunction',['../class_c_game_object.html#a6f99b0b50181b2b5cc152fe6ae960bbf',1,'CGameObject']]],
+  ['setnextinstance',['SetNextInstance',['../class_c_engine.html#afb1dcb5bf3af5546fae3f763992d13a8',1,'CEngine']]],
   ['setposition',['SetPosition',['../class_c_component___transform.html#a9e65c005f1707cf4c076f74693e35243',1,'CComponent_Transform::SetPosition(vector3f v)'],['../class_c_component___transform.html#a560fbceb40b6429747e596aa457c9349',1,'CComponent_Transform::SetPosition(GLfloat x=0, GLfloat y=0, GLfloat z=0)']]],
   ['setpreserve',['SetPreserve',['../class_c_game_object.html#a3d9834399f17fd662b292909d5a0db20',1,'CGameObject']]],
   ['setrenderfunction',['SetRenderFunction',['../class_c_game_object.html#add37411eb688c5637312a90ec694e751',1,'CGameObject']]],
@@ -17,6 +19,7 @@ var searchData=
   ['setstartfunction',['SetStartFunction',['../class_c_game_object.html#a810b361cfd7e9b47786fdf4c910a577b',1,'CGameObject']]],
   ['setstate',['SetState',['../class_c_game_object.html#a7711c658f35cc6e9a7ee2bae195e19b6',1,'CGameObject::SetState()'],['../class_c_component.html#a72335b7a969dd7881e37aa54dbc4c4d8',1,'CComponent::SetState()']]],
   ['settarget',['SetTarget',['../class_c_component___camera.html#a21cccb527b56371e2701196cdf3f8323',1,'CComponent_Camera::SetTarget(std::string t)'],['../class_c_component___camera.html#adbadd8759351d0889d240346a3077d69',1,'CComponent_Camera::SetTarget(CGameObject *obj)']]],
+  ['settitle',['SetTitle',['../class_c_engine.html#a1f0a26b83952f4303a553b0bb826ab32',1,'CEngine']]],
   ['shader_5fname',['shader_name',['../class_c_component___mesh___render.html#a6afd8106432078405c5c29c2aa595e3c',1,'CComponent_Mesh_Render']]],
   ['sistemas',['Sistemas',['../group___sistemas.html',1,'']]],
   ['skybox_5ftexture',['skybox_texture',['../class_c_component___camera.html#a2ed22a4d9e377eaf8bc2e9cda01d45f7',1,'CComponent_Camera']]],
