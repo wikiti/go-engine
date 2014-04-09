@@ -62,6 +62,11 @@ class CInstance
     void OnRender();
     void CalculateFPS();
 
+    GLdouble fps()
+    {
+      return FPS;
+    }
+
   public:
     /**
      * @brief Constructor principal.
@@ -70,19 +75,49 @@ class CInstance
      * debe ser creada por el método CEngine::AddInstance(). Se caracteriza porque se le proporciona
      * un callback de los objetos a crear, y un fichero de recursos.
      *
-     * @param load_gameObject_function
-     * @param resource_file
+     * @param load_gameObject_function Callback de la función para cargar los objetos de juego. Debe ser del tipo *bool callback(void)*
+     * @param resource_file Ruta al fichero de recursos a cargar para dicha estancia. Si es "" o el fichero no existe, se asume que la estancia no usa recursos (absurdo).
+     *
+     * @see CEngine
+     * @see gEngine
      */
     CInstance(fboolpointer load_gameObject_function, std::string resource_file);
     //~CInstance();
 
-    GLdouble fps()
-    {
-      return FPS;
-    }
-
+    /**
+     * @brief Cambiar de estancia.
+     *
+     * Cambia la próxima estancia a ejecutar, y finaliza la estancia actual. Básicamente, es un "cambio de nivel".
+     * Se recomienda usar CEngine::NextInstance() con gEngine.
+     *
+     * @param instance Nombre de la nueva estancia a ejecutar. Debe existir dicha estancia.
+     *
+     * @see CEngine
+     * @see gEngine
+     */
     void NextInstance(std::string next_instance_name);
+      /**
+       * @brief Cambiar de estancia.
+       *
+       * Cambia la próxima estancia a ejecutar, pero **no** finaliza la estancia actual.
+       * Se recomienda usar CEngine::SetNextInstance() con gEngine.
+       *
+       * @param instance Nombre de la próxima estancia a ejecutar. Debe existir dicha estancia.
+       *
+       * @see CEngine
+       * @see gEngine
+       */
       void SetNextInstance(std::string next_instance_name);
+      /**
+       * @brief Terminar la estancia actual.
+       *
+       * Finaliza la ejecución de la estancia actual. Si se ha definido una próxima estancia con
+       * SetNextInstance(), se ejecutará dicha estancia. En caso contrario, finalizará la ejecución del motor gráfico.
+       * Se recomienda usar CEngine::EndInstance() con gEngine.
+       *
+       * @see CEngine
+       * @see gEngine
+       */
       void EndInstance();
 
     //virtual void OnDebug(){};

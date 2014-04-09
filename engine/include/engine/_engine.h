@@ -155,7 +155,7 @@ class CEngine
      * @warning La primera estancia añadida será la primera estancia cargada del programa.
      *
      * @param load_gameObject_function Callback de la función para cargar los objetos de juego. Debe ser del tipo *bool callback(void)*
-     * @param resource_file Ruta al fichero de recursos a cargar para dicha estancia.
+     * @param resource_file Ruta al fichero de recursos a cargar para dicha estancia. Si es "" o el fichero no existe, se asume que la estancia no usa recursos (absurdo).
      * @param instance_name Nombre de la estancia. Debe ser un identificador único.
      *
      * @see user/include/gameObjects.h
