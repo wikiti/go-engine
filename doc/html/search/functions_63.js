@@ -15,6 +15,7 @@ var searchData=
   ['ccomponent_5ftransform',['CComponent_Transform',['../class_c_component___transform.html#abf11e8d0332613e4f204a986b826efce',1,'CComponent_Transform::CComponent_Transform()'],['../class_c_component___transform.html#a4207a4fb21b1c4bf346ad37c30458f67',1,'CComponent_Transform::CComponent_Transform(CGameObject *gameObject)']]],
   ['cengine',['CEngine',['../class_c_engine.html#ab3d84e8a1c8d4eb84b9f069090024990',1,'CEngine']]],
   ['cgameobject',['CGameObject',['../class_c_game_object.html#a48f1516784befb0062d1af2545327d15',1,'CGameObject::CGameObject(std::string name)'],['../class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea',1,'CGameObject::CGameObject()']]],
+  ['cinstance',['CInstance',['../class_c_instance.html#a405b5812774d5cf46fc577eabec1beb0',1,'CInstance']]],
   ['close',['Close',['../class_c_game_object.html#aea5a4c26ace6fb829bd08bdf1e237876',1,'CGameObject::Close()'],['../class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795',1,'CEngine::Close()']]],
   ['closecustom',['CloseCustom',['../class_c_game_object.html#a1031d0372ed792b4f12998f3570882b3',1,'CGameObject']]],
   ['colorf_5ft',['colorf_t',['../structcolorf__t.html#a4db9e60ed265a1c7e1f930b2eecb4357',1,'colorf_t']]],

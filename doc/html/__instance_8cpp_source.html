@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="title">_instance.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;engine/_instance.h&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__instance_8h.html">engine/_instance.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__globals_8h.html">_globals.h</a>&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__systems_8h.html">_systems.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;CInstance::CInstance(<a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> f, <span class="keywordtype">string</span> r): i_running(true), next_instance(<span class="stringliteral">&quot;&quot;</span>), gameObjects_loader(f), resource_file(r)</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_c_instance.html#a405b5812774d5cf46fc577eabec1beb0">    9</a></span>&#160;<a class="code" href="class_c_instance.html#a405b5812774d5cf46fc577eabec1beb0">CInstance::CInstance</a>(<a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> f, <span class="keywordtype">string</span> r): i_running(true), next_instance(<span class="stringliteral">&quot;&quot;</span>), gameObjects_loader(f), resource_file(r)</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
@@ -232,31 +232,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  }</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keywordtype">void</span> CInstance::NextInstance(<span class="keywordtype">string</span> next_instance_name)</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_c_instance.html#a294cef4ff7dd0546b92917c1f9b6cd6f">  140</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_instance.html#a294cef4ff7dd0546b92917c1f9b6cd6f">CInstance::NextInstance</a>(<span class="keywordtype">string</span> next_instance_name)</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  SetNextInstance(next_instance_name);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  EndInstance();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <a class="code" href="class_c_instance.html#acd52ff26db6a3010d7215f0cce0cc40a">SetNextInstance</a>(next_instance_name);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <a class="code" href="class_c_instance.html#a00752a12c4b3138a6f17a9a5fbbada25">EndInstance</a>();</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">void</span> CInstance::SetNextInstance(<span class="keywordtype">string</span> next_instance_name)</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="class_c_instance.html#acd52ff26db6a3010d7215f0cce0cc40a">  146</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_instance.html#acd52ff26db6a3010d7215f0cce0cc40a">CInstance::SetNextInstance</a>(<span class="keywordtype">string</span> next_instance_name)</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  next_instance = next_instance_name;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keywordtype">void</span> CInstance::EndInstance()</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="class_c_instance.html#a00752a12c4b3138a6f17a9a5fbbada25">  151</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_instance.html#a00752a12c4b3138a6f17a9a5fbbada25">CInstance::EndInstance</a>()</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;{</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  i_running = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  gDebug.console_info_msg(<span class="stringliteral">&quot;Preparing to run next instance: \&quot;%s\&quot;&quot;</span>, next_instance.c_str());</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="ttc" id="__instance_8h_html"><div class="ttname"><a href="__instance_8h.html">_instance.h</a></div><div class="ttdoc">Fichero que incluye la clase CInstance. </div></div>
+<div class="ttc" id="class_c_instance_html_a405b5812774d5cf46fc577eabec1beb0"><div class="ttname"><a href="class_c_instance.html#a405b5812774d5cf46fc577eabec1beb0">CInstance::CInstance</a></div><div class="ttdeci">CInstance(fboolpointer load_gameObject_function, std::string resource_file)</div><div class="ttdoc">Constructor principal. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8cpp_source.html#l00009">_instance.cpp:9</a></div></div>
+<div class="ttc" id="class_c_instance_html_acd52ff26db6a3010d7215f0cce0cc40a"><div class="ttname"><a href="class_c_instance.html#acd52ff26db6a3010d7215f0cce0cc40a">CInstance::SetNextInstance</a></div><div class="ttdeci">void SetNextInstance(std::string next_instance_name)</div><div class="ttdoc">Cambiar de estancia. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8cpp_source.html#l00146">_instance.cpp:146</a></div></div>
+<div class="ttc" id="class_c_instance_html_a00752a12c4b3138a6f17a9a5fbbada25"><div class="ttname"><a href="class_c_instance.html#a00752a12c4b3138a6f17a9a5fbbada25">CInstance::EndInstance</a></div><div class="ttdeci">void EndInstance()</div><div class="ttdoc">Terminar la estancia actual. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8cpp_source.html#l00151">_instance.cpp:151</a></div></div>
 <div class="ttc" id="__globals_8h_html"><div class="ttname"><a href="__globals_8h.html">_globals.h</a></div><div class="ttdoc">Estructuras y métodos globales. </div></div>
 <div class="ttc" id="__globals_8h_html_a6b57f01d3c576db5368dd0efc2f435a4"><div class="ttname"><a href="__globals_8h.html#a6b57f01d3c576db5368dd0efc2f435a4">event</a></div><div class="ttdeci">SDL_Event event</div><div class="ttdoc">Estructura de eventos (entrada, salida, ventana, etc) principal de SDL2. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8cpp_source.html#l00003">_globals.cpp:3</a></div></div>
+<div class="ttc" id="class_c_instance_html_a294cef4ff7dd0546b92917c1f9b6cd6f"><div class="ttname"><a href="class_c_instance.html#a294cef4ff7dd0546b92917c1f9b6cd6f">CInstance::NextInstance</a></div><div class="ttdeci">void NextInstance(std::string next_instance_name)</div><div class="ttdoc">Cambiar de estancia. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8cpp_source.html#l00140">_instance.cpp:140</a></div></div>
 <div class="ttc" id="__globals_8h_html_a0e446f42da28aa4a1f2ff0ac14b8444b"><div class="ttname"><a href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a></div><div class="ttdeci">bool(* fboolpointer)(void)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00185">_globals.h:185</a></div></div>
 <div class="ttc" id="__systems_8h_html"><div class="ttname"><a href="__systems_8h.html">_systems.h</a></div><div class="ttdoc">Fichero que incluye todos los tipos de sistemas. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 5 de Abril de 2014 21:51:10 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 9 de Abril de 2014 10:50:05 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

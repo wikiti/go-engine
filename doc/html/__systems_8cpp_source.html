@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">bool</span> Systems_Init()</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="__systems_8h.html#a6d08000b62478204e57c6d0cd151c7c2">    5</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="__systems_8h.html#a6d08000b62478204e57c6d0cd151c7c2">Systems_Init</a>()</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <span class="keywordflow">if</span>(!gSystem_Debug.Init())</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  {</div>
@@ -168,7 +168,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> Systems_Close()</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="__systems_8h.html#aa2dbeb600b37719570eda23b53dd94af">   76</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#aa2dbeb600b37719570eda23b53dd94af">Systems_Close</a>()</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  gSystem_Data_Storage.Close();</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  gSystem_GameObject_Manager.Close();</div>
@@ -183,7 +183,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  gSystem_Shader_Manager.Close();</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">bool</span> Systems_Reset()</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="__systems_8h.html#a7fbaf5b438c67ac29ecb192c9000a48b">   91</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="__systems_8h.html#a7fbaf5b438c67ac29ecb192c9000a48b">Systems_Reset</a>()</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">if</span>(!gSystem_Debug.Reset())</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  {</div>
@@ -246,34 +246,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keywordtype">void</span> Systems_OnEvent()</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="__systems_8h.html#aecbf65ad357fbcf4fadae0e2828b1d23">  154</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#aecbf65ad357fbcf4fadae0e2828b1d23">Systems_OnEvent</a>()</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;{</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keywordtype">void</span> Systems_OnKeyEvent()</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="__systems_8h.html#a6d398c963eb67b9e9c059392c950dff4">  159</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#a6d398c963eb67b9e9c059392c950dff4">Systems_OnKeyEvent</a>()</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> Systems_OnLoop()</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="__systems_8h.html#a83077e7be6d4660bdff31e07ae0d9e9b">  164</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#a83077e7be6d4660bdff31e07ae0d9e9b">Systems_OnLoop</a>()</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;{</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> Systems_OnRender()</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="__systems_8h.html#a75a16ba97bc4899e52807c6832377ba6">  169</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#a75a16ba97bc4899e52807c6832377ba6">Systems_OnRender</a>()</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
 <div class="ttc" id="__globals_8h_html_aeeb59a4d0721c8fdb5534ab519f650f3"><div class="ttname"><a href="__globals_8h.html#aeeb59a4d0721c8fdb5534ab519f650f3">ERROR_FATAL</a></div><div class="ttdeci">const char ERROR_FATAL[]</div><div class="ttdoc">Título de error fatal para &amp;quot;message boxes&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00164">_globals.h:164</a></div></div>
+<div class="ttc" id="__systems_8h_html_a6d08000b62478204e57c6d0cd151c7c2"><div class="ttname"><a href="__systems_8h.html#a6d08000b62478204e57c6d0cd151c7c2">Systems_Init</a></div><div class="ttdeci">bool Systems_Init()</div><div class="ttdoc">Iniciar sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00005">_systems.cpp:5</a></div></div>
+<div class="ttc" id="__systems_8h_html_a75a16ba97bc4899e52807c6832377ba6"><div class="ttname"><a href="__systems_8h.html#a75a16ba97bc4899e52807c6832377ba6">Systems_OnRender</a></div><div class="ttdeci">void Systems_OnRender()</div><div class="ttdoc">Gestionar renderizado de sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00169">_systems.cpp:169</a></div></div>
 <div class="ttc" id="__globals_8h_html_aba655f18e0b894189a8bb3462ee7748e"><div class="ttname"><a href="__globals_8h.html#aba655f18e0b894189a8bb3462ee7748e">ERROR_FATAL_INIT</a></div><div class="ttdeci">const char ERROR_FATAL_INIT[]</div><div class="ttdoc">Título de error fatal de inicialización para &amp;quot;message boxes&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00158">_globals.h:158</a></div></div>
+<div class="ttc" id="__systems_8h_html_a7fbaf5b438c67ac29ecb192c9000a48b"><div class="ttname"><a href="__systems_8h.html#a7fbaf5b438c67ac29ecb192c9000a48b">Systems_Reset</a></div><div class="ttdeci">bool Systems_Reset()</div><div class="ttdoc">Reiniciar sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00091">_systems.cpp:91</a></div></div>
 <div class="ttc" id="__globals_8h_html_a3d470c3e2db920debdd2f758bcc04dfa"><div class="ttname"><a href="__globals_8h.html#a3d470c3e2db920debdd2f758bcc04dfa">ERROR_INIT</a></div><div class="ttdeci">const char ERROR_INIT[]</div><div class="ttdoc">Título de error de inicialización para &amp;quot;message boxes&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00152">_globals.h:152</a></div></div>
+<div class="ttc" id="__systems_8h_html_a6d398c963eb67b9e9c059392c950dff4"><div class="ttname"><a href="__systems_8h.html#a6d398c963eb67b9e9c059392c950dff4">Systems_OnKeyEvent</a></div><div class="ttdeci">void Systems_OnKeyEvent()</div><div class="ttdoc">Gestionar entrada para los sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00159">_systems.cpp:159</a></div></div>
+<div class="ttc" id="__systems_8h_html_a83077e7be6d4660bdff31e07ae0d9e9b"><div class="ttname"><a href="__systems_8h.html#a83077e7be6d4660bdff31e07ae0d9e9b">Systems_OnLoop</a></div><div class="ttdeci">void Systems_OnLoop()</div><div class="ttdoc">Gestionar comportamiento de sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00164">_systems.cpp:164</a></div></div>
+<div class="ttc" id="__systems_8h_html_aecbf65ad357fbcf4fadae0e2828b1d23"><div class="ttname"><a href="__systems_8h.html#aecbf65ad357fbcf4fadae0e2828b1d23">Systems_OnEvent</a></div><div class="ttdeci">void Systems_OnEvent()</div><div class="ttdoc">Gestionar eventos de sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00154">_systems.cpp:154</a></div></div>
+<div class="ttc" id="__systems_8h_html_aa2dbeb600b37719570eda23b53dd94af"><div class="ttname"><a href="__systems_8h.html#aa2dbeb600b37719570eda23b53dd94af">Systems_Close</a></div><div class="ttdeci">void Systems_Close()</div><div class="ttdoc">Cerrar sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00076">_systems.cpp:76</a></div></div>
 <div class="ttc" id="__systems_8h_html"><div class="ttname"><a href="__systems_8h.html">_systems.h</a></div><div class="ttdoc">Fichero que incluye todos los tipos de sistemas. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 5 de Abril de 2014 21:51:08 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 9 de Abril de 2014 10:50:05 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

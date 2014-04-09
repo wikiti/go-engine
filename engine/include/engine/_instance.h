@@ -90,7 +90,7 @@ class CInstance
      * Cambia la próxima estancia a ejecutar, y finaliza la estancia actual. Básicamente, es un "cambio de nivel".
      * Se recomienda usar CEngine::NextInstance() con gEngine.
      *
-     * @param instance Nombre de la nueva estancia a ejecutar. Debe existir dicha estancia.
+     * @param next_instance_name Nombre de la nueva estancia a ejecutar. Debe existir dicha estancia.
      *
      * @see CEngine
      * @see gEngine
@@ -102,7 +102,7 @@ class CInstance
        * Cambia la próxima estancia a ejecutar, pero **no** finaliza la estancia actual.
        * Se recomienda usar CEngine::SetNextInstance() con gEngine.
        *
-       * @param instance Nombre de la próxima estancia a ejecutar. Debe existir dicha estancia.
+       * @param next_instance_name Nombre de la próxima estancia a ejecutar. Debe existir dicha estancia.
        *
        * @see CEngine
        * @see gEngine

@@ -107,21 +107,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;systems/_shader.h&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;systems/_input.h&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">bool</span> Systems_Init();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> Systems_Close();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> Systems_Reset();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> Systems_OnEvent();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> Systems_OnKeyEvent();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> Systems_OnLoop();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> Systems_OnRender();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __SYSTEMS_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="__systems_8h.html#a6d08000b62478204e57c6d0cd151c7c2">Systems_Init</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#aa2dbeb600b37719570eda23b53dd94af">Systems_Close</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="__systems_8h.html#a7fbaf5b438c67ac29ecb192c9000a48b">Systems_Reset</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#aecbf65ad357fbcf4fadae0e2828b1d23">Systems_OnEvent</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#a6d398c963eb67b9e9c059392c950dff4">Systems_OnKeyEvent</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#a83077e7be6d4660bdff31e07ae0d9e9b">Systems_OnLoop</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="__systems_8h.html#a75a16ba97bc4899e52807c6832377ba6">Systems_OnRender</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __SYSTEMS_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="__systems_8h_html_a6d08000b62478204e57c6d0cd151c7c2"><div class="ttname"><a href="__systems_8h.html#a6d08000b62478204e57c6d0cd151c7c2">Systems_Init</a></div><div class="ttdeci">bool Systems_Init()</div><div class="ttdoc">Iniciar sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00005">_systems.cpp:5</a></div></div>
+<div class="ttc" id="__systems_8h_html_a75a16ba97bc4899e52807c6832377ba6"><div class="ttname"><a href="__systems_8h.html#a75a16ba97bc4899e52807c6832377ba6">Systems_OnRender</a></div><div class="ttdeci">void Systems_OnRender()</div><div class="ttdoc">Gestionar renderizado de sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00169">_systems.cpp:169</a></div></div>
+<div class="ttc" id="__systems_8h_html_a7fbaf5b438c67ac29ecb192c9000a48b"><div class="ttname"><a href="__systems_8h.html#a7fbaf5b438c67ac29ecb192c9000a48b">Systems_Reset</a></div><div class="ttdeci">bool Systems_Reset()</div><div class="ttdoc">Reiniciar sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00091">_systems.cpp:91</a></div></div>
+<div class="ttc" id="__systems_8h_html_a6d398c963eb67b9e9c059392c950dff4"><div class="ttname"><a href="__systems_8h.html#a6d398c963eb67b9e9c059392c950dff4">Systems_OnKeyEvent</a></div><div class="ttdeci">void Systems_OnKeyEvent()</div><div class="ttdoc">Gestionar entrada para los sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00159">_systems.cpp:159</a></div></div>
+<div class="ttc" id="__systems_8h_html_a83077e7be6d4660bdff31e07ae0d9e9b"><div class="ttname"><a href="__systems_8h.html#a83077e7be6d4660bdff31e07ae0d9e9b">Systems_OnLoop</a></div><div class="ttdeci">void Systems_OnLoop()</div><div class="ttdoc">Gestionar comportamiento de sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00164">_systems.cpp:164</a></div></div>
+<div class="ttc" id="__systems_8h_html_aecbf65ad357fbcf4fadae0e2828b1d23"><div class="ttname"><a href="__systems_8h.html#aecbf65ad357fbcf4fadae0e2828b1d23">Systems_OnEvent</a></div><div class="ttdeci">void Systems_OnEvent()</div><div class="ttdoc">Gestionar eventos de sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00154">_systems.cpp:154</a></div></div>
+<div class="ttc" id="__systems_8h_html_aa2dbeb600b37719570eda23b53dd94af"><div class="ttname"><a href="__systems_8h.html#aa2dbeb600b37719570eda23b53dd94af">Systems_Close</a></div><div class="ttdeci">void Systems_Close()</div><div class="ttdoc">Cerrar sistemas. </div><div class="ttdef"><b>Definition:</b> <a href="__systems_8cpp_source.html#l00076">_systems.cpp:76</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 5 de Abril de 2014 21:51:06 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 9 de Abril de 2014 10:50:04 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

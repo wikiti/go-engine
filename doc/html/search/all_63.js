@@ -19,7 +19,7 @@ var searchData=
   ['ccomponent_5ftransform',['CComponent_Transform',['../class_c_component___transform.html',1,'CComponent_Transform'],['../class_c_component___transform.html#abf11e8d0332613e4f204a986b826efce',1,'CComponent_Transform::CComponent_Transform()'],['../class_c_component___transform.html#a4207a4fb21b1c4bf346ad37c30458f67',1,'CComponent_Transform::CComponent_Transform(CGameObject *gameObject)']]],
   ['cengine',['CEngine',['../class_c_engine.html',1,'CEngine'],['../class_c_engine.html#ab3d84e8a1c8d4eb84b9f069090024990',1,'CEngine::CEngine()']]],
   ['cgameobject',['CGameObject',['../class_c_game_object.html',1,'CGameObject'],['../class_c_game_object.html#a48f1516784befb0062d1af2545327d15',1,'CGameObject::CGameObject(std::string name)'],['../class_c_game_object.html#a055661cb4f987643e335c1648ed0b2ea',1,'CGameObject::CGameObject()']]],
-  ['cinstance',['CInstance',['../class_c_instance.html',1,'']]],
+  ['cinstance',['CInstance',['../class_c_instance.html',1,'CInstance'],['../class_c_instance.html#a405b5812774d5cf46fc577eabec1beb0',1,'CInstance::CInstance()']]],
   ['cjoybutton',['CJoyButton',['../class_c_system___user_input_1_1_c_joy_button.html',1,'CSystem_UserInput']]],
   ['cjoystick',['CJoystick',['../class_c_system___user_input_1_1_c_joystick.html',1,'CSystem_UserInput']]],
   ['ckey',['CKey',['../class_c_system___user_input_1_1_c_key.html',1,'CSystem_UserInput']]],

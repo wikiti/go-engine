@@ -93,73 +93,76 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="title">_instance.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __INSTANCE_H_</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __INSTANCE_H_</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__globals_8h.html">_globals.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_c_instance.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_instance.html">CInstance</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_engine.html">CEngine</a>;</div>
+<a href="__instance_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef __INSTANCE_H_</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __INSTANCE_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__globals_8h.html">_globals.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">bool</span> i_running;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::string next_instance;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> gameObjects_loader;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    std::string resource_file;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    GLdouble FPS;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> frames;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    Uint32 current_time, previous_time;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">bool</span> first_frame;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_c_instance.html">CInstance</a>(<a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> load_gameObject_function, std::string resource_file);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">//~CInstance();</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987">Init</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <span class="keywordtype">bool</span> LoadResources();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795">Close</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <span class="keywordtype">void</span> UnLoadResources(); <span class="comment">// se descargarán los archivos cuando, al cargar los archivos de la proxima estancia, se demuestre que solo se descartaran los que no necesitan seguir en el motor</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      std::string <a class="code" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94">OnExecute</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> OnLoop();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> OnEvent();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> OnRender();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> CalculateFPS();</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_c_instance.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_instance.html">CInstance</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_c_engine.html">CEngine</a>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    GLdouble <a class="code" href="class_c_engine.html#a1ede34d0abf9f50c9abe60914cf81b41">fps</a>()</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keywordflow">return</span> FPS;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_engine.html#a24075e90cba75118881b176a38f60518">NextInstance</a>(std::string next_instance_name);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="class_c_engine.html#afb1dcb5bf3af5546fae3f763992d13a8">SetNextInstance</a>(std::string next_instance_name);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="class_c_engine.html#ac22ec31ca3fc9274470b3644317737e8">EndInstance</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//virtual void OnDebug(){};</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __INSTANCE_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">bool</span> i_running;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::string next_instance;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> gameObjects_loader;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::string resource_file;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    GLdouble FPS;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> frames;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    Uint32 current_time, previous_time;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> first_frame;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987">Init</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keywordtype">bool</span> LoadResources();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795">Close</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordtype">void</span> UnLoadResources(); <span class="comment">// se descargarán los archivos cuando, al cargar los archivos de la proxima estancia, se demuestre que solo se descartaran los que no necesitan seguir en el motor</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      std::string <a class="code" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94">OnExecute</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> OnLoop();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> OnEvent();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> OnRender();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> CalculateFPS();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    GLdouble <a class="code" href="class_c_engine.html#a1ede34d0abf9f50c9abe60914cf81b41">fps</a>()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keywordflow">return</span> FPS;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="class_c_instance.html#a405b5812774d5cf46fc577eabec1beb0">CInstance</a>(<a class="code" href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a> load_gameObject_function, std::string resource_file);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">//~CInstance();</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_instance.html#a294cef4ff7dd0546b92917c1f9b6cd6f">NextInstance</a>(std::string next_instance_name);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="class_c_instance.html#acd52ff26db6a3010d7215f0cce0cc40a">SetNextInstance</a>(std::string next_instance_name);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="class_c_instance.html#a00752a12c4b3138a6f17a9a5fbbada25">EndInstance</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">//virtual void OnDebug(){};</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;};</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __INSTANCE_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_c_engine_html_a98d3dc54b6e2f506d8af9d0ab5853d94"><div class="ttname"><a href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94">CEngine::OnExecute</a></div><div class="ttdeci">virtual int OnExecute(int argc, char *argv[])</div><div class="ttdoc">Comenzar ejecución. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00068">_engine.cpp:68</a></div></div>
 <div class="ttc" id="class_c_engine_html_a0b8293df8a0ade517ef030b2dcfeb795"><div class="ttname"><a href="class_c_engine.html#a0b8293df8a0ade517ef030b2dcfeb795">CEngine::Close</a></div><div class="ttdeci">virtual void Close()</div><div class="ttdoc">Cerrar el motor. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00060">_engine.cpp:60</a></div></div>
-<div class="ttc" id="class_c_engine_html_a24075e90cba75118881b176a38f60518"><div class="ttname"><a href="class_c_engine.html#a24075e90cba75118881b176a38f60518">CEngine::NextInstance</a></div><div class="ttdeci">void NextInstance(std::string instance)</div><div class="ttdoc">Cambiar de estancia. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00271">_engine.h:271</a></div></div>
-<div class="ttc" id="class_c_engine_html_afb1dcb5bf3af5546fae3f763992d13a8"><div class="ttname"><a href="class_c_engine.html#afb1dcb5bf3af5546fae3f763992d13a8">CEngine::SetNextInstance</a></div><div class="ttdeci">void SetNextInstance(std::string instance)</div><div class="ttdoc">Cambiar de estancia. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00286">_engine.h:286</a></div></div>
 <div class="ttc" id="class_c_engine_html"><div class="ttname"><a href="class_c_engine.html">CEngine</a></div><div class="ttdoc">Motor gráfico. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00038">_engine.h:38</a></div></div>
+<div class="ttc" id="class_c_instance_html_a405b5812774d5cf46fc577eabec1beb0"><div class="ttname"><a href="class_c_instance.html#a405b5812774d5cf46fc577eabec1beb0">CInstance::CInstance</a></div><div class="ttdeci">CInstance(fboolpointer load_gameObject_function, std::string resource_file)</div><div class="ttdoc">Constructor principal. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8cpp_source.html#l00009">_instance.cpp:9</a></div></div>
 <div class="ttc" id="class_c_engine_html_a1ede34d0abf9f50c9abe60914cf81b41"><div class="ttname"><a href="class_c_engine.html#a1ede34d0abf9f50c9abe60914cf81b41">CEngine::fps</a></div><div class="ttdeci">GLdouble fps()</div><div class="ttdoc">Fotogramas por segundo. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00175">_engine.h:175</a></div></div>
-<div class="ttc" id="class_c_engine_html_ac22ec31ca3fc9274470b3644317737e8"><div class="ttname"><a href="class_c_engine.html#ac22ec31ca3fc9274470b3644317737e8">CEngine::EndInstance</a></div><div class="ttdeci">void EndInstance()</div><div class="ttdoc">Terminar la estancia actual. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8h_source.html#l00298">_engine.h:298</a></div></div>
-<div class="ttc" id="class_c_instance_html"><div class="ttname"><a href="class_c_instance.html">CInstance</a></div><div class="ttdef"><b>Definition:</b> <a href="__instance_8h_source.html#l00006">_instance.h:6</a></div></div>
+<div class="ttc" id="class_c_instance_html_acd52ff26db6a3010d7215f0cce0cc40a"><div class="ttname"><a href="class_c_instance.html#acd52ff26db6a3010d7215f0cce0cc40a">CInstance::SetNextInstance</a></div><div class="ttdeci">void SetNextInstance(std::string next_instance_name)</div><div class="ttdoc">Cambiar de estancia. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8cpp_source.html#l00146">_instance.cpp:146</a></div></div>
+<div class="ttc" id="class_c_instance_html"><div class="ttname"><a href="class_c_instance.html">CInstance</a></div><div class="ttdoc">Clase que representa a una estancia o nivel. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8h_source.html#l00035">_instance.h:35</a></div></div>
+<div class="ttc" id="class_c_instance_html_a00752a12c4b3138a6f17a9a5fbbada25"><div class="ttname"><a href="class_c_instance.html#a00752a12c4b3138a6f17a9a5fbbada25">CInstance::EndInstance</a></div><div class="ttdeci">void EndInstance()</div><div class="ttdoc">Terminar la estancia actual. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8cpp_source.html#l00151">_instance.cpp:151</a></div></div>
 <div class="ttc" id="__globals_8h_html"><div class="ttname"><a href="__globals_8h.html">_globals.h</a></div><div class="ttdoc">Estructuras y métodos globales. </div></div>
 <div class="ttc" id="class_c_engine_html_aa7faa1ed70d8ea96cd0ff4115469e987"><div class="ttname"><a href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987">CEngine::Init</a></div><div class="ttdeci">virtual bool Init(int argc, char *argv[])</div><div class="ttdoc">Iniciar el motor. </div><div class="ttdef"><b>Definition:</b> <a href="__engine_8cpp_source.html#l00017">_engine.cpp:17</a></div></div>
+<div class="ttc" id="class_c_instance_html_a294cef4ff7dd0546b92917c1f9b6cd6f"><div class="ttname"><a href="class_c_instance.html#a294cef4ff7dd0546b92917c1f9b6cd6f">CInstance::NextInstance</a></div><div class="ttdeci">void NextInstance(std::string next_instance_name)</div><div class="ttdoc">Cambiar de estancia. </div><div class="ttdef"><b>Definition:</b> <a href="__instance_8cpp_source.html#l00140">_instance.cpp:140</a></div></div>
 <div class="ttc" id="__globals_8h_html_a0e446f42da28aa4a1f2ff0ac14b8444b"><div class="ttname"><a href="__globals_8h.html#a0e446f42da28aa4a1f2ff0ac14b8444b">fboolpointer</a></div><div class="ttdeci">bool(* fboolpointer)(void)</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00185">_globals.h:185</a></div></div>
 <div class="ttc" id="__globals_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="__globals_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="__globals_8h_source.html#l00181">_globals.h:181</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 5 de Abril de 2014 21:51:07 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 9 de Abril de 2014 10:50:05 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

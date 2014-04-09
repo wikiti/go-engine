@@ -162,15 +162,15 @@ Métodos públicos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Motor gráfico. </p>
-<p>Representa el conjunto de estancias del juego (los sistemas van aparte). En este caso, el motor gráfico se encargará de gestionar la ejecución y flujo principal del juego. En caso de un cambio de nivel o de estancia (<a class="el" href="class_c_instance.html">CInstance</a>), será esta clase la encargada de gestionar dicho cambio.</p>
-<p>El objeto de esta clase (gEngine), será el encargado de gestionar las estancias (<a class="el" href="class_c_instance.html">CInstance</a>) o niveles. Para ello, dispone de un mapa de estancias, cada una caracterizada por un nombre (string). Desde cualquier estancia, sabiendo el nombre de alguna otra, se podrá pedir un cambio de estancia, simulando un cambio de nivel, por lo que se cargarán nuevos recursos, nuevos objetos, se reiniciarán sistemas, etc.</p>
-<dl class="section note"><dt>Nota</dt><dd><b>Nota</b>: en caso de querer añadir soporte multihilo, solo bastaría con modificar parte e esta clase, y parte de <a class="el" href="class_c_instance.html">CInstance</a>, </dd>
+<p>Representa el conjunto de estancias del juego (los sistemas van aparte). En este caso, el motor gráfico se encargará de gestionar la ejecución y flujo principal del juego. En caso de un cambio de nivel o de estancia (<a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a>), será esta clase la encargada de gestionar dicho cambio.</p>
+<p>El objeto de esta clase (gEngine), será el encargado de gestionar las estancias (<a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a>) o niveles. Para ello, dispone de un mapa de estancias, cada una caracterizada por un nombre (string). Desde cualquier estancia, sabiendo el nombre de alguna otra, se podrá pedir un cambio de estancia, simulando un cambio de nivel, por lo que se cargarán nuevos recursos, nuevos objetos, se reiniciarán sistemas, etc.</p>
+<dl class="section note"><dt>Nota</dt><dd><b>Nota</b>: en caso de querer añadir soporte multihilo, solo bastaría con modificar parte e esta clase, y parte de <a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a>, </dd>
 <dd>
 por lo que no debería de haber grandes cambios.</dd></dl>
 <dl class="section warning"><dt>Atención</dt><dd>Úsese el objeto gEngine para utilizar los métodos de este clase, para que repercutan en tiempo de ejecución.</dd></dl>
 <dl class="section see"><dt>Ver también</dt><dd><a class="el" href="group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da" title="Objeto global del motor gráfico. ">gEngine</a> </dd>
 <dd>
-<a class="el" href="class_c_instance.html">CInstance</a> </dd></dl>
+<a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a> </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8h_source.html#l00038">38</a> del archivo <a class="el" href="__engine_8h_source.html">_engine.h</a>.</p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
@@ -274,7 +274,7 @@ User_Instance_Loader() </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8cpp_source.html#l00017">17</a> del archivo <a class="el" href="__engine_8cpp_source.html">_engine.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00158">ERROR_FATAL_INIT</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00158">ERROR_FATAL_INIT</a> y <a class="el" href="__systems_8cpp_source.html#l00005">Systems_Init()</a>.</p>
 
 <p>Referenciado por <a class="el" href="__engine_8cpp_source.html#l00068">OnExecute()</a>.</p>
 
@@ -305,6 +305,8 @@ User_Instance_Loader() </dd></dl>
 <p>Cierra el motor gráfico, cerrando la librería <em>SDL2</em>, cerrando los sitemas, y eliminando todas las estancias. Será llamado al acabar <a class="el" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94" title="Comenzar ejecución. ">OnExecute()</a>. </p>
 
 <p>Definición en la línea <a class="el" href="__engine_8cpp_source.html#l00060">60</a> del archivo <a class="el" href="__engine_8cpp_source.html">_engine.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__systems_8cpp_source.html#l00076">Systems_Close()</a>.</p>
 
 <p>Referenciado por <a class="el" href="__engine_8cpp_source.html#l00068">OnExecute()</a>.</p>
 
@@ -355,7 +357,7 @@ User_Instance_Loader() </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8cpp_source.html#l00068">68</a> del archivo <a class="el" href="__engine_8cpp_source.html">_engine.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__engine_8cpp_source.html#l00060">Close()</a>, <a class="el" href="__engine_8h_source.html#l00231">Exit()</a> y <a class="el" href="__engine_8cpp_source.html#l00017">Init()</a>.</p>
+<p>Hace referencia a <a class="el" href="__engine_8cpp_source.html#l00060">Close()</a>, <a class="el" href="__engine_8h_source.html#l00231">Exit()</a>, <a class="el" href="__engine_8cpp_source.html#l00017">Init()</a> y <a class="el" href="__systems_8cpp_source.html#l00091">Systems_Reset()</a>.</p>
 
 </div>
 </div>
@@ -490,7 +492,7 @@ User_Instance_Loader() </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">load_gameObject_function</td><td>Callback de la función para cargar los objetos de juego. Debe ser del tipo <em>bool callback(void)</em> </td></tr>
-    <tr><td class="paramname">resource_file</td><td>Ruta al fichero de recursos a cargar para dicha estancia. </td></tr>
+    <tr><td class="paramname">resource_file</td><td>Ruta al fichero de recursos a cargar para dicha estancia. Si es "" o el fichero no existe, se asume que la estancia no usa recursos (absurdo). </td></tr>
     <tr><td class="paramname">instance_name</td><td>Nombre de la estancia. Debe ser un identificador único.</td></tr>
   </table>
   </dd>
@@ -560,8 +562,8 @@ User_Instance_Loader() </dd></dl>
 </div><div class="memdoc">
 
 <p>Instancia ejecutada actualmente. </p>
-<p>Devuelve un puntero del tipo <a class="el" href="class_c_instance.html">CInstance</a> que apunta a la estancia que está siendo ejecutada actualmente. Es mejor usar <a class="el" href="class_c_engine.html#a433500156a899fb9846e932c5f467eb3" title="Nombre de estancia ejecutada actualmente. ">GetCurrentInstance()</a> si sólo se desea saber el nombre.</p>
-<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_instance.html">CInstance</a> </dd></dl>
+<p>Devuelve un puntero del tipo <a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a> que apunta a la estancia que está siendo ejecutada actualmente. Es mejor usar <a class="el" href="class_c_engine.html#a433500156a899fb9846e932c5f467eb3" title="Nombre de estancia ejecutada actualmente. ">GetCurrentInstance()</a> si sólo se desea saber el nombre.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a> </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Puntero a la estancia ejecutada actualmente. </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8h_source.html#l00189">189</a> del archivo <a class="el" href="__engine_8h_source.html">_engine.h</a>.</p>
@@ -819,7 +821,7 @@ User_Instance_Loader() </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 5 de Abril de 2014 21:51:21 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 9 de Abril de 2014 10:50:06 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
