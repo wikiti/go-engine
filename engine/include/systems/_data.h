@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Fichero que incluye la clase CSystem_Data_Storage y sus estancias globales.
+ */
+
 #ifndef __CSYSTEM_DATA_STORAGE_
 #define __CSYSTEM_DATA_STORAGE_
 
@@ -53,6 +58,9 @@
 #include "_globals.h"
 #include "_system.h"
 
+/** @addtogroup Sistemas */
+/*@{*/
+
 class CSystem_Data_Storage: public CSystem
 {
   protected:
@@ -100,8 +108,10 @@ class CSystem_Data_Storage: public CSystem
     void RemoveUserVars();
 };
 
-// Crear 2 objetos: 1 para la configuración de la aplicación, y otra para guardar variables de usuario.
+// ->NOTA Para el gestor de datos, se deberían crear 2 objetos: 1 para la configuración de la aplicación, y otra para guardar variables de usuario.
 extern CSystem_Data_Storage gSystem_Data_Storage;
 extern CSystem_Data_Storage& gData;
+
+/*@}*/
 
 #endif /* __CSYSTEM_DATA_STORAGE_ */

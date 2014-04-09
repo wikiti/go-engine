@@ -76,12 +76,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
       <li><a href="functions.html"><span>Todo</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Funciones</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>'typedefs'</span></a></li>
       <li><a href="functions_rela.html"><span>Funciones&#160;relacionadas</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
-      <li><a href="functions_func.html#index_a"><span>a</span></a></li>
+      <li><a href="functions_func.html#index__"><span>_</span></a></li>
+      <li><a href="functions_func_0x61.html#index_a"><span>a</span></a></li>
       <li><a href="functions_func_0x62.html#index_b"><span>b</span></a></li>
       <li><a href="functions_func_0x63.html#index_c"><span>c</span></a></li>
       <li><a href="functions_func_0x64.html#index_d"><span>d</span></a></li>
@@ -96,6 +98,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
       <li><a href="functions_func_0x6e.html#index_n"><span>n</span></a></li>
       <li><a href="functions_func_0x6f.html#index_o"><span>o</span></a></li>
       <li><a href="functions_func_0x70.html#index_p"><span>p</span></a></li>
+      <li><a href="functions_func_0x71.html#index_q"><span>q</span></a></li>
       <li><a href="functions_func_0x72.html#index_r"><span>r</span></a></li>
       <li><a href="functions_func_0x73.html#index_s"><span>s</span></a></li>
       <li><a href="functions_func_0x74.html#index_t"><span>t</span></a></li>
@@ -112,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -131,10 +134,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <li>Get()
 : <a class="el" href="class_c_component.html#aaed8083f66ef30e36f1d157feff4bb21">CComponent</a>
 , <a class="el" href="class_c_component___transform.html#a01323491eb763f4797c4c4b1d40147c7">CComponent_Transform</a>
+, <a class="el" href="class_c_system___game_object___manager.html#ad8958fc8534303673d5eae8ed098e6e7">CSystem_GameObject_Manager</a>
 , <a class="el" href="class_c_component___camera.html#ae400603475848984585f2fff79cf9a50">CComponent_Camera</a>
 </li>
 <li>Get_flags()
 : <a class="el" href="class_c_game_object.html#af676d5745b8032198417080119bcab2a">CGameObject</a>
+</li>
+<li>GetAttributeIndex()
+: <a class="el" href="class_c_shader.html#a3e01e130f2900736f71fb9b4e2564a71">CShader</a>
 </li>
 <li>GetChild()
 : <a class="el" href="class_c_game_object.html#a61cd52751898df4c6845c310d7cc00f1">CGameObject</a>
@@ -142,20 +149,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <li>GetComponent()
 : <a class="el" href="group___game_objects.html#ga4b9498dcca22545a77e2d100885fa70f">CGameObject</a>
 </li>
+<li>GetCurrentCamera()
+: <a class="el" href="class_c_system___render.html#ad711cee46b7bb0e602e3ffd0c35ea271">CSystem_Render</a>
+</li>
+<li>GetCurrentCameraIndex()
+: <a class="el" href="class_c_system___render.html#a5c47494e2e7869995fc9c01d9eff4d73">CSystem_Render</a>
+</li>
 <li>GetCurrentInstance()
 : <a class="el" href="class_c_engine.html#a433500156a899fb9846e932c5f467eb3">CEngine</a>
 </li>
 <li>GetData()
 : <a class="el" href="group___game_objects.html#gaa5bbdc0cf105c8f6461009b65c59e204">CGameObject</a>
 </li>
+<li>GetFloat()
+: <a class="el" href="class_c_system___data___storage.html#a82492d0cd5623448a6e219a35d7c60b8">CSystem_Data_Storage</a>
+</li>
+<li>GetFrag()
+: <a class="el" href="class_c_shader.html#aee7921699ecd09e2c29f05e01e4e1952">CShader</a>
+</li>
 <li>GetGameObject()
 : <a class="el" href="class_c_component.html#aec98c262998b67798451b56203e4a61b">CComponent</a>
 </li>
+<li>GetGeom()
+: <a class="el" href="class_c_shader.html#aa5117a8d05a3be0f22610a2c0ffe7fc6">CShader</a>
+</li>
+<li>GetGLInfo()
+: <a class="el" href="class_c_system___render.html#a05e2fb611fb215d4b7d6eb01764f0f2b">CSystem_Render</a>
+</li>
 <li>GetID()
 : <a class="el" href="class_c_game_object.html#acd1c185ce9fc275ddafd326d312b841d">CGameObject</a>
+, <a class="el" href="class_c_resource___texture.html#a3885442d55b2b30e7be7b36b373bfcb6">CResource_Texture</a>
+</li>
+<li>GetInt()
+: <a class="el" href="class_c_system___data___storage.html#ab99cc0b1d971b7969096b0998745f840">CSystem_Data_Storage</a>
+</li>
+<li>GetJoysticks()
+: <a class="el" href="class_c_system___user_input.html#ab98e0b6c7148ce084fe752c2609ce3f9">CSystem_UserInput</a>
+</li>
+<li>GetMainCamera()
+: <a class="el" href="class_c_system___render.html#adce880b0cbcac36ef5db17cd2a486cf5">CSystem_Render</a>
+</li>
+<li>GetMesh()
+: <a class="el" href="class_c_system___resources.html#ab08f52e3f7090602adea2ce724e99337">CSystem_Resources</a>
 </li>
 <li>GetName()
 : <a class="el" href="class_c_game_object.html#a2aeda25f9357fd3fdefbaadbad3b8dd2">CGameObject</a>
+, <a class="el" href="class_c_system___user_input_1_1_c_joystick.html#a0374f49fabbba45366b47b1a95704eec">CSystem_UserInput::CJoystick</a>
 </li>
 <li>GetNextInstance()
 : <a class="el" href="class_c_engine.html#a5cc403b26bf10a28b22b9b95b31e0832">CEngine</a>
@@ -166,11 +205,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <li>GetParent()
 : <a class="el" href="class_c_game_object.html#a7d440a88fdaf5354975a4f1f27da60f4">CGameObject</a>
 </li>
+<li>GetProgram()
+: <a class="el" href="class_c_shader.html#a61bfb996e5d65670e9cddd7f03065a9a">CShader</a>
+</li>
+<li>GetShader()
+: <a class="el" href="class_c_system___shader___manager.html#aa406fe9bddc7ebfe5c00496405705851">CSystem_Shader_Manager</a>
+</li>
+<li>GetSound()
+: <a class="el" href="class_c_system___resources.html#a3f5b1727f764599e8be8c671f1f7efc0">CSystem_Resources</a>
+</li>
 <li>GetState()
 : <a class="el" href="class_c_component.html#a8a2bbd0e44da23267e07d1d610da1b02">CComponent</a>
 </li>
+<li>GetString()
+: <a class="el" href="class_c_system___data___storage.html#a0ba4dc9145b9b9f6f7c17788537e6922">CSystem_Data_Storage</a>
+</li>
+<li>GetTexture()
+: <a class="el" href="class_c_system___resources.html#a89148a45e5799828e374fc379d12468f">CSystem_Resources</a>
+</li>
+<li>GetTicks()
+: <a class="el" href="class_c_system___time.html#a2d595246bea8b565970d80ba6874a0a3">CSystem_Time</a>
+</li>
+<li>GetTicks_s()
+: <a class="el" href="class_c_system___time.html#ad4e57ea1b0a825a4e82b86013e063625">CSystem_Time</a>
+</li>
 <li>GetTitle()
 : <a class="el" href="class_c_engine.html#a5ce98774fc7d4a45cd6a14df2d8e2d75">CEngine</a>
+</li>
+<li>GetUniformIndex()
+: <a class="el" href="class_c_shader.html#a8a9c36be99399e01edc05eeaa713d381">CShader</a>
+</li>
+<li>GetVert()
+: <a class="el" href="class_c_shader.html#a772b4596ca50635b1ae92b604785bfcb">CShader</a>
+</li>
+<li>GetWindow()
+: <a class="el" href="class_c_system___render.html#ab8fc72e770a3b6ab4f95b2b81908925c">CSystem_Render</a>
+</li>
+<li>GetWindowSize()
+: <a class="el" href="class_c_system___render.html#a123fd5aa8d8a0dfef06d7ac7e335605a">CSystem_Render</a>
 </li>
 <li>GUITexture()
 : <a class="el" href="class_c_game_object.html#ac3c5085a08e347e6d162a0cf3b92691e">CGameObject</a>
@@ -179,7 +251,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 9 de Abril de 2014 10:50:07 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 9 de Abril de 2014 11:00:51 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
