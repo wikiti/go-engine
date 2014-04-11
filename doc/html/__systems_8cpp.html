@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Go-Engine: Referencia del Archivo C:/Dev/Proyectos/go-engine/engine/src/_systems.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Go-Engine
+   &#160;<span id="projectnumber">alpha</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_3d9126aa00c041bc0b8f859d1965a0f4.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo _systems.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="__systems_8h_source.html">_systems.h</a>&quot;</code><br/>
+</div>
+<p><a href="__systems_8cpp_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a6d08000b62478204e57c6d0cd151c7c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__systems_8cpp.html#a6d08000b62478204e57c6d0cd151c7c2">Systems_Init</a> ()</td></tr>
+<tr class="memdesc:a6d08000b62478204e57c6d0cd151c7c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iniciar sistemas.  <a href="#a6d08000b62478204e57c6d0cd151c7c2">Más...</a><br/></td></tr>
+<tr class="separator:a6d08000b62478204e57c6d0cd151c7c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2dbeb600b37719570eda23b53dd94af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__systems_8cpp.html#aa2dbeb600b37719570eda23b53dd94af">Systems_Close</a> ()</td></tr>
+<tr class="memdesc:aa2dbeb600b37719570eda23b53dd94af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cerrar sistemas.  <a href="#aa2dbeb600b37719570eda23b53dd94af">Más...</a><br/></td></tr>
+<tr class="separator:aa2dbeb600b37719570eda23b53dd94af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fbaf5b438c67ac29ecb192c9000a48b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__systems_8cpp.html#a7fbaf5b438c67ac29ecb192c9000a48b">Systems_Reset</a> ()</td></tr>
+<tr class="memdesc:a7fbaf5b438c67ac29ecb192c9000a48b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reiniciar sistemas.  <a href="#a7fbaf5b438c67ac29ecb192c9000a48b">Más...</a><br/></td></tr>
+<tr class="separator:a7fbaf5b438c67ac29ecb192c9000a48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecbf65ad357fbcf4fadae0e2828b1d23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__systems_8cpp.html#aecbf65ad357fbcf4fadae0e2828b1d23">Systems_OnEvent</a> ()</td></tr>
+<tr class="memdesc:aecbf65ad357fbcf4fadae0e2828b1d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionar eventos de sistemas.  <a href="#aecbf65ad357fbcf4fadae0e2828b1d23">Más...</a><br/></td></tr>
+<tr class="separator:aecbf65ad357fbcf4fadae0e2828b1d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d398c963eb67b9e9c059392c950dff4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__systems_8cpp.html#a6d398c963eb67b9e9c059392c950dff4">Systems_OnKeyEvent</a> ()</td></tr>
+<tr class="memdesc:a6d398c963eb67b9e9c059392c950dff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionar entrada para los sistemas.  <a href="#a6d398c963eb67b9e9c059392c950dff4">Más...</a><br/></td></tr>
+<tr class="separator:a6d398c963eb67b9e9c059392c950dff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83077e7be6d4660bdff31e07ae0d9e9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__systems_8cpp.html#a83077e7be6d4660bdff31e07ae0d9e9b">Systems_OnLoop</a> ()</td></tr>
+<tr class="memdesc:a83077e7be6d4660bdff31e07ae0d9e9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionar comportamiento de sistemas.  <a href="#a83077e7be6d4660bdff31e07ae0d9e9b">Más...</a><br/></td></tr>
+<tr class="separator:a83077e7be6d4660bdff31e07ae0d9e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75a16ba97bc4899e52807c6832377ba6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__systems_8cpp.html#a75a16ba97bc4899e52807c6832377ba6">Systems_OnRender</a> ()</td></tr>
+<tr class="memdesc:a75a16ba97bc4899e52807c6832377ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gestionar renderizado de sistemas.  <a href="#a75a16ba97bc4899e52807c6832377ba6">Más...</a><br/></td></tr>
+<tr class="separator:a75a16ba97bc4899e52807c6832377ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de las funciones</h2>
+<a class="anchor" id="a6d08000b62478204e57c6d0cd151c7c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systems_Init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Iniciar sistemas. </p>
+<p>LLamado automáticamente desde gEngine. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>true si todos se inician correctamente, false en caso contrario. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__systems_8cpp_source.html#l00005">5</a> del archivo <a class="el" href="__systems_8cpp_source.html">_systems.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00158">ERROR_FATAL_INIT</a>, <a class="el" href="__globals_8h_source.html#l00152">ERROR_INIT</a>, <a class="el" href="__data_8cpp_source.html#l00006">gSystem_Data_Storage</a>, <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a>, <a class="el" href="__manager_8cpp_source.html#l00006">gSystem_GameObject_Manager</a>, <a class="el" href="__other_8cpp_source.html#l00039">gSystem_Math</a>, <a class="el" href="__mixer_8cpp_source.html#l00008">gSystem_Mixer</a>, <a class="el" href="__render_8cpp_source.html#l00017">gSystem_Render</a>, <a class="el" href="__resource_8cpp_source.html#l00006">gSystem_Resources</a>, <a class="el" href="__shader_8cpp_source.html#l00004">gSystem_Shader_Manager</a>, <a class="el" href="__other_8cpp_source.html#l00003">gSystem_Time</a>, <a class="el" href="__input_8cpp_source.html#l00006">gSystem_UserInput</a>, <a class="el" href="__other_8cpp_source.html#l00008">CSystem_Time::Init()</a>, <a class="el" href="__manager_8cpp_source.html#l00009">CSystem_GameObject_Manager::Init()</a>, <a class="el" href="__mixer_8cpp_source.html#l00016">CSystem_Mixer::Init()</a>, <a class="el" href="__shader_8cpp_source.html#l00084">CSystem_Shader_Manager::Init()</a>, <a class="el" href="__other_8h_source.html#l00079">CSystem_Math::Init()</a>, <a class="el" href="__debug_8cpp_source.html#l00068">CSystem_Debug::Init()</a>, <a class="el" href="__render_8cpp_source.html#l00020">CSystem_Render::Init()</a>, <a class="el" href="__resource_8cpp_source.html#l00383">CSystem_Resources::Init()</a>, <a class="el" href="__input_8cpp_source.html#l00015">CSystem_UserInput::Init()</a>, <a class="el" href="__debug_8cpp_source.html#l00106">CSystem_Debug::InitConsoleFont()</a> y <a class="el" href="__debug_8cpp_source.html#l00343">CSystem_Debug::msg_box()</a>.</p>
+
+<p>Referenciado por <a class="el" href="__engine_8cpp_source.html#l00017">CEngine::Init()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa2dbeb600b37719570eda23b53dd94af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systems_Close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cerrar sistemas. </p>
+<p>LLamado automáticamente desde gEngine. </p>
+
+<p>Definición en la línea <a class="el" href="__systems_8cpp_source.html#l00076">76</a> del archivo <a class="el" href="__systems_8cpp_source.html">_systems.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__other_8cpp_source.html#l00018">CSystem_Time::Close()</a>, <a class="el" href="__manager_8cpp_source.html#l00088">CSystem_GameObject_Manager::Close()</a>, <a class="el" href="__mixer_8cpp_source.html#l00115">CSystem_Mixer::Close()</a>, <a class="el" href="__shader_8cpp_source.html#l00383">CSystem_Shader_Manager::Close()</a>, <a class="el" href="__other_8h_source.html#l00086">CSystem_Math::Close()</a>, <a class="el" href="__debug_8cpp_source.html#l00243">CSystem_Debug::Close()</a>, <a class="el" href="__render_8cpp_source.html#l00370">CSystem_Render::Close()</a>, <a class="el" href="__resource_8cpp_source.html#l00454">CSystem_Resources::Close()</a>, <a class="el" href="__input_8cpp_source.html#l00067">CSystem_UserInput::Close()</a>, <a class="el" href="__data_8cpp_source.html#l00006">gSystem_Data_Storage</a>, <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a>, <a class="el" href="__manager_8cpp_source.html#l00006">gSystem_GameObject_Manager</a>, <a class="el" href="__other_8cpp_source.html#l00039">gSystem_Math</a>, <a class="el" href="__mixer_8cpp_source.html#l00008">gSystem_Mixer</a>, <a class="el" href="__render_8cpp_source.html#l00017">gSystem_Render</a>, <a class="el" href="__resource_8cpp_source.html#l00006">gSystem_Resources</a>, <a class="el" href="__shader_8cpp_source.html#l00004">gSystem_Shader_Manager</a>, <a class="el" href="__other_8cpp_source.html#l00003">gSystem_Time</a>, <a class="el" href="__input_8cpp_source.html#l00006">gSystem_UserInput</a> y <a class="el" href="__mixer_8cpp_source.html#l00092">CSystem_Mixer::ResetSources()</a>.</p>
+
+<p>Referenciado por <a class="el" href="__engine_8cpp_source.html#l00060">CEngine::Close()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7fbaf5b438c67ac29ecb192c9000a48b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systems_Reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reiniciar sistemas. </p>
+<p>LLamado automáticamente desde gEngine. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>true si todos se reinician correctamente, false en caso contrario. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__systems_8cpp_source.html#l00091">91</a> del archivo <a class="el" href="__systems_8cpp_source.html">_systems.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00164">ERROR_FATAL</a>, <a class="el" href="__data_8cpp_source.html#l00006">gSystem_Data_Storage</a>, <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a>, <a class="el" href="__manager_8cpp_source.html#l00006">gSystem_GameObject_Manager</a>, <a class="el" href="__other_8cpp_source.html#l00039">gSystem_Math</a>, <a class="el" href="__mixer_8cpp_source.html#l00008">gSystem_Mixer</a>, <a class="el" href="__render_8cpp_source.html#l00017">gSystem_Render</a>, <a class="el" href="__resource_8cpp_source.html#l00006">gSystem_Resources</a>, <a class="el" href="__shader_8cpp_source.html#l00004">gSystem_Shader_Manager</a>, <a class="el" href="__other_8cpp_source.html#l00003">gSystem_Time</a>, <a class="el" href="__input_8cpp_source.html#l00006">gSystem_UserInput</a>, <a class="el" href="__debug_8cpp_source.html#l00343">CSystem_Debug::msg_box()</a>, <a class="el" href="__system_8h_source.html#l00018">CSystem::Reset()</a>, <a class="el" href="__manager_8cpp_source.html#l00096">CSystem_GameObject_Manager::Reset()</a>, <a class="el" href="__mixer_8cpp_source.html#l00149">CSystem_Mixer::Reset()</a>, <a class="el" href="__shader_8cpp_source.html#l00397">CSystem_Shader_Manager::Reset()</a>, <a class="el" href="__debug_8cpp_source.html#l00094">CSystem_Debug::Reset()</a>, <a class="el" href="__render_8cpp_source.html#l00401">CSystem_Render::Reset()</a>, <a class="el" href="__resource_8cpp_source.html#l00462">CSystem_Resources::Reset()</a> y <a class="el" href="__input_8cpp_source.html#l00081">CSystem_UserInput::Reset()</a>.</p>
+
+<p>Referenciado por <a class="el" href="__engine_8cpp_source.html#l00068">CEngine::OnExecute()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aecbf65ad357fbcf4fadae0e2828b1d23"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systems_OnEvent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestionar eventos de sistemas. </p>
+<p>LLamado automáticamente desde gEngine. </p>
+
+<p>Definición en la línea <a class="el" href="__systems_8cpp_source.html#l00154">154</a> del archivo <a class="el" href="__systems_8cpp_source.html">_systems.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6d398c963eb67b9e9c059392c950dff4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systems_OnKeyEvent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestionar entrada para los sistemas. </p>
+<p>LLamado automáticamente desde gEngine. </p>
+
+<p>Definición en la línea <a class="el" href="__systems_8cpp_source.html#l00159">159</a> del archivo <a class="el" href="__systems_8cpp_source.html">_systems.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a83077e7be6d4660bdff31e07ae0d9e9b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systems_OnLoop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestionar comportamiento de sistemas. </p>
+<p>LLamado automáticamente desde gEngine. </p>
+
+<p>Definición en la línea <a class="el" href="__systems_8cpp_source.html#l00164">164</a> del archivo <a class="el" href="__systems_8cpp_source.html">_systems.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a75a16ba97bc4899e52807c6832377ba6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systems_OnRender </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gestionar renderizado de sistemas. </p>
+<p>LLamado automáticamente desde gEngine. </p>
+
+<p>Definición en la línea <a class="el" href="__systems_8cpp_source.html#l00169">169</a> del archivo <a class="el" href="__systems_8cpp_source.html">_systems.cpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Viernes, 11 de Abril de 2014 20:43:38 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Go-Engine: Referencia del Archivo C:/Dev/Proyectos/go-engine/engine/include/systems/_debug.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Go-Engine
+   &#160;<span id="projectnumber">alpha</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_bafa501d493553e442f19f5f8dd7b29c.html">include</a></li><li class="navelem"><a class="el" href="dir_e35aef00462436a53c3b51d31757f178.html">systems</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Clases</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">'defines'</a> &#124;
+<a href="#typedef-members">'typedefs'</a> &#124;
+<a href="#enum-members">Enumeraciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo _debug.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;cstdarg&gt;</code><br/>
+<code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;time.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="__object_8h_source.html">_object.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="__system_8h_source.html">systems/_system.h</a>&quot;</code><br/>
+</div>
+<p><a href="__debug_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Clases</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_debug_1_1string__console__t.html">Debug::string_console_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_system___debug.html">CSystem_Debug</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespace_debug"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_debug.html">Debug</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+'defines'</h2></td></tr>
+<tr class="memitem:a58888866fcc115135bd3cd1fdc1cd140"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a58888866fcc115135bd3cd1fdc1cd140">__CSYSTEM_DEBUG_STORAGE_SAVEFILE</a>&#160;&#160;&#160;&quot;data/log.txt&quot;</td></tr>
+<tr class="separator:a58888866fcc115135bd3cd1fdc1cd140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52229870c481c90646d082296797c4d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a52229870c481c90646d082296797c4d5">__CSYSTEM_DEBUG_STORAGE_ACCESS</a>&#160;&#160;&#160;&quot;a&quot;</td></tr>
+<tr class="separator:a52229870c481c90646d082296797c4d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81a694d198bb6099c1eda4799b5c1339"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a81a694d198bb6099c1eda4799b5c1339">__CSYSTEM_DEBUG_CONSOLE_FONT</a>&#160;&#160;&#160;&quot;__CONSOLE_FONT&quot;</td></tr>
+<tr class="separator:a81a694d198bb6099c1eda4799b5c1339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28229cdcbd223e3af775ca2c754283bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a28229cdcbd223e3af775ca2c754283bd">__CSYSTEM_DEBUG_CONSOLE_FONT_FILE</a>&#160;&#160;&#160;&quot;data/engine/console_font.tga&quot;</td></tr>
+<tr class="separator:a28229cdcbd223e3af775ca2c754283bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27ad817428ffec8e88fc7b5f6700320d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a27ad817428ffec8e88fc7b5f6700320d">__CSYSTEM_DEBUG_KEYWORD_ALL</a>&#160;&#160;&#160;&quot;$ALL&quot;</td></tr>
+<tr class="separator:a27ad817428ffec8e88fc7b5f6700320d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6310c43c8ddc7dd308cbcf753b9a2dd2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a6310c43c8ddc7dd308cbcf753b9a2dd2">__CSYSTEM_DEBUG_CONSOLE_SIZE</a>&#160;&#160;&#160;200</td></tr>
+<tr class="separator:a6310c43c8ddc7dd308cbcf753b9a2dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeed90ae78bcbdb518bc22d827d70c823"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#aeed90ae78bcbdb518bc22d827d70c823">__CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:aeed90ae78bcbdb518bc22d827d70c823"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cb9bd264940a428b2fb82c0d8cce8ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a2cb9bd264940a428b2fb82c0d8cce8ca">__CSYSTEM_DEBUG_CONSOLE_COMMAND_BUFFER_MAXLINES</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:a2cb9bd264940a428b2fb82c0d8cce8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ccd3bdd1efc94221f7bc54b0c8b0604"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a1ccd3bdd1efc94221f7bc54b0c8b0604">__CSYSTEM_DEBUG_CONSOLE_LINES</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:a1ccd3bdd1efc94221f7bc54b0c8b0604"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b2fcb3909526618287350ab773d700"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a12b2fcb3909526618287350ab773d700">__CSYSTEM_DEBUG_CONSOLE_LINESPACE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:a12b2fcb3909526618287350ab773d700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae55d9cd275fc8c3137950625339bf0d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#ae55d9cd275fc8c3137950625339bf0d9">__CSYSTEM_DEBUG_CONSOLE_Y_OFFSET</a>&#160;&#160;&#160;30</td></tr>
+<tr class="separator:ae55d9cd275fc8c3137950625339bf0d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fbe01a7bb44e12428ed84b4276dd3e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a7fbe01a7bb44e12428ed84b4276dd3e3">__CSYSTEM_DEBUG_CONSOLE_X_OFFSET</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a7fbe01a7bb44e12428ed84b4276dd3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+'typedefs'</h2></td></tr>
+<tr class="memitem:a55a67ab1dd78a60a1221a18128bbf25e"><td class="memItemLeft" align="right" valign="top">typedef struct <br class="typebreak"/>
+<a class="el" href="struct_debug_1_1string__console__t.html">Debug::string_console_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_debug.html#a55a67ab1dd78a60a1221a18128bbf25e">Debug::string_console_t</a></td></tr>
+<tr class="separator:a55a67ab1dd78a60a1221a18128bbf25e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumeraciones</h2></td></tr>
+<tr class="memitem:a49a7325e26aabc517b2104298dc39695"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_debug.html#a49a7325e26aabc517b2104298dc39695">Debug::flags_t</a> { <a class="el" href="namespace_debug.html#a49a7325e26aabc517b2104298dc39695ae46f71bd5ed0e9e76ba7cd4dd3b07019">Debug::error</a> = SDL_MESSAGEBOX_ERROR, 
+<a class="el" href="namespace_debug.html#a49a7325e26aabc517b2104298dc39695a31a83b11a4d3b612deea93e8e1ceff25">Debug::warning</a> = SDL_MESSAGEBOX_WARNING, 
+<a class="el" href="namespace_debug.html#a49a7325e26aabc517b2104298dc39695acb1803353f328168e96b6d08d5d654a3">Debug::information</a> = SDL_MESSAGEBOX_INFORMATION
+ }</td></tr>
+<tr class="separator:a49a7325e26aabc517b2104298dc39695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a609832ffd83267e6eac2735ce8ba02ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_system___debug.html">CSystem_Debug</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a></td></tr>
+<tr class="separator:a609832ffd83267e6eac2735ce8ba02ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac07b78d1fd077a970d64fb80f3c01683"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_system___debug.html">CSystem_Debug</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__debug_8h.html#ac07b78d1fd077a970d64fb80f3c01683">gDebug</a></td></tr>
+<tr class="separator:ac07b78d1fd077a970d64fb80f3c01683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de los 'defines'</h2>
+<a class="anchor" id="a58888866fcc115135bd3cd1fdc1cd140"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_STORAGE_SAVEFILE&#160;&#160;&#160;&quot;data/log.txt&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00004">4</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00304">CSystem_Debug::error()</a>, <a class="el" href="__debug_8cpp_source.html#l00279">CSystem_Debug::log()</a> y <a class="el" href="__debug_8cpp_source.html#l00329">CSystem_Debug::raw_log()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a52229870c481c90646d082296797c4d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_STORAGE_ACCESS&#160;&#160;&#160;&quot;a&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00005">5</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00304">CSystem_Debug::error()</a>, <a class="el" href="__debug_8cpp_source.html#l00279">CSystem_Debug::log()</a> y <a class="el" href="__debug_8cpp_source.html#l00329">CSystem_Debug::raw_log()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a81a694d198bb6099c1eda4799b5c1339"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_FONT&#160;&#160;&#160;&quot;__CONSOLE_FONT&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00006">6</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00243">CSystem_Debug::Close()</a> y <a class="el" href="__debug_8cpp_source.html#l00106">CSystem_Debug::InitConsoleFont()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a28229cdcbd223e3af775ca2c754283bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_FONT_FILE&#160;&#160;&#160;&quot;data/engine/console_font.tga&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00007">7</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00106">CSystem_Debug::InitConsoleFont()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a27ad817428ffec8e88fc7b5f6700320d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_KEYWORD_ALL&#160;&#160;&#160;&quot;$ALL&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00009">9</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6310c43c8ddc7dd308cbcf753b9a2dd2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_SIZE&#160;&#160;&#160;200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00011">11</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00507">CSystem_Debug::OnRender()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeed90ae78bcbdb518bc22d827d70c823"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00012">12</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00661">CSystem_Debug::console_custom_msg()</a>, <a class="el" href="__debug_8cpp_source.html#l00610">CSystem_Debug::console_error_msg()</a>, <a class="el" href="__debug_8cpp_source.html#l00644">CSystem_Debug::console_info_msg()</a>, <a class="el" href="__debug_8cpp_source.html#l00593">CSystem_Debug::console_msg()</a> y <a class="el" href="__debug_8cpp_source.html#l00627">CSystem_Debug::console_warning_msg()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2cb9bd264940a428b2fb82c0d8cce8ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_COMMAND_BUFFER_MAXLINES&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00013">13</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00261">CSystem_Debug::command()</a> y <a class="el" href="__debug_8cpp_source.html#l00363">CSystem_Debug::OnEvent()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1ccd3bdd1efc94221f7bc54b0c8b0604"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_LINES&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00014">14</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00363">CSystem_Debug::OnEvent()</a> y <a class="el" href="__debug_8cpp_source.html#l00507">CSystem_Debug::OnRender()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a12b2fcb3909526618287350ab773d700"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_LINESPACE&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00015">15</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00507">CSystem_Debug::OnRender()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae55d9cd275fc8c3137950625339bf0d9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_Y_OFFSET&#160;&#160;&#160;30</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00016">16</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00507">CSystem_Debug::OnRender()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7fbe01a7bb44e12428ed84b4276dd3e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DEBUG_CONSOLE_X_OFFSET&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8h_source.html#l00017">17</a> del archivo <a class="el" href="__debug_8h_source.html">_debug.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__debug_8cpp_source.html#l00507">CSystem_Debug::OnRender()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de las variables</h2>
+<a class="anchor" id="a609832ffd83267e6eac2735ce8ba02ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_system___debug.html">CSystem_Debug</a> gSystem_Debug</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8cpp_source.html#l00015">15</a> del archivo <a class="el" href="__debug_8cpp_source.html">_debug.cpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="__render_8h_source.html#l00239">CSystem_Render::_check_gl_error()</a>, <a class="el" href="__manager_8cpp_source.html#l00142">CSystem_GameObject_Manager::Add()</a>, <a class="el" href="__engine_8cpp_source.html#l00089">CEngine::AddInstance()</a>, <a class="el" href="__manager_8cpp_source.html#l00133">CSystem_GameObject_Manager::CloseGameObject()</a>, <a class="el" href="__manager_8cpp_source.html#l00202">CSystem_GameObject_Manager::Delete()</a>, <a class="el" href="__manager_8cpp_source.html#l00449">CSystem_GameObject_Manager::EnableGameObject()</a>, <a class="el" href="__mixer_8cpp_source.html#l00016">CSystem_Mixer::Init()</a>, <a class="el" href="__engine_8cpp_source.html#l00017">CEngine::Init()</a>, <a class="el" href="__render_8cpp_source.html#l00020">CSystem_Render::Init()</a>, <a class="el" href="__input_8cpp_source.html#l00015">CSystem_UserInput::Init()</a>, <a class="el" href="__manager_8cpp_source.html#l00124">CSystem_GameObject_Manager::InitGameObject()</a>, <a class="el" href="__render_8cpp_source.html#l00281">CSystem_Render::InitGridVBO()</a>, <a class="el" href="__render_8cpp_source.html#l00227">CSystem_Render::InitSkyboxVBO()</a>, <a class="el" href="__shader_8cpp_source.html#l00452">CSystem_Shader_Manager::LinkShader()</a>, <a class="el" href="__data_8cpp_source.html#l00102">CSystem_Data_Storage::Load()</a>, <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>, <a class="el" href="__resource_8cpp_source.html#l00022">CResource_Mesh::LoadFile()</a>, <a class="el" href="__resource_8cpp_source.html#l00200">CResource_Texture::LoadFile()</a>, <a class="el" href="__resource_8cpp_source.html#l00304">CResource_Sound::LoadFile()</a>, <a class="el" href="__resource_8cpp_source.html#l00255">CResource_Texture::LoadFromMemory()</a>, <a class="el" href="__resource_8cpp_source.html#l00526">CSystem_Resources::LoadResource()</a>, <a class="el" href="__resource_8cpp_source.html#l00470">CSystem_Resources::LoadResourceFile()</a>, <a class="el" href="__main_8cpp_source.html#l00008">main()</a>, <a class="el" href="__engine_8cpp_source.html#l00068">CEngine::OnExecute()</a>, <a class="el" href="__mixer_8cpp_source.html#l00202">CSystem_Mixer::OnLoop()</a>, <a class="el" href="__component__audio_8cpp_source.html#l00227">CComponent_Audio_Source::Pause()</a>, <a class="el" href="__component__audio_8cpp_source.html#l00095">CComponent_Audio_Source::Play()</a>, <a class="el" href="__manager_8cpp_source.html#l00230">CSystem_GameObject_Manager::Remove()</a>, <a class="el" href="__manager_8cpp_source.html#l00307">CSystem_GameObject_Manager::Rename()</a>, <a class="el" href="__component__audio_8cpp_source.html#l00243">CComponent_Audio_Source::Resume()</a>, <a class="el" href="__component__audio_8cpp_source.html#l00259">CComponent_Audio_Source::Rewind()</a>, <a class="el" href="__data_8cpp_source.html#l00045">CSystem_Data_Storage::Save()</a>, <a class="el" href="__data_8cpp_source.html#l00222">CSystem_Data_Storage::SaveConfig()</a>, <a class="el" href="__data_8cpp_source.html#l00258">CSystem_Data_Storage::SetFloat()</a>, <a class="el" href="__manager_8cpp_source.html#l00458">CSystem_GameObject_Manager::SetGameObjectState()</a>, <a class="el" href="__data_8cpp_source.html#l00246">CSystem_Data_Storage::SetInt()</a>, <a class="el" href="__data_8cpp_source.html#l00234">CSystem_Data_Storage::SetString()</a>, <a class="el" href="__component__audio_8cpp_source.html#l00212">CComponent_Audio_Source::Stop()</a>, <a class="el" href="__systems_8cpp_source.html#l00076">Systems_Close()</a>, <a class="el" href="__systems_8cpp_source.html#l00005">Systems_Init()</a>, <a class="el" href="__systems_8cpp_source.html#l00091">Systems_Reset()</a> y <a class="el" href="__shader_8cpp_source.html#l00413">CSystem_Shader_Manager::UseShader()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac07b78d1fd077a970d64fb80f3c01683"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_system___debug.html">CSystem_Debug</a>&amp; gDebug</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__debug_8cpp_source.html#l00016">16</a> del archivo <a class="el" href="__debug_8cpp_source.html">_debug.cpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="__input_8h_source.html#l00174">CSystem_UserInput::CJoystick::CheckStatus()</a>, <a class="el" href="__instance_8cpp_source.html#l00151">CInstance::EndInstance()</a> y <a class="el" href="game_objects_8cpp_source.html#l00003">SetGameObjects_Instance1()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Viernes, 11 de Abril de 2014 20:43:38 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

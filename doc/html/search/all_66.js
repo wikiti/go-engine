@@ -14,7 +14,7 @@ var searchData=
   ['font',['font',['../namespaceresources.html#ae3ba8068325cd0c7f2ce8bcfe458afa2ae591132f145c1a01b653b28f4d84e147',1,'resources']]],
   ['forward',['forward',['../structvector3f__t.html#a67478a4b4bfbad7e84a59925f2066406',1,'vector3f_t::forward()'],['../structvector3f__t.html#a3eb20722ca2be08c6553f92e4a3bce23',1,'vector3f_t::forward(glm::quat angle)'],['../class_c_component___transform.html#ac2c2e9456063c822dc5f5d542cb520a5',1,'CComponent_Transform::forward()']]],
   ['fpointer',['fpointer',['../__globals_8h.html#a8dac3662b9da40f244308408f05c0e7e',1,'_globals.h']]],
-  ['fps',['fps',['../class_c_engine.html#a1ede34d0abf9f50c9abe60914cf81b41',1,'CEngine']]],
+  ['fps',['fps',['../class_c_engine.html#a1ede34d0abf9f50c9abe60914cf81b41',1,'CEngine::fps()'],['../class_c_instance.html#a75e65b59b0cef801d0c23ad128e52301',1,'CInstance::fps()']]],
   ['fragment_5fshader_5ffile_5fname',['FRAGMENT_SHADER_FILE_NAME',['../shaders_8cpp.html#a16fc1250f0d674488abdd3ff69b587a6',1,'shaders.cpp']]],
   ['freeze',['Freeze',['../class_c_component___particle___emitter.html#a4b6b4b745e3a48686166f884107fb7b2',1,'CComponent_Particle_Emitter::Freeze()'],['../class_c_component___particle___emitter.html#a98837984dd82fc590f6db952689063ab',1,'CComponent_Particle_Emitter::freeze()']]],
   ['fullscreen',['fullscreen',['../namespace_render.html#a70f7ceffa6d5164df80894ab58c14d7daa82dc4a475144da16001f257a08444b8',1,'Render']]],

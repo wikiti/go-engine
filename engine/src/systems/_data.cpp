@@ -233,20 +233,38 @@ void CSystem_Data_Storage::SaveConfig()
 
 void CSystem_Data_Storage::SetString(string name_id, string value)
 {
-  if(name_id.size() && value.size())
+  if(name_id.size() && Utils::validateIdentifier(name_id))
+  {
     strings[name_id] = value;
+    if(value == __NO_STRING)
+      gSystem_Debug.console_warning_msg("From CSystem_Data_Storage: Saving in variable \"%s\" the __NO_STRING string.", name_id.c_str());
+  }
+  else
+    gSystem_Debug.console_error_msg("From CSystem_Data_Storage: Trying to save a variable with the invalid identifier \"%s\"", name_id.c_str());
 }
 
 void CSystem_Data_Storage::SetInt(string name_id, int value)
 {
-  if(name_id.size())
+  if(name_id.size() && Utils::validateIdentifier(name_id))
+  {
     ints[name_id] = value;
+    if(value == __NO_INT)
+      gSystem_Debug.console_warning_msg("From CSystem_Data_Storage: Saving in variable \"%s\" the __NO_INT integer.", name_id.c_str());
+  }
+  else
+    gSystem_Debug.console_error_msg("From CSystem_Data_Storage: Trying to save a variable with the invalid identifier \"%s\"", name_id.c_str());
 }
 
 void CSystem_Data_Storage::SetFloat(string name_id, float value)
 {
-  if(name_id.size())
+  if(name_id.size() && Utils::validateIdentifier(name_id))
+  {
     floats[name_id] = value;
+    if(value == __NO_FLOAT)
+      gSystem_Debug.console_warning_msg("From CSystem_Data_Storage: Saving in variable \"%s\" the __NO_FLOAT float.", name_id.c_str());
+  }
+  else
+    gSystem_Debug.console_error_msg("From CSystem_Data_Storage: Trying to save a variable with the invalid identifier \"%s\"", name_id.c_str());
 }
 
 string CSystem_Data_Storage::GetString(string name_id)

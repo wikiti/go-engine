@@ -6,24 +6,14 @@
 #ifndef __CSYSTEM_DATA_STORAGE_
 #define __CSYSTEM_DATA_STORAGE_
 
+#include "_globals.h"
+#include "_system.h"
+
 /** Ficheros donde se guardarán las variables. */
 #define __CSYSTEM_DATA_STORAGE_SAVEFILE "data/cfg/vars.dat"
 /** Ficheros donde se guardarán las variables de usuario. @no_use */
 #define __CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE "data/cfg/user.cfg"
 
-/** Valor de variable tipo string nula. */
-#define __CSYSTEM_DATA_STORAGE_NOSTRING ""
-/** Valor de variable tipo entera nula. */
-#define __CSYSTEM_DATA_STORAGE_NOINT INT_MAX
-/** Valor de variable tipo flotante nula. */
-#define __CSYSTEM_DATA_STORAGE_NOFLOAT FLT_MAX
-
-/** Valor de variable tipo string nula. */
-#define __NO_STRING  __CSYSTEM_DATA_STORAGE_NOSTRING
-/** Valor de variable tipo string nula. */
-#define __NO_INT     __CSYSTEM_DATA_STORAGE_NOINT
-/** Valor de variable tipo string nula. */
-#define __NO_FLOAT   __CSYSTEM_DATA_STORAGE_NOFLOAT
 
 /** Valor por defecto de la variable "__RENDER_RESOLUTION_WIDTH", siendo el ancho de la ventana. */
 #define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WIDTH 1200
@@ -96,11 +86,22 @@
 /** Valor por defecto de la variable "__INPUT_JUMP_KEY", para definir la tecla por defecto de "saltar". */
 #define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_JUMP_KEY "Space"
 
-#include "_globals.h"
-#include "_system.h"
+/** Valor de variable tipo string nula. */
+#define __CSYSTEM_DATA_STORAGE_NOSTRING ""
+/** Valor de variable tipo entera nula. */
+#define __CSYSTEM_DATA_STORAGE_NOINT INT_MAX
+/** Valor de variable tipo flotante nula. */
+#define __CSYSTEM_DATA_STORAGE_NOFLOAT FLT_MAX
 
 /** @addtogroup Sistemas */
 /*@{*/
+
+/** Valor de variable tipo string nula. */
+const std::string __NO_STRING(__CSYSTEM_DATA_STORAGE_NOSTRING);
+/** Valor de variable tipo string nula. */
+const int __NO_INT = __CSYSTEM_DATA_STORAGE_NOINT;
+/** Valor de variable tipo string nula. */
+const float __NO_FLOAT = __CSYSTEM_DATA_STORAGE_NOFLOAT;
 
 /**
  * @brief Sistema de gestión de datos (variables).
@@ -137,9 +138,12 @@
  */
 class CSystem_Data_Storage: public CSystem
 {
-  protected:
-    friend class CSystem_Debug;
+  friend class CSystem_Debug;
+  friend bool Systems_Init();
+  friend void Systems_Close();
+  friend bool Systems_Reset();
 
+  protected:
     std::map<std::string, std::string> strings;
     std::map<std::string, int> ints; //GLint
     std::map<std::string, float> floats; //GLfloat
@@ -158,7 +162,6 @@ class CSystem_Data_Storage: public CSystem
      * No realiza acciones por defecto.
      */
     CSystem_Data_Storage(): CSystem() {};
-
 
     /**
      * @brief Guardar variables almacenadas actualmente en el sistema.
@@ -185,26 +188,157 @@ class CSystem_Data_Storage: public CSystem
     bool Load(const char* file = __CSYSTEM_DATA_STORAGE_SAVEFILE);
 
     // Modificar, instanciar gSystem_Config o algo
+    /**
+     * @brief Cargar configuración inicial.
+     *
+     * Carga la configuración inicial. Similar a usar Load() sin parámetros. Si no se consigue cargar el fichero de variables,
+     * se crearán una serie de variables con los valores por defecto descritos en el fichero engine/include/_data.h.
+     */
     void LoadConfig();
+    /**
+     * @brief Guardar configuración.
+     *
+     * Idéntico a usar Save() sin argumentos.
+     */
     void SaveConfig();
 
+    /**
+     * @brief Asociar valor a un string.
+     *
+     * Asocia a la variable de tipo string con nombre "name_id" el valor descrito en "value". Si ya existe, se sobrescribe su valor.
+     * El identificador debe ser un identificador válido (caracteres alfanuméricos o '_').
+     *
+     * @param name_id Nombre de la variable a modificar.
+     * @param value Nuevo valor de la variable.
+     *
+     * @see Utils::validateIdentifier()
+     */
     void SetString(std::string name_id, std::string value);
+    /**
+     * @brief Asociar valor a un entero.
+     *
+     * Asocia a la variable de tipo entero o int con nombre "name_id" el valor descrito en "value". Si ya existe, se sobrescribe su valor.
+     * El identificador debe ser un identificador válido (caracteres alfanuméricos o '_').
+     *
+     * @param name_id Nombre de la variable a modificar.
+     * @param value Nuevo valor de la variable.
+     *
+     * @see Utils::validateIdentifier()
+     */
     void SetInt(std::string name_id, int value);
+    /**
+     * @brief Asociar valor a un flotante.
+     *
+     * Asocia a la variable de tipo flotante o float con nombre "name_id" el valor descrito en "value". Si ya existe, se sobrescribe su valor.
+     * El identificador debe ser un identificador válido (caracteres alfanuméricos o '_').
+     *
+     * @param name_id Nombre de la variable a modificar.
+     * @param value Nuevo valor de la variable.
+     *
+     * @see Utils::validateIdentifier()
+     */
     void SetFloat(std::string name_id, float value);
 
+    /**
+     * @brief Obtener el valor de un string.
+     *
+     * Retorna el valor de la variable de nombre "name_id" del tipo string.
+     *
+     * @param name_id Nombre de la variable.
+     * @return Valor de la variable. Retornará __NO_STRING en caso de que la variable no exista.
+     */
     std::string GetString(std::string name_id);
+    /**
+     * @brief Obtener el valor de un entero.
+     *
+     * Retorna el valor de la variable de nombre "name_id" del tipo entero o int.
+     *
+     * @param name_id Nombre de la variable.
+     * @return Valor de la variable. Retornará __NO_INT en caso de que la variable no exista.
+     */
     int GetInt(std::string name_id);
+    /**
+     * @brief Obtener el valor de un flotante.
+     *
+     * Retorna el valor de la variable de nombre "name_id" del tipo flotante o float.
+     *
+     * @param name_id Nombre de la variable.
+     * @return Valor de la variable. Retornará __NO_FLOAT en caso de que la variable no exista.
+     */
     float GetFloat(std::string name_id);
 
+    /**
+     * @brief Eliminar una variable del tipo string.
+     *
+     * Elimina la variable de nombre "name_id" del tipo string, si existe.
+     *
+     * @param name_id Nombre de la variable a borrar.
+     * @return Retorna true si se ha borrado correctamente, false en caso contrario (porque no exista, seguramente).
+     */
     bool RemoveString(std::string name_id);
+    /**
+     * @brief Eliminar una variable del tipo entero.
+     *
+     * Elimina la variable de nombre "name_id" del tipo entero o int, si existe.
+     *
+     * @param name_id Nombre de la variable a borrar.
+     * @return Retorna true si se ha borrado correctamente, false en caso contrario (porque no exista, seguramente).
+     */
     bool RemoveInt(std::string name_id);
+    /**
+     * @brief Eliminar una variable del tipo flotante.
+     *
+     * Elimina la variable de nombre "name_id" del tipo flotante o float, si existe.
+     *
+     * @param name_id Nombre de la variable a borrar.
+     * @return Retorna true si se ha borrado correctamente, false en caso contrario (porque no exista, seguramente).
+     */
     bool RemoveFloat(std::string name_id);
 
+    /**
+     * @brief Comprobar si existe una variable del tipo string.
+     *
+     * Comprobará si hay constancia de la variable dada.
+     *
+     * @param name_id Nombre de la variable a comprobar.
+     * @return Retorna true si la variable existe, false en caso contrario.
+     */
     bool ExistsInt(std::string name_id);
+    /**
+     * @brief Comprobar si existe una variable del tipo entero.
+     *
+     * Comprobará si hay constancia de la variable dada.
+     *
+     * @param name_id Nombre de la variable a comprobar.
+     * @return Retorna true si la variable existe, false en caso contrario.
+     */
     bool ExistsFloat(std::string name_id);
+    /**
+     * @brief Comprobar si existe una variable del tipo flotante.
+     *
+     * Comprobará si hay constancia de la variable dada.
+     *
+     * @param name_id Nombre de la variable a comprobar.
+     * @return Retorna true si la variable existe, false en caso contrario.
+     */
     bool ExistsString(std::string name_id);
 
+    /**
+     * @brief Elimina todas las variables.
+     *
+     * Elimina todas las variables del sistema, de todos los tipos.
+     * Además, eliminará las variables de *sistema*, aquellas que empiezan por "__".
+     *
+     * @warning Use este función si está seguro de lo que hace, ya que varios elementos del motor dependen en gran medida de variables de sistema.
+     */
     void RemoveAll();
+    /**
+     * @brief Elimina todas las variables menos las de sistema.
+     *
+     * Elimina todas las variables del usuario, de todos los tipos.
+     * En este caso, no se eliminarán las variables de *sistema*, aquellas que empiezan por "__".
+     *
+     */
     void RemoveUserVars();
 };
 

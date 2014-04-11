@@ -1,0 +1,869 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Go-Engine: Referencia del Archivo C:/Dev/Proyectos/go-engine/engine/include/systems/_data.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Go-Engine
+   &#160;<span id="projectnumber">alpha</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_bafa501d493553e442f19f5f8dd7b29c.html">include</a></li><li class="navelem"><a class="el" href="dir_e35aef00462436a53c3b51d31757f178.html">systems</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Clases</a> &#124;
+<a href="#define-members">'defines'</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo _data.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fichero que incluye la clase <a class="el" href="class_c_system___data___storage.html" title="Sistema de gestión de datos (variables). ">CSystem_Data_Storage</a> y sus estancias globales.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="__globals_8h_source.html">_globals.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="__system_8h_source.html">_system.h</a>&quot;</code><br/>
+</div>
+<p><a href="__data_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Clases</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_system___data___storage.html">CSystem_Data_Storage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sistema de gestión de datos (variables).  <a href="class_c_system___data___storage.html#details">Más...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+'defines'</h2></td></tr>
+<tr class="memitem:a71b62a1e80562ec3a45e48d051f8b030"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a71b62a1e80562ec3a45e48d051f8b030">__CSYSTEM_DATA_STORAGE_SAVEFILE</a>&#160;&#160;&#160;&quot;data/cfg/vars.dat&quot;</td></tr>
+<tr class="separator:a71b62a1e80562ec3a45e48d051f8b030"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe9551fcd424216e3b83a9a2241c645"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#acfe9551fcd424216e3b83a9a2241c645">__CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE</a>&#160;&#160;&#160;&quot;data/cfg/user.cfg&quot;</td></tr>
+<tr class="separator:acfe9551fcd424216e3b83a9a2241c645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab489d7fa68a77c9d11adacd4cf629dc3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#ab489d7fa68a77c9d11adacd4cf629dc3">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WIDTH</a>&#160;&#160;&#160;1200</td></tr>
+<tr class="separator:ab489d7fa68a77c9d11adacd4cf629dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c318187b779aa71b5e9e2e164adb0f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a52c318187b779aa71b5e9e2e164adb0f">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_HEIGHT</a>&#160;&#160;&#160;800</td></tr>
+<tr class="separator:a52c318187b779aa71b5e9e2e164adb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac54ce36d342d6c6d15f7029c4743cd56"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#ac54ce36d342d6c6d15f7029c4743cd56">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WINDOW_MODE</a>&#160;&#160;&#160;&quot;windowed&quot;</td></tr>
+<tr class="separator:ac54ce36d342d6c6d15f7029c4743cd56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4f526ae0abf7a13d4e7048b9868413"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#aeb4f526ae0abf7a13d4e7048b9868413">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_MULTISAMPLING</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:aeb4f526ae0abf7a13d4e7048b9868413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95ab67d61820f11d3136e7c1e95386d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a95ab67d61820f11d3136e7c1e95386d9">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_MULTISAMPLING_VALUE</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a95ab67d61820f11d3136e7c1e95386d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f1ce51bb6bbf57d2be9125888e00a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a83f1ce51bb6bbf57d2be9125888e00a5">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a83f1ce51bb6bbf57d2be9125888e00a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f371fabc37be37b4c16b0e8101df33"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#ae4f371fabc37be37b4c16b0e8101df33">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS_Z</a>&#160;&#160;&#160;10.f</td></tr>
+<tr class="separator:ae4f371fabc37be37b4c16b0e8101df33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ee7dc0242149e4f33ea1deb3a542a96"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a2ee7dc0242149e4f33ea1deb3a542a96">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS_X</a>&#160;&#160;&#160;10.f</td></tr>
+<tr class="separator:a2ee7dc0242149e4f33ea1deb3a542a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadd698d4c4145fe429081c78b9456639"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#aadd698d4c4145fe429081c78b9456639">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:aadd698d4c4145fe429081c78b9456639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b5d78b5f8fbc9fe0b0ac7ea5381b26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#ae9b5d78b5f8fbc9fe0b0ac7ea5381b26">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ae9b5d78b5f8fbc9fe0b0ac7ea5381b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c1f4cb63b4639ba24a7c3120a8b1c61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a0c1f4cb63b4639ba24a7c3120a8b1c61">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_ROWS</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:a0c1f4cb63b4639ba24a7c3120a8b1c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7effae158685a619ce109d5d4b828b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#ae7effae158685a619ce109d5d4b828b8">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_ROWS_SCALE</a>&#160;&#160;&#160;1.f</td></tr>
+<tr class="separator:ae7effae158685a619ce109d5d4b828b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af234413ba4158868e556b2fc97e95d2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#af234413ba4158868e556b2fc97e95d2d">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_COLS</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:af234413ba4158868e556b2fc97e95d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb9c3a3e66642b0fd998062b47630a9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#adb9c3a3e66642b0fd998062b47630a9a">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_COLS_SCALE</a>&#160;&#160;&#160;1.f</td></tr>
+<tr class="separator:adb9c3a3e66642b0fd998062b47630a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0da0d0fd67b11c6ce45bc90f9862d46d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a0da0d0fd67b11c6ce45bc90f9862d46d">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_VOLUME</a>&#160;&#160;&#160;1.0</td></tr>
+<tr class="separator:a0da0d0fd67b11c6ce45bc90f9862d46d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c03a2202c1ce2dfa678810e082c7257"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a9c03a2202c1ce2dfa678810e082c7257">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_MUSIC_VOLUME</a>&#160;&#160;&#160;1.0</td></tr>
+<tr class="separator:a9c03a2202c1ce2dfa678810e082c7257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7709fdabdc51356cdc61104d3b72fa6f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a7709fdabdc51356cdc61104d3b72fa6f">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES</a>&#160;&#160;&#160;225</td></tr>
+<tr class="separator:a7709fdabdc51356cdc61104d3b72fa6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dae98367198e0fde950ba61cfe3f1ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a1dae98367198e0fde950ba61cfe3f1ad">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES_ONESHOT</a>&#160;&#160;&#160;30</td></tr>
+<tr class="separator:a1dae98367198e0fde950ba61cfe3f1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a702f59060db542de7e8f48e723dbfded"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a702f59060db542de7e8f48e723dbfded">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_UP_KEY</a>&#160;&#160;&#160;&quot;W&quot;</td></tr>
+<tr class="separator:a702f59060db542de7e8f48e723dbfded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af584558ab6c1a128d3a1245bf23227bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#af584558ab6c1a128d3a1245bf23227bd">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_DOWN_KEY</a>&#160;&#160;&#160;&quot;S&quot;</td></tr>
+<tr class="separator:af584558ab6c1a128d3a1245bf23227bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b569ad9f13938b6a2142ac5fadc4fcf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a4b569ad9f13938b6a2142ac5fadc4fcf">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_LEFT_KEY</a>&#160;&#160;&#160;&quot;A&quot;</td></tr>
+<tr class="separator:a4b569ad9f13938b6a2142ac5fadc4fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a82b0031f15140552f514ac9502358"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a95a82b0031f15140552f514ac9502358">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_RIGHT_KEY</a>&#160;&#160;&#160;&quot;D&quot;</td></tr>
+<tr class="separator:a95a82b0031f15140552f514ac9502358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45166abf1c103733e8464ceeb715adb9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a45166abf1c103733e8464ceeb715adb9">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_UP_KEY</a>&#160;&#160;&#160;&quot;Up&quot;</td></tr>
+<tr class="separator:a45166abf1c103733e8464ceeb715adb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d24f814195235e5e88b86a2ae25d1b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a4d24f814195235e5e88b86a2ae25d1b4">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_DOWN_KEY</a>&#160;&#160;&#160;&quot;Down&quot;</td></tr>
+<tr class="separator:a4d24f814195235e5e88b86a2ae25d1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a074a85efe0b9b06a33f7901222c8383e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a074a85efe0b9b06a33f7901222c8383e">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_LEFT_KEY</a>&#160;&#160;&#160;&quot;Left&quot;</td></tr>
+<tr class="separator:a074a85efe0b9b06a33f7901222c8383e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a343c9bec48206e6054cd6e0dc07ed87c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a343c9bec48206e6054cd6e0dc07ed87c">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_RIGHT_KEY</a>&#160;&#160;&#160;&quot;Right&quot;</td></tr>
+<tr class="separator:a343c9bec48206e6054cd6e0dc07ed87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f1457120bda1c3a64f4e31720990cb1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a0f1457120bda1c3a64f4e31720990cb1">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION1_KEY</a>&#160;&#160;&#160;&quot;N&quot;</td></tr>
+<tr class="separator:a0f1457120bda1c3a64f4e31720990cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacca910db85cd5bc965b5c3367c563f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#aacca910db85cd5bc965b5c3367c563f5">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION2_KEY</a>&#160;&#160;&#160;&quot;M&quot;</td></tr>
+<tr class="separator:aacca910db85cd5bc965b5c3367c563f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ec42162011ea5daf3b1095273a43cf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a75ec42162011ea5daf3b1095273a43cf">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION3_KEY</a>&#160;&#160;&#160;&quot;J&quot;</td></tr>
+<tr class="separator:a75ec42162011ea5daf3b1095273a43cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f9930f9c2815b2607691f36f5edb1bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a9f9930f9c2815b2607691f36f5edb1bb">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION4_KEY</a>&#160;&#160;&#160;&quot;K&quot;</td></tr>
+<tr class="separator:a9f9930f9c2815b2607691f36f5edb1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6ff28c68b5a2e9bc5239923d73dd1e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#ae6ff28c68b5a2e9bc5239923d73dd1e2">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_RUN_KEY</a>&#160;&#160;&#160;&quot;Left Shift&quot;</td></tr>
+<tr class="separator:ae6ff28c68b5a2e9bc5239923d73dd1e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e6a4e929c86548c556dfa4825c7c03e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a9e6a4e929c86548c556dfa4825c7c03e">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_CROUCH_KEY</a>&#160;&#160;&#160;&quot;Left Ctrl&quot;</td></tr>
+<tr class="separator:a9e6a4e929c86548c556dfa4825c7c03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9fa65c1fe56a0236f4d74a022aca6d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#aff9fa65c1fe56a0236f4d74a022aca6d">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_JUMP_KEY</a>&#160;&#160;&#160;&quot;Space&quot;</td></tr>
+<tr class="separator:aff9fa65c1fe56a0236f4d74a022aca6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e036c69133f80a3a84196b2027e1f3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#a2e036c69133f80a3a84196b2027e1f3d">__CSYSTEM_DATA_STORAGE_NOSTRING</a>&#160;&#160;&#160;&quot;&quot;</td></tr>
+<tr class="separator:a2e036c69133f80a3a84196b2027e1f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6a3d695d49e2045f342bc7f24a4e155"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#ab6a3d695d49e2045f342bc7f24a4e155">__CSYSTEM_DATA_STORAGE_NOINT</a>&#160;&#160;&#160;INT_MAX</td></tr>
+<tr class="separator:ab6a3d695d49e2045f342bc7f24a4e155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe57f9e4ce8ea1f28b3d5ce2d5b9584b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__data_8h.html#abe57f9e4ce8ea1f28b3d5ce2d5b9584b">__CSYSTEM_DATA_STORAGE_NOFLOAT</a>&#160;&#160;&#160;FLT_MAX</td></tr>
+<tr class="separator:abe57f9e4ce8ea1f28b3d5ce2d5b9584b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:gadf464519fa7ff1d90ddd47bea6dba404"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sistemas.html#gadf464519fa7ff1d90ddd47bea6dba404">__NO_STRING</a> (<a class="el" href="__data_8h.html#a2e036c69133f80a3a84196b2027e1f3d">__CSYSTEM_DATA_STORAGE_NOSTRING</a>)</td></tr>
+<tr class="separator:gadf464519fa7ff1d90ddd47bea6dba404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga6107e4fff9922a011a814acc33938e2e"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sistemas.html#ga6107e4fff9922a011a814acc33938e2e">__NO_INT</a> = <a class="el" href="__data_8h.html#ab6a3d695d49e2045f342bc7f24a4e155">__CSYSTEM_DATA_STORAGE_NOINT</a></td></tr>
+<tr class="separator:ga6107e4fff9922a011a814acc33938e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d48994e85a784e22878f7bdd51324a8"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sistemas.html#ga2d48994e85a784e22878f7bdd51324a8">__NO_FLOAT</a> = <a class="el" href="__data_8h.html#abe57f9e4ce8ea1f28b3d5ce2d5b9584b">__CSYSTEM_DATA_STORAGE_NOFLOAT</a></td></tr>
+<tr class="separator:ga2d48994e85a784e22878f7bdd51324a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85bee145facae2ad509319caf538f4cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_system___data___storage.html">CSystem_Data_Storage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sistemas.html#ga85bee145facae2ad509319caf538f4cd">gSystem_Data_Storage</a></td></tr>
+<tr class="memdesc:ga85bee145facae2ad509319caf538f4cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Objeto global del sistema "Data Storage".  <a href="group___sistemas.html#ga85bee145facae2ad509319caf538f4cd">Más...</a><br/></td></tr>
+<tr class="separator:ga85bee145facae2ad509319caf538f4cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff9638475581d4e511b3254ca667e053"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_system___data___storage.html">CSystem_Data_Storage</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sistemas.html#gaff9638475581d4e511b3254ca667e053">gData</a></td></tr>
+<tr class="memdesc:gaff9638475581d4e511b3254ca667e053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Objeto global del sistema "Data Storage".  <a href="group___sistemas.html#gaff9638475581d4e511b3254ca667e053">Más...</a><br/></td></tr>
+<tr class="separator:gaff9638475581d4e511b3254ca667e053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Fichero que incluye la clase <a class="el" href="class_c_system___data___storage.html" title="Sistema de gestión de datos (variables). ">CSystem_Data_Storage</a> y sus estancias globales. </p>
+
+<p>Definición en el archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+</div><h2 class="groupheader">Documentación de los 'defines'</h2>
+<a class="anchor" id="a71b62a1e80562ec3a45e48d051f8b030"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_SAVEFILE&#160;&#160;&#160;&quot;data/cfg/vars.dat&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ficheros donde se guardarán las variables. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00013">13</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acfe9551fcd424216e3b83a9a2241c645"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE&#160;&#160;&#160;&quot;data/cfg/user.cfg&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ficheros donde se guardarán las variables de usuario. <span style="color:red;font-weight:bold;">Sin usar</span>. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00015">15</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a> y <a class="el" href="__data_8cpp_source.html#l00222">CSystem_Data_Storage::SaveConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab489d7fa68a77c9d11adacd4cf629dc3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WIDTH&#160;&#160;&#160;1200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_RESOLUTION_WIDTH", siendo el ancho de la ventana. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00019">19</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a52c318187b779aa71b5e9e2e164adb0f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_HEIGHT&#160;&#160;&#160;800</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_RESOLUTION_HEIGHT", siendo el alto de la ventana. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00021">21</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac54ce36d342d6c6d15f7029c4743cd56"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WINDOW_MODE&#160;&#160;&#160;&quot;windowed&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_RESOLUTION_WINDOW_MODE", siendo el modo la ventana. (ventana, pantalla completa y ventana completa). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00023">23</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeb4f526ae0abf7a13d4e7048b9868413"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_MULTISAMPLING&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_RESOLUTION_MULTISAMPLING", para activar o desactivar el multimuestreo (antialising). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00025">25</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a95ab67d61820f11d3136e7c1e95386d9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_MULTISAMPLING_VALUE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_RESOLUTION_MULTISAMPLING_VALUE", para determinar el número de buffers a usar con el multimuestreo. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00027">27</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a83f1ce51bb6bbf57d2be9125888e00a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_SOUND_RADIUS", para activar o desactivar el dibujado del sonido. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00030">30</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae4f371fabc37be37b4c16b0e8101df33"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS_Z&#160;&#160;&#160;10.f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_SOUND_RADIUS_Z", para saber las "Z" secciones que tienen las esferas de sonido. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00032">32</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2ee7dc0242149e4f33ea1deb3a542a96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS_X&#160;&#160;&#160;10.f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_SOUND_RADIUS_X", para saber las "X" secciones que tienen las esferas de sonido. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00034">34</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aadd698d4c4145fe429081c78b9456639"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_TRANSFORM", para activar o desactivar el dibujado de los componentes de transformación. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00037">37</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae9b5d78b5f8fbc9fe0b0ac7ea5381b26"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_TRANSFORM_GRID", para activar o desactivar el dibujado de la rejilla. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00039">39</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c1f4cb63b4639ba24a7c3120a8b1c61"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_ROWS&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_TRANSFORM_GRID_ROWS", para definir el número de filas en la rejilla. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00041">41</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae7effae158685a619ce109d5d4b828b8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_ROWS_SCALE&#160;&#160;&#160;1.f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_TRANSFORM_GRID_ROWS_SCALE", para definir la escala de las filas en la rejilla. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00043">43</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af234413ba4158868e556b2fc97e95d2d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_COLS&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_TRANSFORM_GRID_COLS", para definir el número de columnas en la rejilla. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00045">45</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adb9c3a3e66642b0fd998062b47630a9a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_COLS_SCALE&#160;&#160;&#160;1.f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__RENDER_TRANSFORM_GRID_COLS_SCALE", para definir la escala de las columnas en la rejilla. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00047">47</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0da0d0fd67b11c6ce45bc90f9862d46d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_VOLUME&#160;&#160;&#160;1.0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__SOUND_VOLUME", para definir el volumen del juego. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00050">50</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c03a2202c1ce2dfa678810e082c7257"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_MUSIC_VOLUME&#160;&#160;&#160;1.0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__SOUND_MUSIC_VOLUME", para definir el volumen de la música del juego. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00052">52</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7709fdabdc51356cdc61104d3b72fa6f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES&#160;&#160;&#160;225</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__SOUND_VOLUME_NUMBER_SOURCES", recursos usados para los componentes <a class="el" href="class_c_component___audio___source.html" title="Componente de audio. ">CComponent_Audio_Source</a> con Bind(). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00054">54</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1dae98367198e0fde950ba61cfe3f1ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES_ONESHOT&#160;&#160;&#160;30</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__SOUND_VOLUME_NUMBER_SOURCES_ONESHIT", recursos usados para los componentes <a class="el" href="class_c_component___audio___source.html" title="Componente de audio. ">CComponent_Audio_Source</a> con oneshots ( <a class="el" href="class_c_component___audio___source.html#a51d3f2afa3638b7fc2f8b1b39c65bea0">CComponent_Audio_Source::PlayOneShot()</a> ). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00056">56</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a702f59060db542de7e8f48e723dbfded"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_UP_KEY&#160;&#160;&#160;&quot;W&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_AXIS1_UP_KEY", para definir la tecla por defecto "arriba" del eje 1 (wads). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00059">59</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af584558ab6c1a128d3a1245bf23227bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_DOWN_KEY&#160;&#160;&#160;&quot;S&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_AXIS1_DOWN_KEY", para definir la tecla por defecto "abajo" del eje 1 (wads). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00061">61</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4b569ad9f13938b6a2142ac5fadc4fcf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_LEFT_KEY&#160;&#160;&#160;&quot;A&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_AXIS1_LEFT_KEY", para definir la tecla por defecto "izquierda" del eje 1 (wads). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00063">63</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a95a82b0031f15140552f514ac9502358"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_RIGHT_KEY&#160;&#160;&#160;&quot;D&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_AXIS1_RIGHT_KEY", para definir la tecla por defecto "derecha" del eje 1 (wads). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00065">65</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a45166abf1c103733e8464ceeb715adb9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_UP_KEY&#160;&#160;&#160;&quot;Up&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_AXIS2_UP_KEY", para definir la tecla por defecto "arriba" del eje 2 (flechas). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00067">67</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4d24f814195235e5e88b86a2ae25d1b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_DOWN_KEY&#160;&#160;&#160;&quot;Down&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_AXIS2_DOWN_KEY", para definir la tecla por defecto "abajo" del eje 2 (flechas). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00069">69</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a074a85efe0b9b06a33f7901222c8383e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_LEFT_KEY&#160;&#160;&#160;&quot;Left&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_AXIS2_LEFT_KEY", para definir la tecla por defecto "izquierda" del eje 2 (flechas). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00071">71</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a343c9bec48206e6054cd6e0dc07ed87c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_RIGHT_KEY&#160;&#160;&#160;&quot;Right&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_AXIS2_RIGHT_KEY", para definir la tecla por defecto "derecha" del eje 2 (flechas). </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00073">73</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0f1457120bda1c3a64f4e31720990cb1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION1_KEY&#160;&#160;&#160;&quot;N&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_ACTION1_KEY", para definir la tecla por defecto de "acción1". </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00075">75</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aacca910db85cd5bc965b5c3367c563f5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION2_KEY&#160;&#160;&#160;&quot;M&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_ACTION2_KEY", para definir la tecla por defecto de "acción2". </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00077">77</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a75ec42162011ea5daf3b1095273a43cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION3_KEY&#160;&#160;&#160;&quot;J&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_ACTION3_KEY", para definir la tecla por defecto de "acción3". </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00079">79</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f9930f9c2815b2607691f36f5edb1bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION4_KEY&#160;&#160;&#160;&quot;K&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_ACTION4_KEY", para definir la tecla por defecto de "acción4". </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00081">81</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae6ff28c68b5a2e9bc5239923d73dd1e2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_RUN_KEY&#160;&#160;&#160;&quot;Left Shift&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_RUN_KEY", para definir la tecla por defecto de "correr". </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00083">83</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9e6a4e929c86548c556dfa4825c7c03e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_CROUCH_KEY&#160;&#160;&#160;&quot;Left Ctrl&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_CROUCH_KEY", para definir la tecla por defecto de "agacharse". </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00085">85</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aff9fa65c1fe56a0236f4d74a022aca6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_JUMP_KEY&#160;&#160;&#160;&quot;Space&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor por defecto de la variable "__INPUT_JUMP_KEY", para definir la tecla por defecto de "saltar". </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00087">87</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00174">CSystem_Data_Storage::LoadConfig()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2e036c69133f80a3a84196b2027e1f3d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_NOSTRING&#160;&#160;&#160;&quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor de variable tipo string nula. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00090">90</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00313">CSystem_Data_Storage::ExistsString()</a> y <a class="el" href="__data_8cpp_source.html#l00270">CSystem_Data_Storage::GetString()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab6a3d695d49e2045f342bc7f24a4e155"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_NOINT&#160;&#160;&#160;INT_MAX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor de variable tipo entera nula. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00092">92</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00297">CSystem_Data_Storage::ExistsInt()</a>, <a class="el" href="__data_8cpp_source.html#l00279">CSystem_Data_Storage::GetInt()</a> y <a class="el" href="fireworks_8cpp_source.html#l00004">SetGameObjects_Instance1_Fireworks()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abe57f9e4ce8ea1f28b3d5ce2d5b9584b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define __CSYSTEM_DATA_STORAGE_NOFLOAT&#160;&#160;&#160;FLT_MAX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Valor de variable tipo flotante nula. </p>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00094">94</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__data_8cpp_source.html#l00305">CSystem_Data_Storage::ExistsFloat()</a> y <a class="el" href="__data_8cpp_source.html#l00288">CSystem_Data_Storage::GetFloat()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Viernes, 11 de Abril de 2014 20:43:38 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

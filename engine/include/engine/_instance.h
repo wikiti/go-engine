@@ -63,9 +63,6 @@ class CInstance
     void CalculateFPS();
 
   public:
-    CInstance(fboolpointer load_gameObject_function, std::string resource_file);
-    //~CInstance();
-
     GLdouble fps()
     {
       return FPS;

@@ -79,6 +79,12 @@ void Firework_Manager_Input(CGameObject* gameObject)
 
     explosion->ParticleEmitter()->start_min_color(r, g, b, 1.f);
     explosion->ParticleEmitter()->start_max_color(r, g, b, 1.f);
+
+    r = gMath.random(0.f, 1.f);
+    g = gMath.random(0.f, 1.f);
+    b = gMath.random(0.f, 1.f);
+
+    explosion->ParticleEmitter()->color_adder(r, g, b, 0.f);
     //explosion->particleEmitter()->color_adder(0, 0, 0, -0.1f);
 
     explosion->AudioSource()->SetSound("firework_explosion");
@@ -90,7 +96,8 @@ void Firework_Manager_Input(CGameObject* gameObject)
 
       // Trail
     trail->ParticleEmitter()->material_name = "smoke1";
-    trail->ParticleEmitter()->max_particles = 100;
+    trail->ParticleEmitter()->max_particles = 500;
+    trail->ParticleEmitter()->particles_per_second = 500;
     trail->ParticleEmitter()->angle_spread = 10;
     trail->ParticleEmitter()->direction(0, -1.f, 0);
     trail->ParticleEmitter()->gravity(0, 0.f, 0);
@@ -98,10 +105,13 @@ void Firework_Manager_Input(CGameObject* gameObject)
     trail->ParticleEmitter()->start_max_vel = 0.f;
     trail->ParticleEmitter()->start_min_vel = 0.f;
 
-    trail->ParticleEmitter()->start_min_color(1.f, 0.5f, 0.12f, 1.f);
-    trail->ParticleEmitter()->start_max_color(1.f, 0.5f, 0.12f, 1.f);
+    trail->ParticleEmitter()->start_min_scale = 0.75f;
+    trail->ParticleEmitter()->start_max_scale = 1.f;
+
+    trail->ParticleEmitter()->start_min_color(1.f, 0.5f, 0.12f, 0.5f);
+    trail->ParticleEmitter()->start_max_color(1.f, 0.5f, 0.12f, 0.8f);
     trail->ParticleEmitter()->min_color(0.12f, 0.12f, 0.12f, 0.f);
-    trail->ParticleEmitter()->color_adder(-3.f, -1.5f, 0.f, 0.f);
+    trail->ParticleEmitter()->color_adder(-4.f, -2.f, 0.f, -1.f);
 
     trail->ParticleEmitter()->start_max_vel = 0.5f;
     trail->ParticleEmitter()->start_min_vel = 0.f;
@@ -132,7 +142,7 @@ void Firework_Manager_Behaviour(CGameObject* gameObject)
   if(!fireworks.size())
     return;
 
-  for(int i = 0; i < fireworks.size(); i++)
+  for(uint i = 0; i < fireworks.size(); i++)
   {
     ostringstream oss;
     oss << fireworks_value[i];

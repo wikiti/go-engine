@@ -856,16 +856,16 @@ void CSystem_Debug::Console_command__SET_STRING(string arguments)
   string val_name, val;
   ss >> val_name;
 
-  if(val_name != "")
-  {
-    getline(ss, val);
-    if(val.size() > 2) val = val.substr(1);
+  //if(val_name != "")
+  //{
+  getline(ss, val);
+  if(val.size() > 2) val = val.substr(1);
 
-    console_msg("%s = \"%s\"", val_name.c_str(), val.c_str());
-    gSystem_Data_Storage.SetString(val_name, val);
-  }
-  else
-    console_warning_msg("Format is: set_string <identifier> [value]");
+  console_msg("%s = \"%s\"", val_name.c_str(), val.c_str());
+  gSystem_Data_Storage.SetString(val_name, val);
+  //}
+  //else
+  //  console_warning_msg("Format is: set_string <identifier> [value]");
 }
 
 void CSystem_Debug::Console_command__GET_INT(string arguments)

@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Go-Engine: Referencia del Archivo C:/Dev/Proyectos/go-engine/user/include/random/random_stuff.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Go-Engine
+   &#160;<span id="projectnumber">alpha</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_111cd2f11cffd6d6d28d89ee0389ee9e.html">user</a></li><li class="navelem"><a class="el" href="dir_5880318873dbba54eaeafe8b295b00fd.html">include</a></li><li class="navelem"><a class="el" href="dir_ede713a33fe41ebca353cce6d0bb39ca.html">random</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo random_stuff.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="__globals_8h_source.html">_globals.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="__object_8h_source.html">_object.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="__components_8h_source.html">_components.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="__systems_8h_source.html">_systems.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="__engine_8h_source.html">engine/_engine.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="predefined__functions_8h_source.html">predefined_functions.h</a>&quot;</code><br/>
+</div>
+<p><a href="random__stuff_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:ae8bb000fef4ae1599ba9ccb5bc576d44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#ae8bb000fef4ae1599ba9ccb5bc576d44">SetGameObjects_Instance1_RandomStuff</a> ()</td></tr>
+<tr class="separator:ae8bb000fef4ae1599ba9ccb5bc576d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f535afa34b12fa5fa3682ae84c8cb54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#a1f535afa34b12fa5fa3682ae84c8cb54">Camara_second_before_render</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *gameObject)</td></tr>
+<tr class="separator:a1f535afa34b12fa5fa3682ae84c8cb54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b8ce4634071097920d7d83b1ace0c84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#a6b8ce4634071097920d7d83b1ace0c84">Camara_second_after_render</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *gameObject)</td></tr>
+<tr class="separator:a6b8ce4634071097920d7d83b1ace0c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a652b7cf1c0fa3189d2b315b3fd85fbed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#a652b7cf1c0fa3189d2b315b3fd85fbed">Cubo_main_movimiento</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *gameObject)</td></tr>
+<tr class="separator:a652b7cf1c0fa3189d2b315b3fd85fbed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b1f5b0fa8ab4443d00567254ff863ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#a2b1f5b0fa8ab4443d00567254ff863ef">Cubo_second_movimiento</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *gameObject)</td></tr>
+<tr class="separator:a2b1f5b0fa8ab4443d00567254ff863ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab56a7da7ebcf516f9023516411384e17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#ab56a7da7ebcf516f9023516411384e17">Cubo_third_behaviour</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *gameObject)</td></tr>
+<tr class="separator:ab56a7da7ebcf516f9023516411384e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4727e1d8649ba6e36ba5c766500475"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#a7d4727e1d8649ba6e36ba5c766500475">Camara_second_movimiento</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *gameObject)</td></tr>
+<tr class="separator:a7d4727e1d8649ba6e36ba5c766500475"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1deb5c04c6e597bd9b427398ff25d891"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#a1deb5c04c6e597bd9b427398ff25d891">Particle_emitter_explosions</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *gameObject)</td></tr>
+<tr class="separator:a1deb5c04c6e597bd9b427398ff25d891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec4613f9d1acfa85cedad6f9acacda83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="random__stuff_8h.html#aec4613f9d1acfa85cedad6f9acacda83">Hada_movimiento</a> (<a class="el" href="class_c_game_object.html">CGameObject</a> *gameObject)</td></tr>
+<tr class="separator:aec4613f9d1acfa85cedad6f9acacda83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de las funciones</h2>
+<a class="anchor" id="ae8bb000fef4ae1599ba9ccb5bc576d44"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SetGameObjects_Instance1_RandomStuff </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00010">10</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00222">colorf_t::a</a>, <a class="el" href="__manager_8cpp_source.html#l00142">CSystem_GameObject_Manager::Add()</a>, <a class="el" href="__render_8cpp_source.html#l00441">CSystem_Render::AddCamera()</a>, <a class="el" href="__object_8cpp_source.html#l00081">CGameObject::AddChild()</a>, <a class="el" href="__object_8h_source.html#l00858">CGameObject::AddComponent()</a>, <a class="el" href="__component__camera_8h_source.html#l00140">CComponent_Camera::after_render</a>, <a class="el" href="__component__particle__emitter_8h_source.html#l00173">CComponent_Particle_Emitter::angle_spread</a>, <a class="el" href="__globals_8h_source.html#l00221">colorf_t::b</a>, <a class="el" href="__component__camera_8h_source.html#l00130">CComponent_Camera::background_color</a>, <a class="el" href="__component__camera_8h_source.html#l00139">CComponent_Camera::before_render</a>, <a class="el" href="random__stuff_8cpp_source.html#l00121">Camara_second_after_render()</a>, <a class="el" href="random__stuff_8cpp_source.html#l00116">Camara_second_before_render()</a>, <a class="el" href="__object_8h_source.html#l00733">CGameObject::Camera()</a>, <a class="el" href="__component__gui_8h_source.html#l00088">CComponent_GUI_Texture::color</a>, <a class="el" href="__component__gui_8h_source.html#l00090">CComponent_GUI_Texture::color_apply_force</a>, <a class="el" href="random__stuff_8cpp_source.html#l00126">Cubo_main_movimiento()</a>, <a class="el" href="random__stuff_8cpp_source.html#l00260">Cubo_second_movimiento()</a>, <a class="el" href="random__stuff_8cpp_source.html#l00277">Cubo_third_behaviour()</a>, <a class="el" href="predefined__functions_8cpp_source.html#l00015">DefineTramsformByVar()</a>, <a class="el" href="__globals_8h_source.html#l00220">colorf_t::g</a>, <a class="el" href="__object_8h_source.html#l00476">CGameObject::GetName()</a>, <a class="el" href="__manager_8cpp_source.html#l00007">gGameObjects</a>, <a class="el" href="__component__particle__emitter_8h_source.html#l00208">CComponent_Particle_Emitter::gravity</a>, <a class="el" href="__render_8cpp_source.html#l00017">gSystem_Render</a>, <a class="el" href="__object_8h_source.html#l00811">CGameObject::GUITexture()</a>, <a class="el" href="random__stuff_8cpp_source.html#l00296">Hada_movimiento()</a>, <a class="el" href="__component__gui_8h_source.html#l00086">CComponent_GUI_Texture::height</a>, <a class="el" href="__globals_8h_source.html#l00445">viewportf_t::height</a>, <a class="el" href="__component__mesh__render_8h_source.html#l00084">CComponent_Mesh_Render::material_name</a>, <a class="el" href="__component__particle__emitter_8h_source.html#l00161">CComponent_Particle_Emitter::material_name</a>, <a class="el" href="__component__particle__emitter_8h_source.html#l00159">CComponent_Particle_Emitter::max_particles</a>, <a class="el" href="__component__mesh__render_8h_source.html#l00083">CComponent_Mesh_Render::mesh_name</a>, <a class="el" href="__object_8h_source.html#l00759">CGameObject::MeshRender()</a>, <a class="el" href="__component_8h_source.html#l00028">Components::particle_emitter</a>, <a class="el" href="random__stuff_8cpp_source.html#l00301">Particle_emitter_explosions()</a>, <a class="el" href="__object_8h_source.html#l00785">CGameObject::ParticleEmitter()</a>, <a class="el" href="__component__gui_8h_source.html#l00082">CComponent_GUI_Texture::pixel_offset_x</a>, <a class="el" href="__component__transform_8h_source.html#l00077">CComponent_Transform::position</a>, <a class="el" href="__manager_8cpp_source.html#l00307">CSystem_GameObject_Manager::Rename()</a>, <a class="el" href="__component__transform_8cpp_source.html#l00263">CComponent_Transform::Rotate()</a>, <a class="el" href="__object_8h_source.html#l00306">CGameObject::SetBehaviourFunction()</a>, <a class="el" href="__object_8h_source.html#l00317">CGameObject::SetEventFunction()</a>, <a class="el" href="__object_8h_source.html#l00329">CGameObject::SetInputFunction()</a>, <a class="el" href="__component__transform_8cpp_source.html#l00316">CComponent_Transform::SetScale()</a>, <a class="el" href="__component__camera_8h_source.html#l00226">CComponent_Camera::SetTarget()</a>, <a class="el" href="__component__camera_8h_source.html#l00133">CComponent_Camera::skybox_texture</a>, <a class="el" href="__component__particle__emitter_8h_source.html#l00206">CComponent_Particle_Emitter::start_max_color</a>, <a class="el" href="__component__particle__emitter_8h_source.html#l00196">CComponent_Particle_Emitter::start_max_scale</a>, <a class="el" href="__component__particle__emitter_8h_source.html#l00206">CComponent_Particle_Emitter::start_min_color</a>, <a class="el" href="__component__particle__emitter_8h_source.html#l00198">CComponent_Particle_Emitter::start_min_scale_factor</a>, <a class="el" href="__component__gui_8h_source.html#l00080">CComponent_GUI_Texture::texture_name</a>, <a class="el" href="__object_8h_source.html#l00709">CGameObject::Transform()</a>, <a class="el" href="__component__transform_8cpp_source.html#l00234">CComponent_Transform::Translate()</a>, <a class="el" href="__component__camera_8h_source.html#l00124">CComponent_Camera::viewport</a>, <a class="el" href="__component__gui_8h_source.html#l00085">CComponent_GUI_Texture::width</a>, <a class="el" href="__globals_8h_source.html#l00444">viewportf_t::width</a> y <a class="el" href="__globals_8h_source.html#l00508">vector3f_t::y</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1f535afa34b12fa5fa3682ae84c8cb54"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camara_second_before_render </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00116">116</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__manager_8cpp_source.html#l00007">gGameObjects</a>.</p>
+
+<p>Referenciado por <a class="el" href="random__stuff_8cpp_source.html#l00010">SetGameObjects_Instance1_RandomStuff()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6b8ce4634071097920d7d83b1ace0c84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camara_second_after_render </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00121">121</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__manager_8cpp_source.html#l00007">gGameObjects</a>.</p>
+
+<p>Referenciado por <a class="el" href="random__stuff_8cpp_source.html#l00010">SetGameObjects_Instance1_RandomStuff()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a652b7cf1c0fa3189d2b315b3fd85fbed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Cubo_main_movimiento </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00126">126</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__other_8h_source.html#l00041">CSystem_Time::deltaTime_s()</a>, <a class="el" href="__other_8cpp_source.html#l00004">gTime</a>, <a class="el" href="__input_8cpp_source.html#l00007">gUserInput</a>, <a class="el" href="__input_8cpp_source.html#l00387">CSystem_UserInput::Keyboard()</a>, <a class="el" href="__component__transform_8cpp_source.html#l00223">CComponent_Transform::LRotate()</a>, <a class="el" href="__component__transform_8cpp_source.html#l00195">CComponent_Transform::LTranslate()</a>, <a class="el" href="__component__transform_8cpp_source.html#l00263">CComponent_Transform::Rotate()</a>, <a class="el" href="__component__transform_8cpp_source.html#l00278">CComponent_Transform::SetAngle()</a>, <a class="el" href="__object_8h_source.html#l00709">CGameObject::Transform()</a> y <a class="el" href="__component__transform_8cpp_source.html#l00234">CComponent_Transform::Translate()</a>.</p>
+
+<p>Referenciado por <a class="el" href="random__stuff_8cpp_source.html#l00010">SetGameObjects_Instance1_RandomStuff()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2b1f5b0fa8ab4443d00567254ff863ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Cubo_second_movimiento </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00260">260</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__other_8h_source.html#l00041">CSystem_Time::deltaTime_s()</a>, <a class="el" href="__other_8cpp_source.html#l00004">gTime</a>, <a class="el" href="__input_8cpp_source.html#l00007">gUserInput</a>, <a class="el" href="__input_8cpp_source.html#l00387">CSystem_UserInput::Keyboard()</a>, <a class="el" href="__component__transform_8cpp_source.html#l00316">CComponent_Transform::SetScale()</a> y <a class="el" href="__object_8h_source.html#l00709">CGameObject::Transform()</a>.</p>
+
+<p>Referenciado por <a class="el" href="random__stuff_8cpp_source.html#l00010">SetGameObjects_Instance1_RandomStuff()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab56a7da7ebcf516f9023516411384e17"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Cubo_third_behaviour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00277">277</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__manager_8cpp_source.html#l00007">gGameObjects</a>, <a class="el" href="__component__transform_8cpp_source.html#l00433">CComponent_Transform::LookAt()</a> y <a class="el" href="__object_8h_source.html#l00709">CGameObject::Transform()</a>.</p>
+
+<p>Referenciado por <a class="el" href="random__stuff_8cpp_source.html#l00010">SetGameObjects_Instance1_RandomStuff()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7d4727e1d8649ba6e36ba5c766500475"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camara_second_movimiento </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00282">282</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__object_8h_source.html#l00733">CGameObject::Camera()</a>, <a class="el" href="__globals_8cpp_source.html#l00003">event</a>, <a class="el" href="__manager_8cpp_source.html#l00007">gGameObjects</a>, <a class="el" href="__component__camera_8h_source.html#l00226">CComponent_Camera::SetTarget()</a> y <a class="el" href="__component__camera_8h_source.html#l00244">CComponent_Camera::UnSetTarget()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1deb5c04c6e597bd9b427398ff25d891"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Particle_emitter_explosions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00301">301</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__globals_8cpp_source.html#l00003">event</a>, <a class="el" href="__other_8cpp_source.html#l00040">gMath</a>, <a class="el" href="__object_8h_source.html#l00785">CGameObject::ParticleEmitter()</a>, <a class="el" href="__component__transform_8h_source.html#l00077">CComponent_Transform::position</a>, <a class="el" href="__other_8h_source.html#l00355">CSystem_Math::random_point()</a>, <a class="el" href="__component__particle__emitter_8cpp_source.html#l00177">CComponent_Particle_Emitter::Start()</a> y <a class="el" href="__object_8h_source.html#l00709">CGameObject::Transform()</a>.</p>
+
+<p>Referenciado por <a class="el" href="random__stuff_8cpp_source.html#l00010">SetGameObjects_Instance1_RandomStuff()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aec4613f9d1acfa85cedad6f9acacda83"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Hada_movimiento </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_c_game_object.html">CGameObject</a> *&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="random__stuff_8cpp_source.html#l00296">296</a> del archivo <a class="el" href="random__stuff_8cpp_source.html">random_stuff.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="predefined__functions_8cpp_source.html#l00003">SetTransformByVar()</a>.</p>
+
+<p>Referenciado por <a class="el" href="random__stuff_8cpp_source.html#l00010">SetGameObjects_Instance1_RandomStuff()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Viernes, 11 de Abril de 2014 20:43:39 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

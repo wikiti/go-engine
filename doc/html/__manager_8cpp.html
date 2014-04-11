@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>Go-Engine: Referencia del Archivo C:/Dev/Proyectos/go-engine/engine/src/systems/_manager.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_small.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Go-Engine
+   &#160;<span id="projectnumber">alpha</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_996f45160da62e1a3d7f6046fad68f51.html">engine</a></li><li class="navelem"><a class="el" href="dir_3d9126aa00c041bc0b8f859d1965a0f4.html">src</a></li><li class="navelem"><a class="el" href="dir_c40367b30ab293dcfc5239bb834d4d97.html">systems</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia del Archivo _manager.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="__manager_8h_source.html">systems/_manager.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="__debug_8h_source.html">systems/_debug.h</a>&quot;</code><br/>
+</div>
+<p><a href="__manager_8cpp_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae38a914d0a766d5d9430841760b9759e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_system___game_object___manager.html">CSystem_GameObject_Manager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__manager_8cpp.html#ae38a914d0a766d5d9430841760b9759e">gSystem_GameObject_Manager</a></td></tr>
+<tr class="separator:ae38a914d0a766d5d9430841760b9759e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41d205f453c696c345580f2387ed59ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_system___game_object___manager.html">CSystem_GameObject_Manager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="__manager_8cpp.html#a41d205f453c696c345580f2387ed59ad">gGameObjects</a> = <a class="el" href="__manager_8cpp.html#ae38a914d0a766d5d9430841760b9759e">gSystem_GameObject_Manager</a></td></tr>
+<tr class="separator:a41d205f453c696c345580f2387ed59ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de las variables</h2>
+<a class="anchor" id="ae38a914d0a766d5d9430841760b9759e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_system___game_object___manager.html">CSystem_GameObject_Manager</a> gSystem_GameObject_Manager</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__manager_8cpp_source.html#l00006">6</a> del archivo <a class="el" href="__manager_8cpp_source.html">_manager.cpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="__render_8cpp_source.html#l00450">CSystem_Render::AddCamera()</a>, <a class="el" href="__render_8cpp_source.html#l00471">CSystem_Render::AddCameraPrior()</a>, <a class="el" href="__object_8cpp_source.html#l00194">CGameObject::AddToSystem()</a>, <a class="el" href="__render_8cpp_source.html#l00020">CSystem_Render::Init()</a>, <a class="el" href="__object_8cpp_source.html#l00206">CGameObject::RemoveFromSystem()</a>, <a class="el" href="__render_8cpp_source.html#l00423">CSystem_Render::SetMainCamera()</a>, <a class="el" href="__systems_8cpp_source.html#l00076">Systems_Close()</a>, <a class="el" href="__systems_8cpp_source.html#l00005">Systems_Init()</a> y <a class="el" href="__systems_8cpp_source.html#l00091">Systems_Reset()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a41d205f453c696c345580f2387ed59ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_system___game_object___manager.html">CSystem_GameObject_Manager</a>&amp; gGameObjects = <a class="el" href="__manager_8cpp.html#ae38a914d0a766d5d9430841760b9759e">gSystem_GameObject_Manager</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="__manager_8cpp_source.html#l00007">7</a> del archivo <a class="el" href="__manager_8cpp_source.html">_manager.cpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="random__stuff_8cpp_source.html#l00121">Camara_second_after_render()</a>, <a class="el" href="random__stuff_8cpp_source.html#l00116">Camara_second_before_render()</a>, <a class="el" href="random__stuff_8cpp_source.html#l00282">Camara_second_movimiento()</a>, <a class="el" href="random__stuff_8cpp_source.html#l00277">Cubo_third_behaviour()</a>, <a class="el" href="fireworks_8cpp_source.html#l00140">Firework_Manager_Behaviour()</a>, <a class="el" href="fireworks_8cpp_source.html#l00034">Firework_Manager_Input()</a>, <a class="el" href="game_objects_8cpp_source.html#l00003">SetGameObjects_Instance1()</a>, <a class="el" href="fireworks_8cpp_source.html#l00004">SetGameObjects_Instance1_Fireworks()</a>, <a class="el" href="other__particles_8cpp_source.html#l00014">SetGameObjects_Instance1_Other_Particles()</a>, <a class="el" href="rainbow_8cpp_source.html#l00005">SetGameObjects_Instance1_Rainbow()</a>, <a class="el" href="random__stuff_8cpp_source.html#l00010">SetGameObjects_Instance1_RandomStuff()</a>, <a class="el" href="render_8cpp_source.html#l00010">SetGameObjects_Instance1_Render()</a> y <a class="el" href="game_objects_8cpp_source.html#l00042">SetGameObjects_Instance2()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Viernes, 11 de Abril de 2014 20:43:39 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>
