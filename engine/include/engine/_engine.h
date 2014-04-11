@@ -94,7 +94,7 @@ class CEngine
      *
      * Comienza la ejecución del motor gráfico. Primero el motor con Init(), y luego ejecuta la primer estancia añadida con la función
      * AddInstance(), usada desde User_Instance_Loader(). Finalmente, después de haber ejecutado las estancias necesarias, se cerrará el motor, llamando
-     * a la función close.
+     * a la función close. Será llamado desde la función main().
      *
      * @param argc Cantidad de argumentos. Procedente de la función main().
      * @param argv Argumentos. Procedente de la función main().

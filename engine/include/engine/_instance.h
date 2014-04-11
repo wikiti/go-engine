@@ -1,13 +1,26 @@
+/**
+ * @file
+ * @brief Fichero que incluye la clase CInstance.
+ */
+
 #ifndef __INSTANCE_H_
 #define __INSTANCE_H_
 
 #include "_globals.h"
 
+/** @addtogroup Otros */
+/*@{*/
+
+/**
+ * @brief Clase para representar las estancias (niveles) del juego.
+ *
+ *
+ */
 class CInstance
 {
-  protected:
-    friend class CEngine;
+  friend class CEngine;
 
+  protected:
     bool i_running;
     std::string next_instance;
 
@@ -21,9 +34,7 @@ class CInstance
 
     bool first_frame;
 
-  public:
-    CInstance(fboolpointer load_gameObject_function, std::string resource_file);
-    //~CInstance();
+    // Métodos de la estancia.
 
     bool Init();
       bool LoadResources();
@@ -37,6 +48,10 @@ class CInstance
     void OnRender();
     void CalculateFPS();
 
+  public:
+    CInstance(fboolpointer load_gameObject_function, std::string resource_file);
+    //~CInstance();
+
     GLdouble fps()
     {
       return FPS;
@@ -48,5 +63,7 @@ class CInstance
 
     //virtual void OnDebug(){};
 };
+
+/*@}*/
 
 #endif /* __INSTANCE_H_ */
