@@ -76,7 +76,7 @@ bool CSystem_Render::Init()
   if(!window)
   {
     gSystem_Debug.error("From CSystem_Render: Could not create window: %s", SDL_GetError());
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not create window. Check log.txt");
+    gSystem_Debug.msg_box(Debug::error, ERROR_FATAL_INIT, "Could not create window. Check log.txt");
     return false;
   }
 

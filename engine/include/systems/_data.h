@@ -97,7 +97,7 @@
 /*@{*/
 
 /** Valor de variable tipo string nula. */
-const std::string __NO_STRING(__CSYSTEM_DATA_STORAGE_NOSTRING);
+const std::string __NO_STRING = __CSYSTEM_DATA_STORAGE_NOSTRING;
 /** Valor de variable tipo string nula. */
 const int __NO_INT = __CSYSTEM_DATA_STORAGE_NOINT;
 /** Valor de variable tipo string nula. */

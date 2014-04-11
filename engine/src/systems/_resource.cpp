@@ -480,7 +480,7 @@ bool CSystem_Resources::LoadResourceFile(string rc_file)
   if(!is || !is.good())
   {
     line = "Error from Resource Manager: Could not load file: " + rc_file;
-    gSystem_Debug.msg_box(ERROR_FILE, line.c_str());
+    gSystem_Debug.msg_box(Debug::error, ERROR_FILE, line.c_str());
     return false;
   }
 

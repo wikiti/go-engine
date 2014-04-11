@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Fichero que incluye la clase CSystem_Debug y sus estancias globales.
+ */
+
 #ifndef DEBUG_H_
 #define DEBUG_H_
 
@@ -22,6 +27,9 @@
 
 #include "_object.h"
 #include "systems/_system.h"
+
+/** @addtogroup Sistemas */
+/*@{*/
 
 namespace Debug
 {
@@ -50,8 +58,10 @@ namespace Debug
 
 class CSystem_Debug: public CSystem
 {
-  friend class CSystem_Render;
+  friend class CInstance;
   friend bool Systems_Init();
+  friend void Systems_Close();
+  friend bool Systems_Reset();
 
   protected:
     // Debug
@@ -85,17 +95,20 @@ class CSystem_Debug: public CSystem
     // Puntero de consola
     uint console_pointer_pos;
 
-  public:
-    CSystem_Debug(): CSystem(), opened(false), file(NULL){}
-    bool IsOpened(){return opened;}
-
     bool Init();
       bool InitConsoleFont();
       bool InitCommandMap();
 
     void Close();
-
     bool Reset();
+
+    void OnEvent();
+    void OnRender();
+
+  public:
+    CSystem_Debug(): CSystem(), opened(false), file(NULL){}
+    bool IsOpened(){return opened;}
+
 
     bool IsConsole()
     {
@@ -112,18 +125,22 @@ class CSystem_Debug: public CSystem
 
     // Message Boxes
     // Flags: debug::error for error, debug::warning for warnings, debug::information for info
-    void msg_box(const char* title, const char* message, Uint32 flags = Debug::error);
-    void msg_box(Uint32 flags, const char* title, const char* fmt, ...);
+    void msg_box(Uint32 flags, const char* title, const char* message);
+    void msg_boxf(Uint32 flags, const char* title, const char* fmt, ...);
 
     // Console
     void console_msg(const char* fmt, ...);
     void console_error_msg(const char* fmt, ...);
     void console_warning_msg(const char* fmt, ...);
+    /**
+     * @brief TEST
+     *
+     * Texto de prueba para <span style="background-color: black; color: #57b8d9;">mostrar un texto azul</span>.
+     *
+     * @param fmt
+     */
     void console_info_msg(const char* fmt, ...);
     void console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat a, const char* fmt, ...);
-
-    void OnEvent();
-    void OnRender();
 
   protected:
       // Console commands
@@ -189,5 +206,7 @@ class CSystem_Debug: public CSystem
 
 extern CSystem_Debug gSystem_Debug;
 extern CSystem_Debug& gDebug;
+
+/*@}*/
 
 #endif /* DEBUG_H_ */

@@ -206,9 +206,7 @@ Amigas</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Sistema de gestión de datos (variables). </p>
 <p>El sistema de preservación de datos o Data Storage se usa para guardar valores en variables para que sean persistentes entre sesiones, dando al usuario total libertad para guardar los valores que desee entre sesiones de ejecución.</p>
-<p>El sistema de almacenamiento de variables funciona como un <em>hash</em> o mapa, con un std::map, siendo la clave el nombre de la variable, y el valor, el valor de dicha variable. Por tanto, tendremos 3 tablas, una para cada tipo, de la siguiente manera: </p>
-<pre class="fragment">   Variables de tipo entero
-</pre><p> --------------&mdash;|------------------&mdash; </p>
+<p>El sistema de almacenamiento de variables funciona como un <em>hash</em> o mapa, con un std::map, siendo la clave el nombre de la variable, y el valor, el valor de dicha variable. Por tanto, tendremos 3 tablas, una para cada tipo, de la siguiente manera:</p>
 <table class="doxtable">
 <tr>
 <th>Nombre variable </th><th>Valor de la variable  </th></tr>
@@ -231,7 +229,7 @@ Amigas</h2></td></tr>
 <p>Finalmente, las variables sólo se guardarán al cambiar de estancia, o cuando el usuario lo espeficique con <a class="el" href="class_c_system___data___storage.html#a79f89941c66361121303a02b9f320fe2" title="Guardar variables almacenadas actualmente en el sistema. ">Save()</a> o <a class="el" href="class_c_system___data___storage.html#ad9f7c632d32cf429e41ab8d3fc6cd238" title="Guardar configuración. ">SaveConfig()</a>.</p>
 <dl class="section warning"><dt>Atención</dt><dd>Dos variables de distinto tipo pueden tener un mismo identificador. Esto significa, hay un mapa para cada tipo de variable. </dd></dl>
 
-<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00141">141</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00139">139</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
 <a class="anchor" id="a1f74833d84a6a8f5c01c0de4ddb17955"></a>
 <div class="memitem">
@@ -257,7 +255,7 @@ Amigas</h2></td></tr>
 <p>Constructor principal. </p>
 <p>No realiza acciones por defecto. </p>
 
-<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00166">166</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00164">164</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
 
 </div>
 </div>
@@ -554,7 +552,7 @@ Amigas</h2></td></tr>
 
 <p>Hace referencia a <a class="el" href="__data_8h_source.html#l00092">__CSYSTEM_DATA_STORAGE_NOINT</a>.</p>
 
-<p>Referenciado por <a class="el" href="__component__camera_8cpp_source.html#l00087">CComponent_Camera::ApplyChanges()</a>, <a class="el" href="fireworks_8cpp_source.html#l00034">Firework_Manager_Input()</a>, <a class="el" href="__mixer_8cpp_source.html#l00016">CSystem_Mixer::Init()</a>, <a class="el" href="__render_8cpp_source.html#l00020">CSystem_Render::Init()</a>, <a class="el" href="__render_8cpp_source.html#l00281">CSystem_Render::InitGridVBO()</a>, <a class="el" href="__debug_8cpp_source.html#l00507">CSystem_Debug::OnRender()</a> y <a class="el" href="fireworks_8cpp_source.html#l00004">SetGameObjects_Instance1_Fireworks()</a>.</p>
+<p>Referenciado por <a class="el" href="__component__camera_8cpp_source.html#l00087">CComponent_Camera::ApplyChanges()</a>, <a class="el" href="fireworks_8cpp_source.html#l00034">Firework_Manager_Input()</a>, <a class="el" href="__mixer_8cpp_source.html#l00016">CSystem_Mixer::Init()</a>, <a class="el" href="__render_8cpp_source.html#l00020">CSystem_Render::Init()</a>, <a class="el" href="__render_8cpp_source.html#l00281">CSystem_Render::InitGridVBO()</a> y <a class="el" href="fireworks_8cpp_source.html#l00004">SetGameObjects_Instance1_Fireworks()</a>.</p>
 
 </div>
 </div>
@@ -828,7 +826,7 @@ Amigas</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00143">143</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00141">141</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
 
 </div>
 </div>
@@ -925,7 +923,7 @@ Amigas</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 11 de Abril de 2014 20:43:51 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 11 de Abril de 2014 21:00:41 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

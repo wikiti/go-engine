@@ -2,7 +2,7 @@ var searchData=
 [
   ['g',['g',['../structcolor__t.html#a4c1c7ebb8f54019eb6e2f56bd78f0464',1,'color_t::g()'],['../structcolorf__t.html#ac81f5037e2bb7fdea7b4b2e7e1a5a354',1,'colorf_t::g()']]],
   ['gdata',['gData',['../group___sistemas.html#gaff9638475581d4e511b3254ca667e053',1,'gData():&#160;_data.cpp'],['../group___sistemas.html#gaff9638475581d4e511b3254ca667e053',1,'gData():&#160;_data.cpp']]],
-  ['gdebug',['gDebug',['../__debug_8h.html#ac07b78d1fd077a970d64fb80f3c01683',1,'gDebug():&#160;_debug.cpp'],['../__debug_8cpp.html#ac07b78d1fd077a970d64fb80f3c01683',1,'gDebug():&#160;_debug.cpp']]],
+  ['gdebug',['gDebug',['../group___sistemas.html#gac07b78d1fd077a970d64fb80f3c01683',1,'gDebug():&#160;_debug.cpp'],['../group___sistemas.html#gac07b78d1fd077a970d64fb80f3c01683',1,'gDebug():&#160;_debug.cpp']]],
   ['gengine',['gEngine',['../group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da',1,'gEngine():&#160;_engine.cpp'],['../group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da',1,'gEngine():&#160;_engine.cpp']]],
   ['ggameobjects',['gGameObjects',['../__manager_8h.html#a41d205f453c696c345580f2387ed59ad',1,'gGameObjects():&#160;_manager.cpp'],['../__manager_8cpp.html#a41d205f453c696c345580f2387ed59ad',1,'gGameObjects():&#160;_manager.cpp']]],
   ['gmath',['gMath',['../__other_8h.html#a8a3f34900af2696866ef2f7e9a2dd14a',1,'gMath():&#160;_other.cpp'],['../__other_8cpp.html#a8a3f34900af2696866ef2f7e9a2dd14a',1,'gMath():&#160;_other.cpp']]],
@@ -11,7 +11,7 @@ var searchData=
   ['grender',['gRender',['../__render_8h.html#a58c5a8f31c5e8809bc38bde67f664e77',1,'gRender():&#160;_render.cpp'],['../__render_8cpp.html#a58c5a8f31c5e8809bc38bde67f664e77',1,'gRender():&#160;_render.cpp']]],
   ['gshader',['gShader',['../__shader_8h.html#a7c56f16c77ecdbb05fb90776ef89c4ea',1,'gShader():&#160;_shader.cpp'],['../__shader_8cpp.html#a7c56f16c77ecdbb05fb90776ef89c4ea',1,'gShader():&#160;_shader.cpp']]],
   ['gsystem_5fdata_5fstorage',['gSystem_Data_Storage',['../group___sistemas.html#ga85bee145facae2ad509319caf538f4cd',1,'gSystem_Data_Storage():&#160;_data.cpp'],['../group___sistemas.html#ga85bee145facae2ad509319caf538f4cd',1,'gSystem_Data_Storage():&#160;_data.cpp']]],
-  ['gsystem_5fdebug',['gSystem_Debug',['../__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab',1,'gSystem_Debug():&#160;_debug.cpp'],['../__debug_8cpp.html#a609832ffd83267e6eac2735ce8ba02ab',1,'gSystem_Debug():&#160;_debug.cpp']]],
+  ['gsystem_5fdebug',['gSystem_Debug',['../group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab',1,'gSystem_Debug():&#160;_debug.cpp'],['../group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab',1,'gSystem_Debug():&#160;_debug.cpp']]],
   ['gsystem_5fgameobject_5fmanager',['gSystem_GameObject_Manager',['../__manager_8h.html#ae38a914d0a766d5d9430841760b9759e',1,'gSystem_GameObject_Manager():&#160;_manager.cpp'],['../__manager_8cpp.html#ae38a914d0a766d5d9430841760b9759e',1,'gSystem_GameObject_Manager():&#160;_manager.cpp']]],
   ['gsystem_5fmath',['gSystem_Math',['../__other_8h.html#a50f641c15109f7aafe42dc771827646e',1,'gSystem_Math():&#160;_other.cpp'],['../__other_8cpp.html#a50f641c15109f7aafe42dc771827646e',1,'gSystem_Math():&#160;_other.cpp']]],
   ['gsystem_5fmixer',['gSystem_Mixer',['../__mixer_8h.html#aa103502ca3a25c96840538ca36369fd4',1,'gSystem_Mixer():&#160;_mixer.cpp'],['../__mixer_8cpp.html#aa103502ca3a25c96840538ca36369fd4',1,'gSystem_Mixer():&#160;_mixer.cpp']]],

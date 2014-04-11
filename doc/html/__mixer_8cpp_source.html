@@ -123,7 +123,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordflow">if</span>(Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) != 0)</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not load SDL_Mixer: %s.&quot;</span>, Mix_GetError());</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not load SDL_Mixer: %s.&quot;</span>, Mix_GetError());</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
@@ -134,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  device = alcOpenDevice(NULL);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">if</span>(!device)</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not load a sound device.&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not load a sound device.&quot;</span>);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
@@ -145,7 +145,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      alcDestroyContext(ctx);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    alcCloseDevice(device);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not set an OpenAL context!&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not set an OpenAL context!&quot;</span>);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  }</div>
@@ -158,7 +158,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  alGenSources(NUMBER_SOURCES, source);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">if</span> ((error = alGetError()) != AL_NO_ERROR)</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not create OpenAL sources!: %d&quot;</span>, error);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not create OpenAL sources!: %d&quot;</span>, error);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
@@ -168,7 +168,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  alGenSources(NUMBER_SOURCES_ONESHOT, source_oneshot);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">if</span> ((error = alGetError()) != AL_NO_ERROR)</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not create OpenAL sources!: %d&quot;</span>, error);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">error</a>(<span class="stringliteral">&quot;Error from Mixer: Could not create OpenAL sources!: %d&quot;</span>, error);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
@@ -252,7 +252,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;{</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">if</span>(!sources_unused.size())</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#adc1b3704e00e2eaefbe177acb37462b0">console_error_msg</a>(<span class="stringliteral">&quot;Error from Mixer: No more sources availables. Unbind some of them! (MAX sources: %d)&quot;</span>, NUMBER_SOURCES);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#adc1b3704e00e2eaefbe177acb37462b0">console_error_msg</a>(<span class="stringliteral">&quot;Error from Mixer: No more sources availables. Unbind some of them! (MAX sources: %d)&quot;</span>, NUMBER_SOURCES);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  }</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
@@ -282,7 +282,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="keywordflow">if</span>(!oneshot_unused.size())</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#adc1b3704e00e2eaefbe177acb37462b0">console_error_msg</a>(<span class="stringliteral">&quot;Error from Mixer: No more one-shots sources availables. (MAX one-shot sources: %d)&quot;</span>, NUMBER_SOURCES_ONESHOT);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#adc1b3704e00e2eaefbe177acb37462b0">console_error_msg</a>(<span class="stringliteral">&quot;Error from Mixer: No more one-shots sources availables. (MAX one-shot sources: %d)&quot;</span>, NUMBER_SOURCES_ONESHOT);</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  }</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
@@ -317,7 +317,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">// Comprobar si ha sido procesado y sacarlo de la cola.</span></div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    alGetSourcei((*it), AL_BUFFERS_PROCESSED, &amp;processed);</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">if</span> ((error = alGetError()) != AL_NO_ERROR)</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <a class="code" href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#adc1b3704e00e2eaefbe177acb37462b0">console_error_msg</a>(<span class="stringliteral">&quot;Error %d from Mixer: Could not get buffers processed from source %d&quot;</span>, error, (*it));</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      <a class="code" href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a>.<a class="code" href="class_c_system___debug.html#adc1b3704e00e2eaefbe177acb37462b0">console_error_msg</a>(<span class="stringliteral">&quot;Error %d from Mixer: Could not get buffers processed from source %d&quot;</span>, error, (*it));</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">if</span>(processed != 0)</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    {</div>
@@ -342,12 +342,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="class_c_system___debug_html_adc1b3704e00e2eaefbe177acb37462b0"><div class="ttname"><a href="class_c_system___debug.html#adc1b3704e00e2eaefbe177acb37462b0">CSystem_Debug::console_error_msg</a></div><div class="ttdeci">void console_error_msg(const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> <a href="__debug_8cpp_source.html#l00610">_debug.cpp:610</a></div></div>
 <div class="ttc" id="class_c_system___mixer_html"><div class="ttname"><a href="class_c_system___mixer.html">CSystem_Mixer</a></div><div class="ttdef"><b>Definition:</b> <a href="__mixer_8h_source.html#l00010">_mixer.h:10</a></div></div>
 <div class="ttc" id="class_c_system___render_html_adce880b0cbcac36ef5db17cd2a486cf5"><div class="ttname"><a href="class_c_system___render.html#adce880b0cbcac36ef5db17cd2a486cf5">CSystem_Render::GetMainCamera</a></div><div class="ttdeci">CGameObject * GetMainCamera()</div><div class="ttdef"><b>Definition:</b> <a href="__render_8h_source.html#l00184">_render.h:184</a></div></div>
-<div class="ttc" id="__debug_8h_html"><div class="ttname"><a href="__debug_8h.html">_debug.h</a></div></div>
+<div class="ttc" id="__debug_8h_html"><div class="ttname"><a href="__debug_8h.html">_debug.h</a></div><div class="ttdoc">Fichero que incluye la clase CSystem_Debug y sus estancias globales. </div></div>
 <div class="ttc" id="class_c_system___data___storage_html_ab99cc0b1d971b7969096b0998745f840"><div class="ttname"><a href="class_c_system___data___storage.html#ab99cc0b1d971b7969096b0998745f840">CSystem_Data_Storage::GetInt</a></div><div class="ttdeci">int GetInt(std::string name_id)</div><div class="ttdoc">Obtener el valor de un entero. </div><div class="ttdef"><b>Definition:</b> <a href="__data_8cpp_source.html#l00279">_data.cpp:279</a></div></div>
 <div class="ttc" id="__manager_8h_html"><div class="ttname"><a href="__manager_8h.html">_manager.h</a></div></div>
-<div class="ttc" id="namespace_debug_html_a49a7325e26aabc517b2104298dc39695ae46f71bd5ed0e9e76ba7cd4dd3b07019"><div class="ttname"><a href="namespace_debug.html#a49a7325e26aabc517b2104298dc39695ae46f71bd5ed0e9e76ba7cd4dd3b07019">Debug::error</a></div><div class="ttdef"><b>Definition:</b> <a href="__debug_8h_source.html#l00028">_debug.h:28</a></div></div>
+<div class="ttc" id="namespace_debug_html_a49a7325e26aabc517b2104298dc39695ae46f71bd5ed0e9e76ba7cd4dd3b07019"><div class="ttname"><a href="namespace_debug.html#a49a7325e26aabc517b2104298dc39695ae46f71bd5ed0e9e76ba7cd4dd3b07019">Debug::error</a></div><div class="ttdef"><b>Definition:</b> <a href="__debug_8h_source.html#l00036">_debug.h:36</a></div></div>
 <div class="ttc" id="__render_8h_html_af60b0de80285bd2531fa1c5eaf5cfec0"><div class="ttname"><a href="__render_8h.html#af60b0de80285bd2531fa1c5eaf5cfec0">gSystem_Render</a></div><div class="ttdeci">CSystem_Render gSystem_Render</div><div class="ttdef"><b>Definition:</b> <a href="__render_8cpp_source.html#l00017">_render.cpp:17</a></div></div>
-<div class="ttc" id="__debug_8h_html_a609832ffd83267e6eac2735ce8ba02ab"><div class="ttname"><a href="__debug_8h.html#a609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a></div><div class="ttdeci">CSystem_Debug gSystem_Debug</div><div class="ttdef"><b>Definition:</b> <a href="__debug_8cpp_source.html#l00015">_debug.cpp:15</a></div></div>
 <div class="ttc" id="__render_8h_html"><div class="ttname"><a href="__render_8h.html">_render.h</a></div></div>
 <div class="ttc" id="class_c_system___debug_html_a29ab0cb0a9571f364bb54847b54f70df"><div class="ttname"><a href="class_c_system___debug.html#a29ab0cb0a9571f364bb54847b54f70df">CSystem_Debug::error</a></div><div class="ttdeci">void error(const char *fmt,...)</div><div class="ttdef"><b>Definition:</b> <a href="__debug_8cpp_source.html#l00304">_debug.cpp:304</a></div></div>
 <div class="ttc" id="group___sistemas_html_ga85bee145facae2ad509319caf538f4cd"><div class="ttname"><a href="group___sistemas.html#ga85bee145facae2ad509319caf538f4cd">gSystem_Data_Storage</a></div><div class="ttdeci">CSystem_Data_Storage gSystem_Data_Storage</div><div class="ttdoc">Objeto global del sistema &amp;quot;Data Storage&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="__data_8cpp_source.html#l00006">_data.cpp:6</a></div></div>
@@ -357,6 +356,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="ttc" id="__mixer_8h_html_ab5c50527dc48f471a6c9ca2528bde8d9"><div class="ttname"><a href="__mixer_8h.html#ab5c50527dc48f471a6c9ca2528bde8d9">gMixer</a></div><div class="ttdeci">CSystem_Mixer &amp; gMixer</div><div class="ttdef"><b>Definition:</b> <a href="__mixer_8cpp_source.html#l00009">_mixer.cpp:9</a></div></div>
 <div class="ttc" id="class_c_system___mixer_html_aa99d0f5d4a6eb7078917a49702bb51a2"><div class="ttname"><a href="class_c_system___mixer.html#aa99d0f5d4a6eb7078917a49702bb51a2">CSystem_Mixer::ResetSources</a></div><div class="ttdeci">void ResetSources()</div><div class="ttdef"><b>Definition:</b> <a href="__mixer_8cpp_source.html#l00092">_mixer.cpp:92</a></div></div>
 <div class="ttc" id="__data_8h_html"><div class="ttname"><a href="__data_8h.html">_data.h</a></div><div class="ttdoc">Fichero que incluye la clase CSystem_Data_Storage y sus estancias globales. </div></div>
+<div class="ttc" id="group___sistemas_html_ga609832ffd83267e6eac2735ce8ba02ab"><div class="ttname"><a href="group___sistemas.html#ga609832ffd83267e6eac2735ce8ba02ab">gSystem_Debug</a></div><div class="ttdeci">CSystem_Debug gSystem_Debug</div><div class="ttdef"><b>Definition:</b> <a href="__debug_8cpp_source.html#l00015">_debug.cpp:15</a></div></div>
 <div class="ttc" id="class_c_system_html_adf0c79665d86344b1fbe187f5c6fa3c5"><div class="ttname"><a href="class_c_system.html#adf0c79665d86344b1fbe187f5c6fa3c5">CSystem::Close</a></div><div class="ttdeci">virtual void Close()</div><div class="ttdef"><b>Definition:</b> <a href="__system_8h_source.html#l00016">_system.h:16</a></div></div>
 <div class="ttc" id="__mixer_8h_html"><div class="ttname"><a href="__mixer_8h.html">_mixer.h</a></div></div>
 <div class="ttc" id="class_c_system_html_a5de409e36b7857940be16635a49101f9"><div class="ttname"><a href="class_c_system.html#a5de409e36b7857940be16635a49101f9">CSystem::Init</a></div><div class="ttdeci">virtual bool Init()</div><div class="ttdef"><b>Definition:</b> <a href="__system_8h_source.html#l00015">_system.h:15</a></div></div>
@@ -368,7 +368,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 11 de Abril de 2014 20:43:34 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 11 de Abril de 2014 21:00:26 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

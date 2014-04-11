@@ -340,12 +340,12 @@ void CSystem_Debug::raw_log(const char* fmt, ...)
   fclose(file);
 }
 
-void CSystem_Debug::msg_box(const char* title, const char* message, Uint32 flags)
+void CSystem_Debug::msg_box(Uint32 flags, const char* title, const char* message)
 {
   SDL_ShowSimpleMessageBox(flags, title, message, gSystem_Render.window);
 }
 
-void CSystem_Debug::msg_box(Uint32 flags, const char* title, const char* fmt, ...)
+void CSystem_Debug::msg_boxf(Uint32 flags, const char* title, const char* fmt, ...)
 {
   if(!fmt)
     return;

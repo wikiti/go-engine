@@ -4,5 +4,6 @@ var searchData=
   ['makebillboard_5fmat4x4',['makebillboard_mat4x4',['../__component__particle__emitter_8cpp.html#a0550fb57eccf9875219738ee6cdbe7f8',1,'_component_particle_emitter.cpp']]],
   ['makebillboardglm',['makebillboardGLM',['../__component__particle__emitter_8cpp.html#a35990f4ce6fbd15ac7cd3a0150e6ecae',1,'_component_particle_emitter.cpp']]],
   ['meshrender',['MeshRender',['../class_c_game_object.html#a18b90071200859b71a3d032d715af2cd',1,'CGameObject']]],
-  ['msg_5fbox',['msg_box',['../class_c_system___debug.html#a2229f6551eee49ea2111ccddeca20632',1,'CSystem_Debug::msg_box(const char *title, const char *message, Uint32 flags=Debug::error)'],['../class_c_system___debug.html#a0a3ec326a010e7b65ead579cc626442a',1,'CSystem_Debug::msg_box(Uint32 flags, const char *title, const char *fmt,...)']]]
+  ['msg_5fbox',['msg_box',['../class_c_system___debug.html#a553ed3ba29b25a754abae3e79b55c937',1,'CSystem_Debug']]],
+  ['msg_5fboxf',['msg_boxf',['../class_c_system___debug.html#a5337304127a79c544f3aebd68eff3a58',1,'CSystem_Debug']]]
 ];

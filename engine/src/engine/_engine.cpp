@@ -24,7 +24,7 @@ bool CEngine::Init(int argc, char* argv[])
 
   if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load SDL module");
+    gSystem_Debug.msg_box(Debug::error, ERROR_FATAL_INIT, "Could not load SDL module");
     return false;
   }
 
@@ -37,19 +37,19 @@ bool CEngine::Init(int argc, char* argv[])
 
   if(!User_Engine_Loader())
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load engine settings (User_Engine_Loader)");
+    gSystem_Debug.msg_box(Debug::error, ERROR_FATAL_INIT, "Could not load engine settings (User_Engine_Loader)");
     return false;
   }
 
   if(!User_Instance_Loader())
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "Could not load instance settings (User_Instance_Loader)");
+    gSystem_Debug.msg_box(Debug::error, ERROR_FATAL_INIT, "Could not load instance settings (User_Instance_Loader)");
     return false;
   }
 
   if(instances.size() == 0)
   {
-    gSystem_Debug.msg_box(ERROR_FATAL_INIT, "There are no Instances to load! Add some in User_Instance_Loader().");
+    gSystem_Debug.msg_box(Debug::error, ERROR_FATAL_INIT, "There are no Instances to load! Add some in User_Instance_Loader().");
         return false;
   }
 

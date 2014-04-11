@@ -24,7 +24,8 @@ var searchData=
   ['mouse1',['mouse1',['../class_c_system___user_input_1_1_c_mouse.html#a66f3ff94eadb91438a261f9edc00e34a',1,'CSystem_UserInput::CMouse']]],
   ['mouse2',['mouse2',['../class_c_system___user_input_1_1_c_mouse.html#aeda47ce24817b4638b56b3823bd9f4b2',1,'CSystem_UserInput::CMouse']]],
   ['mouse3',['mouse3',['../class_c_system___user_input_1_1_c_mouse.html#ac5628fe02806675f018798ed53134911',1,'CSystem_UserInput::CMouse']]],
-  ['msg_5fbox',['msg_box',['../class_c_system___debug.html#a2229f6551eee49ea2111ccddeca20632',1,'CSystem_Debug::msg_box(const char *title, const char *message, Uint32 flags=Debug::error)'],['../class_c_system___debug.html#a0a3ec326a010e7b65ead579cc626442a',1,'CSystem_Debug::msg_box(Uint32 flags, const char *title, const char *fmt,...)']]],
+  ['msg_5fbox',['msg_box',['../class_c_system___debug.html#a553ed3ba29b25a754abae3e79b55c937',1,'CSystem_Debug']]],
+  ['msg_5fboxf',['msg_boxf',['../class_c_system___debug.html#a5337304127a79c544f3aebd68eff3a58',1,'CSystem_Debug']]],
   ['music',['music',['../class_c_component___audio___source.html#adeb64aa856c24d6f5dc0b80737626759',1,'CComponent_Audio_Source']]],
   ['mute',['mute',['../class_c_component___audio___source.html#a17cc6c06d434e40499988e5d7757a9c1',1,'CComponent_Audio_Source']]]
 ];
