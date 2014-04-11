@@ -56,7 +56,7 @@ var searchData=
   ['_5f_5fgl_5fcheck_5ferrors',['__GL_CHECK_ERRORS',['../__render_8h.html#a2d5c8ac1e86a7b45ba817c0578c8957f',1,'_render.h']]],
   ['_5f_5fno_5ffloat',['__NO_FLOAT',['../group___sistemas.html#ga2d48994e85a784e22878f7bdd51324a8',1,'_data.h']]],
   ['_5f_5fno_5fint',['__NO_INT',['../group___sistemas.html#ga6107e4fff9922a011a814acc33938e2e',1,'_data.h']]],
-  ['_5f_5fno_5fstring',['__NO_STRING',['../group___sistemas.html#gadf464519fa7ff1d90ddd47bea6dba404',1,'_data.h']]],
+  ['_5f_5fno_5fstring',['__NO_STRING',['../group___sistemas.html#ga70b5736dc9509bdf4ddca7e9dbb3d0e5',1,'_data.h']]],
   ['_5f_5frender_5fopengl_5fmin_5fcore',['__RENDER_OPENGL_MIN_CORE',['../__render_8h.html#aa3780ef5a98c4b21570c72d74715e193',1,'_render.h']]],
   ['_5f_5fviewmode_5fnot_5fdefined',['__viewmode_not_defined',['../namespace_viewmode.html#a4dc1d25e272daede7900e56e49601bfca5bc7e6a8d9fdadda92fb7855cfc74386',1,'Viewmode']]],
   ['_5fcheck_5fgl_5ferror',['_check_gl_error',['../class_c_system___render.html#a6012df9cbf14dd175b00e23f647f773b',1,'CSystem_Render']]],
