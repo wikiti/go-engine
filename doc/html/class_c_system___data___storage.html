@@ -96,6 +96,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!--header-->
 <div class="contents">
 
+<p>Sistema de gestión de datos (variables).  
+ <a href="class_c_system___data___storage.html#details">Más...</a></p>
+
 <p><code>#include &lt;<a class="el" href="__data_8h_source.html">_data.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagrama de herencias de CSystem_Data_Storage</div>
@@ -111,12 +114,6 @@ Diagrama de herencias de CSystem_Data_Storage</div>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:a1f74833d84a6a8f5c01c0de4ddb17955"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_system___data___storage.html#a1f74833d84a6a8f5c01c0de4ddb17955">CSystem_Data_Storage</a> ()</td></tr>
 <tr class="separator:a1f74833d84a6a8f5c01c0de4ddb17955"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf3470c2f695af6c90e3d420689875dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_system___data___storage.html#abf3470c2f695af6c90e3d420689875dd">Init</a> ()</td></tr>
-<tr class="separator:abf3470c2f695af6c90e3d420689875dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abad2e6b65019a5e8e03a318a6f985226"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_system___data___storage.html#abad2e6b65019a5e8e03a318a6f985226">Close</a> ()</td></tr>
-<tr class="separator:abad2e6b65019a5e8e03a318a6f985226"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdbce42eecb31d5a7c251373f4557649"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_system___data___storage.html#abdbce42eecb31d5a7c251373f4557649">Reset</a> ()</td></tr>
-<tr class="separator:abdbce42eecb31d5a7c251373f4557649"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79f89941c66361121303a02b9f320fe2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_system___data___storage.html#a79f89941c66361121303a02b9f320fe2">Save</a> (const char *file=<a class="el" href="__data_8h.html#a71b62a1e80562ec3a45e48d051f8b030">__CSYSTEM_DATA_STORAGE_SAVEFILE</a>)</td></tr>
 <tr class="separator:a79f89941c66361121303a02b9f320fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a811df03bc6d72227fd7fa85e831d4ae8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_system___data___storage.html#a811df03bc6d72227fd7fa85e831d4ae8">Load</a> (const char *file=<a class="el" href="__data_8h.html#a71b62a1e80562ec3a45e48d051f8b030">__CSYSTEM_DATA_STORAGE_SAVEFILE</a>)</td></tr>
@@ -179,8 +176,31 @@ Amigas</h2></td></tr>
 <tr class="separator:aa887e889ce62e6f09ae300050c3a0dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock">
-<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00064">64</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+<div class="textblock"><p>Sistema de gestión de datos (variables). </p>
+<p>El sistema de preservación de datos o Data Storage se usa para guardar valores en variables para que sean persistentes entre sesiones, dando al usuario total libertad para guardar los valores que desee entre sesiones de ejecución.</p>
+<p>El sistema de almacenamiento de variables funciona como un <em>hash</em> o mapa, con un std::map, siendo la clave el nombre de la variable, y el valor, el valor de dicha variable. Por tanto, tendremos 3 tablas, una para cada tipo, de la siguiente manera:</p>
+<table class="doxtable">
+<tr>
+<th>Nombre variable </th><th>Valor de la variable  </th></tr>
+<tr>
+<td>var_nombre1 </td><td>1 </td></tr>
+<tr>
+<td>var_nombre2 </td><td>50 </td></tr>
+<tr>
+<td>... </td><td>... </td></tr>
+</table>
+<p>Por ejemplo, un usuario puede hacer lo siguiente para cargar la posición de un objeto (sea cámara, personaje principal...): </p>
+<div class="fragment"><div class="line"><span class="comment">// ... Suponemos que hay un CGameObject llamado &quot;pj1&quot;</span></div>
+<div class="line"><span class="keywordflow">if</span>(!<a class="code" href="group___sistemas.html#gaff9638475581d4e511b3254ca667e053">gData</a>.<a class="code" href="class_c_system___data___storage.html#a9b4cd169eb4d3fd882e3e4b5ab594de3">ExistsInt</a>(<span class="stringliteral">&quot;pj1_pos_x&quot;</span>))</div>
+<div class="line">{</div>
+<div class="line">  <a class="code" href="group___sistemas.html#gaff9638475581d4e511b3254ca667e053">gData</a>.<a class="code" href="class_c_system___data___storage.html#a7612c2630ed04b585018feb622f60dc2">SetInt</a>(<span class="stringliteral">&quot;pj1_pos_x&quot;</span>, 5);</div>
+<div class="line">}</div>
+<div class="line">pj1-&gt;Transform()-&gt;position.x = <a class="code" href="group___sistemas.html#gaff9638475581d4e511b3254ca667e053">gData</a>.<a class="code" href="class_c_system___data___storage.html#ab99cc0b1d971b7969096b0998745f840">GetInt</a>(<span class="stringliteral">&quot;pj1_pos_x&quot;</span>);</div>
+<div class="line"><span class="comment">// ...</span></div>
+</div><!-- fragment --><p>Y se podrá usar para todo tipo de ejemplos, siempre y cuando las variables sean de tipo entero, flotante o string.</p>
+<dl class="section warning"><dt>Atención</dt><dd>Dos variables de distinto tipo pueden tener un mismo identificador. Esto significa, hay un mapa para cada tipo de variable. </dd></dl>
+
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00136">136</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
 <a class="anchor" id="a1f74833d84a6a8f5c01c0de4ddb17955"></a>
 <div class="memitem">
@@ -203,102 +223,11 @@ Amigas</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00076">76</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00153">153</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a class="anchor" id="abf3470c2f695af6c90e3d420689875dd"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CSystem_Data_Storage::Init </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplementado de <a class="el" href="class_c_system.html#a5de409e36b7857940be16635a49101f9">CSystem</a>.</p>
-
-<p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00009">9</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__system_8h_source.html#l00015">CSystem::Init()</a>.</p>
-
-<p>Referenciado por <a class="el" href="__systems_8cpp_source.html#l00005">Systems_Init()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="abad2e6b65019a5e8e03a318a6f985226"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CSystem_Data_Storage::Close </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplementado de <a class="el" href="class_c_system.html#adf0c79665d86344b1fbe187f5c6fa3c5">CSystem</a>.</p>
-
-<p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00026">26</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
-
-<p>Hace referencia a <a class="el" href="__system_8h_source.html#l00016">CSystem::Close()</a>.</p>
-
-<p>Referenciado por <a class="el" href="__systems_8cpp_source.html#l00076">Systems_Close()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="abdbce42eecb31d5a7c251373f4557649"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CSystem_Data_Storage::Reset </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplementado de <a class="el" href="class_c_system.html#a01663be1eed06770caaa307ab552dac3">CSystem</a>.</p>
-
-<p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00038">38</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
-
-<p>Referenciado por <a class="el" href="__systems_8cpp_source.html#l00091">Systems_Reset()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a79f89941c66361121303a02b9f320fe2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -354,7 +283,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00174">174</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00010">__CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE</a>, <a class="el" href="__data_8h_source.html#l00050">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION1_KEY</a>, <a class="el" href="__data_8h_source.html#l00051">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION2_KEY</a>, <a class="el" href="__data_8h_source.html#l00052">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION3_KEY</a>, <a class="el" href="__data_8h_source.html#l00053">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION4_KEY</a>, <a class="el" href="__data_8h_source.html#l00043">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_DOWN_KEY</a>, <a class="el" href="__data_8h_source.html#l00044">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_LEFT_KEY</a>, <a class="el" href="__data_8h_source.html#l00045">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_RIGHT_KEY</a>, <a class="el" href="__data_8h_source.html#l00042">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_UP_KEY</a>, <a class="el" href="__data_8h_source.html#l00047">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_DOWN_KEY</a>, <a class="el" href="__data_8h_source.html#l00048">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_LEFT_KEY</a>, <a class="el" href="__data_8h_source.html#l00049">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_RIGHT_KEY</a>, <a class="el" href="__data_8h_source.html#l00046">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_UP_KEY</a>, <a class="el" href="__data_8h_source.html#l00055">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_CROUCH_KEY</a>, <a class="el" href="__data_8h_source.html#l00056">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_JUMP_KEY</a>, <a class="el" href="__data_8h_source.html#l00054">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_RUN_KEY</a>, <a class="el" href="__data_8h_source.html#l00021">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_HEIGHT</a>, <a class="el" href="__data_8h_source.html#l00023">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_MULTISAMPLING</a>, <a class="el" href="__data_8h_source.html#l00024">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_MULTISAMPLING_VALUE</a>, <a class="el" href="__data_8h_source.html#l00020">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WIDTH</a>, <a class="el" href="__data_8h_source.html#l00022">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WINDOW_MODE</a>, <a class="el" href="__data_8h_source.html#l00026">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS</a>, <a class="el" href="__data_8h_source.html#l00028">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS_X</a>, <a class="el" href="__data_8h_source.html#l00027">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS_Z</a>, <a class="el" href="__data_8h_source.html#l00030">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM</a>, <a class="el" href="__data_8h_source.html#l00031">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID</a>, <a class="el" href="__data_8h_source.html#l00034">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_COLS</a>, <a class="el" href="__data_8h_source.html#l00035">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_COLS_SCALE</a>, <a class="el" href="__data_8h_source.html#l00032">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_ROWS</a>, <a class="el" href="__data_8h_source.html#l00033">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_ROWS_SCALE</a>, <a class="el" href="__data_8h_source.html#l00038">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_MUSIC_VOLUME</a>, <a class="el" href="__data_8h_source.html#l00039">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES</a>, <a class="el" href="__data_8h_source.html#l00040">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES_ONESHOT</a>, <a class="el" href="__data_8h_source.html#l00037">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_VOLUME</a>, <a class="el" href="__debug_8cpp_source.html#l00593">CSystem_Debug::console_msg()</a>, <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a> y <a class="el" href="__debug_8cpp_source.html#l00279">CSystem_Debug::log()</a>.</p>
+<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00012">__CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE</a>, <a class="el" href="__data_8h_source.html#l00085">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION1_KEY</a>, <a class="el" href="__data_8h_source.html#l00087">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION2_KEY</a>, <a class="el" href="__data_8h_source.html#l00089">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION3_KEY</a>, <a class="el" href="__data_8h_source.html#l00091">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_ACTION4_KEY</a>, <a class="el" href="__data_8h_source.html#l00071">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_DOWN_KEY</a>, <a class="el" href="__data_8h_source.html#l00073">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_LEFT_KEY</a>, <a class="el" href="__data_8h_source.html#l00075">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_RIGHT_KEY</a>, <a class="el" href="__data_8h_source.html#l00069">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS1_UP_KEY</a>, <a class="el" href="__data_8h_source.html#l00079">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_DOWN_KEY</a>, <a class="el" href="__data_8h_source.html#l00081">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_LEFT_KEY</a>, <a class="el" href="__data_8h_source.html#l00083">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_RIGHT_KEY</a>, <a class="el" href="__data_8h_source.html#l00077">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_UP_KEY</a>, <a class="el" href="__data_8h_source.html#l00095">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_CROUCH_KEY</a>, <a class="el" href="__data_8h_source.html#l00097">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_JUMP_KEY</a>, <a class="el" href="__data_8h_source.html#l00093">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_RUN_KEY</a>, <a class="el" href="__data_8h_source.html#l00031">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_HEIGHT</a>, <a class="el" href="__data_8h_source.html#l00035">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_MULTISAMPLING</a>, <a class="el" href="__data_8h_source.html#l00037">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_MULTISAMPLING_VALUE</a>, <a class="el" href="__data_8h_source.html#l00029">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WIDTH</a>, <a class="el" href="__data_8h_source.html#l00033">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_RESOLUTION_WINDOW_MODE</a>, <a class="el" href="__data_8h_source.html#l00040">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS</a>, <a class="el" href="__data_8h_source.html#l00044">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS_X</a>, <a class="el" href="__data_8h_source.html#l00042">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_SOUND_RADIUS_Z</a>, <a class="el" href="__data_8h_source.html#l00047">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM</a>, <a class="el" href="__data_8h_source.html#l00049">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID</a>, <a class="el" href="__data_8h_source.html#l00055">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_COLS</a>, <a class="el" href="__data_8h_source.html#l00057">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_COLS_SCALE</a>, <a class="el" href="__data_8h_source.html#l00051">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_ROWS</a>, <a class="el" href="__data_8h_source.html#l00053">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_RENDER_TRANSFORM_GRID_ROWS_SCALE</a>, <a class="el" href="__data_8h_source.html#l00062">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_MUSIC_VOLUME</a>, <a class="el" href="__data_8h_source.html#l00064">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES</a>, <a class="el" href="__data_8h_source.html#l00066">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_NUMBER_SOURCES_ONESHOT</a>, <a class="el" href="__data_8h_source.html#l00060">__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_SOUND_VOLUME</a>, <a class="el" href="__debug_8cpp_source.html#l00593">CSystem_Debug::console_msg()</a>, <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a> y <a class="el" href="__debug_8cpp_source.html#l00279">CSystem_Debug::log()</a>.</p>
 
 </div>
 </div>
@@ -373,7 +302,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00222">222</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00010">__CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE</a>, <a class="el" href="__debug_8cpp_source.html#l00610">CSystem_Debug::console_error_msg()</a>, <a class="el" href="__debug_8cpp_source.html#l00304">CSystem_Debug::error()</a> y <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a>.</p>
+<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00012">__CSYSTEM_DATA_STORAGE_CONFIG_SAVEFILE</a>, <a class="el" href="__debug_8cpp_source.html#l00610">CSystem_Debug::console_error_msg()</a>, <a class="el" href="__debug_8cpp_source.html#l00304">CSystem_Debug::error()</a> y <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a>.</p>
 
 </div>
 </div>
@@ -481,7 +410,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00252">252</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00012">__CSYSTEM_DATA_STORAGE_NOSTRING</a>.</p>
+<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00015">__CSYSTEM_DATA_STORAGE_NOSTRING</a>.</p>
 
 <p>Referenciado por <a class="el" href="__render_8cpp_source.html#l00020">CSystem_Render::Init()</a> y <a class="el" href="__input_8cpp_source.html#l00015">CSystem_UserInput::Init()</a>.</p>
 
@@ -503,7 +432,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00261">261</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00013">__CSYSTEM_DATA_STORAGE_NOINT</a>.</p>
+<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00017">__CSYSTEM_DATA_STORAGE_NOINT</a>.</p>
 
 <p>Referenciado por <a class="el" href="__component__camera_8cpp_source.html#l00087">CComponent_Camera::ApplyChanges()</a>, <a class="el" href="fireworks_8cpp_source.html#l00034">Firework_Manager_Input()</a>, <a class="el" href="__mixer_8cpp_source.html#l00016">CSystem_Mixer::Init()</a>, <a class="el" href="__render_8cpp_source.html#l00020">CSystem_Render::Init()</a>, <a class="el" href="__render_8cpp_source.html#l00281">CSystem_Render::InitGridVBO()</a>, <a class="el" href="__debug_8cpp_source.html#l00507">CSystem_Debug::OnRender()</a> y <a class="el" href="fireworks_8cpp_source.html#l00004">SetGameObjects_Instance1_Fireworks()</a>.</p>
 
@@ -525,7 +454,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00270">270</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00014">__CSYSTEM_DATA_STORAGE_NOFLOAT</a>.</p>
+<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00019">__CSYSTEM_DATA_STORAGE_NOFLOAT</a>.</p>
 
 <p>Referenciado por <a class="el" href="fireworks_8cpp_source.html#l00130">Firework_Manager_Behaviour()</a>, <a class="el" href="__component__audio_8cpp_source.html#l00124">CComponent_Audio_Source::PlayOneShot()</a>, <a class="el" href="__component__audio_8cpp_source.html#l00169">CComponent_Audio_Source::PlayOneShotAt()</a> y <a class="el" href="predefined__functions_8cpp_source.html#l00003">SetTransformByVar()</a>.</p>
 
@@ -603,7 +532,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00279">279</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00013">__CSYSTEM_DATA_STORAGE_NOINT</a>.</p>
+<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00017">__CSYSTEM_DATA_STORAGE_NOINT</a>.</p>
 
 </div>
 </div>
@@ -623,7 +552,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00287">287</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00014">__CSYSTEM_DATA_STORAGE_NOFLOAT</a>.</p>
+<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00019">__CSYSTEM_DATA_STORAGE_NOFLOAT</a>.</p>
 
 <p>Referenciado por <a class="el" href="predefined__functions_8cpp_source.html#l00015">DefineTramsformByVar()</a>.</p>
 
@@ -645,7 +574,7 @@ Amigas</h2></td></tr>
 
 <p>Definición en la línea <a class="el" href="__data_8cpp_source.html#l00295">295</a> del archivo <a class="el" href="__data_8cpp_source.html">_data.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00012">__CSYSTEM_DATA_STORAGE_NOSTRING</a>.</p>
+<p>Hace referencia a <a class="el" href="__data_8h_source.html#l00015">__CSYSTEM_DATA_STORAGE_NOSTRING</a>.</p>
 
 </div>
 </div>
@@ -702,7 +631,7 @@ Amigas</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00067">67</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
+<p>Definición en la línea <a class="el" href="__data_8h_source.html#l00139">139</a> del archivo <a class="el" href="__data_8h_source.html">_data.h</a>.</p>
 
 </div>
 </div>
@@ -713,7 +642,7 @@ Amigas</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Miércoles, 9 de Abril de 2014 11:00:50 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 11 de Abril de 2014 10:51:35 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
