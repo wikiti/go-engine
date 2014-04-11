@@ -76,7 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>&apos;typedefs&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valores de enumeraciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amigas</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>&apos;defines&apos;</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(12)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -162,15 +162,15 @@ Métodos públicos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Motor gráfico. </p>
-<p>Representa el conjunto de estancias del juego (los sistemas van aparte). En este caso, el motor gráfico se encargará de gestionar la ejecución y flujo principal del juego. En caso de un cambio de nivel o de estancia (<a class="el" href="class_c_instance.html">CInstance</a>), será esta clase la encargada de gestionar dicho cambio.</p>
-<p>El objeto de esta clase (gEngine), será el encargado de gestionar las estancias (<a class="el" href="class_c_instance.html">CInstance</a>) o niveles. Para ello, dispone de un mapa de estancias, cada una caracterizada por un nombre (string). Desde cualquier estancia, sabiendo el nombre de alguna otra, se podrá pedir un cambio de estancia, simulando un cambio de nivel, por lo que se cargarán nuevos recursos, nuevos objetos, se reiniciarán sistemas, etc.</p>
-<dl class="section note"><dt>Nota</dt><dd><b>Nota</b>: en caso de querer añadir soporte multihilo, solo bastaría con modificar parte e esta clase, y parte de <a class="el" href="class_c_instance.html">CInstance</a>, </dd>
+<p>Representa el conjunto de estancias del juego (los sistemas van aparte). En este caso, el motor gráfico se encargará de gestionar la ejecución y flujo principal del juego. En caso de un cambio de nivel o de estancia (<a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a>), será esta clase la encargada de gestionar dicho cambio.</p>
+<p>El objeto de esta clase (gEngine), será el encargado de gestionar las estancias (<a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a>) o niveles. Para ello, dispone de un mapa de estancias, cada una caracterizada por un nombre (string). Desde cualquier estancia, sabiendo el nombre de alguna otra, se podrá pedir un cambio de estancia, simulando un cambio de nivel, por lo que se cargarán nuevos recursos, nuevos objetos, se reiniciarán sistemas, etc.</p>
+<dl class="section note"><dt>Nota</dt><dd><b>Nota</b>: en caso de querer añadir soporte multihilo, solo bastaría con modificar parte e esta clase, y parte de <a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a>, </dd>
 <dd>
 por lo que no debería de haber grandes cambios.</dd></dl>
 <dl class="section warning"><dt>Atención</dt><dd>Úsese el objeto gEngine para utilizar los métodos de este clase, para que repercutan en tiempo de ejecución.</dd></dl>
 <dl class="section see"><dt>Ver también</dt><dd><a class="el" href="group___otros.html#ga9d8512434b5cdd7fea6f4ed0912ad4da" title="Objeto global del motor gráfico. ">gEngine</a> </dd>
 <dd>
-<a class="el" href="class_c_instance.html">CInstance</a> </dd></dl>
+<a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a> </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8h_source.html#l00038">38</a> del archivo <a class="el" href="__engine_8h_source.html">_engine.h</a>.</p>
 </div><h2 class="groupheader">Documentación del constructor y destructor</h2>
@@ -256,25 +256,25 @@ por lo que no debería de haber grandes cambios.</dd></dl>
 </div><div class="memdoc">
 
 <p>Iniciar el motor. </p>
-<p>Inicia el motor gráfico, por lo que iniciará <em>SDL2</em>, los sistemas definidos e iniciará las funciones User_Engine_Loader() (icono, título, etc.) y User_Instance_Loader() (cargar estancias). Además, esta clase conservará los argumentos pasados al programa. Será llamado al iniciar <a class="el" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94" title="Comenzar ejecución. ">OnExecute()</a>.</p>
+<p>Inicia el motor gráfico, por lo que iniciará <em>SDL2</em>, los sistemas definidos e iniciará las funciones <a class="el" href="instances_8h.html#adae5f5aa425aa280c036854196c161f7">User_Engine_Loader()</a> (icono, título, etc.) y <a class="el" href="instances_8h.html#a283aa781e6e7038273124edb497153b8">User_Instance_Loader()</a> (cargar estancias). Además, esta clase conservará los argumentos pasados al programa. Será llamado al iniciar <a class="el" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94" title="Comenzar ejecución. ">OnExecute()</a>.</p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td>Cantidad de argumentos del programa. Se corresponde por el argumento definido por la función main(). </td></tr>
-    <tr><td class="paramname">argv</td><td>Array de argumentos del programa. Se corresponde por el argumento definido por la función main(). </td></tr>
+    <tr><td class="paramname">argc</td><td>Cantidad de argumentos del programa. Se corresponde por el argumento definido por la función <a class="el" href="__main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>. </td></tr>
+    <tr><td class="paramname">argv</td><td>Array de argumentos del programa. Se corresponde por el argumento definido por la función <a class="el" href="__main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Retorna true si se inicia correctamente, false en caso contrario.</dd></dl>
 <dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_system.html">CSystem</a> </dd>
 <dd>
-User_Engine_Loader() </dd>
+<a class="el" href="instances_8h.html#adae5f5aa425aa280c036854196c161f7">User_Engine_Loader()</a> </dd>
 <dd>
-User_Instance_Loader() </dd></dl>
+<a class="el" href="instances_8h.html#a283aa781e6e7038273124edb497153b8">User_Instance_Loader()</a> </dd></dl>
 <p>Mas módulos y librerías de SDL aquí </p>
 
 <p>Definición en la línea <a class="el" href="__engine_8cpp_source.html#l00017">17</a> del archivo <a class="el" href="__engine_8cpp_source.html">_engine.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00158">ERROR_FATAL_INIT</a>.</p>
+<p>Hace referencia a <a class="el" href="__globals_8h_source.html#l00158">ERROR_FATAL_INIT</a>, <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a>, <a class="el" href="__debug_8cpp_source.html#l00343">CSystem_Debug::msg_box()</a>, <a class="el" href="__systems_8cpp_source.html#l00005">Systems_Init()</a>, <a class="el" href="instances_8cpp_source.html#l00006">User_Engine_Loader()</a> y <a class="el" href="instances_8cpp_source.html#l00014">User_Instance_Loader()</a>.</p>
 
 <p>Referenciado por <a class="el" href="__engine_8cpp_source.html#l00068">OnExecute()</a>.</p>
 
@@ -305,6 +305,8 @@ User_Instance_Loader() </dd></dl>
 <p>Cierra el motor gráfico, cerrando la librería <em>SDL2</em>, cerrando los sitemas, y eliminando todas las estancias. Será llamado al acabar <a class="el" href="class_c_engine.html#a98d3dc54b6e2f506d8af9d0ab5853d94" title="Comenzar ejecución. ">OnExecute()</a>. </p>
 
 <p>Definición en la línea <a class="el" href="__engine_8cpp_source.html#l00060">60</a> del archivo <a class="el" href="__engine_8cpp_source.html">_engine.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__systems_8cpp_source.html#l00076">Systems_Close()</a>.</p>
 
 <p>Referenciado por <a class="el" href="__engine_8cpp_source.html#l00068">OnExecute()</a>.</p>
 
@@ -343,11 +345,11 @@ User_Instance_Loader() </dd></dl>
 </div><div class="memdoc">
 
 <p>Comenzar ejecución. </p>
-<p>Comienza la ejecución del motor gráfico. Primero el motor con <a class="el" href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987" title="Iniciar el motor. ">Init()</a>, y luego ejecuta la primer estancia añadida con la función <a class="el" href="class_c_engine.html#a360a95321b65e730e701e9224c7ea325" title="Añadir una nueva estancia. ">AddInstance()</a>, usada desde User_Instance_Loader(). Finalmente, después de haber ejecutado las estancias necesarias, se cerrará el motor, llamando a la función close.</p>
+<p>Comienza la ejecución del motor gráfico. Primero el motor con <a class="el" href="class_c_engine.html#aa7faa1ed70d8ea96cd0ff4115469e987" title="Iniciar el motor. ">Init()</a>, y luego ejecuta la primer estancia añadida con la función <a class="el" href="class_c_engine.html#a360a95321b65e730e701e9224c7ea325" title="Añadir una nueva estancia. ">AddInstance()</a>, usada desde <a class="el" href="instances_8h.html#a283aa781e6e7038273124edb497153b8">User_Instance_Loader()</a>. Finalmente, después de haber ejecutado las estancias necesarias, se cerrará el motor, llamando a la función close.</p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td>Cantidad de argumentos. Procedente de la función main(). </td></tr>
-    <tr><td class="paramname">argv</td><td>Argumentos. Procedente de la función main(). </td></tr>
+    <tr><td class="paramname">argc</td><td>Cantidad de argumentos. Procedente de la función <a class="el" href="__main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>. </td></tr>
+    <tr><td class="paramname">argv</td><td>Argumentos. Procedente de la función <a class="el" href="__main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main()</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -355,7 +357,9 @@ User_Instance_Loader() </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8cpp_source.html#l00068">68</a> del archivo <a class="el" href="__engine_8cpp_source.html">_engine.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__engine_8cpp_source.html#l00060">Close()</a>, <a class="el" href="__engine_8h_source.html#l00231">Exit()</a> y <a class="el" href="__engine_8cpp_source.html#l00017">Init()</a>.</p>
+<p>Hace referencia a <a class="el" href="__engine_8cpp_source.html#l00060">Close()</a>, <a class="el" href="__debug_8cpp_source.html#l00304">CSystem_Debug::error()</a>, <a class="el" href="__engine_8h_source.html#l00231">Exit()</a>, <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a>, <a class="el" href="__engine_8cpp_source.html#l00017">Init()</a> y <a class="el" href="__systems_8cpp_source.html#l00091">Systems_Reset()</a>.</p>
+
+<p>Referenciado por <a class="el" href="__main_8cpp_source.html#l00008">main()</a>.</p>
 
 </div>
 </div>
@@ -384,7 +388,9 @@ User_Instance_Loader() </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8cpp_source.html#l00115">115</a> del archivo <a class="el" href="__engine_8cpp_source.html">_engine.cpp</a>.</p>
 
-<p>Hace referencia a <a class="el" href="__globals_8cpp_source.html#l00040">Utils::sdl_cargar_img()</a>.</p>
+<p>Hace referencia a <a class="el" href="__render_8cpp_source.html#l00018">gRender</a> y <a class="el" href="__globals_8cpp_source.html#l00040">Utils::sdl_cargar_img()</a>.</p>
+
+<p>Referenciado por <a class="el" href="instances_8cpp_source.html#l00006">User_Engine_Loader()</a>.</p>
 
 </div>
 </div>
@@ -414,6 +420,8 @@ User_Instance_Loader() </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>String que contiene el título de la ventana. </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8h_source.html#l00122">122</a> del archivo <a class="el" href="__engine_8h_source.html">_engine.h</a>.</p>
+
+<p>Referenciado por <a class="el" href="__render_8cpp_source.html#l00020">CSystem_Render::Init()</a>.</p>
 
 </div>
 </div>
@@ -449,6 +457,10 @@ User_Instance_Loader() </dd></dl>
 </dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8h_source.html#l00133">133</a> del archivo <a class="el" href="__engine_8h_source.html">_engine.h</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__render_8cpp_source.html#l00017">gSystem_Render</a>.</p>
+
+<p>Referenciado por <a class="el" href="instances_8cpp_source.html#l00006">User_Engine_Loader()</a>.</p>
 
 </div>
 </div>
@@ -490,22 +502,26 @@ User_Instance_Loader() </dd></dl>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">load_gameObject_function</td><td>Callback de la función para cargar los objetos de juego. Debe ser del tipo <em>bool callback(void)</em> </td></tr>
-    <tr><td class="paramname">resource_file</td><td>Ruta al fichero de recursos a cargar para dicha estancia. </td></tr>
+    <tr><td class="paramname">resource_file</td><td>Ruta al fichero de recursos a cargar para dicha estancia. Si es "" o el fichero no existe, se asume que la estancia no usa recursos (absurdo). </td></tr>
     <tr><td class="paramname">instance_name</td><td>Nombre de la estancia. Debe ser un identificador único.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="game_objects_8h_source.html">user/include/gameObjects.h</a> </dd>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="game_objects_8h.html">user/include/gameObjects.h</a> </dd>
 <dd>
-<a class="el" href="game_objects_8cpp_source.html">user/src/gameObjects.cpp</a> </dd>
+<a class="el" href="game_objects_8cpp.html">user/src/gameObjects.cpp</a> </dd>
 <dd>
-<a class="el" href="instances_8h_source.html">user/include/instances.h</a> </dd>
+<a class="el" href="instances_8h.html">user/include/instances.h</a> </dd>
 <dd>
-<a class="el" href="instances_8cpp_source.html">user/src/instances.cpp</a> </dd>
+<a class="el" href="instances_8cpp.html">user/src/instances.cpp</a> </dd>
 <dd>
 <a class="el" href="class_c_system___resources.html">CSystem_Resources</a> </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8cpp_source.html#l00089">89</a> del archivo <a class="el" href="__engine_8cpp_source.html">_engine.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="__debug_8cpp_source.html#l00304">CSystem_Debug::error()</a> y <a class="el" href="__debug_8cpp_source.html#l00015">gSystem_Debug</a>.</p>
+
+<p>Referenciado por <a class="el" href="instances_8cpp_source.html#l00014">User_Instance_Loader()</a>.</p>
 
 </div>
 </div>
@@ -560,8 +576,8 @@ User_Instance_Loader() </dd></dl>
 </div><div class="memdoc">
 
 <p>Instancia ejecutada actualmente. </p>
-<p>Devuelve un puntero del tipo <a class="el" href="class_c_instance.html">CInstance</a> que apunta a la estancia que está siendo ejecutada actualmente. Es mejor usar <a class="el" href="class_c_engine.html#a433500156a899fb9846e932c5f467eb3" title="Nombre de estancia ejecutada actualmente. ">GetCurrentInstance()</a> si sólo se desea saber el nombre.</p>
-<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_instance.html">CInstance</a> </dd></dl>
+<p>Devuelve un puntero del tipo <a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a> que apunta a la estancia que está siendo ejecutada actualmente. Es mejor usar <a class="el" href="class_c_engine.html#a433500156a899fb9846e932c5f467eb3" title="Nombre de estancia ejecutada actualmente. ">GetCurrentInstance()</a> si sólo se desea saber el nombre.</p>
+<dl class="section see"><dt>Ver también</dt><dd><a class="el" href="class_c_instance.html" title="Clase que representa a una estancia o nivel. ">CInstance</a> </dd></dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Puntero a la estancia ejecutada actualmente. </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8h_source.html#l00189">189</a> del archivo <a class="el" href="__engine_8h_source.html">_engine.h</a>.</p>
@@ -782,6 +798,8 @@ User_Instance_Loader() </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8h_source.html#l00286">286</a> del archivo <a class="el" href="__engine_8h_source.html">_engine.h</a>.</p>
 
+<p>Referenciado por <a class="el" href="game_objects_8cpp_source.html#l00003">SetGameObjects_Instance1()</a> y <a class="el" href="game_objects_8cpp_source.html#l00042">SetGameObjects_Instance2()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ac22ec31ca3fc9274470b3644317737e8"></a>
@@ -810,6 +828,8 @@ User_Instance_Loader() </dd></dl>
 
 <p>Definición en la línea <a class="el" href="__engine_8h_source.html#l00298">298</a> del archivo <a class="el" href="__engine_8h_source.html">_engine.h</a>.</p>
 
+<p>Referenciado por <a class="el" href="game_objects_8cpp_source.html#l00251">Next_instancer_button()</a>.</p>
+
 </div>
 </div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
@@ -819,7 +839,7 @@ User_Instance_Loader() </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 5 de Abril de 2014 21:51:21 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 11 de Abril de 2014 10:51:35 para Go-Engine por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

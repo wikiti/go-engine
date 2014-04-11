@@ -111,7 +111,7 @@ bool CSystem_Data_Storage::Load(const char* file)
     return false;
   }
 
-  RemoveAll();
+  //RemoveAll();
 
   is.seekg(0, is.end);
   if(is.tellg() <= 0)
