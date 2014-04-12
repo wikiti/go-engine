@@ -82,7 +82,10 @@ namespace Debug
  * - Escribir información o errores en un *log* (fichero de texto, por defecto en __CSYSTEM_DEBUG_STORAGE_SAVEFILE).
  * - Abrir advertencias o pop-ups para informar o advertir al usuario sobre los aspectos deseados (errores, notificaciones...).
  * - Una consola o terminal de comandos completamente funcional.
- *   - Dicha consola se activará mediante la tecla F10. <- gInput
+ *   - Dicha consola se activará mediante la tecla F10 por defecto, o con la tecla almacenada en la variable del sistema CSystem_Data_Storage "__INPUT_CONSOLE_KEY".
+ *
+ * @warning En caso de que la consola esté abierta, se ignorará la entrada del usuario hasta que se cierre. Esto significa que, sólo se
+ * @warning procesará entrada para este sistema, y no para el resto de objetos.
  */
 class CSystem_Debug: public CSystem
 {
@@ -134,20 +137,123 @@ class CSystem_Debug: public CSystem
     void OnRender();
 
   public:
+    /**
+     * @brief Constructor principal.
+     *
+     * Inicia el sistema.
+     */
     CSystem_Debug(): CSystem(), opened(false), file(NULL){}
+    /**
+     * @brief Comprobar si el fichero de log está abierto.
+     *
+     * @deprecated
+     * @no_use
+     *
+     * @return true si el fichero de log está abierto, false en caso contrario.
+     */
     bool IsOpened(){return opened;}
 
+    /**
+     * @brief Comprobar si la consola está desplegada.
+     *
+     * @return En caso de que la consoa esté abierta, devuelve true. En caso contrario, devuelve false.
+     */
     bool IsConsole()
     {
       return console;
     }
 
     // Commands
+    /**
+     * @brief Ejecutar un comando de la terminal.
+     *
+     * Ejecuta un comando de la consola, con los correspondientes argumentos. Por ejemplo, hacer
+     *
+     @code
+     gDebug.command("go_show_tree");
+     @endcode
+     *
+     * Es idéntico a abrir una terminal y escribir
+     *
+     @code
+     > go_show_tree
+     @endcode
+     *
+     * La lista completa de comandos es la siguiente:
+     *
+     * ->PorHacer Escribir lista de comandos en la documentación.
+     *
+     * @warning Puede que la lista de comandos anterior no este actualizada. Ejecute el comando "help" para
+     * @warning ver la lista de comandos, en sus respectivas categorías.
+     *
+     * @param command Comando a ejecutar, con el la instruccion y los argumentos.
+     * @param log Flag para saber si se debe escribir los comandos ejecutados en la terminal.
+     */
     void command(const std::string& command, bool log = false);
 
     // log.txt File
+    /**
+     * @brief Escribir un mensaje en una línea del fichero de logs.
+     *
+     * Escribe una línea con formato al fichero de logs, que puede resultar útil para depurar algunos aspectos.
+     *
+     * Por ejemplo, usando:
+     @code
+     gDebug.log("Texto de prueba: %s -> %d", "nombre", 50);
+     @endcode
+     *
+     * Genera la línea en el fichero de logs siguiente:
+     @code
+     [12/04/2014 09:59] Texxto de prueba: nombre -> 50
+     @endcode
+     *
+     * Si no quiere una marca de tiempo, use raw().
+     *
+     * @param fmt Formato de salida. Idéntico a usar "printf" de *C*.
+     */
     void log(const char* fmt, ...);
+    /**
+     * @brief Escribir un mensaje de error en una línea del fichero de logs.
+     *
+     * Escribe una línea con formato al fichero de logs, que puede resultar útil para depurar algunos aspectos con respecto
+     * a errores.
+     *
+     * Por ejemplo, usando:
+     @code
+     gDebug.error("No quedan huevos!!");
+     @endcode
+     *
+     * Genera la línea en el fichero de logs siguiente:
+     @code
+     [12/04/2014 09:59] **ERROR** No quedan huevos!!
+     @endcode
+     *
+     * Si no quiere una marca de tiempo, use raw().
+     *
+     * @param fmt Formato de salida. Idéntico a usar "printf" de *C*.
+     */
     void error(const char* fmt, ...);
+    /**
+     * @brief Escribir un mensaje sin marca de tiempo y sin saltos de línea en el fichero de logs.
+     *
+     * Escribe una línea con formato al fichero de logs, que puede resultar útil para depurar algunos aspectos. No introduce
+     * un retorno de carro al final de la línea, ni tampoco añade marca de tiempo.
+     *
+     * Por ejemplo, usando:
+     @code
+     gDebug.raw("Esto es una ");
+     gDebug.raw("lineas\n");
+     gDebug.raw("Esto es otra linea\n");
+     @endcode
+     *
+     * Genera la línea en el fichero de logs siguiente:
+     @code
+     Esto es una linea
+     Esto es otra linea
+     @endcode
+     *
+     * @param fmt Formato de salida. Idéntico a usar "printf" de *C*.
+     */
     void raw_log(const char* fmt, ...);
 
     // Message Boxes
