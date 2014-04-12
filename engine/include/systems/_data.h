@@ -346,7 +346,8 @@ class CSystem_Data_Storage: public CSystem
 /**
  * @brief Objeto global del sistema "Data Storage".
  *
- * Se debe usar como única estancia de dicho sistema. Para mayor comodidad, use el objeto gData.
+ * Se debe usar como única estancia de dicho sistema. Para mayor comodidad, use el objeto gData,
+ * que es una referencia a este objeto.
  */
 extern CSystem_Data_Storage gSystem_Data_Storage;
 /**

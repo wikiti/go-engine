@@ -31,10 +31,24 @@
 /** @addtogroup Sistemas */
 /*@{*/
 
+/**
+ * @brief Espacio de nombres para algunos elementos usados por el sistema CSystem_Debug.
+ *
+ */
 namespace Debug
 {
+  /**
+   * @brief Enum para los distintos tipos de mensajes de alerta.
+   *
+   * Un diálogo o message box es un *pop-up* que permite alertar al usuario de errores, advertencias o información.
+   */
   enum flags_t {error = SDL_MESSAGEBOX_ERROR, warning = SDL_MESSAGEBOX_WARNING, information = SDL_MESSAGEBOX_INFORMATION};
-
+  /**
+   * @brief Estructura que represente una línea de texto dentro de la consola.
+   *
+   * Cada línea tiene asociada un texto (string) y un color (colorf_t). Se usa de manera interna en
+   * el sistema CSystem_Debug.
+   */
   typedef struct string_console_t
   {
     colorf_t line_color;
@@ -56,6 +70,20 @@ namespace Debug
   } string_console_t;
 }
 
+/**
+ * @brief Sistema que representa el depurador del motor.
+ *
+ * Este sistema, uno de los más importante para el desarrollo, es el encargado de servir de utililidad
+ * para depurar algunos aspectos del programa, tales como mostrar errores, advertencias, guardar información en
+ * un log, etc.
+ *
+ * Actualmente, el depurador realiza las siguientes acciones:
+ *
+ * - Escribir información o errores en un *log* (fichero de texto, por defecto en __CSYSTEM_DEBUG_STORAGE_SAVEFILE).
+ * - Abrir advertencias o pop-ups para informar o advertir al usuario sobre los aspectos deseados (errores, notificaciones...).
+ * - Una consola o terminal de comandos completamente funcional.
+ *   - Dicha consola se activará mediante la tecla F10. <- gInput
+ */
 class CSystem_Debug: public CSystem
 {
   friend class CInstance;
@@ -108,7 +136,6 @@ class CSystem_Debug: public CSystem
   public:
     CSystem_Debug(): CSystem(), opened(false), file(NULL){}
     bool IsOpened(){return opened;}
-
 
     bool IsConsole()
     {
@@ -204,7 +231,18 @@ class CSystem_Debug: public CSystem
     void Console_command__R_GLINFO(std::string arguments);
 };
 
+/**
+ * @brief Objeto global del sistema "Debug".
+ *
+ * Se debe usar como única estancia de dicho sistema. Para mayor comodidad, use el objeto gDebug,
+ * que es una referencia a este objeto.
+ */
 extern CSystem_Debug gSystem_Debug;
+/**
+ * @brief Objeto global del sistema "Debug".
+ *
+ * Se debe usar como única estancia de dicho sistema.
+ */
 extern CSystem_Debug& gDebug;
 
 /*@}*/
