@@ -6,7 +6,7 @@ bool Systems_Init()
 {
   if(!gSystem_Debug.Init())
   {
-    gSystem_Debug.msg_boxf(Debug::error, ERROR_FATAL_INIT, "Could not load Debug system");
+    gSystem_Debug.msg_box(Debug::error, ERROR_FATAL_INIT, "Could not load Debug system");
   }
 
   if(!gSystem_Data_Storage.Init())

@@ -216,6 +216,7 @@ typedef struct color_t
  */
 typedef struct colorf_t
 {
+  // ->PorHacer Añadir a la estructura colorf_t varios valores static, con colores comunes como rojo, azul, verde, etc...
   GLfloat r; /**< Componente roja del color. Valor flotante entre 0 y 1. */
   GLfloat g; /**< Componente verde del color. Valor flotante entre 0 y 1. */
   GLfloat b; /**< Componente azul del color. Valor flotante entre 0 y 1. */

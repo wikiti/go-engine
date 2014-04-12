@@ -204,7 +204,7 @@ class CSystem_Debug: public CSystem
      *
      * Genera la línea en el fichero de logs siguiente:
      @code
-     [12/04/2014 09:59] Texxto de prueba: nombre -> 50
+     [12/04/2014 09:59] Texto de prueba: nombre -> 50
      @endcode
      *
      * Si no quiere una marca de tiempo, use raw().
@@ -258,22 +258,140 @@ class CSystem_Debug: public CSystem
 
     // Message Boxes
     // Flags: debug::error for error, debug::warning for warnings, debug::information for info
-    void msg_box(Uint32 flags, const char* title, const char* message);
-    void msg_boxf(Uint32 flags, const char* title, const char* fmt, ...);
+    /**
+     * @brief Mensaje estilo pop-up
+     *
+     * Genera una nueva ventana o diágolo con el mensaje a mostrar al usuario.
+     *
+     * @param flags Tipo de mensaje (error, información, warning). @see Debug::flags_t
+     * @param title Título del diálogo.
+     * @param fmt Cuerpo, texto o mensaje del diálogo. Como si se usase "printf" de *C*.
+     */
+    void msg_box(Uint32 flags, const char* title, const char* fmt, ...);
 
     // Console
+    /**
+     * @brief Escribir una línea en consola.
+     *
+     * Escribe una línea en consola con un formato determinado. Por ejemplo, usar
+     @code
+     gDebug.cosole_msg("Texto de prueba numero %d", 40);
+     @endcode
+     *
+     * Generará por consola el mensaje:
+     *
+     * <span style="font-weight: bold; background-color: black; color: white; display: block; padding: 5px;">Texto de consola</span>
+     *
+     * @param fmt Cuerpo, texto o mensaje del diálogo. Como si se usase "printf" de *C*.
+     */
     void console_msg(const char* fmt, ...);
+    /**
+     * @brief Escribir una línea de error (roja) en consola.
+     *
+     * Escribe una línea de error en consola con un formato determinado. Por ejemplo, usar
+     @code
+     gDebug.cosole_msg("Error! No quedan huevos!!");
+     @endcode
+     *
+     * Generará por consola el mensaje:
+     *
+     * <span style="font-weight: bold; background-color: black; color: red; display: block; padding: 5px;">Error! No quedan huevos!!</span>
+     *
+     * @param fmt Cuerpo, texto o mensaje del diálogo. Como si se usase "printf" de *C*.
+     */
     void console_error_msg(const char* fmt, ...);
+    /**
+     * @brief Escribir una línea de advertencia (naranja) en consola.
+     *
+     * Escribe una línea de advertencia en consola con un formato determinado. Por ejemplo, usar
+     @code
+     gDebug.cosole_msg("Advertencia! te quedan 2 huevos.");
+     @endcode
+     *
+     * Generará por consola el mensaje:
+     *
+     * <span style="font-weight: bold; background-color: black; color: #ffbf00; display: block; padding: 5px;">Advertencia! te quedan 2 huevos.</span>
+     *
+     * @param fmt Cuerpo, texto o mensaje del diálogo. Como si se usase "printf" de *C*.
+     */
     void console_warning_msg(const char* fmt, ...);
     /**
-     * @brief TEST
+     * @brief Escribir una línea de información (azul) en consola.
      *
-     * Texto de prueba para <span style="background-color: black; color: #57b8d9;">mostrar un texto azul</span>.
+     * Escribe una línea de información en consola con un formato determinado. Por ejemplo, usar
+     @code
+     gDebug.cosole_msg("FYI: Esto es un mensaje de informacion.");
+     @endcode
      *
-     * @param fmt
+     * Generará por consola el mensaje:
+     *
+     * <span style="font-weight: bold; background-color: black; color: #57b8d9; display: block; padding: 5px;">FYI: Esto es un mensaje de informacion.</span>
+     *
+     * @param fmt Cuerpo, texto o mensaje del diálogo. Como si se usase "printf" de *C*.
      */
     void console_info_msg(const char* fmt, ...);
+    /**
+     * @brief Escribir una línea con un color personalizado en consola.
+     *
+     * Escribe una línea con un color personalizado en consola con un formato determinado. Por ejemplo, usar
+     *
+     @code
+     gDebug.console_custom_msg(0.6f, 0.f, 0.6f, 1.f, "Violeta");
+     gDebug.console_custom_msg(0, 0, 0.6f, 1.f, "Azul oscuro");
+     gDebug.console_custom_msg(0, 0, 1.f, 1.f, "Azul");
+     gDebug.console_custom_msg(0.f, 1.f, 0.f, 1.f, "Verde");
+     gDebug.console_custom_msg(1.f, 1.f, 0.f, 1.f, "Amarillo");
+     gDebug.console_custom_msg(1.f, 0.5f, 0.f, 1.f, "Naranja");
+     gDebug.console_custom_msg(1.f, 0.f, 0.f, 1.f, "Rojo");
+     @endcode
+     *
+     * Generará por consola los mensajes:
+     *
+     * <span style="font-weight: bold; background-color: black; color: #990099; display: block; padding: 5px;">Violeta</span>
+     * <span style="font-weight: bold; background-color: black; color: #000099; display: block; padding: 5px;">Azul oscuro</span>
+     * <span style="font-weight: bold; background-color: black; color: #0000FF; display: block; padding: 5px;">Azul</span>
+     * <span style="font-weight: bold; background-color: black; color: #00FF00; display: block; padding: 5px;">Verde</span>
+     * <span style="font-weight: bold; background-color: black; color: #FFFF00; display: block; padding: 5px;">Amarillo</span>
+     * <span style="font-weight: bold; background-color: black; color: #FF8000; display: block; padding: 5px;">Naranja</span>
+     * <span style="font-weight: bold; background-color: black; color: #FF0000; display: block; padding: 5px;">Rojo</span>
+     *
+     * @param r Componente roja del color.
+     * @param g Componente verde del color.
+     * @param b Componente azul del color.
+     * @param a Componente alfa (trasparencia) del color.
+     * @param fmt Cuerpo, texto o mensaje del diálogo. Como si se usase "printf" de *C*.
+     */
     void console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat a, const char* fmt, ...);
+
+    /**
+     * @brief Escribir una línea con un color personalizado en consola.
+     *
+     * Escribe una línea con un color personalizado en consola con un formato determinado. Por ejemplo, usar
+     *
+     @code
+     gDebug.console_custom_msg(0.6f, 0.f, 0.6f, 1.f, "Violeta");
+     gDebug.console_custom_msg(0, 0, 0.6f, 1.f, "Azul oscuro");
+     gDebug.console_custom_msg(0, 0, 1.f, 1.f, "Azul");
+     gDebug.console_custom_msg(0.f, 1.f, 0.f, 1.f, "Verde");
+     gDebug.console_custom_msg(1.f, 1.f, 0.f, 1.f, "Amarillo");
+     gDebug.console_custom_msg(1.f, 0.5f, 0.f, 1.f, "Naranja");
+     gDebug.console_custom_msg(1.f, 0.f, 0.f, 1.f, "Rojo");
+     @endcode
+     *
+     * Generará por consola los mensajes:
+     *
+     * <span style="font-weight: bold; background-color: black; color: #990099; display: block; padding: 5px;">Violeta</span>
+     * <span style="font-weight: bold; background-color: black; color: #000099; display: block; padding: 5px;">Azul oscuro</span>
+     * <span style="font-weight: bold; background-color: black; color: #0000FF; display: block; padding: 5px;">Azul</span>
+     * <span style="font-weight: bold; background-color: black; color: #00FF00; display: block; padding: 5px;">Verde</span>
+     * <span style="font-weight: bold; background-color: black; color: #FFFF00; display: block; padding: 5px;">Amarillo</span>
+     * <span style="font-weight: bold; background-color: black; color: #FF8000; display: block; padding: 5px;">Naranja</span>
+     * <span style="font-weight: bold; background-color: black; color: #FF0000; display: block; padding: 5px;">Rojo</span>
+     *
+     * @param color Color del mensaje.
+     * @param fmt Cuerpo, texto o mensaje del diálogo. Como si se usase "printf" de *C*.
+     */
+    void console_custom_msg(colorf_t color, const char* fmt, ...);
 
   protected:
       // Console commands

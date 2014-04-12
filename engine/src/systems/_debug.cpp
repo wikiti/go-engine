@@ -340,12 +340,7 @@ void CSystem_Debug::raw_log(const char* fmt, ...)
   fclose(file);
 }
 
-void CSystem_Debug::msg_box(Uint32 flags, const char* title, const char* message)
-{
-  SDL_ShowSimpleMessageBox(flags, title, message, gSystem_Render.window);
-}
-
-void CSystem_Debug::msg_boxf(Uint32 flags, const char* title, const char* fmt, ...)
+void CSystem_Debug::msg_box(Uint32 flags, const char* title, const char* fmt, ...)
 {
   if(!fmt)
     return;
@@ -671,6 +666,23 @@ void CSystem_Debug::console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat 
   va_end(ap);
 
   string_console_t t(text, r, g, b, a);
+  console_buffer.insert(console_buffer.begin(), t);
+  if(console_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES) console_buffer.pop_back();
+}
+
+void CSystem_Debug::console_custom_msg(colorf_t color, const char* fmt, ...)
+{
+  if(!fmt)
+    return;
+
+  char text[1024];
+
+  va_list ap;
+  va_start(ap, fmt);
+    vsprintf(text, fmt, ap);
+  va_end(ap);
+
+  string_console_t t(text, color.r, color.g, color.b, color.a);
   console_buffer.insert(console_buffer.begin(), t);
   if(console_buffer.size() > __CSYSTEM_DEBUG_CONSOLE_CONSOLE_BUFFER_MAXLINES) console_buffer.pop_back();
 }

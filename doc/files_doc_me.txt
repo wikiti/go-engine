@@ -13,7 +13,7 @@ engine\include\components\_component_transform.h            x
 engine\include\engine\_engine.h                             x
 engine\include\engine\_instance.h                           x
 engine\include\systems\_data.h                              x
-engine\include\systems\_debug.h                             /
+engine\include\systems\_debug.h                             x
 engine\include\systems\_input.h                             
 engine\include\systems\_manager.h                           
 engine\include\systems\_mixer.h                             

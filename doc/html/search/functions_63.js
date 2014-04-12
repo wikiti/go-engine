@@ -36,7 +36,7 @@ var searchData=
   ['colorf_5ft',['colorf_t',['../structcolorf__t.html#a4db9e60ed265a1c7e1f930b2eecb4357',1,'colorf_t']]],
   ['command',['command',['../class_c_system___debug.html#aba09df8e75b1c01b9cde36e564e80cfa',1,'CSystem_Debug']]],
   ['component_5fto_5fstring',['component_to_string',['../namespace_components.html#abc8d121720a7d087347dbd2113f4c931',1,'Components']]],
-  ['console_5fcustom_5fmsg',['console_custom_msg',['../class_c_system___debug.html#a29c662b762c34534a9decb4f0c450abd',1,'CSystem_Debug']]],
+  ['console_5fcustom_5fmsg',['console_custom_msg',['../class_c_system___debug.html#a29c662b762c34534a9decb4f0c450abd',1,'CSystem_Debug::console_custom_msg(GLfloat r, GLfloat g, GLfloat b, GLfloat a, const char *fmt,...)'],['../class_c_system___debug.html#a95dd232841c82f08bfb20209ad72b89f',1,'CSystem_Debug::console_custom_msg(colorf_t color, const char *fmt,...)']]],
   ['console_5ferror_5fmsg',['console_error_msg',['../class_c_system___debug.html#adc1b3704e00e2eaefbe177acb37462b0',1,'CSystem_Debug']]],
   ['console_5finfo_5fmsg',['console_info_msg',['../class_c_system___debug.html#a41f80851f8442f5a62824ca92e304780',1,'CSystem_Debug']]],
   ['console_5fmsg',['console_msg',['../class_c_system___debug.html#a632839b0acc89a749cf166213d0789a8',1,'CSystem_Debug']]],

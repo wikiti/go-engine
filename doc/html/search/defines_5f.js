@@ -14,6 +14,7 @@ var searchData=
   ['_5f_5fcsystem_5fdata_5fstorage_5fdefaultoptions_5finput_5faxis2_5fleft_5fkey',['__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_LEFT_KEY',['../__data_8h.html#a074a85efe0b9b06a33f7901222c8383e',1,'_data.h']]],
   ['_5f_5fcsystem_5fdata_5fstorage_5fdefaultoptions_5finput_5faxis2_5fright_5fkey',['__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_RIGHT_KEY',['../__data_8h.html#a343c9bec48206e6054cd6e0dc07ed87c',1,'_data.h']]],
   ['_5f_5fcsystem_5fdata_5fstorage_5fdefaultoptions_5finput_5faxis2_5fup_5fkey',['__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_AXIS2_UP_KEY',['../__data_8h.html#a45166abf1c103733e8464ceeb715adb9',1,'_data.h']]],
+  ['_5f_5fcsystem_5fdata_5fstorage_5fdefaultoptions_5finput_5fconsole_5fkey',['__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_CONSOLE_KEY',['../__data_8h.html#a1cc92c78632828ee56018faf98170cbb',1,'_data.h']]],
   ['_5f_5fcsystem_5fdata_5fstorage_5fdefaultoptions_5finput_5fcrouch_5fkey',['__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_CROUCH_KEY',['../__data_8h.html#a9e6a4e929c86548c556dfa4825c7c03e',1,'_data.h']]],
   ['_5f_5fcsystem_5fdata_5fstorage_5fdefaultoptions_5finput_5fjump_5fkey',['__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_JUMP_KEY',['../__data_8h.html#aff9fa65c1fe56a0236f4d74a022aca6d',1,'_data.h']]],
   ['_5f_5fcsystem_5fdata_5fstorage_5fdefaultoptions_5finput_5frun_5fkey',['__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_RUN_KEY',['../__data_8h.html#ae6ff28c68b5a2e9bc5239923d73dd1e2',1,'_data.h']]],
