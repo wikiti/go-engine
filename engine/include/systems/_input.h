@@ -85,6 +85,9 @@ class CSystem_UserInput: public CSystem
         Input::keystate_t State(){return state;}
         SDL_Scancode Key() {return key;}
         const char* KeyName() {return SDL_GetScancodeName(key);}
+
+      protected:
+        void OnInput(const CSystem_UserInput& input);
     };
 
     class CBall
@@ -103,6 +106,9 @@ class CSystem_UserInput: public CSystem
         float vertical, horizontal;
 
         CKey v_up, v_down, h_left, h_right;
+
+      protected:
+        void OnInput(const CSystem_UserInput& input);
     };
 
     class CAxis
@@ -208,6 +214,8 @@ class CSystem_UserInput: public CSystem
     CKey run;     // L-shift
     CKey crouch;  // L-ctrl
     CKey jump;    // space
+
+    CKey console; // F10
 
       // Mouse
     CMouse mouse;

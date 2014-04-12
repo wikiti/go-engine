@@ -12,6 +12,86 @@ using namespace std;
 
 using namespace Input;
 
+void CSystem_UserInput::CKey::OnInput(const CSystem_UserInput& input = gSystem_UserInput)
+{
+  if ((state == Input::key_keyup or state == Input::key_unpressed) and input.keyboard[key])
+    state = Input::key_keydown;
+  else if ((state == Input::key_keydown or state == Input::key_pressed) and !input.keyboard[key])
+    state = Input::key_keyup;
+  else if (state == Input::key_keydown and input.keyboard[key])
+    state = Input::key_pressed;
+  else if (state == Input::key_keyup and !input.keyboard[key])
+    state = Input::key_unpressed;
+}
+
+void CSystem_UserInput::CKeyAxis::OnInput(const CSystem_UserInput& input = gSystem_UserInput)
+{
+  // ---- Para los ejes, usamos máquinas de estado para alternar entre los estados unpressed, keydown, key_pressed y keyup.
+  // - Up
+  if((v_up.state == key_keyup or v_up.state == key_unpressed) and input.keyboard[v_up.key])
+  {
+    vertical += 1.0;
+    v_up.state = key_keydown;
+  }
+  else if((v_up.state == key_keydown or v_up.state == key_pressed) and !input.keyboard[v_up.key])
+  {
+    vertical -= 1.0;
+    v_up.state = key_keyup;
+  }
+  else if(v_up.state == key_keydown and input.keyboard[v_up.key])
+    v_up.state = key_pressed;
+  else if(v_up.state == key_keyup and !input.keyboard[v_up.key])
+    v_up.state = key_unpressed;
+
+  // - Down
+  if((v_down.state == key_keyup or v_down.state == key_unpressed) and input.keyboard[v_down.key])
+  {
+    vertical -= 1.0;
+    v_down.state = key_keydown;
+  }
+  else if((v_down.state == key_keydown or v_down.state == key_pressed) and !input.keyboard[v_down.key])
+  {
+    vertical += 1.0;
+    v_down.state = key_keyup;
+  }
+  else if(v_down.state == key_keydown and input.keyboard[v_down.key])
+    v_down.state = key_pressed;
+  else if(v_down.state == key_keyup and !input.keyboard[v_down.key])
+    v_down.state = key_unpressed;
+
+  // - Left
+  if((h_left.state == key_keyup or h_left.state == key_unpressed) and input.keyboard[h_left.key])
+  {
+    horizontal -= 1.0;
+    h_left.state = key_keydown;
+  }
+  else if((h_left.state == key_keydown or h_left.state == key_pressed) and !input.keyboard[h_left.key])
+  {
+    horizontal += 1.0;
+    h_left.state = key_keyup;
+  }
+  else if(h_left.state == key_keydown and input.keyboard[h_left.key])
+    h_left.state = key_pressed;
+  else if(h_left.state == key_keyup and !input.keyboard[h_left.key])
+    h_left.state = key_unpressed;
+
+  // - Right
+  if((h_right.state == key_keyup or h_right.state == key_unpressed) and input.keyboard[h_right.key])
+  {
+    horizontal += 1.0;
+    h_right.state = key_keydown;
+  }
+  else if((h_right.state == key_keydown or h_right.state == key_pressed) and !input.keyboard[h_right.key])
+  {
+    horizontal -= 1.0;
+    h_right.state = key_keyup;
+  }
+  else if(h_right.state == key_keydown and input.keyboard[h_right.key])
+    h_right.state = key_pressed;
+  else if(h_right.state == key_keyup and !input.keyboard[h_right.key])
+    h_right.state = key_unpressed;
+}
+
 bool CSystem_UserInput::Init()
 {
   if(enabled) return true;
@@ -44,6 +124,9 @@ bool CSystem_UserInput::Init()
   run.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_RUN_KEY").c_str());
   crouch.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_CROUCH_KEY").c_str());
   jump.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_JUMP_KEY").c_str());
+
+  console.state = key_unpressed;
+  console.key = SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_CONSOLE_KEY").c_str());
 
     // Mouse
   if(!mouse.Init())
@@ -88,211 +171,23 @@ bool CSystem_UserInput::Reset()
 
 void CSystem_UserInput::OnInput()
 {
-  // ---- Para los ejes, usamos máquinas de estado para alternar entre los estados unpressed, keydown, key_pressed y keyup.
-  // -- Axis1
-  // - Up
-  if((axis1.v_up.state == key_keyup or axis1.v_up.state == key_unpressed) and keyboard[axis1.v_up.key])
-  {
-    axis1.vertical += 1.0;
-    axis1.v_up.state = key_keydown;
-  }
-  else if((axis1.v_up.state == key_keydown or axis1.v_up.state == key_pressed) and !keyboard[axis1.v_up.key])
-  {
-    axis1.vertical -= 1.0;
-    axis1.v_up.state = key_keyup;
-  }
-  else if(axis1.v_up.state == key_keydown and keyboard[axis1.v_up.key])
-    axis1.v_up.state = key_pressed;
-  else if(axis1.v_up.state == key_keyup and !keyboard[axis1.v_up.key])
-    axis1.v_up.state = key_unpressed;
-
-  // - Down
-  if((axis1.v_down.state == key_keyup or axis1.v_down.state == key_unpressed) and keyboard[axis1.v_down.key])
-  {
-    axis1.vertical -= 1.0;
-    axis1.v_down.state = key_keydown;
-  }
-  else if((axis1.v_down.state == key_keydown or axis1.v_down.state == key_pressed) and !keyboard[axis1.v_down.key])
-  {
-    axis1.vertical += 1.0;
-    axis1.v_down.state = key_keyup;
-  }
-  else if(axis1.v_down.state == key_keydown and keyboard[axis1.v_down.key])
-    axis1.v_down.state = key_pressed;
-  else if(axis1.v_down.state == key_keyup and !keyboard[axis1.v_down.key])
-    axis1.v_down.state = key_unpressed;
-
-  // - Left
-  if((axis1.h_left.state == key_keyup or axis1.h_left.state == key_unpressed) and keyboard[axis1.h_left.key])
-  {
-    axis1.horizontal -= 1.0;
-    axis1.h_left.state = key_keydown;
-  }
-  else if((axis1.h_left.state == key_keydown or axis1.h_left.state == key_pressed) and !keyboard[axis1.h_left.key])
-  {
-    axis1.horizontal += 1.0;
-    axis1.h_left.state = key_keyup;
-  }
-  else if(axis1.h_left.state == key_keydown and keyboard[axis1.h_left.key])
-    axis1.h_left.state = key_pressed;
-  else if(axis1.h_left.state == key_keyup and !keyboard[axis1.h_left.key])
-    axis1.h_left.state = key_unpressed;
-
-  // - Right
-  if((axis1.h_right.state == key_keyup or axis1.h_right.state == key_unpressed) and keyboard[axis1.h_right.key])
-  {
-    axis1.horizontal += 1.0;
-    axis1.h_right.state = key_keydown;
-  }
-  else if((axis1.h_right.state == key_keydown or axis1.h_right.state == key_pressed) and !keyboard[axis1.h_right.key])
-  {
-    axis1.horizontal -= 1.0;
-    axis1.h_right.state = key_keyup;
-  }
-  else if(axis1.h_right.state == key_keydown and keyboard[axis1.h_right.key])
-    axis1.h_right.state = key_pressed;
-  else if(axis1.h_right.state == key_keyup and !keyboard[axis1.h_right.key])
-    axis1.h_right.state = key_unpressed;
-
-
-  // -- Axis2
-  // - Up
-  if((axis2.v_up.state == key_keyup or axis2.v_up.state == key_unpressed) and keyboard[axis2.v_up.key])
-  {
-    axis2.vertical += 1.0;
-    axis2.v_up.state = key_keydown;
-  }
-  else if((axis2.v_up.state == key_keydown or axis2.v_up.state == key_pressed) and !keyboard[axis2.v_up.key])
-  {
-    axis2.vertical -= 1.0;
-    axis2.v_up.state = key_keyup;
-  }
-  else if(axis2.v_up.state == key_keydown and keyboard[axis2.v_up.key])
-    axis2.v_up.state = key_pressed;
-  else if(axis2.v_up.state == key_keyup and !keyboard[axis2.v_up.key])
-    axis2.v_up.state = key_unpressed;
-
-  // - Down
-  if((axis2.v_down.state == key_keyup or axis2.v_down.state == key_unpressed) and keyboard[axis2.v_down.key])
-  {
-    axis2.vertical -= 1.0;
-    axis2.v_down.state = key_keydown;
-  }
-  else if((axis2.v_down.state == key_keydown or axis2.v_down.state == key_pressed) and !keyboard[axis2.v_down.key])
-  {
-    axis2.vertical += 1.0;
-    axis2.v_down.state = key_keyup;
-  }
-  else if(axis2.v_down.state == key_keydown and keyboard[axis2.v_down.key])
-    axis2.v_down.state = key_pressed;
-  else if(axis2.v_down.state == key_keyup and !keyboard[axis2.v_down.key])
-    axis2.v_down.state = key_unpressed;
-
-  // - Left
-  if((axis2.h_left.state == key_keyup or axis2.h_left.state == key_unpressed) and keyboard[axis2.h_left.key])
-  {
-    axis2.horizontal -= 1.0;
-    axis2.h_left.state = key_keydown;
-  }
-  else if((axis2.h_left.state == key_keydown or axis2.h_left.state == key_pressed) and !keyboard[axis2.h_left.key])
-  {
-    axis2.horizontal += 1.0;
-    axis2.h_left.state = key_keyup;
-  }
-  else if(axis2.h_left.state == key_keydown and keyboard[axis2.h_left.key])
-    axis2.h_left.state = key_pressed;
-  else if(axis2.h_left.state == key_keyup and !keyboard[axis2.h_left.key])
-    axis2.h_left.state = key_unpressed;
-
-  // - Right
-  if((axis2.h_right.state == key_keyup or axis2.h_right.state == key_unpressed) and keyboard[axis2.h_right.key])
-  {
-    axis2.horizontal += 1.0;
-    axis2.h_right.state = key_keydown;
-  }
-  else if((axis2.h_right.state == key_keydown or axis2.h_right.state == key_pressed) and !keyboard[axis2.h_right.key])
-  {
-    axis2.horizontal -= 1.0;
-    axis2.h_right.state = key_keyup;
-  }
-  else if(axis2.h_right.state == key_keydown and keyboard[axis2.h_right.key])
-    axis2.h_right.state = key_pressed;
-  else if(axis2.h_right.state == key_keyup and !keyboard[axis2.h_right.key])
-    axis2.h_right.state = key_unpressed;
-
+  // Axis
+  axis1.OnInput();
+  axis2.OnInput();
 
   // -- Actions
-  // - Action1
-  if((action1.state == key_keyup or action1.state == key_unpressed) and keyboard[action1.key])
-    action1.state = key_keydown;
-  else if((action1.state == key_keydown or action1.state == key_pressed) and !keyboard[action1.key])
-    action1.state = key_keyup;
-  else if(action1.state == key_keydown and keyboard[action1.key])
-    action1.state = key_pressed;
-  else if(action1.state == key_keyup and !keyboard[action1.key])
-    action1.state = key_unpressed;
+  action1.OnInput();
+  action2.OnInput();
+  action3.OnInput();
+  action4.OnInput();
 
-  // - Action2
-  if((action2.state == key_keyup or action2.state == key_unpressed) and keyboard[action2.key])
-    action2.state = key_keydown;
-  else if((action2.state == key_keydown or action2.state == key_pressed) and !keyboard[action2.key])
-    action2.state = key_keyup;
-  else if(action2.state == key_keydown and keyboard[action2.key])
-    action2.state = key_pressed;
-  else if(action2.state == key_keyup and !keyboard[action2.key])
-    action2.state = key_unpressed;
+  run.OnInput();
+  crouch.OnInput();
+  jump.OnInput();
 
-  // - Action3
-  if((action3.state == key_keyup or action3.state == key_unpressed) and keyboard[action3.key])
-    action3.state = key_keydown;
-  else if((action3.state == key_keydown or action3.state == key_pressed) and !keyboard[action3.key])
-    action3.state = key_keyup;
-  else if(action3.state == key_keydown and keyboard[action3.key])
-    action3.state = key_pressed;
-  else if(action3.state == key_keyup and !keyboard[action3.key])
-    action3.state = key_unpressed;
+  console.OnInput();
 
-  // - Action4
-  if((action4.state == key_keyup or action4.state == key_unpressed) and keyboard[action4.key])
-    action4.state = key_keydown;
-  else if((action4.state == key_keydown or action4.state == key_pressed) and !keyboard[action4.key])
-    action4.state = key_keyup;
-  else if(action4.state == key_keydown and keyboard[action4.key])
-    action4.state = key_pressed;
-  else if(action4.state == key_keyup and !keyboard[action4.key])
-    action4.state = key_unpressed;
-
-  // - Run
-  if((run.state == key_keyup or run.state == key_unpressed) and keyboard[run.key])
-    run.state = key_keydown;
-  else if((run.state == key_keydown or run.state == key_pressed) and !keyboard[run.key])
-    run.state = key_keyup;
-  else if(run.state == key_keydown and keyboard[run.key])
-    run.state = key_pressed;
-  else if(run.state == key_keyup and !keyboard[run.key])
-    run.state = key_unpressed;
-
-  // - Crouch
-  if((crouch.state == key_keyup or crouch.state == key_unpressed) and keyboard[crouch.key])
-    crouch.state = key_keydown;
-  else if((crouch.state == key_keydown or crouch.state == key_pressed) and !keyboard[crouch.key])
-    crouch.state = key_keyup;
-  else if(crouch.state == key_keydown and keyboard[crouch.key])
-    crouch.state = key_pressed;
-  else if(crouch.state == key_keyup and !keyboard[crouch.key])
-    crouch.state = key_unpressed;
-
-  // - Jump
-  if((jump.state == key_keyup or jump.state == key_unpressed) and keyboard[jump.key])
-    jump.state = key_keydown;
-  else if((jump.state == key_keydown or jump.state == key_pressed) and !keyboard[jump.key])
-    jump.state = key_keyup;
-  else if(jump.state == key_keydown and keyboard[jump.key])
-    jump.state = key_pressed;
-  else if(jump.state == key_keyup and !keyboard[jump.key])
-    jump.state = key_unpressed;
-
-
+  // Mouse
   mouse.OnInput();
 
   // Comprobar estado antes de actualizar, por seguridad

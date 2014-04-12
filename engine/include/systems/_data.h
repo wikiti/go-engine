@@ -85,6 +85,8 @@
 #define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_CROUCH_KEY "Left Ctrl"
 /** Valor por defecto de la variable "__INPUT_JUMP_KEY", para definir la tecla por defecto de "saltar". */
 #define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_JUMP_KEY "Space"
+/** Valor por defecto de la variable "__INPUT_CONSOLE_KEY", para definir la tecla por defecto para activar la consola de desarrollador. @see CSystem_Debug */
+#define __CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS_INPUT_CONSOLE_KEY "F10"
 
 /** Valor de variable tipo string nula. */
 #define __CSYSTEM_DATA_STORAGE_NOSTRING ""

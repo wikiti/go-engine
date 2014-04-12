@@ -366,7 +366,7 @@ void CSystem_Debug::OnEvent()
   {
     if(event.type == SDL_KEYDOWN)
     {
-      if(event.key.keysym.scancode == SDL_SCANCODE_F10)
+      if(event.key.keysym.scancode == SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_CONSOLE_KEY").c_str()))
       {
         console = false;
         SDL_StopTextInput();
@@ -496,7 +496,7 @@ void CSystem_Debug::OnEvent()
   }
   else
   {
-    if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_F10)
+    if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_GetScancodeFromName(gSystem_Data_Storage.GetString("__INPUT_CONSOLE_KEY").c_str()))
     {
       console = true;
       SDL_StartTextInput();
