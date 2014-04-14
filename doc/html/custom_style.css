@@ -26,6 +26,11 @@ div.image img[src="transform.jpg"]{
     width: 900px;
 }
 
+div.image img[src="keystate.png"]{ 
+    width: 900px;
+}
+
+
 /* Estilo doxygen personalizado. */
 
 .tabs, .tabs2, .tabs3 {

@@ -134,6 +134,9 @@ const float __NO_FLOAT = __CSYSTEM_DATA_STORAGE_NOFLOAT;
  *
  * Y se podrá usar para todo tipo de ejemplos, siempre y cuando las variables sean de tipo entero, flotante o string.
  *
+ * La lista de variables de sistema (importantes, las que empiezan por '__'), puede encontrarse en el fichero include/systems/_data.h
+ * con el prefijo "__CSYSTEM_DATA_STORAGE_DEFAULTOPTIONS".
+ *
  * Finalmente, las variables sólo se guardarán al cambiar de estancia, o cuando el usuario lo espeficique con Save() o SaveConfig().
  *
  * @warning Dos variables de distinto tipo pueden tener un mismo identificador. Esto significa, hay un mapa para cada tipo de variable.

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Fichero que incluye la clase CSystem_UserInput y sus estancias globales.
+ */
+
 #ifndef __CSYSTEM_USERINPUT_
 #define __CSYSTEM_USERINPUT_
 
@@ -7,33 +12,93 @@
 
 #define __CSYSTEM_USERINPUT_JOYSTICK_REBUILD_TIMEOUT 500.0f
 
+/** @addtogroup Sistemas */
+/*@{*/
+
+/**
+ * @brief Espacio de nombres para algunos elementos usados por el sistema CSystem_UserInput.
+ *
+ * Las enumeraciones principales son keystate_t para teclado, button_t para botones de joystick y pov_pos_t para
+ * las direcciones de los povs de los joysticks.
+ *
+ */
 namespace Input
 {
-  enum keystate_t {key_keyup = -2, key_unpressed = -1, key_keydown = 1, key_pressed = 2};
-  /*
-   * key_keyup     (-2) => Instante en el que se deja de presionar la tecla.
-   * key_unpressed (-1) => Tecla sin presionar.
-   * key_keydown   ( 1) => Instante en el que se presiona la tecla.
-   * key_pressed   ( 2) => Tecla presionada.
+  /**
+   * @brief Enum para conservar los estados de teclas.
+   *
+   * Los estados que puede tener un botón se acción son los siguientes:
+   *
+   * Identificador        | Valor | Descripción
+   * -------------------- | ----- | -----------
+   * <i>key_keyup</i>     | -2    | Instante en el que se deja de presionar la tecla.
+   * <i>key_unpressed</i> | -1    | Tecla sin presionar.
+   * <i>key_keydown</i>   |  1    | Instante en el que se presiona la tecla.
+   * <i>key_pressed</i>   |  2    | Tecla presionada.
+   *
+   * @image html systems/input/keystate.png
    *
    * Ciclo normal de estados: unpressed -> keydown -> pressed -> keyup -> unpressed -> ...
    *
    * Si el valor es menor que 0, se considera la tecla como "no activada".
    * Si el valor es mayor que 0, se considera la tecla como "activada".
+   *
+   * Principalmente, se usan para la clase CKey, que representan acciones.
+   *
+   * @see CSystem_UserInput::CKey
    */
+  enum keystate_t { key_keyup = -2     /**< Instante en el que se deja de presionar la tecla. */,
+                    key_unpressed = -1 /**< Tecla sin presionar. */,
+                    key_keydown = 1,   /**< Instante en el que se presiona la tecla.*/
+                    key_pressed = 2    /**< Tecla presionada. */ };
 
+  /**
+   * @brief Enum para representar las direcciones que puede tomar un *pov* de un joystick.
+   *
+   * Parte derecha       | Parte central     | Parte izquierda
+   * ------------------- | ----------------- | -------------------
+   * <i>pov_leftup</i>   | <i>pov_up</i>     | <i>pov_rightup</i>
+   * <i>pov_left</i>     | <i>pov_center</i> | <i>pov_right</i>
+   * <i>pov_leftdown</i> | <i>pov_down</i>   | <i>pov_rightdown</i>
+   *
+   * @warning En el caso de la librería SDL2, pocos povs son considerados como tales en un joystick.
+   *
+   * @see CSystem_UserInput::CJoystick
+   */
   enum pov_pos_t {
-    pov_leftup   = SDL_HAT_LEFTUP,     pov_up     = SDL_HAT_UP,             pov_rightup   = SDL_HAT_RIGHTUP,
-    pov_left     = SDL_HAT_LEFT,       pov_center = SDL_HAT_CENTERED,       pov_right     = SDL_HAT_RIGHT,
-    pov_leftdown = SDL_HAT_LEFTDOWN,   pov_down   = SDL_HAT_DOWN,           pov_rightdown = SDL_HAT_RIGHTDOWN
+    pov_leftup   = SDL_HAT_LEFTUP /**< Arriba, izquierda */,     pov_up     = SDL_HAT_UP /**< Arriba */,             pov_rightup   = SDL_HAT_RIGHTUP /**< Arriba, derecha */,
+    pov_left     = SDL_HAT_LEFT   /**< Izquierda */,             pov_center = SDL_HAT_CENTERED /**< Centro */,       pov_right     = SDL_HAT_RIGHT /**< Derecha */,
+    pov_leftdown = SDL_HAT_LEFTDOWN /**< Abajo, izquierda */,    pov_down   = SDL_HAT_DOWN /**< Abajo */,           pov_rightdown = SDL_HAT_RIGHTDOWN /**< Abajo, derecha */
   };
 
-  enum button_t {button_unpressed = 0, button_pressed = 1};
+  /**
+   * @brief Enum para representar los estados de los diversos botones de un joystick.
+   *
+   * Similar a keystate_t, los valores de esta enum sirven para recalcar los estados de un botón de un joystick.
+   * Sencillamente, hay 2 estados:
+   *
+   * - Pulsado.
+   * - Sin pulsar.
+   *
+   * @see CSystem_UserInput::CJoystick
+   * @see CSystem_UserInput::CJoyButton
+   * @see CSystem_UserInput::CButton
+   */
+  enum button_t {button_unpressed = 0 /**< Botón sin pulsar. */, button_pressed = 1 /**< Botón pulsado. */};
 }
 
+/**
+ * @brief Sistema de entrada de usuario (teclado, mouse y joystick).
+ *
+ * blabla
+ */
 class CSystem_UserInput: public CSystem
 {
   friend class CSystem_Debug;
+  friend class CInstance;
+  friend bool Systems_Init();
+  friend void Systems_Close();
+  friend bool Systems_Reset();
 
   public:
     class CButton
@@ -200,6 +265,15 @@ class CSystem_UserInput: public CSystem
     void CheckJoysticks();
       bool RebuildJoysticks();
 
+    bool Init();
+    void Close();
+    bool Reset();
+
+    void OnLoop();
+    void OnEvent();
+    void OnInput();
+
+
   public:
       // Axis - para el futuro, se sopotarán joysticks
     CKeyAxis axis1; // wasd
@@ -223,14 +297,6 @@ class CSystem_UserInput: public CSystem
 
   public:
     CSystem_UserInput(): CSystem() {};
-
-    bool Init();
-    void Close();
-    bool Reset();
-
-    void OnLoop();
-    void OnEvent();
-    void OnInput();
 
     Uint8 Keyboard(std::string keyname);
     Uint8 Keyboard(SDL_Scancode key);
@@ -268,5 +334,7 @@ typedef CSystem_UserInput GO_InputClasses;
 // Crear 2 objetos: 1 para la configuración de la aplicación, y otra para guardar variables de usuario.
 extern CSystem_UserInput gSystem_UserInput;
 extern CSystem_UserInput& gUserInput;
+
+/*@}*/
 
 #endif /* __CSYSTEM_USERINPUT_ */

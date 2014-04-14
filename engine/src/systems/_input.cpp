@@ -277,7 +277,7 @@ bool CSystem_UserInput::RebuildJoysticks()
   return true;
 }
 
-/**_______Keyboard_______**/
+/*_______Keyboard_______*/
 
 Uint8 CSystem_UserInput::Keyboard(std::string keyname)
 {
@@ -293,7 +293,7 @@ Uint8 CSystem_UserInput::Keyboard(SDL_Scancode key)
 }
 
 
-/**________Mouse_________**/
+/*________Mouse_________*/
 
 bool CSystem_UserInput::CMouse::Init()
 {
@@ -430,7 +430,7 @@ void CSystem_UserInput::SetMouseTrap(bool mode)
 }
 
 
-/**_______Joystick_______**/
+/*_______Joystick_______*/
 
 bool CSystem_UserInput::CJoystick::Init(int index)
 {

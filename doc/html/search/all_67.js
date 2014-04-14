@@ -51,7 +51,7 @@ var searchData=
   ['glm_5fforce_5fradians',['GLM_FORCE_RADIANS',['../__globals_8h.html#a816ab7d5c2ce1f0a01216042837beb93',1,'_globals.h']]],
   ['gmath',['gMath',['../__other_8h.html#a8a3f34900af2696866ef2f7e9a2dd14a',1,'gMath():&#160;_other.cpp'],['../__other_8cpp.html#a8a3f34900af2696866ef2f7e9a2dd14a',1,'gMath():&#160;_other.cpp']]],
   ['gmixer',['gMixer',['../__mixer_8h.html#ab5c50527dc48f471a6c9ca2528bde8d9',1,'gMixer():&#160;_mixer.cpp'],['../__mixer_8cpp.html#ab5c50527dc48f471a6c9ca2528bde8d9',1,'gMixer():&#160;_mixer.cpp']]],
-  ['go_5finputclasses',['GO_InputClasses',['../__input_8h.html#a57e71a5e1f7a3e3c797f3d45b3da94c1',1,'_input.h']]],
+  ['go_5finputclasses',['GO_InputClasses',['../group___sistemas.html#ga57e71a5e1f7a3e3c797f3d45b3da94c1',1,'_input.h']]],
   ['gof_5fevent',['gof_event',['../group___game_objects.html#ggabc8e2fbdfa9775d0717d5a486312badeac14ed1bc188011cad297d536881a8989',1,'_object.h']]],
   ['gof_5fkevent',['gof_kevent',['../group___game_objects.html#ggabc8e2fbdfa9775d0717d5a486312badea5f42b853a0c9914adff719dc47aa83d4',1,'_object.h']]],
   ['gof_5floop',['gof_loop',['../group___game_objects.html#ggabc8e2fbdfa9775d0717d5a486312badea2f67e85b476b0286e6d3af25ff3b1f56',1,'_object.h']]],
@@ -69,9 +69,9 @@ var searchData=
   ['gsystem_5fresources',['gSystem_Resources',['../__resource_8h.html#af9fd0e34f06b859c848f3bf5f1bdf465',1,'gSystem_Resources():&#160;_resource.cpp'],['../__resource_8cpp.html#af9fd0e34f06b859c848f3bf5f1bdf465',1,'gSystem_Resources():&#160;_resource.cpp']]],
   ['gsystem_5fshader_5fmanager',['gSystem_Shader_Manager',['../__shader_8h.html#a42ad74693b98c91b5742b25a8ccee68b',1,'gSystem_Shader_Manager():&#160;_shader.cpp'],['../__shader_8cpp.html#a42ad74693b98c91b5742b25a8ccee68b',1,'gSystem_Shader_Manager():&#160;_shader.cpp']]],
   ['gsystem_5ftime',['gSystem_Time',['../__other_8h.html#accc6240d21a54f92d5c28505712d3de0',1,'gSystem_Time():&#160;_other.cpp'],['../__other_8cpp.html#accc6240d21a54f92d5c28505712d3de0',1,'gSystem_Time():&#160;_other.cpp']]],
-  ['gsystem_5fuserinput',['gSystem_UserInput',['../__input_8h.html#a3ab458c50394cc90508977826a718f0e',1,'gSystem_UserInput():&#160;_input.cpp'],['../__input_8cpp.html#a3ab458c50394cc90508977826a718f0e',1,'gSystem_UserInput():&#160;_input.cpp']]],
+  ['gsystem_5fuserinput',['gSystem_UserInput',['../group___sistemas.html#ga3ab458c50394cc90508977826a718f0e',1,'gSystem_UserInput():&#160;_input.cpp'],['../group___sistemas.html#ga3ab458c50394cc90508977826a718f0e',1,'gSystem_UserInput():&#160;_input.cpp']]],
   ['gtime',['gTime',['../__other_8h.html#ac205dbec915c11efd8620a7f0c7c1f54',1,'gTime():&#160;_other.cpp'],['../__other_8cpp.html#ac205dbec915c11efd8620a7f0c7c1f54',1,'gTime():&#160;_other.cpp']]],
   ['gui_5ftexture',['gui_texture',['../namespace_components.html#aa89a2e84cfafd1da6f84c7edb84c1ce5a96735e476f40be5689fe62aa52df4ed9',1,'Components']]],
   ['guitexture',['GUITexture',['../class_c_game_object.html#ac3c5085a08e347e6d162a0cf3b92691e',1,'CGameObject']]],
-  ['guserinput',['gUserInput',['../__input_8h.html#a207511edbc2cbed20101d8f7b0987d0f',1,'gUserInput():&#160;_input.cpp'],['../__input_8cpp.html#a207511edbc2cbed20101d8f7b0987d0f',1,'gUserInput():&#160;_input.cpp']]]
+  ['guserinput',['gUserInput',['../group___sistemas.html#ga207511edbc2cbed20101d8f7b0987d0f',1,'gUserInput():&#160;_input.cpp'],['../group___sistemas.html#ga207511edbc2cbed20101d8f7b0987d0f',1,'gUserInput():&#160;_input.cpp']]]
 ];
