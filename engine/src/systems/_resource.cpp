@@ -24,20 +24,51 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   // http://nickthecoder.wordpress.com/2013/01/20/mesh-loading-with-assimp/
   Assimp::Importer importer;
   //aiProcessPreset_TargetRealtime_Fast has the configs you'll need
-  const aiScene *scene = importer.ReadFile(file.c_str() ,aiProcessPreset_TargetRealtime_Fast);
+  const aiScene *scene = importer.ReadFile(file.c_str() ,aiProcessPreset_TargetRealtime_Fast | aiProcess_Triangulate  | aiPrimitiveType_LINE | aiPrimitiveType_POINT /*| aiProcess_GenSmoothNormals | aiProcess_FlipUVs*/);
   if(!scene)
   {
     gSystem_Debug.console_error_msg("From Resource %s: ASSIMP: (%s).", file.c_str(), importer.GetErrorString());
     return false;
   }
 
-  aiMesh *mesh = scene->mMeshes[0];
+  stringstream ss(arguments);
+  int index = 0;
+  ss >> index;
+
+  if(index >= scene->mNumMeshes)
+  {
+    gSystem_Debug.console_error_msg("From Resource %s: No mesh (%d) detected, file only has %d meshes", file.c_str(), index, scene->mNumMeshes);
+    return false;
+  }
+
+  aiMesh *mesh = scene->mMeshes[index];
+  // Cogemos el primer mesh
 
   if(!mesh)
   {
-    gSystem_Debug.console_error_msg("From Resource %s: No mesh detected.", file.c_str());
+    gSystem_Debug.console_error_msg("From Resource %s: No mesh (%d) detected.", file.c_str(), index);
     return false;
   }
+
+  /*vector<vector3f> vertices;
+  vector<vector3f> normals;
+  vector<vector3f> texCoords;
+
+  const aiVector3D Zero3D(0.0f, 0.0f, 0.0f);
+
+  for (unsigned int i = 0 ; i < mesh->mNumVertices ; i++) {
+    const aiVector3D* pPos = &(mesh->mVertices[i]);
+    const aiVector3D* pNormal = mesh->HasNormals() ? &(mesh->mNormals[i]) : &Zero3D;
+    const aiVector3D* pTexCoord = mesh->HasTextureCoords(0) ? &(mesh->mTextureCoords[0][i]) : &Zero3D;
+
+    vertices.push_back(vector3f(pPos->x, pPos->y, pPos->z));
+    normals.push_back(vector3f(pNormal->x, pNormal->y, pNormal->z));
+    texCoords.push_back(vector3f(pTexCoord->x, pTexCoord->y, pTexCoord->z));
+  }*/
+
+  // -----
+  // OLD
+  // -----
 
   float *vertexArray, *normalArray, *uvArray;
 
@@ -46,50 +77,18 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   numTriangles = mesh->mNumFaces*3;
   numUvCoords = mesh->GetNumUVChannels();
 
-  /*if (mesh->HasPositions())      vertexArray.resize(mesh->mNumFaces*3*3);
-  if (mesh->HasNormals())        normalArray.resize(mesh->mNumFaces*3*3);
-  if (mesh->HasTextureCoords(0)) uvArray.resize(mesh->mNumFaces*3*2);
-
-  for(unsigned int i=0;i<mesh->mNumFaces;i++)
-  {
-    const aiFace& face = mesh->mFaces[i];
-
-    //foreach index
-    for(int j=0;j<3;j++)//assume all faces are triangulated
-    {
-      if (mesh->HasTextureCoords(0))
-      {
-        aiVector3D uv = mesh->mTextureCoords[0][face.mIndices[j]];
-        for(uint k = 0; k < 2; k++)
-          uvArray.push_back(uv[k]);
-      }
-
-      if (mesh->HasNormals())
-      {
-        aiVector3D normal = mesh->mNormals[face.mIndices[j]];
-        for(uint k = 0; k < 3; k++)
-          normalArray.push_back(normal[k]);
-      }
-
-      if (mesh->HasPositions())
-      {
-        aiVector3D pos = mesh->mVertices[face.mIndices[j]];
-        for(uint k = 0; k < 3; k++)
-          vertexArray.push_back(pos[k]);
-      }
-    }
-  }*/
-
   vertexArray = new float[mesh->mNumFaces*3*3];
   normalArray = new float[mesh->mNumFaces*3*3];
   uvArray =     new float[mesh->mNumFaces*3*2];
 
+  cout << mesh->mNumVertices << endl;
+
   for(unsigned int i=0;i<mesh->mNumFaces;i++)
   {
     const aiFace& face = mesh->mFaces[i];
 
     //foreach index
-    for(int j=0;j<3;j++)//assume all faces are triangulated
+    for(int j = 0; j < face.mNumIndices; j++)//assume all faces are triangulated
     {
       if (mesh->HasTextureCoords(0))
       {
@@ -136,15 +135,15 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   glBindVertexArray(m_ModelVAO);
 
   glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOVertices  );
-  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), vertexArray, GL_STATIC_DRAW );
+  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*sizeof(GLfloat), vertexArray, GL_STATIC_DRAW );
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
   glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBOTexCoords );
-  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*2*sizeof(GLfloat), uvArray, GL_STATIC_DRAW );
+  glBufferData( GL_ARRAY_BUFFER, numTriangles*2*sizeof(GLfloat), uvArray, GL_STATIC_DRAW );
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
   glBindBuffer( GL_ARRAY_BUFFER, m_ModelVBONormals );
-  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*3*sizeof(GLfloat), normalArray, GL_STATIC_DRAW );
+  glBufferData( GL_ARRAY_BUFFER, numTriangles*3*sizeof(GLfloat), normalArray, GL_STATIC_DRAW );
   // ->BUG el fallo aparenta estar aquí, y tiene que ver con la carga de modelos de assimp. Voy a tener que meterle mano...
   glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
 

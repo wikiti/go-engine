@@ -4,7 +4,7 @@
 # Formato de resource:
 # tipo: nombre_rc ruta_al_fichero: [argumentos]
 
-# mesh: mdl_hada1 data/resources/models/faerie.md2:
+mesh: mdl_hada1 data/resources/models/faerie.md2: 0
 
 texture: textura1 data/resources/textures/textura1.tga: mipmap
 texture: textura2 data/resources/textures/textura2.tga: mipmap
