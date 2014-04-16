@@ -5,14 +5,19 @@
 # tipo: nombre_rc ruta_al_fichero: [argumentos]
 
 mesh: mdl_hada1 data/resources/models/faerie.md2: 0
+mesh: mdl_texto1 data/resources/models/texto.obj: 0
+
+texture: textura_mdl_texto1 data/resources/textures/texto.tga: mipmap
+texture: texture_mdl_hada1 data/resources/textures/faerie2.bmp: mipmap
 
 texture: textura1 data/resources/textures/textura1.tga: mipmap
 texture: textura2 data/resources/textures/textura2.tga: mipmap
-texture: texture_mdl_hada1 data/resources/textures/faerie2.bmp: mipmap
+
 texture: smoke1 data/resources/textures/particles/smoke1.tga: nearest
 texture: sprite1 data/resources/textures/particles/sprite1.tga: nearest
 texture: penis1 data/resources/textures/particles/penis.tga: nearest
 texture: fire1 data/resources/textures/particles/fire1.tga: nearest
+
 texture: skybox_example data/resources/textures/skybox_example.tga: mipmap
 texture: skybox1 data/resources/textures/skybox1.tga: mipmap
 texture: skybox2 data/resources/textures/skybox2.tga: mipmap

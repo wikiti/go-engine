@@ -81,8 +81,6 @@ bool CResource_Mesh::LoadFile(string file, string arguments)
   normalArray = new float[mesh->mNumFaces*3*3];
   uvArray =     new float[mesh->mNumFaces*3*2];
 
-  cout << mesh->mNumVertices << endl;
-
   for(unsigned int i=0;i<mesh->mNumFaces;i++)
   {
     const aiFace& face = mesh->mFaces[i];
