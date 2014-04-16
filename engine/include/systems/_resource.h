@@ -166,6 +166,6 @@ class CSystem_Resources: public CSystem
 };
 
 extern CSystem_Resources gSystem_Resources;
-
+extern CSystem_Resources& gResources;
 
 #endif /* __SYSTEM_RESOURCES_H_ */

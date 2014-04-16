@@ -13,9 +13,7 @@ varying vec4 frag_Color;
 varying vec3 frag_TexCoords;
 
 varying vec3 frag_diffuseColor; 
-            // the diffuse Phong lighting computed in the vertex shader
 varying vec3 frag_specularColor; 
-            // the specular Phong lighting computed in the vertex shader
  
 void main()
 {
@@ -31,8 +29,7 @@ void main()
   // directional light?
   {
     attenuation = 1.0; // no attenuation
-    lightDirection = 
-    normalize(vec3(gl_LightSource[0].position));
+    lightDirection = normalize(vec3(gl_LightSource[0].position));
   } 
   else // point light or spotlight (or other kind of light) 
   {
@@ -43,8 +40,7 @@ void main()
  
     if (gl_LightSource[0].spotCutoff <= 90.0) // spotlight?
     {
-      float clampedCosine = max(0.0, dot(-lightDirection, 
-      gl_LightSource[0].spotDirection));
+      float clampedCosine = max(0.0, dot(-lightDirection,  gl_LightSource[0].spotDirection));
       if (clampedCosine < gl_LightSource[0].spotCosCutoff) 
       // outside of spotlight cone?
       {
@@ -52,8 +48,7 @@ void main()
       }
       else
       {
-        attenuation = attenuation * pow(clampedCosine, 
-        gl_LightSource[0].spotExponent);
+        attenuation = attenuation * pow(clampedCosine, gl_LightSource[0].spotExponent);
       }
     }
   }

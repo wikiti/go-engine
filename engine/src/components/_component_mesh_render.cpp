@@ -40,12 +40,16 @@ void CComponent_Mesh_Render::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
   // Guardar el shader dentro del mesh render!
   //CShader* simpleShader = gSystem_Shader_Manager.GetShader(shader_name);
   //glUseProgram(simpleShader->GetProgram());
+  glm::mat4 NormalMatrix = glm::transpose(glm::inverse((modelViewMatrix)));
+
   CShader* simpleShader = gSystem_Shader_Manager.UseShader(shader_name);
 
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ProjMatrix"), 1, GL_FALSE,
       glm::value_ptr(projMatrix));
   glUniformMatrix4fv(simpleShader->GetUniformIndex("ModelViewMatrix"), 1, GL_FALSE,
       glm::value_ptr(modelViewMatrix));
+  glUniformMatrix4fv(simpleShader->GetUniformIndex("NormalMatrix"), 1, GL_FALSE,
+      glm::value_ptr(NormalMatrix));
   glUniform1i(simpleShader->GetUniformIndex("texture"), 0);
 
   gSystem_Math.Clamp(color_apply_force, 0.f, 1.f);

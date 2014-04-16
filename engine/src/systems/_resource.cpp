@@ -4,6 +4,7 @@
 #include "systems/_shader.h"
 
 CSystem_Resources gSystem_Resources;
+CSystem_Resources& gResources = gSystem_Resources;
 
 using namespace std;
 

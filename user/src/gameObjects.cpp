@@ -32,7 +32,7 @@ bool SetGameObjects_Instance1()
   //SetGameObjects_Instance1_Shaders();
   //SetGameObjects_Instance1_RandomStuff();
 
-  gDebug.command("run script_scene1_setup", true);
+  //gDebug.command("run script_scene1_setup", true);
 
   gEngine.SetNextInstance("level2");
 

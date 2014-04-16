@@ -9,7 +9,10 @@
 
 bool SetGameObjects_Instance1_Render()
 {
-  gShader.LoadShader("phong", "data/shaders/phong_vert.glsl", "data/shaders/phong_frag.glsl");
+  CShader* shader = gShader.LoadShader("phong", "data/shaders/phong_vert.glsl", "data/shaders/phong_frag.glsl");
+  glBindAttribLocation(shader->GetProgram(), 0, "in_Position");
+  glBindAttribLocation(shader->GetProgram(), 1, "in_TexCoords");
+  glBindAttribLocation(shader->GetProgram(), 2, "in_Normal");
   gShader.LinkShader("phong");
 
   CGameObject* hada1 = gGameObjects.Add("hada1");
@@ -20,15 +23,21 @@ bool SetGameObjects_Instance1_Render()
 
   hada1->MeshRender()->mesh_name = "mdl_hada1";
   hada1->MeshRender()->material_name = "texture_mdl_hada1";
-  hada1->MeshRender()->color(1.0, 0.f, 0.f, 1.f);
+  //hada1->MeshRender()->color(1.0, 0.f, 0.f, 1.f);
+  hada1->MeshRender()->shader_name = "phong";
 
   CGameObject* texto1 = gGameObjects.Add("texto1");
   texto1->Transform()->SetScale(1.f, 1.f, 1.f);
   texto1->Transform()->SetAngle(90.f, 180.f, 0.5f);
   texto1->MeshRender()->mesh_name = "mdl_texto1";
   texto1->MeshRender()->material_name = "__WHITE_TETURE";
-  texto1->MeshRender()->color(0.f, 1.f, 0.25f, 1.f);
+  //texto1->MeshRender()->color(0.f, 1.f, 0.25f, 1.f);
   texto1->MeshRender()->shader_name = "phong";
+
+  CGameObject* dummy = gGameObjects.Add("dummy");
+  dummy->Transform()->Translate(5, 0, 0);
+  dummy->Transform()->Rotate(0, 45, 0);
+  dummy->AddComponent<CComponent_Dummy>();
 
   /*CGameObject* gui_example = gGameObjects.AddGameObject("gui_example");
   gui_example->GUITexture()->texture_name = "textura1";
