@@ -17,6 +17,8 @@
 
 #include "shaders/shaders.h"
 
+#include "presentacion/general.h"
+
 bool SetGameObjects_Instance1();
 void Next_instancer_button(CGameObject* gameObject);
 void Camara_main_movimiento(CGameObject* gameObject);

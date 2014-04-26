@@ -107,18 +107,6 @@ Este proyecto ha sido desarrollado, en conjunto, por:
     <td> <b>Wikiti</b> </td>
 	<td> <a href="mailto:wikiti.doghound@gmail.com"> wikiti.doghound@gmail.com</a> </td>
   </tr>
-  <tr style="background-color: #FFFFFF;">
-    <td> <img width="64"src="http://media.steampowered.com/steamcommunity/public/images/avatars/a8/a85132cd5fbfd5f510012342a3074ef613003332_full.jpg"/> </td>
-    <td> Laura Fariña Rodríguez </td>
-    <td> <b>Kiarapoke</b> </td>
-	<td> <a href="mailto:kiarapoke@gmail.com"> kiarapoke@gmail.com</a> </td>
-  </tr>
-  <tr style="background-color: #FFFFFF;">
-    <td> <img width="64"src="http://media.steampowered.com/steamcommunity/public/images/avatars/6d/6d11192b1c41f360c6763f55d926436b112c207e_full.jpg"/> </td>
-    <td> Eliasib Jesús García Martín </td>
-    <td> <b>Eliasib13</b> </td>
-	<td> <a href="mailto:eliasib.lv.12@gmail.com"> eliasib.lv.12@gmail.com</a> </td>
-  </tr>
 </table>
 <!-- Fin tabla -->
 

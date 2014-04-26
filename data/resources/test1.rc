@@ -4,23 +4,76 @@
 # Formato de resource:
 # tipo: nombre_rc ruta_al_fichero: [argumentos]
 
-mesh: mdl_hada1 data/resources/models/faerie.md2: 0
 mesh: mdl_texto1 data/resources/models/texto.obj: 0
 
-texture: textura_mdl_texto1 data/resources/textures/texto.tga: mipmap
+# Slides
+texture: watermark data/resources/textures/watermark.tga: linear
+mesh: mdl_hada1 data/resources/models/faerie.md2: 0
+
+mesh: mdl_crate data/resources/models/crate.obj: 0
+texture: texture_crate data/resources/textures/crate.tga: mipmap
+
+mesh: mdl_planet data/resources/models/planet.obj: 0
+texture: texture_dirt data/resources/textures/dirt.tga: mipmap
+
+texture: texture_wrench data/resources/textures/wrench.tga: linear
+mesh: mdl_wrench data/resources/models/wrench.obj: 0
+
+# Slide 1
+mesh: mdl_slide1_title data/resources/models/presentacion/slide1_title.obj: 0
+
+# Slide 2
+mesh: mdl_slide2_title data/resources/models/presentacion/slide2_title.obj: 0
+mesh: mdl_slide2_text data/resources/models/presentacion/slide2_text.obj: 0
+
+# Slide 3
+mesh: mdl_slide3_title data/resources/models/presentacion/slide3_title.obj: 0
+mesh: mdl_slide3_text data/resources/models/presentacion/slide3_text.obj: 0
+
+# Slide 4
+mesh: mdl_slide4_title data/resources/models/presentacion/slide4_title.obj: 0
+mesh: mdl_slide4_text data/resources/models/presentacion/slide4_text.obj: 0
+
+# Slide 5
+mesh: mdl_slide5_title data/resources/models/presentacion/slide5_title.obj: 0
+mesh: mdl_slide5_text data/resources/models/presentacion/slide5_text.obj: 0
+
+# Slide 6
+mesh: mdl_slide6_title data/resources/models/presentacion/slide6_title.obj: 0
+mesh: mdl_slide6_text data/resources/models/presentacion/slide6_text.obj: 0
+
+# Slide 7
+mesh: mdl_slide7_title data/resources/models/presentacion/slide7_title.obj: 0
+mesh: mdl_slide7_text data/resources/models/presentacion/slide7_text.obj: 0
+
+# Slide 8
+mesh: mdl_slide8_title data/resources/models/presentacion/slide8_title.obj: 0
+mesh: mdl_slide8_text data/resources/models/presentacion/slide8_text.obj: 0
+
+# Slide 9
+mesh: mdl_slide9_title data/resources/models/presentacion/slide9_title.obj: 0
+mesh: mdl_slide9_text data/resources/models/presentacion/slide9_text.obj: 0
+
+# Slide 10
+mesh: mdl_slide10_title data/resources/models/presentacion/slide10_title.obj: 0
+
+# Otros
+
+# texture: textura_mdl_texto1 data/resources/textures/texto.tga: mipmap
 texture: texture_mdl_hada1 data/resources/textures/faerie2.bmp: mipmap
 
-texture: textura1 data/resources/textures/textura1.tga: mipmap
-texture: textura2 data/resources/textures/textura2.tga: mipmap
+# texture: textura1 data/resources/textures/textura1.tga: mipmap
+# texture: textura2 data/resources/textures/textura2.tga: mipmap
 
 texture: smoke1 data/resources/textures/particles/smoke1.tga: nearest
 texture: sprite1 data/resources/textures/particles/sprite1.tga: nearest
-texture: penis1 data/resources/textures/particles/penis.tga: nearest
+# texture: penis1 data/resources/textures/particles/penis.tga: nearest
 texture: fire1 data/resources/textures/particles/fire1.tga: nearest
 
 texture: skybox_example data/resources/textures/skybox_example.tga: mipmap
 texture: skybox1 data/resources/textures/skybox1.tga: mipmap
 texture: skybox2 data/resources/textures/skybox2.tga: mipmap
+texture: skybox3 data/resources/textures/skybox3.tga: mipmap
 
 sound: firework_explosion data/resources/sound/firework_explosion.wav:
 sound: firework_trail data/resources/sound/firework_trail.wav:

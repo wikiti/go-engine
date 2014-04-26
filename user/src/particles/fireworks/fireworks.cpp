@@ -27,9 +27,6 @@ bool SetGameObjects_Instance1_Fireworks()
 
 int number_of_fireworks = 0;
 bool pressed = false;
-vector<bool> exploded;
-vector<CGameObject*> fireworks;
-vector<int> fireworks_value;
 
 void Firework_Manager_Input(CGameObject* gameObject)
 {
@@ -52,6 +49,7 @@ void Firework_Manager_Input(CGameObject* gameObject)
     float timeout = gMath.random(1.f, 3.f);
     gSystem_Data_Storage.SetFloat("firework_timeout_"+value, timeout);
     gSystem_Data_Storage.SetFloat("firework_timer_"+value, gTime.GetTicks_s());
+    gSystem_Data_Storage.SetInt("firework_exploded_id" + value, 0);
 
     CGameObject* firework = gGameObjects.Add("firework_"+value);
     CGameObject* explosion = gGameObjects.Add("firework_explosion_"+value);
@@ -126,9 +124,6 @@ void Firework_Manager_Input(CGameObject* gameObject)
     trail->AudioSource()->Bind();
     trail->AudioSource()->Play();
 
-    fireworks_value.push_back(number_of_fireworks);
-    exploded.push_back(false);
-    fireworks.push_back(firework);
     number_of_fireworks++;
 
     //exploded.resize(number_of_fireworks);
@@ -137,88 +132,41 @@ void Firework_Manager_Input(CGameObject* gameObject)
   }
 }
 
+
 void Firework_Manager_Behaviour(CGameObject* gameObject)
 {
-  if(!fireworks.size())
-    return;
-
-  for(uint i = 0; i < fireworks.size(); i++)
+  vector<CGameObject*> fireworks = gGameObjects.Search("firework_id");
+  for(vector<CGameObject*>::iterator it = fireworks.begin(); it != fireworks.end(); ++it)
   {
-    ostringstream oss;
-    oss << fireworks_value[i];
-    string value = oss.str();
+    string value =  (*it)->GetName().substr(11);
+    CGameObject* current_firework = (*it);
 
-    CGameObject* current_firework = fireworks[i];
+    int exploded = gSystem_Data_Storage.GetInt("firework_exploded_id" + value);
+    float startTime = gSystem_Data_Storage.GetFloat("firework_timer_id" + value);
+    float timeout = gSystem_Data_Storage.GetFloat("firework_timeout_id" + value);
 
-    float startTime = gSystem_Data_Storage.GetFloat("firework_timer_"+value);
-    float timeout = gSystem_Data_Storage.GetFloat("firework_timeout_"+value);
-
-    if((gTime.GetTicks_s() - startTime) < timeout/gTime.timeScale()) // 1.5 segundos.
+    if((gTime.GetTicks_s() - startTime) < timeout / gTime.timeScale()) // 1.5 segundos.
     {
-      current_firework->Transform()->Translate(0.f, 20.f*gTime.deltaTime_s(), 0.f);
+      current_firework->Transform()->Translate(0.f, 20.f * gTime.deltaTime_s(), 0.f);
     }
-    else if(!exploded[i])
+    else if(!exploded)
     {
       current_firework->GetChild(1)->ParticleEmitter()->Stop();
       current_firework->GetChild(0)->ParticleEmitter()->Start();
       current_firework->GetChild(0)->ParticleEmitter()->Stop();
       current_firework->GetChild(0)->AudioSource()->PlayOneShot();
 
-      exploded[i] = true;
+      gSystem_Data_Storage.SetInt("firework_exploded_id" + value, 1);
     }
-    else if ((gTime.GetTicks_s() - startTime) > 5/gTime.timeScale())
+    else if((gTime.GetTicks_s() - startTime) > 5 / gTime.timeScale())
     {
       // Clear float vars
-      gSystem_Data_Storage.RemoveFloat("firework_timer_"+value);
-      gSystem_Data_Storage.RemoveFloat("firework_timeout_"+value);
+      gSystem_Data_Storage.RemoveFloat("firework_timer_id"+value);
+      gSystem_Data_Storage.RemoveFloat("firework_timeout_id"+value);
+      gSystem_Data_Storage.RemoveFloat("firework_exploded_id"+value);
 
       // Clear vectors
       gGameObjects.Delete(current_firework->GetName(), true);
-
-      exploded.erase(exploded.begin() + i);
-      fireworks_value.erase(fireworks_value.begin() + i);
-      fireworks.erase(fireworks.begin() + i);
-
-      i--;
-
-
     }
-    //Firework_Behaviour(gGameObjects["firework_"+value]);
   }
 }
-
-/*void Firework_Manager_Behaviour(CGameObject* gameObject)
-{
-  if(!number_of_fireworks)
-    return;
-
-  for(int i = 0; i < number_of_fireworks; i++)
-  {
-    ostringstream oss;
-    oss << i;
-    string value = oss.str();
-
-    CGameObject* current_firework = gGameObjects["firework_"+value];
-
-    float startTime = gSystem_Data_Storage.GetFloat("firework_timer_"+value);
-    float timeout = gSystem_Data_Storage.GetFloat("firework_timeout_"+value);
-
-    if((gTime.GetTicks_s() - startTime) < timeout/gTime.timeScale()) // 1.5 segundos.
-    {
-      current_firework->Transform()->Translate(0.f, 20.f*gTime.deltaTime_s(), 0.f);
-    }
-    else if(!exploded[i])
-    {
-      current_firework->GetChild("firework_trail_"+value)->ParticleEmitter()->Stop();
-      current_firework->GetChild("firework_explosion_"+value)->ParticleEmitter()->Start();
-      current_firework->GetChild("firework_explosion_"+value)->ParticleEmitter()->Stop();
-      current_firework->GetChild("firework_explosion_"+value)->AudioSource()->PlayOneShot();
-
-      //gMixer.PlaySound("leroy", current_firework);
-      //gMixer.PlaySound("explosion", current_firework);
-
-      exploded[i] = true;
-    }
-    //Firework_Behaviour(gGameObjects["firework_"+value]);
-  }
-}*/
