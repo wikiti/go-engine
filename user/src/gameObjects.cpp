@@ -2,6 +2,16 @@
 
 bool SetGameObjects_Instance1()
 {
+  int test = 1200;
+  Network::CBuffer buffer( (char*) (&test), sizeof(test) );
+  std::cout << buffer.toInt() << std::endl;
+
+  gNetwork.Send("pepito", "menganito");
+  gNetwork.Send("fulanito", "menganito");
+  gNetwork.Send("pepito", "moc");
+  gNetwork.OnLoop();
+  cout << gNetwork.Recv("pepito") << " -- " << gNetwork.Recv("fulanito") << endl;
+
   return Presentacion_Init();
 
   // Ignorado

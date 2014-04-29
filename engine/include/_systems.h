@@ -15,6 +15,7 @@
 #include "systems/_mixer.h"
 #include "systems/_shader.h"
 #include "systems/_input.h"
+#include "systems/_network.h"
 
 /**
  * @brief Iniciar sistemas.
