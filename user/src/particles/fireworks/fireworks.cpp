@@ -47,13 +47,13 @@ void Firework_Manager_Input(CGameObject* gameObject)
     string value = oss.str();
 
     float timeout = gMath.random(1.f, 3.f);
-    gSystem_Data_Storage.SetFloat("firework_timeout_"+value, timeout);
-    gSystem_Data_Storage.SetFloat("firework_timer_"+value, gTime.GetTicks_s());
+    gSystem_Data_Storage.SetFloat("firework_timeout_id"+value, timeout);
+    gSystem_Data_Storage.SetFloat("firework_timer_id"+value, gTime.GetTicks_s());
     gSystem_Data_Storage.SetInt("firework_exploded_id" + value, 0);
 
-    CGameObject* firework = gGameObjects.Add("firework_"+value);
-    CGameObject* explosion = gGameObjects.Add("firework_explosion_"+value);
-    CGameObject* trail = gGameObjects.Add("firework_trail_"+value);
+    CGameObject* firework = gGameObjects.Add("firework_id"+value);
+    CGameObject* explosion = gGameObjects.Add("firework_explosion_id"+value);
+    CGameObject* trail = gGameObjects.Add("firework_trail_id"+value);
 
     firework->AddChild(explosion);
     firework->AddChild(trail);

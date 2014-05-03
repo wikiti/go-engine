@@ -2,7 +2,7 @@
 
 bool SetGameObjects_Instance1()
 {
-  return Presentacion_Init();
+  //return Presentacion_Init();
 
   // Ignorado
   CGameObject* camara_main = gGameObjects["camara_main"];
