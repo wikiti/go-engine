@@ -53,7 +53,7 @@ const char* Network::CBuffer::toStr()
 
 Network::CSystem_Network::CSystem_Network(): CSystem()
 {
-  m_machine_type = NONE;
+  SetMachineType(NONE);
 }
 
 bool Network::CSystem_Network::Init()
@@ -103,8 +103,8 @@ void Network::CSystem_Network::OnLoop()
     switch(m_machine_type)
     {
       case NONE:
-        for(std::map<std::string, std::string>::iterator it = m_send_hash.begin(); it != m_send_hash.end(); ++it)
-          m_recv_hash[it->first] = it->second;
+        for(std::map<std::string, std::string>::iterator it = m_send_hash[0].begin(); it != m_send_hash[0].end(); ++it)
+          m_recv_hash[0][it->first] = it->second;
         sent = true;
       break;
       default: break;
@@ -117,8 +117,14 @@ void Network::CSystem_Network::OnLoop()
   m_send_hash.clear();
 }
 
-bool Network::CSystem_Network::Send(const std::string& key, const std::string& value)
+bool Network::CSystem_Network::Send(const std::string& key, const std::string& value, uint socket_destination)
 {
+  if(socket_destination < 0 or socket_destination > m_send_hash.size())
+  {
+    gSystem_Debug.console_error_msg("Error from Network: Invalid socket destination (%d) for key \"%s\".", socket_destination, key.c_str());
+    return false;
+  }
+
   // Comprobar si la clave es válida
   if(!Utils::validateIdentifier(key))
   {
@@ -127,17 +133,24 @@ bool Network::CSystem_Network::Send(const std::string& key, const std::string& v
   }
 
   // Añadir al hash, y sobreescribir si ya existe
-  m_send_hash[key] = value;
+  m_send_hash[socket_destination][key] = value;
+
   m_send_data = true;
 
   return true;
 }
 
-std::string Network::CSystem_Network::Recv(const std::string& key)
+std::string Network::CSystem_Network::Recv(const std::string& key, uint socket_origin)
 {
+  if(socket_origin < 0 or socket_origin > m_recv_hash.size())
+  {
+    gSystem_Debug.console_error_msg("Error from Network: Invalid socket origin (%d) for key \"%s\".", socket_origin, key.c_str());
+    return "";
+  }
+
   // Comprobar si existe la clave
   std::map<std::string, std::string>::iterator find;
-  if( (find = m_recv_hash.find(key)) == m_recv_hash.end() )
+  if( (find = m_recv_hash[socket_origin].find(key)) == m_recv_hash[socket_origin].end() )
     return "";
 
   return find->second;
@@ -151,5 +164,22 @@ void Network::CSystem_Network::ClearRecvData()
 void Network::CSystem_Network::ClearSendData()
 {
   m_send_hash.clear();
+}
+
+void Network::CSystem_Network::SetMachineType(machine_t machine_type)
+{
+  switch(machine_type)
+  {
+    case NONE:
+      m_machine_type = machine_type;
+
+      m_send_hash.clear(); m_send_hash.resize(1);
+      m_recv_hash.clear(); m_recv_hash.resize(1);
+
+    break;
+    default:
+      gSystem_Debug.console_error_msg("Error from Network: Invalid machine type (%s, %d).", __FILE__, __LINE__);
+    break;
+  }
 }
 

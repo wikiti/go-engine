@@ -31,8 +31,8 @@ namespace Network
 
     protected:
       // En cada iteración se limpia el hash de envíos
-      std::map<std::string, std::string> m_send_hash;
-      std::map<std::string, std::string> m_recv_hash;
+      std::vector< std::map<std::string, std::string> > m_send_hash;
+      std::vector< std::map<std::string, std::string> > m_recv_hash;
 
       machine_t m_machine_type; // Saber si, actualmente, se trata de un cliente, de un host, o de nada (nada por defecto)
 
@@ -51,11 +51,13 @@ namespace Network
       void OnLoop();
 
       // "Enviar" y "recibir" datos
-      bool Send(const std::string& key, const std::string& value);
-      std::string Recv(const std::string& key);
+      bool Send(const std::string& key, const std::string& value, uint socket_destination = 0);
+      std::string Recv(const std::string& key, uint socket_origin = 0);
 
       void ClearSendData();
       void ClearRecvData();
+
+      void SetMachineType(machine_t machine_type);
   };
 
   extern CSystem_Network gSystem_Network;
