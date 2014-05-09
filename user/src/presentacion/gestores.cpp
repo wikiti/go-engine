@@ -27,7 +27,7 @@ void Camara_main_rotacion(CGameObject* gameObject)
 
 void Camara_main_input(CGameObject* gameObject)
 {
-  vector<GO_InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
+  vector<InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
 
   if(joys.size() > 0)
   {
@@ -36,6 +36,18 @@ void Camara_main_input(CGameObject* gameObject)
     {
       gameObject->Transform()->LRotate(joys[0].axes[1].value * 60.f * gTime.deltaTime_s(), 0, 0);
       gameObject->Transform()->Rotate(0, joys[0].axes[0].value * -60.f * gTime.deltaTime_s(), 0);
+    }
+
+    // Zoom
+    if(joys[0].axes.size() >= 6)
+    {
+      double zoom_value = (1.f + joys[0].axes[5].value)/2;
+      double move_to = 45 - zoom_value*35;
+
+      gameObject->Camera()->field_of_view = gMath.lerp( gameObject->Camera()->field_of_view, move_to, 2.f * gTime.deltaTime_s() );
+
+      gameObject->Camera()->ApplyChanges();
+
     }
 
   }

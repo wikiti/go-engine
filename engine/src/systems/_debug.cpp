@@ -1261,8 +1261,8 @@ void CSystem_Debug::Console_command__SYSTEM_USERINPUT_SHOW_JOYSTICKS(string argu
   gSystem_Debug.console_custom_msg(0.15f, 0.7f, 1.f, 1.f, "-------------------");
   gSystem_Debug.console_custom_msg(0.75f, 0.75f, 0.75f, 1.f, " <id>- <Name> - <Num axes>/<Num balls>/<Num buttons>/<Num povs>");
 
-  vector<GO_InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
-  for(vector<GO_InputClasses::CJoystick>::iterator it = joys.begin(); it != joys.end(); ++it)
+  vector<InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
+  for(vector<InputClasses::CJoystick>::iterator it = joys.begin(); it != joys.end(); ++it)
   {
     gSystem_Debug.console_msg(" %d- %s - %d/%d/%d/%d", it - joys.begin(), (*it).GetName().c_str(), (*it).axes.size(), (*it).balls.size(), (*it).buttons.size(), (*it).povs.size());
   }

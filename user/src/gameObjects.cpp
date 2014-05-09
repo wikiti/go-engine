@@ -2,7 +2,7 @@
 
 bool SetGameObjects_Instance1()
 {
-  //return Presentacion_Init();
+  return Presentacion_Init();
 
   // Ignorado
   CGameObject* camara_main = gGameObjects["camara_main"];
@@ -215,7 +215,7 @@ void Camara_mouse_movimiento(CGameObject* gameObject)
 
 void Camara_Joystick_movimiento(CGameObject* gameObject)
 {
-  vector<GO_InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
+  vector<InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
 
   if(joys.size() > 0)
   {

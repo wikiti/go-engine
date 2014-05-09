@@ -31,7 +31,7 @@ bool pressed = false;
 void Firework_Manager_Input(CGameObject* gameObject)
 {
   //if(event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_SPACE)
-  vector<GO_InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
+  vector<InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
 
   if(pressed and (joys.size() > 0 and joys[0].buttons.size() > 9 and joys[0].buttons[9].State() == Input::button_unpressed))
   {

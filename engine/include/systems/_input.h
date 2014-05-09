@@ -329,7 +329,7 @@ class CSystem_UserInput: public CSystem
 
 };
 
-typedef CSystem_UserInput GO_InputClasses;
+typedef CSystem_UserInput InputClasses;
 
 // Crear 2 objetos: 1 para la configuración de la aplicación, y otra para guardar variables de usuario.
 extern CSystem_UserInput gSystem_UserInput;

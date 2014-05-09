@@ -17,7 +17,7 @@ uint forward_button = 10;
 
 void Gestor_Entrada_Input(CGameObject* gameObject)
 {
-  vector<GO_InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
+  vector<InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
 
   if(joys.size() > 0)
   {
