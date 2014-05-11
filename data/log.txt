@@ -1,3 +1,2 @@
-
-[11/05/2014 21:50] **ERROR** From CSystem_Resources: Could not load file: data/resources/models/presentacion/plane.obj
-[11/05/2014 22:10] **ERROR** Error from Manager: Invalid game object name "slide_extra2_texto2": Already exists.
+[11/05/2014 22:57] **ERROR** From CSystem_Resources: Could not load file: data/resourecs/models/traffic_cone.obj
+[11/05/2014 23:08] **ERROR** Error from Manager: Invalid game object name "slide_extra4_cone1": Already exists.

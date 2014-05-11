@@ -90,7 +90,7 @@ void Crate_Movimiento(CGameObject* gameObject)
   gameObject->MeshRender()->color.g = gameObject->MeshRender()->color.b = gb;
 }
 
-void Wrench_Movimiento(CGameObject* gameObject)
+void Movimiento_Rotatorio(CGameObject* gameObject)
 {
   gameObject->Transform()->Rotate(0, -60.f * gTime.deltaTime_s(), 0);
 }

@@ -1,0 +1,14 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl cone2
+Ns 31.372549
+Ka 0.000000 0.000000 0.000000
+Kd 0.470400 0.470400 0.470400
+Ks 0.198000 0.198000 0.198000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\Dani\Downloads\3ypbvipxybls-two_trafficcones\maps\cone2.jpg
+map_Bump C:\\Users\\Dani\\Downloads\\3ypbvipxybls-two_trafficcones\\maps\\cone2.jpg
+map_Ka C:\\Users\\Dani\\Downloads\\3ypbvipxybls-two_trafficcones\\maps\\cone2.jpg

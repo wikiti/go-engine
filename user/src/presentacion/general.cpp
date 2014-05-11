@@ -135,7 +135,7 @@ bool Slide2_Init()
 
   // Texto
   CGameObject* texto = gGameObjects.Add("slide2_texto");
-  texto->Transform()->Translate(-12, 1.5, 6);
+  texto->Transform()->Translate(-15, 1.5, 6);
   texto->Transform()->Rotate(0, 90, 0);
   texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide2_text";
@@ -544,7 +544,7 @@ bool Slide8_Init()
   wrench->Transform()->Scale(2, 2, 2);
   wrench->MeshRender()->material_name = "texture_wrench";
   wrench->MeshRender()->mesh_name = "mdl_wrench";
-  wrench->SetBehaviourFunction(&Wrench_Movimiento);
+  wrench->SetBehaviourFunction(&Movimiento_Rotatorio);
 
   return true;
 }
@@ -668,13 +668,39 @@ bool Slide_Extra3_Close()
 
 bool Slide_Extra4_Init()
 {
-  // Falta esto de aquí
+  // Título
+  CGameObject* titulo = gGameObjects.Add("slide_extra4_titulo");
+  titulo->Transform()->Translate(10, 2.5, 0);
+  titulo->Transform()->Rotate(0, 270, 0);
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
+  titulo->MeshRender()->mesh_name = "mdl_slide_extra4_title";
+  titulo->MeshRender()->color = COLOR_TITULO;
+
+  // Texto
+  CGameObject* texto = gGameObjects.Add("slide_extra4_texto");
+  texto->Transform()->Translate(14, 1.5, -2);
+  texto->Transform()->Rotate(0, 270, 0);
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
+  texto->MeshRender()->mesh_name = "mdl_slide_extra4_text";
+  texto->MeshRender()->color = COLOR_TEXTO;
+
+  // Cono aquí (o algo)
+  CGameObject* cone1 = gGameObjects.Add("slide_extra4_cone1");
+  cone1->Transform()->Translate(12, -0.3, -5);
+  cone1->Transform()->Rotate(0, 30, 0);
+  cone1->Transform()->Scale(2.f, 2.5f, 2.f);
+  cone1->MeshRender()->material_name = "texture_mdl_traffic_cone";
+  cone1->MeshRender()->mesh_name = "mdl_traffic_cone";
+  //cone1->SetBehaviourFunction(&Movimiento_Rotatorio); // ¿?
 
   return true;
 }
 
 bool Slide_Extra4_Close()
 {
+  gGameObjects.Delete("slide_extra4_titulo");
+  gGameObjects.Delete("slide_extra4_texto");
+  gGameObjects.Delete("slide_extra4_cone1");
 
   return true;
 }

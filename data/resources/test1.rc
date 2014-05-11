@@ -21,6 +21,10 @@ mesh: mdl_wrench data/resources/models/wrench.obj: 0
 
 mesh: mdl_plane data/resources/models/plane.obj: 0
 
+# Extra: NON-COMMERCIAL ONLY!!! http://tf3dm.com/3d-model/traffic-cones-10923.html
+mesh: mdl_traffic_cone data/resources/models/traffic_cone.obj
+texture: texture_mdl_traffic_cone data/resources/textures/traffic_cone.tga: mipmap
+
 # Slide 1
 mesh: mdl_slide1_title data/resources/models/presentacion/slide1_title.obj: 0
 
@@ -66,6 +70,9 @@ mesh: mdl_slide_extra3_title data/resources/models/presentacion/slide_extra3_tit
 mesh: mdl_slide_extra3_text data/resources/models/presentacion/slide_extra3_text.obj: 0
 texture: texture_accesibilidad data/resources/textures/accesibilidad.tga: mipmap
 
+# Slide Extra4
+mesh: mdl_slide_extra4_title data/resources/models/presentacion/slide_extra4_title.obj: 0
+mesh: mdl_slide_extra4_text data/resources/models/presentacion/slide_extra4_text.obj: 0
 
 # Slide 9
 mesh: mdl_slide9_title data/resources/models/presentacion/slide9_title.obj: 0

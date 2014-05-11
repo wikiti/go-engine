@@ -19,7 +19,7 @@ void Camara_main_rotacion(CGameObject* gameObject);
 void Camara_main_input(CGameObject* gameObject);
 void Planeta_Movimiento(CGameObject* gameObject);
 void Crate_Movimiento(CGameObject* gameObject);
-void Wrench_Movimiento(CGameObject* gameObject);
+void Movimiento_Rotatorio(CGameObject* gameObject);
 void Firework_Manager_Comportamiento(CGameObject* gameObject);
 
 void Camera_BeforeRender(CGameObject* gameObject);
