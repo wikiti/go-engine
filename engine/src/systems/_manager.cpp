@@ -168,6 +168,9 @@ CGameObject* CSystem_GameObject_Manager::Add(std::string name, gameObject_type t
 
     return it->second;//return it->second->GetID();
   }
+
+  gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Already exists.", name.c_str());
+  gSystem_Debug.error("Error from Manager: Invalid game object name \"%s\": Already exists.", name.c_str());
   return NULL;//return -1;
 }
 

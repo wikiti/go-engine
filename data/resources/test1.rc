@@ -19,6 +19,8 @@ texture: texture_dirt data/resources/textures/dirt.tga: mipmap
 texture: texture_wrench data/resources/textures/wrench.tga: linear
 mesh: mdl_wrench data/resources/models/wrench.obj: 0
 
+mesh: mdl_plane data/resources/models/plane.obj: 0
+
 # Slide 1
 mesh: mdl_slide1_title data/resources/models/presentacion/slide1_title.obj: 0
 
@@ -53,6 +55,17 @@ mesh: mdl_slide8_text data/resources/models/presentacion/slide8_text.obj: 0
 # Slide Extra1
 mesh: mdl_slide_extra1_title data/resources/models/presentacion/slide_extra1_title.obj: 0
 texture: texture_arq_software data/resources/textures/arq.tga: mipmap
+
+# Slide Extra2
+mesh: mdl_slide_extra2_title data/resources/models/presentacion/slide_extra2_title.obj: 0
+mesh: mdl_slide_extra2_text1 data/resources/models/presentacion/slide_extra2_text1.obj: 0
+mesh: mdl_slide_extra2_text2 data/resources/models/presentacion/slide_extra2_text2.obj: 0
+
+# Slide Extra3
+mesh: mdl_slide_extra3_title data/resources/models/presentacion/slide_extra3_title.obj: 0
+mesh: mdl_slide_extra3_text data/resources/models/presentacion/slide_extra3_text.obj: 0
+texture: texture_accesibilidad data/resources/textures/accesibilidad.tga: mipmap
+
 
 # Slide 9
 mesh: mdl_slide9_title data/resources/models/presentacion/slide9_title.obj: 0

@@ -570,13 +570,13 @@ bool Slide_Extra1_Init()
   titulo->MeshRender()->mesh_name = "mdl_slide_extra1_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
+  // Dibujo
   CGameObject* crate = gGameObjects.Add("slide_extra1_crate");
-  crate->Transform()->Translate(-0.5, -0.8, 4);
-  crate->Transform()->Rotate(180, 180, 0);
-  crate->Transform()->scale(1.4f, 1.f, 0.001f);
-  //crate->Transform()->Scale();
+  crate->Transform()->Translate(0, -0.2, 4);
+  crate->Transform()->Rotate(90, 180, 0);
+  crate->Transform()->Scale(1.3, 1, 1);
   crate->MeshRender()->material_name = "texture_arq_software";
-  crate->MeshRender()->mesh_name = "mdl_crate";
+  crate->MeshRender()->mesh_name = "mdl_plane";
 
   return true;
 }
@@ -591,30 +591,84 @@ bool Slide_Extra1_Close()
 
 bool Slide_Extra2_Init()
 {
+  // Título
+  CGameObject* titulo = gGameObjects.Add("slide_extra2_titulo");
+  titulo->Transform()->Translate(-6, 1.4, 0);
+  titulo->Transform()->Rotate(0, 90, 0);
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
+  titulo->MeshRender()->mesh_name = "mdl_slide_extra2_title";
+  titulo->MeshRender()->color = COLOR_TITULO;
+
+  // Texto 1
+  CGameObject* texto1 = gGameObjects.Add("slide_extra2_texto1");
+  texto1->Transform()->Translate(-12, 1.5, 6);
+  texto1->Transform()->Rotate(0, 90, 0);
+  texto1->MeshRender()->material_name = "__TEXTURE_WHITE";
+  texto1->MeshRender()->mesh_name = "mdl_slide_extra2_text1";
+  texto1->MeshRender()->color = COLOR_TEXTO;
+
+  // Texto 2
+  CGameObject* texto2 = gGameObjects.Add("slide_extra2_texto2");
+  texto2->Transform()->Translate(-12, 1.5, -2.5);
+  texto2->Transform()->Rotate(0, 90, 0);
+  texto2->MeshRender()->material_name = "__TEXTURE_WHITE";
+  texto2->MeshRender()->mesh_name = "mdl_slide_extra2_text2";
+  texto2->MeshRender()->color = COLOR_TEXTO;
 
   return true;
 }
 
 bool Slide_Extra2_Close()
 {
+  gGameObjects.Delete("slide_extra2_titulo");
+  gGameObjects.Delete("slide_extra2_texto1");
+  gGameObjects.Delete("slide_extra2_texto2");
 
   return true;
 }
 
 bool Slide_Extra3_Init()
 {
+  // Título
+  CGameObject* titulo = gGameObjects.Add("slide_extra3_titulo");
+  titulo->Transform()->Translate(0, 2.6, -9);
+  titulo->Transform()->Rotate(0, 0, 0);
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
+  titulo->MeshRender()->mesh_name = "mdl_slide_extra3_title";
+  titulo->MeshRender()->color = COLOR_TITULO;
+
+  // Texto
+  CGameObject* texto = gGameObjects.Add("slide_extra3_texto");
+  texto->Transform()->Translate(-6.5, 1.5, -12);
+  texto->Transform()->Rotate(0, 0, 0);
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
+  texto->MeshRender()->mesh_name = "mdl_slide_extra3_text";
+  texto->MeshRender()->color = COLOR_TEXTO;
+
+  // Dibujo
+  CGameObject* crate = gGameObjects.Add("slide_extra3_panel");
+  crate->Transform()->Translate(2.5, 0, -5);
+  crate->Transform()->Rotate(90, 0, 0);
+  //crate->Transform()->Scale();
+  crate->MeshRender()->material_name = "texture_accesibilidad";
+  crate->MeshRender()->mesh_name = "mdl_plane";
+
 
   return true;
 }
 
 bool Slide_Extra3_Close()
 {
+  gGameObjects.Delete("slide_extra3_titulo");
+  gGameObjects.Delete("slide_extra3_texto");
+  gGameObjects.Delete("slide_extra3_panel");
 
   return true;
 }
 
 bool Slide_Extra4_Init()
 {
+  // Falta esto de aquí
 
   return true;
 }

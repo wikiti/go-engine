@@ -1,1 +1,3 @@
 
+[11/05/2014 21:50] **ERROR** From CSystem_Resources: Could not load file: data/resources/models/presentacion/plane.obj
+[11/05/2014 22:10] **ERROR** Error from Manager: Invalid game object name "slide_extra2_texto2": Already exists.
