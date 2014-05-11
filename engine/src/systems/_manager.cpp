@@ -144,6 +144,7 @@ CGameObject* CSystem_GameObject_Manager::Add(std::string name, gameObject_type t
   if(!Utils::validateIdentifier(name))
   {
     gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", name.c_str());
+    gSystem_Debug.error("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", name.c_str());
     return NULL;
   }
 
@@ -175,13 +176,19 @@ CGameObject* CSystem_GameObject_Manager::Add(CGameObject* go, bool init)
   if(!Utils::validateIdentifier(go->GetName()))
   {
     gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", go->GetName().c_str());
+    gSystem_Debug.error("Error from Manager: Invalid game object name \"%s\": Can only contain alphanumerics or underscores.", go->GetName().c_str());
 
     return NULL;
   }
 
   map<string, CGameObject*>::iterator it = gameObjects.find(go->GetName());
   if(it != gameObjects.end() || go == NULL) // Solo lo colocamos si no existe otro o si go no es NULL
+  {
+    gSystem_Debug.console_error_msg("Error from Manager: Invalid game object name \"%s\": Already exists.", go->GetName().c_str());
+    gSystem_Debug.error("Error from Manager: Invalid game object name \"%s\": Already exists.", go->GetName().c_str());
+
     return NULL;//return -1;
+  }
 
   gameObjects.insert(pair<string, CGameObject*>(go->GetName(), go));
   it = gameObjects.find(go->GetName());

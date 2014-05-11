@@ -8,7 +8,7 @@ CSystem_Resources& gResources = gSystem_Resources;
 
 using namespace std;
 
-CResource::CResource(): rc_file(""), type(resources::base)
+CResource::CResource(): rc_file(""), type(Resources::base)
 {
 
 }
@@ -197,7 +197,7 @@ void CResource_Mesh::Render()
 
 bool CResource_Texture::LoadFile(string file, string arguments)
 {
-  using namespace resources;
+  using namespace Resources;
 
   uint soil_flags = 0;
   uint flags = texture_linear;
@@ -252,7 +252,7 @@ bool CResource_Texture::LoadFile(string file, string arguments)
 
 bool CResource_Texture::LoadFromMemory(GLuint* data, uint w, uint h, uint n_ch, flags_t flags)
 {
-  using namespace resources;
+  using namespace Resources;
 
   uint soil_flags = 0x00;
   soil_flags |= SOIL_FLAG_INVERT_Y;
@@ -391,7 +391,7 @@ bool CSystem_Resources::Init()
 
 bool CSystem_Resources::InitEngineResources()
 {
-  using namespace resources;
+  using namespace Resources;
 
   // -- Texturas
   // - Error
@@ -418,7 +418,7 @@ bool CSystem_Resources::InitEngineResources()
   }
 
   texture_error->LoadFromMemory(texture_error_data, 128, 128, 4, texture_linear);
-  resource_list.insert(pair<string, CResource*>("__NO_TEXTURE", texture_error));
+  resource_list.insert(pair<string, CResource*>("__TEXTURE_NONE", texture_error));
 
   // - Black
   CResource_Texture* texture_black = new CResource_Texture;
@@ -429,7 +429,7 @@ bool CSystem_Resources::InitEngineResources()
   colors[3] = 0xFF;
 
   texture_black->LoadFromMemory(texture_black_data, 1, 1, 4, texture_nearest);
-  resource_list.insert(pair<string, CResource*>("__BLACK_TEXTURE", texture_black));
+  resource_list.insert(pair<string, CResource*>("__TEXTURE_BLACK", texture_black));
 
   // - White
   CResource_Texture* texture_white = new CResource_Texture;
@@ -440,10 +440,11 @@ bool CSystem_Resources::InitEngineResources()
   colors[3] = 0xFF;
 
   texture_white->LoadFromMemory(texture_white_data, 1, 1, 4, texture_nearest);
-  resource_list.insert(pair<string, CResource*>("__WHITE_TEXTURE", texture_white));
+  resource_list.insert(pair<string, CResource*>("__TEXTURE_WHITE", texture_white));
 
   // -- Modelos
-  // ¿?
+  // Cargar modelo "ERROR"
+  LoadResource("__MDL_ERROR", "data/engine/error_mdl.obj", mesh);
 
   return true;
 }
@@ -505,13 +506,13 @@ bool CSystem_Resources::LoadResourceFile(string rc_file)
     if(arguments.length() > 1) arguments = arguments.substr(1);
 
     if(type == "mesh:")
-      LoadResource(name, file, resources::mesh, arguments);
+      LoadResource(name, file, Resources::mesh, arguments);
     else if(type == "sound:")
-      LoadResource(name, file, resources::sound, arguments);
+      LoadResource(name, file, Resources::sound, arguments);
     else if(type == "texture:")
-      LoadResource(name, file, resources::texture, arguments);
+      LoadResource(name, file, Resources::texture, arguments);
     else if(type == "font:")
-      LoadResource(name, file, resources::font, arguments);
+      LoadResource(name, file, Resources::font, arguments);
     else
       gSystem_Debug.error("Error from Resource Manager: Invalid resource type \"%s\" for resource\"%s\".", type.c_str(), name.c_str());
   }
@@ -521,7 +522,7 @@ bool CSystem_Resources::LoadResourceFile(string rc_file)
   return true;
 }
 
-bool CSystem_Resources::LoadResource(string name, string rc_file, resources::types_t type, string arguments)
+bool CSystem_Resources::LoadResource(string name, string rc_file, Resources::types_t type, string arguments)
 {
   // Si ya existe, borrar y poner de nuevo. Si no, crear de 0
   map<string, CResource*>::iterator it = resource_list.find(name);
@@ -531,10 +532,10 @@ bool CSystem_Resources::LoadResource(string name, string rc_file, resources::typ
   CResource* new_rc = NULL;
   switch(type)
   {
-    case resources::mesh: new_rc = new CResource_Mesh; break;
-    case resources::texture: new_rc = new CResource_Texture; break;
-    case resources::sound: new_rc = new CResource_Sound; break;
-    case resources::font: new_rc = new CResource_Font; break;
+    case Resources::mesh: new_rc = new CResource_Mesh; break;
+    case Resources::texture: new_rc = new CResource_Texture; break;
+    case Resources::sound: new_rc = new CResource_Sound; break;
+    case Resources::font: new_rc = new CResource_Font; break;
     default: gSystem_Debug.error("From CSystem_Resources: From Resource %s: Invalid resource type.", name.c_str(), rc_file.c_str()); return false;
   }
 
@@ -604,29 +605,29 @@ void CSystem_Resources::ClearResource(string id)
 CResource_Mesh* CSystem_Resources::GetMesh(string id)
 {
   map<string, CResource*>::iterator it = resource_list.find(id);
-  if(it != resource_list.end() && it->second->Type() == resources::mesh)
+  if(it != resource_list.end() && it->second->Type() == Resources::mesh)
     return (CResource_Mesh*)(it->second);
 
   // Devolver mesh nula en vez de NULL
 
-  return NULL;
+  return (CResource_Mesh*)(resource_list["__MDL_ERROR"]);
 }
 
 CResource_Texture* CSystem_Resources::GetTexture(string id)
 {
   map<string, CResource*>::iterator it = resource_list.find(id);
-  if(it != resource_list.end() && it->second->Type() == resources::texture)
+  if(it != resource_list.end() && it->second->Type() == Resources::texture)
     return (CResource_Texture*)(it->second);
 
   // Devolver textura nula en vez de NULL
   //return NULL;
-  return (CResource_Texture*)resource_list["__NO_TEXTURE"];
+  return (CResource_Texture*)resource_list["__TEXTURE_NON"];
 }
 
 CResource_Sound* CSystem_Resources::GetSound(string id)
 {
   map<string, CResource*>::iterator it = resource_list.find(id);
-  if(it != resource_list.end() && it->second->Type() == resources::sound)
+  if(it != resource_list.end() && it->second->Type() == Resources::sound)
     return (CResource_Sound*)(it->second);
 
   return NULL;

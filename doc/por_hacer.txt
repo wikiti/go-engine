@@ -1,3 +1,4 @@
+- Añadir soporte háptico (vibración) para los joysticks (http://wiki.libsdl.org/CategoryForceFeedback).
 - Cambiar la visibilidad los métodos Init(), OnLoop()... de los sistemas.
 - Cambiar el encoding de todos los fuentes a "utf-8" para una mayor simplicidad (la codificación de ahora es la que usa windows por defecto, y es pura basura).
 - Añadir un sistema para que el usuario pueda crear "prefabs" a partir de una determinada jerarquía de objetos.

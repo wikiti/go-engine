@@ -16,7 +16,7 @@
 #include "predefined_functions.h"
 
 extern int diapositiva_actual;
-const uint NUM_DIAPOSITIVAS = 10;
+const uint NUM_DIAPOSITIVAS = 14;
 
 const colorf_t COLOR_TITULO(0.5, 0.5, 0.5, 1);
 const colorf_t COLOR_TEXTO(0.95, 0.95, 0.95, 1);
@@ -46,6 +46,16 @@ bool Slide7_Init();
 bool Slide7_Close();
 bool Slide8_Init();
 bool Slide8_Close();
+
+bool Slide_Extra1_Init();
+bool Slide_Extra1_Close();
+bool Slide_Extra2_Init();
+bool Slide_Extra2_Close();
+bool Slide_Extra3_Init();
+bool Slide_Extra3_Close();
+bool Slide_Extra4_Init();
+bool Slide_Extra4_Close();
+
 bool Slide9_Init();
 bool Slide9_Close();
 bool Slide10_Init();

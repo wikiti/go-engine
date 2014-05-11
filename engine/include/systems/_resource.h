@@ -4,7 +4,7 @@
 #include "_globals.h"
 #include "systems/_system.h"
 
-namespace resources
+namespace Resources
 {
   enum types_t {base, mesh, texture, sound, font};
   enum enum_loadgltexture {texture_none = 0x00, texture_mipmap = 0x01, texture_linear = 0x02, texture_nearest = 0x04 }; // metodos para cargar la textura
@@ -16,7 +16,7 @@ class CResource
     friend class CSystem_Resources;
     std::string rc_file;
 
-    resources::types_t type;
+    Resources::types_t type;
 
   public:
     CResource();
@@ -25,7 +25,7 @@ class CResource
     virtual bool LoadFile(std::string file, std::string arguments = ""){return true;};
     virtual void Clear(){};
 
-    resources::types_t Type(){ return type; };
+    Resources::types_t Type(){ return type; };
 
     std::string File(){ return rc_file; }
 };
@@ -45,7 +45,7 @@ class CResource_Mesh: public CResource
     GLuint m_ModelVAO;
 
   public:
-    CResource_Mesh(): CResource(){ numTriangles = numUvCoords = 0; m_ModelVBOVertices = m_ModelVBONormals = m_ModelVBOTexCoords = 0; type = resources::mesh; };
+    CResource_Mesh(): CResource(){ numTriangles = numUvCoords = 0; m_ModelVBOVertices = m_ModelVBONormals = m_ModelVBOTexCoords = 0; type = Resources::mesh; };
     ~CResource_Mesh(){ Clear(); }
 
     bool LoadFile(std::string file, std::string arguments = "");
@@ -60,7 +60,7 @@ class CResource_Texture: public CResource
     GLuint ID;
 
   public:
-    CResource_Texture(): CResource(){ type = resources::texture; };
+    CResource_Texture(): CResource(){ type = Resources::texture; };
     ~CResource_Texture(){ Clear(); }
 
     bool LoadFile(std::string file, std::string arguments = "mipmap");
@@ -95,7 +95,7 @@ class CResource_Sound: public CResource
     ALuint buffer_id;
 
   public:
-    CResource_Sound(): CResource(){ type = resources::sound; };
+    CResource_Sound(): CResource(){ type = Resources::sound; };
     ~CResource_Sound(){ Clear(); }
 
     ALuint BufferID()
@@ -151,7 +151,7 @@ class CSystem_Resources: public CSystem
     bool Reset();
 
     bool LoadResourceFile(std::string rc_file);
-      bool LoadResource(std::string name, std::string rc_file, resources::types_t type, std::string arguments = "");
+      bool LoadResource(std::string name, std::string rc_file, Resources::types_t type, std::string arguments = "");
     void AddEmpty(std::string name);
 
     void ClearNonEngineResources();

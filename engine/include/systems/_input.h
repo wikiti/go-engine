@@ -75,16 +75,21 @@ namespace Input
    * @brief Enum para representar los estados de los diversos botones de un joystick.
    *
    * Similar a keystate_t, los valores de esta enum sirven para recalcar los estados de un botón de un joystick.
-   * Sencillamente, hay 2 estados:
+   * Sencillamente, hay 4 estados:
    *
+   * - Siendo pulsado.
    * - Pulsado.
+   * - Dejando de ser pulsado.
    * - Sin pulsar.
    *
    * @see CSystem_UserInput::CJoystick
    * @see CSystem_UserInput::CJoyButton
    * @see CSystem_UserInput::CButton
    */
-  enum button_t {button_unpressed = 0 /**< Botón sin pulsar. */, button_pressed = 1 /**< Botón pulsado. */};
+  enum button_t { button_buttonup = -2 /**< Botón dejando de ser pulsado. */,
+                  button_unpressed = -1 /**< Botón sin pulsar. */,
+                  button_buttondown = 1,   /**< Botón siendo pulsado.*/
+                  button_pressed = 2, /**< Botón pulsado. */ };
 }
 
 /**
@@ -101,6 +106,8 @@ class CSystem_UserInput: public CSystem
   friend bool Systems_Reset();
 
   public:
+    class CJoystick;
+
     class CButton
     {
       friend class CSystem_UserInput;
@@ -117,6 +124,7 @@ class CSystem_UserInput: public CSystem
         Input::keystate_t State(){return state;}
         Uint8 Button(){return button;}
         std::string ButtonName(){return button_name;}
+
     };
 
     class CJoyButton
@@ -135,6 +143,9 @@ class CSystem_UserInput: public CSystem
         Input::button_t State(){return state;}
         Uint8 Button(){return button;}
         std::string ButtonName(){return button_name;}
+
+      protected:
+        void OnInput(const CJoystick& joy, uint button_index);
     };
 
     class CKey

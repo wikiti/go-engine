@@ -35,12 +35,12 @@ void Gestor_Entrada_Input(CGameObject* gameObject)
       {
         diapositivas_funcs_init[diapositiva_actual + 1]();
       }
-      if(diapositiva_actual == 10)
+      if(diapositiva_actual == NUM_DIAPOSITIVAS)
         gEngine.Exit();
 
       // Rotar la cámara
       rotate_to.y -= 90;
-      if(diapositiva_actual == 9)
+      if(diapositiva_actual == NUM_DIAPOSITIVAS - 1)
       {
         gGameObjects["firework_manager"]->Enable();
         rotate_to.x -= 45;
@@ -72,9 +72,9 @@ void Gestor_Entrada_Input(CGameObject* gameObject)
 
       // Rotar la cámara
       rotate_to.y += 90;
-      if(diapositiva_actual == 8)
+      if(diapositiva_actual == NUM_DIAPOSITIVAS - 2)
       {
-        gGameObjects["firework_manager"]->Enable();
+        gGameObjects["firework_manager"]->Disable(); // ¿?
         rotate_to.x += 45;
       }
 

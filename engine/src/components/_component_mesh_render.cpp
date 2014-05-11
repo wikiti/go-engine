@@ -31,12 +31,6 @@ void CComponent_Mesh_Render::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
   if(!enabled)
     return;
 
-  glActiveTexture(GL_TEXTURE0);
-  //if(material_name != "")
-    glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(material_name)->GetID());
-  //else
-  //  glBindTexture(GL_TEXTURE_2D, 0);
-
   // Guardar el shader dentro del mesh render!
   //CShader* simpleShader = gSystem_Shader_Manager.GetShader(shader_name);
   //glUseProgram(simpleShader->GetProgram());
@@ -54,8 +48,6 @@ void CComponent_Mesh_Render::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
 
   gSystem_Math.Clamp(color_apply_force, 0.f, 1.f);
 
-  glUniform1f(simpleShader->GetUniformIndex("textureFlag"), 1.0f - color_apply_force);
-  glUniform4f(simpleShader->GetUniformIndex("in_Color"), color.r, color.g, color.b, color.a);
 
   if(before_render)
     before_render(gameObject);
@@ -68,8 +60,21 @@ void CComponent_Mesh_Render::OnRender(glm::mat4 projMatrix, glm::mat4 modelViewM
   }
 
   CResource_Mesh* mesh = gSystem_Resources.GetMesh(mesh_name);
-  if(mesh)
-    mesh->Render();
+  glActiveTexture(GL_TEXTURE0);
+  if(mesh != gSystem_Resources.GetMesh("__MDL_ERROR")) // Cambiar el color a rojo
+  {
+    glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture(material_name)->GetID());
+    glUniform4f(simpleShader->GetUniformIndex("in_Color"), color.r, color.g, color.b, color.a);
+    glUniform1f(simpleShader->GetUniformIndex("textureFlag"), 1.0f - color_apply_force);
+  }
+  else
+  {
+    glBindTexture(GL_TEXTURE_2D, gSystem_Resources.GetTexture("__TEXTURE_WHITE")->GetID());
+    glUniform4f(simpleShader->GetUniformIndex("in_Color"), 1.f, 0.f, 0.56f, 1.f);
+    glUniform1f(simpleShader->GetUniformIndex("textureFlag"), 1.0f);
+  }
+
+  mesh->Render();
 
   glDepthMask(GL_TRUE);
   //glDisable(GL_BLEND);

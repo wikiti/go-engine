@@ -75,10 +75,21 @@ bool Presentacion_Init()
   diapositivas_funcs_close[6] = &Slide7_Close;
   diapositivas_funcs_init[7] = &Slide8_Init;
   diapositivas_funcs_close[7] = &Slide8_Close;
-  diapositivas_funcs_init[8] = &Slide9_Init;
-  diapositivas_funcs_close[8] = &Slide9_Close;
-  diapositivas_funcs_init[9] = &Slide10_Init;
-  diapositivas_funcs_close[9] = &Slide10_Close;
+
+  // Extras aqui
+  diapositivas_funcs_init[8] = &Slide_Extra1_Init;
+  diapositivas_funcs_close[8] = &Slide_Extra1_Close;
+  diapositivas_funcs_init[9] = &Slide_Extra2_Init;
+  diapositivas_funcs_close[9] = &Slide_Extra2_Close;
+  diapositivas_funcs_init[10] = &Slide_Extra3_Init;
+  diapositivas_funcs_close[10] = &Slide_Extra3_Close;
+  diapositivas_funcs_init[11] = &Slide_Extra4_Init;
+  diapositivas_funcs_close[11] = &Slide_Extra4_Close;
+
+  diapositivas_funcs_init[12] = &Slide9_Init;
+  diapositivas_funcs_close[12] = &Slide9_Close;
+  diapositivas_funcs_init[13] = &Slide10_Init;
+  diapositivas_funcs_close[13] = &Slide10_Close;
   // ...
 
   return true;
@@ -91,15 +102,15 @@ bool Slide1_Init()
   //slide1_titulo->Transform()->position.y += 10;
   titulo->Transform()->Translate(0, 0.6, 4);
   titulo->Transform()->Rotate(0, 180, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide1_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
   // Engranaje que gira
-  CGameObject* engranaje = gGameObjects.Add("slide1_engranaje");
+  /*CGameObject* engranaje = gGameObjects.Add("slide1_engranaje");
   titulo->Transform()->Translate(0, 0, 5);
-  engranaje->MeshRender()->material_name = "__WHITE_TEXTURE";
-  engranaje->MeshRender()->color = COLOR_TITULO;
+  engranaje->MeshRender()->material_name = "__TEXTURE_WHITE";
+  engranaje->MeshRender()->color = COLOR_TITULO;*/
 
   return true;
 }
@@ -107,7 +118,7 @@ bool Slide1_Init()
 bool Slide1_Close()
 {
   gGameObjects.Delete("slide1_titulo");
-  gGameObjects.Delete("slide1_engranaje");
+  //gGameObjects.Delete("slide1_engranaje");
 
   return true;
 }
@@ -118,7 +129,7 @@ bool Slide2_Init()
   CGameObject* titulo = gGameObjects.Add("slide2_titulo");
   titulo->Transform()->Translate(-6, 1.4, 0);
   titulo->Transform()->Rotate(0, 90, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide2_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
@@ -126,7 +137,7 @@ bool Slide2_Init()
   CGameObject* texto = gGameObjects.Add("slide2_texto");
   texto->Transform()->Translate(-12, 1.5, 6);
   texto->Transform()->Rotate(0, 90, 0);
-  texto->MeshRender()->material_name = "__WHITE_TEXTURE";
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide2_text";
   texto->MeshRender()->color = COLOR_TEXTO;
 
@@ -194,7 +205,7 @@ bool Slide3_Init()
   CGameObject* titulo = gGameObjects.Add("slide3_titulo");
   titulo->Transform()->Translate(0, 2.6, -9);
   titulo->Transform()->Rotate(0, 0, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide3_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
@@ -202,7 +213,7 @@ bool Slide3_Init()
   CGameObject* texto = gGameObjects.Add("slide3_texto");
   texto->Transform()->Translate(1.5, 1, -12);
   texto->Transform()->Rotate(0, 0, 0);
-  texto->MeshRender()->material_name = "__WHITE_TEXTURE";
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide3_text";
   texto->MeshRender()->color = COLOR_TEXTO;
 
@@ -255,7 +266,7 @@ bool Slide4_Init()
   CGameObject* titulo = gGameObjects.Add("slide4_titulo");
   titulo->Transform()->Translate(10, 2.5, 0);
   titulo->Transform()->Rotate(0, 270, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide4_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
@@ -263,7 +274,7 @@ bool Slide4_Init()
   CGameObject* texto = gGameObjects.Add("slide4_texto");
   texto->Transform()->Translate(12, 1, -8);
   texto->Transform()->Rotate(0, 270, 0);
-  texto->MeshRender()->material_name = "__WHITE_TEXTURE";
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide4_text";
   texto->MeshRender()->color = COLOR_TEXTO;
 
@@ -292,7 +303,7 @@ bool Slide5_Init()
   CGameObject* titulo = gGameObjects.Add("slide5_titulo");
   titulo->Transform()->Translate(0, 2, 8);
   titulo->Transform()->Rotate(0, 180, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide5_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
@@ -300,7 +311,7 @@ bool Slide5_Init()
   CGameObject* texto = gGameObjects.Add("slide5_texto");
   texto->Transform()->Translate(0, -3.5, 15);
   texto->Transform()->Rotate(0, 180, 0);
-  texto->MeshRender()->material_name = "__WHITE_TEXTURE";
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide5_text";
   texto->MeshRender()->color = COLOR_TEXTO;
 
@@ -427,7 +438,6 @@ bool Slide5_Init()
   camera->Camera()->after_render = &Camera_AfterRender;
 
   camera->Transform()->SetAngle();
-  camera->Preserve();
   gRender.AddCamera(camera);
 
   // Desactivar por el momento
@@ -443,6 +453,7 @@ bool Slide5_Close()
 
   gGameObjects.Delete("slide5_mesh");
   gGameObjects.Delete("slide5_particles", true);
+
   gRender.RemoveCamera("slide5_camera");
   gGameObjects["slide5_camera"]->RemoveComponent<CComponent_Camera>();
   gGameObjects.Delete("slide5_camera");
@@ -456,7 +467,7 @@ bool Slide6_Init()
   CGameObject* titulo = gGameObjects.Add("slide6_titulo");
   titulo->Transform()->Translate(-6, 1.5, 0);
   titulo->Transform()->Rotate(0, 90, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide6_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
@@ -464,7 +475,7 @@ bool Slide6_Init()
   CGameObject* texto = gGameObjects.Add("slide6_texto");
   texto->Transform()->Translate(-12, 1.5, 6);
   texto->Transform()->Rotate(0, 90, 0);
-  texto->MeshRender()->material_name = "__WHITE_TEXTURE";
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide6_text";
   texto->MeshRender()->color = COLOR_TEXTO;
 
@@ -485,7 +496,7 @@ bool Slide7_Init()
   CGameObject* titulo = gGameObjects.Add("slide7_titulo");
   titulo->Transform()->Translate(0, 2.6, -9);
   titulo->Transform()->Rotate(0, 0, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide7_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
@@ -493,7 +504,7 @@ bool Slide7_Init()
   CGameObject* texto = gGameObjects.Add("slide7_texto");
   texto->Transform()->Translate(-5, 2, -15);
   texto->Transform()->Rotate(0, 0, 0);
-  texto->MeshRender()->material_name = "__WHITE_TEXTURE";
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide7_text";
   texto->MeshRender()->color = COLOR_TEXTO;
 
@@ -514,7 +525,7 @@ bool Slide8_Init()
   CGameObject* titulo = gGameObjects.Add("slide8_titulo");
   titulo->Transform()->Translate(10, 2.5, 0);
   titulo->Transform()->Rotate(0, 270, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide8_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
@@ -522,7 +533,7 @@ bool Slide8_Init()
   CGameObject* texto = gGameObjects.Add("slide8_texto");
   texto->Transform()->Translate(12, 1, -8);
   texto->Transform()->Rotate(0, 270, 0);
-  texto->MeshRender()->material_name = "__WHITE_TEXTURE";
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide8_text";
   texto->MeshRender()->color = COLOR_TEXTO;
 
@@ -547,13 +558,82 @@ bool Slide8_Close()
   return true;
 }
 
+/* Diapositivas extras aquí */
+
+bool Slide_Extra1_Init()
+{
+  // Título
+  CGameObject* titulo = gGameObjects.Add("slide_extra1_titulo");
+  titulo->Transform()->Translate(0, 2, 8);
+  titulo->Transform()->Rotate(0, 180, 0);
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
+  titulo->MeshRender()->mesh_name = "mdl_slide_extra1_title";
+  titulo->MeshRender()->color = COLOR_TITULO;
+
+  CGameObject* crate = gGameObjects.Add("slide_extra1_crate");
+  crate->Transform()->Translate(-0.5, -0.8, 4);
+  crate->Transform()->Rotate(180, 180, 0);
+  crate->Transform()->scale(1.4f, 1.f, 0.001f);
+  //crate->Transform()->Scale();
+  crate->MeshRender()->material_name = "texture_arq_software";
+  crate->MeshRender()->mesh_name = "mdl_crate";
+
+  return true;
+}
+
+bool Slide_Extra1_Close()
+{
+  gGameObjects.Delete("slide_extra1_titulo");
+  gGameObjects.Delete("slide_extra1_crate");
+
+  return true;
+}
+
+bool Slide_Extra2_Init()
+{
+
+  return true;
+}
+
+bool Slide_Extra2_Close()
+{
+
+  return true;
+}
+
+bool Slide_Extra3_Init()
+{
+
+  return true;
+}
+
+bool Slide_Extra3_Close()
+{
+
+  return true;
+}
+
+bool Slide_Extra4_Init()
+{
+
+  return true;
+}
+
+bool Slide_Extra4_Close()
+{
+
+  return true;
+}
+
+/* Fin diapositivas extra */
+
 bool Slide9_Init()
 {
   // Título
   CGameObject* titulo = gGameObjects.Add("slide9_titulo");
   titulo->Transform()->Translate(0, 2, 8);
   titulo->Transform()->Rotate(0, 180, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide9_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
@@ -561,7 +641,7 @@ bool Slide9_Init()
   CGameObject* texto = gGameObjects.Add("slide9_texto");
   texto->Transform()->Translate(5, 1, 11);
   texto->Transform()->Rotate(0, 180, 0);
-  texto->MeshRender()->material_name = "__WHITE_TEXTURE";
+  texto->MeshRender()->material_name = "__TEXTURE_WHITE";
   texto->MeshRender()->mesh_name = "mdl_slide9_text";
   texto->MeshRender()->color = COLOR_TEXTO;
 
@@ -583,13 +663,13 @@ bool Slide10_Init()
   CGameObject* titulo = gGameObjects.Add("slide10_titulo");
   titulo->Transform()->Translate(-8, 5, 0); // Elevado!
   titulo->Transform()->Rotate(45, 90, 0);
-  titulo->MeshRender()->material_name = "__WHITE_TEXTURE";
+  titulo->MeshRender()->material_name = "__TEXTURE_WHITE";
   titulo->MeshRender()->mesh_name = "mdl_slide10_title";
   titulo->MeshRender()->color = COLOR_TITULO;
 
   // Gestor de fuegos artificiales ->BUG Crash sin razón aparente en el firework_manager de la presentación.
   CGameObject* firework_manager = gGameObjects.Add("firework_manager");
-  firework_manager->Preserve();
+  //firework_manager->Preserve();
   firework_manager->SetBehaviourFunction(&Firework_Manager_Comportamiento);
   firework_manager->Disable();
 
@@ -602,6 +682,7 @@ bool Slide10_Init()
 bool Slide10_Close()
 {
   gGameObjects.Delete("slide10_titulo");
+  gGameObjects.Delete("firework_manager");
 
   return true;
 }

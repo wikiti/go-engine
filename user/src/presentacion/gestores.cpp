@@ -9,8 +9,13 @@
 #include "presentacion/gestores.h"
 #include "presentacion/gestor_entrada.h"
 
+bool camara_bloqueada = false;
+
 void Camara_main_rotacion(CGameObject* gameObject)
 {
+  if(camara_bloqueada)
+    return;
+
   vector3f rotation = gameObject->Transform()->LRotation();
   gameObject->Transform()->SetAngle( gMath.lerpAngles(rotation, rotate_to, 0.02) );
 
@@ -25,12 +30,23 @@ void Camara_main_rotacion(CGameObject* gameObject)
   }
 }
 
+uint block_button = 8;
+bool block_button_activated = false;
+
 void Camara_main_input(CGameObject* gameObject)
 {
   vector<InputClasses::CJoystick> joys = gUserInput.GetJoysticks();
 
   if(joys.size() > 0)
   {
+    // Block camera
+    if(joys[0].buttons.size() > block_button and joys[0].buttons[block_button].State() == Input::button_buttondown)
+      camara_bloqueada = !camara_bloqueada;
+
+    // No mover la cámara si está bloqueada
+    if(camara_bloqueada)
+        return;
+
     // Rotation
     if(joys[0].axes.size() >= 2)
     {
@@ -47,7 +63,6 @@ void Camara_main_input(CGameObject* gameObject)
       gameObject->Camera()->field_of_view = gMath.lerp( gameObject->Camera()->field_of_view, move_to, 2.f * gTime.deltaTime_s() );
 
       gameObject->Camera()->ApplyChanges();
-
     }
 
   }

@@ -12,6 +12,20 @@ using namespace std;
 
 using namespace Input;
 
+void CSystem_UserInput::CJoyButton::OnInput(const CJoystick& joy, uint button_index)
+{
+  bool button_status = (bool) SDL_JoystickGetButton(joy.joystick, button_index);
+
+  if ((state == Input::button_buttonup or state == Input::button_unpressed) and button_status)
+    state = Input::button_buttondown;
+  else if ((state == Input::button_buttondown or state == Input::button_pressed) and !button_status)
+    state = Input::button_buttonup;
+  else if (state == Input::button_buttondown and button_status)
+    state = Input::button_pressed;
+  else if (state == Input::button_buttonup and !button_status)
+    state = Input::button_unpressed;
+}
+
 void CSystem_UserInput::CKey::OnInput(const CSystem_UserInput& input = gSystem_UserInput)
 {
   if ((state == Input::key_keyup or state == Input::key_unpressed) and input.keyboard[key])
@@ -509,7 +523,7 @@ void CSystem_UserInput::CJoystick::OnInput()
 
   for(vector<CJoyButton>::iterator it = buttons.begin(); it != buttons.end(); ++it)
     if(SDL_JoystickGetAttached(joystick) == SDL_TRUE)
-      (*it).state = static_cast<button_t>((int)SDL_JoystickGetButton(joystick, it - buttons.begin())); // 1 -> pressed, 0 -> unpressed
+      (*it).OnInput(*this, it - buttons.begin()); //(*it).state = static_cast<button_t>((int)SDL_JoystickGetButton(joystick, it - buttons.begin())); // 1 -> pressed, 0 -> unpressed
 }
 
 /*void CSystem_UserInput::CJoystick::OnLoop()

@@ -50,6 +50,10 @@ mesh: mdl_slide7_text data/resources/models/presentacion/slide7_text.obj: 0
 mesh: mdl_slide8_title data/resources/models/presentacion/slide8_title.obj: 0
 mesh: mdl_slide8_text data/resources/models/presentacion/slide8_text.obj: 0
 
+# Slide Extra1
+mesh: mdl_slide_extra1_title data/resources/models/presentacion/slide_extra1_title.obj: 0
+texture: texture_arq_software data/resources/textures/arq.tga: mipmap
+
 # Slide 9
 mesh: mdl_slide9_title data/resources/models/presentacion/slide9_title.obj: 0
 mesh: mdl_slide9_text data/resources/models/presentacion/slide9_text.obj: 0
